@@ -1,0 +1,102 @@
+<form>
+  <table class="fields-table">
+    <tr>
+      <td class="medium">{{ 'popups.editmedia.roma' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="romA" [(ngModel)]="romA"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romA = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'popups.editmedia.romb' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="romB" [(ngModel)]="romB"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romB = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'popups.editmedia.extension' | translate }}</td>
+      <td class="medium-input">
+        <app-drop-down [list]="extensions" [defaultLabel]="'popups.editmedia.selectextension' | translate"
+          [selectedItem]="extensionRom" [resetButton]="true" (selection)="extensionRom = $event"></app-drop-down>
+      </td>
+    </tr>
+    <tr>
+      <p></p>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'popups.editmedia.diska' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="diskA" [(ngModel)]="diskA"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskA = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'popups.editmedia.diskb' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="diskB" [(ngModel)]="diskB"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskB = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <p></p>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'medium.tape' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="tape" [(ngModel)]="tape"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Tape" (chosen)="tape = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <p></p>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'medium.harddisk' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="harddisk" [(ngModel)]="harddisk"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Harddisk" (chosen)="harddisk = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <p></p>
+    </tr>
+    <tr>
+      <td class="medium">{{ 'medium.laserdisc' | translate }}</td>
+      <td class="medium-input">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-sm" id="laserdisc" [(ngModel)]="laserdisc"
+            [ngModelOptions]="{standalone: true}">
+          <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Laserdisc" (chosen)="laserdisc = $event">
+          </app-file-system-chooser>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-primary btn-sm mt-3" (click)="save()" (keyup.enter)="save()">{{ 'common.save' | translate
+    }}</button>
+</form>

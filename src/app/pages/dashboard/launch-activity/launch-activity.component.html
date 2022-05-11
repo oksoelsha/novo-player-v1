@@ -1,0 +1,41 @@
+<div class="card text-white widget widget-wide mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ 'dashboard.gamesrunningonopenmsx' | translate }}</h5>
+        <div *ngIf="launchActivities.length === 0">{{ 'common.none' | translate }}</div>
+        <div class="activity-table">
+            <table class="table table-sm text-white" *ngIf="launchActivities.length > 0">
+                <tbody>
+                    <tr *ngFor="let activity of launchActivities">
+                        <td class="activity-game-name" title="{{ activity.game.name }}">{{ activity.game.name }}</td>
+                        <td class="activity-game-listing" title="{{ activity.game.listing }}">{{ activity.game.listing }}
+                        </td>
+                        <td>
+                            <app-elapsed-time [startTime]="activity.time"></app-elapsed-time>
+                        </td>
+                        <td>
+                            <div ngbDropdown placement="bottom-end">
+                                <button type="button" class="btn btn-secondary btn-sm openmsx-connect" ngbDropdownToggle>
+                                    ● ● ●
+                                </button>
+                                <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
+                                    <button ngbDropdownItem type="button" (click)="resetMachine(activity.pid)">
+                                        {{ 'common.reset' | translate }}
+                                    </button>
+                                    <ng-container
+                                        *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
+                                        <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{ 'dashboard.switchdisks' | translate }}:</h6>
+                                        <h6 *ngIf="isTape(activity.game)" class="dropdown-header">{{ 'dashboard.switchtapes' | translate }}:</h6>
+                                        <button *ngFor="let medium of fileGroupMap.get(activity.pid)" ngbDropdownItem
+                                            type="button" (click)="switchMedium(activity.pid, activity.game, medium)">
+                                            <div class="ms-2">{{ getMediumDisplayName(medium) }}</div>
+                                        </button>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

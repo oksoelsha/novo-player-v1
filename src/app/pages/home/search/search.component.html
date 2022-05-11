@@ -1,0 +1,16 @@
+<div class="d-inline-block" ngbDropdown #searchDropdown="ngbDropdown">
+    <input class="form-control form-control-sm" type="text" ngbDropdownAnchor
+        (input)="onSearchGames($event)" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
+        (keyup)="processArrowKey($event)" #inputField>
+    <div ngbDropdownMenu class="pt-0 pb-0">
+        <button *ngFor="let game of foundGames" ngbDropdownItem (click)="onSelectGame(game)"
+            #foundSearchItem class="pe-3 ps-3">
+            <div class="game-name">
+                {{ game.name }}
+            </div>
+            <div class="game-listing ps-2">
+              - {{ game.listing }}
+            </div>
+        </button>
+    </div>
+</div>

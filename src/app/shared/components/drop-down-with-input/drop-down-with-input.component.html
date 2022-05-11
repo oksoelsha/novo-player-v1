@@ -1,0 +1,29 @@
+<div ngbDropdown class="d-inline-block" #dropdownWithInput="ngbDropdown">
+    <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
+        <span *ngIf="!selectedOrEnteredItemDisplay">{{ defaultLabel }}</span>
+        <span *ngIf="selectedOrEnteredItemDisplay">{{ selectedOrEnteredItemDisplay }}</span>
+    </button>
+    <div class="items-dropdown" ngbDropdownMenu>
+        <div class="dropdown-scroll">
+            <button *ngFor="let item of list" type="button" ngbDropdownItem (click)="setSelectedItem(item)">
+                {{ item }}
+            </button>
+        </div>
+        <div *ngIf="list.length > 0" class="dropdown-divider mt-0 mb-0"></div>
+        <hr />
+        <div class="dropdown">
+            <h6 class="dropdown-header">{{ defaultNewLabel }}</h6>
+        </div>
+        <div class="dropdown ps-4 pe-4">
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" class="form-control" name="item" (keydown.enter)="setEnteredItem($event)"
+                    [(ngModel)]="enteredItem" [ngbTooltip]="'shared.dropdownwithinput.inputfieldhelp' | translate"
+                    placement="top" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button"
+                        (click)="setEnteredItemByClick($event)">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="{{ popupId }}" class="popup">
+    <div class="popup-content">
+        <div class="popup-title-bar">
+            <div class="popup-title">{{ titleHeader }}</div>
+            <div (click)="close()" class="popup-close">&times;</div>
+        </div>
+        <div class="p-2 mt-2">
+            <ng-template [ngTemplateOutletContext]='{ popupId: popupId }' [ngTemplateOutlet]="templateVariable">
+            </ng-template>
+        </div>
+    </div>
+</div>
