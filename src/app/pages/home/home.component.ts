@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('mediaEdit') mediaEdit: MediaEditComponent;
   @ViewChild('hardwareEdit') hardwareEdit: HardwareEditComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
+  @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
   @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
@@ -224,6 +225,8 @@ export class HomeComponent implements OnInit {
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.localizationService.useLanguage(settings.language);
     });
+
+    this.getFavorites();
   }
 
   handleOpenMenuEvents(opened: boolean) {
@@ -458,18 +461,16 @@ export class HomeComponent implements OnInit {
         this.alertService.failure(this.localizationService.translate('home.failedtogglefavoritesfor') + ': ' + this.selectedGame.name);
       } else {
         this.selectedGame.favorite = flag;
+        this.getFavorites();
       }
     });
   }
 
-  getFavorites(opened: boolean) {
-    if (opened) {
-      this.gamesService.getFavorites().then((data: Game[]) => {
-        this.favorites = data;
-      });
-    } else {
-      this.favorites = [];
-    }
+  getFavorites() {
+    this.gamesService.getFavorites().then((data: Game[]) => {
+      this.favorites = data;
+      this.favoritesDropdownButton.nativeElement.disabled = (data.length === 0);
+    });
   }
 
   updateListings(data: any) {

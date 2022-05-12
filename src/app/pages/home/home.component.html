@@ -36,9 +36,9 @@
             <strong>+</strong>
           </button>
         </div>
-        <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenMenuEvents($event); getFavorites($event)">
+        <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenMenuEvents($event)">
           <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
-            [title]="'home.favorites' | translate">
+            [title]="'home.favorites' | translate" #favoritesDropdownButton>
             &starf;
           </button>
           <div ngbDropdownMenu>
