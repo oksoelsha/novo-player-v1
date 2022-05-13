@@ -243,7 +243,7 @@
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [subMenu]="launchSubMenu">
     {{ 'home.launch' | translate }}
   </ng-template>
-  <context-menu #launchSubMenu>
+  <context-menu [menuClass]="'context-menu'" #launchSubMenu>
     <ng-template contextMenuItem (execute)="launch($event.item)">
       {{ 'home.onopenmsx' | translate }}
     </ng-template>
