@@ -1,6 +1,6 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { EventProcessor } from './EventProcessor';
-import * as Datastore from 'nedb';
+import Datastore from 'nedb';
 import * as os from 'os';
 import * as path from 'path';
 import { Event } from '../src/app/models/event';

@@ -2,7 +2,7 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import { Stream } from 'stream';
 import { FileTypeUtils } from './utils/FileTypeUtils';
-import * as pLimit from 'p-limit';
+import pLimit from 'p-limit';
 
 export class HashService {
 

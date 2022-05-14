@@ -1,6 +1,6 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
-import * as Datastore from 'nedb';
+import Datastore from 'nedb';
 import * as os from 'os';
 import * as path from 'path';
 import { Game } from '../src/app/models/game';

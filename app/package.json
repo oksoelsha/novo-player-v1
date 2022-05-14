@@ -10,7 +10,7 @@
     "fast-xml-parser": "^4.0.7",
     "nedb": "^1.8.0",
     "network-byte-order": "^0.2.0",
-    "node-expose-sspi-strict": "^0.1.1",
+    "node-expose-sspi": "^0.1.59",
     "node-stream-zip": "^1.15.0",
     "p-limit": "^3.1.0"
   }

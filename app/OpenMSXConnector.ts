@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as net from 'net';
 import { htonl, ntohl } from 'network-byte-order';
-import * as NES from 'node-expose-sspi-strict';
+import * as NES from 'node-expose-sspi';
+import { SecBufferDesc } from 'node-expose-sspi';
 import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
@@ -11,7 +12,7 @@ if (PlatformUtils.isWindows()) {
 	// This library can only be installed through npm using node version 14 (used 14.17.5). Installing it
 	// using node 16.x did not work (error messages were about needing Python, Micrsoft Studio tools, and
 	// even with that it didn't work in the end)
-	nes = require('node-expose-sspi-strict');
+	nes = require('node-expose-sspi');
 }
 
 // This class was based on the following implementation:
@@ -154,7 +155,7 @@ export class OpenMSXConnector {
 			const clientCred = nes.sspi.AcquireCredentialsHandle(credInput);
 			const packageInfo = nes.sspi.QuerySecurityPackageInfo('Negotiate');
 
-			// CHALLENGE
+			// Challenge
 			var input: NES.InitializeSecurityContextInput = {
 				credential: clientCred.credential,
 				targetName: '',
@@ -179,16 +180,15 @@ export class OpenMSXConnector {
 				return;
 			}
 
-			// RESPONSE
+			// Response
+			let secBufferDesc: SecBufferDesc = {
+				ulVersion: 0,
+				buffers: [response],
+			};
 			input = {
 				credential: clientCred.credential,
 				targetName: '',
-				serverSecurityContext: {
-					SecBufferDesc: {
-						ulVersion: 0,
-						buffers: [response],
-					},
-				},
+				SecBufferDesc: secBufferDesc,
 				cbMaxToken: packageInfo.cbMaxToken,
 				contextHandle: clientSecurityContext.contextHandle,
 				targetDataRep: 'SECURITY_NETWORK_DREP',
