@@ -4,6 +4,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 import { Settings } from '../src/app/models/settings'
 import { UpdateListerner } from './UpdateListerner';
+import { PlatformUtils } from './utils/PlatformUtils';
 
 export class SettingsService {
 
@@ -19,7 +20,7 @@ export class SettingsService {
     getSettings(): Settings {
         if (this.settings === undefined) {
             if (!fs.existsSync(this.settingsFile)) {
-                return new Settings('', '', '', '', '', '');
+                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '');
             } else {
                 let fileData = fs.readFileSync(this.settingsFile);
                 return JSON.parse(fileData.toString());
@@ -63,5 +64,15 @@ export class SettingsService {
         this.listeners.forEach((listener) => {
             listener.reinit();
         });
+    }
+
+    private getSuggestedOpenMSXPath(): string {
+        if (PlatformUtils.isLinux()) {
+            return '/usr/bin';
+        } else if (PlatformUtils.isMacOS()) {
+            return '/Applications';
+        } else {
+            return '';
+        }
     }
 }
