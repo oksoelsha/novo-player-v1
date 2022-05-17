@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { EventSource } from '../../../models/event';
 import { Game } from '../../../models/game';
 import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
+import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
 
 @Component({
@@ -17,7 +19,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
-    private localizationService: LocalizationService) {
+    private localizationService: LocalizationService, private platformService: PlatformService) {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
@@ -66,6 +68,18 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     const seconds = '0' + date.getSeconds();
 
     return hours + ':' + minutes.substring(-2) + ':' + seconds.substring(-2);
+  }
+
+  isOnWindows(): boolean {
+    return this.platformService.isOnWindows();
+  }
+
+  getLaunchSource(source: number): string {
+    return EventSource[source];
+  }
+
+  isRunningOnOpenMSX(launchActivity: LaunchActivity): boolean {
+    return launchActivity.source === EventSource.openMSX;
   }
 
   switchMedium(pid: number, game: Game, medium: string) {

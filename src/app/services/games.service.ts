@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
+import { EventSource } from '../models/event';
 import { Game } from '../models/game';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
@@ -44,7 +45,7 @@ export class GamesService {
         resolve(errorMessage);
       });
       this.ipc.once('launchGameProcessIdResponse' + game.sha1Code, (event, pid: number) => {
-        this.launchActivityService.recordGameStart(game, time, pid);
+        this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
       });
       this.ipc.send('launchGame', game, time);
     });
@@ -55,12 +56,10 @@ export class GamesService {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameOnBlueMSXResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either blueMSX failed to start or the window was closed
-//        this.launchActivityService.recordGameFinish(game, time);
+        this.launchActivityService.recordGameFinish(game, time);
         resolve(errorMessage);
       });
-//      this.ipc.once('launchGameProcessIdResponse' + game.sha1Code, (event, pid: number) => {
-//        this.launchActivityService.recordGameStart(game, time, pid);
-//      });
+      this.launchActivityService.recordGameStart(game, time, 0, EventSource.blueMSX);
       this.ipc.send('launchGameOnBlueMSX', game, time);
     });
   }

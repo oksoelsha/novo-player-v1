@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { Observable, Subject } from 'rxjs';
+import { EventSource } from '../models/event';
 import { Game } from '../models/game';
 
 @Injectable({
@@ -16,8 +17,8 @@ export class LaunchActivityService {
     this.ipc = window.require('electron').ipcRenderer;
   }
 
-  recordGameStart(game: Game, time: number, pid: number) {
-    this.launchActivities.push(new LaunchActivity(game, time, pid));
+  recordGameStart(game: Game, time: number, pid: number, source: EventSource) {
+    this.launchActivities.push(new LaunchActivity(game, time, pid, source));
     this.subject.next(this.launchActivities);
   }
 
@@ -78,10 +79,12 @@ export class LaunchActivity {
   game: Game;
   time: number;
   pid: number;
+  source: EventSource;
 
-  constructor(game: Game, time: number, pid: number) {
+  constructor(game: Game, time: number, pid: number, source: EventSource) {
     this.game = game;
     this.time = time;
     this.pid = pid;
+    this.source = source;
   }
 }

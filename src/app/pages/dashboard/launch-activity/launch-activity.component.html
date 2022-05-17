@@ -1,11 +1,12 @@
 <div class="card text-white widget widget-wide mb-3">
     <div class="card-body">
-        <h5 class="card-title">{{ 'dashboard.gamesrunningonopenmsx' | translate }}</h5>
+        <h5 class="card-title">{{ 'dashboard.runninggames' | translate }}</h5>
         <div *ngIf="launchActivities.length === 0">{{ 'common.none' | translate }}</div>
         <div class="activity-table">
             <table class="table table-sm text-white" *ngIf="launchActivities.length > 0">
                 <tbody>
                     <tr *ngFor="let activity of launchActivities">
+                        <td *ngIf="isOnWindows()" class="activity-game-source">{{ getLaunchSource(activity.source) }}</td>
                         <td class="activity-game-name" title="{{ activity.game.name }}">{{ activity.game.name }}</td>
                         <td class="activity-game-listing" title="{{ activity.game.listing }}">{{ activity.game.listing }}
                         </td>
@@ -13,7 +14,7 @@
                             <app-elapsed-time [startTime]="activity.time"></app-elapsed-time>
                         </td>
                         <td>
-                            <div ngbDropdown placement="bottom-end">
+                            <div ngbDropdown placement="bottom-end" *ngIf="isRunningOnOpenMSX(activity)">
                                 <button type="button" class="btn btn-secondary btn-sm openmsx-connect" ngbDropdownToggle>
                                     ● ● ●
                                 </button>
