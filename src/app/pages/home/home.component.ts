@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
   popupOpen = false;
   isOpenMSXPathDefined: boolean;
   isWebMSXPathDefined: boolean;
+  isBlueMSXPathDefined: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
   favorites: Game[] = [];
@@ -223,6 +224,7 @@ export class HomeComponent implements OnInit {
 
       this.isOpenMSXPathDefined = settings.openmsxPath != null && settings.openmsxPath.trim() !== '';
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
+      this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
       this.localizationService.useLanguage(settings.language);
     });
 
@@ -304,6 +306,17 @@ export class HomeComponent implements OnInit {
   launchWebmsx(game: Game) {
     this.router.navigate(['./wmsx', { gameParams: JSON.stringify(this.selectedGame) }], { queryParams: this.getWebMSXParams() });
     this.eventsService.logEvent(new Event(EventSource.WebMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
+  }
+
+  launchBlueMSX(game: Game) {
+    this.gamesService.launchGameOnBlueMSX(game).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartbluemsxmsxfor') + ': ' + game.name
+          + ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.bluemsxwindowclosedfor') + ': ' + game.name);
+      }
+    });
   }
 
   processKeyEventsOnTable(event: any) {

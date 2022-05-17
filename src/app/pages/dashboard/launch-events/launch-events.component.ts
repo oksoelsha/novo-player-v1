@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../services/events.service';
-import { Event } from '../../../models/event';
+import { Event, EventSource } from '../../../models/event';
 
 @Component({
   selector: 'app-dashboard-launch-events-card',

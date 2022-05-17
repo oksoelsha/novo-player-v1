@@ -17,7 +17,7 @@ class TCLCommands {
     }
 }
 
-export class EmulatorLaunchService {
+export class OpenMSXLaunchService {
 
     private static readonly fieldsToArgs = [
         ['machine', 'machine'],
@@ -46,21 +46,21 @@ export class EmulatorLaunchService {
 
     private static readonly tclCommandArgs: TCLCommands[] = [
         new TCLCommands('inputDevice', [
-            ['1', EmulatorLaunchService.Input_Device_JOYSTICK],
-            ['2', EmulatorLaunchService.Input_Device_JOYSTICK_KEYBOARD],
-            ['3', EmulatorLaunchService.Input_Device_MOUSE],
-            ['4', EmulatorLaunchService.Input_Device_ARKANOID_PAD],
-            ['5', EmulatorLaunchService.Input_Device_TRACKBALL],
-            ['6', EmulatorLaunchService.Input_Device_TOUCHPAD]
+            ['1', OpenMSXLaunchService.Input_Device_JOYSTICK],
+            ['2', OpenMSXLaunchService.Input_Device_JOYSTICK_KEYBOARD],
+            ['3', OpenMSXLaunchService.Input_Device_MOUSE],
+            ['4', OpenMSXLaunchService.Input_Device_ARKANOID_PAD],
+            ['5', OpenMSXLaunchService.Input_Device_TRACKBALL],
+            ['6', OpenMSXLaunchService.Input_Device_TOUCHPAD]
         ])
         ,
         new TCLCommands('fddMode', [
-            ['1', EmulatorLaunchService.FDD_MODE_DISABLE_SECOND],
-            ['2', EmulatorLaunchService.FDD_MODE_DISABLE_BOTH]
+            ['1', OpenMSXLaunchService.FDD_MODE_DISABLE_SECOND],
+            ['2', OpenMSXLaunchService.FDD_MODE_DISABLE_BOTH]
         ])
         ,
         new TCLCommands('connectGFX9000', [
-            ['true', EmulatorLaunchService.ENABLE_GFX9000_CMD]
+            ['true', OpenMSXLaunchService.ENABLE_GFX9000_CMD]
         ])
     ];
 
@@ -106,10 +106,10 @@ export class EmulatorLaunchService {
     }
 
     private getSplitText(error: cp.ExecException): string {
-        if (error.message.indexOf(EmulatorLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT) > 0) {
-            return EmulatorLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT;
-        } else if (error.message.indexOf(EmulatorLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN) > 0) {
-            return EmulatorLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN;
+        if (error.message.indexOf(OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT) > 0) {
+            return OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT;
+        } else if (error.message.indexOf(OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN) > 0) {
+            return OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN;
         } else {
             return null;
         }
@@ -117,7 +117,7 @@ export class EmulatorLaunchService {
 
     private getArguments(game: Game): string[] {
         let args: string[] = [];
-        EmulatorLaunchService.fieldsToArgs.forEach (field => {
+        OpenMSXLaunchService.fieldsToArgs.forEach (field => {
             if (game[field[0]]) {
                 args.push('-' + field[1]);
                 args.push(game[field[0]]);
@@ -130,7 +130,7 @@ export class EmulatorLaunchService {
 
     private addTclCommandArguments(args: string[], game: Game) {
         let commandLineArgs: string[] = [];
-        for (let item of EmulatorLaunchService.tclCommandArgs) {
+        for (let item of OpenMSXLaunchService.tclCommandArgs) {
             if (game[item.field]) {
                 for (let command of item.argCommands) {
                     if (game[item.field].toString() == command[0]) {

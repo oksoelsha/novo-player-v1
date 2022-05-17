@@ -45,6 +45,7 @@
     "launch": "Lancer",
     "onopenmsx": "sur openMSX",
     "onwebmsx": "sur WebMSX",
+    "onbluemsx": "sur blueMSX",
     "actions": "Actions",
     "editmedia": "Modifier le médium",
     "edithardware": "Modifier le matériel",
@@ -54,6 +55,7 @@
     "dropfilesandfolders": "Déposer les fichiers et les dossiers",
     "failedtostartopenmsxfor": "Erreur lors du lancement d'openMSX pour",
     "openmsxwindowclosedfor": "Fenêtre d'openMSX fermée por",
+    "bluemsxwindowclosedfor": "Fenêtre de blueMSX fermée por",
     "gamewasremoved": "Le jeu a été enlevé",
     "gameswereremoved": "Les jeux ont été enlevés",
     "gamewasnotremoved": "Le jeu n'a pas été enlevé",
@@ -90,7 +92,7 @@
     "laserdisc": "Laserdisc"
   },
   "settings": {
-    "openmsxpath": "Chemin d'accès de openMSX",
+    "openmsxpath": "Chemin d'accès d'openMSX",
     "openmsxpathtooltip": "Dossier où openMSX se trouve",
     "screenshotspath": "Chemin d'accès de captures d'écran",
     "screenshotspathtooltip": "Dossier où les captures d'écran facultatives sont trouvées",
@@ -102,12 +104,18 @@
     "selectalisting": "Sélectionner une liste",
     "webmsxpath": "Chemin d'accès de WebMSX",
     "webmsxpathtooltip": "Dossier où WebMSX hors ligne se trouve. Utilisez le dossier intégré dans release/stable",
+    "bluemsxpath": "Chemin d'accès de blueMSX",
+    "bluemsxpathtooltip": "Dossier où blueMSX se trouve",
+    "bluemsxparams": "Autres arguments blueMSX",
+    "bluemsxparamstooltip": "Arguments supplémentaires à utiliser lors du lancement de blueMSX (par exemple, /machine)",
     "language": "Langue",
     "languagetooltip": "La langue d'affichage",
     "systemdefault": "Système par défaut",
     "confirmation": "Confirmation",
     "unsaveddataconfirmation": "Voulez-vous ignorer les modifications non enregistrées ?",
-    "settingssavedsuccessfully": "Les paramètres ont été enregistrés"
+    "settingssavedsuccessfully": "Les paramètres ont été enregistrés",
+    "otheroptionalemulators": "Autres émulateurs optionnels",
+    "general": "Général"
   },
   "country": {
     "BR": "Brésil",

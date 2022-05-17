@@ -50,6 +50,21 @@ export class GamesService {
     });
   }
 
+  async launchGameOnBlueMSX(game: Game): Promise<string> {
+    const time: number = Date.now();
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('launchGameOnBlueMSXResponse' + time, (event, errorMessage: string) => {
+        // this resolving means that either blueMSX failed to start or the window was closed
+//        this.launchActivityService.recordGameFinish(game, time);
+        resolve(errorMessage);
+      });
+//      this.ipc.once('launchGameProcessIdResponse' + game.sha1Code, (event, pid: number) => {
+//        this.launchActivityService.recordGameStart(game, time, pid);
+//      });
+      this.ipc.send('launchGameOnBlueMSX', game, time);
+    });
+  }
+
   async saveGame(game: Game) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('saveGameResponse', (event, removed: boolean) => {

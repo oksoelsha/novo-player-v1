@@ -10,7 +10,8 @@ import { HashService } from './HashService';
 import { GamesService } from './GamesService';
 import { ExtraDataService } from './ExtraDataService';
 import { EventLogService } from './EventLogService';
-import { EmulatorLaunchService } from './EmulatorLaunchService';
+import { OpenMSXLaunchService } from './OpenMSXLaunchService';
+import { BlueMSXLaunchService } from './BlueMSXLaunchService';
 import { EmulatorHardwareService } from './EmulatorHardwareService';
 import { ScanService } from './ScanService';
 import { OpenMSXControlService } from './OpenMSXControlService';
@@ -89,13 +90,14 @@ function initializeServices() {
 
   const eventLogService = new EventLogService(win);
 
-  new EmulatorLaunchService(win, settingsService, eventLogService);
+  new OpenMSXLaunchService(win, settingsService, eventLogService);
+  new BlueMSXLaunchService(win, settingsService, eventLogService);
 
   new EmulatorHardwareService(win, settingsService);
 
   new OpenMSXControlService(win);
 
-  //services that are rare to execute and have internal state -> create new instance per request
+  // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
       const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
       scanService.start(directories, listing, machine);

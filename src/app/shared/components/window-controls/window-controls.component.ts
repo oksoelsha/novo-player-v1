@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IpcRenderer } from 'electron';
+import { PlatformService } from '../../../services/platform.service';
 
 @Component({
   selector: 'app-window-controls',
@@ -16,7 +17,7 @@ export class WindowControlsComponent {
   // https://github.com/binaryfunt/electron-seamless-titlebar-tutorial
   // and modified to fit in an Electron-Angular app
 
-  constructor() {
+  constructor(private platformService: PlatformService) {
     this.ipc = window.require('electron').ipcRenderer;
 
     this.ipc.on('windowMaximizedEvent', (event: any) => {
@@ -28,7 +29,7 @@ export class WindowControlsComponent {
   }
 
   isOnWindows(): boolean {
-    return navigator.userAgent.indexOf("Win") > -1;
+    return this.platformService.isOnWindows();
   }
 
   minimizeMainWindow() {

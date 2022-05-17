@@ -134,6 +134,10 @@
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
               {{ 'home.onwebmsx' | translate }}
             </button>
+            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+              (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
+              {{ 'home.onbluemsx' | translate }}
+            </button>
           </div>
         </div>
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
@@ -249,6 +253,9 @@
     </ng-template>
     <ng-template contextMenuItem (execute)="launchWebmsx($event.item)">
       {{ 'home.onwebmsx' | translate }}
+    </ng-template>
+    <ng-template contextMenuItem (execute)="launchBlueMSX($event.item)">
+      {{ 'home.onbluemsx' | translate }}
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>

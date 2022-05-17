@@ -6,11 +6,12 @@ import { LocalizationService } from '../../services/localization.service';
 import { AlertsService } from '../../shared/components/alerts/alerts.service';
 import { GamesService } from '../../services/games.service';
 import { DeactivateComponent } from '../../guards/deactivate-guard.service';
+import { PlatformService } from '../../services/platform.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.sass']
+  styleUrls: ['../../common-styles.sass', './settings.component.sass']
 })
 export class SettingsComponent implements OnInit, AfterViewInit, DeactivateComponent {
   @ViewChild('settingsForm', { static: true }) settingsForm: NgForm;
@@ -20,6 +21,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   gameMusicPath = '';
   defaultListing = '';
   webmsxPath = '';
+  bluemsxPath = '';
+  bluemsxParams = '';
   submitDisabled = true;
   listings: string[] = [];
   language = '';
@@ -28,7 +31,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   languageIcons: string[] = [];
 
   constructor(private settingsService: SettingsService, private alertService: AlertsService, private gamesService: GamesService,
-    private localizationService: LocalizationService) { }
+    private localizationService: LocalizationService, private platformService: PlatformService) { }
 
   ngOnInit() {
     this.gamesService.getListings().then((data: string[]) => this.listings = data);
@@ -41,6 +44,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.gameMusicPath = settings.gameMusicPath;
       self.defaultListing = settings.defaultListing;
       self.webmsxPath = settings.webmsxPath;
+      self.bluemsxPath = settings.bluemsxPath;
+      self.bluemsxParams = settings.bluemsxParams;
       self.setSelectedLanguage(settings);
     });
   }
@@ -53,6 +58,10 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
 
   canExit(): boolean {
     return this.submitDisabled;
+  }
+
+  isOnWindows(): boolean {
+    return this.platformService.isOnWindows();
   }
 
   updateControl(control: string, value: any) {
@@ -71,7 +80,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
 
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
-      this.defaultListing, form.value['webmsx-path'], this.languageReverseMap.get(this.language));
+      this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], form.value['bluemsx-params'],
+      this.languageReverseMap.get(this.language));
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);
