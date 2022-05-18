@@ -520,7 +520,28 @@ export class HomeComponent implements OnInit {
           this.otherSelectedGames.add(game);
         }
       }
-    } else {
+    } else if (event.shiftKey) {
+      if (!this.selectedGame) {
+        this.showInfo(game);
+      } else {
+        this.otherSelectedGames = new Set<Game>();
+        const gameIndex = this.games.findIndex((e) => e.sha1Code === this.selectedGame.sha1Code);
+        const shiftIndex = this.games.findIndex((e) => e.sha1Code === game.sha1Code);
+        let startIndex: number;
+        let endIndex: number;
+        if (gameIndex > shiftIndex) {
+          startIndex = shiftIndex;
+          endIndex = gameIndex - 1;
+        } else {
+          startIndex = gameIndex + 1;
+          endIndex = shiftIndex;
+        }
+        for(let index = startIndex; index <= endIndex; index++) {
+          this.otherSelectedGames.add(this.games[index]);
+        }
+      }
+    }
+    else {
       this.showInfo(game);
     }
   }
