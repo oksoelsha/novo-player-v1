@@ -1,7 +1,9 @@
 <div ngbDropdown class="d-inline-block" #dropdownWithInput="ngbDropdown">
     <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
-        <span *ngIf="!selectedOrEnteredItemDisplay">{{ defaultLabel }}</span>
-        <span *ngIf="selectedOrEnteredItemDisplay">{{ selectedOrEnteredItemDisplay }}</span>
+        <div class="button-label">
+            <span *ngIf="!selectedOrEnteredItemDisplay">{{ defaultLabel }}</span>
+            <span *ngIf="selectedOrEnteredItemDisplay">{{ selectedOrEnteredItemDisplay }}</span>
+        </div>
     </button>
     <div class="items-dropdown" ngbDropdownMenu>
         <div class="dropdown-scroll">
