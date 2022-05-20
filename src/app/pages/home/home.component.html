@@ -251,10 +251,10 @@
     <ng-template contextMenuItem (execute)="launch($event.item)">
       {{ 'home.onopenmsx' | translate }}
     </ng-template>
-    <ng-template contextMenuItem (execute)="launchWebmsx($event.item)">
+    <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
       {{ 'home.onwebmsx' | translate }}
     </ng-template>
-    <ng-template contextMenuItem (execute)="launchBlueMSX($event.item)">
+    <ng-template contextMenuItem [visible]="isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
       {{ 'home.onbluemsx' | translate }}
     </ng-template>
   </context-menu>
