@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ApexChart, ApexStroke, ApexNonAxisChartSeries } from 'ng-apexcharts';
 import { Observable } from 'rxjs';
 import { Totals } from '../../../models/totals';
 import { LocalizationService } from '../../../services/localization.service';
@@ -13,6 +14,34 @@ export class TotalsCardComponent implements OnInit {
   @Input() totalsEvent: Observable<Totals>;
   totals: any = [];
 
+  readonly chart: ApexChart = {
+    type: 'donut',
+    animations: {
+      dynamicAnimation: {
+        enabled: true,
+        speed: 800
+      }
+    }
+  };
+  readonly stroke: ApexStroke = {
+    width: 0
+  };
+  readonly labels: string[] = [
+    this.localizationService.translate('dashboard.roms'),
+    this.localizationService.translate('dashboard.disks'),
+    this.localizationService.translate('dashboard.tapes'),
+    this.localizationService.translate('dashboard.harddisks'),
+    this.localizationService.translate('dashboard.laserdiscs')
+  ];
+  readonly legend: any = {
+    position: 'right',
+    fontSize: '12px',
+    labels: {
+      colors: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff']
+    }
+  };
+  series: ApexNonAxisChartSeries = [];
+
   constructor(private localizationService: LocalizationService) { }
 
   ngOnInit(): void {
@@ -26,6 +55,7 @@ export class TotalsCardComponent implements OnInit {
         { name: this.localizationService.translate('dashboard.harddisks'), value: totals.harddisks },
         { name: this.localizationService.translate('dashboard.laserdiscs'), value: totals.laserdiscs }
       ];
+      this.series = [totals.roms, totals.disks, totals.tapes, totals.harddisks, totals.laserdiscs];
     });
   }
 }

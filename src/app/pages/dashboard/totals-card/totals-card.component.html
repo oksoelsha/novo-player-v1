@@ -1,13 +1,21 @@
-<div class="card text-white widget widget-narrow mb-3">
+<div class="card text-white widget widget-wide mb-3">
   <div class="card-body">
     <h5 class="card-title">{{ 'dashboard.totals' | translate }}</h5>
-    <table class="table table-sm text-white">
-      <tbody>
-        <tr *ngFor="let item of totals">
-          <td>{{ item.name }}</td>
-          <td>{{ item.value }}</td>
-        </tr>
-    </tbody>
-    </table>
+    <div class="totals-container">
+      <div class="totals-table">
+        <table class="table table-sm text-white">
+          <tbody>
+            <tr *ngFor="let item of totals">
+              <td>{{ item.name }}</td>
+              <td>{{ item.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="totals[0]?.value > 0" class="pt-4">
+        <apx-chart [series]="series" [chart]="chart" [labels]="labels" [legend]="legend" [stroke]="stroke">
+        </apx-chart>
+      </div>
+    </div>
   </div>
 </div>

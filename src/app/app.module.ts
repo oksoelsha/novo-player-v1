@@ -40,7 +40,6 @@ import { HelpComponent } from './pages/help/help.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InsightsComponent } from './pages/dashboard/insights/insights.component';
 import { TotalsCardComponent } from './pages/dashboard/totals-card/totals-card.component';
-import { MediaCardComponent } from './pages/dashboard/media-card/media-card.component';
 import { LaunchActivityComponent } from './pages/dashboard/launch-activity/launch-activity.component';
 import { LaunchEventsComponent } from './pages/dashboard/launch-events/launch-events.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
@@ -75,7 +74,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     ManageListingsComponent,
     DashboardComponent,
     TotalsCardComponent,
-    MediaCardComponent,
     LaunchActivityComponent,
     LaunchEventsComponent,
     InsightsComponent,
