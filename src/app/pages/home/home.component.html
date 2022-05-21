@@ -29,6 +29,9 @@
         <img src="assets/images/general/loading.gif">
         {{ 'home.scanning' | translate }} . . .
       </div>
+      <div class="d-inline-block ms-2" *ngIf="otherSelectedGames.size > 0">
+        <img src="assets/images/general/select.png">{{ otherSelectedGames.size + 1 }}
+      </div>
       <div class="action-buttons">
         <div class="d-inline-block">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
