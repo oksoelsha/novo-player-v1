@@ -83,7 +83,7 @@ export class GameDetailsComponent implements OnChanges {
 
   getFilteredGameDetails() {
     return this.gameDetails.filter(d => !d.value ||
-      (this.selectedGame[d.value] != null && this.selectedGame[d.value] !== 0));
+      (this.selectedGame[d.value] && this.selectedGame[d.value] !== '' && this.selectedGame[d.value] !== 0));
   }
 
   getSelectedGameFiles(): string[] {
