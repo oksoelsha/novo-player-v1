@@ -128,8 +128,8 @@ export class GamesService {
     this.ipc.send('openFileExplorer', file);
   }
 
-  openInBrowser(address: string) {
-    this.ipc.send('openInBrowser', address);
+  openExternally(address: string) {
+    this.ipc.send('openExternally', address);
   }
 
   async getTotals(): Promise<Totals> {

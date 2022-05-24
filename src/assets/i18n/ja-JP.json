@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "皮切り",
     "remark": "コメント",
+    "infoFile": "追加情報",
     "undo": "元に戻す",
     "managelistings": "リストを管理する",
     "addgames": "ゲームを追加",
@@ -49,6 +50,7 @@
     "actions": "操作",
     "editmedia": "メディア編集",
     "edithardware": "ハードウェア編集",
+    "setInfoFile": "追加情報を設定する",
     "addtofavorites": "お気に入りに追加",
     "removefromfavorites": "お気に入りから削除",
     "movetoanotherlisting": "別のリストに移動",
@@ -200,6 +202,9 @@
       "total": "合計",
       "deletelistingconfirmation": "選択したリストを削除しますか？",
       "mergelistingsconfirmation": "名前はすでに存在します。マージ？"
+    },
+    "setInfoFile": {
+      "infoFile": "ファイル"
     }
   },
   "shared": {

@@ -45,6 +45,7 @@ import { LaunchEventsComponent } from './pages/dashboard/launch-events/launch-ev
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
 import { ElapsedTimeComponent } from './shared/components/elapsed-time/elapsed-time.component';
 import { ConfirmLeaveComponent } from './shared/components/confirm-leave/confirm-leave.component';
+import { InfoFileFieldEditComponent } from './popups/info-file-field-edit/info-file-field-edit.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -80,7 +81,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     HelpComponent,
     EditRowModePipe,
     SelectedGameClassPipe,
-    GameMediumIconPipe
+    GameMediumIconPipe,
+    InfoFileFieldEditComponent
   ],
   imports: [
     BrowserModule,

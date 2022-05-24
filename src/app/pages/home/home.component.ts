@@ -19,6 +19,7 @@ import { EventsService } from '../../services/events.service';
 import { Event, EventSource, EventType } from '../../models/event';
 import { GameUtils } from '../../models/game-utils';
 import { ScannerService } from '../../services/scanner.service';
+import { InfoFileFieldEditComponent } from '../../popups/info-file-field-edit/info-file-field-edit.component';
 
 enum SortDirection {
   ASC, DESC
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('manageListings') manageListings: ManageListingsComponent;
   @ViewChild('mediaEdit') mediaEdit: MediaEditComponent;
   @ViewChild('hardwareEdit') hardwareEdit: HardwareEditComponent;
+  @ViewChild('infoFileFieldEdit') infoFileFieldEdit: InfoFileFieldEditComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;

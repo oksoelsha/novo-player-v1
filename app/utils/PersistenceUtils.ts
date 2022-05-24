@@ -22,6 +22,7 @@ export class PersistenceUtils {
         'fddMode',
         'inputDevice',
         'connectGFX9000',
-        'favorite'
+        'favorite',
+        'infoFile'
     ]
 }

@@ -38,6 +38,8 @@ export class Game {
 
     favorite: boolean;
 
+    infoFile: string;
+
     public readonly MASK_GENERATION_MSX = 1;
     public readonly MASK_GENERATION_MSX2 = 2;
     public readonly MASK_GENERATION_MSX2PLUS = 4;
@@ -172,5 +174,9 @@ export class Game {
 
     setFavorite(flag: boolean) {
         this.favorite = flag;
+    }
+
+    setInfoFile(infoFile: string) {
+        this.infoFile = infoFile;
     }
 }

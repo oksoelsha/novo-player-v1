@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Début",
     "remark": "Remarque",
+    "infoFile": "Informations supplémentaires",
     "undo": "Annuler",
     "managelistings": "Gérer les listes",
     "addgames": "Ajouter des jeux",
@@ -49,6 +50,7 @@
     "actions": "Actions",
     "editmedia": "Modifier le médium",
     "edithardware": "Modifier le matériel",
+    "setInfoFile": "Définir des informations supplémentaires",
     "addtofavorites": "Ajouter aux favoris",
     "removefromfavorites": "Retirer des favoris",
     "movetoanotherlisting": "Déplacer vers une autre liste",
@@ -200,6 +202,9 @@
       "total": "Total",
       "deletelistingconfirmation": "Supprimer la liste sélectionnée ?",
       "mergelistingsconfirmation": "Le nom existe déjà. Fusionner ?"
+    },
+    "setInfoFile": {
+      "infoFile": "Dossier"
     }
   },
   "shared": {

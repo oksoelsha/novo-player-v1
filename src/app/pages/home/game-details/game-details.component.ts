@@ -24,6 +24,7 @@ export class GameDetailsComponent implements OnChanges {
   @ViewChild('gameDetailSounds', { static: true }) private gameDetailSounds: TemplateRef<object>;
   @ViewChild('gameDetailGenres', { static: true }) private gameDetailGenres: TemplateRef<object>;
   @ViewChild('gameDetailGenerationMSXLink', { static: true }) private gameDetailGenerationMSXLink: TemplateRef<object>;
+  @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile: TemplateRef<object>;
 
   selectedGameMedium: Promise<string>;
   readonly countryFlags: Map<string, string> = new Map([
@@ -67,6 +68,7 @@ export class GameDetailsComponent implements OnChanges {
     { name: this.localizationService.translate('home.start'), value: 'start', blockName: 'gameDetailSimpleText' },
     { name: this.localizationService.translate('home.remark'), value: 'remark', blockName: 'gameDetailSimpleText' },
     { name: 'Generation-MSX', value: 'generationMSXId', blockName: 'gameDetailGenerationMSXLink' },
+    { name: this.localizationService.translate('home.infoFile'), value: 'infoFile', blockName: 'gameDetailInfoFile' },
   ];
   private readonly fileFields: string[] = ['romA', 'romB', 'diskA', 'diskB', 'tape', 'harddisk', 'laserdisc'];
 
@@ -80,7 +82,7 @@ export class GameDetailsComponent implements OnChanges {
   }
 
   getFilteredGameDetails() {
-    return this.gameDetails.filter(d => d.value == null ||
+    return this.gameDetails.filter(d => !d.value ||
       (this.selectedGame[d.value] != null && this.selectedGame[d.value] !== 0));
   }
 
@@ -170,6 +172,10 @@ export class GameDetailsComponent implements OnChanges {
 
   copy(text: string) {
     this.clipboard.copy(text);
+  }
+
+  openInfoFile() {
+    this.gamesService.openExternally(this.selectedGame.infoFile);
   }
 
   private setSelectedGameMedium() {

@@ -14,6 +14,6 @@ export class WebLinkComponent {
   constructor(private gamesService: GamesService) { }
 
   openInBrowser() {
-    this.gamesService.openInBrowser(this.address);
+    this.gamesService.openExternally(this.address);
   }
 }

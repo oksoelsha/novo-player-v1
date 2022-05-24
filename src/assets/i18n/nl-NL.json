@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Begin",
     "remark": "Opmerking",
+    "infoFile": "Extra informatie",
     "undo": "Ongedaan maken",
     "managelistings": "Lijsten beheren",
     "addgames": "Spellen toevoegen",
@@ -49,6 +50,7 @@
     "actions": "Acties",
     "editmedia": "Media bewerken",
     "edithardware": "Hardware bewerken",
+    "setInfoFile": "Extra informatie instellen",
     "addtofavorites": "Toevoegen aan favorieten",
     "removefromfavorites": "Verwijderen uit favorieten",
     "movetoanotherlisting": "Naar een andere lijst verplaatsen",
@@ -200,6 +202,9 @@
       "total": "Totaal",
       "deletelistingconfirmation": "Geselecteerde lijst verwijderen?",
       "mergelistingsconfirmation": "Naam bestaat al. Samenvoegen?"
+    },
+    "setInfoFile": {
+      "infoFile": "Bestand"
     }
   },
   "shared": {

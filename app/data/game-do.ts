@@ -31,6 +31,8 @@ export class GameDO {
 
     favorite: boolean;
 
+    infoFile: string;
+
     constructor(game: Game) {
         for (var field of PersistenceUtils.fieldsToPersist) {
             if (game[field]) {

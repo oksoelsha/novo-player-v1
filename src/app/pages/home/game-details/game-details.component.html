@@ -62,3 +62,9 @@
         [label]="$any(selectedGame.generationMSXId)"></app-web-link>
     <ng-template #generationMSXNotAvailable>Not added yet</ng-template>
 </ng-template>
+
+<ng-template #gameDetailInfoFile let-detail>
+    <div class="long-names">
+        <a href="#" (click)="openInfoFile()">{{ selectedGame[detail.value] }}</a>
+    </div>
+</ng-template>

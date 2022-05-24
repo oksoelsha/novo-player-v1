@@ -5,7 +5,6 @@ import { SettingsService } from './SettingsService';
 import { GameSecondaryData } from '../src/app/models/secondary-data';
 import * as cp from 'child_process'
 import { PlatformUtils } from './utils/PlatformUtils';
-import { FileTypeUtils } from './utils/FileTypeUtils';
 
 export class FilesService {
 
@@ -29,8 +28,8 @@ export class FilesService {
             this.openFileExplorer(file);
         });
 
-        ipcMain.on('openInBrowser', (event, address: string) => {
-            this.openInBrowser(address);
+        ipcMain.on('openExternally', (event, path: string) => {
+            this.openExternally(path);
         });
 
         ipcMain.on('getWebMSXPath', (event, folder: string, file: string) => {
@@ -128,8 +127,8 @@ export class FilesService {
         });
     }
 
-    private openInBrowser(address: string) {
-        shell.openPath(address);
+    private openExternally(path: string) {
+        shell.openPath(path);
     }
 
     private getScreenshotVersion(): string {
