@@ -101,7 +101,6 @@
     "gamemusicpath": "Caminho de musicas de jogos",
     "gamemusicpathtooltip": "A pasta onde estão localizadas as músicas opcionais do jogo",
     "defaultlisting": "Listagem padrão",
-    "nolistingsdefined": "Não há listas definidas",
     "selectalisting": "Selecionar uma listagem",
     "webmsxpath": "Caminho de WebMSX",
     "webmsxpathtooltip": "A pasta onde o WebMSX offline está localizado. Use a pasta incorporada em release/stable",

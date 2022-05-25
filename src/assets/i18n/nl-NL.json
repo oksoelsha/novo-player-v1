@@ -101,7 +101,6 @@
     "gamemusicpath": "Spel muziek pad",
     "gamemusicpathtooltip": "Map met optionele spelmuziek",
     "defaultlisting": "Standaard lijst",
-    "nolistingsdefined": "Geen lijsten gedefinieerd",
     "selectalisting": "Lijst selecteren",
     "webmsxpath": "WebMSX-pad",
     "webmsxpathtooltip": "Map met offline WebMSX. Gebruik de ingesloten map binnen release/stable",

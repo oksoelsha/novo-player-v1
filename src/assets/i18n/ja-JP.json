@@ -101,7 +101,6 @@
     "gamemusicpath": "ゲームミュージックパス",
     "gamemusicpathtooltip": "オプションのゲーム音楽があるフォルダ",
     "defaultlisting": "デフォルトリスト",
-    "nolistingsdefined": "リストが定義されていません",
     "selectalisting": "リストを選択",
     "webmsxpath": "WebMSX のパス",
     "webmsxpathtooltip": "オフラインWebMSXがあるフォルダー。release/stable内の埋め込みフォルダーを使用します",

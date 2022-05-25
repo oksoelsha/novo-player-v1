@@ -70,7 +70,7 @@
     <div class="header">{{ 'settings.general' | translate }}</div>
     <hr>
 
-    <div class="form-group d-inline-block me-3">
+    <div class="form-group d-inline-block me-3" *ngIf="listings.length > 0">
       <label class="form-label">{{ 'settings.defaultlisting' | translate }}</label>
       <div>
         <app-drop-down [list]="listings" [selectedItem]="defaultListing"

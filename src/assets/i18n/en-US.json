@@ -101,7 +101,6 @@
     "gamemusicpath": "Game Music Path",
     "gamemusicpathtooltip": "Folder where optional game music is",
     "defaultlisting": "Default Listing",
-    "nolistingsdefined": "No listings defined",
     "selectalisting": "Select a listing",
     "webmsxpath": "WebMSX Path",
     "webmsxpathtooltip": "Folder where offline WebMSX is. Use the embedded folder within release/stable",
