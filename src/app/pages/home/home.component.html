@@ -35,7 +35,7 @@
       <div class="action-buttons">
         <div class="d-inline-block">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
-            [disabled]="scanRunning" [title]="'home.addgames' | translate">
+            [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.addgames' | translate">
             <strong>+</strong>
           </button>
         </div>
@@ -263,7 +263,7 @@
     {{ 'home.launch' | translate }}
   </ng-template>
   <context-menu [menuClass]="'context-menu'" #launchSubMenu>
-    <ng-template contextMenuItem (execute)="launch($event.item)">
+    <ng-template contextMenuItem [visible]="isOpenMSXPathDefined" (execute)="launch($event.item)">
       {{ 'home.onopenmsx' | translate }}
     </ng-template>
     <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
