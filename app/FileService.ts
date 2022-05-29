@@ -153,15 +153,19 @@ export class FilesService {
     }
 
     private getFileGroup(filename: string): string[] {
-        const diskPatternIndexParenthesis = filename.indexOf('(Disk ');
-        const diskPatternIndexSquare = filename.indexOf('[Disk ');
-        const tapePatternIndex = filename.indexOf('(Side ');
+        const diskPatternIndexParenthesisVariant1 = filename.lastIndexOf('(Disk ');
+        const diskPatternIndexParenthesisVariant2 = filename.lastIndexOf('(Disk');
+        const diskPatternIndexSquare = filename.lastIndexOf('[Disk ');
+        const tapePatternIndex = filename.lastIndexOf('(Side ');
         let counterIndex: number;
-        if (diskPatternIndexParenthesis > 0 && filename.indexOf(' of ') == (diskPatternIndexParenthesis + 7)) {
-            counterIndex = diskPatternIndexParenthesis + 6;
-        } else if (diskPatternIndexSquare > 0 && filename.indexOf(' of ') == (diskPatternIndexSquare + 7)) {
+
+        if (diskPatternIndexParenthesisVariant1 > 0 && filename.lastIndexOf(' of ') == (diskPatternIndexParenthesisVariant1 + 7)) {
+            counterIndex = diskPatternIndexParenthesisVariant1 + 6;
+        } else if (diskPatternIndexParenthesisVariant2 > 0 && filename.lastIndexOf('of') == (diskPatternIndexParenthesisVariant2 + 6)) {
+            counterIndex = diskPatternIndexParenthesisVariant2 + 5;
+        } else if (diskPatternIndexSquare > 0 && filename.lastIndexOf(' of ') == (diskPatternIndexSquare + 7)) {
             counterIndex = diskPatternIndexSquare + 6;
-        } else if (tapePatternIndex > 0 && filename.indexOf(')', tapePatternIndex) == (tapePatternIndex + 7)) {
+        } else if (tapePatternIndex > 0 && filename.lastIndexOf(')', tapePatternIndex) == (tapePatternIndex + 7)) {
             counterIndex = tapePatternIndex + 6;
         } else {
             counterIndex = filename.lastIndexOf('.') - 1;
