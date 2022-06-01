@@ -5,7 +5,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="romA" [(ngModel)]="romA"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="romA = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romA = $event">
           </app-file-system-chooser>
         </div>
@@ -16,7 +16,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="romB" [(ngModel)]="romB"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="romB = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romB = $event">
           </app-file-system-chooser>
         </div>
@@ -37,7 +37,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="diskA" [(ngModel)]="diskA"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="diskA = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskA = $event">
           </app-file-system-chooser>
         </div>
@@ -48,7 +48,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="diskB" [(ngModel)]="diskB"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="diskB = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskB = $event">
           </app-file-system-chooser>
         </div>
@@ -62,7 +62,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="tape" [(ngModel)]="tape"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="tape = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Tape" (chosen)="tape = $event">
           </app-file-system-chooser>
         </div>
@@ -76,7 +76,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="harddisk" [(ngModel)]="harddisk"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="harddisk = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Harddisk" (chosen)="harddisk = $event">
           </app-file-system-chooser>
         </div>
@@ -90,7 +90,7 @@
       <td class="medium-input">
         <div class="input-group">
           <input type="text" class="form-control form-control-sm" id="laserdisc" [(ngModel)]="laserdisc"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="laserdisc = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Laserdisc" (chosen)="laserdisc = $event">
           </app-file-system-chooser>
         </div>
