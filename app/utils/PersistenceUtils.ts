@@ -23,6 +23,8 @@ export class PersistenceUtils {
         'inputDevice',
         'connectGFX9000',
         'favorite',
-        'infoFile'
+        'infoFile',
+        'bluemsxArguments',
+        'bluemsxOverrideSettings'
     ]
 }

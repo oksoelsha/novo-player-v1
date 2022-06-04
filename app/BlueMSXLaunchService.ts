@@ -75,19 +75,28 @@ export class BlueMSXLaunchService {
                 args.push(game[field[0]]);
             }
         });
-        this.addOtherParams(args);
+        this.addOtherParams(game, args);
 
         return args;
     }
 
-    private addOtherParams(args: string[]) {
-        const params = this.settingsService.getSettings().bluemsxParams.split('/');
-        params.forEach((param) => {
-            const space = param.indexOf(' ');
-            if (space > -1) {
-                args.push('/' + param.substring(0, space));
-                args.push(param.substring(space + 1).replace(/"/g,''));
-            }
-        });
+    private addOtherParams(game: Game, args: string[]) {
+        if (!game.bluemsxOverrideSettings) {
+            this.appendParams(args, this.settingsService.getSettings().bluemsxParams);
+        }
+        this.appendParams(args, game.bluemsxArguments);
+    }
+
+    private appendParams(args: string[], argsString: string) {
+        if (argsString) {
+            const params = argsString.split('/');
+            params.forEach((param) => {
+                const space = param.indexOf(' ');
+                if (space > -1) {
+                    args.push('/' + param.substring(0, space));
+                    args.push(param.substring(space + 1).replace(/"/g,''));
+                }
+            });
+        }
     }
 }

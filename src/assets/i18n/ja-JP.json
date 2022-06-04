@@ -51,6 +51,7 @@
     "editmedia": "メディア編集",
     "edithardware": "ハードウェア編集",
     "setInfoFile": "追加情報を設定する",
+    "editbluemsxarguments": "blueMSX引数を編集する",
     "addtofavorites": "お気に入りに追加",
     "removefromfavorites": "お気に入りから削除",
     "movetoanotherlisting": "別のリストに移動",
@@ -65,6 +66,7 @@
     "gamewasrestored": "ゲームが復元されました",
     "gamewasnotrestored": "ゲームは復元されませんでした",
     "gamewasupdated": "ゲームが更新されました",
+    "gameswereupdated": "ゲームが更新されました",
     "gamewasnotupdated": "ゲームは更新されませんでした",
     "cannotchangegamemainfile": "ゲームのメインファイルを変更することはできません",
     "gamewasmoved": "ゲームが移動しました",
@@ -204,6 +206,10 @@
     },
     "setInfoFile": {
       "infoFile": "ファイル"
+    },
+    "editBluemsxArguments": {
+      "bluemsxArguments": "blueMSX引数",
+      "overrideargumentsinsettings": "設定の引数をオーバーライドする"
     }
   },
   "shared": {

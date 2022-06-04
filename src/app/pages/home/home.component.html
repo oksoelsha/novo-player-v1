@@ -137,7 +137,7 @@
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
               {{ 'home.onwebmsx' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            <button *ngIf="isOnWindows()" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
               {{ 'home.onbluemsx' | translate }}
             </button>
@@ -163,6 +163,11 @@
               {{ 'home.setInfoFile' | translate }}
             </button>
             <div class="dropdown-divider"></div>
+            <button [disabled]="otherSelectedGames.size > 0" *ngIf="isOnWindows()" ngbDropdownItem
+              type="button" (click)="bluemsxArgumentsEdit.open()">
+              {{ 'home.editbluemsxarguments' | translate }}
+            </button>
+            <div class="dropdown-divider" *ngIf="isOnWindows()"></div>
             <button [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite" ngbDropdownItem
               type="button" (click)="setFavoritesFlag(true)">
               {{ 'home.addtofavorites' | translate }}
@@ -258,6 +263,14 @@
   </ng-template>
 </app-popup>
 
+<app-popup popupId="bluemsx-arguments-edit-id" [titleHeader]="'home.editbluemsxarguments' | translate" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-bluemsx-arguments-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
+      (bluemsxData)="setBluemsxArguments($event)" #bluemsxArgumentsEdit>
+    </app-bluemsx-arguments-edit>
+  </ng-template>
+</app-popup>
+
 <context-menu (close)="contextMenuOpened = false" [menuClass]="'context-menu'">
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [subMenu]="launchSubMenu">
     {{ 'home.launch' | translate }}
@@ -269,7 +282,7 @@
     <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
       {{ 'home.onwebmsx' | translate }}
     </ng-template>
-    <ng-template contextMenuItem [visible]="isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
+    <ng-template contextMenuItem [visible]="isOnWindows() && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
       {{ 'home.onbluemsx' | translate }}
     </ng-template>
   </context-menu>
@@ -287,6 +300,10 @@
     {{ 'home.setInfoFile' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
+  <ng-template contextMenuItem [visible]="isOnWindows()" (execute)="bluemsxArgumentsEdit.open()">
+    {{ 'home.editbluemsxarguments' | translate }}
+  </ng-template>
+  <ng-template contextMenuItem [visible]="isOnWindows()" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
     {{ 'home.addtofavorites' | translate }}
   </ng-template>

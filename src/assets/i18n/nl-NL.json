@@ -51,6 +51,7 @@
     "editmedia": "Media bewerken",
     "edithardware": "Hardware bewerken",
     "setInfoFile": "Extra informatie instellen",
+    "editbluemsxarguments": "blueMSX-argumenten bewerken",
     "addtofavorites": "Toevoegen aan favorieten",
     "removefromfavorites": "Verwijderen uit favorieten",
     "movetoanotherlisting": "Naar een andere lijst verplaatsen",
@@ -65,6 +66,7 @@
     "gamewasrestored": "Spel is hersteld",
     "gamewasnotrestored": "Spel is niet hersteld",
     "gamewasupdated": "Spel is bijgewerkt",
+    "gameswereupdated": "Spellen zijn bijgewerkt",
     "gamewasnotupdated": "Spel is niet bijgewerkt",
     "cannotchangegamemainfile": "je kunt het hoofdbestand van een spel niet wijzigen",
     "gamewasmoved": "Spel is verplaatst",
@@ -204,6 +206,10 @@
     },
     "setInfoFile": {
       "infoFile": "Bestand"
+    },
+    "editBluemsxArguments": {
+      "bluemsxArguments": "blueMSX-argumenten",
+      "overrideargumentsinsettings": "Overschrijf argumenten in de instellingen"
     }
   },
   "shared": {

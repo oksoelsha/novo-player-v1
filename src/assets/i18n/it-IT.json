@@ -51,6 +51,7 @@
     "editmedia": "Modifica formati",
     "edithardware": "Modifica hardware",
     "setInfoFile": "Imposta informazioni aggiuntive",
+    "editbluemsxarguments": "Modifica argomenti di blueMSX",
     "addtofavorites": "Aggiungi ai preferiti",
     "removefromfavorites": "Rimuovi dai preferiti",
     "movetoanotherlisting": "Muovi a un altro elenco",
@@ -65,6 +66,7 @@
     "gamewasrestored": "Il gioco è stato ripristinato",
     "gamewasnotrestored": "Il gioco non è stato ripristinato",
     "gamewasupdated": "Il gioco è stato aggiornato",
+    "gameswereupdated": "I giochi sono stati aggiornati",
     "gamewasnotupdated": "Il gioco non è stato aggiornato",
     "cannotchangegamemainfile": "non è possibile modificare il file principale di un gioco",
     "gamewasmoved": "Il gioco è stato spostato",
@@ -204,6 +206,10 @@
     },
     "setInfoFile": {
       "infoFile": "File"
+    },
+    "editBluemsxArguments": {
+      "bluemsxArguments": "Argomenti di blueMSX",
+      "overrideargumentsinsettings": "Sostituisci argomenti nelle impostazioni"
     }
   },
   "shared": {

@@ -47,6 +47,7 @@ import { ElapsedTimeComponent } from './shared/components/elapsed-time/elapsed-t
 import { ConfirmLeaveComponent } from './shared/components/confirm-leave/confirm-leave.component';
 import { InfoFileFieldEditComponent } from './popups/info-file-field-edit/info-file-field-edit.component';
 import { DropfileDirective } from './shared/directives/dropfile/dropfile.directive';
+import { BluemsxArgumentsEditComponent } from './popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -84,6 +85,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SelectedGameClassPipe,
     GameMediumIconPipe,
     InfoFileFieldEditComponent,
+    BluemsxArgumentsEditComponent,
     DropfileDirective
   ],
   imports: [

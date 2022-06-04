@@ -20,6 +20,8 @@ import { Event, EventSource, EventType } from '../../models/event';
 import { GameUtils } from '../../models/game-utils';
 import { ScannerService } from '../../services/scanner.service';
 import { InfoFileFieldEditComponent } from '../../popups/info-file-field-edit/info-file-field-edit.component';
+import { PlatformService } from '../../services/platform.service';
+import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
 
 enum SortDirection {
   ASC, DESC
@@ -48,6 +50,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('mediaEdit') mediaEdit: MediaEditComponent;
   @ViewChild('hardwareEdit') hardwareEdit: HardwareEditComponent;
   @ViewChild('infoFileFieldEdit') infoFileFieldEdit: InfoFileFieldEditComponent;
+  @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
@@ -95,7 +98,7 @@ export class HomeComponent implements OnInit {
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
-    private undoService: UndoService) { }
+    private undoService: UndoService, private platformService: PlatformService) { }
 
   @HostListener('window:keyup', ['$event'])
   keyupEvent(event: KeyboardEvent) {
@@ -231,6 +234,10 @@ export class HomeComponent implements OnInit {
     });
 
     this.getFavorites();
+  }
+
+  isOnWindows(): boolean {
+    return this.platformService.isOnWindows();
   }
 
   handleOpenMenuEvents(opened: boolean) {
@@ -446,6 +453,18 @@ export class HomeComponent implements OnInit {
           this.showInfo(newGame);
         }, 0);
       }
+    });
+  }
+
+  setBluemsxArguments(bluemsxData: any) {
+    const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
+    this.gamesService.setBluemsxArguments(gamesToUpdate, bluemsxData.bluemsxArguments, bluemsxData.bluemsxOverrideSettings).then(() => {
+      if (this.otherSelectedGames.size == 0) {
+        this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
+      } else {
+        this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
+      }
+      this.getGames(this.selectedListing, this.selectedGame.sha1Code);
     });
   }
 

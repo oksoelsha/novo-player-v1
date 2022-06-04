@@ -58,6 +58,10 @@ export class GamesService {
             this.moveGames(games, newListing);
         });
 
+        ipcMain.on('setBluemsxArguments', (event, games: Game[], args: string, overrideSettings: boolean) => {
+            this.setBluemsxArguments(games, args, overrideSettings);
+        });
+
         ipcMain.on('getTotals', (event, arg) => {
             this.getTotals();
         });
@@ -118,6 +122,24 @@ export class GamesService {
                 totalAttemptedMoves++;
                 if (totalAttemptedMoves == games.length) {
                     self.win.webContents.send('moveGamesResponse', totalMoved == games.length);
+                }
+            });
+        });
+    }
+
+    private setBluemsxArguments(games: Game[], args: string, overrideSettings: boolean) {
+        let self = this;
+        let totalAttemptedUpdates: number = 0;
+        let totalUpdated: number = 0;
+        games.forEach(game => {
+            let gameDO: GameDO = new GameDO(game);
+            gameDO.bluemsxArguments = args;
+            gameDO.bluemsxOverrideSettings = overrideSettings;
+            this.database.update({ _id: game.sha1Code }, gameDO, {}, function (err: any, numMoved: number) {
+                totalUpdated = totalUpdated + numMoved;
+                totalAttemptedUpdates++;
+                if (totalAttemptedUpdates == games.length) {
+                    self.win.webContents.send('setBluemsxArgumentsResponse', totalUpdated == games.length);
                 }
             });
         });

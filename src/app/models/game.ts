@@ -40,6 +40,9 @@ export class Game {
 
     infoFile: string;
 
+    bluemsxArguments: string;
+    bluemsxOverrideSettings: boolean;
+
     public readonly MASK_GENERATION_MSX = 1;
     public readonly MASK_GENERATION_MSX2 = 2;
     public readonly MASK_GENERATION_MSX2PLUS = 4;
@@ -179,4 +182,13 @@ export class Game {
     setInfoFile(infoFile: string) {
         this.infoFile = infoFile;
     }
+
+    setBluemsxArguments(bluemsxArguments: string) {
+        this.bluemsxArguments = bluemsxArguments;
+    }
+
+    setBluemsxOverrideSettings(flag: boolean) {
+        this.bluemsxOverrideSettings = flag;
+    }
+
 }

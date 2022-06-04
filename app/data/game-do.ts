@@ -33,6 +33,9 @@ export class GameDO {
 
     infoFile: string;
 
+    bluemsxArguments: string;
+    bluemsxOverrideSettings: boolean;
+
     constructor(game: Game) {
         for (var field of PersistenceUtils.fieldsToPersist) {
             if (game[field]) {

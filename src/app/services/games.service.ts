@@ -103,6 +103,23 @@ export class GamesService {
     });
   }
 
+  async setBluemsxArguments(gamesToUpdate: Game[], args: string, overrideSettings: boolean) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('setBluemsxArgumentsResponse', (event, updated: boolean) => {
+        if (updated) {
+          gamesToUpdate.forEach(game => {
+            const updatedGame: Game = Object.assign({}, game);
+            updatedGame.bluemsxArguments = args;
+            updatedGame.bluemsxOverrideSettings = overrideSettings;
+            this.undoService.addToHistory(game, updatedGame);
+          });
+        }
+        resolve(updated);
+      });
+      this.ipc.send('setBluemsxArguments', gamesToUpdate, args, overrideSettings);
+    });
+  }
+
   async updateGame(oldGame: Game, newGame: Game, restoreMode: boolean = false) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('updateGameResponse', (event, err: boolean) => {
