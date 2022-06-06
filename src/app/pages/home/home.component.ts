@@ -456,6 +456,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  updateHardware(hardwareData: any) {
+    const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
+    this.gamesService.updateHardware(gamesToUpdate, hardwareData.machine, hardwareData.fddMode, hardwareData.inputDevice,
+      hardwareData.connectGFX9000).then(() => {
+      if (this.otherSelectedGames.size == 0) {
+        this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
+      } else {
+        this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
+      }
+      this.getGames(this.selectedListing, this.selectedGame.sha1Code);
+    });
+
+  }
+
   setBluemsxArguments(bluemsxData: any) {
     const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
     this.gamesService.setBluemsxArguments(gamesToUpdate, bluemsxData.bluemsxArguments, bluemsxData.bluemsxOverrideSettings).then(() => {

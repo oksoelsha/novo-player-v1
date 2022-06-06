@@ -154,7 +154,7 @@
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="mediaEdit.open()">
               {{ 'home.editmedia' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            <button ngbDropdownItem type="button"
               (click)="hardwareEdit.open()">
               {{ 'home.edithardware' | translate }}
             </button>
@@ -163,8 +163,7 @@
               {{ 'home.setInfoFile' | translate }}
             </button>
             <div class="dropdown-divider"></div>
-            <button [disabled]="otherSelectedGames.size > 0" *ngIf="isOnWindows()" ngbDropdownItem
-              type="button" (click)="bluemsxArgumentsEdit.open()">
+            <button *ngIf="isOnWindows()" ngbDropdownItem type="button" (click)="bluemsxArgumentsEdit.open()">
               {{ 'home.editbluemsxarguments' | translate }}
             </button>
             <div class="dropdown-divider" *ngIf="isOnWindows()"></div>
@@ -233,7 +232,7 @@
 <app-popup popupId="hardware-edit-id" [titleHeader]="'home.edithardware' | translate" (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-hardware-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
-      (updatedGame)="update(selectedGame, $event)" #hardwareEdit>
+      (hardwareData)="updateHardware($event)" #hardwareEdit>
     </app-hardware-edit>
   </ng-template>
 </app-popup>
@@ -293,7 +292,7 @@
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="mediaEdit.open()">
     {{ 'home.editmedia' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="hardwareEdit.open()">
+  <ng-template contextMenuItem (execute)="hardwareEdit.open()">
     {{ 'home.edithardware' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="infoFileFieldEdit.open()">

@@ -54,6 +54,10 @@ export class GamesService {
             this.updateGame(oldGame, newGame);
         });
 
+        ipcMain.on('updateHardware', (event, games: Game[], machine: string, fddMode: number, inputDevice: number, connectGFX9000: boolean) => {
+            this.updateHardware(games, machine, fddMode, inputDevice, connectGFX9000);
+        });
+
         ipcMain.on('moveGames', (event, games: Game[], newListing: string) => {
             this.moveGames(games, newListing);
         });
@@ -105,6 +109,26 @@ export class GamesService {
                 totalAttemptedRemoves++;
                 if (totalAttemptedRemoves == games.length) {
                     self.win.webContents.send('removeGamesResponse', totalRemoved == games.length);
+                }
+            });
+        });
+    }
+
+    private updateHardware(games: Game[], machine: string, fddMode: number, inputDevice: number, connectGFX9000: boolean) {
+        let self = this;
+        let totalAttemptedMoves: number = 0;
+        let totalMoved: number = 0;
+        games.forEach(game => {
+            let gameDO: GameDO = new GameDO(game);
+            gameDO.machine = machine;
+            gameDO.fddMode = fddMode;
+            gameDO.inputDevice = inputDevice;
+            gameDO.connectGFX9000 = connectGFX9000;
+            this.database.update({ _id: game.sha1Code }, gameDO, {}, function (err: any, numMoved: number) {
+                totalMoved = totalMoved + numMoved;
+                totalAttemptedMoves++;
+                if (totalAttemptedMoves == games.length) {
+                    self.win.webContents.send('updateHardwareResponse', totalMoved == games.length);
                 }
             });
         });

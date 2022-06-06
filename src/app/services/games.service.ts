@@ -103,6 +103,25 @@ export class GamesService {
     });
   }
 
+  async updateHardware(gamesToUpdate: Game[], machine: string, fddMode: number, inputDevice: number, connectGFX9000: boolean) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('updateHardwareResponse', (event, updated: boolean) => {
+        if (updated) {
+          gamesToUpdate.forEach(game => {
+            const updatedGame: Game = Object.assign({}, game);
+            updatedGame.machine = machine;
+            updatedGame.fddMode = fddMode;
+            updatedGame.inputDevice = inputDevice;
+            updatedGame.connectGFX9000 = connectGFX9000;
+            this.undoService.addToHistory(game, updatedGame);
+          });
+        }
+        resolve(updated);
+      });
+      this.ipc.send('updateHardware', gamesToUpdate, machine, fddMode, inputDevice, connectGFX9000);
+    });
+  }
+
   async setBluemsxArguments(gamesToUpdate: Game[], args: string, overrideSettings: boolean) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('setBluemsxArgumentsResponse', (event, updated: boolean) => {

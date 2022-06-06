@@ -15,7 +15,7 @@ export class HardwareEditComponent extends PopupComponent {
 
   @Input() popupId: string;
   @Input() game: Game;
-  @Output() updatedGame: EventEmitter<Game> = new EventEmitter<Game>();
+  @Output() hardwareData: EventEmitter<any> = new EventEmitter<any>();
 
   machines: string[] = [];
   selectedMachine = '';
@@ -63,14 +63,12 @@ export class HardwareEditComponent extends PopupComponent {
   }
 
   save() {
-    const updatedGame: Game = Object.assign({}, this.game);
-
-    updatedGame.machine = this.selectedMachine;
-    updatedGame.fddMode = this.fddModes.indexOf(this.selectedFDDMode);
-    updatedGame.inputDevice = this.inputDevices.indexOf(this.selectedInputDevice);
-    updatedGame.connectGFX9000 = this.connectGFX9000;
-
-    this.updatedGame.emit(updatedGame);
+    this.hardwareData.emit({
+      'machine': this.selectedMachine,
+      'fddMode': this.fddModes.indexOf(this.selectedFDDMode),
+      'inputDevice': this.inputDevices.indexOf(this.selectedInputDevice),
+      'connectGFX9000': this.connectGFX9000
+    });
 
     this.close();
   }

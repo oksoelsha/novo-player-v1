@@ -33,11 +33,6 @@ export class BluemsxArgumentsEditComponent extends PopupComponent {
   }
 
   save() {
-    const updatedGame: Game = Object.assign({}, this.game);
-
-    updatedGame.bluemsxArguments = this.bluemsxArguments;
-    updatedGame.bluemsxOverrideSettings = this.bluemsxOverrideSettings;
-
     this.bluemsxData.emit({'bluemsxArguments': this.bluemsxArguments, 'bluemsxOverrideSettings': this.bluemsxOverrideSettings});
     this.close();
   }
