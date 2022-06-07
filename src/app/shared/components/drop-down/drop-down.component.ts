@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-drop-down',
   templateUrl: './drop-down.component.html',
-  styleUrls: ['../../../common-styles.sass', './drop-down.component.sass']
+  styleUrls: ['../../../common-styles.sass', './drop-down.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropDownComponent {
 

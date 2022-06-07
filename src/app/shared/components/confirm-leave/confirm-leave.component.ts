@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-confirm-leave',
   templateUrl: './confirm-leave.component.html',
-  styleUrls: ['./confirm-leave.component.sass']
+  styleUrls: ['./confirm-leave.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfirmLeaveComponent {
 

@@ -1,11 +1,12 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
   selector: 'app-scan-parameters',
   templateUrl: './scan-parameters.component.html',
-  styleUrls: ['../../common-styles.sass', './scan-parameters.component.sass']
+  styleUrls: ['../../common-styles.sass', './scan-parameters.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScanParametersComponent extends PopupComponent {
 
@@ -19,7 +20,7 @@ export class ScanParametersComponent extends PopupComponent {
   machines: string[] = [];
   selectedMachine = '';
 
-  constructor(private emulatorService: EmulatorService) {
+  constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
     super();
   }
 
@@ -31,6 +32,7 @@ export class ScanParametersComponent extends PopupComponent {
       if (!this.selectedMachine) {
         this.selectedMachine = data[0];
       }
+      this.changeDetector.checkNoChanges();
     });
   }
 

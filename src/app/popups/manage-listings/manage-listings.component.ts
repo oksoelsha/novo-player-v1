@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
   selector: 'app-manage-listings',
   templateUrl: './manage-listings.component.html',
-  styleUrls: ['../../common-styles.sass', './manage-listings.component.sass']
+  styleUrls: ['../../common-styles.sass', './manage-listings.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ManageListingsComponent extends PopupComponent {
 

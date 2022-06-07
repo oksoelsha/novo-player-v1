@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FileTypeUtils } from '../../../../../app/utils/FileTypeUtils';
 import { FilesService } from '../../../services/files.service';
 
 @Component({
   selector: 'app-file-system-chooser',
   templateUrl: './file-system-chooser.component.html',
-  styleUrls: ['./file-system-chooser.component.sass']
+  styleUrls: ['./file-system-chooser.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FileSystemChooserComponent {
 

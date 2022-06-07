@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { LocalizationService } from '../../../services/localization.service';
 
 @Component({
   selector: 'app-drop-down-with-input',
   templateUrl: './drop-down-with-input.component.html',
-  styleUrls: ['../../../common-styles.sass', './drop-down-with-input.component.sass']
+  styleUrls: ['../../../common-styles.sass', './drop-down-with-input.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropDownWithInputComponent implements OnChanges {
 

@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { PlatformService } from '../../../services/platform.service';
 
 @Component({
   selector: 'app-window-controls',
   templateUrl: './window-controls.component.html',
-  styleUrls: ['./window-controls.component.sass']
+  styleUrls: ['./window-controls.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WindowControlsComponent {
 
