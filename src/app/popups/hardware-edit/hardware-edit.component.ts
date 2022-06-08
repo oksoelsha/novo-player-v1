@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FDDMode } from '../../models/fdd-mode';
 import { Game } from '../../models/game';
 import { InputDevice } from '../../models/input-device';
@@ -9,7 +9,8 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-hardware-edit',
   templateUrl: './hardware-edit.component.html',
-  styleUrls: ['./hardware-edit.component.sass']
+  styleUrls: ['./hardware-edit.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HardwareEditComponent extends PopupComponent {
 
@@ -25,7 +26,8 @@ export class HardwareEditComponent extends PopupComponent {
   selectedInputDevice = '';
   connectGFX9000 = false;
 
-  constructor(private emulatorService: EmulatorService, private localizationService: LocalizationService) {
+  constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService,
+    private localizationService: LocalizationService) {
     super();
   }
 
@@ -35,6 +37,7 @@ export class HardwareEditComponent extends PopupComponent {
     this.emulatorService.getMachines().then((data: string[]) => {
       this.machines = data;
       this.selectedMachine = this.game.machine;
+      this.changeDetector.detectChanges();
     });
 
     this.fddModes = FDDMode.map(f => this.localizationService.translate('popups.edithardware.' + f));

@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home-game-music',
   templateUrl: './music.component.html',
-  styleUrls: ['./music.component.sass']
+  styleUrls: ['./music.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicComponent implements AfterViewInit, OnChanges {
 

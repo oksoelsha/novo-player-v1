@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, Output, QueryList, SimpleChanges,
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, Output, QueryList, SimpleChanges,
   ViewChild, ViewChildren } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Game } from '../../../models/game';
@@ -21,7 +21,7 @@ export class SearchComponent implements OnChanges {
   searchText = '';
   foundGames: Game[] = [];
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private changeDetector: ChangeDetectorRef, private gamesService: GamesService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.parentMenuOpen.currentValue === true) {
@@ -42,6 +42,7 @@ export class SearchComponent implements OnChanges {
         } else {
           this.foundGamesDropdown.close();
         }
+        this.changeDetector.detectChanges();
       });
     } else {
       this.foundGamesDropdown.close();
