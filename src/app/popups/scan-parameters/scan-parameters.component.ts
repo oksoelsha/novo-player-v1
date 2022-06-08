@@ -32,7 +32,7 @@ export class ScanParametersComponent extends PopupComponent {
       if (!this.selectedMachine) {
         this.selectedMachine = data[0];
       }
-      this.changeDetector.checkNoChanges();
+      this.changeDetector.detectChanges();
     });
   }
 
