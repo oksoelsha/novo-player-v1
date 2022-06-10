@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, OnDestroy } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Game } from '../../models/game';
@@ -22,6 +22,7 @@ import { ScannerService } from '../../services/scanner.service';
 import { InfoFileFieldEditComponent } from '../../popups/info-file-field-edit/info-file-field-edit.component';
 import { PlatformService } from '../../services/platform.service';
 import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
+import { Subscription } from 'rxjs';
 
 enum SortDirection {
   ASC, DESC
@@ -42,7 +43,7 @@ class SortData {
   templateUrl: './home.component.html',
   styleUrls: ['../../common-styles.sass', './home.component.sass']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('scanParameters') scanParameters: ScanParametersComponent;
@@ -84,6 +85,7 @@ export class HomeComponent implements OnInit {
   selectedMusicFile: string;
   favorites: Game[] = [];
   sortData: SortData;
+  showUndo: boolean;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null);
@@ -94,11 +96,19 @@ export class HomeComponent implements OnInit {
   private gameQuickSearch = '';
   private quickTypeTimer: NodeJS.Timer = null;
   private dragCounter = 0;
+  private historyToUndoSubscription: Subscription;
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
-    private undoService: UndoService, private platformService: PlatformService) { }
+    private undoService: UndoService, private platformService: PlatformService) {
+
+    const self = this;
+    this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
+      self.showUndo = isDataToUndo;
+    });
+    this.showUndo = this.undoService.isThereUndoHistory();
+  }
 
   @HostListener('window:keyup', ['$event'])
   keyupEvent(event: KeyboardEvent) {
@@ -234,6 +244,10 @@ export class HomeComponent implements OnInit {
     });
 
     this.getFavorites();
+  }
+
+  ngOnDestroy() {
+    this.historyToUndoSubscription.unsubscribe();
   }
 
   isOnWindows(): boolean {
