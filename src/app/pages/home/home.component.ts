@@ -372,7 +372,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.editedGameName = '';
   }
 
-  remove(event: any, game: Game) {
+  remove(event: any, game: Game, fromActionsMenu: boolean = false) {
     if (event) {
       event.stopPropagation();
     }
@@ -385,14 +385,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         } else {
           this.alertService.success(this.localizationService.translate('home.gameswereremoved'));
         }
-        if (game === this.selectedGame) {
+        if (fromActionsMenu) {
           // remove() request may come from the actions menu which will be removed from the DOM after calling
           // initialize(). Therefore, we need to decrement the open menus count here
           if (this.openMenuEventCounter > 0) {
             this.openMenuEventCounter--;
           }
-          this.initialize();
         }
+        this.initialize();
         this.removeGamesFromList(gamesToRemove);
       } else {
         if (this.otherSelectedGames.size == 0) {

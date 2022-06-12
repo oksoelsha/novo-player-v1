@@ -175,7 +175,7 @@
               (click)="setFavoritesFlag(false)">
               {{ 'home.removefromfavorites' | translate }}
             </button>
-            <button ngbDropdownItem type="button" (click)="remove(null, selectedGame)">
+            <button ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
               {{ 'home.removefromlisting' | translate }}
             </button>
             <button ngbDropdownItem type="button" (click)="changeListing.open()">
