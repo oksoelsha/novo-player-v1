@@ -2,7 +2,7 @@ export class FileTypeUtils {
     public static readonly MAX_DISK_FILE_SIZE = 737280;
     public static readonly EXTENSION_ROM_IDE = 'ide';
 
-    private static readonly romExtensions: Array<string> = ['rom', 'ri', 'col', 'mx1', 'mx2'];
+    private static readonly romExtensions: Array<string> = ['rom', 'ri', 'col', 'mx1', 'mx2', 'sg', 'sc', 'sms'];
     private static readonly diskExtensions: Array<string> = ['dsk', 'di1', 'di2', 'dmk', 'xsa', 'fd1', 'fd2'];
     private static readonly tapeExtensions: Array<string> = ['cas', 'wav', 'tsx'];
     private static readonly harddiskExtensions: Array<string> = ['dsk', 'hdd'];
