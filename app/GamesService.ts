@@ -183,7 +183,7 @@ export class GamesService {
                         game.setTitle(repositoryData.title);
                         game.setSystem(repositoryData.system);
                         game.setCompany(repositoryData.company);
-                        game.setYear(repositoryData.year);
+                        game.setYear(this.getYear(repositoryData.year));
                         game.setCountry(repositoryData.country);
                         game.setMapper(repositoryData.mapper);
                         game.setRemark(repositoryData.remark);
@@ -195,6 +195,14 @@ export class GamesService {
 
             self.win.webContents.send('getGamesResponse', games);
         });
+    }
+
+    private getYear(year: string): string {
+        if (year.length > 4) {
+            return year.slice(year.length - 4);
+        } else {
+            return year;
+        }
     }
 
     private updateGame(oldGame: Game, newGame: Game) {
