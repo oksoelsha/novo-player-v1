@@ -1,7 +1,8 @@
 <form id="scanParametersForm" #scanParametersForm="ngForm">
   <div class="add-buttons">
-    <app-file-system-chooser [directoryMode]="true" [multiSelections]="true" [label]="'popups.addgames.addfolder' | translate"
-      (chosen)="filesAndFolders = filesAndFolders.concat($event)"></app-file-system-chooser>
+    <app-file-system-chooser [directoryMode]="true" [multiSelections]="true"
+      [label]="'popups.addgames.addfolder' | translate" (chosen)="filesAndFolders = filesAndFolders.concat($event)">
+    </app-file-system-chooser>
   </div>
   <div class="add-buttons">
     <app-file-system-chooser [multiSelections]="true" [label]="'popups.addgames.addfile' | translate"
@@ -16,24 +17,24 @@
       </div>
     </ng-container>
   </div>
-  <table class="fields">
-    <tr>
-      <td class="pe-2">{{ 'popups.addgames.listing' | translate }}</td>
-      <td>
+  <div class="rTable mt-3">
+    <div class="rTableRow">
+      <div class="rTableCell">{{ 'popups.addgames.listing' | translate }}</div>
+      <div class="rTableCell">
         <app-drop-down-with-input [defaultLabel]="'popups.specifyalisting' | translate"
           [defaultNewLabel]="'popups.newlisting' | translate" [list]="listings" [defaultSelection]="currentListing"
           (selection)="selectedListing = $event">
         </app-drop-down-with-input>
-      </td>
-    </tr>
-    <tr>
-      <td class="pe-2">{{ 'common.machine' | translate }}</td>
-      <td>
+      </div>
+    </div>
+    <div class="rTableRow">
+      <div class="rTableCell">{{ 'common.machine' | translate }}</div>
+      <div class="rTableCell">
         <app-drop-down [list]="machines" [selectedItem]="machines[0]" (selection)="selectedMachine = $event">
         </app-drop-down>
-      </td>
-    </tr>
-  </table>
+      </div>
+    </div>
+  </div>
   <button class="btn btn-primary btn-sm mt-3" [disabled]="filesAndFolders.length === 0 || !selectedListing"
     (click)="submitParameters()" (keydown.enter)="submitParameters()">{{ 'common.add' | translate }}</button>
 </form>
