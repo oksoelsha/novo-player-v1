@@ -22,6 +22,7 @@ export class FileSystemChooserComponent {
   @Input() label: string;
   @Input() filtersType: string;
   @Input() multiSelections: boolean;
+  @Input() useIcon: boolean = false;  
   @Output() chosen: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private fileService: FilesService) { }

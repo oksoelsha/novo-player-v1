@@ -2,34 +2,34 @@
   <form id="settingsForm" #settingsForm="ngForm" (ngSubmit)="submitSettings(settingsForm.form)">
     <div class="form-group mb-3">
       <label class="form-label">{{ 'settings.openmsxpath' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="openmsx-path" [(ngModel)]="openmsxPath"
+      <div class="d-flex justify-content-start">
+        <input type="text" class="form-control form-control-sm" name="openmsx-path" [(ngModel)]="openmsxPath"
           placement="bottom" [ngbTooltip]="'settings.openmsxpathtooltip' | translate" />
+
         <app-file-system-chooser [directoryMode]="true" [label]="'common.browse' | translate"
-          (chosen)="updateControl('openmsx-path', $event)">
+          (chosen)="updateControl('openmsx-path', $event)" [useIcon]="true">
         </app-file-system-chooser>
       </div>
     </div>
 
     <div class="form-group mb-3">
       <label class="form-label">{{ 'settings.screenshotspath' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="screenshots-path"
-          [(ngModel)]="screenshotsPath" placement="bottom"
-          [ngbTooltip]="'settings.screenshotspathtooltip' | translate" />
+      <div class="d-flex justify-content-start">
+        <input type="text" class="form-control form-control-sm" name="screenshots-path" [(ngModel)]="screenshotsPath"
+          placement="bottom" [ngbTooltip]="'settings.screenshotspathtooltip' | translate" />
         <app-file-system-chooser [directoryMode]="true" [label]="'common.browse' | translate"
-          (chosen)="updateControl('screenshots-path', $event)">
+          (chosen)="updateControl('screenshots-path', $event)" [useIcon]="true">
         </app-file-system-chooser>
       </div>
     </div>
 
     <div class="form-group mb-3">
       <label class="form-label">{{ 'settings.gamemusicpath' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="game-music-path" [(ngModel)]="gameMusicPath"
+      <div class="d-flex justify-content-start">
+        <input type="text" class="form-control form-control-sm" name="game-music-path" [(ngModel)]="gameMusicPath"
           placement="bottom" [ngbTooltip]="'settings.gamemusicpathtooltip' | translate" />
         <app-file-system-chooser [directoryMode]="true" [label]="'common.browse' | translate"
-          (chosen)="updateControl('game-music-path', $event)">
+          (chosen)="updateControl('game-music-path', $event)" [useIcon]="true">
         </app-file-system-chooser>
       </div>
     </div>
@@ -39,32 +39,30 @@
 
     <div class="form-group mb-3">
       <label class="form-label">{{ 'settings.webmsxpath' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="webmsx-path" [(ngModel)]="webmsxPath"
+      <div class="d-flex justify-content-start">
+        <input type="text" class="form-control form-control-sm" name="webmsx-path" [(ngModel)]="webmsxPath"
           placement="bottom" [ngbTooltip]="'settings.webmsxpathtooltip' | translate" />
         <app-file-system-chooser [directoryMode]=true [label]="'common.browse' | translate"
-          (chosen)="updateControl('webmsx-path', $event)">
+          (chosen)="updateControl('webmsx-path', $event)" [useIcon]="true">
         </app-file-system-chooser>
       </div>
     </div>
 
     <div class="form-group mb-3" *ngIf="isOnWindows()">
       <label class="form-label">{{ 'settings.bluemsxpath' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="bluemsx-path" [(ngModel)]="bluemsxPath"
+      <div class="d-flex justify-content-start">
+        <input type="text" class="form-control form-control-sm" name="bluemsx-path" [(ngModel)]="bluemsxPath"
           placement="bottom" [ngbTooltip]="'settings.bluemsxpathtooltip' | translate" />
         <app-file-system-chooser [directoryMode]=true [label]="'common.browse' | translate"
-          (chosen)="updateControl('bluemsx-path', $event)">
+          (chosen)="updateControl('bluemsx-path', $event)" [useIcon]="true">
         </app-file-system-chooser>
       </div>
     </div>
 
     <div class="form-group mb-3" *ngIf="isOnWindows()">
       <label class="form-label">{{ 'settings.bluemsxparams' | translate }}</label>
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm w-25" name="bluemsx-params" [(ngModel)]="bluemsxParams"
-          placement="bottom" [ngbTooltip]="'settings.bluemsxparamstooltip' | translate" />
-      </div>
+      <input type="text" class="form-control form-control-sm" name="bluemsx-params" [(ngModel)]="bluemsxParams"
+        placement="bottom" [ngbTooltip]="'settings.bluemsxparamstooltip' | translate" />
     </div>
 
     <div class="header">{{ 'settings.general' | translate }}</div>

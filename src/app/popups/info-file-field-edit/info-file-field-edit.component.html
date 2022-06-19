@@ -4,7 +4,8 @@
         <div class="input-group info-file">
             <input type="text" class="form-control form-control-sm" id="infoFile" [(ngModel)]="infoFile"
                 [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="infoFile = $event">
-            <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="infoFile = $event">
+            <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="infoFile = $event"
+                [useIcon]="true">
             </app-file-system-chooser>
         </div>
     </div>
