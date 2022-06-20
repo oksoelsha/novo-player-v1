@@ -85,6 +85,10 @@ export class BlueMSXLaunchService {
             this.appendParams(args, this.settingsService.getSettings().bluemsxParams);
         }
         this.appendParams(args, game.bluemsxArguments);
+        // if SCC extension is set, force it on blueMSX
+        if (game.extensionRom === "scc") {
+            this.appendParams(args, '/romtype1 scc');
+        }
     }
 
     private appendParams(args: string[], argsString: string) {
