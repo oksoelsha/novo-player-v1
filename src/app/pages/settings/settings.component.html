@@ -5,7 +5,6 @@
       <div class="d-flex justify-content-start">
         <input type="text" class="form-control form-control-sm" name="openmsx-path" [(ngModel)]="openmsxPath"
           placement="bottom" [ngbTooltip]="'settings.openmsxpathtooltip' | translate" />
-
         <app-file-system-chooser [directoryMode]="true" [label]="'common.browse' | translate"
           (chosen)="updateControl('openmsx-path', $event)" [useIcon]="true">
         </app-file-system-chooser>

@@ -17,19 +17,19 @@
       </div>
     </ng-container>
   </div>
-  <div class="rTable mt-3">
-    <div class="rTableRow">
-      <div class="rTableCell">{{ 'popups.addgames.listing' | translate }}</div>
-      <div class="rTableCell">
+  <div class="table-view mt-3">
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.addgames.listing' | translate }}</div>
+      <div class="table-cell">
         <app-drop-down-with-input [defaultLabel]="'popups.specifyalisting' | translate"
           [defaultNewLabel]="'popups.newlisting' | translate" [list]="listings" [defaultSelection]="currentListing"
           (selection)="selectedListing = $event">
         </app-drop-down-with-input>
       </div>
     </div>
-    <div class="rTableRow">
-      <div class="rTableCell">{{ 'common.machine' | translate }}</div>
-      <div class="rTableCell">
+    <div class="table-row">
+      <div class="table-cell">{{ 'common.machine' | translate }}</div>
+      <div class="table-cell">
         <app-drop-down [list]="machines" [selectedItem]="machines[0]" (selection)="selectedMachine = $event">
         </app-drop-down>
       </div>

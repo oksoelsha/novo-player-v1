@@ -1,109 +1,101 @@
 <form>
-  <table class="fields-table">
-    <tr>
-      <td class="medium">{{ 'popups.editmedia.roma' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+  <div class="table-view">
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.roma' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="romA" [(ngModel)]="romA"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="romA = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romA = $event"
             [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'popups.editmedia.romb' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.romb' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="romB" [(ngModel)]="romB"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="romB = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="ROM" (chosen)="romB = $event"
             [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'popups.editmedia.extension' | translate }}</td>
-      <td class="medium-input">
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.extension' | translate }}</div>
+      <div class="table-cell medium-input">
         <app-drop-down [list]="extensions" [defaultLabel]="'popups.editmedia.selectextension' | translate"
           [selectedItem]="extensionRom" [resetButton]="true" (selection)="extensionRom = $event"></app-drop-down>
-      </td>
-    </tr>
-    <tr>
-      <p></p>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'popups.editmedia.diska' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="mb-4"></div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.diska' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="diskA" [(ngModel)]="diskA"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="diskA = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskA = $event"
             [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'popups.editmedia.diskb' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.diskb' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="diskB" [(ngModel)]="diskB"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="diskB = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Disk" (chosen)="diskB = $event"
             [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <p></p>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'medium.tape' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="mb-4"></div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'medium.tape' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="tape" [(ngModel)]="tape"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="tape = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Tape" (chosen)="tape = $event"
             [useIcon]="true" [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <p></p>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'medium.harddisk' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="mb-4"></div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'medium.harddisk' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="harddisk" [(ngModel)]="harddisk"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="harddisk = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Harddisk"
             (chosen)="harddisk = $event" [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <p></p>
-    </tr>
-    <tr>
-      <td class="medium">{{ 'medium.laserdisc' | translate }}</td>
-      <td class="medium-input">
-        <div class="input-group">
+      </div>
+    </div>
+    <div class="mb-4"></div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'medium.laserdisc' | translate }}</div>
+      <div class="table-cell medium-input">
+        <div class="d-flex justify-content-start">
           <input type="text" class="form-control form-control-sm" id="laserdisc" [(ngModel)]="laserdisc"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="laserdisc = $event">
           <app-file-system-chooser [label]="'common.browse' | translate" filtersType="Laserdisc"
             (chosen)="laserdisc = $event" [useIcon]="true">
           </app-file-system-chooser>
         </div>
-      </td>
-    </tr>
-  </table>
+      </div>
+    </div>
+  </div>
   <button class="btn btn-primary btn-sm mt-3" (click)="save()" (keyup.enter)="save()">{{ 'common.save' | translate
     }}</button>
 </form>
