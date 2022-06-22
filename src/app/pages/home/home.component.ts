@@ -23,6 +23,7 @@ import { InfoFileFieldEditComponent } from '../../popups/info-file-field-edit/in
 import { PlatformService } from '../../services/platform.service';
 import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
 import { Subscription } from 'rxjs';
+import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 
 enum SortDirection {
   ASC, DESC
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('hardwareEdit') hardwareEdit: HardwareEditComponent;
   @ViewChild('infoFileFieldEdit') infoFileFieldEdit: InfoFileFieldEditComponent;
   @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
+  @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;

@@ -15,6 +15,7 @@ import { BlueMSXLaunchService } from './BlueMSXLaunchService';
 import { EmulatorHardwareService } from './EmulatorHardwareService';
 import { ScanService } from './ScanService';
 import { OpenMSXControlService } from './OpenMSXControlService';
+import { RelatedGamesService } from './RelatedGamesService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -96,6 +97,8 @@ function initializeServices() {
   new EmulatorHardwareService(win, settingsService);
 
   new OpenMSXControlService(win);
+
+  new RelatedGamesService(win, extraDataService, emulatorRepositoryService);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

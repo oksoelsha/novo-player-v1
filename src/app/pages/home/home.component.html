@@ -167,6 +167,9 @@
               {{ 'home.editbluemsxarguments' | translate }}
             </button>
             <div class="dropdown-divider" *ngIf="isOnWindows()"></div>
+            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="relatedGames.open()">
+              {{ 'home.findrelatedgames' | translate }}
+            </button>
             <button [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite" ngbDropdownItem
               type="button" (click)="setFavoritesFlag(true)">
               {{ 'home.addtofavorites' | translate }}
@@ -270,6 +273,13 @@
   </ng-template>
 </app-popup>
 
+<app-popup popupId="related-games-id" [titleHeader]="'home.relatedgames' | translate" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-related-games [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame" #relatedGames>
+    </app-related-games>
+  </ng-template>
+</app-popup>
+
 <context-menu (close)="contextMenuOpened = false" [menuClass]="'context-menu'">
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [subMenu]="launchSubMenu">
     {{ 'home.launch' | translate }}
@@ -303,6 +313,9 @@
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isOnWindows()" [divider]="true"></ng-template>
+  <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="relatedGames.open()">
+    {{ 'home.findrelatedgames' | translate }}
+  </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
     {{ 'home.addtofavorites' | translate }}
   </ng-template>

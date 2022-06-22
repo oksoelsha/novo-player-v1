@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { EventSource } from '../models/event';
 import { Game } from '../models/game';
+import { RelatedGame } from '../models/related-game';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
 import { LaunchActivityService } from './launch-activity.service';
@@ -201,6 +202,15 @@ export class GamesService {
         resolve(removed);
       });
       this.ipc.send('deleteListing', name);
+    });
+  }
+
+  async getRelatedGames(game: Game): Promise<RelatedGame[]> {
+    return new Promise<RelatedGame[]>((resolve, reject) => {
+      this.ipc.once('findRelatedGamesResponse', (event, relatedGames) => {
+        resolve(relatedGames);
+      });
+      this.ipc.send('findRelatedGames', game);
     });
   }
 

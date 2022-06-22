@@ -48,6 +48,7 @@ import { ConfirmLeaveComponent } from './shared/components/confirm-leave/confirm
 import { InfoFileFieldEditComponent } from './popups/info-file-field-edit/info-file-field-edit.component';
 import { DropfileDirective } from './shared/directives/dropfile/dropfile.directive';
 import { BluemsxArgumentsEditComponent } from './popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
+import { RelatedGamesComponent } from './popups/related-games/related-games.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -86,7 +87,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     GameMediumIconPipe,
     InfoFileFieldEditComponent,
     BluemsxArgumentsEditComponent,
-    DropfileDirective
+    DropfileDirective,
+    RelatedGamesComponent
   ],
   imports: [
     BrowserModule,
