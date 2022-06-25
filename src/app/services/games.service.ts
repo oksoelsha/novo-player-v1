@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { EventSource } from '../models/event';
 import { Game } from '../models/game';
-import { RelatedGame } from '../models/related-game';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
 import { LaunchActivityService } from './launch-activity.service';
@@ -205,8 +204,8 @@ export class GamesService {
     });
   }
 
-  async getRelatedGames(game: Game): Promise<RelatedGame[]> {
-    return new Promise<RelatedGame[]>((resolve, reject) => {
+  async getRelatedGames(game: Game): Promise<Game[]> {
+    return new Promise<Game[]>((resolve, reject) => {
       this.ipc.once('findRelatedGamesResponse', (event, relatedGames) => {
         resolve(relatedGames);
       });

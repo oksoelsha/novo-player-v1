@@ -77,7 +77,9 @@
     "unknown": "Desconocido",
     "copy": "Copiar",
     "copied": "Valor copiado",
-    "scanning": "Escaneando"
+    "scanning": "Escaneando",
+    "findrelatedgames": "Buscar juegos relacionados",
+    "relatedgames": "Juegos relacionados"
   },
   "language": {
     "en-US": "Inglés",

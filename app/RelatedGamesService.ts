@@ -2,14 +2,13 @@ import { BrowserWindow, ipcMain } from 'electron'
 import { ExtraData, ExtraDataService } from './ExtraDataService'
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService'
 import { Game } from '../src/app/models/game'
-import { RelatedGame } from '../src/app/models/related-game'
 
 export class RelatedGamesService {
     private extraDataInfo: Map<string, ExtraData>;
     private repositoryInfo: Map<string, RepositoryData>;
 
     private readonly excludedStrings = new Set<string>();
-    private readonly idToCluster = new Map<number,Set<number>>();
+    private readonly idToCluster = new Map<number, Set<number>>();
     private readonly NAME_MATCH_ONE_WORD_GAME_SCORE = 5;
     private readonly NAME_MATCH_ONE_IN_MANY_WORDS_SCORE = 3;
     private readonly NAME_MATCH_TWO_OR_MORE_IN_MANY_WORDS_SCORE = 5;
@@ -38,21 +37,21 @@ export class RelatedGamesService {
     }
 
     private initExcludedStrings() {
-		this.excludedStrings.add('-');
-		this.excludedStrings.add('i');
-		this.excludedStrings.add('ii');
-		this.excludedStrings.add('the');
-		this.excludedStrings.add('of');
-		this.excludedStrings.add('and');
-		this.excludedStrings.add('in');
-		this.excludedStrings.add('on');
-		this.excludedStrings.add('at');
-		this.excludedStrings.add('to');
-		this.excludedStrings.add('version');
-		this.excludedStrings.add('de');
-		this.excludedStrings.add('el');
-		this.excludedStrings.add('los');
-		this.excludedStrings.add('en');
+        this.excludedStrings.add('-');
+        this.excludedStrings.add('i');
+        this.excludedStrings.add('ii');
+        this.excludedStrings.add('the');
+        this.excludedStrings.add('of');
+        this.excludedStrings.add('and');
+        this.excludedStrings.add('in');
+        this.excludedStrings.add('on');
+        this.excludedStrings.add('at');
+        this.excludedStrings.add('to');
+        this.excludedStrings.add('version');
+        this.excludedStrings.add('de');
+        this.excludedStrings.add('el');
+        this.excludedStrings.add('los');
+        this.excludedStrings.add('en');
     }
 
     private initIdToCluster() {
@@ -110,8 +109,12 @@ export class RelatedGamesService {
                         this.getClusterScore(clusterForGivenGame, extraData.generationMSXID);
 
                     if (score > 0) {
-                        const similarGame = new SimilarGame(new RelatedGame(repositoryTitle, entry.company,
-                            entry.year, extraData.generationMSXID), score);
+                        const relatedGame = new Game(repositoryTitle, sha1, 0);
+                        relatedGame.setGenerationMSXId(extraData.generationMSXID);
+                        relatedGame.setCompany(companyOfRepositoryGame);
+                        relatedGame.setYear(entry.year);
+
+                        const similarGame = new SimilarGame(relatedGame, score);
                         similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
                     }
                 }
@@ -145,37 +148,37 @@ export class RelatedGamesService {
     }
 
     private getGenreScore(extraData: ExtraData, game: Game): number {
-		let score = 0;
-		if (extraData) {
-			const selectedGameGenre1 = game.genre1;
-			const selectedGameGenre2 = game.genre2;
-			const genre1OfRepositoryGame = extraData.genre1;
-			const genre2OfRepositoryGame = extraData.genre2;
+        let score = 0;
+        if (extraData) {
+            const selectedGameGenre1 = game.genre1;
+            const selectedGameGenre2 = game.genre2;
+            const genre1OfRepositoryGame = extraData.genre1;
+            const genre2OfRepositoryGame = extraData.genre2;
 
-			if ((selectedGameGenre1 != 0 && (selectedGameGenre1 == genre1OfRepositoryGame || selectedGameGenre1 == genre2OfRepositoryGame)) ||
-					(selectedGameGenre2 != 0 && (selectedGameGenre2 == genre1OfRepositoryGame || selectedGameGenre2 == genre2OfRepositoryGame )) ) {
-				score = this.GENRE_MATCH_SCORE;
-			}
-		}
+            if ((selectedGameGenre1 != 0 && (selectedGameGenre1 == genre1OfRepositoryGame || selectedGameGenre1 == genre2OfRepositoryGame)) ||
+                (selectedGameGenre2 != 0 && (selectedGameGenre2 == genre1OfRepositoryGame || selectedGameGenre2 == genre2OfRepositoryGame))) {
+                score = this.GENRE_MATCH_SCORE;
+            }
+        }
 
-		return score;
+        return score;
     }
 
     private getCompanyScore(companyOfRepositoryGame: string, companyOfSelectedGame: string): number {
-		if (companyOfRepositoryGame && companyOfRepositoryGame == companyOfSelectedGame) {
-			return this.COMPANY_MATCH_SCORE;
-		} else {
-			return 0;
-		}
-	}
+        if (companyOfRepositoryGame && companyOfRepositoryGame == companyOfSelectedGame) {
+            return this.COMPANY_MATCH_SCORE;
+        } else {
+            return 0;
+        }
+    }
 
     private getClusterScore(clusterForGivenGame: Set<number>, extraDataGenMSXId: number): number {
-		if (clusterForGivenGame != null && clusterForGivenGame.has(extraDataGenMSXId)) {
-			return this.SAME_CLUSTER_MATCH_SCORE;
-		} else {
-			return 0;
-		}
-	}
+        if (clusterForGivenGame != null && clusterForGivenGame.has(extraDataGenMSXId)) {
+            return this.SAME_CLUSTER_MATCH_SCORE;
+        } else {
+            return 0;
+        }
+    }
 
     private getNormalizedStrings(str: string): Set<string> {
         const parts = (str + '').split(' ');
@@ -196,10 +199,10 @@ export class RelatedGamesService {
 }
 
 class SimilarGame {
-    relatedGame: RelatedGame;
+    relatedGame: Game;
     score: number;
 
-    constructor(relatedGame: RelatedGame, score: number) {
+    constructor(relatedGame: Game, score: number) {
         this.relatedGame = relatedGame;
         this.score = score;
     }

@@ -1,11 +1,11 @@
-import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.sass']
 })
-export class PopupComponent implements OnInit {
+export class PopupComponent implements OnInit, AfterViewInit {
 
   @Input () titleHeader: string;
   @Input () popupId: string;
@@ -20,6 +20,13 @@ export class PopupComponent implements OnInit {
       if (e.target === document.getElementById(self.popupId)) {
         self.close();
       }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    const self = this;
+    document.getElementById(this.popupId + '-close').addEventListener('click', (e: any) => {
+      self.close();
     });
   }
 

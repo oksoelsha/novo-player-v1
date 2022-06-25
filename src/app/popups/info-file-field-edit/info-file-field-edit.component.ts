@@ -26,10 +26,6 @@ export class InfoFileFieldEditComponent  extends PopupComponent {
     this.infoFile = this.game.infoFile;
   }
 
-  close(): void {
-    super.close();
-  }
-
   save() {
     const updatedGame: Game = Object.assign({}, this.game);
 

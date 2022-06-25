@@ -61,10 +61,6 @@ export class HardwareEditComponent extends PopupComponent {
     }
   }
 
-  close(): void {
-    super.close();
-  }
-
   save() {
     this.hardwareData.emit({
       'machine': this.selectedMachine,

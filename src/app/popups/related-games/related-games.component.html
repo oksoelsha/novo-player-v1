@@ -1,6 +1,10 @@
-<div class="related-games">
-    <div *ngFor="let relatedGame of relatedGames">
-        <div>{{ relatedGame.name }}</div>
-        <div>{{ relatedGame.company }} - {{ relatedGame.year }} </div>
+<div class="related-games" #relatedGamesDiv>
+    <div *ngFor="let relatedGame of relatedGames; let i = index" class="mt-4">
+        <img src="{{ imageData1[i] }}" class="screenshots">
+        <img src="{{ imageData2[i] }}" class="screenshots">
+        <div class="d-inline-block ms-3">
+            <div class="game-name">{{ relatedGame.name }}</div>
+            <div class="game-data">{{ relatedGame.company }} - {{ relatedGame.year }} </div>
+        </div>
     </div>
 </div>

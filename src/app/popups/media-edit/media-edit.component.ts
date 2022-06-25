@@ -57,10 +57,6 @@ export class MediaEditComponent extends PopupComponent {
     this.extensionRomDisplay = 'Select extension';
   }
 
-  close(): void {
-    super.close();
-  }
-
   save() {
     const updatedGame: Game = Object.assign({}, this.game);
 

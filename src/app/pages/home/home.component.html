@@ -273,7 +273,8 @@
   </ng-template>
 </app-popup>
 
-<app-popup popupId="related-games-id" [titleHeader]="'home.relatedgames' | translate" (openStatus)="popupOpen = $event">
+<app-popup popupId="related-games-id" [titleHeader]="('home.relatedgames' | translate) + ' - ' + selectedGame?.name"
+  (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-related-games [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame" #relatedGames>
     </app-related-games>

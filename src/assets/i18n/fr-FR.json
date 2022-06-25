@@ -77,7 +77,9 @@
     "unknown": "Inconnu",
     "copy": "Copier",
     "copied": "Valeur copiée",
-    "scanning": "Recherche en cours"
+    "scanning": "Recherche en cours",
+    "findrelatedgames": "Trouver des jeux associés",
+    "relatedgames": "Jeux associés"
   },
   "language": {
     "en-US": "Anglais",

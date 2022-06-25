@@ -77,7 +77,9 @@
     "unknown": "Onbekend",
     "copy": "Kopiëren",
     "copied": "Waarde gekopieerd",
-    "scanning": "Scannen"
+    "scanning": "Scannen",
+    "findrelatedgames": "Verwante spellen zoeken",
+    "relatedgames": "Verwante spellen"
   },
   "language": {
     "en-US": "Engels",
