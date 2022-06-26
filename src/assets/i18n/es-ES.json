@@ -212,6 +212,9 @@
     "editBluemsxArguments": {
       "bluemsxArguments": "Argumentos de blueMSX",
       "overrideargumentsinsettings": "Anular argumentos en la configuración"
+    },
+    "relatedgames": {
+      "noresults": "No hay resultados"
     }
   },
   "shared": {

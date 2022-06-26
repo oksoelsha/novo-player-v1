@@ -1,13 +1,17 @@
 <div class="related-games" #relatedGamesDiv>
-    <div *ngIf="relatedGames.length === 0">No Results</div>
+    <div *ngIf="relatedGames.length === 0" class="no-results">{{ 'popups.relatedgames.noresults' | translate }}</div>
     <div *ngFor="let relatedGame of relatedGames; let i = index" class="mt-4">
         <img src="{{ imageData1[i] }}" class="screenshots">
         <img src="{{ imageData2[i] }}" class="screenshots">
         <div class="d-inline-block ms-3 me-3">
             <div class="game-name">{{ relatedGame.name }}</div>
-            <div class="game-data">{{ relatedGame.company }} - {{ relatedGame.year }} </div>
+            <div class="game-data">
+                {{ relatedGame.company }}
+                <span *ngIf="isShowYear(relatedGame)">- {{ relatedGame.year }}</span>
+            </div>
             <div class="mt-2">
-                <app-web-link *ngIf="isShowGenerationMSXLink(relatedGame)" label="Generation-MSX" [address]="getGenerationMSXAddress(relatedGame)" [buttonLook]="true">
+                <app-web-link *ngIf="isShowGenerationMSXLink(relatedGame)" label="Generation-MSX"
+                    [address]="getGenerationMSXAddress(relatedGame)" [buttonLook]="true">
                 </app-web-link>
             </div>
         </div>
