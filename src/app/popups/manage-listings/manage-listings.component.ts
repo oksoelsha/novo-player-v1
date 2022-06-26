@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
@@ -8,7 +8,7 @@ import { PopupComponent } from '../popup.component';
   styleUrls: ['../../common-styles.sass', './manage-listings.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ManageListingsComponent extends PopupComponent {
+export class ManageListingsComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   public static readonly mode = {
     delete: 0,
@@ -34,16 +34,16 @@ export class ManageListingsComponent extends PopupComponent {
     super();
   }
 
-  open(): void {
-    super.open();
+  ngOnInit() {
+    super.commonInit();
+  }
 
-    this.resetState();
+  ngAfterViewInit(): void {
+    super.commonViewInit();
   }
 
   close(): void {
-    this.resetState();
-
-    super.close();
+    super.close(this.resetState);
   }
 
   enableRenameMode(listing: string) {
@@ -91,7 +91,7 @@ export class ManageListingsComponent extends PopupComponent {
     this.resetMergeMode();
   }
 
-  resetState() {
+  resetState = () => {
     this.renameMode = false;
     this.deleteMode = false;
     this.listingsSelectionMap.clear();

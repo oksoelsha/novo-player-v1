@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
@@ -8,7 +8,7 @@ import { PopupComponent } from '../popup.component';
   templateUrl: './media-edit.component.html',
   styleUrls: ['./media-edit.component.sass']
 })
-export class MediaEditComponent extends PopupComponent {
+export class MediaEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -28,6 +28,14 @@ export class MediaEditComponent extends PopupComponent {
 
   constructor(private emulatorService: EmulatorService) {
     super();
+  }
+
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
   }
 
   open(): void {

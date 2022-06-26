@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { PopupComponent } from '../popup.component';
 
@@ -7,7 +7,7 @@ import { PopupComponent } from '../popup.component';
   templateUrl: './change-listing.component.html',
   styleUrls: ['./change-listing.component.sass']
 })
-export class ChangeListingComponent extends PopupComponent {
+export class ChangeListingComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -16,14 +16,20 @@ export class ChangeListingComponent extends PopupComponent {
 
   destinationListings: string[] = [];
   selectedListing = '';
-  opened = false;
 
   constructor() {
     super();
   }
 
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
+  }
+
   open(): void {
-    this.opened = true;
     super.open();
 
     this.destinationListings  = Object.assign([], this.listings);
@@ -31,10 +37,9 @@ export class ChangeListingComponent extends PopupComponent {
   }
 
   close(): void {
-    this.selectedListing = '';
-
-    this.opened = false;
-    super.close();
+    super.close(() => {
+      this.selectedListing = '';
+    });
   }
 
   move() {

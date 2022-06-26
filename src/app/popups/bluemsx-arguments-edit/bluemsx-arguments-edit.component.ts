@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -8,7 +8,7 @@ import { PopupComponent } from '../popup.component';
   templateUrl: './bluemsx-arguments-edit.component.html',
   styleUrls: ['./bluemsx-arguments-edit.component.sass']
 })
-export class BluemsxArgumentsEditComponent extends PopupComponent {
+export class BluemsxArgumentsEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -19,6 +19,14 @@ export class BluemsxArgumentsEditComponent extends PopupComponent {
 
   constructor(private localizationService: LocalizationService) {
     super();
+  }
+
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
   }
 
   open(): void {

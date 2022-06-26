@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FDDMode } from '../../models/fdd-mode';
 import { Game } from '../../models/game';
 import { InputDevice } from '../../models/input-device';
@@ -12,7 +12,7 @@ import { PopupComponent } from '../popup.component';
   styleUrls: ['./hardware-edit.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HardwareEditComponent extends PopupComponent {
+export class HardwareEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -29,6 +29,14 @@ export class HardwareEditComponent extends PopupComponent {
   constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService,
     private localizationService: LocalizationService) {
     super();
+  }
+
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
   }
 
   open(): void {

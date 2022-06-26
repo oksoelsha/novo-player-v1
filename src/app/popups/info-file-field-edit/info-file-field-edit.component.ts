@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -8,7 +8,7 @@ import { PopupComponent } from '../popup.component';
   templateUrl: './info-file-field-edit.component.html',
   styleUrls: ['./info-file-field-edit.component.sass']
 })
-export class InfoFileFieldEditComponent  extends PopupComponent {
+export class InfoFileFieldEditComponent  extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -20,6 +20,14 @@ export class InfoFileFieldEditComponent  extends PopupComponent {
     super();
   }
 
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
+  }
+
   open(): void {
     super.open();
 
@@ -28,10 +36,9 @@ export class InfoFileFieldEditComponent  extends PopupComponent {
 
   save() {
     const updatedGame: Game = Object.assign({}, this.game);
-
     updatedGame.infoFile = this.infoFile;
-
     this.updatedGame.emit(updatedGame);
+
     this.close();
   }
 }

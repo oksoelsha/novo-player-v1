@@ -78,3 +78,9 @@ describe('GameUtils', () => {
     expect(GameUtils.getMonikor(game).listing).toEqual('listing');
   });
 });
+
+describe('GameUtils', () => {
+  it('getGenerationMSXURLForGame function should return Generation MSX URL for a given Generation MSX Id', () => {
+    expect(GameUtils.getGenerationMSXURLForGame(123)).toEqual('http://www.generation-msx.nl/msxdb/softwareinfo/123');
+  });
+});

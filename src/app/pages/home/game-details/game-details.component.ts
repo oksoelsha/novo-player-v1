@@ -167,7 +167,7 @@ export class GameDetailsComponent implements OnChanges {
   }
 
   getGenerationMSXAddress() {
-    return 'http://www.generation-msx.nl/msxdb/softwareinfo/' + this.selectedGame.generationMSXId;
+    return GameUtils.getGenerationMSXURLForGame(this.selectedGame.generationMSXId);
   }
 
   copy(text: string) {

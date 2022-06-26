@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.sass']
 })
-export class PopupComponent implements OnInit, AfterViewInit {
+export class PopupComponent {
 
   @Input () titleHeader: string;
   @Input () popupId: string;
@@ -14,7 +14,7 @@ export class PopupComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
-  ngOnInit() {
+  commonInit() {
     const self = this;
     window.addEventListener('click', (e: any) => {
       if (e.target === document.getElementById(self.popupId)) {
@@ -23,11 +23,15 @@ export class PopupComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
+  commonViewInit() {
     const self = this;
-    document.getElementById(this.popupId + '-close').addEventListener('click', (e: any) => {
-      self.close();
-    });
+    const popupClose = document.getElementById(this.popupId + '-close');
+    if (popupClose) {
+      // this is null when running unit tests
+      popupClose.addEventListener('click', (e: any) => {
+        self.close();
+      });  
+    }
   }
 
   open(): void {
@@ -35,8 +39,18 @@ export class PopupComponent implements OnInit, AfterViewInit {
     document.getElementById(this.popupId).classList.add('popup-fade');
   }
 
-  close(): void {
+  close(cleanup: () => void = null): void {
     this.openStatus.emit(false);
-    document.getElementById(this.popupId).classList.remove('popup-fade');
+    const popup = document.getElementById(this.popupId);
+    popup.addEventListener('transitionend', (() => {
+      let customCleanup = cleanup;
+      return () => {
+        if (customCleanup !== null) {
+          customCleanup();
+        }
+        popup.removeAllListeners();
+      }
+    })());
+    popup.classList.remove('popup-fade');
   }
 }

@@ -1,14 +1,16 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Game } from '../../models/game';
+import { GameUtils } from '../../models/game-utils';
 import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
   selector: 'app-related-games',
   templateUrl: './related-games.component.html',
-  styleUrls: ['../../common-styles.sass', './related-games.component.sass']
+  styleUrls: ['../../common-styles.sass', './related-games.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RelatedGamesComponent  extends PopupComponent {
+export class RelatedGamesComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -17,34 +19,48 @@ export class RelatedGamesComponent  extends PopupComponent {
   imageData1: string[] = [];
   imageData2: string[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
+  constructor(private gamesService: GamesService) {
     super();
   }
 
-  open(): void {
-    this.gamesService.getRelatedGames(this.game).then((data: Game[]) => {
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
+  }
+
+  async open(): Promise<void> {
+    this.gamesService.getRelatedGames(this.game).then(async (data: Game[]) => {
       this.relatedGames = data;
       for (let index = 0; index < data.length; index++) {
-        this.gamesService.getSecondaryData(data[index]).then((secondaryData) => {
-          this.imageData1[index] = this.getScreenshot(secondaryData.screenshot1, index);
-          this.imageData2[index] = this.getScreenshot(secondaryData.screenshot2, index);
-        });
+        const secondaryData = await this.gamesService.getSecondaryData(data[index]);
+        this.imageData1[index] = this.getScreenshot(secondaryData.screenshot1);
+        this.imageData2[index] = this.getScreenshot(secondaryData.screenshot2);
       }
-
       super.open();
     });
   }
 
   close(): void {
-    this.relatedGamesDiv.nativeElement.scrollTop = 0;
-    this.relatedGames = [];
-    this.imageData1 = [];
-    this.imageData2 = [];
-
-    super.close();
+    super.close(() => {
+      this.relatedGamesDiv.nativeElement.scrollTop = 0;
+      this.relatedGames = [];
+      this.imageData1 = [];
+      this.imageData2 = [];
+    });
   }
 
-  private getScreenshot(screenshotData: string, index: number): string {
+  isShowGenerationMSXLink(relatedGame: Game) {
+    return relatedGame.generationMSXId > 0 && relatedGame.generationMSXId < 10000;
+  }
+
+  getGenerationMSXAddress(relatedGame: Game) {
+    return GameUtils.getGenerationMSXURLForGame(relatedGame.generationMSXId);
+  }
+
+  private getScreenshot(screenshotData: string): string {
     if (screenshotData) {
       return screenshotData;
     } else {

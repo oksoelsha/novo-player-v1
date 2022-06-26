@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
 
@@ -8,7 +8,7 @@ import { PopupComponent } from '../popup.component';
   styleUrls: ['../../common-styles.sass', './scan-parameters.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScanParametersComponent extends PopupComponent {
+export class ScanParametersComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() listings: string[] = [];
@@ -24,6 +24,14 @@ export class ScanParametersComponent extends PopupComponent {
     super();
   }
 
+  ngOnInit() {
+    super.commonInit();
+  }
+
+  ngAfterViewInit(): void {
+    super.commonViewInit();
+  }
+
   open(): void {
     super.open();
 
@@ -37,9 +45,9 @@ export class ScanParametersComponent extends PopupComponent {
   }
 
   close(): void {
-    this.filesAndFolders = [];
-
-    super.close();
+    super.close(() => {
+      this.filesAndFolders = [];
+    });
   }
 
   removeItem(index: number) {

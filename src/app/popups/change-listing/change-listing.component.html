@@ -2,9 +2,10 @@
     <div>
         <span class="me-2">{{ 'popups.changelisting.destinationlisting' | translate }}</span>
         <span class="listing-input">
-            <app-drop-down-with-input *ngIf="opened" [defaultLabel]="'popups.specifyalisting' | translate"
+            <app-drop-down-with-input [defaultLabel]="'popups.specifyalisting' | translate"
                 [defaultNewLabel]="'popups.newlisting' | translate" [list]="destinationListings"
-                (selection)="selectedListing = $event.toString()"></app-drop-down-with-input>
+                [defaultSelection]="selectedListing" (selection)="selectedListing = $event.toString()">
+            </app-drop-down-with-input>
         </span>
     </div>
     <button class="btn btn-primary btn-sm mt-3" (click)="move()" (keyup.enter)="move()" [disabled]="!selectedListing">

@@ -118,4 +118,8 @@ export class GameUtils {
     static getMonikor(game: Game): any {
         return {name: game.name, listing: game.listing};
     }
+
+    static getGenerationMSXURLForGame(generationMSXId: number) {
+        return 'http://www.generation-msx.nl/msxdb/softwareinfo/' + generationMSXId;
+    }
 }
