@@ -214,7 +214,8 @@
       "overrideargumentsinsettings": "Sostituisci argomenti nelle impostazioni"
     },
     "relatedgames": {
-      "noresults": "Nessun risultato"
+      "noresults": "Nessun risultato",
+      "notingenerationmsx": "Non è in Generation-MSX"
     }
   },
   "shared": {

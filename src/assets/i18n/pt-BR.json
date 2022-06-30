@@ -212,6 +212,10 @@
     "editBluemsxArguments": {
       "bluemsxArguments": "Argumentos de blueMSX",
       "overrideargumentsinsettings": "Substituir argumentos nas configurações"
+    },
+    "relatedgames": {
+      "noresults": "Nenhum Resultado",
+      "notingenerationmsx": "Não está em Generation-MSX"
     }
   },
   "shared": {

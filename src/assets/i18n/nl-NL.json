@@ -214,7 +214,8 @@
       "overrideargumentsinsettings": "Overschrijf argumenten in de instellingen"
     },
     "relatedgames": {
-      "noresults": "Geen resultaten"
+      "noresults": "Geen resultaten",
+      "notingenerationmsx": "Het zit niet in Generation-MSX"
     }
   },
   "shared": {

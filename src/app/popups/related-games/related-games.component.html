@@ -1,8 +1,8 @@
 <div class="related-games" #relatedGamesDiv>
     <div *ngIf="relatedGames.length === 0" class="no-results">{{ 'popups.relatedgames.noresults' | translate }}</div>
     <div *ngFor="let relatedGame of relatedGames; let i = index" class="mt-4">
-        <img src="{{ imageData1[i] }}" class="screenshots">
-        <img src="{{ imageData2[i] }}" class="screenshots">
+        <img src="{{ imageData1[i] }}" class="screenshots" draggable="false">
+        <img src="{{ imageData2[i] }}" class="screenshots" draggable="false">
         <div class="d-inline-block ms-3 me-3">
             <div class="game-name">{{ relatedGame.name }}</div>
             <div class="game-data">
@@ -13,6 +13,9 @@
                 <app-web-link *ngIf="isShowGenerationMSXLink(relatedGame)" label="Generation-MSX"
                     [address]="getGenerationMSXAddress(relatedGame)" [buttonLook]="true">
                 </app-web-link>
+                <span *ngIf="!isShowGenerationMSXLink(relatedGame)" class="badge bg-light text-dark">
+                    {{ 'popups.relatedgames.notingenerationmsx' | translate }}
+                </span>
             </div>
         </div>
     </div>

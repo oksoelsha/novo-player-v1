@@ -214,7 +214,8 @@
       "overrideargumentsinsettings": "Remplacer les arguments dans les paramètres"
     },
     "relatedgames": {
-      "noresults": "Aucun résultat"
+      "noresults": "Aucun résultat",
+      "notingenerationmsx": "Ce n'est pas dans Generation-MSX"
     }
   },
   "shared": {

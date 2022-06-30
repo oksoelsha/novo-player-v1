@@ -214,7 +214,8 @@
       "overrideargumentsinsettings": "設定の引数をオーバーライドする"
     },
     "relatedgames": {
-      "noresults": "結果なし"
+      "noresults": "結果なし",
+      "notingenerationmsx": "Generation-MSXにはありません"
     }
   },
   "shared": {

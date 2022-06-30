@@ -214,7 +214,8 @@
       "overrideargumentsinsettings": "Anular argumentos en la configuración"
     },
     "relatedgames": {
-      "noresults": "No hay resultados"
+      "noresults": "No hay resultados",
+      "notingenerationmsx": "No está en Generation-MSX"
     }
   },
   "shared": {
