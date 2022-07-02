@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -6,7 +6,8 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-bluemsx-arguments-edit',
   templateUrl: './bluemsx-arguments-edit.component.html',
-  styleUrls: ['./bluemsx-arguments-edit.component.sass']
+  styleUrls: ['./bluemsx-arguments-edit.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BluemsxArgumentsEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 

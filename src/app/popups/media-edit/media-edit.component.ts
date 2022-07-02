@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
@@ -6,7 +6,8 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-media-edit',
   templateUrl: './media-edit.component.html',
-  styleUrls: ['./media-edit.component.sass']
+  styleUrls: ['./media-edit.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MediaEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
