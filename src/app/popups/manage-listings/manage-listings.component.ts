@@ -43,7 +43,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
   }
 
   close(): void {
-    super.close(this.resetState);
+    super.close(this.resetStateAndScrollPosition);
   }
 
   enableRenameMode(listing: string) {
@@ -105,6 +105,11 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
     this.listingToMergeTo = null;
   }
 
+  private resetStateAndScrollPosition = () => {
+    this.resetState();
+    this.listingsTable.nativeElement.scrollTop = 0;
+  }
+
   private setSelectedListing(listing: string) {
     this.selectedListing = listing;
     this.listingsSelectionMap.set(listing, true);
@@ -163,7 +168,6 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
 
   private enableMergeMode() {
     this.mergeMode = true;
-
     this.listingToMergeFrom = this.selectedListing;
     this.listingToMergeTo = this.renamedListing.trim();
   }

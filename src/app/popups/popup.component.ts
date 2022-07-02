@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, 
   styleUrls: ['./popup.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PopupComponent {
+export class PopupComponent implements OnDestroy {
 
   @Input () titleHeader: string;
   @Input () popupId: string;
@@ -33,6 +33,10 @@ export class PopupComponent {
         self.close();
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    window.removeAllListeners();
   }
 
   open(): void {
