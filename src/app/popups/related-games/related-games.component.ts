@@ -53,7 +53,7 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
   }
 
   isShowYear(relatedGame: Game) {
-    return relatedGame.year !== null && String(relatedGame.year).trim() != '';
+    return relatedGame.year !== null && String(relatedGame.year).trim() !== '';
   }
 
   isShowGenerationMSXLink(relatedGame: Game) {
@@ -68,7 +68,7 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
     if (screenshotData) {
       return screenshotData;
     } else {
-      return "assets/images/noscrsht.png";
+      return 'assets/images/noscrsht.png';
     }
   }
 }

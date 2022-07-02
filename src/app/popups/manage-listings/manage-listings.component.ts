@@ -97,7 +97,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
     this.listingsSelectionMap.clear();
     this.renamedListing = '';
     this.selectedListing = '';
-  }
+  };
 
   resetMergeMode() {
     this.mergeMode = false;

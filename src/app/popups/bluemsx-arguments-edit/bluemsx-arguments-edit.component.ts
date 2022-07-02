@@ -38,7 +38,7 @@ export class BluemsxArgumentsEditComponent extends PopupComponent implements OnI
   }
 
   save() {
-    this.bluemsxData.emit({'bluemsxArguments': this.bluemsxArguments, 'bluemsxOverrideSettings': this.bluemsxOverrideSettings});
+    this.bluemsxData.emit({bluemsxArguments: this.bluemsxArguments, bluemsxOverrideSettings: this.bluemsxOverrideSettings});
     this.close();
   }
 }

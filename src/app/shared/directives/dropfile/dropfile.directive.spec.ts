@@ -1,5 +1,5 @@
-import { Renderer2 } from "@angular/core";
-import { DropfileDirective } from "./dropfile.directive";
+import { Renderer2 } from '@angular/core';
+import { DropfileDirective } from './dropfile.directive';
 
 let renderer: Renderer2;
 

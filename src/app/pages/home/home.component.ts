@@ -382,7 +382,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.gamesService.removeGames(gamesToRemove).then((removed: boolean) => {
       if (removed) {
-        if (this.otherSelectedGames.size == 0) {
+        if (this.otherSelectedGames.size === 0) {
           this.alertService.success(this.localizationService.translate('home.gamewasremoved') + ': ' + game.name);
         } else {
           this.alertService.success(this.localizationService.translate('home.gameswereremoved'));
@@ -397,7 +397,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.initialize();
         this.removeGamesFromList(gamesToRemove);
       } else {
-        if (this.otherSelectedGames.size == 0) {
+        if (this.otherSelectedGames.size === 0) {
           this.alertService.failure(this.localizationService.translate('home.gamewasnotremoved') + ': ' + game.name);
         } else {
           this.alertService.failure(this.localizationService.translate('home.gameswerenotremoved'));
@@ -476,7 +476,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
     this.gamesService.updateHardware(gamesToUpdate, hardwareData.machine, hardwareData.fddMode, hardwareData.inputDevice,
       hardwareData.connectGFX9000).then(() => {
-      if (this.otherSelectedGames.size == 0) {
+      if (this.otherSelectedGames.size === 0) {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
@@ -489,7 +489,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   setBluemsxArguments(bluemsxData: any) {
     const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
     this.gamesService.setBluemsxArguments(gamesToUpdate, bluemsxData.bluemsxArguments, bluemsxData.bluemsxOverrideSettings).then(() => {
-      if (this.otherSelectedGames.size == 0) {
+      if (this.otherSelectedGames.size === 0) {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
@@ -501,7 +501,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   move(game: Game, newListing: string) {
     const gamesToMove = this.getAllSelectedGames(game);
     this.gamesService.moveGames(gamesToMove, newListing).then(() => {
-      if (this.otherSelectedGames.size == 0) {
+      if (this.otherSelectedGames.size === 0) {
         this.alertService.success(this.localizationService.translate('home.gamewasmoved') + ': ' + game.name);
       } else {
         this.alertService.success(this.localizationService.translate('home.gamesweremoved'));

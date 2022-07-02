@@ -7,6 +7,8 @@ export class DropfileDirective {
 
   @Output() droppedFile: EventEmitter<string> = new EventEmitter<string>();
 
+  constructor(private renderer: Renderer2) { }
+
   @HostListener('dragover', ['$event'])
   onDragOver(event: DragEvent) {
     this.highlightForDrop(event);
@@ -29,8 +31,6 @@ export class DropfileDirective {
       this.droppedFile.emit(event.dataTransfer.files[0].path);
     }
   }
-
-  constructor(private renderer: Renderer2) { }
 
   private highlightForDrop(event: DragEvent) {
     event.preventDefault();

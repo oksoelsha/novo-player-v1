@@ -71,10 +71,10 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
 
   save() {
     this.hardwareData.emit({
-      'machine': this.selectedMachine,
-      'fddMode': this.fddModes.indexOf(this.selectedFDDMode),
-      'inputDevice': this.inputDevices.indexOf(this.selectedInputDevice),
-      'connectGFX9000': this.connectGFX9000
+      machine: this.selectedMachine,
+      fddMode: this.fddModes.indexOf(this.selectedFDDMode),
+      inputDevice: this.inputDevices.indexOf(this.selectedInputDevice),
+      connectGFX9000: this.connectGFX9000
     });
 
     this.close();

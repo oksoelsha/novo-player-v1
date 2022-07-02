@@ -31,7 +31,7 @@ export class PopupComponent {
       // this is null when running unit tests
       popupClose.addEventListener('click', (e: any) => {
         self.close();
-      });  
+      });
     }
   }
 
@@ -44,7 +44,7 @@ export class PopupComponent {
     this.openStatus.emit(false);
     const popup = document.getElementById(this.popupId);
     popup.addEventListener('transitionend', (() => {
-      let customCleanup = cleanup;
+      const customCleanup = cleanup;
       return () => {
         if (customCleanup !== null) {
           customCleanup();

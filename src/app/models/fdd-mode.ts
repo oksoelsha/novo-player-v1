@@ -1,4 +1,4 @@
-export let FDDMode = [
+export const FDDMode = [
     'enableboth',
     'disablesecond',
     'disableboth'
