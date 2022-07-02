@@ -115,6 +115,15 @@ export class GameUtils {
         }
     }
 
+    static getGenreCode(genre: string): number {
+        const code = this.genres.indexOf(genre);
+        if (code <= 0) {
+            return 0;
+        } else {
+            return code;
+        }
+    }
+
     static getMonikor(game: Game): any {
         return {name: game.name, listing: game.listing};
     }

@@ -55,7 +55,6 @@ describe('GameUtils', () => {
 
 describe('GameUtils', () => {
   it('Genre function should return null if an out-of-range index is given', () => {
-    const game: Game = new Game('name', '123abc', 256);
     expect(GameUtils.getGenre(0)).toBeNull();
     expect(GameUtils.getGenre(52)).toBeNull();
   });
@@ -63,10 +62,19 @@ describe('GameUtils', () => {
 
 describe('GameUtils', () => {
   it('Genre function should a genre if a valid index is given', () => {
-    const game: Game = new Game('name', '123abc', 256);
     expect(GameUtils.getGenre(1)).toEqual('Action');
     expect(GameUtils.getGenre(32)).toEqual('Shoot-\'em-up | First-person shooter');
-    expect(GameUtils.getGenre(50)).toEqual('Dexterity');
+    expect(GameUtils.getGenre(51)).toEqual('Dungeon');
+  });
+});
+
+describe('GameUtils', () => {
+  it('GenreCode function should a genre code if a valid genre string is given', () => {
+    expect(GameUtils.getGenreCode('Action')).toEqual(1);
+    expect(GameUtils.getGenreCode('Shoot-\'em-up | First-person shooter')).toEqual(32);
+    expect(GameUtils.getGenreCode('Dungeon')).toEqual(51);
+    expect(GameUtils.getGenreCode('Unknown')).toEqual(0);
+    expect(GameUtils.getGenreCode('wrong')).toEqual(0);
   });
 });
 

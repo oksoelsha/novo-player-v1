@@ -2,6 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron'
 import { ExtraData, ExtraDataService } from './ExtraDataService'
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService'
 import { Game } from '../src/app/models/game'
+import { GameUtils } from '../src/app/models/game-utils';
 
 export class RelatedGamesService {
     private extraDataInfo: Map<string, ExtraData>;
@@ -12,10 +13,16 @@ export class RelatedGamesService {
     private readonly NAME_MATCH_ONE_WORD_GAME_SCORE = 5;
     private readonly NAME_MATCH_ONE_IN_MANY_WORDS_SCORE = 3;
     private readonly NAME_MATCH_TWO_OR_MORE_IN_MANY_WORDS_SCORE = 5;
-    private readonly GENRE_MATCH_SCORE = 4;
+
+    private readonly GENRE_NON_ACTION_MATCH_SCORE = 4;
+    private readonly GENRE_ACTION_MATCH_SCORE = 3;
+    private readonly GENRE_SECOND_MATCH_SCORE = 1;
+
     private readonly COMPANY_MATCH_SCORE = 2;
     private readonly SAME_CLUSTER_MATCH_SCORE = 7;
     private readonly MAX_SIZE_RESULTS = 30;
+
+    private readonly ACTION_GENRE_CODE = GameUtils.getGenreCode('Action');
 
     constructor(
         private win: BrowserWindow,
@@ -114,15 +121,17 @@ export class RelatedGamesService {
                         relatedGame.setCompany(companyOfRepositoryGame);
                         relatedGame.setYear(entry.year);
 
-                        const similarGame = new SimilarGame(relatedGame, score);
-                        similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                        if (!(similarGames.has(extraData.generationMSXID) && similarGames.get(extraData.generationMSXID).score > score)) {
+                            const similarGame = new SimilarGame(relatedGame, score);
+                            similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                        }
                     }
                 }
             }
         });
 
         const relatedGames = Array.from(similarGames.values())
-            .sort((a, b) => (a.score < b.score ? 1 : -1))
+            .sort((a, b) => b.score - a.score)
             .map((s) => s.relatedGame)
             .slice(0, this.MAX_SIZE_RESULTS);
         this.win.webContents.send('findRelatedGamesResponse', relatedGames);
@@ -154,10 +163,30 @@ export class RelatedGamesService {
             const selectedGameGenre2 = game.genre2;
             const genre1OfRepositoryGame = extraData.genre1;
             const genre2OfRepositoryGame = extraData.genre2;
+            let firstMatch = false;
 
-            if ((selectedGameGenre1 != 0 && (selectedGameGenre1 == genre1OfRepositoryGame || selectedGameGenre1 == genre2OfRepositoryGame)) ||
-                (selectedGameGenre2 != 0 && (selectedGameGenre2 == genre1OfRepositoryGame || selectedGameGenre2 == genre2OfRepositoryGame))) {
-                score = this.GENRE_MATCH_SCORE;
+            if (selectedGameGenre1 != 0) {
+                if (selectedGameGenre1 == genre1OfRepositoryGame || selectedGameGenre1 == genre2OfRepositoryGame) {
+                    if (selectedGameGenre1 === this.ACTION_GENRE_CODE) {
+                        score = score + this.GENRE_ACTION_MATCH_SCORE;
+                    } else {
+                        score = score + this.GENRE_NON_ACTION_MATCH_SCORE;
+                    }
+                    firstMatch = true;
+                }
+            }
+            if (selectedGameGenre2 != 0) {
+                if (selectedGameGenre2 == genre1OfRepositoryGame || selectedGameGenre2 == genre2OfRepositoryGame) {
+                    if (firstMatch) {
+                        score = score + this.GENRE_SECOND_MATCH_SCORE;
+                    } else {
+                        if (selectedGameGenre2 === this.ACTION_GENRE_CODE) {
+                            score = score + this.GENRE_ACTION_MATCH_SCORE;
+                        } else {
+                            score = score + this.GENRE_NON_ACTION_MATCH_SCORE;
+                        }
+                    }
+                }
             }
         }
 

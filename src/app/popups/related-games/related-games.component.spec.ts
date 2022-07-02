@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { RelatedGamesComponent } from './related-games.component';
 
@@ -8,6 +9,7 @@ describe('RelatedGamesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ RelatedGamesComponent ]
     })
     .compileComponents();
