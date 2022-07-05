@@ -16,6 +16,10 @@
                 <span *ngIf="!isShowGenerationMSXLink(relatedGame)" class="badge bg-light text-dark">
                     {{ 'popups.relatedgames.notingenerationmsx' | translate }}
                 </span>
+                <span *ngIf="relatedGame.listing" class="badge bg-dark bg-size bg-link"
+                    (click)="locateInPlayer(i)">
+                    🚩
+                </span>
             </div>
         </div>
     </div>

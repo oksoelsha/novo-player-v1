@@ -4,7 +4,7 @@ import { GamesService } from '../../../services/games.service';
 @Component({
   selector: 'app-web-link',
   templateUrl: './web-link.component.html',
-  styleUrls: ['./web-link.component.sass'],
+  styleUrls: ['../../../common-styles.sass', './web-link.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WebLinkComponent {

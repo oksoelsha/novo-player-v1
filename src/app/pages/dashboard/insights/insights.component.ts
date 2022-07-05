@@ -6,7 +6,7 @@ enum DisplayModes {topTen, launchTimes}
 @Component({
   selector: 'app-dashboard-insights-card',
   templateUrl: './insights.component.html',
-  styleUrls: ['../dashboard.component.sass', './insights.component.sass']
+  styleUrls: ['../../../common-styles.sass', '../dashboard.component.sass', './insights.component.sass']
 })
 export class InsightsComponent implements OnInit {
 

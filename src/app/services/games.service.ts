@@ -206,7 +206,7 @@ export class GamesService {
 
   async getRelatedGames(game: Game): Promise<Game[]> {
     return new Promise<Game[]>((resolve, reject) => {
-      this.ipc.once('findRelatedGamesResponse', (event, relatedGames) => {
+      this.ipc.once('findRelatedGamesResponse', (event, relatedGames: Game[]) => {
         resolve(relatedGames);
       });
       this.ipc.send('findRelatedGames', game);

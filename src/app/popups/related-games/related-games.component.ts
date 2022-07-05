@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Game } from '../../models/game';
 import { GameUtils } from '../../models/game-utils';
 import { GamesService } from '../../services/games.service';
@@ -14,6 +14,7 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
 
   @Input() popupId: string;
   @Input() game: Game;
+  @Output() foundGame: EventEmitter<Game> = new EventEmitter<Game>();
   @ViewChild('relatedGamesDiv', { static: true }) private relatedGamesDiv: ElementRef;
   relatedGames: Game[] = [];
   imageData1: string[] = [];
@@ -62,6 +63,11 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
 
   getGenerationMSXAddress(relatedGame: Game) {
     return GameUtils.getGenerationMSXURLForGame(relatedGame.generationMSXId);
+  }
+
+  locateInPlayer(index: number) {
+    this.foundGame.emit(this.relatedGames[index]);
+    this.close();
   }
 
   private getScreenshot(screenshotData: string): string {

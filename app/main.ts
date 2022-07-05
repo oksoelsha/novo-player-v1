@@ -98,7 +98,7 @@ function initializeServices() {
 
   new OpenMSXControlService(win);
 
-  new RelatedGamesService(win, extraDataService, emulatorRepositoryService);
+  new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

@@ -3,6 +3,7 @@ import { ExtraData, ExtraDataService } from './ExtraDataService'
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService'
 import { Game } from '../src/app/models/game'
 import { GameUtils } from '../src/app/models/game-utils';
+import { GamesService } from './GamesService';
 
 export class RelatedGamesService {
     private extraDataInfo: Map<string, ExtraData>;
@@ -27,7 +28,8 @@ export class RelatedGamesService {
     constructor(
         private win: BrowserWindow,
         private extraDataService: ExtraDataService,
-        private emulatorRepositoryService: EmulatorRepositoryService) {
+        private emulatorRepositoryService: EmulatorRepositoryService,
+        private gamesService: GamesService) {
 
         this.extraDataInfo = extraDataService.getExtraDataInfo();
         this.repositoryInfo = emulatorRepositoryService.getRepositoryInfo();
@@ -110,18 +112,19 @@ export class RelatedGamesService {
                 const extraData = this.extraDataInfo.get(sha1);
 
                 if (extraData != null && extraData.generationMSXID != game.generationMSXId) {
-                    const score = this.getNameScore(repositoryTitle, gameNameParts) +
-                        this.getGenreScore(extraData, game) +
-                        this.getCompanyScore(companyOfRepositoryGame, companyOfSelectedGame) +
-                        this.getClusterScore(clusterForGivenGame, extraData.generationMSXID);
+                    const similarGame = similarGames.get(extraData.generationMSXID);
+                    if (!similarGame) {
+                        const score = this.getNameScore(repositoryTitle, gameNameParts) +
+                            this.getGenreScore(extraData, game) +
+                            this.getCompanyScore(companyOfRepositoryGame, companyOfSelectedGame) +
+                            this.getClusterScore(clusterForGivenGame, extraData.generationMSXID);
 
-                    if (score > 0) {
-                        const relatedGame = new Game(repositoryTitle, sha1, 0);
-                        relatedGame.setGenerationMSXId(extraData.generationMSXID);
-                        relatedGame.setCompany(companyOfRepositoryGame);
-                        relatedGame.setYear(entry.year);
+                        if (score > 0) {
+                            const relatedGame = new Game(repositoryTitle, sha1, 0);
+                            relatedGame.setGenerationMSXId(extraData.generationMSXID);
+                            relatedGame.setCompany(companyOfRepositoryGame);
+                            relatedGame.setYear(entry.year);
 
-                        if (!(similarGames.has(extraData.generationMSXID) && similarGames.get(extraData.generationMSXID).score > score)) {
                             const similarGame = new SimilarGame(relatedGame, score);
                             similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
                         }
@@ -134,7 +137,10 @@ export class RelatedGamesService {
             .sort((a, b) => b.score - a.score)
             .map((s) => s.relatedGame)
             .slice(0, this.MAX_SIZE_RESULTS);
-        this.win.webContents.send('findRelatedGamesResponse', relatedGames);
+
+        this.gamesService.setGameListings(relatedGames).then(() => {
+            this.win.webContents.send('findRelatedGamesResponse', relatedGames);
+        });
     }
 
     private getNameScore(title: string, gameNameParts: Set<string>): number {

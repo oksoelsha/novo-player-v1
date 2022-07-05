@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import Datastore from 'nedb';
 import * as os from 'os';
 import * as path from 'path';
+import { resolve } from 'path';
 import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
 import { GameDO } from './data/game-do';
@@ -29,6 +30,23 @@ export class GamesService {
             let gameDO: GameDO = new GameDO(game);
             this.database.insert(gameDO, (err: any, savedGame: GameDO) => {
                 return resolve(err == null);
+            });
+        });
+    }
+
+    setGameListings(games: Game[]): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            let totalFinds = 0;
+            games.forEach(game => {
+                this.database.find({ generationMSXId: game.generationMSXId }, (err: any, entries: any) => {
+                    if (entries.length > 0) {
+                        game.setListing(entries[0].listing);
+                    }
+                    totalFinds++;
+                    if (totalFinds == games.length) {
+                        resolve();
+                    }
+                });    
             });
         });
     }
@@ -115,16 +133,16 @@ export class GamesService {
     }
 
     private updateHardware(games: Game[], machine: string, fddMode: number, inputDevice: number, connectGFX9000: boolean) {
-        let updatedFieldsTotal = this.updateMultipleGames(games, ['machine', 'fddMode', 'inputDevice', 'connectGFX9000'],
+        this.updateMultipleGames(games, ['machine', 'fddMode', 'inputDevice', 'connectGFX9000'],
             [machine, fddMode, inputDevice, connectGFX9000], 'updateHardwareResponse');
     }
 
     private moveGames(games: Game[], newListing: string) {
-        let updatedFieldsTotal = this.updateMultipleGames(games, ['listing'], [newListing], 'moveGamesResponse');
+        this.updateMultipleGames(games, ['listing'], [newListing], 'moveGamesResponse');
     }
 
     private setBluemsxArguments(games: Game[], args: string, overrideSettings: boolean) {
-        let updatedFieldsTotal = this.updateMultipleGames(games, ['bluemsxArguments', 'bluemsxOverrideSettings'],
+        this.updateMultipleGames(games, ['bluemsxArguments', 'bluemsxOverrideSettings'],
             [args, overrideSettings], 'setBluemsxArgumentsResponse');
     }
 
