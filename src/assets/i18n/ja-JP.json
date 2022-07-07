@@ -215,7 +215,9 @@
     },
     "relatedgames": {
       "noresults": "結果なし",
-      "notingenerationmsx": "Generation-MSXにはありません"
+      "notingenerationmsx": "Generation-MSXにはありません",
+      "viewongenerationmsx": "Generation-MSX で表示",
+      "locateinnovoplayer": "Novo Playerで検索"
     }
   },
   "shared": {

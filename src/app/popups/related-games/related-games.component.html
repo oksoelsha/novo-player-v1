@@ -11,13 +11,14 @@
             </div>
             <div class="mt-2">
                 <app-web-link *ngIf="isShowGenerationMSXLink(relatedGame)" label="Generation-MSX"
-                    [address]="getGenerationMSXAddress(relatedGame)" [buttonLook]="true">
+                    [address]="getGenerationMSXAddress(relatedGame)" [buttonLook]="true"
+                    [title]="'popups.relatedgames.viewongenerationmsx' | translate">
                 </app-web-link>
                 <span *ngIf="!isShowGenerationMSXLink(relatedGame)" class="badge bg-light text-dark">
                     {{ 'popups.relatedgames.notingenerationmsx' | translate }}
                 </span>
                 <span *ngIf="relatedGame.listing" class="badge bg-dark bg-size bg-link"
-                    (click)="locateInPlayer(i)">
+                    (click)="locateInPlayer(i)" [title]="'popups.relatedgames.locateinnovoplayer' | translate">
                     🚩
                 </span>
             </div>

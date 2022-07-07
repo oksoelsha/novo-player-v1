@@ -66,8 +66,8 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
   }
 
   locateInPlayer(index: number) {
-    this.foundGame.emit(this.relatedGames[index]);
     this.close();
+    this.foundGame.emit(this.relatedGames[index]);
   }
 
   private getScreenshot(screenshotData: string): string {

@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import Datastore from 'nedb';
 import * as os from 'os';
 import * as path from 'path';
-import { resolve } from 'path';
 import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
 import { GameDO } from './data/game-do';
@@ -34,21 +33,17 @@ export class GamesService {
         });
     }
 
-    setGameListings(games: Game[]): Promise<void> {
-        return new Promise<void>((resolve, reject) => {
-            let totalFinds = 0;
-            games.forEach(game => {
-                this.database.find({ generationMSXId: game.generationMSXId }, (err: any, entries: any) => {
-                    if (entries.length > 0) {
-                        game.setListing(entries[0].listing);
-                    }
-                    totalFinds++;
-                    if (totalFinds == games.length) {
-                        resolve();
-                    }
-                });    
+    async getListing(sha1Code: string): Promise<string> {
+        const listing = await new Promise<string>((resolve, reject) => {
+            this.database.findOne({ _id: sha1Code }, (err: any, entry: any) => {
+                if (entry) {
+                    resolve(entry.listing);
+                } else {
+                    resolve('');
+                }
             });
         });
+        return listing;
     }
 
     private init() {

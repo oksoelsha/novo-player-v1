@@ -89,7 +89,7 @@ export class RelatedGamesService {
         });
     }
 
-    private findRelated(game: Game) {
+    private async findRelated(game: Game) {
         const similarGames = new Map<number, SimilarGame>();
 
         const repositoryGame = this.repositoryInfo.get(game.sha1Code);
@@ -104,43 +104,63 @@ export class RelatedGamesService {
         }
         const clusterForGivenGame = this.idToCluster.get(game.generationMSXId);
 
-        this.repositoryInfo.forEach((entry: RepositoryData, sha1: string) => {
+        for (let entry of Array.from(this.repositoryInfo.entries())) {
+            const sha1 = entry[0];
+            const repositoryInfo = entry[1];
+
             // limit the results to MSX system only (i.e. exclude others such as ColecoVision)
-            if (entry.system === 'MSX') {
-                const companyOfRepositoryGame = entry.company;
-                const repositoryTitle = entry.title;
-                const extraData = this.extraDataInfo.get(sha1);
+            if (repositoryInfo.system === 'MSX') {
+                const extraDataInfo = this.extraDataInfo.get(sha1);
+                if (extraDataInfo != null) {
+                    const similarGame = similarGames.get(extraDataInfo.generationMSXID);
 
-                if (extraData != null && extraData.generationMSXID != game.generationMSXId) {
-                    const similarGame = similarGames.get(extraData.generationMSXID);
-                    if (!similarGame) {
-                        const score = this.getNameScore(repositoryTitle, gameNameParts) +
-                            this.getGenreScore(extraData, game) +
-                            this.getCompanyScore(companyOfRepositoryGame, companyOfSelectedGame) +
-                            this.getClusterScore(clusterForGivenGame, extraData.generationMSXID);
+                    if (similarGame) {
+                        if (!similarGame.relatedGame.listing) {
+                            const listing = await this.gamesService.getListing(sha1);
+                            if (listing) {
+                                const updatedGame = new Game(similarGame.relatedGame.name, sha1, 0);
+                                updatedGame.setGenerationMSXId(similarGame.relatedGame.generationMSXId);
+                                updatedGame.setCompany(similarGame.relatedGame.company);
+                                updatedGame.setYear(similarGame.relatedGame.year);
+                                updatedGame.setListing(listing);
 
-                        if (score > 0) {
-                            const relatedGame = new Game(repositoryTitle, sha1, 0);
-                            relatedGame.setGenerationMSXId(extraData.generationMSXID);
-                            relatedGame.setCompany(companyOfRepositoryGame);
-                            relatedGame.setYear(entry.year);
+                                similarGames.set(extraDataInfo.generationMSXID, similarGame.clone(updatedGame));
+                            }
+                        }
+                    } else {
+                        if (extraDataInfo.generationMSXID != game.generationMSXId) {
+                            const repositoryCompany = repositoryInfo.company;
+                            const repositoryTitle = repositoryInfo.title;
 
-                            const similarGame = new SimilarGame(relatedGame, score);
-                            similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                            const score = this.getNameScore(repositoryTitle, gameNameParts) +
+                                this.getGenreScore(extraDataInfo, game) +
+                                this.getCompanyScore(repositoryCompany, companyOfSelectedGame) +
+                                this.getClusterScore(clusterForGivenGame, extraDataInfo.generationMSXID);
+
+                            if (score > 0) {
+                                const relatedGame = new Game(repositoryTitle, sha1, 0);
+                                relatedGame.setGenerationMSXId(extraDataInfo.generationMSXID);
+                                relatedGame.setCompany(repositoryCompany);
+                                relatedGame.setYear(repositoryInfo.year);
+
+                                const listing = await this.gamesService.getListing(sha1);
+                                relatedGame.setListing(listing);
+
+                                const similarGame = new SimilarGame(relatedGame, score);
+                                similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                            }
                         }
                     }
                 }
             }
-        });
+        }
 
         const relatedGames = Array.from(similarGames.values())
             .sort((a, b) => b.score - a.score)
             .map((s) => s.relatedGame)
             .slice(0, this.MAX_SIZE_RESULTS);
 
-        this.gamesService.setGameListings(relatedGames).then(() => {
-            this.win.webContents.send('findRelatedGamesResponse', relatedGames);
-        });
+        this.win.webContents.send('findRelatedGamesResponse', relatedGames);
     }
 
     private getNameScore(title: string, gameNameParts: Set<string>): number {
@@ -240,5 +260,9 @@ class SimilarGame {
     constructor(relatedGame: Game, score: number) {
         this.relatedGame = relatedGame;
         this.score = score;
+    }
+
+    clone(relatedGame: Game) {
+        return new SimilarGame(relatedGame, this.score);
     }
 }

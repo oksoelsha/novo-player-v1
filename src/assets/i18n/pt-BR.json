@@ -215,7 +215,9 @@
     },
     "relatedgames": {
       "noresults": "Nenhum Resultado",
-      "notingenerationmsx": "Não está em Generation-MSX"
+      "notingenerationmsx": "Não está em Generation-MSX",
+      "viewongenerationmsx": "Exibir no Generation-MSX",
+      "locateinnovoplayer": "Localizar em Novo Player"
     }
   },
   "shared": {
