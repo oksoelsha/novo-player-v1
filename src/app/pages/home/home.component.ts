@@ -25,11 +25,11 @@ import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-ed
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 
-enum SortDirection {
+export enum SortDirection {
   ASC, DESC
 }
 
-class SortData {
+export class SortData {
   field: string;
   direction: SortDirection;
 
@@ -303,18 +303,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     sessionStorage.setItem('sortData', JSON.stringify(this.sortData));
     this.sortGames(this.games);
-  }
-
-  getSortStatus(field: string): string {
-    if (this.sortData.field === field) {
-      if (this.sortData.direction === SortDirection.ASC) {
-        return '↑';
-      } else {
-        return '↓';
-      }
-    } else {
-      return '';
-    }
   }
 
   launch(game: Game) {
@@ -859,5 +847,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         return 0;
       }
     });
+    this.games = this.games.slice();
   }
 }

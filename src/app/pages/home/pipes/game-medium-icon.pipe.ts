@@ -6,7 +6,7 @@ import { Game } from '../../../models/game';
 })
 export class GameMediumIconPipe implements PipeTransform {
 
-  transform(game: Game, ...args: any[]): string {
+  transform(game: Game): string {
     if (game.romA != null) {
       return 'assets/images/media/rom.png';
     } else if (game.diskA != null) {

@@ -72,13 +72,13 @@
       <table *ngIf="games">
         <tr class="table-header">
           <th class="name-title" (click)="setSort('name')">
-            {{ 'home.name' | translate }} <span>{{ getSortStatus('name') }}</span>
+            {{ 'home.name' | translate }} <span>{{ 'name' | sortStatus : sortData : games }}</span>
           </th>
           <th class="company-title" (click)="setSort('company')">
-            {{ 'home.company' | translate }} <span>{{ getSortStatus('company') }}</span>
+            {{ 'home.company' | translate }} <span>{{ 'company' | sortStatus : sortData : games }}</span>
           </th>
           <th class="year-title" (click)="setSort('year')">
-            {{ 'home.year' | translate }} <span>{{ getSortStatus('year') }}</span>
+            {{ 'home.year' | translate }} <span>{{ 'year' | sortStatus : sortData : games }}</span>
           </th>
         </tr>
       </table>

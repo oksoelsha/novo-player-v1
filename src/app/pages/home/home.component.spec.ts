@@ -9,6 +9,7 @@ import { ScanParametersComponent } from '../../popups/scan-parameters/scan-param
 import { FileSystemChooserComponent } from '../../shared/components/file-system-chooser/file-system-chooser.component';
 
 import { HomeComponent } from './home.component';
+import { SortStatusPipe } from './pipes/sort-status.pipe';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -26,6 +27,7 @@ describe('HomeComponent', () => {
         HomeComponent,
         ScanParametersComponent,
         FileSystemChooserComponent,
+        SortStatusPipe,
         NgbDropdown
       ],
       providers: [
