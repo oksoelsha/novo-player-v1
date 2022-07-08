@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
   @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
 
+  readonly isWindows = this.platformService.isOnWindows();
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';
   games: Game[] = [];
@@ -250,10 +251,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.historyToUndoSubscription.unsubscribe();
-  }
-
-  isOnWindows(): boolean {
-    return this.platformService.isOnWindows();
   }
 
   handleOpenMenuEvents(opened: boolean) {

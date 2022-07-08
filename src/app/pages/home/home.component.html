@@ -137,7 +137,7 @@
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
               {{ 'home.onwebmsx' | translate }}
             </button>
-            <button *ngIf="isOnWindows()" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            <button *ngIf="isWindows" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
               {{ 'home.onbluemsx' | translate }}
             </button>
@@ -163,10 +163,10 @@
               {{ 'home.setInfoFile' | translate }}
             </button>
             <div class="dropdown-divider"></div>
-            <button *ngIf="isOnWindows()" ngbDropdownItem type="button" (click)="bluemsxArgumentsEdit.open()">
+            <button *ngIf="isWindows" ngbDropdownItem type="button" (click)="bluemsxArgumentsEdit.open()">
               {{ 'home.editbluemsxarguments' | translate }}
             </button>
-            <div class="dropdown-divider" *ngIf="isOnWindows()"></div>
+            <div class="dropdown-divider" *ngIf="isWindows"></div>
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="relatedGames.open()">
               {{ 'home.findrelatedgames' | translate }}
             </button>
@@ -296,7 +296,7 @@
       <div class="menu-icon"></div>
       {{ 'home.onwebmsx' | translate }}
     </ng-template>
-    <ng-template contextMenuItem [visible]="isOnWindows() && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
+    <ng-template contextMenuItem [visible]="isWindows && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
       <div class="menu-icon"></div>
       {{ 'home.onbluemsx' | translate }}
     </ng-template>
@@ -319,11 +319,11 @@
     {{ 'home.setInfoFile' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
-  <ng-template contextMenuItem [visible]="isOnWindows()" (execute)="bluemsxArgumentsEdit.open()">
+  <ng-template contextMenuItem [visible]="isWindows" (execute)="bluemsxArgumentsEdit.open()">
     <span class="menu-icon"></span>
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isOnWindows()" [divider]="true"></ng-template>
+  <ng-template contextMenuItem [visible]="isWindows" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="relatedGames.open()">
     <div class="menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
