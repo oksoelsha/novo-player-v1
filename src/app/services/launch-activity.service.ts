@@ -38,15 +38,6 @@ export class LaunchActivityService {
     return this.subject.asObservable();
   }
 
-  getFileGroup(pid: number, medium: string): Promise<string[]> {
-    return new Promise<string[]>((resolve, reject) => {
-      this.ipc.once('getFileGroupResponse' + pid, (event: any, fileGroup: string[]) => {
-        resolve(fileGroup);
-      });
-      this.ipc.send('getFileGroup', pid, medium);
-    });
-  }
-
   switchDisk(pid: number, medium: string) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('switchDiskOnOpenmsxResponse', (event: any, switched: boolean) => {

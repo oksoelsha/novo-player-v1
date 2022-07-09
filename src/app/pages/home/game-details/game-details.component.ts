@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Game } from '../../../models/game';
 import { GameUtils } from '../../../models/game-utils';
 import { GamesService } from '../../../services/games.service';
 import { LocalizationService } from '../../../services/localization.service';
+import { FilesService } from '../../../services/files.service';
 
 @Component({
   selector: 'app-home-game-details',
@@ -26,7 +27,7 @@ export class GameDetailsComponent implements OnChanges {
   @ViewChild('gameDetailGenerationMSXLink', { static: true }) private gameDetailGenerationMSXLink: TemplateRef<object>;
   @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile: TemplateRef<object>;
 
-  selectedGameMedium: Promise<string>;
+  selectedGameMedium: string;
   readonly countryFlags: Map<string, string> = new Map([
     ['BR', 'pt_BR'],
     ['DE', 'de_DE'],
@@ -72,7 +73,8 @@ export class GameDetailsComponent implements OnChanges {
   ];
   private readonly fileFields: string[] = ['romA', 'romB', 'diskA', 'diskB', 'tape', 'harddisk', 'laserdisc'];
 
-  constructor(private gamesService: GamesService, private localizationService: LocalizationService, private clipboard: Clipboard) { }
+  constructor(private gamesService: GamesService, private localizationService: LocalizationService, private clipboard: Clipboard,
+    private filesService: FilesService, private changeDetector: ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedGame.isFirstChange() ||
@@ -180,20 +182,28 @@ export class GameDetailsComponent implements OnChanges {
 
   private setSelectedGameMedium() {
     if (this.selectedGame.romA != null) {
-      this.selectedGameMedium = Promise.resolve(this.localizationService.translate('medium.rom'));
+      this.selectedGameMedium = this.localizationService.translate('medium.rom');
+      this.changeDetector.detectChanges();
     } else if (this.selectedGame.diskA != null) {
-      this.selectedGameMedium = Promise.resolve(this.localizationService.translate('medium.disk'));
-      // TODO - get disk group
+      this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), this.selectedGame.diskA).then((group: string[]) => {
+        this.selectedGameMedium = this.localizationService.translate('medium.disk') + ' ' + group.length + 'x';
+        this.changeDetector.detectChanges();
+      });
     } else if (this.selectedGame.tape != null) {
-      this.selectedGameMedium = Promise.resolve(this.localizationService.translate('medium.tape'));
-      // TODO - get tape group
+      this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), this.selectedGame.tape).then((group: string[]) => {
+        this.selectedGameMedium = this.localizationService.translate('medium.tape') + ' ' + group.length + 'x';
+        this.changeDetector.detectChanges();
+      });
     } else if (this.selectedGame.harddisk != null) {
-      this.selectedGameMedium = Promise.resolve(this.localizationService.translate('medium.harddisk'));
+      this.selectedGameMedium = this.localizationService.translate('medium.harddisk');
+      this.changeDetector.detectChanges();
     } else if (this.selectedGame.laserdisc != null) {
-      this.selectedGameMedium = Promise.resolve(this.localizationService.translate('medium.laserdisc'));
+      this.selectedGameMedium = this.localizationService.translate('medium.laserdisc');
+      this.changeDetector.detectChanges();
     } else {
       // shouldn't happen
-      this.selectedGameMedium = Promise.resolve('');
+      this.selectedGameMedium = '';
+      this.changeDetector.detectChanges();
     }
   }
 }

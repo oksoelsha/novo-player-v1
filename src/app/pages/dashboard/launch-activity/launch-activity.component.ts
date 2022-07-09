@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventSource } from '../../../models/event';
 import { Game } from '../../../models/game';
+import { FilesService } from '../../../services/files.service';
 import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
@@ -19,7 +20,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
-    private localizationService: LocalizationService, private platformService: PlatformService) {
+    private localizationService: LocalizationService, private platformService: PlatformService, private filesService: FilesService) {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
@@ -38,7 +39,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         medium = null;
       }
       if (medium) {
-        this.launchActivityService.getFileGroup(activity.pid, medium).then((fileGroup: string[]) => {
+        this.filesService.getFileGroup(activity.pid, medium).then((fileGroup: string[]) => {
           this.fileGroupMap.set(activity.pid, fileGroup);
         });
       }
