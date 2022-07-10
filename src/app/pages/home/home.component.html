@@ -104,8 +104,6 @@
               <span>
                 <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
                   [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
-                <img src="assets/images/operations/remove.png" *ngIf="otherSelectedGames.size === 0" (click)="remove($event, game)"
-                  placement="top" [ngbTooltip]="'home.removefromlisting' | translate" draggable="false">
               </span>
             </td>
           </tr>
