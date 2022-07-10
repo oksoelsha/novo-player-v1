@@ -29,6 +29,8 @@ export class SearchComponent implements OnChanges {
         this.inputField.nativeElement.value = '';
         this.inputField.nativeElement.focus();
       }, 0);
+    } else if (changes.parentMenuOpen.currentValue === false) {
+      this.searchText = '';
     }
   }
 
@@ -42,7 +44,7 @@ export class SearchComponent implements OnChanges {
         } else {
           this.foundGamesDropdown.close();
         }
-        this.changeDetector.detectChanges();
+        this.changeDetector.markForCheck();
       });
     } else {
       this.foundGamesDropdown.close();

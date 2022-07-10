@@ -45,7 +45,7 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
     this.emulatorService.getMachines().then((data: string[]) => {
       this.machines = data;
       this.selectedMachine = this.game.machine;
-      this.changeDetector.detectChanges();
+      this.changeDetector.markForCheck();
     });
 
     this.fddModes = FDDMode.map(f => this.localizationService.translate('popups.edithardware.' + f));

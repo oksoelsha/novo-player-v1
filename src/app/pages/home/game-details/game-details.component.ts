@@ -28,6 +28,8 @@ export class GameDetailsComponent implements OnChanges {
   @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile: TemplateRef<object>;
 
   selectedGameMedium: string;
+  selectedMediumGroupTotal: string;
+
   readonly countryFlags: Map<string, string> = new Map([
     ['BR', 'pt_BR'],
     ['DE', 'de_DE'],
@@ -183,27 +185,35 @@ export class GameDetailsComponent implements OnChanges {
   private setSelectedGameMedium() {
     if (this.selectedGame.romA != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.rom');
-      this.changeDetector.detectChanges();
+      this.selectedMediumGroupTotal = '';
     } else if (this.selectedGame.diskA != null) {
-      this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), this.selectedGame.diskA).then((group: string[]) => {
-        this.selectedGameMedium = this.localizationService.translate('medium.disk') + ' ' + group.length + 'x';
-        this.changeDetector.detectChanges();
-      });
+      this.selectedGameMedium = this.localizationService.translate('medium.disk');
+      this.selectedMediumGroupTotal = '';
+      this.setSelectedMediumGroupTotal(this.selectedGame.diskA);
     } else if (this.selectedGame.tape != null) {
-      this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), this.selectedGame.tape).then((group: string[]) => {
-        this.selectedGameMedium = this.localizationService.translate('medium.tape') + ' ' + group.length + 'x';
-        this.changeDetector.detectChanges();
-      });
+      this.selectedGameMedium = this.localizationService.translate('medium.tape');
+      this.selectedMediumGroupTotal = '';
+      this.setSelectedMediumGroupTotal(this.selectedGame.tape);
     } else if (this.selectedGame.harddisk != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.harddisk');
-      this.changeDetector.detectChanges();
+      this.selectedMediumGroupTotal = '';
     } else if (this.selectedGame.laserdisc != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.laserdisc');
-      this.changeDetector.detectChanges();
+      this.selectedMediumGroupTotal = '';
     } else {
       // shouldn't happen
       this.selectedGameMedium = '';
-      this.changeDetector.detectChanges();
+      this.selectedMediumGroupTotal = '';
     }
+    this.changeDetector.markForCheck();
+  }
+
+  private setSelectedMediumGroupTotal(medium: string) {
+    this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), medium).then((group: string[]) => {
+      if (group.length > 1) {
+        this.selectedMediumGroupTotal = group.length + 'x';
+        this.changeDetector.detectChanges();  
+      }
+    });
   }
 }

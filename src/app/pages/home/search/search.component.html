@@ -4,7 +4,7 @@
         (keyup)="processArrowKey($event)" #inputField>
     <div ngbDropdownMenu class="pt-0 pb-0">
         <button *ngFor="let game of foundGames" ngbDropdownItem (click)="onSelectGame(game)"
-            #foundSearchItem class="pe-3 ps-3">
+            class="pe-3 ps-3" #foundSearchItem>
             <div class="game-name">
                 {{ game.name }}
             </div>

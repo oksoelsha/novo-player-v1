@@ -40,7 +40,7 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
       if (!this.selectedMachine) {
         this.selectedMachine = data[0];
       }
-      this.changeDetector.detectChanges();
+      this.changeDetector.markForCheck();
     });
   }
 
