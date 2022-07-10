@@ -16,6 +16,7 @@ import { PlatformService } from '../../services/platform.service';
 export class SettingsComponent implements OnInit, AfterViewInit, DeactivateComponent {
   @ViewChild('settingsForm', { static: true }) settingsForm: NgForm;
 
+  readonly isWindows = this.platformService.isOnWindows();
   openmsxPath = '';
   screenshotsPath = '';
   gameMusicPath = '';
@@ -58,10 +59,6 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
 
   canExit(): boolean {
     return this.submitDisabled;
-  }
-
-  isOnWindows(): boolean {
-    return this.platformService.isOnWindows();
   }
 
   updateControl(control: string, value: any) {

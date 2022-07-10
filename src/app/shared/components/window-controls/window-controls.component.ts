@@ -11,6 +11,7 @@ import { PlatformService } from '../../../services/platform.service';
 export class WindowControlsComponent {
 
   @Input() titleImg: string;
+  readonly isWindows = this.platformService.isOnWindows();
   maximizedClass = '';
   private ipc: IpcRenderer;
 
@@ -27,10 +28,6 @@ export class WindowControlsComponent {
     this.ipc.on('windowUnmaximizedEvent', (event: any) => {
       this.handleUnmaximizedEvent();
     });
-  }
-
-  isOnWindows(): boolean {
-    return this.platformService.isOnWindows();
   }
 
   minimizeMainWindow() {

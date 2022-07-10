@@ -6,7 +6,7 @@
             <table class="table table-sm text-white" *ngIf="launchActivities.length > 0">
                 <tbody>
                     <tr *ngFor="let activity of launchActivities">
-                        <td *ngIf="isOnWindows()" class="activity-game-source">{{ getLaunchSource(activity.source) }}</td>
+                        <td *ngIf="isWindows" class="activity-game-source">{{ getLaunchSource(activity.source) }}</td>
                         <td class="activity-game-name" title="{{ activity.game.name }}">{{ activity.game.name }}</td>
                         <td class="activity-game-listing" title="{{ activity.game.listing }}">{{ activity.game.listing }}
                         </td>

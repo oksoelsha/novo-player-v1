@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="form-group mb-3" *ngIf="isOnWindows()">
+    <div class="form-group mb-3" *ngIf="isWindows">
       <label class="form-label">{{ 'settings.bluemsxpath' | translate }}</label>
       <div class="d-flex justify-content-start">
         <input type="text" class="form-control form-control-sm" name="bluemsx-path" [(ngModel)]="bluemsxPath"
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div class="form-group mb-3" *ngIf="isOnWindows()">
+    <div class="form-group mb-3" *ngIf="isWindows">
       <label class="form-label">{{ 'settings.bluemsxparams' | translate }}</label>
       <input type="text" class="form-control form-control-sm" name="bluemsx-params" [(ngModel)]="bluemsxParams"
         placement="bottom" [ngbTooltip]="'settings.bluemsxparamstooltip' | translate" />

@@ -15,6 +15,7 @@ import { AlertsService } from '../../../shared/components/alerts/alerts.service'
 })
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
+  readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   fileGroupMap: Map<number, string[]> = new Map();
   private launchActivitySubscription: Subscription;
@@ -69,10 +70,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     const seconds = '0' + date.getSeconds();
 
     return hours + ':' + minutes.substring(-2) + ':' + seconds.substring(-2);
-  }
-
-  isOnWindows(): boolean {
-    return this.platformService.isOnWindows();
   }
 
   getLaunchSource(source: number): string {
