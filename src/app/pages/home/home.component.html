@@ -316,13 +316,13 @@
     <div class="menu-icon"></div>
     {{ 'home.setInfoFile' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
+  <ng-template contextMenuItem [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isWindows" (execute)="bluemsxArgumentsEdit.open()">
     <span class="menu-icon"></span>
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isWindows" [divider]="true"></ng-template>
-  <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="relatedGames.open()">
+  <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
     <div class="menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
   </ng-template>
