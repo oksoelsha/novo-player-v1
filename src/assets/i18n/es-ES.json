@@ -48,7 +48,7 @@
     "onwebmsx": "en WebMSX",
     "onbluemsx": "en blueMSX",
     "actions": "Acciones",
-    "editmedia": "Editar formato",
+    "editmedia": "Editar formatos",
     "edithardware": "Editar hardware",
     "setInfoFile": "Establecer información extra",
     "editbluemsxarguments": "Editar argumentos de blueMSX",
@@ -83,6 +83,7 @@
   },
   "language": {
     "en-US": "Inglés",
+    "ca-ES": "Catalán",
     "nl-NL": "Holandés",
     "fr-FR": "Francés",
     "it-IT": "Italiano",

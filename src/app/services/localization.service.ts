@@ -9,6 +9,7 @@ import { Subject, firstValueFrom } from 'rxjs';
 export class LocalizationService {
   public static readonly Languages = [
     'en-US',
+    'ca-ES',
     'nl-NL',
     'fr-FR',
     'it-IT',

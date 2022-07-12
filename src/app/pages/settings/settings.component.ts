@@ -101,6 +101,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
 
   private setLanguageIcons() {
     this.languageIcons.push('assets/images/flags/en_US.png');
+    this.languageIcons.push('assets/images/flags/ca_ES.png');
     this.languageIcons.push('assets/images/flags/nl_NL.png');
     this.languageIcons.push('assets/images/flags/fr_FR.png');
     this.languageIcons.push('assets/images/flags/it_IT.png');
