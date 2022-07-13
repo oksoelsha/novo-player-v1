@@ -112,7 +112,7 @@
     "bluemsxpath": "Percorso blueMSX",
     "bluemsxpathtooltip": "La cartella in cui si trova blueMSX",
     "bluemsxparams": "Altri argomenti blueMSX",
-    "bluemsxparamstooltip": "Argomenti aggiuntivi da utilizzare quando si avvia blueMSX (ad esempio /machine)",
+    "bluemsxparamstooltip": "Argomenti aggiuntivi da utilizzare quando si avvia blueMSX (ad esempio /machine MSX2)",
     "language": "Lingua",
     "systemdefault": "Predefinito del sistema",
     "confirmation": "Conferma",

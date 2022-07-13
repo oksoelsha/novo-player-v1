@@ -112,7 +112,7 @@
     "bluemsxpath": "blueMSX のパス",
     "bluemsxpathtooltip": "blueMSXがあるフォルダ",
     "bluemsxparams": "その他の blueMSX 引数",
-    "bluemsxparamstooltip": "blueMSXを起動するときに使用する追加の引数(例:/machine)",
+    "bluemsxparamstooltip": "blueMSXを起動するときに使用する追加の引数(例:/machine MSX2)",
     "language": "言語",
     "systemdefault": "システムの既定値",
     "confirmation": "確認",

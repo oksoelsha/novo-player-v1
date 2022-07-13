@@ -112,7 +112,7 @@
     "bluemsxpath": "Caminho de blueMSX",
     "bluemsxpathtooltip": "A pasta onde o blueMSX está localizado",
     "bluemsxparams": "Outros argumentos blueMSX",
-    "bluemsxparamstooltip": "Argumentos adicionais a serem usados ao lançar blueMSX (por exemplo, /machine)",
+    "bluemsxparamstooltip": "Argumentos adicionais a serem usados ao lançar blueMSX (por exemplo, /machine MSX2)",
     "language": "Linguagem",
     "systemdefault": "Padrão do sistema",
     "confirmation": "Confirmação",

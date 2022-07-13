@@ -112,7 +112,7 @@
     "bluemsxpath": "Camí de blueMSX",
     "bluemsxpathtooltip": "La carpeta on es troba blueMSX",
     "bluemsxparams": "Altres arguments de blueMSX",
-    "bluemsxparamstooltip": "Arguments addicionals per utilitzar en iniciar blueMSX (per exemple, /machine)",
+    "bluemsxparamstooltip": "Arguments addicionals per utilitzar en iniciar blueMSX (per exemple, /machine MSX2)",
     "language": "Idioma",
     "systemdefault": "Valor per defecte del sistema",
     "confirmation": "Confirmació",
