@@ -163,7 +163,19 @@
     "switchdisks": "Alternar discos",
     "switchtapes": "Alternar cassete",
     "diskswitched": "O disco foi alternado",
-    "tapeswitched": "O cassete foi alternado"
+    "tapeswitched": "O cassete foi alternado",
+    "jan": "Janeiro",
+    "feb": "Fevereiro",
+    "mar": "Março",
+    "apr": "Abril",
+    "may": "Maio",
+    "jun": "Junho",
+    "jul": "Julho",
+    "aug": "Agosto",
+    "sep": "Setembro",
+    "oct": "Outubro",
+    "nov": "Novembro",
+    "dec": "Dezembro"
   },
   "popups": {
     "newlisting": "Nova listagem",

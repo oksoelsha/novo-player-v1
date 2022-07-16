@@ -3,7 +3,8 @@
         <h5 class="card-title">{{ 'dashboard.insights' | translate }}</h5>
         <div *ngIf="isTopTenMode()">
             <span class="badge bg-primary bg-size">{{ 'dashboard.toptenlaunched' | translate }}</span>
-            <a class="badge bg-dark bg-size bg-link" (click)="setLaunchTimesMode()">{{ 'dashboard.launchtimes' | translate }}</a>
+            <a class="badge bg-dark bg-size bg-link" (click)="setLaunchTimesMode()">{{ 'dashboard.launchtimes' |
+                translate }}</a>
             <div class="events-table">
                 <table class="table table-sm text-white">
                     <tbody>
@@ -14,14 +15,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize" (page)="getTopTenLaunchedGames($event)"
-                    [hideFirstAndLastNav]="true" *ngIf="topTenList.length > 0"></app-pagination>
+                <app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize"
+                    (page)="getTopTenLaunchedGames($event)" [hideFirstAndLastNav]="true" *ngIf="topTenList.length > 0">
+                </app-pagination>
             </div>
         </div>
         <div *ngIf="isLaunchTimesMode()">
-            <a class="badge bg-dark bg-size bg-link" (click)="setTopTenMode()">{{ 'dashboard.toptenlaunched' | translate }}</a>
+            <a class="badge bg-dark bg-size bg-link" (click)="setTopTenMode()">{{ 'dashboard.toptenlaunched' | translate
+                }}</a>
             <span class="badge bg-primary bg-size">{{ 'dashboard.launchtimes' | translate }}</span>
-            <div>Graph...</div>
+            <div>
+                <apx-chart [chart]="chart" [dataLabels]="dataLabels" [colors]="colors" [series]="series" [xaxis]="xaxis"
+                    [yaxis]="yaxis" [stroke]="stroke" [tooltip]="tooltip">
+                </apx-chart>
+            </div>
         </div>
     </div>
 </div>
