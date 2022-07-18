@@ -159,7 +159,7 @@
     "launchhistory": "Historique des lancements",
     "insights": "Informations",
     "toptenlaunched": "Les plus joués",
-    "launchtimes": "Heures de jeu",
+    "launchtotals": "Totaux des lancements",
     "switchdisks": "Changer de disque",
     "switchtapes": "Changer de cassette",
     "diskswitched": "Le disque a été changé",
@@ -175,7 +175,8 @@
     "sep": "Septembre",
     "oct": "Octobre",
     "nov": "Novembre",
-    "dec": "Décembre"
+    "dec": "Décembre",
+    "totalperday": "Totale par jour"
   },
   "popups": {
     "newlisting": "Nouvelle liste",

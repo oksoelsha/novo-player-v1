@@ -159,7 +159,7 @@
     "launchhistory": "起動履歴",
     "insights": "洞察",
     "toptenlaunched": "ほとんどの開始ゲーム",
-    "launchtimes": "起動時間",
+    "launchtotals": "合計を起動",
     "switchdisks": "スイッチ ディスク",
     "switchtapes": "スイッチ テープ",
     "diskswitched": "ディスクが入れ替わった",
@@ -175,7 +175,8 @@
     "sep": "9 月",
     "oct": "10 月",
     "nov": "11 月",
-    "dec": "12 月"
+    "dec": "12 月",
+    "totalperday": "1日あたりの合計"
   },
   "popups": {
     "newlisting": "新しいリスト",

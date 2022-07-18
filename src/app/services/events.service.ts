@@ -34,4 +34,13 @@ export class EventsService {
       this.ipc.send('getTopTenLaunchedGames', pageSize, currentPage);
     });
   }
+
+  async getLaunchTotalsForLast30Days(): Promise<Object> {
+    return new Promise<Object>((resolve, reject) => {
+      this.ipc.once('getLaunchTotalsForLast30DaysResponse', (event, totals) => {
+        resolve(totals);
+      });
+      this.ipc.send('getLaunchTotalsForLast30Days');
+    });
+  }
 }

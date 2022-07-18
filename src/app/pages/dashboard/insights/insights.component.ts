@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexLegend, ApexNonAxisChartSeries, ApexStroke, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexLegend, ApexStroke, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
 import { EventsService } from '../../../services/events.service';
 import { LocalizationService } from '../../../services/localization.service';
 
@@ -17,7 +17,7 @@ export class InsightsComponent implements OnInit {
   total = 0;
 
   readonly chart: ApexChart = {
-    height: 180,
+    height: 185,
     type: 'line',
     toolbar: {
       show: false
@@ -32,12 +32,20 @@ export class InsightsComponent implements OnInit {
     enabled: false
   };
 
-  readonly colors = ['#cccccc'];
+  readonly colors = ['#dddddd', '#ee4444', '#5555ff'];
 
   readonly series: ApexAxisChartSeries = [
     {
-      name: 'Total Launches',
-      data: [0, 0, 0, 0, 0, 0, 4, 10, 5, 19, 1, 7, 2, 2, 3, 0, 4, 10, 5, 12, 1, 7, 2, 2, 3, 0, 4, 10, 5, 12]
+      name: 'openMSX',
+      data: []
+    },
+    {
+      name: 'WebMSX',
+      data: []
+    },
+    {
+      name: 'blueMSX',
+      data: []
     }
   ];
 
@@ -54,17 +62,17 @@ export class InsightsComponent implements OnInit {
     },
     axisBorder: {
       show: true,
-      color: '#cccccc'
+      color: '#bbbbbb'
     },
     labels: {
       style: {
-        colors: '#cccccc'
+        colors: '#bbbbbb'
       }
     },
     title: {
-      text: 'Total Launches',
+      text: this.localizationService.translate('dashboard.totalperday'),
       style: {
-        color: '#cccccc'
+        color: '#bbbbbb'
       }
     }
   };
@@ -73,9 +81,16 @@ export class InsightsComponent implements OnInit {
     theme: 'dark'
   };
 
+  readonly legend: ApexLegend = {
+    labels: {
+      colors: ['#cccccc', '#cccccc', '#cccccc']
+    }
+  }
+
   private cachedTopTenPageList: any[] = new Array(2);
   private currentDisplayMode: DisplayModes;
   private readonly months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+  private cachedLaunchTotalsForLast30Days: any;
 
   constructor(private eventsService: EventsService, private localizationService: LocalizationService) { }
 
@@ -89,6 +104,8 @@ export class InsightsComponent implements OnInit {
       const day = new Date(now - 86400000 * ix);
       this.xaxis.categories.push(this.getMonth(day.getMonth()) + ' ' + day.getDate());
     }
+
+    this.getLaunchTotalsForLast30Days();
   }
 
   getTopTenLaunchedGames(page: number) {
@@ -121,5 +138,19 @@ export class InsightsComponent implements OnInit {
 
   private getMonth(monthAsIndex: number): string {
     return this.localizationService.translate('dashboard.' + this.months[monthAsIndex]);
+  }
+
+  private getLaunchTotalsForLast30Days() {
+    if (this.cachedLaunchTotalsForLast30Days != null) {
+      this.series[0].data = this.cachedLaunchTotalsForLast30Days.openMSX;
+      this.series[1].data = this.cachedLaunchTotalsForLast30Days.WebMSX;
+      this.series[2].data = this.cachedLaunchTotalsForLast30Days.blueMSX;
+    } else {
+      this.eventsService.getLaunchTotalsForLast30Days().then((data: any) => {
+        this.series[0].data = data.openMSX;
+        this.series[1].data = data.WebMSX;
+        this.series[2].data = data.blueMSX;
+      });
+    }
   }
 }

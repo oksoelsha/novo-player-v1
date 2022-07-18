@@ -159,7 +159,7 @@
     "launchhistory": "Lanceringsgeschiedenis",
     "insights": "Inzichten",
     "toptenlaunched": "Meest gespeeld",
-    "launchtimes": "Lanceringstijden",
+    "launchtotals": "Lancering Totalen",
     "switchdisks": "Schakelen tussen schijven",
     "switchtapes": "Schakelen tussen cassettes",
     "diskswitched": "De schijf is verwisseld",
@@ -175,7 +175,8 @@
     "sep": "September",
     "oct": "Oktober",
     "nov": "November",
-    "dec": "December"
+    "dec": "December",
+    "totalperday": "Totaal per dag"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",

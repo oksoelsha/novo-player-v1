@@ -159,7 +159,7 @@
     "launchhistory": "Histórico de lançamentos",
     "insights": "Insights",
     "toptenlaunched": "Mais jogado",
-    "launchtimes": "Tempos de jogo",
+    "launchtotals": "Totais de lançamentos",
     "switchdisks": "Alternar discos",
     "switchtapes": "Alternar cassete",
     "diskswitched": "O disco foi alternado",
@@ -175,7 +175,8 @@
     "sep": "Setembro",
     "oct": "Outubro",
     "nov": "Novembro",
-    "dec": "Dezembro"
+    "dec": "Dezembro",
+    "totalperday": "Total por dia"
   },
   "popups": {
     "newlisting": "Nova listagem",

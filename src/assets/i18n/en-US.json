@@ -159,7 +159,7 @@
     "launchhistory": "Launch History",
     "insights": "Insights",
     "toptenlaunched": "Top Ten Launched",
-    "launchtimes": "Launch Times",
+    "launchtotals": "Launch Totals",
     "switchdisks": "Switch Disks",
     "switchtapes": "Switch Tapes",
     "diskswitched": "Disk Switched",
@@ -175,7 +175,8 @@
     "sep": "September",
     "oct": "October",
     "nov": "November",
-    "dec": "December"
+    "dec": "December",
+    "totalperday": "Total per Day"
   },
   "popups": {
     "newlisting": "New listing",

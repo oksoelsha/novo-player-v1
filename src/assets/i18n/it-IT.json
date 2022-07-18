@@ -156,10 +156,10 @@
     "harddisks": "Dischi Rigidi",
     "laserdiscs": "Laserdisc",
     "runninggames": "Giochi in esecuzione",
-    "launchhistory": "Storico Avvio",
+    "launchhistory": "Storico avvio",
     "insights": "Dati analitici",
     "toptenlaunched": "Più giocato",
-    "launchtimes": "Tempi di gioco",
+    "launchtotals": "Totali di avvio",
     "switchdisks": "Cambia disco",
     "switchtapes": "Cambia cassetta",
     "diskswitched": "Il disco è stato cambiato",
@@ -175,7 +175,8 @@
     "sep": "Settembre",
     "oct": "Ottobre",
     "nov": "Novembre",
-    "dec": "Dicembre"
+    "dec": "Dicembre",
+    "totalperday": "Totale al giorno"
   },
   "popups": {
     "newlisting": "Nuovo elenco",

@@ -3,7 +3,7 @@
         <h5 class="card-title">{{ 'dashboard.insights' | translate }}</h5>
         <div *ngIf="isTopTenMode()">
             <span class="badge bg-primary bg-size">{{ 'dashboard.toptenlaunched' | translate }}</span>
-            <a class="badge bg-dark bg-size bg-link" (click)="setLaunchTimesMode()">{{ 'dashboard.launchtimes' |
+            <a class="badge bg-dark bg-size bg-link" (click)="setLaunchTimesMode()">{{ 'dashboard.launchtotals' |
                 translate }}</a>
             <div class="events-table">
                 <table class="table table-sm text-white">
@@ -23,10 +23,10 @@
         <div *ngIf="isLaunchTimesMode()">
             <a class="badge bg-dark bg-size bg-link" (click)="setTopTenMode()">{{ 'dashboard.toptenlaunched' | translate
                 }}</a>
-            <span class="badge bg-primary bg-size">{{ 'dashboard.launchtimes' | translate }}</span>
+            <span class="badge bg-primary bg-size">{{ 'dashboard.launchtotals' | translate }}</span>
             <div>
                 <apx-chart [chart]="chart" [dataLabels]="dataLabels" [colors]="colors" [series]="series" [xaxis]="xaxis"
-                    [yaxis]="yaxis" [stroke]="stroke" [tooltip]="tooltip">
+                    [yaxis]="yaxis" [stroke]="stroke" [tooltip]="tooltip" [legend]="legend">
                 </apx-chart>
             </div>
         </div>

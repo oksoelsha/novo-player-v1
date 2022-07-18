@@ -159,7 +159,7 @@
     "launchhistory": "Historial de llançaments",
     "insights": "Conclusions",
     "toptenlaunched": "Més jugats",
-    "launchtimes": "Temps de joc",
+    "launchtotals": "Totals de llançaments",
     "switchdisks": "Canvia disc",
     "switchtapes": "Canvia casset",
     "diskswitched": "El disc s'ha canviat",
@@ -175,7 +175,8 @@
     "sep": "Setembre",
     "oct": "Octubre",
     "nov": "Novembre",
-    "dec": "Desembre"
+    "dec": "Desembre",
+    "totalperday": "Total per dia"
   },
   "popups": {
     "newlisting": "Nova llista",
