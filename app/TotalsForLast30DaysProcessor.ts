@@ -25,23 +25,23 @@ export class TotalsForLast30DaysProcessor implements EventProcessor {
 
         const now = Date.now();
         const localZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
-        const thirtyDaysAgo = now - this.milSecondsPerDay * 29;
+        const thirtyDaysAgo = now - this.milSecondsPerDay * 30;
         // use local machine midnight
-        const beginningOfThatDay = Math.floor(thirtyDaysAgo / this.milSecondsPerDay) * this.milSecondsPerDay + localZoneOffset;
-
+        const midnightThatDay = Math.floor(thirtyDaysAgo / this.milSecondsPerDay) * this.milSecondsPerDay;
+        const midnightThatDayLocal = midnightThatDay + localZoneOffset;
         const results = {
             openMSX: Array(30).fill(0),
             WebMSX: Array(30).fill(0),
             blueMSX: Array(30).fill(0)
         }
-        this.database.find({ timestamp: { $gte: beginningOfThatDay } }).exec((err: any, entries: any) => {
+        this.database.find({ timestamp: { $gte: midnightThatDayLocal } }).exec((err: any, entries: any) => {
             for (const entry of entries) {
-                const index = self.getIndex(beginningOfThatDay, entry.timestamp);
-                if (entry.source == 0) {
+                const index = self.getIndex(midnightThatDay, entry.timestamp, localZoneOffset);
+                if (entry.source === 0) {
                     results.openMSX[index]++;
-                } else if (entry.source == 1) {
+                } else if (entry.source === 1) {
                     results.WebMSX[index]++;
-                } else if (entry.source == 2) {
+                } else if (entry.source === 2) {
                     results.blueMSX[index]++;
                 }
             }
@@ -49,7 +49,7 @@ export class TotalsForLast30DaysProcessor implements EventProcessor {
         });
     }
 
-    private getIndex(beginning: number, timestamp: number): number {
-        return Math.floor((timestamp - beginning) / this.milSecondsPerDay);
+    private getIndex(beginning: number, timestamp: number, localZoneOffset: number): number {
+        return Math.floor((timestamp - beginning - localZoneOffset) / this.milSecondsPerDay);
     }
 }
