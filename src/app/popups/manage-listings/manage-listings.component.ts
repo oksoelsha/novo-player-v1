@@ -108,7 +108,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
   private resetStateAndScrollPosition = () => {
     this.resetState();
     this.listingsTable.nativeElement.scrollTop = 0;
-  }
+  };
 
   private setSelectedListing(listing: string) {
     this.selectedListing = listing;

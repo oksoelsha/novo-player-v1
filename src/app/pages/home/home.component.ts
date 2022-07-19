@@ -628,17 +628,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   isMenuItemVisible = (game: Game): boolean => {
     return !(this.otherSelectedGames.has(game) || (game === this.selectedGame && this.otherSelectedGames.size > 0));
-  }
+  };
 
   isMenuItemAddFavorite = (game: Game): boolean => {
     return !game?.favorite &&
       !(this.otherSelectedGames.has(game) || (game === this.selectedGame && this.otherSelectedGames.size > 0));
-  }
+  };
 
   isMenuItemRemoveFavorite = (game: Game): boolean => {
     return game?.favorite &&
       !(this.otherSelectedGames.has(game) || (game === this.selectedGame && this.otherSelectedGames.size > 0));
-  }
+  };
 
   startScan(parameters: any/*ScanParameters*/) {
     this.alertService.info(this.localizationService.translate('home.startedscanprocess'));

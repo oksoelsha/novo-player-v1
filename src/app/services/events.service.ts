@@ -35,8 +35,8 @@ export class EventsService {
     });
   }
 
-  async getLaunchTotalsForLast30Days(): Promise<Object> {
-    return new Promise<Object>((resolve, reject) => {
+  async getLaunchTotalsForLast30Days(): Promise<object> {
+    return new Promise<object>((resolve, reject) => {
       this.ipc.once('getLaunchTotalsForLast30DaysResponse', (event, totals) => {
         resolve(totals);
       });

@@ -54,7 +54,7 @@ export class PopupComponent implements OnDestroy {
           customCleanup();
         }
         popup.removeAllListeners();
-      }
+      };
     })());
     popup.classList.remove('popup-fade');
   }

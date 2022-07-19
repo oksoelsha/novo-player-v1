@@ -33,7 +33,7 @@ export class FilesService {
           resolve(fileGroup);
         });
         this.ipc.send('getFileGroup', id, medium);
-      });  
+      });
     }
   }
 }

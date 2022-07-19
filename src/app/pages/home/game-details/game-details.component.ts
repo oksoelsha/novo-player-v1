@@ -212,7 +212,7 @@ export class GameDetailsComponent implements OnChanges {
     this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), medium).then((group: string[]) => {
       if (group.length > 1) {
         this.selectedMediumGroupTotal = group.length + 'x';
-        this.changeDetector.detectChanges();  
+        this.changeDetector.detectChanges();
       }
     });
   }

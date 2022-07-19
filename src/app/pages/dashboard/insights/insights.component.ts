@@ -32,7 +32,7 @@ export class InsightsComponent implements OnInit {
     enabled: false
   };
 
-  readonly colors = ['#dddddd', '#ee4444', '#5555ff'];
+  readonly colors = ['#dddddd', '#ee4444', '#007bff'];
 
   readonly series: ApexAxisChartSeries = [
     {
@@ -85,12 +85,11 @@ export class InsightsComponent implements OnInit {
     labels: {
       colors: ['#cccccc', '#cccccc', '#cccccc']
     }
-  }
+  };
 
   private cachedTopTenPageList: any[] = new Array(2);
   private currentDisplayMode: DisplayModes;
   private readonly months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-  private cachedLaunchTotalsForLast30Days: any;
 
   constructor(private eventsService: EventsService, private localizationService: LocalizationService) { }
 
@@ -141,16 +140,10 @@ export class InsightsComponent implements OnInit {
   }
 
   private getLaunchTotalsForLast30Days() {
-    if (this.cachedLaunchTotalsForLast30Days != null) {
-      this.series[0].data = this.cachedLaunchTotalsForLast30Days.openMSX;
-      this.series[1].data = this.cachedLaunchTotalsForLast30Days.WebMSX;
-      this.series[2].data = this.cachedLaunchTotalsForLast30Days.blueMSX;
-    } else {
-      this.eventsService.getLaunchTotalsForLast30Days().then((data: any) => {
-        this.series[0].data = data.openMSX;
-        this.series[1].data = data.WebMSX;
-        this.series[2].data = data.blueMSX;
-      });
-    }
+    this.eventsService.getLaunchTotalsForLast30Days().then((data: any) => {
+      this.series[0].data = data.openMSX;
+      this.series[1].data = data.WebMSX;
+      this.series[2].data = data.blueMSX;
+    });
   }
 }

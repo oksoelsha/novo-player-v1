@@ -1,6 +1,7 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as Datastore from 'nedb';
 import { EventProcessor } from './EventProcessor';
+import { EventSource } from '../src/app/models/event'
 
 export class TotalsForLast30DaysProcessor implements EventProcessor {
 
@@ -25,7 +26,7 @@ export class TotalsForLast30DaysProcessor implements EventProcessor {
 
         const now = Date.now();
         const localZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
-        const thirtyDaysAgo = now - this.milSecondsPerDay * 30;
+        const thirtyDaysAgo = now - this.milSecondsPerDay * 29;
         // use local machine midnight
         const midnightThatDay = Math.floor(thirtyDaysAgo / this.milSecondsPerDay) * this.milSecondsPerDay;
         const midnightThatDayLocal = midnightThatDay + localZoneOffset;
@@ -36,12 +37,12 @@ export class TotalsForLast30DaysProcessor implements EventProcessor {
         }
         this.database.find({ timestamp: { $gte: midnightThatDayLocal } }).exec((err: any, entries: any) => {
             for (const entry of entries) {
-                const index = self.getIndex(midnightThatDay, entry.timestamp, localZoneOffset);
-                if (entry.source === 0) {
+                const index = self.getIndex(midnightThatDayLocal, entry.timestamp);
+                if (entry.source === EventSource.openMSX) {
                     results.openMSX[index]++;
-                } else if (entry.source === 1) {
+                } else if (entry.source === EventSource.WebMSX) {
                     results.WebMSX[index]++;
-                } else if (entry.source === 2) {
+                } else if (entry.source === EventSource.blueMSX) {
                     results.blueMSX[index]++;
                 }
             }
@@ -49,7 +50,7 @@ export class TotalsForLast30DaysProcessor implements EventProcessor {
         });
     }
 
-    private getIndex(beginning: number, timestamp: number, localZoneOffset: number): number {
-        return Math.floor((timestamp - beginning - localZoneOffset) / this.milSecondsPerDay);
+    private getIndex(beginning: number, timestamp: number): number {
+        return Math.floor((timestamp - beginning) / this.milSecondsPerDay);
     }
 }
