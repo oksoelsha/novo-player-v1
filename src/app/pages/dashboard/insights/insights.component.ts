@@ -67,6 +67,9 @@ export class InsightsComponent implements OnInit {
     labels: {
       style: {
         colors: '#bbbbbb'
+      },
+      formatter: function(val) {
+        return val.toFixed(0);
       }
     },
     title: {

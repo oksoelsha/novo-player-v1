@@ -1,18 +1,13 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as Datastore from 'nedb';
-import { EventProcessor } from './EventProcessor';
-import { EventSource } from '../src/app/models/event'
+import { EventSource } from '../../src/app/models/event'
 
-export class TotalsForLast30DaysProcessor implements EventProcessor {
+export class TotalsForLast30DaysProcessor {
 
     private readonly milSecondsPerDay = 86400000;
 
     constructor(private win: BrowserWindow, private database: Datastore) {
         this.init();
-    }
-
-    process(): void {
-        // nothing to implement in this case
     }
 
     private init() {

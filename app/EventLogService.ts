@@ -1,11 +1,10 @@
 import { BrowserWindow, ipcMain } from 'electron';
-import { EventProcessor } from './EventProcessor';
 import Datastore from 'nedb';
 import * as os from 'os';
 import * as path from 'path';
 import { Event } from '../src/app/models/event';
 import { EventDO } from './data/event-do';
-import { EventProcessorFactory } from './EventProcessorFactory';
+import { EventProcessor } from './EventProcessor';
 
 export class EventLogService {
 
@@ -13,11 +12,10 @@ export class EventLogService {
     private readonly databasePath: string = path.join(os.homedir(), 'Novo Player');
     private readonly databaseFile: string = path.join(this.databasePath, 'events');
     private readonly MAXIMUM_LOG_ENTRIES: number = 600;
-    private eventProcessors: EventProcessor[];
 
     constructor(private win: BrowserWindow) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
-        this.eventProcessors = EventProcessorFactory.getEventProcessors(win, this.database);
+        EventProcessor.initEventProcessors(win, this.database);
         this.init();
     }
 
@@ -33,11 +31,6 @@ export class EventLogService {
                 });
             }
             self.database.insert(eventDO, (err: any, savedEvent: EventDO) => {
-                if (err != null) {
-                    for (const eventProcessor of this.eventProcessors) {
-                        eventProcessor.process();
-                    }
-                }
             });
         });
     }

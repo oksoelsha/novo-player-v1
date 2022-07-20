@@ -1,15 +1,10 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as Datastore from 'nedb';
-import { EventProcessor } from './EventProcessor';
 
-export class TopTenEventProcessor implements EventProcessor {
+export class TopTenEventProcessor {
 
     constructor(private win: BrowserWindow, private database: Datastore) {
         this.init();
-    }
-
-    process(): void {
-        // nothing to implement in this case
     }
 
     private init() {
@@ -30,7 +25,7 @@ export class TopTenEventProcessor implements EventProcessor {
 
             const allCounts = this.getTopTen(launchTimes);
             const total = allCounts.length > 10 ? 10 : allCounts.length;
-            const startOfPage = currentPage*pageSize;
+            const startOfPage = currentPage * pageSize;
             const topTen = allCounts.slice(startOfPage, startOfPage + pageSize);
             const results = {total: total, counts: topTen};
             self.win.webContents.send('getTopTenLaunchedGamesResponse', results);
