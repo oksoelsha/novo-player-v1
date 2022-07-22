@@ -23,7 +23,7 @@ export class TotalsForLast30DaysProcessor {
         const localZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
         const thirtyDaysAgo = now - this.milSecondsPerDay * 29;
         // use local machine midnight
-        const midnightThatDay = Math.floor(thirtyDaysAgo / this.milSecondsPerDay) * this.milSecondsPerDay;
+        const midnightThatDay = Math.floor((thirtyDaysAgo - localZoneOffset) / this.milSecondsPerDay) * this.milSecondsPerDay;
         const midnightThatDayLocal = midnightThatDay + localZoneOffset;
         const results = {
             openMSX: Array(30).fill(0),
