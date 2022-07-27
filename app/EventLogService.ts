@@ -1,16 +1,15 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import Datastore from 'nedb';
-import * as os from 'os';
 import * as path from 'path';
 import { Event } from '../src/app/models/event';
 import { EventDO } from './data/event-do';
 import { EventProcessor } from './EventProcessor';
+import { PersistenceUtils } from './utils/PersistenceUtils';
 
 export class EventLogService {
 
     private database: Datastore;
-    private readonly databasePath: string = path.join(os.homedir(), 'Novo Player');
-    private readonly databaseFile: string = path.join(this.databasePath, 'events');
+    private readonly databaseFile: string = path.join(PersistenceUtils.getStoragePath(), 'events');
     private readonly MAXIMUM_LOG_ENTRIES: number = 600;
 
     constructor(private win: BrowserWindow) {

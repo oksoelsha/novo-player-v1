@@ -1,17 +1,17 @@
 import { BrowserWindow, ipcMain } from 'electron'
-import * as os from 'os';
 import * as path from 'path'
 import * as fs from 'fs'
 import { Settings } from '../src/app/models/settings'
 import { UpdateListerner } from './UpdateListerner';
 import { PlatformUtils } from './utils/PlatformUtils';
+import { PersistenceUtils } from './utils/PersistenceUtils';
 
 export class SettingsService {
 
-    settings: Settings;
-    settingsPath: string = path.join(os.homedir(), 'Novo Player');
-    settingsFile: string = path.join(this.settingsPath, 'settings.nps');
-    listeners: UpdateListerner[] = [];
+    private settings: Settings;
+    private settingsPath = PersistenceUtils.getStoragePath();
+    private settingsFile = path.join(this.settingsPath, 'settings.nps');
+    private listeners: UpdateListerner[] = [];
 
     constructor(private win: BrowserWindow) {
         this.init();

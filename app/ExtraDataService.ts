@@ -18,19 +18,19 @@ export class ExtraDataService implements UpdateListerner {
             this.sendExtraDataVersion();
         });
 
-        var readInfo: boolean = false
-        var readCodes: boolean = false
+        let readInfo: boolean = false;
+        let readCodes: boolean = false;
     
-        var generationMSXID: number
-        var generations: number
-        var soundChips: number
-        var genre1: number
-        var genre2: number
-        var suffix: string
-        var extraData: ExtraData
+        let generationMSXID: number;
+        let generations: number;
+        let soundChips: number;
+        let genre1: number;
+        let genre2: number;
+        let suffix: string;
+        let extraData: ExtraData;
 
-        var data: string = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
-        var lines: string[] = data.split(/\r?\n/);
+        let data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
+        let lines = data.split(/\r?\n/);
     
         lines.forEach((line) => {
             if (!line.startsWith('--')) {
@@ -38,11 +38,11 @@ export class ExtraDataService implements UpdateListerner {
                     generationMSXID = +line.substring(1);
                     readInfo = true;
                 } else if (readInfo) {
-                    var tokens: string[] = line.split(',');
+                    const tokens: string[] = line.split(',');
                     generations = +tokens[0];
                     soundChips = +tokens[1];
                     if (tokens.length > 2) {
-                        var genres: string[] = tokens[2].split('|');
+                        const genres: string[] = tokens[2].split('|');
                         genre1 = +genres[0];
                         if (genres.length > 1) {
                             genre2 = +genres[1];
@@ -65,7 +65,7 @@ export class ExtraDataService implements UpdateListerner {
                     readInfo = false;
                     readCodes = true;
                 } else if (readCodes) {
-                    var codes: string[] = line.split('|');
+                    const codes: string[] = line.split('|');
                     codes.forEach((code) => {
                         this.extraDataInfo.set(code, extraData);
                     })
@@ -73,7 +73,7 @@ export class ExtraDataService implements UpdateListerner {
                     readCodes = false;
                 }
             } else {
-                var lineParts: string[] = line.split(/\s/);
+                const lineParts: string[] = line.split(/\s/);
                 if (lineParts.length >= 3) {
                     if (lineParts[1] == 'Version') {
                         this.extraDataVersion = lineParts[2];
@@ -94,15 +94,19 @@ export class ExtraDataService implements UpdateListerner {
     sendExtraDataVersion(): void {
         this.win.webContents.send('getExtraDataVersionResponse', this.extraDataVersion);
     }
+
+    getExtraDataVersion(): string {
+        return this.extraDataVersion;
+    }
 }
 
 export class ExtraData {
-    generationMSXID: number
-    generations: number
-    soundChips: number
-    genre1: number
-    genre2: number
-    suffix: string
+    generationMSXID: number;
+    generations: number;
+    soundChips: number;
+    genre1: number;
+    genre2: number;
+    suffix: string;
 
     constructor(generationMSXID: number, generations: number, soundChips: number,
         genre1: number, genre2: number, suffix: string) {

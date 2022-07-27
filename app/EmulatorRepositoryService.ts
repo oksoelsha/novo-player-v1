@@ -31,30 +31,31 @@ export class EmulatorRepositoryService implements UpdateListerner {
             path.join(__dirname, '../dist/assets/data/msxcaswavdb.xml')
         ];
         let parser = new XMLParser();
+        /*
         let options = {
             parseTrueNumberOnly: true,
             tagValueProcessor: (val: any, tagName: any) => val.replace(/&amp;/g, '&').replace(/&#34;/g, '"').replace(/&#38;/g, '&').replace(/&#39;/g, "'")
         }
-
+        */
         for(let softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
                 fs.readFile(softwaredbFilename, function (err, data) {
-                    let result = parser.parse(data.toString()/*, options*/);
+                    let result = parser.parse(data.toString());
                     for (let s in result.softwaredb.software) {
-                        let software = result.softwaredb.software
+                        let software = result.softwaredb.software;
 
                         if (Object.prototype.toString.call(software[s].dump) === '[object Array]') {
                             for (let y in software[s].dump) {
-                                self.processDump(software[s], software[s].dump[y], gamesDataMap)
+                                self.processDump(software[s], software[s].dump[y], gamesDataMap);
                             }
                         } else {
-                            self.processDump(software[s], software[s].dump, gamesDataMap)
+                            self.processDump(software[s], software[s].dump, gamesDataMap);
                         }
                     }
                 });
             }
         }
-        this.repositoryInfo = gamesDataMap
+        this.repositoryInfo = gamesDataMap;
     }
 
     private processDump(software: any, dump: any, gamesDataMap: Map<string, RepositoryData>): void {

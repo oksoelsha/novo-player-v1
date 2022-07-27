@@ -1,3 +1,6 @@
+import * as os from 'os';
+import * as path from 'path';
+
 export class PersistenceUtils {
 
     static readonly fieldsToPersist: string[] = [
@@ -26,5 +29,9 @@ export class PersistenceUtils {
         'infoFile',
         'bluemsxArguments',
         'bluemsxOverrideSettings'
-    ]
+    ];
+
+    static getStoragePath(): string {
+        return path.join(os.homedir(), 'Novo Player');
+    }
 }

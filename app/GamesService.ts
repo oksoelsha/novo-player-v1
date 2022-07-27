@@ -1,26 +1,23 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
 import Datastore from 'nedb';
-import * as os from 'os';
 import * as path from 'path';
 import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
 import { GameDO } from './data/game-do';
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
+import { ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 
 export class GamesService {
 
     private database: Datastore;
-    private readonly databasePath: string = path.join(os.homedir(), 'Novo Player');
-    private readonly databaseFile: string = path.join(this.databasePath, 'datafile');
+    private readonly databaseFile: string = path.join(PersistenceUtils.getStoragePath(), 'datafile');
 
-    private repositoryInfo: Map<string, RepositoryData> = null;
-
-    constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService, private hashService: HashService) {
+    constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
+        private hashService: HashService, private extraDataService: ExtraDataService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
-        this.repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
         this.init();
     }
 
@@ -44,6 +41,30 @@ export class GamesService {
             });
         });
         return listing;
+    }
+
+    async updateGamesForNewExtraData() {
+        await new Promise<void>((resolve, reject) => {
+            this.database.find({}, async (err: any, entries: any) => {
+                const extraDataInfo = this.extraDataService.getExtraDataInfo();
+                for (const entry of entries) {
+                    const extraData = extraDataInfo.get(entry._id);
+                    if (extraData) {
+                        const gameDO = new GameDO(entry);
+                        gameDO._id = entry._id;
+
+                        gameDO.generationMSXId = extraData.generationMSXID;
+                        gameDO.screenshotSuffix = extraData.suffix;
+                        gameDO.generations = extraData.generations;
+                        gameDO.sounds = extraData.soundChips;
+                        gameDO.genre1 = extraData.genre1;
+                        gameDO.genre2 = extraData.genre2;
+                        await this.updateGameWithNewExtraData(gameDO);
+                    }
+                }
+                resolve();
+            });
+        });
     }
 
     private init() {
@@ -177,21 +198,22 @@ export class GamesService {
     }
 
     private getGames(listing: string) {
-        let self = this;
-        let games: Game[] = [];
+        const self = this;
+        const games: Game[] = [];
         this.database.find({ listing: listing }, (err: any, entries: any) => {
-            for (let entry of entries) {
-                let gameDO: GameDO = new GameDO(entry);
-                let game: Game = new Game(entry.name, entry._id, entry.size);
+            for (const entry of entries) {
+                const gameDO: GameDO = new GameDO(entry);
+                const game: Game = new Game(entry.name, entry._id, entry.size);
 
-                for (let field of PersistenceUtils.fieldsToPersist) {
+                for (const field of PersistenceUtils.fieldsToPersist) {
                     if (gameDO[field] != game[field]) {
                         game[field] = gameDO[field];
                     }
                 }
 
-                if (self.repositoryInfo != null) {
-                    let repositoryData: RepositoryData = self.repositoryInfo.get(entry._id);
+                const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
+                if (repositoryInfo != null) {
+                    const repositoryData: RepositoryData = repositoryInfo.get(entry._id);
                     if (repositoryData != null) {
                         game.setTitle(repositoryData.title);
                         game.setSystem(repositoryData.system);
@@ -205,7 +227,6 @@ export class GamesService {
                 }
                 games.push(game);
             }
-
             self.win.webContents.send('getGamesResponse', games);
         });
     }
@@ -355,6 +376,14 @@ export class GamesService {
             favorites.sort((a: Game, b: Game) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
             self.win.webContents.send('getFavoritesResponse', favorites)
+        });
+    }
+
+    private async updateGameWithNewExtraData(gameDO: GameDO): Promise<void> {
+        await new Promise<void>((resolve, reject) => {
+            this.database.update({ _id: gameDO._id }, gameDO, {}, (err: any, numUpdated: number) => {
+                resolve();
+            });
         });
     }
 }

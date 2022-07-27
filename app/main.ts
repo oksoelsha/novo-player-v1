@@ -1,4 +1,4 @@
-import { app, ipcMain, BrowserWindow, screen } from 'electron';
+import { app, ipcMain, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -16,15 +16,13 @@ import { EmulatorHardwareService } from './EmulatorHardwareService';
 import { ScanService } from './ScanService';
 import { OpenMSXControlService } from './OpenMSXControlService';
 import { RelatedGamesService } from './RelatedGamesService';
+import { EnvironmentService } from './EnvironmentService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
-
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   win = new BrowserWindow({
     width: 800,
@@ -41,6 +39,52 @@ function createWindow(): BrowserWindow {
     }
   });
 
+  initializeServices();
+
+  return win;
+}
+
+function initializeServices() {
+  new WindowService(win);
+
+  const settingsService = new SettingsService(win);
+
+  const extraDataService = new ExtraDataService(win);
+
+  const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
+
+  const hashService = new HashService();
+
+  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService);
+
+  const environmentService = new EnvironmentService(extraDataService, gamesService);
+  environmentService.init().then(() => {
+    // finish setting up environment (e.g. update games with new extra-date) before initializing
+    // other services and starting the UI
+    new FilesService(win, settingsService);
+
+    const eventLogService = new EventLogService(win);
+  
+    new OpenMSXLaunchService(win, settingsService, eventLogService);
+    new BlueMSXLaunchService(win, settingsService, eventLogService);
+  
+    new EmulatorHardwareService(win, settingsService);
+  
+    new OpenMSXControlService(win);
+  
+    new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
+  
+    // services that are rare to execute and have internal state -> create new instance per request
+    ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
+        const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
+        scanService.start(directories, listing, machine);
+    });
+
+    initializeWindow();
+  });
+}
+
+function initializeWindow() {
   if (serve) {
     const debug = require('electron-debug');
     debug();
@@ -70,54 +114,14 @@ function createWindow(): BrowserWindow {
     // when you should delete the corresponding element.
     win = null;
   });
-
-  return win;
-}
-
-function initializeServices() {
-  new WindowService(win);
-
-  const settingsService = new SettingsService(win);
-
-  const extraDataService = new ExtraDataService(win);
-
-  const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
-
-  const hashService = new HashService();
-
-  const gamesService = new GamesService(win, emulatorRepositoryService, hashService);
-
-  new FilesService(win, settingsService);
-
-  const eventLogService = new EventLogService(win);
-
-  new OpenMSXLaunchService(win, settingsService, eventLogService);
-  new BlueMSXLaunchService(win, settingsService, eventLogService);
-
-  new EmulatorHardwareService(win, settingsService);
-
-  new OpenMSXControlService(win);
-
-  new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
-
-  // services that are rare to execute and have internal state -> create new instance per request
-  ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
-      const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
-      scanService.start(directories, listing, machine);
-  });
-}
-
-function startApplication() {
-  createWindow();
-  initializeServices();
 }
 
 try {
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(startApplication, 400));
+  // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
+  app.on('ready', () => setTimeout(createWindow, 400));
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -132,7 +136,7 @@ try {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (win === null) {
-      startApplication();
+      createWindow();
     }
   });
 
