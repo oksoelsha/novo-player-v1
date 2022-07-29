@@ -104,7 +104,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
                 software.year, software.country);
 
             if (dump.dsk.hasOwnProperty('remark')) {
-                repositoryData.setRemark(dump.dsk.remark);
+                repositoryData.setRemark(dump.dsk.remark.text);
             }
 
             gamesDataMap.set(dump.dsk.format.hash, repositoryData);
