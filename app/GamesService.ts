@@ -23,7 +23,7 @@ export class GamesService {
 
     saveGameFromScan(game: Game): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
-            let gameDO: GameDO = new GameDO(game);
+            const gameDO = new GameDO(game);
             this.database.insert(gameDO, (err: any, savedGame: GameDO) => {
                 return resolve(err == null);
             });
@@ -56,9 +56,16 @@ export class GamesService {
                         gameDO.generationMSXId = extraData.generationMSXID;
                         gameDO.screenshotSuffix = extraData.suffix;
                         gameDO.generations = extraData.generations;
-                        gameDO.sounds = extraData.soundChips;
-                        gameDO.genre1 = extraData.genre1;
-                        gameDO.genre2 = extraData.genre2;
+                        if (extraData.soundChips > 0) {
+                            gameDO.sounds = extraData.soundChips;
+                        }
+                        if (extraData.genre1 > 0) {
+                            gameDO.genre1 = extraData.genre1;
+                        }
+                        if (extraData.genre2 > 0) {
+                            gameDO.genre2 = extraData.genre2;
+                        }
+                        this.cleanupGameDO(gameDO);
                         await this.updateGameWithNewExtraData(gameDO);
                     }
                 }
@@ -126,17 +133,17 @@ export class GamesService {
     }
 
     private saveGame(game: Game) {
-        let self = this;
-        let gameDO: GameDO = new GameDO(game);
+        const self = this;
+        const gameDO = new GameDO(game);
         this.database.insert(gameDO, (err: any, savedGame: GameDO) => {
             self.win.webContents.send('saveGameResponse', err == null);
         });
     }
 
     private removeGames(games: Game[]) {
-        let self = this;
-        let totalAttemptedRemoves: number = 0;
-        let totalRemoved: number = 0;
+        const self = this;
+        let totalAttemptedRemoves = 0;
+        let totalRemoved = 0;
         games.forEach(game => {
             this.database.remove({ _id: game.sha1Code }, {}, (err: any, numRemoved: number) => {
                 totalRemoved = totalRemoved + numRemoved;
@@ -164,10 +171,10 @@ export class GamesService {
 
     private updateMultipleGames(games: Game[], fields: string[], values: any[], response: string) {
         const self = this;
-        let totalAttemptedUpdates: number = 0;
-        let totalUpdated: number = 0;
+        let totalAttemptedUpdates = 0;
+        let totalUpdated = 0;
         games.forEach(game => {
-            let gameDO: GameDO = new GameDO(game);
+            const gameDO = new GameDO(game);
             for (let index = 0; index < fields.length; index++) {
                 gameDO[fields[index]] = values[index];
             }
@@ -182,11 +189,11 @@ export class GamesService {
     }
 
     private getListings() {
-        let self = this;
-        let listings: string[] = [];
-        let tempSet = new Set();
+        const self = this;
+        const listings: string[] = [];
+        const tempSet = new Set();
         this.database.find({}, (err: any, entries: any) => {
-            for (let entry of entries) {
+            for (const entry of entries) {
                 if (!tempSet.has(entry.listing)) {
                     tempSet.add(entry.listing);
                     listings.push(entry.listing);
@@ -240,8 +247,8 @@ export class GamesService {
     }
 
     private updateGame(oldGame: Game, newGame: Game) {
-        let self = this;
-        let gameDO: GameDO = new GameDO(newGame);
+        const self = this;
+        const gameDO = new GameDO(newGame);
 
         if (this.getGameMainFile(oldGame) == this.getGameMainFile(newGame)) {
             this.database.update({ _id: oldGame.sha1Code }, gameDO, {}, () => {
@@ -283,19 +290,19 @@ export class GamesService {
     }
 
     private getTotals() {
-        let self = this;
+        const self = this;
         let totals: Totals;
-        let listings:number = 0;
-        let games:number = 0;
-        let roms:number = 0;
-        let disks:number = 0;
-        let tapes:number = 0;
-        let harddisks:number = 0;
-        let laserdiscs:number = 0;
-        let tempSet = new Set();
+        let listings = 0;
+        let games = 0;
+        let roms = 0;
+        let disks = 0;
+        let tapes = 0;
+        let harddisks = 0;
+        let laserdiscs = 0;
+        const tempSet = new Set();
         this.database.find({}, (err: any, entries: any) => {
             games = entries.length;
-            for (let entry of entries) {
+            for (const entry of entries) {
                 if (!tempSet.has(entry.listing)) {
                     tempSet.add(entry.listing);
                     listings++;
@@ -320,16 +327,15 @@ export class GamesService {
     }
 
     private search(text: string) {
-        let self = this;
-        let games: Game[] = [];
-        let sanitizedText: string = text.replace(/[(){}[\]\\?|]/g,'');
+        const self = this;
+        const games: Game[] = [];
+        const sanitizedText: string = text.replace(/[(){}[\]\\?|]/g,'');
 
         this.database.find({$or: [{name:{$regex: new RegExp(sanitizedText, 'i') }}, {_id:{$regex: new RegExp('^' + sanitizedText, 'i')}}]}, (err: any, entries: any) => {
-            let index: number = 0;
-            for (let entry of entries) {
-                let gameDO: GameDO = new GameDO(entry);
-                let game: Game = new Game(entry.name, entry._id, entry.size);
-                game.setListing(gameDO.listing);
+            let index = 0;
+            for (const entry of entries) {
+                const game = new Game(entry.name, entry._id, entry.size);
+                game.setListing(entry.listing);
 
                 games.push(game)
                 if (++index == 10) {
@@ -343,33 +349,33 @@ export class GamesService {
     }
 
     private renameListing(oldName: string, newName: string) {
-        let self = this;
+        const self = this;
         this.database.update({ listing: oldName }, { $set: { listing: newName } }, { multi: true }, () => {
             self.win.webContents.send('renameListingResponse');
         });
     }
 
     private deleteListing(name: string) {
-        let self = this;
+        const self = this;
         this.database.remove({ listing: name }, { multi: true }, () => {
             self.win.webContents.send('deleteListingResponse', true);
         });
     }
 
     private setFavoritesFlag(game: Game, flag: boolean) {
-        let self = this;
+        const self = this;
         this.database.update({ _id: game.sha1Code }, { $set: { favorite: flag } }, {}, () => {
             self.win.webContents.send('setFavoritesFlagResponse', false);
         });
     }
 
     private getFavorites() {
-        let self = this;
-        let favorites: Game[] = [];
+        const self = this;
+        const favorites: Game[] = [];
         this.database.find({ favorite: true }, (err: any, entries: any) => {
-            for (let entry of entries) {
-                let gameDO: GameDO = new GameDO(entry);
-                let game: Game = new Game(entry.name, entry._id, entry.size);
+            for (const entry of entries) {
+                const gameDO = new GameDO(entry);
+                const game = new Game(entry.name, entry._id, entry.size);
                 game.setListing(gameDO.listing);
                 favorites.push(game)
             }
@@ -385,5 +391,9 @@ export class GamesService {
                 resolve();
             });
         });
+    }
+
+    cleanupGameDO(gameDO: GameDO) {
+        Object.keys(gameDO).forEach((k) => gameDO[k] == null && delete gameDO[k]);
     }
 }
