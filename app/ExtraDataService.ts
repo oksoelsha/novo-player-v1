@@ -5,7 +5,7 @@ import { UpdateListerner } from './UpdateListerner';
 
 export class ExtraDataService implements UpdateListerner {
 
-    private extraDataPath: string = path.join(__dirname, '../dist/assets/data/extra-data.dat');
+    private extraDataPath: string = path.join(__dirname, 'extra/extra-data.dat');
     private extraDataInfo: Map<string, ExtraData> = new Map();
     private extraDataVersion = '';
 

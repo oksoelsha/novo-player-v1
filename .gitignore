@@ -12,7 +12,7 @@ src/**/*.js
 *.js.map
 app/**/*.js
 app/**/*.map
-src/assets/data
+app/extra
 
 # dependencies
 node_modules
