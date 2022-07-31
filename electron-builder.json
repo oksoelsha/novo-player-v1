@@ -17,25 +17,32 @@
       "filter": [
         "**/*"
       ]
+    },
+    {
+      "from": "src/app/models",
+      "to": "src/app/models",
+      "filter": [
+        "**/*.js"
+      ]
     }
   ],
   "win": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icon.ico",
     "target": [
       "portable"
     ]
   },
   "portable": {
-    "splashImage": "dist/assets/icons/electron.bmp"
+    "splashImage": "dist/assets/win-splash.bmp"
   },
   "mac": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icon.icns",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icon.png",
     "target": [
       "AppImage"
     ]
