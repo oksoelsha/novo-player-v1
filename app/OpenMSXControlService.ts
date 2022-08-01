@@ -41,7 +41,7 @@ export class OpenMSXControlService {
         const openmsxConnector = new OpenMSXConnector(pid);
 
         await openmsxConnector.connect();
-        openmsxConnector.sendCommand(command);
+        await openmsxConnector.sendCommand(command);
         openmsxConnector.disconnect();
     }
 }

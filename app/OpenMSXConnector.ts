@@ -7,14 +7,6 @@ import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
 
-let nes: typeof NES;
-if (PlatformUtils.isWindows()) {
-	// This library can only be installed through npm using node version 14 (used 14.17.5). Installing it
-	// using node 16.x did not work (error messages were about needing Python, Micrsoft Studio tools, and
-	// even with that it didn't work in the end)
-	nes = require('node-expose-sspi');
-}
-
 // This class was based on the following implementation:
 // https://github.com/S0urceror/DeZog/blob/master/src/remotes/openmsx/openmsxremote.ts
 export class OpenMSXConnector {
@@ -53,8 +45,12 @@ export class OpenMSXConnector {
 		this.openmsx.write('<openmsx-control>');
 	}
 
-	sendCommand(cmd: string) {
-		this.openmsx.write('<command>' + cmd + '</command>');
+	async sendCommand(cmd: string): Promise<void> {
+		return new Promise<void>((resolve, reject) => {
+			this.openmsx.write('<command>' + cmd + '</command>', (err) => {
+				resolve();
+			});
+		});
 	}
 
 	disconnect() {
@@ -146,7 +142,11 @@ export class OpenMSXConnector {
 
 	private async authorize(): Promise<boolean> {
 		return new Promise<boolean>(async (resolve, reject) => {
-
+			// This library can only be installed through npm using node version 14 (used 14.17.5). Installing it
+			// using node 16.x did not work (error messages were about needing Python, Micrsoft Studio tools, and
+			// even with that it didn't work in the end)
+			const nes = require('node-expose-sspi');
+			
 			const credInput = {
 				packageName: 'Negotiate',
 				credentialUse: 'SECPKG_CRED_OUTBOUND' as NES.CredentialUseFlag,
