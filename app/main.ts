@@ -29,7 +29,7 @@ function createWindow(): BrowserWindow {
     height: 600,
     frame: process.platform !== 'win32',
     titleBarStyle: 'hidden',
-    icon: path.join(__dirname, '../dist/assets/icon.png'),
+    icon: path.join(__dirname, 'assets/icon.png'),
     backgroundColor: '#2e2c29',
     webPreferences: {
       nodeIntegration: true,
