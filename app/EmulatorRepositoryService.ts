@@ -27,8 +27,8 @@ export class EmulatorRepositoryService implements UpdateListerner {
         let gamesDataMap: Map<string, RepositoryData> = new Map<string, RepositoryData>();
         let softwaredbFilenames: string[] = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
-            path.join(__dirname, '../dist/assets/data/msxdskdb.xml'),
-            path.join(__dirname, '../dist/assets/data/msxcaswavdb.xml')
+            path.join(__dirname, 'extra/msxdskdb.xml'),
+            path.join(__dirname, 'extra/msxcaswavdb.xml')
         ];
         let parser = new XMLParser();
         /*
