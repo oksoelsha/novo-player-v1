@@ -129,7 +129,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           }
         }
       } else if (event.key === 'ArrowDown' && this.games.length > 0) {
-        this.selectedGame = this.games[0];
         this.showInfo(this.games[0]);
       }
     }
@@ -466,9 +465,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
-      this.getGames(this.selectedListing, this.selectedGame.sha1Code);
+      for (const updatedGame of gamesToUpdate) {
+        updatedGame.machine = hardwareData.machine;
+        updatedGame.fddMode = hardwareData.fddMode;
+        updatedGame.inputDevice = hardwareData.inputDevice;
+        updatedGame.connectGFX9000 = hardwareData.connectGFX9000;
+        const indexInGamesList = this.games.map(game => game.sha1Code).indexOf(updatedGame.sha1Code);
+        this.games[indexInGamesList] = updatedGame;
+      }
     });
-
   }
 
   setBluemsxArguments(bluemsxData: any) {
@@ -479,7 +484,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
-      this.getGames(this.selectedListing, this.selectedGame.sha1Code);
+      for (const updatedGame of gamesToUpdate) {
+        updatedGame.bluemsxArguments = bluemsxData.bluemsxArguments;
+        updatedGame.bluemsxOverrideSettings = bluemsxData.bluemsxOverrideSettings;
+        const indexInGamesList = this.games.map(game => game.sha1Code).indexOf(updatedGame.sha1Code);
+        this.games[indexInGamesList] = updatedGame;
+      }
     });
   }
 
@@ -551,9 +561,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.otherSelectedGames = new Set<Game>(this.otherSelectedGames);
         if (this.otherSelectedGames.has(game)) {
-          this.otherSelectedGames.delete(game);
+          this.removeAsAnotherSelectedGame(game);
         } else {
-          this.otherSelectedGames.add(game);
+          this.setAsAnotherSelectedGame(game);
         }
       }
     } else if (event.shiftKey) {
@@ -573,7 +583,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           endIndex = shiftIndex;
         }
         for(let index = startIndex; index <= endIndex; index++) {
-          this.otherSelectedGames.add(this.games[index]);
+          this.setAsAnotherSelectedGame(this.games[index]);
         }
       }
     }
@@ -583,9 +593,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   showInfo(game: Game) {
-    this.selectedGame = game;
-    this.otherSelectedGames.clear();
-    sessionStorage.setItem('selectedGame', JSON.stringify(game));
+    this.setAsSelectedGame(game);
     this.adjustScrollForSelectedGame(game);
     this.gamesService.getSecondaryData(game).then((secondaryData) => {
       this.setScreenshots(secondaryData);
@@ -691,6 +699,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     return event.ctrlKey || event.metaKey;
   }
 
+  private setAsSelectedGame(game: Game) {
+    if (this.selectedGame) {
+      const selectedGameElement = document.getElementById(this.selectedGame.sha1Code);
+      // this element may not exist if, for example, another listing was switched to
+      if (selectedGameElement) {
+        selectedGameElement.classList.remove('selected-game');
+      }
+    }
+    this.selectedGame = game;
+
+    document.getElementById(game.sha1Code).classList.add('selected-game');
+
+    this.otherSelectedGames.forEach(otherSelectedGame => {
+      this.removeAsAnotherSelectedGame(otherSelectedGame);
+    });
+    this.otherSelectedGames.clear();
+
+    sessionStorage.setItem('selectedGame', JSON.stringify(game));
+  }
+
+  private setAsAnotherSelectedGame(game: Game) {
+    this.otherSelectedGames.add(game);
+    document.getElementById(game.sha1Code).classList.add('selected-secondary-game');
+  }
+
+  private removeAsAnotherSelectedGame(game: Game) {
+    this.otherSelectedGames.delete(game);
+    document.getElementById(game.sha1Code).classList.remove('selected-secondary-game');
+  }
+
   private setScreenshots(secondaryData: GameSecondaryData) {
     if (this.toggle) {
       this.screenshotA1 = this.getScreenshot1Data(secondaryData);
@@ -760,17 +798,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private getAllSelectedGames(game: Game) {
-    const gamesToRemove: Game[] = [];
+    const allSelectedGames: Game[] = [];
     if (game === this.selectedGame || this.otherSelectedGames.has(game)) {
       // this means that this game is one of the selected games
-      gamesToRemove.push(this.selectedGame);
+      allSelectedGames.push(this.selectedGame);
       this.otherSelectedGames.forEach(otherGame => {
-        gamesToRemove.push(otherGame);
+        allSelectedGames.push(otherGame);
       });
     } else {
-      gamesToRemove.push(game);
+      allSelectedGames.push(game);
     }
-    return gamesToRemove;
+    return allSelectedGames;
   }
 
   private switchListingIfCurrentIsEmpty() {

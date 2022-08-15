@@ -85,7 +85,6 @@
       <div id="games-table-data" tabindex="0" (keydown)="processKeyEventsOnTable($event)">
         <table>
           <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
-            class="{{ game | selectedGameClass : selectedGame : otherSelectedGames }}"
             (contextmenu)="onContextMenu($event, game)">
             <td class="medium-img"><img src="{{ game | gameMediumIcon }}" draggable="false"></td>
             <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">

@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FileSystemChooserComponent } from './shared/components/file-system-chooser/file-system-chooser.component';
 import { DropDownComponent } from './shared/components/drop-down/drop-down.component';
 import { EditRowModePipe } from './pages/home/pipes/edit-row-mode.pipe';
-import { SelectedGameClassPipe } from './pages/home/pipes/selected-game-class.pipe';
 import { GameMediumIconPipe } from './pages/home/pipes/game-medium-icon.pipe';
 import { AlertsComponent } from './shared/components/alerts/alerts.component';
 import { WebMSXComponent } from './pages/web-msx/web-msx.component';
@@ -88,7 +87,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     DropfileDirective,
     RelatedGamesComponent,
     EditRowModePipe,
-    SelectedGameClassPipe,
     GameMediumIconPipe,
     SortStatusPipe
   ],
