@@ -259,12 +259,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   setSelectedListing(listing: string) {
     if (listing !== this.selectedListing) {
       this.games = [];
-      this.selectedGame = null;
+      this.initialize();
       sessionStorage.removeItem('selectedGame');
-      this.setScreenshots(this.noScreenshotData);
 
-      this.selectedListing = listing;
-      this.getGames(listing);
+      // wait for the clearing of the screenshots before we switch to the new listing
+      setTimeout(() => {
+        this.selectedListing = listing;
+        this.getGames(listing);
+        }, 0);
     }
   }
 
