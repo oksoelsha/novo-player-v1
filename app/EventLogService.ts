@@ -51,7 +51,7 @@ export class EventLogService {
 
         this.database.count({}, (err: any, count: number) => {
             total = count;
-            let offset = currentPage * pageSize;
+            const offset = currentPage * pageSize;
             self.database.find({}).sort({ timestamp: -1 }).skip(offset).limit(pageSize).exec((err: any, entries: any) => {
                 for (let entry of entries) {
                     let event: Event = new Event(entry.source, entry.type, entry.data, entry.timestamp);

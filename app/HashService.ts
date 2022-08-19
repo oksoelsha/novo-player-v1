@@ -15,7 +15,7 @@ export class HashService {
      }
 
     getSha1Code(filename: string): Promise<any> {
-        var sha1: Promise<any>;
+        let sha1: Promise<any>;
         if (fs.statSync(filename)['size'] > 10485760) {
             // any files larger than 10Mb are considered large that we need to send them to the more limited promise batch size
             sha1 = this.largeFileScanBatchSize(() => this.getSha1(filename));
@@ -27,11 +27,11 @@ export class HashService {
     }
 
     private getSha1(filename: string): Promise<any> {
-        let shasum = crypto.createHash('sha1');
+        const shasum = crypto.createHash('sha1');
         if (FileTypeUtils.isZip(filename)) {
             const StreamZip = require('node-stream-zip');
             return new Promise<any>((resolve, reject) => {
-                let zip = new StreamZip({
+                const zip = new StreamZip({
                     file: filename,
                     storeEntries: true
                 });
@@ -39,8 +39,8 @@ export class HashService {
                     return reject(err);
                 });
                 zip.on('ready', () => {
-                    let entries = Object.keys(zip.entries()).map(e => zip.entries()[e]);
-                    let msxFileIndex = this.getMSXFileIndexInZip(entries);
+                    const entries = Object.keys(zip.entries()).map(e => zip.entries()[e]);
+                    const msxFileIndex = this.getMSXFileIndexInZip(entries);
                     if (msxFileIndex < entries.length) {
                         zip.stream(entries[msxFileIndex].name, function (err: string, stm: Stream) {
                             stm.on('data', function (data) {
@@ -59,7 +59,7 @@ export class HashService {
             });
         } else {
             return new Promise<any>((resolve, reject) => {
-                let s: fs.ReadStream = fs.createReadStream(filename);
+                const s: fs.ReadStream = fs.createReadStream(filename);
                 s.on('data', function (data) {
                     shasum.update(data);
                 })

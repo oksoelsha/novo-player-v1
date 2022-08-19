@@ -23,29 +23,29 @@ export class EmulatorRepositoryService implements UpdateListerner {
     }
 
     private init(): void {
-        let self = this;
-        let gamesDataMap: Map<string, RepositoryData> = new Map<string, RepositoryData>();
-        let softwaredbFilenames: string[] = [
+        const self = this;
+        const gamesDataMap: Map<string, RepositoryData> = new Map<string, RepositoryData>();
+        const softwaredbFilenames: string[] = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
             path.join(__dirname, 'extra/msxdskdb.xml'),
             path.join(__dirname, 'extra/msxcaswavdb.xml')
         ];
-        let parser = new XMLParser();
+        const parser = new XMLParser();
         /*
         let options = {
             parseTrueNumberOnly: true,
             tagValueProcessor: (val: any, tagName: any) => val.replace(/&amp;/g, '&').replace(/&#34;/g, '"').replace(/&#38;/g, '&').replace(/&#39;/g, "'")
         }
         */
-        for(let softwaredbFilename of softwaredbFilenames) {
+        for(const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
                 fs.readFile(softwaredbFilename, function (err, data) {
                     let result = parser.parse(data.toString());
-                    for (let s in result.softwaredb.software) {
+                    for (const s in result.softwaredb.software) {
                         let software = result.softwaredb.software;
 
                         if (Object.prototype.toString.call(software[s].dump) === '[object Array]') {
-                            for (let y in software[s].dump) {
+                            for (const y in software[s].dump) {
                                 self.processDump(software[s], software[s].dump[y], gamesDataMap);
                             }
                         } else {
@@ -60,13 +60,13 @@ export class EmulatorRepositoryService implements UpdateListerner {
 
     private processDump(software: any, dump: any, gamesDataMap: Map<string, RepositoryData>): void {
         if (dump.hasOwnProperty('rom')) {
-            let repositoryData = new RepositoryData(software.title, software.system, software.company,
+            const repositoryData = new RepositoryData(software.title, software.system, software.company,
                 software.year, software.country);
 
             if (dump.hasOwnProperty('original')) {
                 repositoryData.setDump(dump.original);
             }
-    
+
             if (dump.rom.hasOwnProperty('type')) {
                 repositoryData.setMapper(dump.rom.type);
             } else {
@@ -84,7 +84,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
             gamesDataMap.set(dump.rom.hash, repositoryData);
         }
         if (dump.hasOwnProperty('megarom')) {
-            let repositoryData = new RepositoryData(software.title, software.system, software.company,
+            const repositoryData = new RepositoryData(software.title, software.system, software.company,
                 software.year, software.country);
 
             if (dump.hasOwnProperty('original')) {
@@ -100,7 +100,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
             gamesDataMap.set(dump.megarom.hash, repositoryData);
         }
         if (dump.hasOwnProperty('dsk')) {
-            let repositoryData = new RepositoryData(software.title, software.system, software.company,
+            const repositoryData = new RepositoryData(software.title, software.system, software.company,
                 software.year, software.country);
 
             if (dump.dsk.hasOwnProperty('remark')) {
@@ -110,7 +110,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
             gamesDataMap.set(dump.dsk.format.hash, repositoryData);
         }
         if (dump.hasOwnProperty('cas')) {
-            let repositoryData = new RepositoryData(software.title, software.system, software.company,
+            const repositoryData = new RepositoryData(software.title, software.system, software.company,
                 software.year, software.country);
 
             if (dump.cas.hasOwnProperty('remark')) {
@@ -121,7 +121,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
                 repositoryData.setStart(dump.cas.start.text);
             }
 
-            for (let f in dump.cas.format) {
+            for (const f in dump.cas.format) {
                 gamesDataMap.set(dump.cas.format[f].hash, repositoryData);
             }
         }

@@ -15,37 +15,37 @@ export class EmulatorHardwareService {
 
     private init() {
         ipcMain.on('getMachines', (event, arg) => {
-            var machines = this.getFromEmulator('machines');
+            const machines = this.getFromEmulator('machines');
             this.win.webContents.send('getMachinesResponse', machines);
         });
 
         ipcMain.on('getExtensions', (event, arg) => {
-            var extensions = this.getFromEmulator('extensions');
+            const extensions = this.getFromEmulator('extensions');
             this.win.webContents.send('getExtensionsResponse', extensions);
         });
     }
 
     private getFromEmulator(hardware: string): string[] {
-        var self = this;
-        var openMSXPath = this.settingsService.getSettings().openmsxPath;
-        var hardwarePath = PlatformUtils.getHardwarePath(openMSXPath, hardware);
-        var hardwareList: string[] = [];
+        const self = this;
+        const openMSXPath = this.settingsService.getSettings().openmsxPath;
+        const hardwarePath = PlatformUtils.getHardwarePath(openMSXPath, hardware);
+        const hardwareList: string[] = [];
 
         if (fs.existsSync(hardwarePath)) {
-            var hardwareDirectory = fs.readdirSync(hardwarePath, 'utf8');
+            const hardwareDirectory = fs.readdirSync(hardwarePath, 'utf8');
             hardwareDirectory.forEach(file => {
-                var hardwareFullPath: string = path.join(hardwarePath, file);
+                const hardwareFullPath: string = path.join(hardwarePath, file);
                 if (fs.statSync(hardwareFullPath).isFile()) {
                     if (FileTypeUtils.isXML(hardwareFullPath)) {
                         hardwareList.push(FileTypeUtils.getFilenameWithoutExt(path.basename(hardwareFullPath)));
                     }
                 } else {
-                    var hardwareConfigFile: string = path.join(hardwareFullPath, this.HARDWARE_CONFIG_FILENAME);
+                    const hardwareConfigFile: string = path.join(hardwareFullPath, this.HARDWARE_CONFIG_FILENAME);
                     if (fs.existsSync(hardwareConfigFile)) {
                         hardwareList.push(path.basename(hardwareFullPath));
                     }
                 }
-            })    
+            });
         }
 
         return hardwareList;

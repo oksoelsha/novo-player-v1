@@ -78,8 +78,8 @@ export class OpenMSXLaunchService {
     }
 
     private launch(game: Game, time: number) {
-        var self = this;
-        var options = {
+        const self = this;
+        const options = {
             cwd: this.settingsService.getSettings().openmsxPath,
             detached: true
         };
@@ -88,7 +88,7 @@ export class OpenMSXLaunchService {
         process.on("error", (error) => {
             console.log(error.message);
             let errorMessage: string;
-            let splitText: string = self.getSplitText(error);
+            const splitText = self.getSplitText(error);
             if (splitText) {
                 errorMessage = error.message.substring(error.message.indexOf(splitText) + splitText.length);
             } else {

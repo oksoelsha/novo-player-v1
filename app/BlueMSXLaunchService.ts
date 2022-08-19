@@ -31,8 +31,8 @@ export class BlueMSXLaunchService {
     }
 
     private launch(game: Game, time: number) {
-        var self = this;
-        var options = {
+        const self = this;
+        const options = {
             cwd: this.settingsService.getSettings().bluemsxPath,
             detached: true
         };
@@ -68,7 +68,7 @@ export class BlueMSXLaunchService {
     }
 
     private getArguments(game: Game): string[] {
-        let args: string[] = [];
+        const args: string[] = [];
         BlueMSXLaunchService.fieldsToArgs.forEach((field) => {
             if (game[field[0]]) {
                 args.push('/' + field[1]);

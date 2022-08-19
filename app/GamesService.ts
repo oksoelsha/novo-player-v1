@@ -13,7 +13,7 @@ import { PersistenceUtils } from './utils/PersistenceUtils';
 export class GamesService {
 
     private database: Datastore;
-    private readonly databaseFile: string = path.join(PersistenceUtils.getStoragePath(), 'datafile');
+    private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'datafile');
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
         private hashService: HashService, private extraDataService: ExtraDataService) {

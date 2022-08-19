@@ -16,11 +16,11 @@ export class FilesService {
 
     private init() {
         ipcMain.on('useFileSystemDialog', (event, options) => {
-            let value = this.openFileSystemDialog(options);
+            this.openFileSystemDialog(options);
         });
 
         ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix) => {
-            let secondaryData = this.getSecondaryData(genMsxId, suffix);
+            const secondaryData = this.getSecondaryData(genMsxId, suffix);
             this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
         });
 
@@ -33,7 +33,7 @@ export class FilesService {
         });
 
         ipcMain.on('getWebMSXPath', (event, folder: string, file: string) => {
-            let fullpath: string = path.join(folder, file);
+            const fullpath = path.join(folder, file);
             if (fs.existsSync(fullpath)) {
                 this.win.webContents.send('getWebMSXPathResponse', fullpath);
             } else {
@@ -42,17 +42,17 @@ export class FilesService {
         });
 
         ipcMain.on('getScreenshotsVersion', (event) => {
-            let screenshotVersion = this.getScreenshotVersion();
+            const screenshotVersion = this.getScreenshotVersion();
             this.win.webContents.send('getScreenshotsVersionResponse', screenshotVersion);
         });
 
         ipcMain.on('getGameMusicVersion', (event) => {
-            let gameMusicVersion = this.getGameMusicVersion();
+            const gameMusicVersion = this.getGameMusicVersion();
             this.win.webContents.send('getGameMusicVersionResponse', gameMusicVersion);
         });
 
         ipcMain.on('getFileGroup', (event, pid: number, filename: string) => {
-            let fileGroup = this.getFileGroup(filename);
+            const fileGroup = this.getFileGroup(filename);
             this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
         });
     }
@@ -64,7 +64,7 @@ export class FilesService {
     }
 
     private getSecondaryData(genMsxId: number, suffix: string): GameSecondaryData {
-        var screenshotsPath1: string;
+        let screenshotsPath1: string;
         if (suffix == null) {
             screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a.png');
         } else {
@@ -104,8 +104,8 @@ export class FilesService {
         if (genMsxId && this.settingsService.getSettings().gameMusicPath) {
             let folder = path.join(this.settingsService.getSettings().gameMusicPath, genMsxId.toString());
             if (fs.existsSync(folder)) {
-                var list: string[] = [];
-                var contents: string[] = fs.readdirSync(folder, 'utf8');
+                const list: string[] = [];
+                const contents = fs.readdirSync(folder, 'utf8');
                 contents.forEach(file => {
                     list.push(path.join(folder, file));
                 });
@@ -120,7 +120,7 @@ export class FilesService {
     }
 
     private openFileExplorer(file: string) {
-        let fileManagerCommand = PlatformUtils.getFileManagerCommand(file);
+        const fileManagerCommand = PlatformUtils.getFileManagerCommand(file);
         const ls = cp.exec(fileManagerCommand, function (error: cp.ExecException, stdout, stderr) {
             if (error) {
             }
@@ -177,10 +177,10 @@ export class FilesService {
     private examineFileFormat(filename: string, counterIndex: number): string[] {
         const counterCharacter = filename.charAt(counterIndex);
         let potentialMatches: string[] = [];
-        let currentDirectory = path.dirname(filename);
-        let files = fs.readdirSync(currentDirectory, 'utf8');
+        const currentDirectory = path.dirname(filename);
+        const files = fs.readdirSync(currentDirectory, 'utf8');
         files.forEach(file => {
-            var fullPath: string = path.join(currentDirectory, file);
+            const fullPath: string = path.join(currentDirectory, file);
             if (fullPath.substring(0, counterIndex - 1) == filename.substring(0, counterIndex - 1) &&
                 fullPath.substring(counterIndex + 1) == filename.substring(counterIndex + 1)) {
                 potentialMatches.push(fullPath);
@@ -188,7 +188,7 @@ export class FilesService {
         });
         potentialMatches = potentialMatches.sort();
         const matches: string[] = [];
-        let done: boolean = false;
+        let done = false;
         let index = 0;
         let fileCounter = counterCharacter;
         for (index; index < potentialMatches.length && !done; index++) {

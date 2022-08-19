@@ -43,8 +43,8 @@ export class ScanService {
 
     private getTotalFiles(item: string): number {
         if (fs.statSync(item).isDirectory()) {
-            let contents: string[] = fs.readdirSync(item, 'utf8');
-            let count: number = contents.length;
+            const contents = fs.readdirSync(item, 'utf8');
+            let count = contents.length;
             contents.forEach(one => {
                 let fullPath: string = path.join(item, one);
                 if (fs.statSync(fullPath).isDirectory()) {
@@ -65,9 +65,9 @@ export class ScanService {
 
     private readItem(item: string, listing: string, machine: string) {
         if (fs.statSync(item).isDirectory()) {
-            let currentDirectory = fs.readdirSync(item, 'utf8');
+            const currentDirectory = fs.readdirSync(item, 'utf8');
             currentDirectory.forEach(file => {
-                let fullPath: string = path.join(item, file);
+                const fullPath = path.join(item, file);
                 this.readItem(fullPath, listing, machine);
             });
         } else {
@@ -93,12 +93,12 @@ export class ScanService {
     }
 
     private processFile(filename: string, listing:string, machine: string) {
-        let sha1: Promise<any> = this.hashService.getSha1Code(filename);
+        const sha1 = this.hashService.getSha1Code(filename);
 
         sha1.then((data: any) => {
             if (data != null) {
-                let extraData: ExtraData = this.extraDataInfo.get(data.hash);
-                let game: Game = new Game(this.getGameName(data.hash, data.filename), data.hash, data.size);
+                const extraData = this.extraDataInfo.get(data.hash);
+                const game = new Game(this.getGameName(data.hash, data.filename), data.hash, data.size);
 
                 this.setMainFileForGame(game, filename, data.filename);
                 game.setMachine(machine);
@@ -147,7 +147,7 @@ export class ScanService {
  
     private getGameName(hash: string, file: string): string {
         if (this.repositoryInfo != null) {
-            let repositoryData: RepositoryData = this.repositoryInfo.get(hash);
+            const repositoryData = this.repositoryInfo.get(hash);
             if (repositoryData != null) {
                 //force game title to be string for account for game names that are numbers (e.g. 1942)
                 return repositoryData.title.toString();

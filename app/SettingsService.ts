@@ -22,7 +22,7 @@ export class SettingsService {
             if (!fs.existsSync(this.settingsFile)) {
                 return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '');
             } else {
-                let fileData = fs.readFileSync(this.settingsFile);
+                const fileData = fs.readFileSync(this.settingsFile);
                 return JSON.parse(fileData.toString());
             }
         } else {
@@ -48,7 +48,7 @@ export class SettingsService {
     }
 
     private saveSettings(settings: Settings) {
-        let data = JSON.stringify(settings);
+        const data = JSON.stringify(settings);
         fs.writeFileSync(this.settingsFile, data);
         this.settings = settings;
         this.updateListerners();

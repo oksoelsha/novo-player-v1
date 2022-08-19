@@ -29,8 +29,8 @@ export class ExtraDataService implements UpdateListerner {
         let suffix: string;
         let extraData: ExtraData;
 
-        let data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
-        let lines = data.split(/\r?\n/);
+        const data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
+        const lines = data.split(/\r?\n/);
     
         lines.forEach((line) => {
             if (!line.startsWith('--')) {
