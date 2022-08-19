@@ -1,6 +1,6 @@
 # Novo Player
 
-Multi-platform desktop application written in Electron and Angular that helps organize your MSX software collection and run it on openMSX and WebMSX (offline mode).
+Multi-platform desktop application written in Electron and Angular that helps organize your MSX software collection and run it on openMSX, WebMSX (offline mode) and blueMSX.
 
 Visit http://msxlaunchers.info for more information.
 
