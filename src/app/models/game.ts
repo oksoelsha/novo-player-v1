@@ -43,6 +43,8 @@ export class Game {
     bluemsxArguments: string;
     bluemsxOverrideSettings: boolean;
 
+    webmsxMachine: number;
+
     public readonly MASK_GENERATION_MSX = 1;
     public readonly MASK_GENERATION_MSX2 = 2;
     public readonly MASK_GENERATION_MSX2PLUS = 4;
@@ -191,4 +193,7 @@ export class Game {
         this.bluemsxOverrideSettings = flag;
     }
 
+    setWebmsxMachine(machine: number) {
+        this.webmsxMachine = machine;
+    }
 }

@@ -144,7 +144,8 @@
     "EU": "European Union"
   },
   "webmsx": {
-    "errorloading": "Error loading WebMSX. Make sure the path is set correctly"
+    "errorloading": "Error loading WebMSX. Make sure the path is set correctly",
+    "settodefault": "Set to default"
   },
   "dashboard": {
     "totals": "Totals",

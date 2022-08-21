@@ -107,14 +107,14 @@ export class GamesService {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('updateHardwareResponse', (event, updated: boolean) => {
         if (updated) {
-          gamesToUpdate.forEach(game => {
-            const updatedGame: Game = Object.assign({}, game);
+          for (const game of gamesToUpdate) {
+            const updatedGame = Object.assign({}, game);
             updatedGame.machine = machine;
             updatedGame.fddMode = fddMode;
             updatedGame.inputDevice = inputDevice;
             updatedGame.connectGFX9000 = connectGFX9000;
             this.undoService.addToHistory(game, updatedGame);
-          });
+          }
         }
         resolve(updated);
       });
@@ -126,16 +126,32 @@ export class GamesService {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('setBluemsxArgumentsResponse', (event, updated: boolean) => {
         if (updated) {
-          gamesToUpdate.forEach(game => {
-            const updatedGame: Game = Object.assign({}, game);
+          for (const game of gamesToUpdate) {
+            const updatedGame = Object.assign({}, game);
             updatedGame.bluemsxArguments = args;
             updatedGame.bluemsxOverrideSettings = overrideSettings;
             this.undoService.addToHistory(game, updatedGame);
-          });
+          }
         }
         resolve(updated);
       });
       this.ipc.send('setBluemsxArguments', gamesToUpdate, args, overrideSettings);
+    });
+  }
+
+  async setWebmsxMachine(gamesToUpdate: Game[], machine: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('setWebmsxMachineResponse', (event, updated: boolean) => {
+        if (updated) {
+          for (const game of gamesToUpdate) {
+            const updatedGame = Object.assign({}, game);
+            updatedGame.webmsxMachine = machine;
+            this.undoService.addToHistory(game, updatedGame);
+          }
+        }
+        resolve(updated);
+      });
+      this.ipc.send('setWebmsxMachine', gamesToUpdate, machine);
     });
   }
 

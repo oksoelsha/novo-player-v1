@@ -144,7 +144,8 @@
     "EU": "Unione Europea"
   },
   "webmsx": {
-    "errorloading": "Avvio di WebMSX fallito. Assicurati che il percorso sia corretto"
+    "errorloading": "Avvio di WebMSX fallito. Assicurati che il percorso sia corretto",
+    "settodefault": "Imposta su valore predefinito"
   },
   "dashboard": {
     "totals": "Totali",

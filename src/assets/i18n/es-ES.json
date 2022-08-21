@@ -144,7 +144,8 @@
     "EU": "Unión Europea"
   },
   "webmsx": {
-    "errorloading": "Error al cargar WebMSX. Asegúrese de que la ruta de acceso es correcta"
+    "errorloading": "Error al cargar WebMSX. Asegúrese de que la ruta de acceso es correcta",
+    "settodefault": "Restablecer valor predeterminado"
   },
   "dashboard": {
     "totals": "Totales",

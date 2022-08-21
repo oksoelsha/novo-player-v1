@@ -144,7 +144,8 @@
     "EU": "Europese Unie"
   },
   "webmsx": {
-    "errorloading": "Fout bij het laden van WebMSX. Zorg ervoor dat het pad correct is ingesteld"
+    "errorloading": "Fout bij het laden van WebMSX. Zorg ervoor dat het pad correct is ingesteld",
+    "settodefault": "Ingesteld op de standaardwaarde"
   },
   "dashboard": {
     "totals": "Totalen",

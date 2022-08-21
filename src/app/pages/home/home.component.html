@@ -320,7 +320,38 @@
     <span class="menu-icon"></span>
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isWindows" [divider]="true"></ng-template>
+  <ng-template contextMenuItem [visible]="isWebMSXPathDefined"  [subMenu]="webmsxMachinesSubMenu">
+    <div class="menu-icon"></div>
+    Set WebMSX Machine
+  </ng-template>
+  <context-menu [menuClass]="'context-menu'" #webmsxMachinesSubMenu>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(1)">
+      <div class="menu-icon"></div>
+      MSX
+    </ng-template>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(2)">
+      <div class="menu-icon"></div>
+      MSX2
+    </ng-template>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(3)">
+      <div class="menu-icon"></div>
+      MSX2+
+    </ng-template>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(4)">
+      <div class="menu-icon"></div>
+      MSX Turbo-R
+    </ng-template>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(5)">
+      <div class="menu-icon"></div>
+      MSX 2 - Arabic
+    </ng-template>
+    <ng-template contextMenuItem [divider]="true"></ng-template>
+    <ng-template contextMenuItem (execute)="setWebmsxMachine(0)">
+      <div class="menu-icon"></div>
+      {{ 'webmsx.settodefault' | translate }}
+    </ng-template>
+  </context-menu>
+  <ng-template contextMenuItem [visible]="isWindows || isWebMSXPathDefined" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
     <div class="menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}

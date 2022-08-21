@@ -144,7 +144,8 @@
     "EU": "Union européenne"
   },
   "webmsx": {
-    "errorloading": "Erreur lors du chargement WebMSX. Vérifiez que le chemin d'accès est correct"
+    "errorloading": "Erreur lors du chargement WebMSX. Vérifiez que le chemin d'accès est correct",
+    "settodefault": "Définir la valeur par défaut"
   },
   "dashboard": {
     "totals": "Totaux",

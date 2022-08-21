@@ -144,7 +144,8 @@
     "EU": "Unió Europea"
   },
   "webmsx": {
-    "errorloading": "Error en carregar WebMSX. Assegureu-vos que el camí estigui configurat correctament"
+    "errorloading": "Error en carregar WebMSX. Assegureu-vos que el camí estigui configurat correctament",
+    "settodefault": "Estableix el valor predeterminat"
   },
   "dashboard": {
     "totals": "Totals",

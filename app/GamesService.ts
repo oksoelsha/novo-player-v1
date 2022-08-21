@@ -107,6 +107,10 @@ export class GamesService {
             this.setBluemsxArguments(games, args, overrideSettings);
         });
 
+        ipcMain.on('setWebmsxMachine', (event, games: Game[], machine: number) => {
+            this.setWebmsxMachine(games, machine);
+        });
+
         ipcMain.on('getTotals', (event, arg) => {
             this.getTotals();
         });
@@ -167,6 +171,10 @@ export class GamesService {
     private setBluemsxArguments(games: Game[], args: string, overrideSettings: boolean) {
         this.updateMultipleGames(games, ['bluemsxArguments', 'bluemsxOverrideSettings'],
             [args, overrideSettings], 'setBluemsxArgumentsResponse');
+    }
+
+    private setWebmsxMachine(games: Game[], machine: number) {
+        this.updateMultipleGames(games, ['webmsxMachine'], [machine], 'setWebmsxMachineResponse');
     }
 
     private updateMultipleGames(games: Game[], fields: string[], values: any[], response: string) {

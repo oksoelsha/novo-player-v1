@@ -1,0 +1,32 @@
+
+{
+
+    "MACHINES_CONFIG": {
+        "_clear": true,
+
+        "ALALAMIAHAX370":  { "DESC": "Al Alamiah AX-370", "TYPE": 2, "PRESETS": "_AX370", "CODE_LABEL": "ARAB" }
+    },
+
+    "EXTENSIONS_CONFIG": {
+        "HARDDISK": { "SLOT2": null },
+        "DISK": null,
+        "RAMMAPPER": null,
+        "MSXMUSIC": { "SLOT": [2, 2] }
+    },
+
+    "PRESETS_CONFIG": {
+        "_AX370": {
+            "SLOT00_URL": "assets/webmsx-config/ax370bios.rom",
+            "SLOT01_URL": "assets/webmsx-config/ax370arab.rom",
+            "SLOT02_URL": "assets/webmsx-config/ax370swp.rom",
+            "SLOT03_URL": "assets/webmsx-config/ax370sakhrbasic.rom",
+            "SLOT30_URL": "assets/webmsx-config/ax370sb.rom | assets/webmsx-config/ax370disk.rom", "SLOT30_FORMAT": "DiskPatch",
+            "SLOT31_URL": "assets/webmsx-config/ax370paint.rom",
+            "SLOT32_URL": "",
+            "SLOT33_URL": "@[RAMMapper].rom",
+            "RAMMAPPER_SIZE": 128,
+            "VDP_TYPE": 3
+        }
+    }
+
+}

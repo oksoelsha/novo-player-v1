@@ -28,7 +28,8 @@ export class PersistenceUtils {
         'favorite',
         'infoFile',
         'bluemsxArguments',
-        'bluemsxOverrideSettings'
+        'bluemsxOverrideSettings',
+        'webmsxMachine'
     ];
 
     static getStoragePath(): string {
