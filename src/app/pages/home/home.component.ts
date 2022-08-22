@@ -260,6 +260,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   setSelectedListing(listing: string) {
     if (listing !== this.selectedListing) {
       this.games = [];
+      this.otherSelectedGames.clear();
       this.initialize();
       sessionStorage.removeItem('selectedGame');
 
