@@ -145,6 +145,7 @@
   },
   "webmsx": {
     "errorloading": "Fout bij het laden van WebMSX. Zorg ervoor dat het pad correct is ingesteld",
+    "setwebmsxmachine": "WebMSX-machine instellen",
     "settodefault": "Ingesteld op de standaardwaarde"
   },
   "dashboard": {

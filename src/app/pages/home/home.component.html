@@ -322,7 +322,7 @@
   </ng-template>
   <ng-template contextMenuItem [visible]="isWebMSXPathDefined"  [subMenu]="webmsxMachinesSubMenu">
     <div class="menu-icon"></div>
-    Set WebMSX Machine
+    {{ 'webmsx.setwebmsxmachine' | translate }}
   </ng-template>
   <context-menu [menuClass]="'context-menu'" #webmsxMachinesSubMenu>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(1)">
@@ -343,7 +343,7 @@
     </ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(5)">
       <div class="menu-icon"></div>
-      MSX 2 - Arabic
+      MSX2 - Arabic
     </ng-template>
     <ng-template contextMenuItem [divider]="true"></ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(0)">

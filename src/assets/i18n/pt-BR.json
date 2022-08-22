@@ -145,6 +145,7 @@
   },
   "webmsx": {
     "errorloading": "Erro ao carregar WebMSX. Verifique se o caminho está correto",
+    "setwebmsxmachine": "Definir a máquina de WebMSX",
     "settodefault": "Definir como padrão"
   },
   "dashboard": {

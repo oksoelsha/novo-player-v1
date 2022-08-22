@@ -316,7 +316,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   launchWebmsx(game: Game) {
-    this.router.navigate(['./wmsx', { gameParams: JSON.stringify(this.selectedGame) }], { queryParams: this.getWebMSXParams(this.selectedGame) });
+    this.router.navigate(['./wmsx', { gameParams: JSON.stringify(this.selectedGame) }], { queryParams: this.getWebMSXParams() });
     this.eventsService.logEvent(new Event(EventSource.WebMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
   }
 
@@ -468,15 +468,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
-      for (const game of gamesToUpdate) {
-        const updatedGame = Object.assign({}, game);
-        updatedGame.machine = hardwareData.machine;
-        updatedGame.fddMode = hardwareData.fddMode;
-        updatedGame.inputDevice = hardwareData.inputDevice;
-        updatedGame.connectGFX9000 = hardwareData.connectGFX9000;
-        const indexInGamesList = this.games.map(game => game.sha1Code).indexOf(game.sha1Code);
-        this.games[indexInGamesList] = updatedGame;
-      }
     });
   }
 
@@ -487,13 +478,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
-      }
-      for (const game of gamesToUpdate) {
-        const updatedGame = Object.assign({}, game);
-        updatedGame.bluemsxArguments = bluemsxData.bluemsxArguments;
-        updatedGame.bluemsxOverrideSettings = bluemsxData.bluemsxOverrideSettings;
-        const indexInGamesList = this.games.map(game => game.sha1Code).indexOf(game.sha1Code);
-        this.games[indexInGamesList] = updatedGame;
       }
     });
   }
@@ -698,12 +682,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
-      for (const game of gamesToUpdate) {
-        const updatedGame = Object.assign({}, game);
-        updatedGame.webmsxMachine = machine;
-        const indexInGamesList = this.games.map(game => game.sha1Code).indexOf(game.sha1Code);
-        this.games[indexInGamesList] = updatedGame;
-      }
     });
   }
 
@@ -873,7 +851,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.games.filter(g => g.sha1Code === sha1Code).forEach(match => this.showInfo(match));
   }
 
-  private getWebMSXParams(game: Game): any {
+  private getWebMSXParams(): any {
     const webMSXParams: any = {};
 
     if (this.selectedGame.romA != null) {
@@ -884,17 +862,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     if (this.selectedGame.extensionRom === 'scc') {
       webMSXParams.PRESETS = 'SCC';
+    } else if (this.selectedGame.extensionRom === 'scc+') {
+      webMSXParams.PRESETS = 'SCCI';
     }
     if (this.selectedGame.tape != null) {
       webMSXParams.TAPE = this.selectedGame.tape;
     }
 
-    if (game.webmsxMachine) {
-      if (game.webmsxMachine === WebMSXMachine.ALALAMIAHAX370) {
+    if (this.selectedGame.webmsxMachine) {
+      if (this.selectedGame.webmsxMachine === WebMSXMachine.ALALAMIAHAX370) {
         webMSXParams.CONFIG_URL = 'assets/webmsx-config/machines.json';
         webMSXParams.MACHINE = 'ALALAMIAHAX370';
       } else {
-        webMSXParams.MACHINE = WebMSXMachine[game.webmsxMachine];
+        webMSXParams.MACHINE = WebMSXMachine[this.selectedGame.webmsxMachine];
       }  
     }
 

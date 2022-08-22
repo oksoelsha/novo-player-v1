@@ -108,12 +108,12 @@ export class GamesService {
       this.ipc.once('updateHardwareResponse', (event, updated: boolean) => {
         if (updated) {
           for (const game of gamesToUpdate) {
-            const updatedGame = Object.assign({}, game);
-            updatedGame.machine = machine;
-            updatedGame.fddMode = fddMode;
-            updatedGame.inputDevice = inputDevice;
-            updatedGame.connectGFX9000 = connectGFX9000;
-            this.undoService.addToHistory(game, updatedGame);
+            const oldGame = Object.assign({}, game);
+            game.machine = machine;
+            game.fddMode = fddMode;
+            game.inputDevice = inputDevice;
+            game.connectGFX9000 = connectGFX9000;
+            this.undoService.addToHistory(oldGame, game);
           }
         }
         resolve(updated);
@@ -127,10 +127,10 @@ export class GamesService {
       this.ipc.once('setBluemsxArgumentsResponse', (event, updated: boolean) => {
         if (updated) {
           for (const game of gamesToUpdate) {
-            const updatedGame = Object.assign({}, game);
-            updatedGame.bluemsxArguments = args;
-            updatedGame.bluemsxOverrideSettings = overrideSettings;
-            this.undoService.addToHistory(game, updatedGame);
+            const oldGame = Object.assign({}, game);
+            game.bluemsxArguments = args;
+            game.bluemsxOverrideSettings = overrideSettings;
+            this.undoService.addToHistory(oldGame, game);
           }
         }
         resolve(updated);
@@ -144,9 +144,9 @@ export class GamesService {
       this.ipc.once('setWebmsxMachineResponse', (event, updated: boolean) => {
         if (updated) {
           for (const game of gamesToUpdate) {
-            const updatedGame = Object.assign({}, game);
-            updatedGame.webmsxMachine = machine;
-            this.undoService.addToHistory(game, updatedGame);
+            const oldGame = Object.assign({}, game);
+            game.webmsxMachine = machine;
+            this.undoService.addToHistory(oldGame, game);
           }
         }
         resolve(updated);

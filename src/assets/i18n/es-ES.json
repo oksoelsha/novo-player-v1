@@ -145,6 +145,7 @@
   },
   "webmsx": {
     "errorloading": "Error al cargar WebMSX. Asegúrese de que la ruta de acceso es correcta",
+    "setwebmsxmachine": "Establecer la máquina de WebMSX",
     "settodefault": "Restablecer valor predeterminado"
   },
   "dashboard": {

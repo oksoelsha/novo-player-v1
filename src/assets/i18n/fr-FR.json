@@ -145,6 +145,7 @@
   },
   "webmsx": {
     "errorloading": "Erreur lors du chargement WebMSX. Vérifiez que le chemin d'accès est correct",
+    "setwebmsxmachine": "Définir la machine de WebMSX",
     "settodefault": "Définir la valeur par défaut"
   },
   "dashboard": {
