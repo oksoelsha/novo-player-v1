@@ -543,6 +543,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   processClickOnGame(event: any, game: Game) {
     if (game === this.selectedGame) {
+      this.removeAllOtherSelectedGames();
       return;
     }
     if (this.ctrlOrCommandKey(event)) {
@@ -728,6 +729,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private removeAsAnotherSelectedGame(game: Game) {
     this.otherSelectedGames.delete(game);
     document.getElementById(game.sha1Code).classList.remove('selected-secondary-game');
+  }
+
+  private removeAllOtherSelectedGames() {
+    this.otherSelectedGames.forEach(game => {
+      this.removeAsAnotherSelectedGame(game);
+    });
   }
 
   private setScreenshots(secondaryData: GameSecondaryData) {
