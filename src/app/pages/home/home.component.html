@@ -365,11 +365,11 @@
     {{ 'home.removefromfavorites' | translate }}
   </ng-template>
   <ng-template contextMenuItem (execute)="remove(null, $event.item)">
-    <div class="menu-icon"></div>
+    <div class="menu-icon">&#10006;</div>
     {{ 'home.removefromlisting' | translate }}
   </ng-template>  
   <ng-template contextMenuItem (execute)="changeListing.open()">
-    <div class="menu-icon"></div>
+    <div class="menu-icon">&#8680;</div>
     {{ 'home.movetoanotherlisting' | translate }}
   </ng-template>
 </context-menu>
