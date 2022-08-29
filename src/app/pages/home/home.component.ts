@@ -25,6 +25,7 @@ import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-ed
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 import { WebMSXMachine } from '../../models/webmsx-machines';
+import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -54,6 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('hardwareEdit') hardwareEdit: HardwareEditComponent;
   @ViewChild('infoFileFieldEdit') infoFileFieldEdit: InfoFileFieldEditComponent;
   @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
+  @ViewChild('webmsxMachineSet') webmsxMachineSet: WebmsxMachineSetComponent;
   @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;

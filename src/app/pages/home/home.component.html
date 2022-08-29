@@ -167,7 +167,11 @@
               <div class="actions-menu-icon"></div>
               {{ 'home.editbluemsxarguments' | translate }}
             </button>
-            <div class="dropdown-divider" *ngIf="isWindows"></div>
+            <button class="actions-menu-button" *ngIf="isWebMSXPathDefined" ngbDropdownItem type="button" (click)="webmsxMachineSet.open()">
+              <div class="actions-menu-icon"></div>
+              {{ 'webmsx.setwebmsxmachine' | translate }}
+            </button>
+            <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="relatedGames.open()">
               <div class="actions-menu-icon"></div>
               {{ 'home.findrelatedgames' | translate }}
@@ -276,6 +280,14 @@
     <app-bluemsx-arguments-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
       (bluemsxData)="setBluemsxArguments($event)" #bluemsxArgumentsEdit>
     </app-bluemsx-arguments-edit>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="webmsx-machine-set-id" [titleHeader]="'webmsx.setwebmsxmachine' | translate" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-webmsx-machine-set [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
+      (webmsxMachine)="setWebmsxMachine($event)" #webmsxMachineSet>
+    </app-webmsx-machine-set>
   </ng-template>
 </app-popup>
 

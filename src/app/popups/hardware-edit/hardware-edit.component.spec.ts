@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgToggleModule } from '@nth-cloud/ng-toggle';

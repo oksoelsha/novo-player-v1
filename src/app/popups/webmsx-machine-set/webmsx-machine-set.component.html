@@ -1,0 +1,23 @@
+<form>
+    <div class="machine-list">
+        <span class="me-2">{{ 'common.machine' | translate }}</span>
+        <div ngbDropdown class="d-inline-block me-1">
+            <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
+                {{ selectedMachineDisplayLabel }}
+            </button>
+            <div ngbDropdownMenu>
+                <button *ngFor="let machine of machines; let i = index" ngbDropdownItem type="button"
+                    (click)="setSelectedMachine(i)">
+                    {{ getMachineDisplayLabel(i) }}
+                </button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem type="button" (click)="setSelectedMachine(0)">
+                    {{ 'webmsx.settodefault' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-sm mt-3" (click)="save()" (keyup.enter)="save()">
+        {{ 'common.save' | translate }}
+    </button>
+</form>
