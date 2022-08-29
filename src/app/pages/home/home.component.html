@@ -36,13 +36,13 @@
         <div class="d-inline-block">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
             [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.addgames' | translate">
-            <strong>+</strong>
+            <span class="bi-plus-lg"></span>
           </button>
         </div>
         <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenMenuEvents($event)">
           <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
             [title]="'home.favorites' | translate" #favoritesDropdownButton>
-            &starf;
+            <span class="bi-star-fill"></span>
           </button>
           <div ngbDropdownMenu>
             <button *ngFor="let favorite of favorites" ngbDropdownItem type="button" (click)="showFoundGame(favorite)">
@@ -59,7 +59,7 @@
           #searchDropdown="ngbDropdown">
           <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
             [title]="'home.search' | translate">
-            ⌕
+            <span class="bi-search"></span>
           </button>
           <div ngbDropdownMenu>
             <app-home-game-search (selectedGame)="showFoundGame($event)" [parentMenuOpen]="searchMenuOpen">
@@ -145,40 +145,49 @@
             {{ 'home.actions' | translate }}
           </button>
           <div ngbDropdownMenu>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="edit(selectedGame)">
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="edit(selectedGame)">
+              <div class="actions-menu-icon"></div>
               {{ 'common.rename' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="mediaEdit.open()">
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="mediaEdit.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.editmedia' | translate }}
             </button>
-            <button ngbDropdownItem type="button"
-              (click)="hardwareEdit.open()">
+            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="hardwareEdit.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.edithardware' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="infoFileFieldEdit.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.setInfoFile' | translate }}
             </button>
             <div class="dropdown-divider"></div>
-            <button *ngIf="isWindows" ngbDropdownItem type="button" (click)="bluemsxArgumentsEdit.open()">
+            <button class="actions-menu-button" *ngIf="isWindows" ngbDropdownItem type="button" (click)="bluemsxArgumentsEdit.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.editbluemsxarguments' | translate }}
             </button>
             <div class="dropdown-divider" *ngIf="isWindows"></div>
-            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="relatedGames.open()">
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="relatedGames.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.findrelatedgames' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite" ngbDropdownItem
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite" ngbDropdownItem
               type="button" (click)="setFavoritesFlag(true)">
+              <div class="actions-menu-icon">&starf;</div>
               {{ 'home.addtofavorites' | translate }}
             </button>
-            <button [disabled]="otherSelectedGames.size > 0" *ngIf="selectedGame.favorite" ngbDropdownItem type="button"
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="selectedGame.favorite" ngbDropdownItem type="button"
               (click)="setFavoritesFlag(false)">
+              <div class="actions-menu-icon">&starf;</div>
               {{ 'home.removefromfavorites' | translate }}
             </button>
-            <button ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
+            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
+              <div class="actions-menu-icon bi-x"></div>
               {{ 'home.removefromlisting' | translate }}
             </button>
-            <button ngbDropdownItem type="button" (click)="changeListing.open()">
+            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
+              <div class="actions-menu-icon"></div>
               {{ 'home.movetoanotherlisting' | translate }}
             </button>
           </div>
@@ -281,95 +290,95 @@
 
 <context-menu (close)="contextMenuOpened = false" [menuClass]="'context-menu'">
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [subMenu]="launchSubMenu">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'home.launch' | translate }}
   </ng-template>
   <context-menu [menuClass]="'context-menu'" #launchSubMenu>
     <ng-template contextMenuItem [visible]="isOpenMSXPathDefined" (execute)="launch($event.item)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       {{ 'home.onopenmsx' | translate }}
     </ng-template>
     <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       {{ 'home.onwebmsx' | translate }}
     </ng-template>
     <ng-template contextMenuItem [visible]="isWindows && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       {{ 'home.onbluemsx' | translate }}
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="edit($event.item)">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'common.rename' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="mediaEdit.open()">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'home.editmedia' | translate }}
   </ng-template>
   <ng-template contextMenuItem (execute)="hardwareEdit.open()">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'home.edithardware' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="infoFileFieldEdit.open()">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'home.setInfoFile' | translate }}
   </ng-template>
   <ng-template contextMenuItem [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isWindows" (execute)="bluemsxArgumentsEdit.open()">
-    <span class="menu-icon"></span>
+    <span class="context-menu-icon"></span>
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isWebMSXPathDefined"  [subMenu]="webmsxMachinesSubMenu">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'webmsx.setwebmsxmachine' | translate }}
   </ng-template>
   <context-menu [menuClass]="'context-menu'" #webmsxMachinesSubMenu>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(1)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       MSX
     </ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(2)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       MSX2
     </ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(3)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       MSX2+
     </ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(4)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       MSX Turbo-R
     </ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(5)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       MSX2 - Arabic
     </ng-template>
     <ng-template contextMenuItem [divider]="true"></ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(0)">
-      <div class="menu-icon"></div>
+      <div class="context-menu-icon"></div>
       {{ 'webmsx.settodefault' | translate }}
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isWindows || isWebMSXPathDefined" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
-    <div class="menu-icon"></div>
+    <div class="context-menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
-    <div class="menu-icon">&starf;</div>
+    <div class="context-menu-icon">&starf;</div>
     {{ 'home.addtofavorites' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemRemoveFavorite" (execute)="setFavoritesFlag(false)">
-    <div class="menu-icon">&starf;</div>
+    <div class="context-menu-icon">&starf;</div>
     {{ 'home.removefromfavorites' | translate }}
   </ng-template>
   <ng-template contextMenuItem (execute)="remove(null, $event.item)">
-    <div class="menu-icon">&#10006;</div>
+    <div class="bi-x context-menu-icon"></div>
     {{ 'home.removefromlisting' | translate }}
   </ng-template>  
   <ng-template contextMenuItem (execute)="changeListing.open()">
-    <div class="menu-icon">&#8680;</div>
+    <div class="context-menu-icon"></div>
     {{ 'home.movetoanotherlisting' | translate }}
   </ng-template>
 </context-menu>

@@ -35,7 +35,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.sass",
-              "node_modules/@angular/cdk/overlay-prebuilt.css"
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
