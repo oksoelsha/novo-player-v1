@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
-import { WebMSXMachineDisplayLabel } from '../../models/webmsx-machines';
+import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
 
@@ -16,12 +16,14 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   @Input() game: Game;
   @Output() webmsxMachine: EventEmitter<number> = new EventEmitter<number>();
 
-  readonly machines = WebMSXMachineDisplayLabel;
-  selectedMachine: number;
-  selectedMachineDisplayLabel: string;
+  readonly machines: string[];
+  selectedMachineValue: number;
+  selectedMachineLabel: string;
 
   constructor(private changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
     super();
+
+    this.machines = WebMSXMachineUtils.getMachineLabels();
   }
 
   ngOnInit() {
@@ -33,26 +35,37 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   }
 
   open(): void {
-    this.setSelectedMachine(this.game.webmsxMachine);
+    this.setSelectionFromValue(this.game.webmsxMachine);
 
     super.open();
   }
 
-  getMachineDisplayLabel(index: number): string {
-    return WebMSXMachineDisplayLabel[index];
+  getMachineLabel(index: number): string {
+    return WebMSXMachinesData[index].label;
   }
 
-  setSelectedMachine(index: number) {
-    this.selectedMachine = index;
-    if (index) {
-      this.selectedMachineDisplayLabel = WebMSXMachineDisplayLabel[index];
+  setSelectionFromLabel(label: string) {
+    if (label) {
+      this.selectedMachineValue = WebMSXMachineUtils.getMachineValueFromLabel(label);
+      this.selectedMachineLabel = label;
     } else {
-      this.selectedMachineDisplayLabel = this.localizationService.translate('webmsx.settodefault');
+      this.selectedMachineValue = 0;
+      this.selectedMachineLabel = this.localizationService.translate('webmsx.settodefault');
+    }
+  }
+
+  setSelectionFromValue(value: number) {
+    if (value > 0) {
+      this.selectedMachineValue = value;
+      this.selectedMachineLabel = WebMSXMachineUtils.getLabelFromMachineValue(value);
+    } else {
+      this.selectedMachineValue = 0;
+      this.selectedMachineLabel = this.localizationService.translate('webmsx.settodefault');
     }
   }
 
   save() {
-    this.webmsxMachine.emit(this.selectedMachine);
+    this.webmsxMachine.emit(this.selectedMachineValue);
     this.close();
   }
 }

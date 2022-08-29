@@ -24,8 +24,8 @@ import { PlatformService } from '../../services/platform.service';
 import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
-import { WebMSXMachine } from '../../models/webmsx-machines';
 import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
+import { WebMSXMachineUtils } from '../../models/webmsx-machines';
 
 export enum SortDirection {
   ASC, DESC
@@ -880,12 +880,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     if (this.selectedGame.webmsxMachine) {
-      if (this.selectedGame.webmsxMachine === WebMSXMachine.ALALAMIAHAX370) {
+      if (WebMSXMachineUtils.isMachineCustom(this.selectedGame.webmsxMachine)) {
         webMSXParams.CONFIG_URL = 'assets/webmsx-config/machines.json';
-        webMSXParams.MACHINE = 'ALALAMIAHAX370';
-      } else {
-        webMSXParams.MACHINE = WebMSXMachine[this.selectedGame.webmsxMachine];
-      }  
+      }
+      webMSXParams.MACHINE = WebMSXMachineUtils.getMachineNameFromValue(this.selectedGame.webmsxMachine);
     }
 
     return webMSXParams;
