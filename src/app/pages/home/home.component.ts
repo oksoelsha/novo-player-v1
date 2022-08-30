@@ -563,6 +563,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (!this.selectedGame) {
         this.showInfo(game);
       } else {
+        // reset other selected games first
+        this.otherSelectedGames.forEach(selectedGame => {
+          this.removeAsAnotherSelectedGame(selectedGame);
+        });
         this.otherSelectedGames = new Set<Game>();
         const gameIndex = this.games.findIndex((e) => e.sha1Code === this.selectedGame.sha1Code);
         const shiftIndex = this.games.findIndex((e) => e.sha1Code === game.sha1Code);
