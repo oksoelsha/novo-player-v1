@@ -346,25 +346,9 @@
     {{ 'webmsx.setwebmsxmachine' | translate }}
   </ng-template>
   <context-menu [menuClass]="'context-menu'" #webmsxMachinesSubMenu>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(1)">
+    <ng-template *ngFor="let machine of webmsxMachines" contextMenuItem (execute)="setWebmsxMachine(machine.value)">
       <div class="context-menu-icon"></div>
-      MSX
-    </ng-template>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(2)">
-      <div class="context-menu-icon"></div>
-      MSX2
-    </ng-template>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(3)">
-      <div class="context-menu-icon"></div>
-      MSX2+
-    </ng-template>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(4)">
-      <div class="context-menu-icon"></div>
-      MSX Turbo-R
-    </ng-template>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(5)">
-      <div class="context-menu-icon"></div>
-      MSX2 - Arabic
+      {{ machine.label }}
     </ng-template>
     <ng-template contextMenuItem [divider]="true"></ng-template>
     <ng-template contextMenuItem (execute)="setWebmsxMachine(0)">

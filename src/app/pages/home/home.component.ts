@@ -25,7 +25,7 @@ import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-ed
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
-import { WebMSXMachineUtils } from '../../models/webmsx-machines';
+import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
 
 export enum SortDirection {
   ASC, DESC
@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
+  readonly webmsxMachines = WebMSXMachinesData;
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';
   games: Game[] = [];
