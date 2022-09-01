@@ -116,7 +116,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   }
 
   takeScreenshot(pid: number, game: Game) {
-    this.launchActivityService.takeScreenshot(pid, game.sha1Code).then(taken => {
+    this.launchActivityService.takeScreenshot(pid, game).then(taken => {
       if (taken) {
         this.alertService.success(this.localizationService.translate('dashboard.screenshottaken') + ': ' +
           game.name + ' [' + game.listing + ']');

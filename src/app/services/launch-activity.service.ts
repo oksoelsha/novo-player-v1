@@ -65,12 +65,12 @@ export class LaunchActivityService {
     });
   }
 
-  takeScreenshot(pid: number, sha1: string) {
+  takeScreenshot(pid: number, game: Game) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('takeScreenshotOnOpenmsxResponse', (event: any, taken: boolean) => {
         resolve(taken);
       });
-      this.ipc.send('takeScreenshotOnOpenmsx', pid, sha1);
+      this.ipc.send('takeScreenshotOnOpenmsx', pid, game);
     });
   }
 }

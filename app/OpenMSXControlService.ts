@@ -1,4 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
+import { Game } from '../src/app/models/game';
 import { OpenMSXConnector } from './OpenMSXConnector';
 
 export class OpenMSXControlService {
@@ -17,8 +18,8 @@ export class OpenMSXControlService {
         ipcMain.on('switchTapeOnOpenmsx', (event, pid: number, tape: string) => {
             this.switchTapeOnOpenmsx(pid, tape);
         });
-        ipcMain.on('takeScreenshotOnOpenmsx', (event, pid: number, sha1: string) => {
-            this.takeScreenshotOnOpenmsx(pid, sha1);
+        ipcMain.on('takeScreenshotOnOpenmsx', (event, pid: number, game: Game) => {
+            this.takeScreenshotOnOpenmsx(pid, game);
         });
     }
 
@@ -40,8 +41,17 @@ export class OpenMSXControlService {
         this.win.webContents.send('switchTapeOnOpenmsxResponse', true);
     }
 
-    private async takeScreenshotOnOpenmsx(pid: number, sha1: string) {
-        this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + sha1 + '-');
+    private async takeScreenshotOnOpenmsx(pid: number, game: Game) {
+        let screenshotName: string;
+        if (game.generationMSXId > 0) {
+            screenshotName = game.generationMSXId.toString();
+            if (game.screenshotSuffix) {
+                screenshotName += game.screenshotSuffix;
+            }
+        } else {
+            screenshotName = game.sha1Code;
+        }
+        this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + screenshotName + '-');
 
         this.win.webContents.send('takeScreenshotOnOpenmsxResponse', true);
     }
