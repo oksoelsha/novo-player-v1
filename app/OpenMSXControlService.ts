@@ -17,6 +17,9 @@ export class OpenMSXControlService {
         ipcMain.on('switchTapeOnOpenmsx', (event, pid: number, tape: string) => {
             this.switchTapeOnOpenmsx(pid, tape);
         });
+        ipcMain.on('takeScreenshotOnOpenmsx', (event, pid: number, sha1: string) => {
+            this.takeScreenshotOnOpenmsx(pid, sha1);
+        });
     }
 
     private async resetOnOpenmsx(pid: number) {
@@ -35,6 +38,12 @@ export class OpenMSXControlService {
         this.executeCommandOnOpenmsx(pid, 'cassetteplayer {' + tape.replace(/\\/g, '/') + '}');
 
         this.win.webContents.send('switchTapeOnOpenmsxResponse', true);
+    }
+
+    private async takeScreenshotOnOpenmsx(pid: number, sha1: string) {
+        this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + sha1 + '-');
+
+        this.win.webContents.send('takeScreenshotOnOpenmsxResponse', true);
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {

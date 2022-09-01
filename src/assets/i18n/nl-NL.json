@@ -10,7 +10,7 @@
     "none": "Geen",
     "machine": "Machine",
     "browse": "Bladeren",
-    "reset": "Beginwaarden",
+    "reset": "Opnieuw instellen",
     "add": "Toevoegen",
     "new": "Nieuw",
     "rename": "Naam wijzigen",
@@ -179,7 +179,10 @@
     "oct": "Oktober",
     "nov": "November",
     "dec": "December",
-    "totalperday": "Totaal per dag"
+    "totalperday": "Totaal per dag",
+    "reset": "openMSX is opnieuw ingesteld",
+    "takeascreenshot": "Een schermafbeelding maken",
+    "screenshottaken": "Schermafbeelding is maakt"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",

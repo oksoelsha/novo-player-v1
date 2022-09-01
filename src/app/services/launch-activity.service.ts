@@ -64,6 +64,15 @@ export class LaunchActivityService {
       this.ipc.send('resetOnOpenmsx', pid);
     });
   }
+
+  takeScreenshot(pid: number, sha1: string) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('takeScreenshotOnOpenmsxResponse', (event: any, taken: boolean) => {
+        resolve(taken);
+      });
+      this.ipc.send('takeScreenshotOnOpenmsx', pid, sha1);
+    });
+  }
 }
 
 export class LaunchActivity {

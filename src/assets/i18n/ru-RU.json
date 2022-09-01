@@ -179,7 +179,10 @@
     "oct": "Октябрь",
     "nov": "Ноябрь",
     "dec": "Декабрь",
-    "totalperday": "Итого за день"
+    "totalperday": "Итого за день",
+    "reset": "openMSX был сброшен",
+    "takeascreenshot": "Сделать снимок экрана",
+    "screenshottaken": "Снимок экрана был сделан"
   },
   "popups": {
     "newlisting": "Новый список",

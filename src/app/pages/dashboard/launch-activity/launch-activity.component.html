@@ -16,11 +16,14 @@
                         <td>
                             <div ngbDropdown placement="bottom-end" *ngIf="isRunningOnOpenMSX(activity)">
                                 <button type="button" class="btn btn-secondary btn-sm openmsx-connect" ngbDropdownToggle>
-                                    ● ● ●
+                                    •••
                                 </button>
                                 <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
-                                    <button ngbDropdownItem type="button" (click)="resetMachine(activity.pid)">
+                                    <button ngbDropdownItem type="button" (click)="resetMachine(activity.pid, activity.game)">
                                         {{ 'common.reset' | translate }}
+                                    </button>
+                                    <button ngbDropdownItem type="button" (click)="takeScreenshot(activity.pid, activity.game)">
+                                        {{ 'dashboard.takeascreenshot' | translate }}
                                     </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">

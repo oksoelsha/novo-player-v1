@@ -179,7 +179,10 @@
     "oct": "10 月",
     "nov": "11 月",
     "dec": "12 月",
-    "totalperday": "1日あたりの合計"
+    "totalperday": "1日あたりの合計",
+    "reset": "openMSXがリセットされました",
+    "takeascreenshot": "スクリーンショットをとる",
+    "screenshottaken": "スクリーンショットが撮られました"
   },
   "popups": {
     "newlisting": "新しいリスト",

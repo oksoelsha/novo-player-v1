@@ -80,6 +80,15 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     return launchActivity.source === EventSource.openMSX;
   }
 
+  resetMachine(pid: number, game: Game) {
+    this.launchActivityService.resetMachine(pid).then(reset => {
+      if (reset) {
+        this.alertService.success(this.localizationService.translate('dashboard.reset') + ': ' +
+          game.name + ' [' + game.listing + ']');
+      }
+    });
+  }
+
   switchMedium(pid: number, game: Game, medium: string) {
     if (this.isDisk(game)) {
       this.launchActivityService.switchDisk(pid, medium).then(switched => {
@@ -98,15 +107,20 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     }
   }
 
-  resetMachine(pid: number) {
-    this.launchActivityService.resetMachine(pid);
-  }
-
   isDisk(game: Game) {
     return game.romA == null && game.diskA != null;
   }
 
   isTape(game: Game) {
     return game.romA == null && game.diskA == null && game.tape != null;
+  }
+
+  takeScreenshot(pid: number, game: Game) {
+    this.launchActivityService.takeScreenshot(pid, game.sha1Code).then(taken => {
+      if (taken) {
+        this.alertService.success(this.localizationService.translate('dashboard.screenshottaken') + ': ' +
+          game.name + ' [' + game.listing + ']');
+      }
+    });
   }
 }

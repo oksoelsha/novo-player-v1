@@ -179,7 +179,10 @@
     "oct": "Ottobre",
     "nov": "Novembre",
     "dec": "Dicembre",
-    "totalperday": "Totale al giorno"
+    "totalperday": "Totale al giorno",
+    "reset": "openMSX è stato reimpostato",
+    "takeascreenshot": "Cattura uno screenshot",
+    "screenshottaken": "Screenshot è stato catturato"
   },
   "popups": {
     "newlisting": "Nuovo elenco",
