@@ -22,6 +22,7 @@ export class Game {
     mapper: string;
     start: string;
     remark: string;
+    knownDumps: number;
 
     generationMSXId: number;
     generations: number;
@@ -139,6 +140,10 @@ export class Game {
 
     setRemark(remark: string) {
         this.remark = remark;
+    }
+
+    setKnownDumps(knownDumps: number) {
+        this.knownDumps = knownDumps;
     }
 
     setScreenshotSuffix(screenshotSuffix: string) {

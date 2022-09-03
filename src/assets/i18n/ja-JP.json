@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "皮切り",
     "remark": "コメント",
+    "knownDumps": "知らDump",
     "infoFile": "追加情報",
     "undo": "元に戻す",
     "managelistings": "リストを管理する",

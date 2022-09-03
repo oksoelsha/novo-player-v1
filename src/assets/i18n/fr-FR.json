@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Début",
     "remark": "Remarque",
+    "knownDumps": "Dumps connus",
     "infoFile": "Informations supplémentaires",
     "undo": "Annuler",
     "managelistings": "Gérer les listes",

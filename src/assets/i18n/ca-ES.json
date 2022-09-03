@@ -35,6 +35,7 @@
     "mapper": "Mapeador",
     "start": "Inici",
     "remark": "Comentari",
+    "knownDumps": "Volcats coneguts",
     "infoFile": "Informació adicional",
     "undo": "Desfés",
     "managelistings" :"Gestiona llistes",

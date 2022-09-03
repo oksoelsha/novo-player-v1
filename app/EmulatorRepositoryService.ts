@@ -8,6 +8,7 @@ import { XMLParser } from 'fast-xml-parser';
 export class EmulatorRepositoryService implements UpdateListerner {
 
     private repositoryInfo: Map<string, RepositoryData>;
+    private knownDumps: Map<RepositorySoftwareData, number>;
 
     constructor(private settingsService: SettingsService) {
         settingsService.addListerner(this);
@@ -18,13 +19,18 @@ export class EmulatorRepositoryService implements UpdateListerner {
         return this.repositoryInfo;
     }
 
+    getKnownDumps(repositoryData: RepositoryData): number {
+        return this.knownDumps.get(repositoryData.softwareData);
+    }
+
     reinit(): void {
         this.init();
     }
 
     private init(): void {
         const self = this;
-        const gamesDataMap: Map<string, RepositoryData> = new Map<string, RepositoryData>();
+        this.repositoryInfo = new Map<string, RepositoryData>();
+        this.knownDumps = new Map<RepositorySoftwareData, number>();
         const softwaredbFilenames: string[] = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
             path.join(__dirname, 'extra/msxdskdb.xml'),
@@ -32,7 +38,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
         ];
         const parser = new XMLParser();
         /*
-        let options = {
+        const options = {
             parseTrueNumberOnly: true,
             tagValueProcessor: (val: any, tagName: any) => val.replace(/&amp;/g, '&').replace(/&#34;/g, '"').replace(/&#38;/g, '&').replace(/&#39;/g, "'")
         }
@@ -40,28 +46,27 @@ export class EmulatorRepositoryService implements UpdateListerner {
         for(const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
                 fs.readFile(softwaredbFilename, function (err, data) {
-                    let result = parser.parse(data.toString());
+                    const result = parser.parse(data.toString());
                     for (const s in result.softwaredb.software) {
-                        let software = result.softwaredb.software;
-
+                        const software = result.softwaredb.software;
+                        const softwareData = new RepositorySoftwareData(software[s].title, software[s].system,
+                            software[s].company, software[s].year, software[s].country);
                         if (Object.prototype.toString.call(software[s].dump) === '[object Array]') {
                             for (const y in software[s].dump) {
-                                self.processDump(software[s], software[s].dump[y], gamesDataMap);
+                                self.processDump(softwareData, software[s].dump[y]);
                             }
                         } else {
-                            self.processDump(software[s], software[s].dump, gamesDataMap);
+                            self.processDump(softwareData, software[s].dump);
                         }
                     }
                 });
             }
         }
-        this.repositoryInfo = gamesDataMap;
     }
 
-    private processDump(software: any, dump: any, gamesDataMap: Map<string, RepositoryData>): void {
+    private processDump(softwareData: RepositorySoftwareData, dump: any): void {
         if (dump.hasOwnProperty('rom')) {
-            const repositoryData = new RepositoryData(software.title, software.system, software.company,
-                software.year, software.country);
+            const repositoryData = new RepositoryData(softwareData);
 
             if (dump.hasOwnProperty('original')) {
                 repositoryData.setDump(dump.original);
@@ -81,11 +86,10 @@ export class EmulatorRepositoryService implements UpdateListerner {
                 repositoryData.setRemark(dump.rom.remark);
             }
 
-            gamesDataMap.set(dump.rom.hash, repositoryData);
+            this.updateMaps(dump.rom.hash, repositoryData);
         }
         if (dump.hasOwnProperty('megarom')) {
-            const repositoryData = new RepositoryData(software.title, software.system, software.company,
-                software.year, software.country);
+            const repositoryData = new RepositoryData(softwareData);
 
             if (dump.hasOwnProperty('original')) {
                 repositoryData.setDump(dump.original);
@@ -97,21 +101,19 @@ export class EmulatorRepositoryService implements UpdateListerner {
                 repositoryData.setRemark(dump.megarom.remark);
             }
 
-            gamesDataMap.set(dump.megarom.hash, repositoryData);
+            this.updateMaps(dump.megarom.hash, repositoryData);
         }
         if (dump.hasOwnProperty('dsk')) {
-            const repositoryData = new RepositoryData(software.title, software.system, software.company,
-                software.year, software.country);
+            const repositoryData = new RepositoryData(softwareData);
 
             if (dump.dsk.hasOwnProperty('remark')) {
                 repositoryData.setRemark(dump.dsk.remark.text);
             }
 
-            gamesDataMap.set(dump.dsk.format.hash, repositoryData);
+            this.updateMaps(dump.dsk.format.hash, repositoryData);
         }
         if (dump.hasOwnProperty('cas')) {
-            const repositoryData = new RepositoryData(software.title, software.system, software.company,
-                software.year, software.country);
+            const repositoryData = new RepositoryData(softwareData);
 
             if (dump.cas.hasOwnProperty('remark')) {
                 repositoryData.setRemark(dump.cas.remark.text);
@@ -122,23 +124,29 @@ export class EmulatorRepositoryService implements UpdateListerner {
             }
 
             for (const f in dump.cas.format) {
-                gamesDataMap.set(dump.cas.format[f].hash, repositoryData);
+                this.updateMaps(dump.cas.format[f].hash, repositoryData);
             }
+        }
+    }
+
+    private updateMaps(hash: string, repositoryData: RepositoryData) {
+        this.repositoryInfo.set(hash, repositoryData);
+
+        const count = this.knownDumps.get(repositoryData.softwareData);
+        if (count) {
+            this.knownDumps.set(repositoryData.softwareData, count + 1);
+        } else {
+            this.knownDumps.set(repositoryData.softwareData, 1);
         }
     }
 }
 
-export class RepositoryData {
+class RepositorySoftwareData {
     title: string;
     system: string;
     company: string;
     year: string;
     country: string;
-
-    dump: string;
-    mapper: string;
-    start: string;
-    remark: string;
 
     constructor(title: string, system: string, company: string, year: string, country: string) {
         this.title = title;
@@ -146,6 +154,19 @@ export class RepositoryData {
         this.company = company;
         this.year = year;
         this.country = country;
+    }
+}
+
+export class RepositoryData {
+    softwareData: RepositorySoftwareData;
+
+    dump: string;
+    mapper: string;
+    start: string;
+    remark: string;
+
+    constructor(softwareData: RepositorySoftwareData) {
+        this.softwareData = softwareData;
     }
 
     setDump(dump: string) {

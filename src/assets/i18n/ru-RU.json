@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Начало",
     "remark": "Комментарий",
+    "knownDumps": "Известные dumps",
     "infoFile": "Дополнительная информация",
     "undo": "Отменить",
     "managelistings": "Управление списки",

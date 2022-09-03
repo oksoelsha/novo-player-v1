@@ -150,7 +150,7 @@ export class ScanService {
             const repositoryData = this.repositoryInfo.get(hash);
             if (repositoryData != null) {
                 //force game title to be string for account for game names that are numbers (e.g. 1942)
-                return repositoryData.title.toString();
+                return repositoryData.softwareData.title.toString();
             } else {
                 return FileTypeUtils.getFilenameWithoutExt(path.basename(file));
             }

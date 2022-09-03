@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Início",
     "remark": "Nota",
+    "knownDumps": "Volcados conhecidos",
     "infoFile": "Informação extra",
     "undo": "Desfazer",
     "managelistings": "Gerenciar listagens",

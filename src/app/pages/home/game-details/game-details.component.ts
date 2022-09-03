@@ -70,6 +70,7 @@ export class GameDetailsComponent implements OnChanges {
     { name: this.localizationService.translate('home.mapper'), value: 'mapper', blockName: 'gameDetailSimpleText' },
     { name: this.localizationService.translate('home.start'), value: 'start', blockName: 'gameDetailSimpleText' },
     { name: this.localizationService.translate('home.remark'), value: 'remark', blockName: 'gameDetailSimpleText' },
+    { name: this.localizationService.translate('home.knownDumps'), value: 'knownDumps', blockName: 'gameDetailSimpleText' },
     { name: 'Generation-MSX', value: 'generationMSXId', blockName: 'gameDetailGenerationMSXLink' },
     { name: this.localizationService.translate('home.infoFile'), value: 'infoFile', blockName: 'gameDetailInfoFile' },
   ];

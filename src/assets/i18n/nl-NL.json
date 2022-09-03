@@ -35,6 +35,7 @@
     "mapper": "Mapper",
     "start": "Begin",
     "remark": "Opmerking",
+    "knownDumps": "Bekend dumps",
     "infoFile": "Extra informatie",
     "undo": "Ongedaan maken",
     "managelistings": "Lijsten beheren",

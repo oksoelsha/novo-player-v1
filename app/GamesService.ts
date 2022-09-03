@@ -217,8 +217,8 @@ export class GamesService {
         const games: Game[] = [];
         this.database.find({ listing: listing }, (err: any, entries: any) => {
             for (const entry of entries) {
-                const gameDO: GameDO = new GameDO(entry);
-                const game: Game = new Game(entry.name, entry._id, entry.size);
+                const gameDO = new GameDO(entry);
+                const game = new Game(entry.name, entry._id, entry.size);
 
                 for (const field of PersistenceUtils.fieldsToPersist) {
                     if (gameDO[field] != game[field]) {
@@ -228,16 +228,17 @@ export class GamesService {
 
                 const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
                 if (repositoryInfo != null) {
-                    const repositoryData: RepositoryData = repositoryInfo.get(entry._id);
+                    const repositoryData = repositoryInfo.get(entry._id);
                     if (repositoryData != null) {
-                        game.setTitle(repositoryData.title);
-                        game.setSystem(repositoryData.system);
-                        game.setCompany(repositoryData.company);
-                        game.setYear(this.getYear(repositoryData.year));
-                        game.setCountry(repositoryData.country);
+                        game.setTitle(repositoryData.softwareData.title);
+                        game.setSystem(repositoryData.softwareData.system);
+                        game.setCompany(repositoryData.softwareData.company);
+                        game.setYear(this.getYear(repositoryData.softwareData.year));
+                        game.setCountry(repositoryData.softwareData.country);
                         game.setMapper(repositoryData.mapper);
                         game.setRemark(repositoryData.remark);
                         game.setStart(repositoryData.start);
+                        game.setKnownDumps(this.emulatorRepositoryService.getKnownDumps(repositoryData));
                     }
                 }
                 games.push(game);

@@ -99,8 +99,8 @@ export class RelatedGamesService {
             companyOfSelectedGame = '';
             gameNameParts = this.getNormalizedStrings(game.name);
         } else {
-            companyOfSelectedGame = repositoryGame.company;
-            gameNameParts = this.getNormalizedStrings(repositoryGame.title);
+            companyOfSelectedGame = repositoryGame.softwareData.company;
+            gameNameParts = this.getNormalizedStrings(repositoryGame.softwareData.title);
         }
         const clusterForGivenGame = this.idToCluster.get(game.generationMSXId);
 
@@ -109,7 +109,7 @@ export class RelatedGamesService {
             const repositoryInfo = entry[1];
 
             // limit the results to MSX system only (i.e. exclude others such as ColecoVision)
-            if (repositoryInfo.system === 'MSX') {
+            if (repositoryInfo.softwareData.system === 'MSX') {
                 const extraDataInfo = this.extraDataInfo.get(sha1);
                 if (extraDataInfo != null) {
                     const similarGame = similarGames.get(extraDataInfo.generationMSXID);
@@ -129,8 +129,8 @@ export class RelatedGamesService {
                         }
                     } else {
                         if (extraDataInfo.generationMSXID != game.generationMSXId) {
-                            const repositoryCompany = repositoryInfo.company;
-                            const repositoryTitle = repositoryInfo.title;
+                            const repositoryCompany = repositoryInfo.softwareData.company;
+                            const repositoryTitle = repositoryInfo.softwareData.title;
 
                             const score = this.getNameScore(repositoryTitle, gameNameParts) +
                                 this.getGenreScore(extraDataInfo, game) +
@@ -141,7 +141,7 @@ export class RelatedGamesService {
                                 const relatedGame = new Game(repositoryTitle, sha1, 0);
                                 relatedGame.setGenerationMSXId(extraDataInfo.generationMSXID);
                                 relatedGame.setCompany(repositoryCompany);
-                                relatedGame.setYear(repositoryInfo.year);
+                                relatedGame.setYear(repositoryInfo.softwareData.year);
 
                                 const listing = await this.gamesService.getListing(sha1);
                                 relatedGame.setListing(listing);
