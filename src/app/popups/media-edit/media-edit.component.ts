@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
@@ -6,8 +6,7 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-media-edit',
   templateUrl: './media-edit.component.html',
-  styleUrls: ['./media-edit.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./media-edit.component.sass']
 })
 export class MediaEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
@@ -27,8 +26,8 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
   extensions: string[] = [];
   extensionRomDisplay = '';
 
-  constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
+    super(changeDetector);
   }
 
   ngOnInit() {
@@ -58,7 +57,6 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
       } else {
         this.extensionRomDisplay = 'Select extension';
       }
-      this.changeDetector.markForCheck();
     });
   }
 

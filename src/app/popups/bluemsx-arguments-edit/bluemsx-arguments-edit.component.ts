@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -18,8 +18,8 @@ export class BluemsxArgumentsEditComponent extends PopupComponent implements OnI
   bluemsxArguments: string;
   bluemsxOverrideSettings: boolean;
 
-  constructor(private localizationService: LocalizationService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
+    super(changeDetector);
   }
 
   ngOnInit() {

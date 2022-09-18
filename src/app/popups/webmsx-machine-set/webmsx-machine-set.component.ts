@@ -20,8 +20,8 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   selectedMachineValue: number;
   selectedMachineLabel: string;
 
-  constructor(private changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
+    super(changeDetector);
 
     this.machines = WebMSXMachineUtils.getMachineLabels();
   }

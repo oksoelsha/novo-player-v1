@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
@@ -30,8 +30,8 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
   listingToMergeFrom: string;
   listingToMergeTo: string;
 
-  constructor(private gamesService: GamesService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
+    super(changeDetector);
   }
 
   ngOnInit() {

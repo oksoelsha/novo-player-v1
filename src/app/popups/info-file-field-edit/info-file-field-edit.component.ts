@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -17,8 +17,8 @@ export class InfoFileFieldEditComponent  extends PopupComponent implements OnIni
 
   infoFile: string;
 
-  constructor(private localizationService: LocalizationService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
+    super(changeDetector);
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-popup',
@@ -13,7 +13,7 @@ export class PopupComponent implements OnDestroy {
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ContentChild(TemplateRef) templateVariable: TemplateRef<any>;
 
-  constructor() { }
+  constructor(protected changeDetector: ChangeDetectorRef) {}
 
   commonInit() {
     const self = this;
@@ -22,6 +22,7 @@ export class PopupComponent implements OnDestroy {
         self.close();
       }
     });
+    this.changeDetector.detach();
   }
 
   commonViewInit() {
@@ -42,6 +43,7 @@ export class PopupComponent implements OnDestroy {
   open(): void {
     this.openStatus.emit(true);
     document.getElementById(this.popupId).classList.add('popup-fade');
+    this.changeDetector.reattach();
   }
 
   close(cleanup: () => void = null): void {
@@ -57,5 +59,6 @@ export class PopupComponent implements OnDestroy {
       };
     })());
     popup.classList.remove('popup-fade');
+    this.changeDetector.detach();
   }
 }

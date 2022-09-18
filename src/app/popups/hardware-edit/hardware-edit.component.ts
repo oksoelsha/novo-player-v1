@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FDDMode } from '../../models/fdd-mode';
 import { Game } from '../../models/game';
 import { InputDevice } from '../../models/input-device';
@@ -9,8 +9,7 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-hardware-edit',
   templateUrl: './hardware-edit.component.html',
-  styleUrls: ['./hardware-edit.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./hardware-edit.component.sass']
 })
 export class HardwareEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
@@ -26,9 +25,9 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
   selectedInputDevice = '';
   connectGFX9000 = false;
 
-  constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService,
+  constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService,
     private localizationService: LocalizationService) {
-    super();
+    super(changeDetector);
   }
 
   ngOnInit() {
@@ -45,7 +44,6 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
     this.emulatorService.getMachines().then((data: string[]) => {
       this.machines = data;
       this.selectedMachine = this.game.machine;
-      this.changeDetector.markForCheck();
     });
 
     this.fddModes = FDDMode.map(f => this.localizationService.translate('popups.edithardware.' + f));

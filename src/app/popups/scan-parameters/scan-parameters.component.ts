@@ -1,12 +1,11 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
 import { EmulatorService } from '../../services/emulator.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
   selector: 'app-scan-parameters',
   templateUrl: './scan-parameters.component.html',
-  styleUrls: ['../../common-styles.sass', './scan-parameters.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['../../common-styles.sass', './scan-parameters.component.sass']
 })
 export class ScanParametersComponent extends PopupComponent implements OnInit, AfterViewInit {
 
@@ -20,8 +19,8 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
   machines: string[] = [];
   selectedMachine = '';
 
-  constructor(private changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
+    super(changeDetector);
   }
 
   ngOnInit() {
@@ -40,7 +39,6 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
       if (!this.selectedMachine) {
         this.selectedMachine = data[0];
       }
-      this.changeDetector.markForCheck();
     });
   }
 

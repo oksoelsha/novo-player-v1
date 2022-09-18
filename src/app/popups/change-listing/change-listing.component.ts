@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { PopupComponent } from '../popup.component';
 
@@ -17,8 +17,8 @@ export class ChangeListingComponent extends PopupComponent implements OnInit, Af
   destinationListings: string[] = [];
   selectedListing = '';
 
-  constructor() {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef) {
+    super(changeDetector);
   }
 
   ngOnInit() {

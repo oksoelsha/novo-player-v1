@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Game } from '../../models/game';
 import { GameUtils } from '../../models/game-utils';
 import { GamesService } from '../../services/games.service';
@@ -20,8 +20,8 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
   imageData1: string[] = [];
   imageData2: string[] = [];
 
-  constructor(private gamesService: GamesService) {
-    super();
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
+    super(changeDetector);
   }
 
   ngOnInit() {
