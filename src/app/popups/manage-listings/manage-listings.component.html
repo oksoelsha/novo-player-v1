@@ -1,6 +1,6 @@
 <div class="total">
     {{ 'popups.managelistings.total' | translate }}
-    <span class="badge badge-light">{{ listings.length }}</span>
+    <span class="badge bg-light text-dark">{{ listings.length }}</span>
 </div>
 <div [ngClass]="{listings: true, disabled: deleteMode}" #listingsTable>
     <table>
