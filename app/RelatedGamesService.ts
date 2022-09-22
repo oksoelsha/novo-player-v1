@@ -122,6 +122,7 @@ export class RelatedGamesService {
                                 updatedGame.setGenerationMSXId(similarGame.relatedGame.generationMSXId);
                                 updatedGame.setCompany(similarGame.relatedGame.company);
                                 updatedGame.setYear(similarGame.relatedGame.year);
+                                updatedGame.setScreenshotSuffix(similarGame.relatedGame.screenshotSuffix);
                                 updatedGame.setListing(listing);
 
                                 similarGames.set(extraDataInfo.generationMSXID, similarGame.clone(updatedGame));
@@ -142,6 +143,7 @@ export class RelatedGamesService {
                                 relatedGame.setGenerationMSXId(extraDataInfo.generationMSXID);
                                 relatedGame.setCompany(repositoryCompany);
                                 relatedGame.setYear(repositoryInfo.softwareData.year);
+                                relatedGame.setScreenshotSuffix(extraDataInfo.suffix);
 
                                 const listing = await this.gamesService.getListing(sha1);
                                 relatedGame.setListing(listing);
