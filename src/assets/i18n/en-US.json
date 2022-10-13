@@ -16,7 +16,8 @@
     "rename": "Rename",
     "delete": "Delete",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "select": "Select"
   },
   "home": {
     "name": "Name",
@@ -80,7 +81,8 @@
     "copied": "Value copied",
     "scanning": "Scanning",
     "findrelatedgames": "Find related games",
-    "relatedgames": "Related Games"
+    "relatedgames": "Related Games",
+    "filters": "Filters"
   },
   "language": {
     "en-US": "English",
@@ -250,5 +252,13 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Press Enter or click on the arrow to use the new name"
     }
+  },
+  "comparison": {
+    "equal": "Equal",
+    "less": "Less",
+    "lessOrEqual": "Less or equal",
+    "greater": "Greater",
+    "greaterOrEqual": "Greater or equal",
+    "betweenInclusive": "Between (inclusive)"
   }
 }

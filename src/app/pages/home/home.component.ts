@@ -26,6 +26,8 @@ import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
 import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
+import { Filters } from '../../models/filters';
+import { FiltersService } from '../../services/filters.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -68,6 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';
   games: Game[] = [];
+  originalGames: Game[] = [];
   editedGameName: string;
   selectedGame: Game;
   otherSelectedGames: Set<Game> = new Set<Game>();
@@ -93,6 +96,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   favorites: Game[] = [];
   sortData: SortData;
   showUndo: boolean;
+  showFilters = false;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null);
@@ -104,11 +108,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private quickTypeTimer: NodeJS.Timer = null;
   private dragCounter = 0;
   private historyToUndoSubscription: Subscription;
+  filters = null;
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
-    private undoService: UndoService, private platformService: PlatformService) {
+    private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -250,6 +255,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.getFavorites();
+
+    this.filters = this.filtersService.getFilters();
   }
 
   ngOnDestroy() {
@@ -281,7 +288,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.gamesService.getGames(this.selectedListing).then((data: Game[]) => {
       this.sortGames(data);
-      this.games = data;
+      this.originalGames = data;
+      this.games = this.filtersService.filter(data, this.filters);
       this.gameToRename = null;
       for (const game of data) {
         if (sha1Code && game.sha1Code === sha1Code) {
@@ -692,6 +700,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
     });
+  }
+
+  showFiltersForm() {
+    this.showFilters = !this.showFilters;
+  }
+
+  applyFilters(filters: Filters) {
+    this.filters = filters;
+    this.games = this.filtersService.filter(this.originalGames, this.filters);
   }
 
   private initialize() {

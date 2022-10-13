@@ -1,8 +1,10 @@
+import { Generation } from "./generation";
+
 export const WebMSXMachinesData = [
-  {value: 1, name: 'MSX1', label: 'MSX'},
-  {value: 2, name: 'MSX2', label: 'MSX2'},
-  {value: 3, name: 'MSX2P', label: 'MSX2+'},
-  {value: 4, name: 'MSXTR', label: 'MSX - Turbo-R'},
+  {value: 1, name: 'MSX1', label: Generation.MSX},
+  {value: 2, name: 'MSX2', label: Generation.MSX2},
+  {value: 3, name: 'MSX2P', label: Generation.MSX2P},
+  {value: 4, name: 'MSXTR', label: Generation.MSXTR},
   {value: 5, name: 'ALALAMIAHAX370', label: 'MSX2 - Arabic', custom: true}
 ];
 

@@ -16,7 +16,8 @@
     "rename": "Canvia el nom",
     "delete": "Suprimeix",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "select": "Selecciona"
   },
   "home": {
     "name": "Nom",
@@ -80,7 +81,8 @@
     "copied": "Valor copiat",
     "scanning": "S'està analitzant",
     "findrelatedgames": "Cerca jocs relacionats",
-    "relatedgames": "Jocs relacionats"
+    "relatedgames": "Jocs relacionats",
+    "filters": "Filtres"
   },
   "language": {
     "en-US": "Anglès",
@@ -250,5 +252,14 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Premeu Enter o feu clic a la fletxa per utilitzar el nou nom"
     }
+  },
+  "comparison": {
+    "equal": "Igual",
+    "less": "Menor",
+    "lessOrEqual": "Menor o igual",
+    "greater": "Més gran",
+    "greaterOrEqual": "Més gran o igual",
+    "betweenInclusive": "Entre (inclusiu)"
   }
 }
+

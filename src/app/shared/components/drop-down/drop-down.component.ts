@@ -13,6 +13,7 @@ export class DropDownComponent {
   @Input() selectedItem: string;
   @Input() defaultLabel: string;
   @Input() resetButton: boolean;
+  @Input() doNotDisplaySelectedItem: boolean;
   @Output() selection: EventEmitter<string> = new EventEmitter<string>();
   @ViewChildren('dropDownItem') dropDownItems: QueryList<ElementRef>;
 
@@ -39,7 +40,9 @@ export class DropDownComponent {
   }
 
   handleSelection(selection: string) {
-    this.selectedItem = selection;
+    if (!this.doNotDisplaySelectedItem) {
+      this.selectedItem = selection;
+    }
     this.selection.emit(selection);
   }
 

@@ -50,6 +50,8 @@ import { BluemsxArgumentsEditComponent } from './popups/bluemsx-arguments-edit/b
 import { RelatedGamesComponent } from './popups/related-games/related-games.component';
 import { SortStatusPipe } from './pages/home/pipes/sort-status.pipe';
 import { WebmsxMachineSetComponent } from './popups/webmsx-machine-set/webmsx-machine-set.component';
+import { FiltersComponent } from './pages/home/filters/filters.component';
+import { RangeSelectorComponent } from './pages/home/filters/range-selector/range-selector.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -86,8 +88,10 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     InfoFileFieldEditComponent,
     BluemsxArgumentsEditComponent,
     WebmsxMachineSetComponent,
-    DropfileDirective,
     RelatedGamesComponent,
+    RangeSelectorComponent,
+    FiltersComponent,
+    DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,
     SortStatusPipe

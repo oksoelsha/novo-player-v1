@@ -16,7 +16,8 @@
     "rename": "Переименовать",
     "delete": "Удалить",
     "yes": "Да",
-    "no": "Нет"
+    "no": "Нет",
+    "select": "Выберите"
   },
   "home": {
     "name": "Имя",
@@ -80,7 +81,8 @@
     "copied": "Значение скопирован",
     "scanning": "Сканируем",
     "findrelatedgames": "Найти похожие игры",
-    "relatedgames": "Похожие игры"
+    "relatedgames": "Похожие игры",
+    "filters": "фильтры"
   },
   "language": {
     "en-US": "Английский",
@@ -250,5 +252,13 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Нажмите Enter или щелкните стрелку, чтобы использовать новое имя"
     }
+  },
+  "comparison": {
+    "equal": "Равный",
+    "less": "Меньше",
+    "lessOrEqual": "Меньше или равно",
+    "greater": "Больше",
+    "greaterOrEqual": "Больше или равно",
+    "betweenInclusive": "В диапазоне (включительно)"
   }
 }

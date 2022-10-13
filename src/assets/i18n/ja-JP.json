@@ -16,7 +16,8 @@
     "rename": "名前の変更",
     "delete": "削除",
     "yes": "はい",
-    "no": "ノー"
+    "no": "ノー",
+    "select": "選択"
   },
   "home": {
     "name": "名前",
@@ -80,7 +81,8 @@
     "copied": "コピー済み",
     "scanning": "検索しています",
     "findrelatedgames": "関連するゲームを探す",
-    "relatedgames": "関連ゲーム"
+    "relatedgames": "関連ゲーム",
+    "filters": "フィルター"
   },
   "language": {
     "en-US": "英語",
@@ -250,5 +252,13 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Enterキーを押すか、矢印をクリックして新しい名前を使用します"
     }
+  },
+  "comparison": {
+    "equal": "等しい",
+    "less": "より小さい",
+    "lessOrEqual": "小さいか等しい",
+    "greater": "より大きい",
+    "greaterOrEqual": "には 以上",
+    "betweenInclusive": "間で (包含)"
   }
 }

@@ -16,7 +16,10 @@
       <div *ngIf="listings.length > 0" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
         <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
           {{ selectedListing }}
-          <span class="badge bg-light text-dark">{{ games.length }}</span>
+          <span class="badge bg-light text-dark">
+            {{ games.length }}
+            <span *ngIf="originalGames.length > games.length"> / {{ originalGames.length }}</span>          
+          </span>
         </button>
         <div ngbDropdownMenu>
           <button *ngFor="let listing of listings" ngbDropdownItem type="button"
@@ -34,6 +37,12 @@
       </div>
       <div class="action-buttons">
         <div class="d-inline-block">
+          <button class="btn btn-secondary btn-sm action-button" type="button" (click)="showFiltersForm()"
+            [title]="'home.filters' | translate">
+            <span class="bi-funnel"></span>
+          </button>
+        </div>
+        <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
             [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.addgames' | translate">
             <span class="bi-plus-lg"></span>
@@ -111,7 +120,8 @@
     </div>
   </div>
   <div class="area-on-the-right">
-    <div>
+
+    <div *ngIf="!showFilters">
       <div class="screenshot">
         <img src="{{ screenshotA1.screenshot1 }}" class="{{ transparent1 }}">
         <img src="{{ screenshotA2.screenshot1 }}" class="{{ transparent2 }}">
@@ -218,6 +228,12 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="showFilters">
+      <app-home-filters [filters]="filters" (appliedFilters)="applyFilters($event)"></app-home-filters>
+    </div>
+
+
   </div>
 </div>
 

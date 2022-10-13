@@ -16,7 +16,8 @@
     "rename": "Renomear",
     "delete": "Excluir",
     "yes": "Sim",
-    "no": "Não"
+    "no": "Não",
+    "select": "Selecionar"
   },
   "home": {
     "name": "Nome",
@@ -80,7 +81,8 @@
     "copied": "Valor copiado",
     "scanning": "Escaneando",
     "findrelatedgames": "Localizar jogos relacionados",
-    "relatedgames": "Jogos relacionados"
+    "relatedgames": "Jogos relacionados",
+    "filters": "Filtros"
   },
   "language": {
     "en-US": "Inglês",
@@ -250,5 +252,13 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Pressione Enter ou clique na seta para usar o novo nome"
     }
+  },
+  "comparison": {
+    "equal": "Igual",
+    "less": "Menor",
+    "lessOrEqual": "Menor ou igual",
+    "greater": "Maior",
+    "greaterOrEqual": "Maior ou igual",
+    "betweenInclusive": "Entre (Inclusivo)"
   }
 }

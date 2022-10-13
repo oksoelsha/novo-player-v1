@@ -16,7 +16,8 @@
     "rename": "Naam wijzigen",
     "delete": "Verwijderen",
     "yes": "Ja",
-    "no": "Nee"
+    "no": "Nee",
+    "select": "Selecteren"
   },
   "home": {
     "name": "Naam",
@@ -80,7 +81,8 @@
     "copied": "Waarde gekopieerd",
     "scanning": "Scannen",
     "findrelatedgames": "Verwante spellen zoeken",
-    "relatedgames": "Verwante spellen"
+    "relatedgames": "Verwante spellen",
+    "filters": "Filters"
   },
   "language": {
     "en-US": "Engels",
@@ -250,5 +252,13 @@
     "dropdownwithinput": {
       "inputfieldhelp": "Druk op Enter of klik op de pijl om de nieuwe naam te gebruiken"
     }
+  },
+  "comparison": {
+    "equal": "Gelijk",
+    "less": "Kleiner",
+    "lessOrEqual": "Kleiner of gelijk",
+    "greater": "Groter",
+    "greaterOrEqual": "Groter of gelijk",
+    "betweenInclusive": "Tussen (inclusief)"
   }
 }
