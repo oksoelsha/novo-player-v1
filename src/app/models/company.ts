@@ -4,12 +4,13 @@ export const Company = [
 	'Anma',
 	'ASCII',
 	'Bothtec',
-	'The Bytebusters',
 	'Casio',
 	'Compile',
 	'dB-SOFT',
+	'Dinamic',
 	'ENIX',
 	'German Gomez Herrera',
+	'HAL Laboratory',
 	'Hudson Soft',
 	'Hudson Soft / Japanese Softbank',
 	'Infinite',
@@ -29,6 +30,7 @@ export const Company = [
 	'TAITO',
 	'T&ESOFT',
 	'Telenet Japan',
+	'The Bytebusters',
 	'ZAP',
 	'Zemina'
 ];

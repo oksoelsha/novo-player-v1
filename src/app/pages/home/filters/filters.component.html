@@ -1,70 +1,74 @@
-<div class="mb-2">
-    <span *ngFor="let filter of filterButtons" class="badge bg-light text-dark me-1">
-        {{ filter.label }}
-        <span class="badge bg-primary removeItem" (click)="removeFilter(filter)"> X</span>
-    </span>
+<div class="filter-form">
+    <div>{{ 'home.filters' | translate }}</div>
+    <hr>
+    <div class="mb-2 filter-buttons">
+        <span *ngFor="let filter of filterButtons" class="badge bg-light text-dark me-1 mb-1">
+            {{ filter.label }}
+            <span class="bi-x removeItem" (click)="removeFilter(filter)"></span>
+        </span>
+    </div>
+    <table class="fields-table">
+        <tr>
+            <td>{{ 'home.medium' | translate }}</td>
+            <td>
+                <app-drop-down [list]="media" (selection)="applyMediumFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.company' | translate }}</td>
+            <td>
+                <app-drop-down [list]="companies" (selection)="applyCompanyFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.country' | translate }}</td>
+            <td>
+                <app-drop-down [list]="countries" (selection)="applyCountryFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.generations' | translate }}</td>
+            <td>
+                <app-drop-down [list]="generations" (selection)="applyGenerationFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.sound' | translate }}</td>
+            <td>
+                <app-drop-down [list]="sounds" (selection)="applySoundFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.genres' | translate }}</td>
+            <td>
+                <app-drop-down [list]="genres" (selection)="applyGenreFilter($event)"
+                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                </app-drop-down>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.year' | translate }}</td>
+            <td>
+                <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)">
+                </app-home-filters-range-selector>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ 'home.size' | translate }}</td>
+            <td>
+                <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)">
+                </app-home-filters-range-selector>
+            </td>
+        </tr>
+    </table>
 </div>
-<table class="fields-table">
-    <tr>
-        <td class="medium">{{ 'home.medium' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="media" (selection)="applyMediumFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.company' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="companies" (selection)="applyCompanyFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.country' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="countries" (selection)="applyCountryFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.generations' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="generations" (selection)="applyGenerationFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.sound' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="sounds" (selection)="applySoundFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.genres' | translate }}</td>
-        <td class="medium-input">
-            <app-drop-down [list]="genres" (selection)="applyGenreFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-            </app-drop-down>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.year' | translate }}</td>
-        <td class="medium-input">
-            <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)">
-            </app-home-filters-range-selector>
-        </td>
-    </tr>
-    <tr>
-        <td class="medium">{{ 'home.size' | translate }}</td>
-        <td class="medium-input">
-            <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)">
-            </app-home-filters-range-selector>
-        </td>
-    </tr>
-</table>

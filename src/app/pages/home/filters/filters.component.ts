@@ -34,7 +34,7 @@ class FilterButton {
 @Component({
   selector: 'app-home-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.sass']
+  styleUrls: ['../../../common-styles.sass', './filters.component.sass']
 })
 export class FiltersComponent implements OnInit {
 
@@ -81,7 +81,7 @@ export class FiltersComponent implements OnInit {
       this.soundsReverse.set(s.label, s.value);
     });
 
-    this.genres = Object.assign([], Genre).sort();
+    this.genres = Object.assign([], Genre).slice(1).sort();
 
     this.years = Array.from(Array(this.endYear - this.startYear + 1).keys())
       .map(x => x + this.startYear).map(n => new RangeItem(n, n.toString()));
