@@ -1,77 +1,112 @@
 <div class="filter-form">
-    <span>{{ 'home.filters' | translate }}</span>
+    <span class="section-header">{{ 'home.filters' | translate }}</span>
     <span class="bi-x close-button" (click)="closeWindow()"></span>
     <hr>
     <div class="mb-2 filter-buttons">
-        <span *ngFor="let filter of filterButtons" class="badge bg-light text-dark me-1 mb-1">
+        <span *ngFor="let filter of filterButtons" class="badge bg-light text-dark me-1 mb-1"
+            [title]="(filter.field ? filter.field + ' = ' : '') + filter.label">
             {{ filter.label }}
-            <span class="bi-x removeItem" (click)="removeFilter(filter)"></span>
+            <span class="bi-x removeItem" (click)="removeFilter(filter)" title=""></span>
         </span>
     </div>
-    <table class="fields-table">
-        <tr>
-            <td>{{ 'home.medium' | translate }}</td>
-            <td>
-                <app-drop-down [list]="media" (selection)="applyMediumFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.company' | translate }}</td>
-            <td>
-                <app-drop-down [list]="companies" (selection)="applyCompanyFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.country' | translate }}</td>
-            <td>
-                <app-drop-down [list]="countries" (selection)="applyCountryFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.generations' | translate }}</td>
-            <td>
-                <app-drop-down [list]="generations" (selection)="applyGenerationFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.sound' | translate }}</td>
-            <td>
-                <app-drop-down [list]="sounds" (selection)="applySoundFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.genres' | translate }}</td>
-            <td>
-                <app-drop-down [list]="genres" (selection)="applyGenreFilter($event)"
-                    [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
-                </app-drop-down>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.year' | translate }}</td>
-            <td>
-                <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)">
-                </app-home-filters-range-selector>
-            </td>
-        </tr>
-        <tr>
-            <td>{{ 'home.size' | translate }}</td>
-            <td>
-                <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)">
-                </app-home-filters-range-selector>
-            </td>
-        </tr>
-    </table>
+    <div class="mt-3 mb-2 section-header">{{ 'filters.datafromemulatorandplayer' | translate }}</div>
+    <hr class="mb-1">
+    <div class="mb-1 mt-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.medium' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="media" (selection)="applyMediumFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.company' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="companies" (selection)="applyCompanyFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.country' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="countries" (selection)="applyCountryFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.generations' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="generations" (selection)="applyGenerationFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.sound' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="sounds" (selection)="applySoundFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.genres' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="genres" (selection)="applyGenreFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.year' | translate }}</div>
+        <div class="d-inline-block">
+            <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)">
+            </app-home-filters-range-selector>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'home.size' | translate }}</div>
+        <div class="d-inline-block">
+            <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)">
+            </app-home-filters-range-selector>
+        </div>
+    </div>
+    <div class="mt-4 mb-2 section-header">{{ 'filters.datafromuser' | translate }}</div>
+    <hr class="mb-1">
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'common.machine' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="machines" (selection)="applyMachineFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'popups.edithardware.inputdevice' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="inputDevices" (selection)="applyInputDeviceFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'popups.edithardware.fddmode' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="fddModes" (selection)="applyFDDModeFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
+    <div class="mb-1 selection-row">
+        <div class="filter-field d-inline-block">{{ 'filters.videosource' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="videosources" (selection)="applyVideoSourceFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+            </app-drop-down>
+        </div>
+    </div>
     <button class="btn btn-sm btn-link link-light mt-3 float-end" type="button" (click)="resetFilters()">
         {{ 'common.reset' | translate }}
   </button>

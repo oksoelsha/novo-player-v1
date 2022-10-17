@@ -6,5 +6,6 @@ export const Size = [
     {value: 368640, label: '360 KB'},
     {value: 524288, label: '512 KB'},
     {value: 737280, label: '720 KB'},
-    {value: 1048576, label: '1024 KB'}
+    {value: 1048576, label: '1024 KB'},
+    {value: 2097152, label: '2048 KB'}
 ];

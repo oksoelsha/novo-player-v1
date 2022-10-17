@@ -253,6 +253,11 @@
       "inputfieldhelp": "Pressione Enter ou clique na seta para usar o novo nome"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "Dados do emulador e Novo Player",
+    "datafromuser": "Dados do usuário",
+    "videosource": "Fonte de vídeo"
+  },
   "comparison": {
     "equal": "Igual",
     "less": "Menor",

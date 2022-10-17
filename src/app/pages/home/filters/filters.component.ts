@@ -2,31 +2,40 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Company } from '../../../models/company';
 import { ComparisonOperator } from '../../../models/comparison-operator';
 import { Country } from '../../../models/country';
+import { FDDMode } from '../../../models/fdd-mode';
 import { CompanyFilter } from '../../../models/filter/company-filter';
 import { CountryFilter } from '../../../models/filter/country-filter';
+import { FDDModeFilter } from '../../../models/filter/fddmode-filter';
 import { Filter } from '../../../models/filter/filter';
 import { GenerationFilter } from '../../../models/filter/generation-filter';
 import { GenreFilter } from '../../../models/filter/genre-filter';
+import { InputDeviceFilter } from '../../../models/filter/inputdevice-filter';
+import { MachineFilter } from '../../../models/filter/machine-filter';
 import { MediumFilter } from '../../../models/filter/medium-filter';
 import { SizesFilter } from '../../../models/filter/sizes-filter';
 import { SoundFilter } from '../../../models/filter/sound-filter';
+import { VideoSourceFilter } from '../../../models/filter/videosource-filter';
 import { YearsFilter } from '../../../models/filter/years-filter';
 import { FilterRange, Filters } from '../../../models/filters';
 import { GameUtils } from '../../../models/game-utils';
 import { Generation } from '../../../models/generation';
 import { Genre } from '../../../models/genre';
+import { InputDevice } from '../../../models/input-device';
 import { Medium } from '../../../models/medium';
 import { Size } from '../../../models/size';
 import { Sound } from '../../../models/sound';
+import { EmulatorService } from '../../../services/emulator.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { RangeItem } from './range-selector/range-selector.component';
 
 class FilterButton {
   readonly filter: Filter;
+  readonly field: string;
   readonly label: string;
 
-  constructor(filter: Filter, label: string) {
+  constructor(filter: Filter, field: string, label: string) {
     this.filter = filter;
+    this.field = field;
     this.label = label;
   }
 }
@@ -57,9 +66,13 @@ export class FiltersComponent implements OnInit {
   genres: string[] = [];
   years: RangeItem[] = [];
   sizes: RangeItem[] = [];
+  machines: string[] = [];
+  inputDevices: string[] = [];
+  fddModes: string[] = [];
+  videosources: string[] = [];
   filterButtons: FilterButton[] = [];
 
-  constructor(private localizationService: LocalizationService) { }
+  constructor(private localizationService: LocalizationService, private emulatorService: EmulatorService) { }
 
   ngOnInit(): void {
     Object.values(Medium).forEach(medium => {
@@ -89,6 +102,16 @@ export class FiltersComponent implements OnInit {
       .map(x => x + this.startYear).map(n => new RangeItem(n, n.toString()));
 
     this.sizes = Size.map(s => new RangeItem(s.value, s.label));
+
+    this.emulatorService.getMachines().then((data: string[]) => {
+      this.machines = data;
+    });
+
+    this.inputDevices = InputDevice.slice(1).map(f => this.localizationService.translate('popups.edithardware.' + f));
+
+    this.fddModes = FDDMode.map(f => this.localizationService.translate('popups.edithardware.' + f));
+
+    this.videosources = ['MSX', 'GFX9000'];
 
     if (this.filters) {
       this.filters.filters.forEach(f1 => {
@@ -131,6 +154,22 @@ export class FiltersComponent implements OnInit {
     this.applyFilter(new SizesFilter(range));
   }
 
+  applyMachineFilter(machine: string) {
+    this.applyFilter(new MachineFilter(machine));
+  }
+
+  applyInputDeviceFilter(inputDevice: string) {
+    this.applyFilter(new InputDeviceFilter(this.inputDevices.indexOf(inputDevice) + 1));
+  }
+
+  applyFDDModeFilter(fddMode: string) {
+    this.applyFilter(new FDDModeFilter(this.fddModes.indexOf(fddMode)));
+  }
+
+  applyVideoSourceFilter(videoSource: string) {
+    this.applyFilter(new VideoSourceFilter(videoSource === 'GFX9000'));
+  }
+
   removeFilter(filterButton: FilterButton) {
     let found = false;
     let index = 0;
@@ -165,21 +204,25 @@ export class FiltersComponent implements OnInit {
 
   private addFilterButton(filter: Filter) {
     if (filter instanceof MediumFilter) {
-      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('medium.' + filter.medium)));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.medium'),
+        this.localizationService.translate('medium.' + filter.medium)));
     } else if (filter instanceof CompanyFilter) {
-      this.filterButtons.push(new FilterButton(filter, filter.company));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.company'), filter.company));
     } else if (filter instanceof CountryFilter) {
-      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('country.' + filter.country)));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.country'),
+        this.localizationService.translate('country.' + filter.country)));
     } else if (filter instanceof GenerationFilter) {
-      this.filterButtons.push(new FilterButton(filter, filter.generation));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.generations'), filter.generation));
     } else if (filter instanceof SoundFilter) {
-      this.filterButtons.push(new FilterButton(filter, Sound.filter(s => s.value === filter.sound).map(s => s.label)[0]));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.sound'), 
+        Sound.filter(s => s.value === filter.sound).map(s => s.label)[0]));
     } else if (filter instanceof GenreFilter) {
-      this.filterButtons.push(new FilterButton(filter, GameUtils.getGenre(filter.genre)));
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.genres'),
+        GameUtils.getGenre(filter.genre)));
     } else if (filter instanceof YearsFilter) {
       const rangeDisplay = this.getRangeDisplay(filter.years.start.toString(), filter.years.comparisonOperator,
         filter.years.end.toString());
-      this.filterButtons.push(new FilterButton(filter, rangeDisplay));
+      this.filterButtons.push(new FilterButton(filter, '', rangeDisplay));
     } else if (filter instanceof SizesFilter) {
       const startLabel = this.sizes[this.sizes.findIndex(s => s.value === filter.sizes.start)].label;
       let endDisplay: string;
@@ -189,7 +232,18 @@ export class FiltersComponent implements OnInit {
         endDisplay = '';
       }
       const rangeDisplay = this.getRangeDisplay(startLabel, filter.sizes.comparisonOperator, endDisplay);
-      this.filterButtons.push(new FilterButton(filter, rangeDisplay));
+      this.filterButtons.push(new FilterButton(filter, '', rangeDisplay));
+    } else if (filter instanceof MachineFilter) {
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('common.machine'), filter.machine));
+    } else if (filter instanceof InputDeviceFilter) {
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('popups.edithardware.inputdevice'),
+        this.localizationService.translate('popups.edithardware.' + InputDevice[filter.inputDevice])));
+    } else if (filter instanceof FDDModeFilter) {
+      this.filterButtons.push(new FilterButton(filter, '',
+        'FDD: ' + this.localizationService.translate('popups.edithardware.' + FDDMode[filter.fddMode])));
+    } else if (filter instanceof VideoSourceFilter) {
+      const label = 'Video: ' + (filter.checkGFX9000 ? 'GFX9000' : 'MSX');
+      this.filterButtons.push(new FilterButton(filter, '', label));
     }
   }
 

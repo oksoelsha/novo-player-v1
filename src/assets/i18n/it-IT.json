@@ -253,6 +253,11 @@
       "inputfieldhelp": "Premi Invio o fai clic sulla freccia per utilizzare il nuovo nome"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "Dati dall'emulatore e Novo Player",
+    "datafromuser": "Dati dell'utente",
+    "videosource": "Origine video"
+  },
   "comparison": {
     "equal": "Uguale",
     "less": "Minore",

@@ -253,6 +253,11 @@
       "inputfieldhelp": "Druk op Enter of klik op de pijl om de nieuwe naam te gebruiken"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "Gegevens van de emulator en Novo Player",
+    "datafromuser": "Gegevens van de gebruiker",
+    "videosource": "Videobron"
+  },
   "comparison": {
     "equal": "Gelijk",
     "less": "Kleiner",

@@ -253,6 +253,11 @@
       "inputfieldhelp": "Нажмите Enter или щелкните стрелку, чтобы использовать новое имя"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "Данные с эмулятора и Novo Player",
+    "datafromuser": "Данные от пользователя",
+    "videosource": "Источник видео"
+  },
   "comparison": {
     "equal": "Равный",
     "less": "Меньше",

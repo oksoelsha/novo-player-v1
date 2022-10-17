@@ -253,6 +253,11 @@
       "inputfieldhelp": "Premeu Enter o feu clic a la fletxa per utilitzar el nou nom"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "Dades de l'emulador i Novo Player",
+    "datafromuser": "Dades de l'usuari",
+    "videosource": "Origen de vídeo"
+  },
   "comparison": {
     "equal": "Igual",
     "less": "Menor",

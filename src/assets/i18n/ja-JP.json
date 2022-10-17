@@ -253,6 +253,11 @@
       "inputfieldhelp": "Enterキーを押すか、矢印をクリックして新しい名前を使用します"
     }
   },
+  "filters": {
+    "datafromemulatorandplayer": "エミュレーターと Novo Player からのデータ",
+    "datafromuser": "ユーザーからのデータ",
+    "videosource": "ビデオ ソース"
+  },
   "comparison": {
     "equal": "等しい",
     "less": "より小さい",
