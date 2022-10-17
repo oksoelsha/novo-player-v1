@@ -37,9 +37,11 @@
       </div>
       <div class="action-buttons">
         <div class="d-inline-block">
-          <button class="btn btn-secondary btn-sm action-button" type="button" (click)="showFiltersForm()"
-            [title]="'home.filters' | translate">
+          <button
+            [ngClass]="{'btn': true, 'btn-secondary': true, 'btn-sm': true, 'action-button': filtersTotal === 0, 'action-button-filters': filtersTotal > 0}"
+            type="button" (click)="toggleFiltersForm()" [title]="'home.filters' | translate">
             <span class="bi-funnel"></span>
+            <span *ngIf="filtersTotal > 0" class="badge bg-primary">{{ filtersTotal }}</span>
           </button>
         </div>
         <div class="d-inline-block ps-1">
@@ -120,7 +122,6 @@
     </div>
   </div>
   <div class="area-on-the-right">
-
     <div *ngIf="!showFilters">
       <div class="screenshot">
         <img src="{{ screenshotA1.screenshot1 }}" class="{{ transparent1 }}">
@@ -228,12 +229,10 @@
         </div>
       </div>
     </div>
-
     <div *ngIf="showFilters">
-      <app-home-filters [filters]="filters" (appliedFilters)="applyFilters($event)"></app-home-filters>
+      <app-home-filters [filters]="filters" (appliedFilters)="applyFilters($event)" (close)="toggleFiltersForm()" (reset)="resetFilters()">
+      </app-home-filters>
     </div>
-
-
   </div>
 </div>
 

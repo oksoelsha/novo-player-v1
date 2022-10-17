@@ -52,4 +52,18 @@ export class Filters {
             differentTypesIndex++;
         }
     }
+
+    getTotalFilters(): number {
+        let totalFilters = 0;
+        this.filters.forEach(o => {
+            o.forEach(l => {
+                totalFilters++;
+            })
+        })
+        return totalFilters;
+    }
+
+    reset() {
+        this.filters.splice(0, this.filters.length);
+    }
 }

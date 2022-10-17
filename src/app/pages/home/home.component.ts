@@ -96,7 +96,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   favorites: Game[] = [];
   sortData: SortData;
   showUndo: boolean;
+  filters: Filters;
   showFilters = false;
+  filtersTotal = 0;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null);
@@ -108,7 +110,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private quickTypeTimer: NodeJS.Timer = null;
   private dragCounter = 0;
   private historyToUndoSubscription: Subscription;
-  filters = null;
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
@@ -257,6 +258,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getFavorites();
 
     this.filters = this.filtersService.getFilters();
+    this.filtersTotal = this.filters.getTotalFilters();
   }
 
   ngOnDestroy() {
@@ -702,12 +704,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  showFiltersForm() {
+  toggleFiltersForm() {
     this.showFilters = !this.showFilters;
   }
 
   applyFilters(filters: Filters) {
     this.filters = filters;
+    this.filtersTotal = this.filters.getTotalFilters();
+    this.games = this.filtersService.filter(this.originalGames, this.filters);
+  }
+
+  resetFilters() {
+    this.filtersTotal = 0;
     this.games = this.filtersService.filter(this.originalGames, this.filters);
   }
 

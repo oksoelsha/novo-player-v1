@@ -40,6 +40,8 @@ export class FiltersComponent implements OnInit {
 
   @Input() filters: Filters;
   @Output() appliedFilters: EventEmitter<Filters> = new EventEmitter<Filters>();
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
+  @Output() reset: EventEmitter<void> = new EventEmitter<void>();
 
   readonly startYear = 1982;
   readonly endYear = 2026;
@@ -151,6 +153,16 @@ export class FiltersComponent implements OnInit {
     this.appliedFilters.emit(this.filters);
   }
 
+  closeWindow() {
+    this.close.emit();
+  }
+
+  resetFilters() {
+    this.filterButtons = [];
+    this.filters.reset();
+    this.reset.emit();
+  }
+
   private addFilterButton(filter: Filter) {
     if (filter instanceof MediumFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('medium.' + filter.medium)));
@@ -200,7 +212,7 @@ export class FiltersComponent implements OnInit {
         rangeDisplay = '>= ' + startDisplay;
         break;
       case ComparisonOperator.betweenInclusive:
-        rangeDisplay = startDisplay + ' <= x <= ' + endDisplay;
+        rangeDisplay = '>= ' + startDisplay + ' , <= ' + endDisplay;
         break;
     }
     return rangeDisplay;
