@@ -48,6 +48,7 @@ class FilterButton {
 export class FiltersComponent implements OnInit {
 
   @Input() filters: Filters;
+  @Input() machines: string[] = [];
   @Output() appliedFilters: EventEmitter<Filters> = new EventEmitter<Filters>();
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   @Output() reset: EventEmitter<void> = new EventEmitter<void>();
@@ -66,7 +67,6 @@ export class FiltersComponent implements OnInit {
   genres: string[] = [];
   years: RangeItem[] = [];
   sizes: RangeItem[] = [];
-  machines: string[] = [];
   inputDevices: string[] = [];
   fddModes: string[] = [];
   videosources: string[] = [];

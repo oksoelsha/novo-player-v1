@@ -230,7 +230,8 @@
       </div>
     </div>
     <div *ngIf="showFilters">
-      <app-home-filters [filters]="filters" (appliedFilters)="applyFilters($event)" (close)="toggleFiltersForm()" (reset)="resetFilters()">
+      <app-home-filters [filters]="filters" [machines]="machines" (appliedFilters)="applyFilters($event)"
+        (close)="toggleFiltersForm()" (reset)="resetFilters()">
       </app-home-filters>
     </div>
   </div>
@@ -244,8 +245,8 @@
 <app-popup popupId="scan-parameters-id" [titleHeader]="'home.addgames' | translate" (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-scan-parameters [popupId]="popupId" (openStatus)="popupOpen = $event" [listings]="listings"
-      [filesAndFolders]="draggedFilesAndFolders" [currentListing]="selectedListing" (parameters)="startScan($event)"
-      #scanParameters></app-scan-parameters>
+      [filesAndFolders]="draggedFilesAndFolders" [currentListing]="selectedListing" [machines]="machines"
+      (parameters)="startScan($event)" #scanParameters></app-scan-parameters>
   </ng-template>
 </app-popup>
 
@@ -260,7 +261,7 @@
 <app-popup popupId="hardware-edit-id" [titleHeader]="'home.edithardware' | translate" (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-hardware-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
-      (hardwareData)="updateHardware($event)" #hardwareEdit>
+      (hardwareData)="updateHardware($event)" [machines]="machines" #hardwareEdit>
     </app-hardware-edit>
   </ng-template>
 </app-popup>

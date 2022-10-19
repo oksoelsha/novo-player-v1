@@ -28,6 +28,7 @@ import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webms
 import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
 import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
+import { EmulatorService } from '../../services/emulator.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -99,6 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   filters: Filters;
   showFilters = false;
   filtersTotal = 0;
+  machines: string[] = [];
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null);
@@ -114,7 +116,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
-    private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService) {
+    private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
+    private emulatorService: EmulatorService) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -253,6 +256,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
       this.localizationService.useLanguage(settings.language);
+
+      this.emulatorService.getMachines().then((data: string[]) => {
+        this.machines = data;
+      });
     });
 
     this.getFavorites();

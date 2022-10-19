@@ -75,7 +75,7 @@
     </div>
     <div class="mt-4 mb-2 section-header">{{ 'filters.datafromuser' | translate }}</div>
     <hr class="mb-1">
-    <div class="mb-1 selection-row">
+    <div class="mb-1 selection-row" *ngIf="machines.length > 0">
         <div class="filter-field d-inline-block">{{ 'common.machine' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="machines" (selection)="applyMachineFilter($event)"

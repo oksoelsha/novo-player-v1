@@ -15,9 +15,9 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
 
   @Input() popupId: string;
   @Input() game: Game;
+  @Input() machines: string[] = [];
   @Output() hardwareData: EventEmitter<any> = new EventEmitter<any>();
 
-  machines: string[] = [];
   selectedMachine = '';
   fddModes: string[] = [];
   selectedFDDMode = '';

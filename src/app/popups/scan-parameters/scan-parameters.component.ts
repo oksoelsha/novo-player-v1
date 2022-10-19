@@ -13,10 +13,10 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
   @Input() listings: string[] = [];
   @Input() filesAndFolders: string[] = [];
   @Input() currentListing = '';
+  @Input() machines: string[] = [];
   @Output() parameters: EventEmitter<ScanParameters> = new EventEmitter<ScanParameters>();
 
   selectedListing = '';
-  machines: string[] = [];
   selectedMachine = '';
 
   constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
