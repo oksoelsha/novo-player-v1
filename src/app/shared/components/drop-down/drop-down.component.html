@@ -1,4 +1,5 @@
-<div *ngIf="list && list.length > 0" ngbDropdown class="d-inline-block" (keyup)="processKeyup($event)">
+<div *ngIf="list && list.length > 0" ngbDropdown class="d-inline-block" (keyup)="processKeyup($event)"
+    (openChange)="emitOpenStatus($event)">
     <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
         <div class="button-label">
             <div *ngIf="!selectedItem">{{ defaultLabel }}</div>
@@ -7,15 +8,15 @@
         </div>
     </button>
     <div ngbDropdownMenu class="dropdown-scroll pt-0 pb-0">
-        <button *ngFor="let item of list; let i = index" ngbDropdownItem type="button"
-            (click)="handleSelection(item)" #dropDownItem>
+        <button *ngFor="let item of list; let i = index" ngbDropdownItem type="button" (click)="handleSelection(item)"
+            #dropDownItem>
             <img [src]="listIcons[i]" class="icon" *ngIf="listIcons">
             {{ item }}
         </button>
     </div>
     <div *ngIf="resetButton && selectedItem" class="d-inline ms-2">
         <button class="btn btn-secondary btn-sm" type="button" (click)="resetSelection()">
-          {{ 'common.reset' | translate }}
+            {{ 'common.reset' | translate }}
         </button>
     </div>
 </div>

@@ -22,6 +22,7 @@ export class RangeSelectorComponent implements OnInit {
 
   @Input() range: RangeItem[];
   @Output() selectedRange: EventEmitter<FilterRange> = new EventEmitter<FilterRange>();
+  @Output() openedMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   start: string;
   startValue: number;
@@ -67,6 +68,10 @@ export class RangeSelectorComponent implements OnInit {
     const comparisonOperatorValue = this.comparisonOperatorReverse.get(this.comparisonOperator) as ComparisonOperator;
     this.selectedRange.emit(new FilterRange(this.startValue, comparisonOperatorValue, this.endValue));
     this.init();
+  }
+
+  emitMenuOpenStatus(openStatus: boolean) {
+    this.openedMenu.emit(openStatus);
   }
 
   private init() {

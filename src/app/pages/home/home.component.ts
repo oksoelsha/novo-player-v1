@@ -713,6 +713,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   toggleFiltersForm() {
     this.showFilters = !this.showFilters;
+    // filters form may be closed while a menu is open. Therefore, we may need to decrement the open menus count here
+    if (!this.showFilters && this.openMenuEventCounter > 0) {
+      this.openMenuEventCounter--;
+    }
   }
 
   applyFilters(filters: Filters) {

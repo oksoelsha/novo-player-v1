@@ -15,7 +15,8 @@
         <div class="filter-field d-inline-block">{{ 'home.medium' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="media" (selection)="applyMediumFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -23,7 +24,8 @@
         <div class="filter-field d-inline-block">{{ 'home.company' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="companies" (selection)="applyCompanyFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -31,7 +33,8 @@
         <div class="filter-field d-inline-block">{{ 'home.country' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="countries" (selection)="applyCountryFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -39,7 +42,8 @@
         <div class="filter-field d-inline-block">{{ 'home.generations' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="generations" (selection)="applyGenerationFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -47,7 +51,8 @@
         <div class="filter-field d-inline-block">{{ 'home.sound' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="sounds" (selection)="applySoundFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -55,21 +60,24 @@
         <div class="filter-field d-inline-block">{{ 'home.genres' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="genres" (selection)="applyGenreFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
     <div class="mb-1 selection-row">
         <div class="filter-field d-inline-block">{{ 'home.year' | translate }}</div>
         <div class="d-inline-block">
-            <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)">
+            <app-home-filters-range-selector [range]="years" (selectedRange)="applyYearsFilter($event)"
+                (openedMenu)="emitMenuOpenStatus($event)">
             </app-home-filters-range-selector>
         </div>
     </div>
     <div class="mb-1 selection-row">
         <div class="filter-field d-inline-block">{{ 'home.size' | translate }}</div>
         <div class="d-inline-block">
-            <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)">
+            <app-home-filters-range-selector [range]="sizes" (selectedRange)="applySizesFilter($event)"
+                (openedMenu)="emitMenuOpenStatus($event)">
             </app-home-filters-range-selector>
         </div>
     </div>
@@ -79,7 +87,8 @@
         <div class="filter-field d-inline-block">{{ 'common.machine' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="machines" (selection)="applyMachineFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -87,7 +96,8 @@
         <div class="filter-field d-inline-block">{{ 'popups.edithardware.inputdevice' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="inputDevices" (selection)="applyInputDeviceFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -95,7 +105,8 @@
         <div class="filter-field d-inline-block">{{ 'popups.edithardware.fddmode' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="fddModes" (selection)="applyFDDModeFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
@@ -103,11 +114,12 @@
         <div class="filter-field d-inline-block">{{ 'filters.videosource' | translate }}</div>
         <div class="d-inline-block">
             <app-drop-down [list]="videosources" (selection)="applyVideoSourceFilter($event)"
-                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true">
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
     <button class="btn btn-sm btn-link link-light mt-3 float-end" type="button" (click)="resetFilters()">
         {{ 'common.reset' | translate }}
-  </button>
+    </button>
 </div>

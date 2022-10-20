@@ -15,6 +15,7 @@ export class DropDownComponent {
   @Input() resetButton: boolean;
   @Input() doNotDisplaySelectedItem: boolean;
   @Output() selection: EventEmitter<string> = new EventEmitter<string>();
+  @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChildren('dropDownItem') dropDownItems: QueryList<ElementRef>;
 
   private accumulatedPressedKeys = '';
@@ -49,6 +50,10 @@ export class DropDownComponent {
   resetSelection() {
     this.selectedItem = '';
     this.selection.emit('');
+  }
+
+  emitOpenStatus(open: boolean) {
+    this.openStatus.emit(open);
   }
 
   private jumpToNearestItem(accumulatedPressedKeys: string) {

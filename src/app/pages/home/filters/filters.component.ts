@@ -50,6 +50,7 @@ export class FiltersComponent implements OnInit {
   @Input() filters: Filters;
   @Input() machines: string[] = [];
   @Output() appliedFilters: EventEmitter<Filters> = new EventEmitter<Filters>();
+  @Output() openedMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   @Output() reset: EventEmitter<void> = new EventEmitter<void>();
 
@@ -190,6 +191,10 @@ export class FiltersComponent implements OnInit {
     this.filters.addFilter(filter);
     this.addFilterButton(filter);
     this.appliedFilters.emit(this.filters);
+  }
+
+  emitMenuOpenStatus(openStatus: boolean) {
+    this.openedMenu.emit(openStatus);
   }
 
   closeWindow() {
