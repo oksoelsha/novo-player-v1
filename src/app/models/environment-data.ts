@@ -1,5 +1,5 @@
 export class EnvironmentData {
-    extraDataVersion: string;
+    readonly extraDataVersion: string;
 
     constructor(extraDataVersion: string) {
         this.extraDataVersion = extraDataVersion;

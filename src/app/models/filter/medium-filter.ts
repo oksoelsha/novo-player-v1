@@ -22,6 +22,6 @@ export class MediumFilter implements Filter {
         } else if (game.laserdisc != null) {
             return this.medium === Medium.laserdisc;
         }
-        return true;
+        return false;
     }
 }
