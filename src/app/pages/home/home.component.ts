@@ -489,6 +489,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
       }
+      if (this.filtersTotal > 0) {
+        this.games = this.filtersService.filter(this.originalGames, this.filters);
+        this.otherSelectedGames.clear();
+        this.removeAllOtherSelectedGames();
+      }
     });
   }
 
@@ -873,8 +878,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private addGameToSortedList(game: Game) {
-    this.games.push(game);
-    this.sortGames(this.games);
+    if (this.filtersTotal > 0) {
+      this.getGames(this.selectedListing);
+    } else {
+      this.games.push(game);
+      this.sortGames(this.games);  
+    }
   }
 
   private addListingToListings(listing: string) {
