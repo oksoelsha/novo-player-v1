@@ -1,4 +1,4 @@
-import { app, ipcMain, BrowserWindow } from 'electron';
+import { app, ipcMain, BrowserWindow, globalShortcut } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -138,6 +138,18 @@ try {
     if (win === null) {
       createWindow();
     }
+  });
+
+  app.on('browser-window-focus', function () {
+    globalShortcut.register("CommandOrControl+R", () => {
+    });
+    globalShortcut.register("F5", () => {
+    });
+  });
+
+  app.on('browser-window-blur', function () {
+    globalShortcut.unregister('CommandOrControl+R');
+    globalShortcut.unregister('F5');
   });
 
 } catch (e) {
