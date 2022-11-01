@@ -82,7 +82,9 @@
     "scanning": "Recherche en cours",
     "findrelatedgames": "Trouver des jeux associés",
     "relatedgames": "Jeux associés",
-    "filters": "Filtres"
+    "filters": "Filtres",
+    "showfilters": "Afficher les filtres",
+    "hidefilters": "Masquer les filtres"
   },
   "language": {
     "en-US": "Anglais",

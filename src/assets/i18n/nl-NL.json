@@ -82,7 +82,9 @@
     "scanning": "Scannen",
     "findrelatedgames": "Verwante spellen zoeken",
     "relatedgames": "Verwante spellen",
-    "filters": "Filters"
+    "filters": "Filters",
+    "showfilters": "Filters weergeven",
+    "hidefilters": "Filters verbergen"
   },
   "language": {
     "en-US": "Engels",

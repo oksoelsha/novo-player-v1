@@ -82,7 +82,9 @@
     "scanning": "検索しています",
     "findrelatedgames": "関連するゲームを探す",
     "relatedgames": "関連ゲーム",
-    "filters": "フィルター"
+    "filters": "フィルター",
+    "showfilters": "フィルターの表示",
+    "hidefilters": "フィルターの非表示"
   },
   "language": {
     "en-US": "英語",

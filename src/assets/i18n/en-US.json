@@ -82,7 +82,9 @@
     "scanning": "Scanning",
     "findrelatedgames": "Find related games",
     "relatedgames": "Related Games",
-    "filters": "Filters"
+    "filters": "Filters",
+    "showfilters": "Show filters",
+    "hidefilters": "Hide filters"
   },
   "language": {
     "en-US": "English",

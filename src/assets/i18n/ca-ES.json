@@ -82,7 +82,9 @@
     "scanning": "S'està analitzant",
     "findrelatedgames": "Cerca jocs relacionats",
     "relatedgames": "Jocs relacionats",
-    "filters": "Filtres"
+    "filters": "Filtres",
+    "showfilters": "Mostra els filtres",
+    "hidefilters": "Amaga els filtres"
   },
   "language": {
     "en-US": "Anglès",

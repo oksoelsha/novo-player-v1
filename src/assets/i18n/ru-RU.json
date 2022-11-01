@@ -82,7 +82,9 @@
     "scanning": "Сканируем",
     "findrelatedgames": "Найти похожие игры",
     "relatedgames": "Похожие игры",
-    "filters": "фильтры"
+    "filters": "фильтры",
+    "showfilters": "Показать фильтры",
+    "hidefilters": "Скрыть фильтры"
   },
   "language": {
     "en-US": "Английский",
