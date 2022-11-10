@@ -29,6 +29,7 @@ import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-mach
 import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
+import { AdditionalExternalInfoComponent } from '../../popups/additional-external-info/additional-external-info.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -60,6 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
   @ViewChild('webmsxMachineSet') webmsxMachineSet: WebmsxMachineSetComponent;
   @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
+  @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;

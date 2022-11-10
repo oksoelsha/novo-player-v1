@@ -192,6 +192,10 @@
               <div class="actions-menu-icon"></div>
               {{ 'home.findrelatedgames' | translate }}
             </button>
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
+              <div class="actions-menu-icon"></div>
+              {{ 'home.additionalExternalInfo' | translate }}
+            </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite" ngbDropdownItem
               type="button" (click)="setFavoritesFlag(true)">
               <div class="actions-menu-icon">&starf;</div>
@@ -318,6 +322,14 @@
     <app-related-games [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
       (foundGame)="showFoundGame($event)" #relatedGames>
     </app-related-games>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="additional-external-info-id" [titleHeader]="('home.additionalexternalinfo' | translate) + ' - ' + selectedGame?.name"
+  (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-additional-external-info [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame" #additionalExternalInfo>
+    </app-additional-external-info>
   </ng-template>
 </app-popup>
 

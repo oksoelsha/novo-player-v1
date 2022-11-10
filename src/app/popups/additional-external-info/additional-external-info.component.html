@@ -1,0 +1,19 @@
+<div class="external-info">
+    <table>
+        <tr>
+            <td class="field">Matched name</td>
+            <td class="value">{{ matchedName }}</td>
+        </tr>
+        <tr *ngIf="allPlatforms.length > 0">
+            <td class="field">Platforms</td>
+            <td>
+                <span *ngFor="let platform of allPlatforms" class="badge bg-secondary ms-1">{{ platform }}</span>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <div class="d-inline-block image-box" *ngFor="let image of boxArtImages">
+            <img src="{{ image }}">
+        </div>
+    </div>
+</div>

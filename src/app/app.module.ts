@@ -52,6 +52,7 @@ import { SortStatusPipe } from './pages/home/pipes/sort-status.pipe';
 import { WebmsxMachineSetComponent } from './popups/webmsx-machine-set/webmsx-machine-set.component';
 import { FiltersComponent } from './pages/home/filters/filters.component';
 import { RangeSelectorComponent } from './pages/home/filters/range-selector/range-selector.component';
+import { AdditionalExternalInfoComponent } from './popups/additional-external-info/additional-external-info.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -91,6 +92,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RelatedGamesComponent,
     RangeSelectorComponent,
     FiltersComponent,
+    AdditionalExternalInfoComponent,
     DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,
