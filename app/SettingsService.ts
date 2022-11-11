@@ -20,7 +20,7 @@ export class SettingsService {
     getSettings(): Settings {
         if (this.settings === undefined) {
             if (!fs.existsSync(this.settingsFile)) {
-                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '');
+                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '');
             } else {
                 const fileData = fs.readFileSync(this.settingsFile);
                 return JSON.parse(fileData.toString());

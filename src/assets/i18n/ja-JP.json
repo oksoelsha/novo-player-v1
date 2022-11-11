@@ -84,7 +84,9 @@
     "relatedgames": "関連ゲーム",
     "filters": "フィルター",
     "showfilters": "フィルターの表示",
-    "hidefilters": "フィルターの非表示"
+    "hidefilters": "フィルターの非表示",
+    "infofromgiantbomb": "Giant Bombからの情報",
+    "getinfofromgiantbomb": "Giant Bombから情報を得る"
   },
   "language": {
     "en-US": "英語",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "未保存の変更内容を破棄しますか?",
     "settingssavedsuccessfully": "設定を正常に保存しました",
     "otheroptionalemulators": "その他のオプションのエミュレーター",
-    "general": "全般"
+    "general": "全般",
+    "externalintegrations": "外部統合",
+    "giantbombapikey": "Giant Bomb API キー",
+    "giantbombapikeytooltip": "Giant Bomb Web サイトに接続してゲームのプラットフォームやアートワークなどのデータを取得するために必要な API キー"
   },
   "country": {
     "BR": "ブラジル",
@@ -267,5 +272,10 @@
     "greater": "より大きい",
     "greaterOrEqual": "には 以上",
     "betweenInclusive": "間で (包含)"
+  },
+  "giantbomb": {
+    "matchedname": "一致した名前",
+    "platforms": "プラットフォーム",
+    "notfound": "見つかりません"
   }
 }

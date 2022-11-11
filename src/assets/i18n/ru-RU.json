@@ -84,7 +84,9 @@
     "relatedgames": "Похожие игры",
     "filters": "фильтры",
     "showfilters": "Показать фильтры",
-    "hidefilters": "Скрыть фильтры"
+    "hidefilters": "Скрыть фильтры",
+    "infofromgiantbomb": "Сведения от Giant Bomb",
+    "getinfofromgiantbomb": "Получить сведения от Giant Bomb"
   },
   "language": {
     "en-US": "Английский",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "Покинуть страницу, не сохранив изменения?",
     "settingssavedsuccessfully": "Параметры успешно сохранены",
     "otheroptionalemulators": "Другие дополнительные эмуляторы",
-    "general": "Общие"
+    "general": "Общие",
+    "externalintegrations": "Внешние интеграции",
+    "giantbombapikey": "Ключ API Giant Bomb",
+    "giantbombapikeytooltip": "Ключ API, необходимый для подключения к веб-сайту Giant Bomb для получения таких данных, как платформы и изображения для игры"
   },
   "country": {
     "BR": "Бразилия",
@@ -267,5 +272,10 @@
     "greater": "Больше",
     "greaterOrEqual": "Больше или равно",
     "betweenInclusive": "В диапазоне (включительно)"
+  },
+  "giantbomb": {
+    "matchedname": "Сопоставленное имя",
+    "platforms": "Платформы",
+    "notfound": "Не найдено"
   }
 }

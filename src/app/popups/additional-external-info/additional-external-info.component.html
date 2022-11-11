@@ -1,11 +1,11 @@
 <div class="external-info">
     <table>
         <tr>
-            <td class="field">Matched name</td>
+            <td class="field">{{ 'giantbomb.matchedname' | translate }}</td>
             <td class="value">{{ matchedName }}</td>
         </tr>
         <tr *ngIf="allPlatforms.length > 0">
-            <td class="field">Platforms</td>
+            <td class="field">{{ 'giantbomb.platforms' | translate }}</td>
             <td>
                 <span *ngFor="let platform of allPlatforms" class="badge bg-secondary ms-1">{{ platform }}</span>
             </td>

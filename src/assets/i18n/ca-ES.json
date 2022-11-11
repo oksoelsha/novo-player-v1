@@ -84,7 +84,9 @@
     "relatedgames": "Jocs relacionats",
     "filters": "Filtres",
     "showfilters": "Mostra els filtres",
-    "hidefilters": "Amaga els filtres"
+    "hidefilters": "Amaga els filtres",
+    "infofromgiantbomb": "Informació de Giant Bomb",
+    "getinfofromgiantbomb": "Obtén informació de Giant Bomb"
   },
   "language": {
     "en-US": "Anglès",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "Vols continuar sense desar el que has editat?",
     "settingssavedsuccessfully": "La configuració s'ha desat correctament",
     "otheroptionalemulators": "Altres emuladors opcionals",
-    "general": "General"
+    "general": "General",
+    "externalintegrations": "Integracions externes",
+    "giantbombapikey": "Clau d'API del Giant Bomb",
+    "giantbombapikeytooltip": "La clau d'API necessària per connectar-se al lloc web de Giant Bomb per obtenir dades com ara plataformes i quadresmaterials gràfics per al joc"
   },
   "country": {
     "BR": "Brasil",
@@ -267,6 +272,11 @@
     "greater": "Més gran",
     "greaterOrEqual": "Més gran o igual",
     "betweenInclusive": "Entre (inclusiu)"
+  },
+  "giantbomb": {
+    "matchedname": "Nom coincident",
+    "platforms": "Plataformes",
+    "notfound": "No s'ha trobat"
   }
 }
 

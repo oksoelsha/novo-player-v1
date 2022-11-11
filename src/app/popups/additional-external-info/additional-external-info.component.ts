@@ -1,6 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Game } from '../../models/game';
+import { Settings } from '../../models/settings';
 import { AdditionalExternalInfoService } from '../../services/additional-external-info.service';
+import { LocalizationService } from '../../services/localization.service';
+import { SettingsService } from '../../services/settings.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
@@ -9,7 +12,7 @@ import { PopupComponent } from '../popup.component';
   styleUrls: ['../../common-styles.sass', './additional-external-info.component.sass'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class AdditionalExternalInfoComponent  extends PopupComponent implements OnInit, AfterViewInit {
+export class AdditionalExternalInfoComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
@@ -18,12 +21,19 @@ export class AdditionalExternalInfoComponent  extends PopupComponent implements 
   allPlatforms: string[] = [];
   boxArtImages: string[] = [];
 
-  constructor(protected changeDetector: ChangeDetectorRef, private additionalExternalInfoService: AdditionalExternalInfoService) {
+  private giantbombApiKey = '';
+
+  constructor(protected changeDetector: ChangeDetectorRef, private additionalExternalInfoService: AdditionalExternalInfoService,
+    private settingsService: SettingsService, private localizationService: LocalizationService) {
     super(changeDetector);
   }
 
   ngOnInit() {
     super.commonInit();
+
+    this.settingsService.getSettings().then((settings: Settings) => {
+      this.giantbombApiKey = settings.giantbombApiKey;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -31,7 +41,7 @@ export class AdditionalExternalInfoComponent  extends PopupComponent implements 
   }
 
   async open(): Promise<void> {
-    this.additionalExternalInfoService.getAdditionalExternalInfo(this.game).then((results: any) => {
+    this.additionalExternalInfoService.getAdditionalExternalInfo(this.game, this.giantbombApiKey).then((results: any) => {
       const dataForMSX = this.getResultWithMSXPlatform(results.searchString, results.data);
       if (dataForMSX) {
         const platforms: string[] = [];
@@ -42,8 +52,7 @@ export class AdditionalExternalInfoComponent  extends PopupComponent implements 
         this.allPlatforms = platforms;
         this.getBoxArtImages(dataForMSX);
       } else {
-        // handle the case where there's no MSX data
-        this.matchedName = 'Not Found--';
+        this.matchedName = this.localizationService.translate('giantbomb.notfound');
       }
       super.open();
     });
@@ -60,7 +69,7 @@ export class AdditionalExternalInfoComponent  extends PopupComponent implements 
   private getBoxArtImages(dataForMSX: any) {
     for (let ix = 0; ix < dataForMSX.image_tags.length; ix++) {
       if (dataForMSX.image_tags[ix].name === 'Box Art') {
-        this.additionalExternalInfoService.getBoxArtImages(dataForMSX.image_tags[ix].api_detail_url).then((images: any[]) => {
+        this.additionalExternalInfoService.getBoxArtImages(dataForMSX.image_tags[ix].api_detail_url, this.giantbombApiKey).then((images: any[]) => {
           const temp: string[] = [];
           images.forEach(image => {
             temp.push(image.original_url);
@@ -78,7 +87,7 @@ export class AdditionalExternalInfoComponent  extends PopupComponent implements 
           if (data[ix].platforms[iy].name === 'MSX') {
             return data[ix];
           }
-        }  
+        }
       }
     }
     return null;

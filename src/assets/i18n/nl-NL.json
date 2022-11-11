@@ -84,7 +84,9 @@
     "relatedgames": "Verwante spellen",
     "filters": "Filters",
     "showfilters": "Filters weergeven",
-    "hidefilters": "Filters verbergen"
+    "hidefilters": "Filters verbergen",
+    "infofromgiantbomb": "Info van Giant Bomb",
+    "getinfofromgiantbomb": "Info ophalen van Giant Bomb"
   },
   "language": {
     "en-US": "Engels",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "Niet opgeslagen wijzigingen verwijderen?",
     "settingssavedsuccessfully": "Instellingen zijn opgeslagen",
     "otheroptionalemulators": "Andere optionele emulatoren",
-    "general": "Algemeen"
+    "general": "Algemeen",
+    "externalintegrations": "Externe integraties",
+    "giantbombapikey": "Giant Bomb API-sleutel",
+    "giantbombapikeytooltip": "API-sleutel vereist om verbinding te maken met de Giant Bomb-website om gegevens zoals platforms en illustraties voor de game te verkrijgen"
   },
   "country": {
     "BR": "Brazilië",
@@ -267,5 +272,10 @@
     "greater": "Groter",
     "greaterOrEqual": "Groter of gelijk",
     "betweenInclusive": "Tussen (inclusief)"
+  },
+  "giantbomb": {
+    "matchedname": "Overeenkomende naam",
+    "platforms": "Platformen",
+    "notfound": "Niet gevonden"
   }
 }

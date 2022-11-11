@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
-import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,7 @@ import { SettingsService } from './settings.service';
 export class VersionsService {
   private ipc: IpcRenderer;
 
-  constructor(private settingsService: SettingsService) {
+  constructor() {
     this.ipc = window.require('electron').ipcRenderer;
   }
 

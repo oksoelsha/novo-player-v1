@@ -84,7 +84,9 @@
     "relatedgames": "Jogos relacionados",
     "filters": "Filtros",
     "showfilters": "Mostrar Filtros",
-    "hidefilters": "Ocultar Filtros"
+    "hidefilters": "Ocultar Filtros",
+    "infofromgiantbomb": "Informações do Giant Bomb",
+    "getinfofromgiantbomb": "Obter informações do Giant Bomb"
   },
   "language": {
     "en-US": "Inglês",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "Sair sem Salvar?",
     "settingssavedsuccessfully": "Configurações salvas com êxito",
     "otheroptionalemulators": "Outros emuladores opcionais",
-    "general": "Geral"
+    "general": "Geral",
+    "externalintegrations": "Integrações externas",
+    "giantbombapikey": "Chave de API de Giant Bomb",
+    "giantbombapikeytooltip": "Chave de API necessária para se conectar ao site da Giant Bomb para obter dados como plataformas e ilustrações para o jogo"
   },
   "country": {
     "BR": "Brasil",
@@ -267,5 +272,10 @@
     "greater": "Maior",
     "greaterOrEqual": "Maior ou igual",
     "betweenInclusive": "Entre (Inclusivo)"
+  },
+  "giantbomb": {
+    "matchedname": "Nome correspondente",
+    "platforms": "Plataformas",
+    "notfound": "Não Encontrado"
   }
 }

@@ -12,10 +12,10 @@ export class AdditionalExternalInfoService {
     this.initIdToName();
   }
 
-  async getAdditionalExternalInfo(game: Game): Promise<any> {
+  async getAdditionalExternalInfo(game: Game, giantbombApiKey: string): Promise<any> {
     const searchString = this.getSearchString(game);
     const params = {
-      api_key: '',
+      api_key: giantbombApiKey,
       format: 'json',
       filter: 'name:' + searchString
     };
@@ -27,9 +27,9 @@ export class AdditionalExternalInfoService {
       });
   };
 
-  async getBoxArtImages(imagesUrl: string): Promise<any[]> {
+  async getBoxArtImages(imagesUrl: string, giantbombApiKey: string): Promise<any[]> {
     const params = {
-      api_key: '',
+      api_key: giantbombApiKey,
       format: 'json',
     };
     const url = imagesUrl + '&' + this.getQueryString(params);
@@ -72,6 +72,7 @@ export class AdditionalExternalInfoService {
     this.idToName.set(607, 'Pitfall II: Lost Caverns');
     this.idToName.set(695, 'Genghis Khan');
     this.idToName.set(696, 'Vampire Killer');
+    this.idToName.set(730, 'Come On Picot');
     this.idToName.set(733, 'Gall Force: Defense of Chaos');
     this.idToName.set(742, 'Gradius');
     this.idToName.set(754, 'Zanac');

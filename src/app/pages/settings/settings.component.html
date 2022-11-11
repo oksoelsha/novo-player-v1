@@ -84,6 +84,15 @@
       </div>
     </div>
 
+    <div class="header">{{ 'settings.externalintegrations' | translate }}</div>
+    <hr>
+
+    <div class="form-group mb-3">
+      <label class="form-label">{{ 'settings.giantbombapikey' | translate }}</label>
+      <input type="text" class="form-control form-control-sm" name="giantbomb-apikey-params" [(ngModel)]="giantbombApiKeyParams"
+        placement="top" [ngbTooltip]="'settings.giantbombapikeytooltip' | translate" />
+    </div>
+
     <p></p>
     <button class="btn btn-primary btn-sm mt-2" [disabled]="submitDisabled">{{ 'common.save' | translate }}</button>
   </form>

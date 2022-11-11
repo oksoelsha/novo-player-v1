@@ -84,7 +84,9 @@
     "relatedgames": "Related Games",
     "filters": "Filters",
     "showfilters": "Show filters",
-    "hidefilters": "Hide filters"
+    "hidefilters": "Hide filters",
+    "infofromgiantbomb": "Info from Giant Bomb",
+    "getinfofromgiantbomb": "Get info from Giant Bomb"
   },
   "language": {
     "en-US": "English",
@@ -125,7 +127,10 @@
     "unsaveddataconfirmation": "There is unsaved data. Leave anyway?",
     "settingssavedsuccessfully": "Settings saved successfully",
     "otheroptionalemulators": "Other Optional Emulators",
-    "general": "General"
+    "general": "General",
+    "externalintegrations": "External Integrations",
+    "giantbombapikey": "Giant Bomb API Key",
+    "giantbombapikeytooltip": "API key needed to connect to Giant Bomb website to get data such as platforms and box art for the game"
   },
   "country": {
     "BR": "Brazil",
@@ -267,5 +272,10 @@
     "greater": "Greater",
     "greaterOrEqual": "Greater or equal",
     "betweenInclusive": "Between (inclusive)"
+  },
+  "giantbomb": {
+    "matchedname": "Matched name",
+    "platforms": "Platforms",
+    "notfound": "Not found"
   }
 }
