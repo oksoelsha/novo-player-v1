@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isOpenMSXPathDefined: boolean;
   isWebMSXPathDefined: boolean;
   isBlueMSXPathDefined: boolean;
+  isGiantbombApikeyDefined: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
   favorites: Game[] = [];
@@ -257,6 +258,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isOpenMSXPathDefined = settings.openmsxPath != null && settings.openmsxPath.trim() !== '';
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
+      this.isGiantbombApikeyDefined = settings.giantbombApiKey != null && settings.giantbombApiKey.trim() !== '';
       this.localizationService.useLanguage(settings.language);
 
       this.emulatorService.getMachines().then((data: string[]) => {

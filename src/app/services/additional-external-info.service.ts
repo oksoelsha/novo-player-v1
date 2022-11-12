@@ -104,5 +104,6 @@ export class AdditionalExternalInfoService {
     this.idToName.set(1249, 'Fire Hawk: Thexder the Second Contact');
     this.idToName.set(1254, 'Nemesis 3: The Eve of Destruction');
     this.idToName.set(1387, 'Dragon Slayer: The Legend of Heroes');
+    this.idToName.set(3280, 'Agi Gongnyong Dooly');
   }
 }
