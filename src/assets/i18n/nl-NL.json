@@ -276,6 +276,7 @@
   "giantbomb": {
     "matchedname": "Overeenkomende naam",
     "platforms": "Platformen",
-    "notfound": "Niet gevonden"
+    "notfound": "Niet gevonden",
+    "viewongiantbomb": "Weergeven op Giant Bomb"
   }
 }

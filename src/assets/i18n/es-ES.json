@@ -276,6 +276,7 @@
   "giantbomb": {
     "matchedname": "Nombre coincidente",
     "platforms": "Plataformas",
-    "notfound": "No encontrado"
+    "notfound": "No encontrado",
+    "viewongiantbomb": "Ver la página del juego en Giant Bomb"
   }
 }

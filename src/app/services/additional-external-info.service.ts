@@ -97,6 +97,7 @@ export class AdditionalExternalInfoService {
     this.idToName.set(993, 'Vaxol: Heavy Armed Storming Vehicle');
     this.idToName.set(1032, 'Young Sherlock: The Legacy of Doyle');
     this.idToName.set(1073, 'F-1 Spirit: 3D Special');
+    this.idToName.set(1078, 'King\'s Valley 2');
     this.idToName.set(1079, 'King\'s Valley 2');
     this.idToName.set(1188, 'Parodius');
     this.idToName.set(1236, 'Laydock 2: Last Attack');

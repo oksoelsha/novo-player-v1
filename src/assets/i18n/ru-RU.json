@@ -276,6 +276,7 @@
   "giantbomb": {
     "matchedname": "Сопоставленное имя",
     "platforms": "Платформы",
-    "notfound": "Не найдено"
+    "notfound": "Не найдено",
+    "viewongiantbomb": "Просмотреть страницу игры в Giant Bomb"
   }
 }

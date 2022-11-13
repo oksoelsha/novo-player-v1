@@ -276,6 +276,7 @@
   "giantbomb": {
     "matchedname": "一致した名前",
     "platforms": "プラットフォーム",
-    "notfound": "見つかりません"
+    "notfound": "見つかりません",
+    "viewongiantbomb": "Giant Bomb で表示"
   }
 }

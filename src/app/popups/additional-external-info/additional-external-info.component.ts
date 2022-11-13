@@ -20,6 +20,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
   matchedName = '';
   allPlatforms: string[] = [];
   boxArtImages: string[] = [];
+  giantbombGamePage = '';
 
   private giantbombApiKey = '';
 
@@ -51,6 +52,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
         this.matchedName = dataForMSX.name;
         this.allPlatforms = platforms;
         this.getBoxArtImages(dataForMSX);
+        this.giantbombGamePage = dataForMSX.site_detail_url;
       } else {
         this.matchedName = this.localizationService.translate('giantbomb.notfound');
       }
