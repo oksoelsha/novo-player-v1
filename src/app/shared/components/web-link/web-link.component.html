@@ -1,2 +1,5 @@
-<span *ngIf="!buttonLook" (click)="openInBrowser()">{{ label }}</span>
+<span *ngIf="!buttonLook" (click)="openInBrowser()">
+    <span class="link-label">{{ label }}</span>
+    <span class="bi-box-arrow-up-right"></span>
+</span>
 <a *ngIf="buttonLook" class="badge bg-dark bg-size bg-link" (click)="openInBrowser()">{{ label }}</a>
