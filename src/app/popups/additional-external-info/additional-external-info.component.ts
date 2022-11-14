@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Game } from '../../models/game';
 import { Settings } from '../../models/settings';
 import { AdditionalExternalInfoService } from '../../services/additional-external-info.service';
@@ -9,14 +9,16 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-additional-external-info',
   templateUrl: './additional-external-info.component.html',
-  styleUrls: ['../../common-styles.sass', './additional-external-info.component.sass'],
-  changeDetection: ChangeDetectionStrategy.Default
+  styleUrls: ['../../common-styles.sass', './additional-external-info.component.sass']
 })
 export class AdditionalExternalInfoComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
 
+  showData = false;
+  error = false;
+  errorMessage = '';
   matchedName = '';
   allPlatforms: string[] = [];
   boxArtImages: string[] = [];
@@ -42,29 +44,43 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
   }
 
   async open(): Promise<void> {
-    this.additionalExternalInfoService.getAdditionalExternalInfo(this.game, this.giantbombApiKey).then((results: any) => {
-      const dataForMSX = this.getResultWithMSXPlatform(results.searchString, results.data);
-      if (dataForMSX) {
-        const platforms: string[] = [];
-        for (let ix = 0; ix < dataForMSX.platforms.length; ix++) {
-          platforms.push(dataForMSX.platforms[ix].name);
+    this.additionalExternalInfoService.getAdditionalExternalInfo(this.game, this.giantbombApiKey)
+      .then((data: any) => {
+        this.showData = true;
+        if (data.response.error === 'OK') {
+        const dataForMSX = this.getResultWithMSXPlatform(data.searchString, data.response.results);
+        if (dataForMSX) {
+          const platforms: string[] = [];
+          for (let ix = 0; ix < dataForMSX.platforms.length; ix++) {
+            platforms.push(dataForMSX.platforms[ix].name);
+          }
+          this.matchedName = dataForMSX.name;
+          this.allPlatforms = platforms;
+          this.getBoxArtImages(dataForMSX);
+          this.giantbombGamePage = dataForMSX.site_detail_url;
+        } else {
+          this.matchedName = this.localizationService.translate('giantbomb.notfound');
         }
-        this.matchedName = dataForMSX.name;
-        this.allPlatforms = platforms;
-        this.getBoxArtImages(dataForMSX);
-        this.giantbombGamePage = dataForMSX.site_detail_url;
       } else {
-        this.matchedName = this.localizationService.translate('giantbomb.notfound');
+        this.error = true;
+        this.errorMessage = data.response.error;
       }
-      super.open();
+    }).catch(error => {
+      this.showData = true;
+      this.error = true;
+      this.errorMessage = this.localizationService.translate('giantbomb.failedtoconnect');
     });
+    super.open();
   }
 
   close(): void {
     super.close(() => {
+      this.showData = false;
       this.matchedName = '';
       this.allPlatforms = [];
       this.boxArtImages = [];
+      this.error = false;
+      this.errorMessage = '';
     });
   }
 

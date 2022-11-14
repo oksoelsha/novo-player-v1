@@ -277,6 +277,7 @@
     "matchedname": "Overeenkomende naam",
     "platforms": "Platformen",
     "notfound": "Niet gevonden",
-    "viewongiantbomb": "Weergeven op Giant Bomb"
+    "viewongiantbomb": "Weergeven op Giant Bomb",
+    "failedtoconnect": "Kan geen verbinding maken"
   }
 }

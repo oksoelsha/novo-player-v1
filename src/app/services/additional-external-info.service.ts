@@ -23,7 +23,7 @@ export class AdditionalExternalInfoService {
     return fetch(url)
       .then(res => res.json())
       .then(res => {
-        return { searchString: searchString, data: res.results };
+        return { searchString: searchString, response: res };
       });
   };
 

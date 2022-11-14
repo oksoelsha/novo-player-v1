@@ -277,6 +277,7 @@
     "matchedname": "Nombre coincidente",
     "platforms": "Plataformas",
     "notfound": "No encontrado",
-    "viewongiantbomb": "Ver la página del juego en Giant Bomb"
+    "viewongiantbomb": "Ver la página del juego en Giant Bomb",
+    "failedtoconnect": "No se pudo conectar"
   }
 }

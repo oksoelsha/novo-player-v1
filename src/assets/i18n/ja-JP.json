@@ -277,6 +277,7 @@
     "matchedname": "一致した名前",
     "platforms": "プラットフォーム",
     "notfound": "見つかりません",
-    "viewongiantbomb": "Giant Bomb で表示"
+    "viewongiantbomb": "Giant Bomb で表示",
+    "failedtoconnect": "接続できませんでした"
   }
 }
