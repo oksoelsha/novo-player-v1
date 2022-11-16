@@ -886,7 +886,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.getGames(this.selectedListing);
     } else {
       this.games.push(game);
-      this.sortGames(this.games);  
+      this.sortGames(this.games);
     }
   }
 

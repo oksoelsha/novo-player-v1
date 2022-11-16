@@ -6,7 +6,7 @@ import { Game } from '../models/game';
 })
 export class AdditionalExternalInfoService {
 
-  private readonly idToName = new Map<number, string>()
+  private readonly idToName = new Map<number, string>();
 
   constructor() {
     this.initIdToName();
@@ -49,7 +49,7 @@ export class AdditionalExternalInfoService {
   }
 
   private getSearchString(game: Game): string {
-    let searchString = this.idToName.get(game.generationMSXId);
+    const searchString = this.idToName.get(game.generationMSXId);
     if (searchString) {
       return searchString;
     } else if (game.title) {

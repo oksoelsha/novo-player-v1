@@ -187,12 +187,6 @@ export class FiltersComponent implements OnInit {
     this.appliedFilters.emit(this.filters);
   }
 
-  private applyFilter(filter: Filter) {
-    this.filters.addFilter(filter);
-    this.addFilterButton(filter);
-    this.appliedFilters.emit(this.filters);
-  }
-
   emitMenuOpenStatus(openStatus: boolean) {
     this.openedMenu.emit(openStatus);
   }
@@ -207,6 +201,12 @@ export class FiltersComponent implements OnInit {
     this.reset.emit();
   }
 
+  private applyFilter(filter: Filter) {
+    this.filters.addFilter(filter);
+    this.addFilterButton(filter);
+    this.appliedFilters.emit(this.filters);
+  }
+
   private addFilterButton(filter: Filter) {
     if (filter instanceof MediumFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.medium'),
@@ -219,7 +219,7 @@ export class FiltersComponent implements OnInit {
     } else if (filter instanceof GenerationFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.generations'), filter.generation));
     } else if (filter instanceof SoundFilter) {
-      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.sound'), 
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.sound'),
         Sound.filter(s => s.value === filter.sound).map(s => s.label)[0]));
     } else if (filter instanceof GenreFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.genres'),

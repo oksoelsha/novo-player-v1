@@ -1,4 +1,4 @@
-import { Generation } from "./generation";
+import { Generation } from './generation';
 
 export const WebMSXMachinesData = [
   {value: 1, name: 'MSX1', label: Generation.MSX},
