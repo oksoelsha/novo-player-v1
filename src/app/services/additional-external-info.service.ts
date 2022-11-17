@@ -53,7 +53,9 @@ export class AdditionalExternalInfoService {
     if (searchString) {
       return searchString;
     } else if (game.title) {
-      return game.title;
+      // naming convention at Giant Bomb is different that the one used in openMSX,
+      // so we'll adjust the name in the hopes of finding the game
+      return game.title.replace(" - ", ": ");
     } else {
       return game.name;
     }
@@ -69,11 +71,9 @@ export class AdditionalExternalInfoService {
     this.idToName.set(531, 'Kung-Fu Master');
     this.idToName.set(577, 'Hydlide');
     this.idToName.set(579, 'Hyper Sports III');
-    this.idToName.set(607, 'Pitfall II: Lost Caverns');
     this.idToName.set(695, 'Genghis Khan');
     this.idToName.set(696, 'Vampire Killer');
     this.idToName.set(730, 'Come On Picot');
-    this.idToName.set(733, 'Gall Force: Defense of Chaos');
     this.idToName.set(742, 'Gradius');
     this.idToName.set(754, 'Zanac');
     this.idToName.set(755, 'Zanac EX');
@@ -91,20 +91,19 @@ export class AdditionalExternalInfoService {
     this.idToName.set(939, 'Xanadu: Dragon Slayer II');
     this.idToName.set(941, 'Life Force');
     this.idToName.set(946, 'Shalom: Knightmare III');
-    this.idToName.set(954, 'Super Laydock: Mission Striker');
     this.idToName.set(960, 'Snake It');
     this.idToName.set(991, 'Hydlide 3');
     this.idToName.set(993, 'Vaxol: Heavy Armed Storming Vehicle');
-    this.idToName.set(1032, 'Young Sherlock: The Legacy of Doyle');
     this.idToName.set(1073, 'F-1 Spirit: 3D Special');
     this.idToName.set(1078, 'King\'s Valley 2');
     this.idToName.set(1079, 'King\'s Valley 2');
     this.idToName.set(1188, 'Parodius');
-    this.idToName.set(1236, 'Laydock 2: Last Attack');
-    this.idToName.set(1248, 'Metal Gear 2: Solid Snake');
     this.idToName.set(1249, 'Fire Hawk: Thexder the Second Contact');
     this.idToName.set(1254, 'Nemesis 3: The Eve of Destruction');
     this.idToName.set(1387, 'Dragon Slayer: The Legend of Heroes');
+    this.idToName.set(1544, 'Illusion City - Gen\'ei Toshi');
+    this.idToName.set(2414, 'Who Dares Wins II');
+    this.idToName.set(2911, 'The Activision Decathlon');
     this.idToName.set(3280, 'Agi Gongnyong Dooly');
   }
 }
