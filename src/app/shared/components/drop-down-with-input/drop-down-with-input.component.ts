@@ -26,7 +26,8 @@ export class DropDownWithInputComponent implements OnChanges {
   constructor(private localizationService: LocalizationService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.defaultSelection) {
+    if (changes.list) {
+      // this fires when the component is re-displayed
       this.setSelectedItemAndAdjustForDisplay(this.defaultSelection);
       this.selection.emit(this.defaultSelection);
     }
