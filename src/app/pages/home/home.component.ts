@@ -446,22 +446,19 @@ export class HomeComponent implements OnInit, OnDestroy {
           } else {
             this.alertService.success(this.localizationService.translate('home.gamewasrestored') + ': ' + gameToRestore.name +
               ' [' + gameToRestore.listing + ']');
-            if (gameToRestore.listing === this.selectedListing) {
+            if (newGame.listing === this.selectedListing) {
               this.removeGameFromList(newGame, false);
+            }
+            if (gameToRestore.listing === this.selectedListing) {
               this.addGameToSortedList(gameToRestore);
               setTimeout(() => {
                 this.showInfo(gameToRestore);
               }, 0);
-              if (gameToRestore.listing !== newGame.listing) {
-                // remove the other listing if it was empty - the easiest way to do it is to get all listings again
-                this.gamesService.getListings().then((data: string[]) => {
-                  this.listings = data;
-                });
-              }
-            } else if (gameToRestore.listing !== this.selectedListing && newGame.listing === this.selectedListing) {
-              this.removeGameFromList(newGame, true);
-              this.addListingToListings(gameToRestore.listing);
             }
+            // to simplify logic, simply get all listings to account for removed or added ones
+            this.gamesService.getListings().then((data: string[]) => {
+              this.listings = data;
+            });
           }
         });
       }
@@ -520,7 +517,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gamesweremoved'));
       }
-    if (game === this.selectedGame) {
+      if (game === this.selectedGame) {
         // move() request may come from the actions menu which will be removed from the DOM after calling
         // initialize(). Therefore, we need to decrement the open menus count here
         if (this.openMenuEventCounter > 0) {
@@ -850,9 +847,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private removeGameFromList(game: Game, switchListingIfLastGameInCurrentListing: boolean = true) {
     this.games.splice(this.games.findIndex((e) => e.sha1Code === game.sha1Code), 1);
+    this.originalGames.splice(this.originalGames.findIndex((e) => e.sha1Code === game.sha1Code), 1);
     this.otherSelectedGames.clear();
 
-    if (switchListingIfLastGameInCurrentListing && this.games.length === 0) {
+    if (switchListingIfLastGameInCurrentListing && this.originalGames.length === 0) {
       this.switchListingIfCurrentIsEmpty();
     }
   }
@@ -887,6 +885,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.games.push(game);
       this.sortGames(this.games);
+      this.originalGames.push(game);
     }
   }
 

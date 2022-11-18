@@ -16,10 +16,13 @@ export class FiltersService {
   }
 
   filter(games: Game[], filters: Filters): Game[] {
-    if (!filters || filters.filters.length === 0) {
-      return games;
-    }
     const filteredGames: Game[] = [];
+    if (!filters || filters.filters.length === 0) {
+      games.forEach(game => {
+        filteredGames.push(game);
+      });
+      return filteredGames;
+    }
     games.forEach(game => {
       let included = true;
       let done = false;
