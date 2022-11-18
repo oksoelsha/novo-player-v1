@@ -283,7 +283,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   setSelectedListing(listing: string) {
     if (listing !== this.selectedListing) {
       this.games = [];
-      this.otherSelectedGames.clear();
       this.initialize();
       sessionStorage.removeItem('selectedGame');
 
@@ -740,6 +739,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.selectedGame = null;
     this.screenshotA1 = this.screenshotA2 = this.noScreenshotImage1;
     this.screenshotB1 = this.screenshotB2 = this.noScreenshotImage2;
+    this.otherSelectedGames.clear();
   }
 
   private canHandleEvents(): boolean {
