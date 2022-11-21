@@ -103,7 +103,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
 
   private getResultWithMSXPlatform(searchString: string, data: any[]): any {
     for (let ix = 0; ix < data.length; ix++) {
-      if (searchString.toLowerCase() === data[ix].name.toLowerCase()) {
+      if (searchString.toLowerCase() === data[ix].name.toLowerCase() && data[ix].platforms) {
         for (let iy = 0; iy < data[ix].platforms.length; iy++) {
           if (data[ix].platforms[iy].name === 'MSX') {
             return data[ix];
