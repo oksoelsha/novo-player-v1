@@ -27,7 +27,7 @@ export class AdditionalExternalInfoService {
       });
   };
 
-  async getBoxArtImages(imagesUrl: string, giantbombApiKey: string): Promise<any[]> {
+  async getImages(imagesUrl: string, giantbombApiKey: string): Promise<any[]> {
     const params = {
       api_key: giantbombApiKey,
       format: 'json',

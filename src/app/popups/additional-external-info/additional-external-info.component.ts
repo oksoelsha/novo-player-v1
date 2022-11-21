@@ -21,7 +21,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
   errorMessage = '';
   matchedName = '';
   allPlatforms: string[] = [];
-  boxArtImages: string[] = [];
+  images: string[] = [];
   giantbombGamePage = '';
 
   private giantbombApiKey = '';
@@ -48,28 +48,28 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
       .then((data: any) => {
         this.showData = true;
         if (data.response.error === 'OK') {
-        const dataForMSX = this.getResultWithMSXPlatform(data.searchString, data.response.results);
-        if (dataForMSX) {
-          const platforms: string[] = [];
-          for (let ix = 0; ix < dataForMSX.platforms.length; ix++) {
-            platforms.push(dataForMSX.platforms[ix].name);
+          const dataForMSX = this.getResultWithMSXPlatform(data.searchString, data.response.results);
+          if (dataForMSX) {
+            const platforms: string[] = [];
+            for (let ix = 0; ix < dataForMSX.platforms.length; ix++) {
+              platforms.push(dataForMSX.platforms[ix].name);
+            }
+            this.matchedName = dataForMSX.name;
+            this.allPlatforms = platforms;
+            this.getImages(dataForMSX, platforms);
+            this.giantbombGamePage = dataForMSX.site_detail_url;
+          } else {
+            this.matchedName = this.localizationService.translate('giantbomb.notfound');
           }
-          this.matchedName = dataForMSX.name;
-          this.allPlatforms = platforms;
-          this.getBoxArtImages(dataForMSX);
-          this.giantbombGamePage = dataForMSX.site_detail_url;
         } else {
-          this.matchedName = this.localizationService.translate('giantbomb.notfound');
+          this.error = true;
+          this.errorMessage = data.response.error;
         }
-      } else {
+      }).catch(error => {
+        this.showData = true;
         this.error = true;
-        this.errorMessage = data.response.error;
-      }
-    }).catch(error => {
-      this.showData = true;
-      this.error = true;
-      this.errorMessage = this.localizationService.translate('giantbomb.failedtoconnect');
-    });
+        this.errorMessage = this.localizationService.translate('giantbomb.failedtoconnect');
+      });
     super.open();
   }
 
@@ -78,21 +78,24 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
       this.showData = false;
       this.matchedName = '';
       this.allPlatforms = [];
-      this.boxArtImages = [];
+      this.images = [];
       this.error = false;
       this.errorMessage = '';
     });
   }
 
-  private getBoxArtImages(dataForMSX: any) {
+  private getImages(dataForMSX: any, platforms: string[]) {
+    const onlyMSX = (platforms.length === 1);
+    const imagesSet = new Set<string>();
     for (let ix = 0; ix < dataForMSX.image_tags.length; ix++) {
-      if (dataForMSX.image_tags[ix].name === 'Box Art' || dataForMSX.image_tags[ix].name === 'MSX Screenshots') {
-        this.additionalExternalInfoService.getBoxArtImages(dataForMSX.image_tags[ix].api_detail_url, this.giantbombApiKey).then((images: any[]) => {
-          const temp: string[] = [];
+      if ((onlyMSX && dataForMSX.image_tags[ix].name === 'All Images') ||
+        dataForMSX.image_tags[ix].name === 'Box Art' ||
+        dataForMSX.image_tags[ix].name === 'MSX Screenshots') {
+        this.additionalExternalInfoService.getImages(dataForMSX.image_tags[ix].api_detail_url, this.giantbombApiKey).then((images: any[]) => {
           images.forEach(image => {
-            temp.push(image.original_url);
+            imagesSet.add(image.original_url);
           });
-          this.boxArtImages = temp;
+          this.images = Array.from(imagesSet.values());
         });
       }
     }
