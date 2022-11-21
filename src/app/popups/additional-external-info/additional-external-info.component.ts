@@ -86,7 +86,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
 
   private getBoxArtImages(dataForMSX: any) {
     for (let ix = 0; ix < dataForMSX.image_tags.length; ix++) {
-      if (dataForMSX.image_tags[ix].name === 'Box Art') {
+      if (dataForMSX.image_tags[ix].name === 'Box Art' || dataForMSX.image_tags[ix].name === 'MSX Screenshots') {
         this.additionalExternalInfoService.getBoxArtImages(dataForMSX.image_tags[ix].api_detail_url, this.giantbombApiKey).then((images: any[]) => {
           const temp: string[] = [];
           images.forEach(image => {
