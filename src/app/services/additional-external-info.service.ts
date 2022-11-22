@@ -65,6 +65,7 @@ export class AdditionalExternalInfoService {
     this.idToName.set(263, 'Hyper Sports');
     this.idToName.set(264, 'Hyper Sports II');
     this.idToName.set(272, 'MSX Baseball');
+    this.idToName.set(318, 'HAL\'s Hole In One Golf');
     this.idToName.set(378, 'Yie Ar Kung-Fu 2: The Emperor Yie-Gah');
     this.idToName.set(406, 'King\'s Valley');
     this.idToName.set(474, 'Ping Pong');
@@ -74,6 +75,7 @@ export class AdditionalExternalInfoService {
     this.idToName.set(695, 'Genghis Khan');
     this.idToName.set(696, 'Vampire Killer');
     this.idToName.set(730, 'Come On Picot');
+    this.idToName.set(739, 'Q*Bert');
     this.idToName.set(742, 'Gradius');
     this.idToName.set(754, 'Zanac');
     this.idToName.set(755, 'Zanac EX');
@@ -84,6 +86,7 @@ export class AdditionalExternalInfoService {
     this.idToName.set(860, 'Valis: The Fantasm Soldier');
     this.idToName.set(873, 'Penguin Adventure');
     this.idToName.set(880, 'Romancia: Dragon Slayer Jr.');
+    this.idToName.set(898, 'Ultima IV: Quest of the Avatar');
     this.idToName.set(905, 'F-1 Spirit: The Way To Formula-1');
     this.idToName.set(916, 'Knightmare II: The Maze of Galious');
     this.idToName.set(929, 'King Kong 2: Yomigaeru Densetsu');
@@ -94,16 +97,32 @@ export class AdditionalExternalInfoService {
     this.idToName.set(960, 'Snake It');
     this.idToName.set(991, 'Hydlide 3');
     this.idToName.set(993, 'Vaxol: Heavy Armed Storming Vehicle');
+    this.idToName.set(1059, 'Ys II: Ancient Ys Vanished: The Final Chapter');
     this.idToName.set(1073, 'F-1 Spirit: 3D Special');
     this.idToName.set(1078, 'King\'s Valley 2');
     this.idToName.set(1079, 'King\'s Valley 2');
+    this.idToName.set(1119, 'Psychic World');
     this.idToName.set(1188, 'Parodius');
+    this.idToName.set(1239, 'Ys III: Wanderers from Ys');
+    this.idToName.set(1241, 'Rune Worth: Kokui no Kikoushi');
+    this.idToName.set(1247, 'Pro Yakyuu Family Stadium: Pennant Race');
     this.idToName.set(1249, 'Fire Hawk: Thexder the Second Contact');
+    this.idToName.set(1252, 'Valis II');
     this.idToName.set(1254, 'Nemesis 3: The Eve of Destruction');
+    this.idToName.set(1257, 'Pro Yakyuu Family Stadium: Home Run Contest');
+    this.idToName.set(1318, 'Intruder: Sakura Yashiki no Tansaku');
+    this.idToName.set(1324, 'Master of Monsters');
+    this.idToName.set(1386, 'Xak II: Rising of The Redmoon');
     this.idToName.set(1387, 'Dragon Slayer: The Legend of Heroes');
     this.idToName.set(1544, 'Illusion City - Gen\'ei Toshi');
+    this.idToName.set(1545, 'Inindo: Way of the Ninja');
+    this.idToName.set(1666, 'Action RPG Construction Tool: Dante 2');
+    this.idToName.set(1703, 'Dead of the Brain: Shiryou no Sakebi');
+    this.idToName.set(1707, 'The Tower? Of Cabin: Cabin Panic');
+    this.idToName.set(1843, 'Jack Nicklaus\' Greatest 18 Holes of Major Championship Golf');
     this.idToName.set(2414, 'Who Dares Wins II');
     this.idToName.set(2911, 'The Activision Decathlon');
+    this.idToName.set(3278, 'The Day II');
     this.idToName.set(3280, 'Agi Gongnyong Dooly');
   }
 }
