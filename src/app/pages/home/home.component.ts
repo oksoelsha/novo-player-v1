@@ -870,7 +870,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private switchListingIfCurrentIsEmpty() {
-    this.listings.splice(this.listings.findIndex((e) => e === this.selectedListing), 1);
+    const index = this.listings.findIndex((e) => e === this.selectedListing);
+    if (index >= 0) {
+      // the currently selected listing may have been removed already. That's why we check
+      this.listings.splice(index, 1);
+    }
     if (this.listings.length > 0) {
       this.selectedListing = this.listings[0];
       this.getGames(this.selectedListing);
