@@ -1,6 +1,6 @@
-import { Game } from "../game";
-import { Generation } from "../generation";
-import { GenerationFilter } from "./generation-filter";
+import { Game } from '../game';
+import { Generation } from '../generation';
+import { GenerationFilter } from './generation-filter';
 
 describe('GenerationFilter', () => {
   it('GenerationFilter should be constructed correctly', () => {

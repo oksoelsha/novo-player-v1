@@ -55,7 +55,7 @@ export class AdditionalExternalInfoService {
     } else if (game.title) {
       // naming convention at Giant Bomb is different that the one used in openMSX,
       // so we'll adjust the name in the hopes of finding the game
-      return game.title.replace(" - ", ": ");
+      return game.title.replace(' - ', ': ');
     } else {
       return game.name;
     }

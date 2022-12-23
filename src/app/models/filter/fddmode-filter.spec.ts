@@ -1,5 +1,5 @@
-import { Game } from "../game";
-import { FDDModeFilter } from "./fddmode-filter";
+import { Game } from '../game';
+import { FDDModeFilter } from './fddmode-filter';
 
 describe('FDDModeFilter', () => {
   it('FDDModeFilter should be constructed correctly', () => {

@@ -1,10 +1,10 @@
-import { Game } from "../game";
-import { VideoSourceFilter } from "./videosource-filter";
+import { Game } from '../game';
+import { VideoSourceFilter } from './videosource-filter';
 
 describe('VideoSourceFilter', () => {
   it('VideoSourceFilter should be constructed correctly', () => {
     const filter = new VideoSourceFilter(true);
-    expect(filter.checkGFX9000).toBeTrue()
+    expect(filter.checkGFX9000).toBeTrue();
   });
 });
 

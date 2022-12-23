@@ -1,5 +1,5 @@
-import { Game } from "../game";
-import { SoundFilter } from "./sound-filter";
+import { Game } from '../game';
+import { SoundFilter } from './sound-filter';
 
 describe('SoundFilter', () => {
   it('SoundFilter should be constructed correctly', () => {

@@ -1,7 +1,7 @@
-import { ComparisonOperator } from "../comparison-operator";
-import { FilterRange } from "../filters";
-import { Game } from "../game";
-import { SizesFilter } from "./sizes-filter";
+import { ComparisonOperator } from '../comparison-operator';
+import { FilterRange } from '../filters';
+import { Game } from '../game';
+import { SizesFilter } from './sizes-filter';
 
 describe('SizesFilter', () => {
   it('SizesFilter should be constructed correctly', () => {

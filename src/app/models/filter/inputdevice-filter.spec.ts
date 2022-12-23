@@ -1,6 +1,5 @@
-import { Game } from "../game";
-import { InputDevice } from "../input-device";
-import { InputDeviceFilter } from "./inputdevice-filter";
+import { Game } from '../game';
+import { InputDeviceFilter } from './inputdevice-filter';
 
 describe('InputDeviceFilter', () => {
   it('InputDeviceFilter should be constructed correctly', () => {

@@ -1,5 +1,5 @@
-import { Game } from "../game";
-import { CompanyFilter } from "./company-filter";
+import { Game } from '../game';
+import { CompanyFilter } from './company-filter';
 
 describe('CompanyFilter', () => {
   it('CompanyFilter should be constructed correctly', () => {

@@ -1,4 +1,4 @@
-import { EnvironmentData } from "./environment-data";
+import { EnvironmentData } from './environment-data';
 
 describe('EnvironmentData', () => {
   it('should create an instance', () => {

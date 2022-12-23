@@ -1,6 +1,6 @@
-import { Game } from "../game";
-import { Medium } from "../medium";
-import { MediumFilter } from "./medium-filter";
+import { Game } from '../game';
+import { Medium } from '../medium';
+import { MediumFilter } from './medium-filter';
 
 describe('MediumFilter', () => {
   it('MediumFilter should be constructed correctly', () => {

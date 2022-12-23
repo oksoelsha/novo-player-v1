@@ -1,5 +1,5 @@
-import { Game } from "../game";
-import { MachineFilter } from "./machine-filter";
+import { Game } from '../game';
+import { MachineFilter } from './machine-filter';
 
 describe('MachineFilter', () => {
   it('MachineFilter should be constructed correctly', () => {

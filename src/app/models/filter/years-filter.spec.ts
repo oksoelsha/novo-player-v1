@@ -1,7 +1,7 @@
-import { ComparisonOperator } from "../comparison-operator";
-import { FilterRange } from "../filters";
-import { Game } from "../game";
-import { YearsFilter } from "./years-filter";
+import { ComparisonOperator } from '../comparison-operator';
+import { FilterRange } from '../filters';
+import { Game } from '../game';
+import { YearsFilter } from './years-filter';
 
 describe('YearsFilter', () => {
   it('YearsFilter should be constructed correctly', () => {

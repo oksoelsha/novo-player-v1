@@ -58,8 +58,8 @@ export class Filters {
         this.filters.forEach(o => {
             o.forEach(l => {
                 totalFilters++;
-            })
-        })
+            });
+        });
         return totalFilters;
     }
 

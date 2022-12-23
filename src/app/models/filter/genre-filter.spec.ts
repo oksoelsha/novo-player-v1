@@ -1,6 +1,6 @@
-import { GameUtils } from "../../../../release/win-unpacked/resources/src/app/models/game-utils";
-import { Game } from "../game";
-import { GenreFilter } from "./genre-filter";
+import { GameUtils } from '../../../../release/win-unpacked/resources/src/app/models/game-utils';
+import { Game } from '../game';
+import { GenreFilter } from './genre-filter';
 
 describe('GenreFilter', () => {
   it('GenreFilter should be constructed correctly', () => {
