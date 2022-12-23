@@ -194,6 +194,11 @@
     "takeascreenshot": "Сделать снимок экрана",
     "screenshottaken": "Снимок экрана был сделан"
   },
+  "help": {
+    "uptodate": "Обновлено",
+    "newversionavailable": "Доступна новая версия",
+    "cannotconnecttoserver": "Не удалось подключиться к серверу"
+  },
   "popups": {
     "newlisting": "Новый список",
     "specifyalisting": "Укажите список",

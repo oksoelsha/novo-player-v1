@@ -1,5 +1,5 @@
 <div id="help-area">
-  <p class="h3">Novo Player v1.2</p>
+  <p class="h3">Novo Player v{{ applicationVersion }}</p>
   <p>Sam Elsharif 2021-2022 / oelsha at engineer dot com / user oelsha on <app-web-link address="https://www.msx.org/"
       label="MSX Resource Center"></app-web-link>.</p>
   <p>Organize your MSX software collection and launch them on openMSX, WebMSX (offline mode) and blueMSX.</p>
@@ -9,9 +9,17 @@
   <p>
     Versions:
     <span class="versions">
-      Extra Data <span class="badge bg-light text-dark">{{ extraDataVersion }}</span> -
-      Screenshots <span class="badge bg-light text-dark">{{ screenshotsVersion }}</span> -
-      Game Music <span class="badge bg-light text-dark">{{ gameMusicVersion }}</span>
+      Novo Player
+      <app-help-version-match-indicator [versions]="applicationVersions"
+        versionMapKey="novo-player"></app-help-version-match-indicator>
+      -
+      Screenshots
+      <app-help-version-match-indicator [versions]="screenshotsVersions"
+        versionMapKey="screenshots"></app-help-version-match-indicator>
+      -
+      Game Music
+      <app-help-version-match-indicator [versions]="gameMusicVersions"
+        versionMapKey="game-music"></app-help-version-match-indicator>
     </span>
   </p>
   <div id="data-part">

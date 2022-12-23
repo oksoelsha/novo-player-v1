@@ -53,6 +53,7 @@ import { WebmsxMachineSetComponent } from './popups/webmsx-machine-set/webmsx-ma
 import { FiltersComponent } from './pages/home/filters/filters.component';
 import { RangeSelectorComponent } from './pages/home/filters/range-selector/range-selector.component';
 import { AdditionalExternalInfoComponent } from './popups/additional-external-info/additional-external-info.component';
+import { VersionMatchIndicatorComponent } from './pages/help/version-match-indicator/version-match-indicator.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -93,6 +94,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RangeSelectorComponent,
     FiltersComponent,
     AdditionalExternalInfoComponent,
+    VersionMatchIndicatorComponent,
     DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,

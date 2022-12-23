@@ -194,6 +194,11 @@
     "takeascreenshot": "スクリーンショットをとる",
     "screenshottaken": "スクリーンショットが撮られました"
   },
+  "help": {
+    "uptodate": "最新",
+    "newversionavailable": "新しいバージョンを入手できます",
+    "cannotconnecttoserver": "サーバーに接続できません"
+  },
   "popups": {
     "newlisting": "新しいリスト",
     "specifyalisting": "リストを指定する",

@@ -194,6 +194,11 @@
     "takeascreenshot": "Fes una captura de pantalla",
     "screenshottaken": "Captura de pantalla s'ha fet correctament"
   },
+  "help": {
+    "uptodate": "Està actualitzat",
+    "newversionavailable": "Nova versió disponible",
+    "cannotconnecttoserver": "No es pot connectar amb el servidor"
+  },
   "popups": {
     "newlisting": "Nova llista",
     "specifyalisting": "Especifica una llista",

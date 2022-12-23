@@ -194,6 +194,11 @@
     "takeascreenshot": "Een schermafbeelding maken",
     "screenshottaken": "Schermafbeelding is maakt"
   },
+  "help": {
+    "uptodate": "Bijgewerkt",
+    "newversionavailable": "Nieuwe versie beschikbaar",
+    "cannotconnecttoserver": "Kan geen verbinding maken met server"
+  },
   "popups": {
     "newlisting": "Nieuwe lijst",
     "specifyalisting": "Lijst opgeven",

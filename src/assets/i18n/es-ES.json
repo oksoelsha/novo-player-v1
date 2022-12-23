@@ -194,6 +194,11 @@
     "takeascreenshot": "Tomar una captura de pantalla",
     "screenshottaken": "Captura de pantalla se tomó correctamente"
   },
+  "help": {
+    "uptodate": "Actualizado",
+    "newversionavailable": "Nueva versión disponible",
+    "cannotconnecttoserver": "No se puede conectar con el servidor"
+  },
   "popups": {
     "newlisting": "Nueva lista",
     "specifyalisting": "Especificar una lista",

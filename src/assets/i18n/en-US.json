@@ -194,6 +194,11 @@
     "takeascreenshot": "Take a screenshot",
     "screenshottaken": "Screenshot taken successfully"
   },
+  "help": {
+    "uptodate": "Up to date",
+    "newversionavailable": "New version available",
+    "cannotconnecttoserver": "Cannot connect to server"
+  },
   "popups": {
     "newlisting": "New listing",
     "specifyalisting": "Specify a listing",

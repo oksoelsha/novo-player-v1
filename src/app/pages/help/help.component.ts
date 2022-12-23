@@ -8,31 +8,30 @@ import { VersionsService } from '../../services/versions.service';
 })
 export class HelpComponent implements OnInit {
 
-  extraDataVersion = '';
-  screenshotsVersion = '';
-  gameMusicVersion = '';
+  readonly applicationVersion = '1.2';
+
+  applicationVersions: Promise<any>;
+  screenshotsVersions: Promise<any>;
+  gameMusicVersions: Promise<any>;
 
   constructor(private versionsService: VersionsService) { }
 
   ngOnInit(): void {
-    this.versionsService.getExtraDataVersion().then((version: string) => {
-      this.extraDataVersion = version;
-    });
+    const versionsOnServer = this.versionsService.getVersionsOnServer();
 
-    this.versionsService.getScreenshotsVersion().then((version: string) => {
-      if (version) {
-        this.screenshotsVersion = version;
-      } else {
-        this.screenshotsVersion = 'Undefined';
-      }
-    });
+    this.applicationVersions = Promise.all([
+      Promise.resolve(this.applicationVersion),
+      versionsOnServer.catch(error => error)
+    ]);
 
-    this.versionsService.getGameMusicVersion().then((version: string) => {
-      if (version) {
-        this.gameMusicVersion = version;
-      } else {
-        this.gameMusicVersion = 'Undefined';
-      }
-    });
+    this.screenshotsVersions = Promise.all([
+      this.versionsService.getScreenshotsVersion(),
+      versionsOnServer.catch(error => error)
+    ]);
+
+    this.gameMusicVersions = Promise.all([
+      this.versionsService.getGameMusicVersion(),
+      versionsOnServer.catch(error => error)
+    ]);
   }
 }
