@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VersionUtils } from '../../../models/version-utils';
 
 @Component({
   selector: 'app-help-version-match-indicator',
@@ -33,15 +34,11 @@ export class VersionMatchIndicatorComponent implements OnInit {
   private processVersions(currentVersion: string, versionOnServer: string) {
     this.currentVersion = currentVersion;
     this.versionOnServer = versionOnServer;
-    this.newVersionAvailable = this.getAsInteger(currentVersion) < this.getAsInteger(versionOnServer);
+    this.newVersionAvailable = VersionUtils.isVersionNewer(currentVersion, versionOnServer);
   }
 
   private processErrorConnecting(currentVersion: string) {
     this.errorConnecting = true;
     this.currentVersion = currentVersion;
-  }
-
-  private getAsInteger(version: string): number {
-    return Number.parseInt(version.replace(/\./,''));
   }
 }
