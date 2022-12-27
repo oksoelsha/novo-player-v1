@@ -928,13 +928,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       webMSXParams.DISK = this.selectedGame.diskA;
     }
     if (this.selectedGame.extensionRom === 'scc') {
-      webMSXParams.PRESETS = 'SCC';
+      this.addWebMSXPresets(webMSXParams, 'SCC');
     } else if (this.selectedGame.extensionRom === 'scc+') {
-      webMSXParams.PRESETS = 'SCCI';
+      this.addWebMSXPresets(webMSXParams, 'SCCI');
     }
     if (this.selectedGame.tape != null) {
       webMSXParams.TAPE = this.selectedGame.tape;
     }
+    if (this.selectedGame.connectGFX9000) {
+      this.addWebMSXPresets(webMSXParams, 'V9990');
+    }
+    this.addWebMSXPresets(webMSXParams, 'OPL4');
 
     if (this.selectedGame.webmsxMachine) {
       if (WebMSXMachineUtils.isMachineCustom(this.selectedGame.webmsxMachine)) {
@@ -944,6 +948,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     return webMSXParams;
+  }
+
+  private addWebMSXPresets(webMSXParams: any, preset: string) {
+    if (webMSXParams.PRESETS) {
+      webMSXParams.PRESETS = webMSXParams.PRESETS + ',' + preset;
+    } else {
+      webMSXParams.PRESETS = preset;
+    }
   }
 
   private sortGames(games: Game[]) {
