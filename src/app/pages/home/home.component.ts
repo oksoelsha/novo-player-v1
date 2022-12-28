@@ -935,6 +935,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.selectedGame.tape != null) {
       webMSXParams.TAPE = this.selectedGame.tape;
     }
+    if (this.selectedGame.harddisk != null) {
+      webMSXParams.HARDDISK = this.selectedGame.harddisk;
+    }
     if (this.selectedGame.connectGFX9000) {
       this.addWebMSXPresets(webMSXParams, 'V9990');
     }
