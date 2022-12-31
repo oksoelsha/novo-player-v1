@@ -14,6 +14,7 @@ export class LocalizationService {
     'fr-FR',
     'it-IT',
     'ja-JP',
+    'ko-KR',
     'pt-BR',
     'ru-RU',
     'es-ES'

@@ -108,6 +108,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     this.languageIcons.push('assets/images/flags/fr_FR.png');
     this.languageIcons.push('assets/images/flags/it_IT.png');
     this.languageIcons.push('assets/images/flags/ja_JP.png');
+    this.languageIcons.push('assets/images/flags/ko_KR.png');
     this.languageIcons.push('assets/images/flags/pt_BR.png');
     this.languageIcons.push('assets/images/flags/ru_RU.png');
     this.languageIcons.push('assets/images/flags/es_ES.png');
