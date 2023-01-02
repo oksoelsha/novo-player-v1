@@ -105,7 +105,7 @@
     "disk": "ディスク",
     "tape": "テープ",
     "harddisk": "ハード ディスク",
-    "laserdisc": "Laserdisc"
+    "laserdisc": "レーザーディスク"
   },
   "settings": {
     "openmsxpath": "openMSX のパス",
@@ -168,7 +168,7 @@
     "disks": "ディスク",
     "tapes": "テープ",
     "harddisks": "ハード ディスク",
-    "laserdiscs": "Laserdiscs",
+    "laserdiscs": "レーザーディスク",
     "runninggames": "ゲームの実行",
     "launchhistory": "起動履歴",
     "insights": "洞察",

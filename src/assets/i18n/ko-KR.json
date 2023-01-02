@@ -105,7 +105,7 @@
     "disk": "디스크",
     "tape": "테이프",
     "harddisk": "하드 디스크",
-    "laserdisc": "Laserdisc"
+    "laserdisc": "레이저 디스크"
   },
   "settings": {
     "openmsxpath": "openMSX 경로",
@@ -168,7 +168,7 @@
     "disks": "디스크",
     "tapes": "테이프",
     "harddisks": "하드 디스크",
-    "laserdiscs": "Laserdiscs",
+    "laserdiscs": "레이저 디스크",
     "runninggames": "실행 중인 게임",
     "launchhistory": "시작 기록",
     "insights": "인사이트",
