@@ -12,6 +12,7 @@ import { GenreFilter } from '../../../models/filter/genre-filter';
 import { InputDeviceFilter } from '../../../models/filter/inputdevice-filter';
 import { MachineFilter } from '../../../models/filter/machine-filter';
 import { MediumFilter } from '../../../models/filter/medium-filter';
+import { RecentActivityFilter } from '../../../models/filter/recent-activity-filter';
 import { SizesFilter } from '../../../models/filter/sizes-filter';
 import { SoundFilter } from '../../../models/filter/sound-filter';
 import { VideoSourceFilter } from '../../../models/filter/videosource-filter';
@@ -22,10 +23,12 @@ import { Generation } from '../../../models/generation';
 import { Genre } from '../../../models/genre';
 import { InputDevice } from '../../../models/input-device';
 import { Medium } from '../../../models/medium';
+import { RecentActivity } from '../../../models/recent-activity';
 import { Size } from '../../../models/size';
 import { Sound } from '../../../models/sound';
 import { EmulatorService } from '../../../services/emulator.service';
 import { LocalizationService } from '../../../services/localization.service';
+import { OperationCacheService } from '../../../services/operation-cache.service';
 import { RangeItem } from './range-selector/range-selector.component';
 
 class FilterButton {
@@ -71,9 +74,12 @@ export class FiltersComponent implements OnInit {
   inputDevices: string[] = [];
   fddModes: string[] = [];
   videosources: string[] = [];
+  recentActivities: string[] = [];
+  localizedRecentActivitiesReverse = new Map<string, string>();
   filterButtons: FilterButton[] = [];
 
-  constructor(private localizationService: LocalizationService, private emulatorService: EmulatorService) { }
+  constructor(private localizationService: LocalizationService, private emulatorService: EmulatorService,
+    private operationCacheService: OperationCacheService) { }
 
   ngOnInit(): void {
     Object.values(Medium).forEach(medium => {
@@ -113,6 +119,12 @@ export class FiltersComponent implements OnInit {
     this.fddModes = FDDMode.map(f => this.localizationService.translate('popups.edithardware.' + f));
 
     this.videosources = ['MSX', 'GFX9000'];
+
+    Object.values(RecentActivity).forEach(recentActivity => {
+      const localizedRecentActivity = this.localizationService.translate('filters.' + recentActivity);
+      this.recentActivities.push(localizedRecentActivity);
+      this.localizedRecentActivitiesReverse.set(localizedRecentActivity, recentActivity);
+    });
 
     if (this.filters) {
       this.filters.filters.forEach(f1 => {
@@ -169,6 +181,10 @@ export class FiltersComponent implements OnInit {
 
   applyVideoSourceFilter(videoSource: string) {
     this.applyFilter(new VideoSourceFilter(videoSource === 'GFX9000'));
+  }
+
+  applyRecentActivityFilter(recentActivity: string) {
+    this.applyFilter(new RecentActivityFilter(this.localizedRecentActivitiesReverse.get(recentActivity), this.operationCacheService));
   }
 
   removeFilter(filterButton: FilterButton) {
@@ -249,6 +265,9 @@ export class FiltersComponent implements OnInit {
     } else if (filter instanceof VideoSourceFilter) {
       const label = 'Video: ' + (filter.checkGFX9000 ? 'GFX9000' : 'MSX');
       this.filterButtons.push(new FilterButton(filter, '', label));
+    } else if (filter instanceof RecentActivityFilter) {
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('filters.activities'),
+        this.localizationService.translate('filters.' + filter.recentActivity)));
     }
   }
 

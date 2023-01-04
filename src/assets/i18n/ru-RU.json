@@ -269,7 +269,11 @@
   "filters": {
     "datafromemulatorandplayer": "Данные с эмулятора и Novo Player",
     "datafromuser": "Данные от пользователя",
-    "videosource": "Источник видео"
+    "videosource": "Источник видео",
+    "recentactivities": "Последние действия",
+    "activities": "Действия",
+    "recentlyadded": "Недавно добавленные",
+    "recentlyupdated": "Недавно обновленные"
   },
   "comparison": {
     "equal": "Равный",

@@ -119,6 +119,17 @@
             </app-drop-down>
         </div>
     </div>
+    <div class="mt-4 mb-2 section-header">{{ 'filters.recentactivities' | translate }}</div>
+    <hr class="mb-1">
+    <div class="mb-1 selection-row" *ngIf="machines.length > 0">
+        <div class="filter-field d-inline-block">{{ 'filters.activities' | translate }}</div>
+        <div class="d-inline-block">
+            <app-drop-down [list]="recentActivities" (selection)="applyRecentActivityFilter($event)"
+                [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
+                (openStatus)="emitMenuOpenStatus($event)">
+            </app-drop-down>
+        </div>
+    </div>
     <button class="btn btn-sm btn-link link-light mt-3 float-end" type="button" (click)="resetFilters()">
         {{ 'common.reset' | translate }}
     </button>

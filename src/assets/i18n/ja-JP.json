@@ -269,7 +269,11 @@
   "filters": {
     "datafromemulatorandplayer": "エミュレーターと Novo Player からのデータ",
     "datafromuser": "ユーザーからのデータ",
-    "videosource": "ビデオ ソース"
+    "videosource": "ビデオ ソース",
+    "recentactivities": "最近のアクティビティ",
+    "activities": "アクティビティ",
+    "recentlyadded": "最近追加されたもの",
+    "recentlyupdated": "最近更新されたアイテム"
   },
   "comparison": {
     "equal": "等しい",

@@ -13,7 +13,7 @@ export class ScanService {
     private repositoryInfo: Map<string, RepositoryData>;
     private totalFilesToScan = 0;
     private scannedFilesCounter = 0;
-    private totalAddedGamesCounter = 0;
+    private addedGames: Game[] = [];
 
     constructor(
         private win: BrowserWindow,
@@ -89,7 +89,7 @@ export class ScanService {
 
     private finishScan() {
         this.win.setProgressBar(0);
-        this.win.webContents.send('scanResponse', this.totalAddedGamesCounter);
+        this.win.webContents.send('scanResponse', this.addedGames);
     }
 
     private processFile(filename: string, listing:string, machine: string) {
@@ -115,7 +115,7 @@ export class ScanService {
 
                 this.gamesService.saveGameFromScan(game).then((success:boolean) => {
                     if (success) {
-                        this.totalAddedGamesCounter++;
+                        this.addedGames.push(game);
                     }
                     this.incrementScanCounterAndCheckIfFinished();
                 });

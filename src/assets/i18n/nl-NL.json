@@ -269,7 +269,11 @@
   "filters": {
     "datafromemulatorandplayer": "Gegevens van de emulator en Novo Player",
     "datafromuser": "Gegevens van de gebruiker",
-    "videosource": "Videobron"
+    "videosource": "Videobron",
+    "recentactivities": "Recente activiteiten",
+    "activities": "Activiteiten",
+    "recentlyadded": "Onlangs toegevoegd",
+    "recentlyupdated": "Onlangs bijgewerkt"
   },
   "comparison": {
     "equal": "Gelijk",

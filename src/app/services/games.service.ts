@@ -5,6 +5,7 @@ import { Game } from '../models/game';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
 import { LaunchActivityService } from './launch-activity.service';
+import { OperationCacheService } from './operation-cache.service';
 import { UndoService } from './undo.service';
 
 @Injectable({
@@ -13,7 +14,8 @@ import { UndoService } from './undo.service';
 export class GamesService {
   private ipc: IpcRenderer;
 
-  constructor(private launchActivityService: LaunchActivityService, private undoService: UndoService) {
+  constructor(private launchActivityService: LaunchActivityService, private undoService: UndoService,
+    private operationCacheService: OperationCacheService) {
     this.ipc = window.require('electron').ipcRenderer;
   }
 
@@ -95,6 +97,7 @@ export class GamesService {
             const updatedGame: Game = Object.assign({}, game);
             updatedGame.listing = newListing;
             this.undoService.addToHistory(game, updatedGame);
+            this.operationCacheService.cacheUpdateOperation(game);
           });
         }
         resolve(moved);
@@ -114,6 +117,7 @@ export class GamesService {
             game.inputDevice = inputDevice;
             game.connectGFX9000 = connectGFX9000;
             this.undoService.addToHistory(oldGame, game);
+            this.operationCacheService.cacheUpdateOperation(game);
           }
         }
         resolve(updated);
@@ -131,6 +135,7 @@ export class GamesService {
             game.bluemsxArguments = args;
             game.bluemsxOverrideSettings = overrideSettings;
             this.undoService.addToHistory(oldGame, game);
+            this.operationCacheService.cacheUpdateOperation(game);
           }
         }
         resolve(updated);
@@ -147,6 +152,7 @@ export class GamesService {
             const oldGame = Object.assign({}, game);
             game.webmsxMachine = machine;
             this.undoService.addToHistory(oldGame, game);
+            this.operationCacheService.cacheUpdateOperation(game);
           }
         }
         resolve(updated);
@@ -160,6 +166,7 @@ export class GamesService {
       this.ipc.once('updateGameResponse', (event, err: boolean) => {
         if (!err && !restoreMode) {
           this.undoService.addToHistory(oldGame, newGame);
+          this.operationCacheService.cacheUpdateOperation(newGame);
         }
         resolve(err);
       });

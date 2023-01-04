@@ -269,7 +269,11 @@
   "filters": {
     "datafromemulatorandplayer": "Dados do emulador e Novo Player",
     "datafromuser": "Dados do usuário",
-    "videosource": "Fonte de vídeo"
+    "videosource": "Fonte de vídeo",
+    "recentactivities": "Atividades Recentes",
+    "activities": "Atividades",
+    "recentlyadded": "Adicionados recentemente",
+    "recentlyupdated": "Atualizado Recentemente"
   },
   "comparison": {
     "equal": "Igual",

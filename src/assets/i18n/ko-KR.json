@@ -269,7 +269,11 @@
   "filters": {
     "datafromemulatorandplayer": "에뮬레이터 및 플레이어의 데이터",
     "datafromuser": "사용자의 데이터",
-    "videosource": "비디오 원본"
+    "videosource": "비디오 원본",
+    "recentactivities": "최근 활동",
+    "activities": "활동",
+    "recentlyadded": "최근에 설치한 항목",
+    "recentlyupdated": "최근에 업데이트됨"
   },
   "comparison": {
     "equal": "같음",

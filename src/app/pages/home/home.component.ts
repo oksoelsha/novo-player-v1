@@ -671,8 +671,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   startScan(parameters: any/*ScanParameters*/) {
     this.alertService.info(this.localizationService.translate('home.startedscanprocess'));
     this.scanRunning = true;
-    this.scanner.scan(parameters).then(result => {
-      this.alertService.info(this.localizationService.translate('home.totalgamesadded') + ' = ' + result);
+    this.scanner.scan(parameters).then((addedGames: Game[]) => {
+      this.alertService.info(this.localizationService.translate('home.totalgamesadded') + ' = ' + addedGames.length);
 
       this.gamesService.getListings().then((data: string[]) => {
         this.listings = data;
