@@ -72,7 +72,7 @@ export class FileTypeUtils {
     }
 
     private static isType(filename: string, typeList: Array<string>) {
-        const ext = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+        const ext = filename.substring(filename.lastIndexOf('.') + 1).toLowerCase();
         return typeList.indexOf(ext) > -1;
     }
 }
