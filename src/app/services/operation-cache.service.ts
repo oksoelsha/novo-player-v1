@@ -7,7 +7,7 @@ import { Game } from '../models/game';
 })
 export class OperationCacheService {
 
-  readonly cacheTTL = 60 * 60 * 1000; // 1 hour
+  readonly cacheTTL = 6 * 60 * 60 * 1000; // 6 hours
   private recentlyAddedCache = new Cache({ defaultTtl: this.cacheTTL });
   private recentlyUpdatedCache = new Cache({ defaultTtl: this.cacheTTL });
 
