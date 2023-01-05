@@ -21,10 +21,10 @@ export class VersionUtils {
                     }
                 } else {
                     // pad the one with shorter length with a 0
-                    if (currentVersionDigits.length > counter && newVersionDigits.length == counter) {
+                    if (currentVersionDigits.length > counter && newVersionDigits.length === counter) {
                         currentVersionNumber = +currentVersionDigits[counter];
                         newVersionNumber = 0;
-                    } else if (currentVersionDigits.length == counter && newVersionDigits.length > counter) {
+                    } else if (currentVersionDigits.length === counter && newVersionDigits.length > counter) {
                         currentVersionNumber = 0;
                         newVersionNumber = +newVersionDigits[counter];
                     } else {
