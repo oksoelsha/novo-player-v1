@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
-import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
+import { WebMSXMachinesData, WebMSXUtils } from '../../models/webmsx-utils';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
 
@@ -23,7 +23,7 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
     super(changeDetector);
 
-    this.machines = WebMSXMachineUtils.getMachineLabels();
+    this.machines = WebMSXUtils.getMachineLabels();
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
 
   setSelectionFromLabel(label: string) {
     if (label) {
-      this.selectedMachineValue = WebMSXMachineUtils.getMachineValueFromLabel(label);
+      this.selectedMachineValue = WebMSXUtils.getMachineValueFromLabel(label);
       this.selectedMachineLabel = label;
     } else {
       this.selectedMachineValue = 0;
@@ -57,7 +57,7 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   setSelectionFromValue(value: number) {
     if (value > 0) {
       this.selectedMachineValue = value;
-      this.selectedMachineLabel = WebMSXMachineUtils.getLabelFromMachineValue(value);
+      this.selectedMachineLabel = WebMSXUtils.getLabelFromMachineValue(value);
     } else {
       this.selectedMachineValue = 0;
       this.selectedMachineLabel = this.localizationService.translate('webmsx.settodefault');

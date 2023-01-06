@@ -25,7 +25,7 @@ import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-ed
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
-import { WebMSXMachinesData, WebMSXMachineUtils } from '../../models/webmsx-machines';
+import { WebMSXMachinesData, WebMSXUtils } from '../../models/webmsx-utils';
 import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
@@ -340,7 +340,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   launchWebmsx(game: Game) {
-    this.router.navigate(['./wmsx', { gameParams: JSON.stringify(this.selectedGame) }], { queryParams: this.getWebMSXParams() });
+    this.router.navigate(
+      ['./wmsx', { gameParams: JSON.stringify(this.selectedGame) }],
+      { queryParams: WebMSXUtils.getWebMSXParams(this.selectedGame) }
+    );
     this.eventsService.logEvent(new Event(EventSource.WebMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
   }
 
@@ -918,49 +921,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private showInfoBySha1Code(sha1Code: string) {
     this.games.filter(g => g.sha1Code === sha1Code).forEach(match => this.showInfo(match));
-  }
-
-  private getWebMSXParams(): any {
-    const webMSXParams: any = {};
-
-    if (this.selectedGame.romA != null) {
-      webMSXParams.ROM = this.selectedGame.romA;
-    }
-    if (this.selectedGame.diskA != null) {
-      webMSXParams.DISK = this.selectedGame.diskA;
-    }
-    if (this.selectedGame.extensionRom === 'scc') {
-      this.addWebMSXPresets(webMSXParams, 'SCC');
-    } else if (this.selectedGame.extensionRom === 'scc+') {
-      this.addWebMSXPresets(webMSXParams, 'SCCI');
-    }
-    if (this.selectedGame.tape != null) {
-      webMSXParams.TAPE = this.selectedGame.tape;
-    }
-    if (this.selectedGame.harddisk != null) {
-      webMSXParams.HARDDISK = this.selectedGame.harddisk;
-    }
-    if (this.selectedGame.connectGFX9000) {
-      this.addWebMSXPresets(webMSXParams, 'V9990');
-    }
-    this.addWebMSXPresets(webMSXParams, 'OPL4');
-
-    if (this.selectedGame.webmsxMachine) {
-      if (WebMSXMachineUtils.isMachineCustom(this.selectedGame.webmsxMachine)) {
-        webMSXParams.CONFIG_URL = 'assets/webmsx-config/machines.json';
-      }
-      webMSXParams.MACHINE = WebMSXMachineUtils.getMachineNameFromValue(this.selectedGame.webmsxMachine);
-    }
-
-    return webMSXParams;
-  }
-
-  private addWebMSXPresets(webMSXParams: any, preset: string) {
-    if (webMSXParams.PRESETS) {
-      webMSXParams.PRESETS = webMSXParams.PRESETS + ',' + preset;
-    } else {
-      webMSXParams.PRESETS = preset;
-    }
   }
 
   private sortGames(games: Game[]) {
