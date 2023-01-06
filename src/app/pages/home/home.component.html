@@ -35,19 +35,13 @@
         <img src="assets/images/general/select.png">{{ otherSelectedGames.size + 1 }}
       </div>
       <div class="action-buttons">
-        <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
+        <div class="d-inline-block">
           <button
             [ngClass]="{'btn': true, 'btn-secondary': true, 'btn-sm': true, 'action-button': filtersTotal === 0, 'action-button-filters': filtersTotal > 0}"
-            type="button" [title]="'home.filters' | translate" ngbDropdownToggle>
+            type="button" (click)="toggleFiltersForm()" [title]="'home.filters' | translate">
             <span class="bi-funnel"></span>
             <span *ngIf="filtersTotal > 0" class="badge bg-primary">{{ filtersTotal }}</span>
           </button>
-          <div ngbDropdownMenu>
-            <button ngbDropdownItem type="button" (click)="toggleFiltersForm()">
-              <span *ngIf="!showFilters">{{ 'home.showfilters' | translate }}</span>
-              <span *ngIf="showFilters">{{ 'home.hidefilters' | translate }}</span>
-            </button>
-          </div>
         </div>
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
