@@ -725,6 +725,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   applyFilters(filters: Filters) {
+    this.removeAllOtherSelectedGames();
+    this.otherSelectedGames.clear();
     this.filters = filters;
     this.filtersTotal = this.filters.getTotalFilters();
     this.games = this.filtersService.filter(this.originalGames, this.filters);
