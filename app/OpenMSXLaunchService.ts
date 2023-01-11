@@ -41,8 +41,7 @@ export class OpenMSXLaunchService {
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
 
-    private static readonly ENABLE_GFX9000_CMD = 'ext gfx9000; ' +
-        'ext slotexpander; ' + 'after time 10 \"set videosource GFX9000\"';
+    private static readonly ENABLE_GFX9000_CMD = 'ext gfx9000; after time 10 \"set videosource GFX9000\"';
 
     private static readonly tclCommandArgs: TCLCommands[] = [
         new TCLCommands('inputDevice', [
