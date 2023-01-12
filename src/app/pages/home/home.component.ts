@@ -303,8 +303,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.originalGames = data;
       this.games = this.filtersService.filter(data, this.filters);
       this.gameToRename = null;
-      for (const game of data) {
-        if (sha1Code && game.sha1Code === sha1Code) {
+      if (sha1Code) {
+        const game = data.find(g => g.sha1Code === sha1Code);
+        if (game) {
           setTimeout(() => {
             this.showInfo(game);
           }, 0);
