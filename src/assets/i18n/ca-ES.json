@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "Està actualitzat",
     "newversionavailable": "Nova versió disponible",
-    "cannotconnecttoserver": "No es pot connectar amb el servidor"
+    "cannotconnecttoserver": "No es pot connectar amb el servidor",
+    "undefined": "No definit"
   },
   "popups": {
     "newlisting": "Nova llista",

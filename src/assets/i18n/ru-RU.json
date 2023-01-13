@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "Обновлено",
     "newversionavailable": "Доступна новая версия",
-    "cannotconnecttoserver": "Не удалось подключиться к серверу"
+    "cannotconnecttoserver": "Не удалось подключиться к серверу",
+    "undefined": "Не определен"
   },
   "popups": {
     "newlisting": "Новый список",

@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "最新",
     "newversionavailable": "新しいバージョンを入手できます",
-    "cannotconnecttoserver": "サーバーに接続できません"
+    "cannotconnecttoserver": "サーバーに接続できません",
+    "undefined": "未定義"
   },
   "popups": {
     "newlisting": "新しいリスト",

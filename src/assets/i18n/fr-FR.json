@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "À jour",
     "newversionavailable": "Nouvelle version disponible",
-    "cannotconnecttoserver": "Impossible de se connecter au serveur"
+    "cannotconnecttoserver": "Impossible de se connecter au serveur",
+    "undefined": "Non défini"
   },
   "popups": {
     "newlisting": "Nouvelle liste",

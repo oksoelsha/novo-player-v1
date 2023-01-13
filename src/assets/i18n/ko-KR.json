@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "최신 상태",
     "newversionavailable": "새 버전 사용 가능",
-    "cannotconnecttoserver": "서버에 연결할 수 없습니다"
+    "cannotconnecttoserver": "서버에 연결할 수 없습니다",
+    "undefined": "정의되지 않음"
   },
   "popups": {
     "newlisting": "새 목록",

@@ -196,7 +196,8 @@
   "help": {
     "uptodate": "Bijgewerkt",
     "newversionavailable": "Nieuwe versie beschikbaar",
-    "cannotconnecttoserver": "Kan geen verbinding maken met server"
+    "cannotconnecttoserver": "Kan geen verbinding maken met server",
+    "undefined": "Niet-gedefinieerd"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",
