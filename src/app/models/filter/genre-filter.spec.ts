@@ -1,5 +1,5 @@
-import { GameUtils } from '../../../../release/win-unpacked/resources/src/app/models/game-utils';
 import { Game } from '../game';
+import { GameUtils } from '../game-utils';
 import { GenreFilter } from './genre-filter';
 
 describe('GenreFilter', () => {
