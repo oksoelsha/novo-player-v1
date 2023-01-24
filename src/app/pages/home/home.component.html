@@ -132,7 +132,7 @@
       </div>
       <div class="additional-info" *ngIf="selectedGame">
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
-          <button class="btn btn-secondary btn-sm me-2" ngbDropdownToggle type="button">
+          <button class="btn btn-secondary btn-sm me-1" ngbDropdownToggle type="button">
             {{ 'home.launch' | translate }}
           </button>
           <div ngbDropdownMenu>
@@ -151,7 +151,7 @@
           </div>
         </div>
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
-          <button class="btn btn-secondary btn-sm me-2" ngbDropdownToggle type="button">
+          <button class="btn btn-secondary btn-sm me-1" ngbDropdownToggle type="button">
             {{ 'home.actions' | translate }}
           </button>
           <div ngbDropdownMenu>
@@ -191,11 +191,6 @@
               <div class="actions-menu-icon"></div>
               {{ 'home.findrelatedgames' | translate }}
             </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
-              (click)="moreScreenshots.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.morescreenshots' | translate }}
-            </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
               ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
               <div class="actions-menu-icon"></div>
@@ -221,6 +216,12 @@
               {{ 'home.movetoanotherlisting' | translate }}
             </button>
           </div>
+        </div>
+        <div *ngIf="moreScreenshotFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
+          <button class="btn btn-secondary btn-sm me-1" (click)="moreScreenshots.open()"
+            [title]="'home.morescreenshots' | translate">
+            <span class="bi bi-image"></span>
+          </button>
         </div>
         <div *ngIf="musicFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
           <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">

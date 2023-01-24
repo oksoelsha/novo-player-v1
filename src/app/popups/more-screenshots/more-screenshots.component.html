@@ -2,8 +2,8 @@
     <div *ngFor="let imageFile of imageFiles" class="slide fade" #imageBlock>
         <img [src]="imageFile">
     </div>
-    <a class="prev" (click)="previous()">❮</a>
-    <a class="next" (click)="next()">❯</a>
+    <a class="prev" (click)="previous()" [ngStyle]="{'visibility': imageFiles.length > 1 ? 'visible' : 'hidden' }">❮</a>
+    <a class="next" (click)="next()" [ngStyle]="{'visibility': imageFiles.length > 1 ? 'visible' : 'hidden' }">❯</a>
 </div>
 <div class="imageNumber">
     {{ imageIndex + 1 }} / {{ imageFiles.length }}

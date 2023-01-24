@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from "@angular/core";
-import { Game } from "../../models/game";
-import { PopupComponent } from "../popup.component";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Game } from '../../models/game';
+import { PopupComponent } from '../popup.component';
 
 @Component({
   selector: 'app-more-screenshots',
@@ -34,6 +34,12 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
     super.open();
   }
 
+  close(): void {
+    super.close(() => {
+      this.imageIndex = 0;
+    });
+  }
+
   next() {
     this.imageIndex++;
     this.showImage();
@@ -51,7 +57,7 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
       this.imageIndex = 0;
     }
 
-    let imageBlocksArray;
+    let imageBlocksArray: ElementRef[];
     setTimeout(() => {
       imageBlocksArray = this.imageBlocks.toArray();
       for (let ix = 0; ix < imageBlocksArray.length; ix++) {

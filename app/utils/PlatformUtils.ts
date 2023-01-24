@@ -52,28 +52,28 @@ export class PlatformUtils {
         }
     }
 
-    static getOpenmsxPersistenceFolder(): string {
+    static getOpenmsxDataFolder(): string {
         if (this.isWindows()) {
             return path.join(app.getPath('documents'), 'openmsx');
         } else if (this.isLinux()) {
             return path.join(os.homedir(), '.openmsx');
         } else if (this.isMacOS()) {
-            return 'TODO------------';
+            return path.join(os.homedir(), '.openmsx');
         } else {
             return this.unsupportedPlatform();
         }
     }
 
     static isWindows(): boolean {
-        return os.platform() == 'win32';
+        return os.platform() === 'win32';
     }
 
     static isLinux(): boolean {
-        return os.platform() == 'linux';
+        return os.platform() === 'linux';
     }
 
     static isMacOS(): boolean {
-        return os.platform() == 'darwin';
+        return os.platform() === 'darwin';
     }
 
     private static unsupportedPlatform(): string {

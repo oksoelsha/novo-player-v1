@@ -126,7 +126,7 @@ export class FilesService {
     }
 
     private getMoreScreenshots(genMsxId: number): string[] {
-        const folder = path.join(PlatformUtils.getOpenmsxPersistenceFolder(), 'screenshots');
+        const folder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
         if (fs.existsSync(folder)) {
             const list: string[] = [];
             const contents = fs.readdirSync(folder, 'utf8');
