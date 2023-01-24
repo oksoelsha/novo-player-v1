@@ -54,6 +54,7 @@ import { FiltersComponent } from './pages/home/filters/filters.component';
 import { RangeSelectorComponent } from './pages/home/filters/range-selector/range-selector.component';
 import { AdditionalExternalInfoComponent } from './popups/additional-external-info/additional-external-info.component';
 import { VersionMatchIndicatorComponent } from './pages/help/version-match-indicator/version-match-indicator.component';
+import { MoreScreenshotsComponent } from './popups/more-screenshots/more-screenshots.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -91,6 +92,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     BluemsxArgumentsEditComponent,
     WebmsxMachineSetComponent,
     RelatedGamesComponent,
+    MoreScreenshotsComponent,
     RangeSelectorComponent,
     FiltersComponent,
     AdditionalExternalInfoComponent,

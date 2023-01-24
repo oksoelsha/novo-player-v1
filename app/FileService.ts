@@ -95,14 +95,20 @@ export class FilesService {
             data2 = '';
         }
 
-        let musicFiles: string[] = this.getMusicFiles(genMsxId);
+        const musicFiles = this.getMusicFiles(genMsxId);
+        let moreScreenshots = this.getMoreScreenshots(genMsxId);
+        if (PlatformUtils.isWindows()) {
+            // Front end appends 'unsafe' to the image file path if it encounters Windows drive name
+            // so we replace the backslashes and remove the drive name
+            moreScreenshots = moreScreenshots.map(m => m.replace(/\\/g, '/').substring(2));
+        }
 
-        return new GameSecondaryData(data1, data2, musicFiles);
+        return new GameSecondaryData(data1, data2, musicFiles, moreScreenshots);
     }
 
     private getMusicFiles(genMsxId: number): string[] {
         if (genMsxId && this.settingsService.getSettings().gameMusicPath) {
-            let folder = path.join(this.settingsService.getSettings().gameMusicPath, genMsxId.toString());
+            const folder = path.join(this.settingsService.getSettings().gameMusicPath, genMsxId.toString());
             if (fs.existsSync(folder)) {
                 const list: string[] = [];
                 const contents = fs.readdirSync(folder, 'utf8');
@@ -114,6 +120,20 @@ export class FilesService {
             } else {
                 return [];
             }
+        } else {
+            return [];
+        }
+    }
+
+    private getMoreScreenshots(genMsxId: number): string[] {
+        const folder = path.join(PlatformUtils.getOpenmsxPersistenceFolder(), 'screenshots');
+        if (fs.existsSync(folder)) {
+            const list: string[] = [];
+            const contents = fs.readdirSync(folder, 'utf8');
+            contents.filter(f => f.startsWith(genMsxId + '-'))
+                .sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()))
+                .forEach(f => list.push(path.join(folder, f)));
+            return list;
         } else {
             return [];
         }

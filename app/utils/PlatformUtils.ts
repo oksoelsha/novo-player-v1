@@ -1,5 +1,6 @@
 import * as path from 'path'
 import * as os from 'os';
+import { app } from 'electron';
 
 export class PlatformUtils {
 
@@ -46,6 +47,18 @@ export class PlatformUtils {
             return 'nautilus --browser "' + path.dirname(file) + '"';
         } else if (this.isMacOS()) {
             return 'open -R "' + file + '"';
+        } else {
+            return this.unsupportedPlatform();
+        }
+    }
+
+    static getOpenmsxPersistenceFolder(): string {
+        if (this.isWindows()) {
+            return path.join(app.getPath('documents'), 'openmsx');
+        } else if (this.isLinux()) {
+            return path.join(os.homedir(), '.openmsx');
+        } else if (this.isMacOS()) {
+            return 'TODO------------';
         } else {
             return this.unsupportedPlatform();
         }

@@ -30,6 +30,7 @@ import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
 import { AdditionalExternalInfoComponent } from '../../popups/additional-external-info/additional-external-info.component';
+import { MoreScreenshotsComponent } from '../../popups/more-screenshots/more-screenshots.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
   @ViewChild('webmsxMachineSet') webmsxMachineSet: WebmsxMachineSetComponent;
   @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
+  @ViewChild('moreScreenshots') moreScreenshots: MoreScreenshotsComponent;
   @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
@@ -97,6 +99,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isGiantbombApikeyDefined: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
+  moreScreenshotFiles: string[] = [];
   favorites: Game[] = [];
   sortData: SortData;
   showUndo: boolean;
@@ -105,9 +108,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   filtersTotal = 0;
   machines: string[] = [];
 
-  private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null);
-  private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null);
-  private readonly noScreenshotData: GameSecondaryData = new GameSecondaryData('', '', null);
+  private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
+  private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
 
   private toggle = false;
   private gamesTable: Element;
@@ -622,6 +624,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.gamesService.getSecondaryData(game).then((secondaryData) => {
       this.setScreenshots(secondaryData);
       this.setMusicFiles(secondaryData);
+      this.setMoreScreenshots(secondaryData);
 
       // Decrement the open menu counter because there's a case where it doesn't get decremented with the closing of the menu.
       // That case is for the game music tracks menu where the closing menu event does not fire if the if-statement around the
@@ -814,6 +817,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.selectedMusicFile = null;
     }
+  }
+
+  private setMoreScreenshots(secondaryData: GameSecondaryData) {
+    this.moreScreenshotFiles = secondaryData.moreScreenshots;
   }
 
   private adjustScrollForSelectedGame(game: Game) {

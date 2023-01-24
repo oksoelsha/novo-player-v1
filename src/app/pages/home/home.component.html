@@ -191,6 +191,11 @@
               <div class="actions-menu-icon"></div>
               {{ 'home.findrelatedgames' | translate }}
             </button>
+            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+              (click)="moreScreenshots.open()">
+              <div class="actions-menu-icon"></div>
+              {{ 'home.morescreenshots' | translate }}
+            </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
               ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
               <div class="actions-menu-icon"></div>
@@ -326,6 +331,15 @@
     <app-related-games [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
       (foundGame)="showFoundGame($event)" #relatedGames>
     </app-related-games>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="more-screenshots-id"
+  [titleHeader]="('home.morescreenshots' | translate) + ' - ' + selectedGame?.name" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-more-screenshots [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
+      [imageFiles]="moreScreenshotFiles" #moreScreenshots>
+    </app-more-screenshots>
   </ng-template>
 </app-popup>
 
