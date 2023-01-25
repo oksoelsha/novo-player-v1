@@ -289,5 +289,8 @@
     "notfound": "見つかりません",
     "viewongiantbomb": "Giant Bomb で表示",
     "failedtoconnect": "接続できませんでした"
+  },
+  "morescreenshots": {
+    "locateimagefile": "画像ファイルを見つける"
   }
 }

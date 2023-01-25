@@ -187,6 +187,10 @@ export class GamesService {
     this.ipc.send('openFileExplorer', file);
   }
 
+  exploreOpenMSXScreenshotFile(imagefile: string) {
+    this.ipc.send('openOpenMSXScreenshotFile', imagefile);
+  }
+
   openExternally(address: string) {
     this.ipc.send('openExternally', address);
   }

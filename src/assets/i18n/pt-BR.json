@@ -289,5 +289,8 @@
     "notfound": "Não Encontrado",
     "viewongiantbomb": "Exibir a página do jogo no Giant Bomb",
     "failedtoconnect": "Falha ao conectar"
+  },
+  "morescreenshots": {
+    "locateimagefile": "Localizar o arquivo de imagem"
   }
 }

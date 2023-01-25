@@ -289,5 +289,8 @@
     "notfound": "찾을 수 없음",
     "viewongiantbomb": "Giant Bomb에서 보기",
     "failedtoconnect": "연결하지 못했음"
+  },
+  "morescreenshots": {
+    "locateimagefile": "이미지 파일 찾기"
   }
 }

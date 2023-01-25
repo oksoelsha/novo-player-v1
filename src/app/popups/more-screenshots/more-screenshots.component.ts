@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Game } from '../../models/game';
+import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
@@ -16,7 +17,7 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
 
   imageIndex: number;
 
-  constructor(protected changeDetector: ChangeDetectorRef) {
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
     super(changeDetector);
   }
 
@@ -48,6 +49,10 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
   previous() {
     this.imageIndex--;
     this.showImage();
+  }
+
+  locateImageFile() {
+    this.gamesService.exploreOpenMSXScreenshotFile(this.imageFiles[this.imageIndex]);
   }
 
   private showImage() {

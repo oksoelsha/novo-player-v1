@@ -289,5 +289,8 @@
     "notfound": "Niet gevonden",
     "viewongiantbomb": "Weergeven op Giant Bomb",
     "failedtoconnect": "Kan geen verbinding maken"
+  },
+  "morescreenshots": {
+    "locateimagefile": "Zoek het afbeeldingsbestand"
   }
 }

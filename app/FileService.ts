@@ -28,6 +28,10 @@ export class FilesService {
             this.openFileExplorer(file);
         });
 
+        ipcMain.on('openOpenMSXScreenshotFile', (event, imagefile: string) => {
+            this.openFileExplorerForOpenMSXScreenshot(imagefile);
+        });
+
         ipcMain.on('openExternally', (event, path: string) => {
             this.openExternally(path);
         });
@@ -145,6 +149,20 @@ export class FilesService {
             if (error) {
             }
         });
+    }
+
+    private openFileExplorerForOpenMSXScreenshot(imagefile: string) {
+        // we need to do additional processing for Windows: the drive name was removed when
+        // the screenshot file was returned to the renderer process. Here we're putting it back
+        let file: string;
+        if (PlatformUtils.isWindows()) {
+            const folder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
+            const filename = path.basename(imagefile);
+            file = path.join(folder, filename);
+        } else {
+            file = imagefile;
+        }
+        this.openFileExplorer(file);
     }
 
     private openExternally(path: string) {

@@ -289,6 +289,8 @@
     "notfound": "No s'ha trobat",
     "viewongiantbomb": "Mostra la pàgina del joc a Giant Bomb",
     "failedtoconnect": "No s'ha pogut connectar"
+  },
+  "morescreenshots": {
+    "locateimagefile": "Localitza el fitxer d'imatge"
   }
 }
-
