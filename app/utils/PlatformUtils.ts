@@ -54,11 +54,11 @@ export class PlatformUtils {
 
     static getOpenmsxDataFolder(): string {
         if (this.isWindows()) {
-            return path.join(app.getPath('documents'), 'openmsx');
+            return path.join(app.getPath('documents'), 'openMSX');
         } else if (this.isLinux()) {
-            return path.join(os.homedir(), '.openmsx');
+            return path.join(os.homedir(), '.openMSX');
         } else if (this.isMacOS()) {
-            return path.join(os.homedir(), '.openmsx');
+            return path.join(os.homedir(), '.openMSX');
         } else {
             return this.unsupportedPlatform();
         }
