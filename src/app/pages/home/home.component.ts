@@ -575,46 +575,47 @@ export class HomeComponent implements OnInit, OnDestroy {
   processClickOnGame(event: any, game: Game) {
     if (game === this.selectedGame) {
       this.removeAllOtherSelectedGames();
-      return;
-    }
-    if (this.ctrlOrCommandKey(event)) {
-      if (!this.selectedGame) {
-        this.showInfo(game);
-      } else {
-        this.otherSelectedGames = new Set<Game>(this.otherSelectedGames);
-        if (this.otherSelectedGames.has(game)) {
-          this.removeAsAnotherSelectedGame(game);
-        } else {
-          this.setAsAnotherSelectedGame(game);
-        }
-      }
-    } else if (event.shiftKey) {
-      if (!this.selectedGame) {
-        this.showInfo(game);
-      } else {
-        // reset other selected games first
-        this.otherSelectedGames.forEach(selectedGame => {
-          this.removeAsAnotherSelectedGame(selectedGame);
-        });
-        this.otherSelectedGames = new Set<Game>();
-        const gameIndex = this.games.findIndex((e) => e.sha1Code === this.selectedGame.sha1Code);
-        const shiftIndex = this.games.findIndex((e) => e.sha1Code === game.sha1Code);
-        let startIndex: number;
-        let endIndex: number;
-        if (gameIndex > shiftIndex) {
-          startIndex = shiftIndex;
-          endIndex = gameIndex - 1;
-        } else {
-          startIndex = gameIndex + 1;
-          endIndex = shiftIndex;
-        }
-        for(let index = startIndex; index <= endIndex; index++) {
-          this.setAsAnotherSelectedGame(this.games[index]);
-        }
-      }
-    }
-    else {
       this.showInfo(game);
+    } else {
+      if (this.ctrlOrCommandKey(event)) {
+        if (!this.selectedGame) {
+          this.showInfo(game);
+        } else {
+          this.otherSelectedGames = new Set<Game>(this.otherSelectedGames);
+          if (this.otherSelectedGames.has(game)) {
+            this.removeAsAnotherSelectedGame(game);
+          } else {
+            this.setAsAnotherSelectedGame(game);
+          }
+        }
+      } else if (event.shiftKey) {
+        if (!this.selectedGame) {
+          this.showInfo(game);
+        } else {
+          // reset other selected games first
+          this.otherSelectedGames.forEach(selectedGame => {
+            this.removeAsAnotherSelectedGame(selectedGame);
+          });
+          this.otherSelectedGames = new Set<Game>();
+          const gameIndex = this.games.findIndex((e) => e.sha1Code === this.selectedGame.sha1Code);
+          const shiftIndex = this.games.findIndex((e) => e.sha1Code === game.sha1Code);
+          let startIndex: number;
+          let endIndex: number;
+          if (gameIndex > shiftIndex) {
+            startIndex = shiftIndex;
+            endIndex = gameIndex - 1;
+          } else {
+            startIndex = gameIndex + 1;
+            endIndex = shiftIndex;
+          }
+          for(let index = startIndex; index <= endIndex; index++) {
+            this.setAsAnotherSelectedGame(this.games[index]);
+          }
+        }
+      }
+      else {
+        this.showInfo(game);
+      }
     }
   }
 
@@ -749,6 +750,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.screenshotA1 = this.screenshotA2 = this.noScreenshotImage1;
     this.screenshotB1 = this.screenshotB2 = this.noScreenshotImage2;
     this.otherSelectedGames.clear();
+    this.musicFiles = [];
+    this.moreScreenshotFiles = [];
   }
 
   private canHandleEvents(): boolean {
@@ -774,7 +777,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.otherSelectedGames.forEach(otherSelectedGame => {
       this.removeAsAnotherSelectedGame(otherSelectedGame);
     });
-    this.otherSelectedGames.clear();
 
     sessionStorage.setItem('selectedGame', JSON.stringify(game));
   }
@@ -782,6 +784,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private setAsAnotherSelectedGame(game: Game) {
     this.otherSelectedGames.add(game);
     document.getElementById(game.sha1Code).classList.add('selected-secondary-game');
+    this.musicFiles = [];
+    this.moreScreenshotFiles = [];
   }
 
   private removeAsAnotherSelectedGame(game: Game) {
