@@ -5,10 +5,16 @@ import { SettingsService } from './SettingsService';
 import { GameSecondaryData } from '../src/app/models/secondary-data';
 import * as cp from 'child_process'
 import { PlatformUtils } from './utils/PlatformUtils';
+import * as chokidar from 'chokidar';
 
 export class FilesService {
 
-    private imageDataPrefix: string = 'data:image/png;base64,';
+    private readonly imageDataPrefix = 'data:image/png;base64,';
+
+    private readonly cachedMusicFiles = new Map<number, string[]>();
+    private cachedGameMusicPath: string;
+    private readonly openmsxDataScrrenshotsFolder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
+    private cachedMoreScreenshots: string[] = [];
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService) {
         this.init();
@@ -58,6 +64,13 @@ export class FilesService {
         ipcMain.on('getFileGroup', (event, pid: number, filename: string) => {
             const fileGroup = this.getFileGroup(filename);
             this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
+        });
+
+        chokidar.watch(this.openmsxDataScrrenshotsFolder, {
+            ignoreInitial: true,
+            followSymlinks: false
+        }).on('all', (event: any, changedFile: string) => {
+            this.cachedMoreScreenshots = [];
         });
     }
 
@@ -111,8 +124,18 @@ export class FilesService {
     }
 
     private getMusicFiles(genMsxId: number): string[] {
-        if (genMsxId && this.settingsService.getSettings().gameMusicPath) {
-            const folder = path.join(this.settingsService.getSettings().gameMusicPath, genMsxId.toString());
+        const gameMusicPath = this.settingsService.getSettings().gameMusicPath;
+        if (gameMusicPath && !this.cachedGameMusicPath) {
+            this.cachedGameMusicPath = gameMusicPath;
+        } else if (gameMusicPath && this.cachedGameMusicPath && gameMusicPath !== this.cachedGameMusicPath) {
+            this.cachedMusicFiles.clear();
+            this.cachedGameMusicPath = gameMusicPath;
+        }
+        const cachedMusicFiles = this.cachedMusicFiles.get(genMsxId);
+        if (cachedMusicFiles != null) {
+            return cachedMusicFiles;
+        } else if (genMsxId && gameMusicPath) {
+            const folder = path.join(gameMusicPath, genMsxId.toString());
             if (fs.existsSync(folder)) {
                 const list: string[] = [];
                 const contents = fs.readdirSync(folder, 'utf8');
@@ -120,6 +143,7 @@ export class FilesService {
                     list.push(path.join(folder, file));
                 });
                 list.sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()));
+                this.cachedMusicFiles.set(genMsxId, list);
                 return list;
             } else {
                 return [];
@@ -130,13 +154,18 @@ export class FilesService {
     }
 
     private getMoreScreenshots(genMsxId: number): string[] {
-        const folder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
-        if (fs.existsSync(folder)) {
+        if (this.cachedMoreScreenshots.length > 0 || fs.existsSync(this.openmsxDataScrrenshotsFolder)) {
             const list: string[] = [];
-            const contents = fs.readdirSync(folder, 'utf8');
-            contents.filter(f => f.startsWith(genMsxId + '-'))
+            let folderContents: string[];
+            if (this.cachedMoreScreenshots.length > 0) {
+                folderContents = this.cachedMoreScreenshots;
+            } else {
+                folderContents = fs.readdirSync(this.openmsxDataScrrenshotsFolder, 'utf8');
+                this.cachedMoreScreenshots = folderContents;
+            }
+            folderContents.filter(f => f.startsWith(genMsxId + '-'))
                 .sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()))
-                .forEach(f => list.push(path.join(folder, f)));
+                .forEach(f => list.push(path.join(this.openmsxDataScrrenshotsFolder, f)));
             return list;
         } else {
             return [];
