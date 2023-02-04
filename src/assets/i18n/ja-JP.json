@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "WebMSXのロード中にエラーが発生しました。パスが正しく設定されていることを確認してください",
     "setwebmsxmachine": "WebMSXのマシンを設定",
-    "settodefault": "既定値に設定"
+    "settodefault": "既定値に設定",
+    "back": "戻る"
   },
   "dashboard": {
     "totals": "合計",

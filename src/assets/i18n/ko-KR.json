@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "WebMSX를 로드하는 중 오류가 발생했습니다. 경로가 올바르게 설정되었는지 확인",
     "setwebmsxmachine": "WebMSX 머신 설정",
-    "settodefault": "기본값으로 설정"
+    "settodefault": "기본값으로 설정",
+    "back": "뒤로"
   },
   "dashboard": {
     "totals": "합계",

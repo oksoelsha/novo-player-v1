@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "Ошибка при загрузке WebMSX. Убедитесь, что путь указан правильно",
     "setwebmsxmachine": "Установить WebMSX машина",
-    "settodefault": "Установить по умолчанию"
+    "settodefault": "Установить по умолчанию",
+    "back": "Назад"
   },
   "dashboard": {
     "totals": "Итоги",

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../../models/game';
 import { Settings } from '../../models/settings';
 import { EmulatorService } from '../../services/emulator.service';
@@ -17,7 +17,7 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   private wmsxScript: any;
 
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private settingsService: SettingsService,
-    private emulatorService: EmulatorService) {
+    private emulatorService: EmulatorService, private router: Router) {
     this.selectedGame = JSON.parse(route.snapshot.paramMap.get('gameParams'));
   }
 
@@ -46,6 +46,10 @@ export class WebMSXComponent implements OnInit, OnDestroy {
         window['WMSX']['start']();
       }
     }, 20);
+  }
+
+  goBack() {
+    this.router.navigate(['./']);
   }
 
   ngOnDestroy(): void {

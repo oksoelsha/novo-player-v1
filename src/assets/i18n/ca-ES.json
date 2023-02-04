@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "Error en carregar WebMSX. Assegureu-vos que el camí estigui configurat correctament",
     "setwebmsxmachine": "Defineix la màquina de WebMSX",
-    "settodefault": "Estableix el valor predeterminat"
+    "settodefault": "Estableix el valor predeterminat",
+    "back": "Enrere"
   },
   "dashboard": {
     "totals": "Totals",

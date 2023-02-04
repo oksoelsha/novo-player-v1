@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "Error loading WebMSX. Make sure the path is set correctly",
     "setwebmsxmachine": "Set WebMSX machine",
-    "settodefault": "Set to default"
+    "settodefault": "Set to default",
+    "back": "Back"
   },
   "dashboard": {
     "totals": "Totals",

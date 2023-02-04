@@ -157,7 +157,8 @@
   "webmsx": {
     "errorloading": "Avvio di WebMSX fallito. Assicurati che il percorso sia corretto",
     "setwebmsxmachine": "Imposta la macchina di WebMSX",
-    "settodefault": "Imposta su valore predefinito"
+    "settodefault": "Imposta su valore predefinito",
+    "back": "Indietro"
   },
   "dashboard": {
     "totals": "Totali",
