@@ -70,7 +70,7 @@
     "gamewasupdated": "Spel is bijgewerkt",
     "gameswereupdated": "Spellen zijn bijgewerkt",
     "gamewasnotupdated": "Spel is niet bijgewerkt",
-    "cannotchangegamemainfile": "je kunt het hoofdbestand van een spel niet wijzigen",
+    "failedtoupdategame": "Kan het spel niet updaten",
     "gamewasmoved": "Spel is verplaatst",
     "gamesweremoved": "Spellen zijn verplaatst",
     "failedtogglefavoritesfor": "Kan de favoriete status niet omschakelen voor",

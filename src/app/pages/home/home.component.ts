@@ -444,20 +444,20 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         const gameToRestore = changeHistory.oldGame;
         const newGame = changeHistory.newGame;
-        this.gamesService.updateGame(newGame, gameToRestore, true).then((err: boolean) => {
-          if (err) {
-            this.alertService.failure(this.localizationService.translate('home.gamewasnotrestored') + ': ' + gameToRestore.name +
-              ' [' + gameToRestore.listing + ']');
+        this.gamesService.updateGame(newGame, gameToRestore, true).then((updatedGame: Game) => {
+          if (!updatedGame) {
+            this.alertService.failure(this.localizationService.translate('home.gamewasnotrestored') + ': ' + updatedGame.name +
+              ' [' + updatedGame.listing + ']');
           } else {
-            this.alertService.success(this.localizationService.translate('home.gamewasrestored') + ': ' + gameToRestore.name +
-              ' [' + gameToRestore.listing + ']');
+            this.alertService.success(this.localizationService.translate('home.gamewasrestored') + ': ' + updatedGame.name +
+              ' [' + updatedGame.listing + ']');
             if (newGame.listing === this.selectedListing) {
               this.removeGameFromList(newGame, false);
             }
-            if (gameToRestore.listing === this.selectedListing) {
-              this.addGameToSortedList(gameToRestore);
+            if (updatedGame.listing === this.selectedListing) {
+              this.addGameToSortedList(updatedGame);
               setTimeout(() => {
-                this.showInfo(gameToRestore);
+                this.showInfo(updatedGame);
               }, 0);
             }
             // to simplify logic, simply get all listings to account for removed or added ones
@@ -471,16 +471,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   update(oldGame: Game, newGame: Game) {
-    this.gamesService.updateGame(oldGame, newGame).then((err: boolean) => {
-      if (err) {
+    this.gamesService.updateGame(oldGame, newGame).then((updatedGame: Game) => {
+      if (!updatedGame) {
         this.alertService.failure(this.localizationService.translate('home.gamewasnotupdated') + ': ' + oldGame.name +
-          ' - ' + this.localizationService.translate('home.cannotchangegamemainfile'));
+          ' - ' + this.localizationService.translate('home.failedtoupdategame'));
       } else {
-        this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + newGame.name);
+        this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + updatedGame.name);
         this.removeGameFromList(oldGame, false);
-        this.addGameToSortedList(newGame);
+        this.addGameToSortedList(updatedGame);
         setTimeout(() => {
-          this.showInfo(newGame);
+          this.showInfo(updatedGame);
         }, 0);
       }
     });

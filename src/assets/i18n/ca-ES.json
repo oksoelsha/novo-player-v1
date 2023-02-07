@@ -70,7 +70,7 @@
     "gamewasupdated": "El joc s'ha actualitzat",
     "gameswereupdated": "Els jocs s'han actualitzat",
     "gamewasnotupdated": "El joc no s'ha actualitzat",
-    "cannotchangegamemainfile": "no es pot canviar el fitxer principal d'un joc",
+    "failedtoupdategame": "No s'ha pogut actualitzar el joc",
     "gamewasmoved": "El joc s'ha desplaçat",
     "gamesweremoved": "Els jocs s'han desplaçat",
     "failedtogglefavoritesfor": "Error en alternar l'estat de preferit per",

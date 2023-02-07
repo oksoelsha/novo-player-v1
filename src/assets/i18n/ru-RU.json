@@ -70,7 +70,7 @@
     "gamewasupdated": "Игра была обновлена",
     "gameswereupdated": "Игры были обновлены",
     "gamewasnotupdated": "Игра не обновлялась",
-    "cannotchangegamemainfile": "вы не можете изменить основной файл игры",
+    "failedtoupdategame": "Не удалось обновить игру",
     "gamewasmoved": "Игра была перемещена",
     "gamesweremoved": "Игры были перемещены",
     "failedtogglefavoritesfor": "Не удалось переключить статус избранного",

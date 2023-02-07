@@ -162,13 +162,13 @@ export class GamesService {
   }
 
   async updateGame(oldGame: Game, newGame: Game, restoreMode: boolean = false) {
-    return new Promise<boolean>((resolve, reject) => {
-      this.ipc.once('updateGameResponse', (event, err: boolean) => {
-        if (!err && !restoreMode) {
-          this.undoService.addToHistory(oldGame, newGame);
-          this.operationCacheService.cacheUpdateOperation(newGame);
+    return new Promise<Game>((resolve, reject) => {
+      this.ipc.once('updateGameResponse', (event, updatedGame: Game) => {
+        if (updatedGame && !restoreMode) {
+          this.undoService.addToHistory(oldGame, updatedGame);
+          this.operationCacheService.cacheUpdateOperation(updatedGame);
         }
-        resolve(err);
+        resolve(updatedGame);
       });
       this.ipc.send('updateGame', oldGame, newGame);
     });

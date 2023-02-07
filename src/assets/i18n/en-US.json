@@ -70,7 +70,7 @@
     "gamewasupdated": "Game was updated",
     "gameswereupdated": "Games were updated",
     "gamewasnotupdated": "Game was not updated",
-    "cannotchangegamemainfile": "you cannot change a game's main file",
+    "failedtoupdategame": "Failed to update game",
     "gamewasmoved": "Game was moved",
     "gamesweremoved": "Games were moved",
     "failedtogglefavoritesfor": "Failed to toggle the favorites status for",

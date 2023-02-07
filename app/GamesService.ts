@@ -6,7 +6,7 @@ import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
 import { GameDO } from './data/game-do';
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
-import { ExtraDataService } from './ExtraDataService';
+import { ExtraData, ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 
@@ -52,20 +52,8 @@ export class GamesService {
                     if (extraData) {
                         const gameDO = new GameDO(entry);
                         gameDO._id = entry._id;
+                        this.updateGameWithExtraData(gameDO, extraData);
 
-                        gameDO.generationMSXId = extraData.generationMSXID;
-                        gameDO.screenshotSuffix = extraData.suffix;
-                        gameDO.generations = extraData.generations;
-                        if (extraData.soundChips > 0) {
-                            gameDO.sounds = extraData.soundChips;
-                        }
-                        if (extraData.genre1 > 0) {
-                            gameDO.genre1 = extraData.genre1;
-                        }
-                        if (extraData.genre2 > 0) {
-                            gameDO.genre2 = extraData.genre2;
-                        }
-                        this.cleanupGameDO(gameDO);
                         await this.updateGameWithNewExtraData(gameDO);
                     }
                 }
@@ -216,6 +204,7 @@ export class GamesService {
         const self = this;
         const games: Game[] = [];
         this.database.find({ listing: listing }, (err: any, entries: any) => {
+            const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
             for (const entry of entries) {
                 const gameDO = new GameDO(entry);
                 const game = new Game(entry.name, entry._id, entry.size);
@@ -225,22 +214,7 @@ export class GamesService {
                         game[field] = gameDO[field];
                     }
                 }
-
-                const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
-                if (repositoryInfo != null) {
-                    const repositoryData = repositoryInfo.get(entry._id);
-                    if (repositoryData != null) {
-                        game.setTitle(repositoryData.softwareData.title);
-                        game.setSystem(repositoryData.softwareData.system);
-                        game.setCompany(repositoryData.softwareData.company);
-                        game.setYear(this.getYear(repositoryData.softwareData.year));
-                        game.setCountry(repositoryData.softwareData.country);
-                        game.setMapper(repositoryData.mapper);
-                        game.setRemark(repositoryData.remark);
-                        game.setStart(repositoryData.start);
-                        game.setKnownDumps(this.emulatorRepositoryService.getKnownDumps(repositoryData));
-                    }
-                }
+                this.populateGameWithOpenMSXRepositoryData(game, repositoryInfo);
                 games.push(game);
             }
             self.win.webContents.send('getGamesResponse', games);
@@ -258,27 +232,37 @@ export class GamesService {
     private updateGame(oldGame: Game, newGame: Game) {
         const self = this;
         const gameDO = new GameDO(newGame);
+        const gameMainFile = this.getGameMainFile(newGame);
+        if (fs.existsSync(gameMainFile)) {
+            this.hashService.getSha1Code(gameMainFile).then(data => {
+                if (data._id === oldGame.sha1Code) {
+                    this.database.update({ _id: oldGame.sha1Code }, gameDO, {}, () => {
+                        self.win.webContents.send('updateGameResponse', newGame);
+                    });
+                } else {
+                    gameDO._id = data.hash;
+                    gameDO.size = data.size;
+                    const extraDataInfo = this.extraDataService.getExtraDataInfo();
+                    const extraData = extraDataInfo.get(gameDO._id);
+                    this.updateGameWithExtraData(gameDO, extraData);
 
-        if (this.getGameMainFile(oldGame) == this.getGameMainFile(newGame)) {
-            this.database.update({ _id: oldGame.sha1Code }, gameDO, {}, () => {
-                self.win.webContents.send('updateGameResponse');
+                    this.database.remove({ _id: oldGame.sha1Code }, {}, (removeErr: any) => {
+                        if (!removeErr) {
+                            this.database.insert(gameDO, (reinsertErr: any, savedGame: GameDO) => {
+                                let updatedGame: Game;
+                                if (reinsertErr == null) {
+                                    updatedGame = this.constructGame(newGame, gameDO);
+                                } else {
+                                    updatedGame = null;
+                                }
+                                self.win.webContents.send('updateGameResponse', updatedGame);
+                            });
+                        }
+                    });
+                }
             });
         } else {
-            if(!fs.existsSync(this.getGameMainFile(newGame))) {
-                self.win.webContents.send('updateGameResponse', true);
-            } else {
-                this.hashService.getSha1Code(this.getGameMainFile(newGame)).then(data => {
-                    if (oldGame.sha1Code == data.hash) {
-                        //only allow a game to be updated if the changed main file has the same hash
-                        //e.g. this can happen if the file was moved to a different folder
-                        this.database.update({ _id: oldGame.sha1Code }, gameDO, {}, () => {
-                            self.win.webContents.send('updateGameResponse');
-                        });
-                    } else {
-                        self.win.webContents.send('updateGameResponse', true);
-                    }
-                });    
-            }
+            self.win.webContents.send('updateGameResponse', null);
         }
     }
 
@@ -402,7 +386,62 @@ export class GamesService {
         });
     }
 
-    cleanupGameDO(gameDO: GameDO) {
+    private updateGameWithExtraData(gameDO: GameDO, extraData: ExtraData) {
+        if (extraData == null) {
+            gameDO.generationMSXId = 0;
+            gameDO.screenshotSuffix = null;
+            gameDO.generations = 0;
+            gameDO.sounds = 0;
+            gameDO.genre1 = 0;
+            gameDO.genre2 = 0;
+        } else {
+            gameDO.generationMSXId = extraData.generationMSXID;
+            gameDO.screenshotSuffix = extraData.suffix;
+            gameDO.generations = extraData.generations;
+            if (extraData.soundChips > 0) {
+                gameDO.sounds = extraData.soundChips;
+            }
+            if (extraData.genre1 > 0) {
+                gameDO.genre1 = extraData.genre1;
+            }
+            if (extraData.genre2 > 0) {
+                gameDO.genre2 = extraData.genre2;
+            }    
+        }
+        this.cleanupGameDO(gameDO);
+    }
+
+    private populateGameWithOpenMSXRepositoryData(game: Game, repositoryInfo: Map<string, RepositoryData>) {
+        if (repositoryInfo != null) {
+            const repositoryData = repositoryInfo.get(game.sha1Code);
+            if (repositoryData != null) {
+                game.setTitle(repositoryData.softwareData.title);
+                game.setSystem(repositoryData.softwareData.system);
+                game.setCompany(repositoryData.softwareData.company);
+                game.setYear(this.getYear(repositoryData.softwareData.year));
+                game.setCountry(repositoryData.softwareData.country);
+                game.setMapper(repositoryData.mapper);
+                game.setRemark(repositoryData.remark);
+                game.setStart(repositoryData.start);
+                game.setKnownDumps(this.emulatorRepositoryService.getKnownDumps(repositoryData));
+            }
+        }
+    }
+
+    private constructGame(game: Game, gameDO: GameDO): Game {
+        const constructedGame = new Game(gameDO.name, gameDO._id, gameDO.size);
+        for (const field of PersistenceUtils.fieldsToPersist) {
+            if (gameDO[field] != constructedGame[field]) {
+                constructedGame[field] = gameDO[field];
+            }
+        }
+        const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
+        this.populateGameWithOpenMSXRepositoryData(constructedGame, repositoryInfo);
+
+        return constructedGame;
+    }
+
+    private cleanupGameDO(gameDO: GameDO) {
         Object.keys(gameDO).forEach((k) => gameDO[k] == null && delete gameDO[k]);
     }
 }

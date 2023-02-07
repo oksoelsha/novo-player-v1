@@ -70,7 +70,7 @@
     "gamewasupdated": "ゲームが更新されました",
     "gameswereupdated": "ゲームが更新されました",
     "gamewasnotupdated": "ゲームは更新されませんでした",
-    "cannotchangegamemainfile": "ゲームのメインファイルを変更することはできません",
+    "failedtoupdategame": "ゲームのアップデートに失敗しました",
     "gamewasmoved": "ゲームが移動しました",
     "gamesweremoved": "ゲームが移動しました",
     "failedtogglefavoritesfor": "お気に入りのステータスを変更できませんでした",

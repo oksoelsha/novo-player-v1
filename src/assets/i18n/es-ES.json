@@ -70,7 +70,7 @@
     "gamewasupdated": "El juego fue actualizado",
     "gameswereupdated": "Los juegos fueron actualizados",
     "gamewasnotupdated": "El juego no fue actualizado",
-    "cannotchangegamemainfile": "no se puede cambiar el archivo principal de un juego",
+    "failedtoupdategame": "Error al actualizar el juego",
     "gamewasmoved": "El juego fue movido",
     "gamesweremoved": "Los juegos fueron movidos",
     "failedtogglefavoritesfor": "Error al alternar el estado de favorito por",

@@ -70,7 +70,7 @@
     "gamewasupdated": "게임이 업데이트되었습니다",
     "gameswereupdated": "게임이 업데이트되었습니다",
     "gamewasnotupdated": "게임이 업데이트되지 않았습니다",
-    "cannotchangegamemainfile": "게임의 메인 파일을 변경할 수 없습니다",
+    "failedtoupdategame": "게임 업데이트 실패",
     "gamewasmoved": "게임이 옮겨졌습니다",
     "gamesweremoved": "게임이 옮겨졌습니다",
     "failedtogglefavoritesfor": "즐겨찾기 상태를 변경할 수 없습니다",
