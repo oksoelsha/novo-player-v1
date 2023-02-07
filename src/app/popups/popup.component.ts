@@ -17,7 +17,7 @@ export class PopupComponent implements OnDestroy {
 
   commonInit() {
     const self = this;
-    window.addEventListener('click', (e: any) => {
+    window.addEventListener('mousedown', (e: any) => {
       if (e.target === document.getElementById(self.popupId)) {
         self.close();
       }
