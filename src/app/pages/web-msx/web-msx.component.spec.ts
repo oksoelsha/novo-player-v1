@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { Game } from '../../models/game';
 
 import { WebMSXComponent } from './web-msx.component';
@@ -13,7 +14,7 @@ describe('WebMSXComponent', () => {
     game.setCompany('company');
     game.setYear('1986');
     await TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([], { relativeLinkResolution: 'legacy' })],
+      imports: [TranslateModule.forRoot(), RouterModule.forRoot([], { relativeLinkResolution: 'legacy' })],
       providers: [
         {
           provide: ActivatedRoute,
