@@ -60,8 +60,9 @@
 
     <div class="form-group mb-3" *ngIf="isWindows">
       <label class="form-label">{{ 'settings.bluemsxparams' | translate }}</label>
-      <input type="text" class="form-control form-control-sm" name="bluemsx-params" [(ngModel)]="bluemsxParams"
-        placement="bottom" [ngbTooltip]="'settings.bluemsxparamstooltip' | translate" />
+      <app-field-with-suggestions [value]="bluemsxParams" [suggestions]="['machine', 'romtype1', 'romtype2']" trigger="/"
+        (userInputOutput)="setBluemsxParams($event)" placement="bottom"
+        [ngbTooltip]="'settings.bluemsxparamstooltip' | translate"></app-field-with-suggestions>
     </div>
 
     <div class="header">{{ 'settings.general' | translate }}</div>

@@ -1,18 +1,18 @@
 <form>
     <div class="d-inline-block me-3">{{ 'popups.editBluemsxArguments.bluemsxArguments' | translate }}</div>
     <div class="d-inline-block mb-3">
-        <div class="input-group bluemsx-arguments">
-            <input type="text" class="form-control form-control-sm" id="bluemsxArguments" [(ngModel)]="bluemsxArguments"
-                [ngModelOptions]="{standalone: true}">
+        <div class="bluemsx-arguments">
+            <app-field-with-suggestions [value]="bluemsxArguments" [suggestions]="['machine', 'romtype1', 'romtype2']"
+                trigger="/" (userInputOutput)="bluemsxArguments = $event"></app-field-with-suggestions>
         </div>
     </div>
     <div class="form-check ms-3">
-        <input class="form-check-input" type="checkbox" [(ngModel)]="bluemsxOverrideSettings" id="bluemsxOverrideSettings">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="bluemsxOverrideSettings"
+            id="bluemsxOverrideSettings">
         <label class="form-check-label">
             {{ 'popups.editBluemsxArguments.overrideargumentsinsettings' | translate }}
         </label>
     </div>
-
     <div>
         <button class="btn btn-primary btn-sm mt-2" (click)="save()" (keyup.enter)="save()">
             {{ 'common.save' | translate }}

@@ -1,0 +1,11 @@
+<div ngbDropdown #suggestionsDropdown="ngbDropdown">
+    <input class="form-control form-control-sm" type="text" (input)="showSuggestions($event)"
+        (keyup)="processArrowKey($event)" [(ngModel)]="value" [ngModelOptions]="{standalone: true}" ngbDropdownAnchor
+        #inputField>
+    <div ngbDropdownMenu>
+        <button *ngFor="let suggestion of suggestions" ngbDropdownItem (click)="onSelectSuggestion($event, suggestion)"
+            #suggestionsList>
+            {{ suggestion }}
+        </button>
+    </div>
+</div>

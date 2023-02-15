@@ -77,9 +77,14 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     }
   }
 
+  setBluemsxParams(bluemsxParams: string) {
+    this.bluemsxParams = bluemsxParams;
+    this.submitDisabled = false;
+  }
+
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
-      this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], form.value['bluemsx-params'],
+      this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
       this.languageReverseMap.get(this.language), form.value['giantbomb-apikey']);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
