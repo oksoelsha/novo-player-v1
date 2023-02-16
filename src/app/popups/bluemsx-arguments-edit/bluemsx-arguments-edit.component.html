@@ -2,7 +2,7 @@
     <div class="d-inline-block me-3">{{ 'popups.editBluemsxArguments.bluemsxArguments' | translate }}</div>
     <div class="d-inline-block mb-3">
         <div class="bluemsx-arguments">
-            <app-field-with-suggestions [value]="bluemsxArguments" [suggestions]="['machine', 'romtype1', 'romtype2']"
+            <app-field-with-suggestions [value]="bluemsxArguments" [suggestionsMap]="getBlueMSXArgumentsMap()"
                 trigger="/" (userInputOutput)="bluemsxArguments = $event"></app-field-with-suggestions>
         </div>
     </div>

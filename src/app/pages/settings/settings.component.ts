@@ -7,6 +7,7 @@ import { AlertsService } from '../../shared/components/alerts/alerts.service';
 import { GamesService } from '../../services/games.service';
 import { DeactivateComponent } from '../../guards/deactivate-guard.service';
 import { PlatformService } from '../../services/platform.service';
+import { BlueMSXUtils } from '../../models/bluemsx-utils';
 
 @Component({
   selector: 'app-settings',
@@ -75,6 +76,10 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       this[field] = value;
       this.submitDisabled = false;
     }
+  }
+
+  getBlueMSXArgumentsMap(): Map<string, string[]> {
+    return BlueMSXUtils.getCommandLineArgumentsMap();
   }
 
   setBluemsxParams(bluemsxParams: string) {

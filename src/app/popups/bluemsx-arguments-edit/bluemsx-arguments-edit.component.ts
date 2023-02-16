@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BlueMSXUtils } from '../../models/bluemsx-utils';
 import { Game } from '../../models/game';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
@@ -35,6 +36,10 @@ export class BluemsxArgumentsEditComponent extends PopupComponent implements OnI
 
     this.bluemsxArguments = this.game.bluemsxArguments;
     this.bluemsxOverrideSettings = this.game.bluemsxOverrideSettings;
+  }
+
+  getBlueMSXArgumentsMap(): Map<string, string[]> {
+    return BlueMSXUtils.getCommandLineArgumentsMap();
   }
 
   save() {

@@ -10,23 +10,19 @@ export class FieldWithSuggestionsComponent {
 
   @Input() parentMenuOpen = false;
   @Input() value: string;
-  @Input() suggestions: string[] = [];
+  @Input() suggestionsMap: Map<string, string[]>;
   @Input() trigger = '';
   @Output() userInputOutput = new EventEmitter<string>();
   @ViewChild('inputField') private inputField: ElementRef;
   @ViewChild('suggestionsDropdown', { static: true }) private suggestionsDropdown: NgbDropdown;
   @ViewChildren('suggestionsList') private suggestionsList: QueryList<ElementRef>;
 
+  suggestions: string[] = [];
+
   constructor() { }
 
   showSuggestions(event: any) {
-    const inputText: string = event.target.value;
-    if (inputText && inputText.lastIndexOf(this.trigger) === inputText.length - 1) {
-      this.suggestionsDropdown.open();
-    } else {
-      this.suggestionsDropdown.close();
-    }
-    this.userInputOutput.emit(this.value);
+    this.showSuggestionsForGivenInput(event.target.value);
   }
 
   processArrowKey(event: KeyboardEvent) {
@@ -36,10 +32,44 @@ export class FieldWithSuggestionsComponent {
   }
 
   onSelectSuggestion(event: any, suggestion: string) {
-    this.value = this.value + suggestion + ' ';
+    if (suggestion.indexOf(' ') > -1) {
+      this.value = this.value + '"' + suggestion + '"';
+    } else {
+      this.value = this.value + suggestion;
+    }
     this.inputField.nativeElement.focus();
-    this.userInputOutput.emit(this.value);    
+    setTimeout(() => {
+      this.showSuggestionsForGivenInput(this.value);
+    }, 0);
+    this.userInputOutput.emit(this.value);
     event.preventDefault();
     event.stopPropagation();
+  }
+
+  private showSuggestionsForGivenInput(inputText: string) {
+    if (inputText) {
+      if (inputText.lastIndexOf(this.trigger) === inputText.length - 1) {
+        this.suggestions = Array.from( this.suggestionsMap.keys() );
+        this.suggestionsDropdown.open();
+      } else {
+        const lastIndexTrigger = inputText.lastIndexOf(this.trigger);
+        const lastIndexSpace = inputText.lastIndexOf(' ');
+        if (lastIndexTrigger > -1 && lastIndexSpace === inputText.length - 1) {
+          const argument = inputText.substring(lastIndexTrigger + 1, lastIndexSpace);
+          const values = this.suggestionsMap.get(argument);
+          if (values != null) {
+            this.suggestions = values;
+            this.suggestionsDropdown.open();
+          } else {
+            this.suggestionsDropdown.close();
+          }
+        } else {
+          this.suggestionsDropdown.close();
+        }
+      }
+    } else {
+      this.suggestionsDropdown.close();
+    }
+    this.userInputOutput.emit(this.value);  
   }
 }
