@@ -1,5 +1,5 @@
 <div id="settings" class="scrollable-screen">
-  <form id="settingsForm" #settingsForm="ngForm" (ngSubmit)="submitSettings(settingsForm.form)">
+  <form id="settingsForm" #settingsForm="ngForm" spellcheck="false" (ngSubmit)="submitSettings(settingsForm.form)">
     <div class="form-group mb-3">
       <label class="form-label">{{ 'settings.openmsxpath' | translate }}</label>
       <div class="d-flex justify-content-start">

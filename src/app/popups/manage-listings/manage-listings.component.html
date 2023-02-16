@@ -9,8 +9,9 @@
                 {{ listing }}
             </td>
             <td *ngIf="renameMode && listingsSelectionMap.get(listing)" class="listing">
-                <input class="listingRenameInput" #listingRenameInput type="text" [(ngModel)]="renamedListing"
-                    (keyup.enter)="renameListing($event)" (keyup.escape)="resetState()" (focusout)="resetState()" />
+                <input class="listingRenameInput" #listingRenameInput type="text" spellcheck="false"
+                    [(ngModel)]="renamedListing" (keyup.enter)="renameListing($event)" (keyup.escape)="resetState()"
+                    (focusout)="resetState()" />
             </td>
             <td class="actions">
                 <img src="assets/images/operations/rename.png" (click)="enableRenameMode(listing)" placement="top"
@@ -30,6 +31,7 @@
     <div *ngIf="mergeMode">
         {{ 'popups.managelistings.mergelistingsconfirmation' | translate }}
         <button class="btn btn-primary btn-sm ms-1" (click)="mergeListings()">{{ 'common.yes' | translate }}</button>
-        <button class="btn btn-secondary btn-sm ms-1" (click)="resetMergeMode(); resetState()">{{ 'common.no' | translate }}</button>
+        <button class="btn btn-secondary btn-sm ms-1" (click)="resetMergeMode(); resetState()">{{ 'common.no' |
+            translate }}</button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<form id="scanParametersForm" #scanParametersForm="ngForm">
+<form id="scanParametersForm" spellcheck="false" #scanParametersForm="ngForm">
   <div class="add-buttons">
     <app-file-system-chooser [directoryMode]="true" [multiSelections]="true"
       [label]="'popups.addgames.addfolder' | translate" (chosen)="filesAndFolders = filesAndFolders.concat($event)">
