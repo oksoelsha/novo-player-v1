@@ -70,6 +70,6 @@ export class FieldWithSuggestionsComponent {
     } else {
       this.suggestionsDropdown.close();
     }
-    this.userInputOutput.emit(this.value);  
+    this.userInputOutput.emit(this.value);
   }
 }

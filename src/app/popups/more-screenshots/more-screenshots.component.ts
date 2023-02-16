@@ -69,7 +69,7 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
         imageBlocksArray[ix].nativeElement.style.display = 'none';
       }
     }, 0);
-    
+
     setTimeout(() => {
       imageBlocksArray[this.imageIndex].nativeElement.style.display = 'block';
     }, 0);

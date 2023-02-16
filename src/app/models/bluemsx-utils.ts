@@ -1,9 +1,9 @@
 export class BlueMSXUtils {
 
-  static CommandLineArguments = new Map<string, string[]>();
+  static commandLineArguments = new Map<string, string[]>();
 
   static getCommandLineArgumentsMap(): Map<string, string[]> {
-    if (this.CommandLineArguments.size === 0) {
+    if (this.commandLineArguments.size === 0) {
       const machines = [
         'MSX',
         'MSX - Japanese',
@@ -21,15 +21,15 @@ export class BlueMSXUtils {
         'ASCII16',
         'KonamiSCC',
         'scc',
-        'scc+', 
-        'Coleco', 
+        'scc+',
+        'Coleco',
         'SG1000'
       ];
 
-      this.CommandLineArguments.set('machine', machines);
-      this.CommandLineArguments.set('romtype1', romTypes);
-      this.CommandLineArguments.set('romtype2', romTypes);  
+      this.commandLineArguments.set('machine', machines);
+      this.commandLineArguments.set('romtype1', romTypes);
+      this.commandLineArguments.set('romtype2', romTypes);
     }
-    return this.CommandLineArguments;
+    return this.commandLineArguments;
   }
 }
