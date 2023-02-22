@@ -12,4 +12,8 @@ export class VideoSourceFilter implements Filter {
     isFiltered(game: Game): boolean {
         return (!this.checkGFX9000 && !game.connectGFX9000) || (this.checkGFX9000 && game.connectGFX9000);
     }
+
+    getIdentifier(): string {
+        return this.checkGFX9000? 't' : 'f';
+    }
 }

@@ -33,3 +33,10 @@ describe('SoundFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('SoundFilter', () => {
+  it('SoundFilter should return correct identifier', () => {
+    const filter = new SoundFilter(32);
+    expect(filter.getIdentifier()).toEqual('32');
+  });
+});

@@ -20,4 +20,8 @@ export class RecentActivityFilter implements Filter {
             return this.operationCacheService.isRecentlyUpdated(game);
         }
     }
+
+    getIdentifier(): string {
+        return this.recentActivity;
+    }
 }

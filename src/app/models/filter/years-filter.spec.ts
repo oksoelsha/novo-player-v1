@@ -114,3 +114,11 @@ describe('YearsFilter', () => {
     expect(filter.isFiltered(game5)).toBeFalse();
   });
 });
+
+describe('YearsFilter', () => {
+  it('YearsFilter should return correct identifier', () => {
+    const years = new FilterRange(30, ComparisonOperator.greaterOrEqual, 75);
+    const filter = new YearsFilter(years);
+    expect(filter.getIdentifier()).toEqual('30-greaterOrEqual');
+  });
+});

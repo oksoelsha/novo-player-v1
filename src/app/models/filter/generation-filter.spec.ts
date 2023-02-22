@@ -34,3 +34,10 @@ describe('GenerationFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('GenerationFilter', () => {
+  it('GenerationFilter should return correct identifier', () => {
+    const filter = new GenerationFilter(Generation.MSXTR);
+    expect(filter.getIdentifier()).toEqual(Generation.MSXTR);
+  });
+});

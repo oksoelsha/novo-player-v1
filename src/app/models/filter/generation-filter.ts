@@ -23,4 +23,8 @@ export class GenerationFilter implements Filter {
             return true;
         }
     }
+
+    getIdentifier(): string {
+        return this.generation;
+    }
 }

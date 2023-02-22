@@ -16,7 +16,7 @@ export class FilterRange {
 export class Filters {
     readonly filters: Filter[][] = [];
 
-    addFilter(filter: Filter) {
+    addFilter(filter: Filter): boolean {
         let index = 0;
         let done = false;
         while (!done && index < this.filters.length) {
@@ -29,7 +29,13 @@ export class Filters {
         if (!this.filters[index]) {
             this.filters[index] = [];
         }
-        this.filters[index].push(filter);
+
+        if (this.filters[index].findIndex(f => f.getIdentifier() === filter.getIdentifier()) > -1) {
+            return false;
+        } else {
+            this.filters[index].push(filter);
+            return true;
+        }
     }
 
     removeFilter(filter: Filter) {

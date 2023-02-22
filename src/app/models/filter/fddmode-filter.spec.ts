@@ -41,3 +41,10 @@ describe('FDDModeFilter', () => {
     expect(filter.isFiltered(game)).toBeTrue();
   });
 });
+
+describe('FDDModeFilter', () => {
+  it('FDDModeFilter should return correct identifier', () => {
+    const filter = new FDDModeFilter(1);
+    expect(filter.getIdentifier()).toEqual('1');
+  });
+});

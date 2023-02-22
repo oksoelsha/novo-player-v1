@@ -12,4 +12,8 @@ export class FDDModeFilter implements Filter {
     isFiltered(game: Game): boolean {
         return (!game.fddMode && this.fddMode === 0) || game.fddMode === this.fddMode;
     }
+
+    getIdentifier(): string {
+        return this.fddMode.toString();
+    }
 }

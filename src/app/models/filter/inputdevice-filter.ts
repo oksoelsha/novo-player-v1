@@ -12,4 +12,8 @@ export class InputDeviceFilter implements Filter {
     isFiltered(game: Game): boolean {
         return (!game.inputDevice && this.inputDevice === 0) || game.inputDevice === this.inputDevice;
     }
+
+    getIdentifier(): string {
+        return this.inputDevice.toString();
+    }
 }

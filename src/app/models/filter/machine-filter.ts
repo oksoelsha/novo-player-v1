@@ -12,4 +12,8 @@ export class MachineFilter implements Filter {
     isFiltered(game: Game): boolean {
         return game.machine === this.machine;
     }
+
+    getIdentifier(): string {
+        return this.machine;
+    }
 }

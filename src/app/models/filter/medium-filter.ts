@@ -24,4 +24,8 @@ export class MediumFilter implements Filter {
         }
         return false;
     }
+
+    getIdentifier(): string {
+        return this.medium;
+    }
 }

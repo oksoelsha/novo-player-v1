@@ -12,4 +12,8 @@ export class SoundFilter implements Filter {
     isFiltered(game: Game): boolean {
         return (game.sounds & this.sound) > 0;
     }
+
+    getIdentifier(): string {
+        return this.sound.toString();
+    }
 }

@@ -33,3 +33,10 @@ describe('CompanyFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('CompanyFilter', () => {
+  it('CompanyFilter should return correct identifier', () => {
+    const filter = new CompanyFilter('company-code');
+    expect(filter.getIdentifier()).toEqual('company-code');
+  });
+});

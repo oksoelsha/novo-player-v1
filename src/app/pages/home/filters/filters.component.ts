@@ -218,9 +218,10 @@ export class FiltersComponent implements OnInit {
   }
 
   private applyFilter(filter: Filter) {
-    this.filters.addFilter(filter);
-    this.addFilterButton(filter);
-    this.appliedFilters.emit(this.filters);
+    if (this.filters.addFilter(filter)) {
+      this.addFilterButton(filter);
+      this.appliedFilters.emit(this.filters);
+    }
   }
 
   private addFilterButton(filter: Filter) {

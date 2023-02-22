@@ -41,3 +41,10 @@ describe('InputDeviceFilter', () => {
     expect(filter.isFiltered(game)).toBeTrue();
   });
 });
+
+describe('InputDeviceFilter', () => {
+  it('InputDeviceFilter should return correct identifier', () => {
+    const filter = new InputDeviceFilter(2);
+    expect(filter.getIdentifier()).toEqual('2');
+  });
+});

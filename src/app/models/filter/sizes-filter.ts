@@ -36,4 +36,8 @@ export class SizesFilter implements Filter {
             }
         }
     }
+
+    getIdentifier(): string {
+        return this.sizes.start.toString() + '-' + this.sizes.comparisonOperator;
+    }
 }

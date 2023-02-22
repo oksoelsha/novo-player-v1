@@ -33,3 +33,10 @@ describe('VideoSourceFilter', () => {
     expect(filter.isFiltered(game)).toBeTrue();
   });
 });
+
+describe('VideoSourceFilter', () => {
+  it('VideoSourceFilter should return correct identifier', () => {
+    const filter = new VideoSourceFilter(true);
+    expect(filter.getIdentifier()).toEqual('t');
+  });
+});

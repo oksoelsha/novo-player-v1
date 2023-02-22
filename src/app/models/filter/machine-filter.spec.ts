@@ -33,3 +33,10 @@ describe('MachineFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('MachineFilter', () => {
+  it('MachineFilter should return correct identifier', () => {
+    const filter = new MachineFilter('machine-name');
+    expect(filter.getIdentifier()).toEqual('machine-name');
+  });
+});

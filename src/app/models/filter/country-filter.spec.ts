@@ -33,3 +33,10 @@ describe('CountryFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('CountryFilter', () => {
+  it('CountryFilter should return correct identifier', () => {
+    const filter = new CountryFilter('country-code');
+    expect(filter.getIdentifier()).toEqual('country-code');
+  });
+});

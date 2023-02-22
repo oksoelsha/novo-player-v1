@@ -12,4 +12,8 @@ export class CompanyFilter implements Filter {
     isFiltered(game: Game): boolean {
         return game.company === this.company;
     }
+
+    getIdentifier(): string {
+        return this.company;
+    }
 }

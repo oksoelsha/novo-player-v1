@@ -94,3 +94,11 @@ describe('SizesFilter', () => {
     expect(filter.isFiltered(game5)).toBeFalse();
   });
 });
+
+describe('SizesFilter', () => {
+  it('SizesFilter should return correct identifier', () => {
+    const sizes = new FilterRange(15, ComparisonOperator.betweenInclusive, 35);
+    const filter = new SizesFilter(sizes);
+    expect(filter.getIdentifier()).toEqual('15-betweenInclusive');
+  });
+});

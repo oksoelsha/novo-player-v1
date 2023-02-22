@@ -12,4 +12,8 @@ export class CountryFilter implements Filter {
     isFiltered(game: Game): boolean {
         return game.country === this.country;
     }
+
+    getIdentifier(): string {
+        return this.country;
+    }
 }

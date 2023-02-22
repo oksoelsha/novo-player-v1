@@ -34,3 +34,10 @@ describe('MediumFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('MediumFilter', () => {
+  it('MediumFilter should return correct identifier', () => {
+    const filter = new MediumFilter(Medium.harddisk);
+    expect(filter.getIdentifier()).toEqual(Medium.harddisk);
+  });
+});

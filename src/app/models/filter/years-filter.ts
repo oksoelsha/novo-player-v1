@@ -36,4 +36,8 @@ export class YearsFilter implements Filter {
             }
         }
     }
+
+    getIdentifier(): string {
+        return this.years.start.toString() + '-' + this.years.comparisonOperator;
+    }
 }

@@ -53,3 +53,11 @@ describe('GenreFilter', () => {
     expect(filter.isFiltered(game)).toBeFalse();
   });
 });
+
+describe('GenreFilter', () => {
+  it('GenreFilter should return correct identifier', () => {
+    const genreCode = GameUtils.getGenreCode('Fighting');
+    const filter = new GenreFilter(genreCode);
+    expect(filter.getIdentifier()).toEqual(genreCode.toString());
+  });
+});
