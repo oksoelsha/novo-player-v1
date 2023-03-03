@@ -26,7 +26,7 @@ export class FilesService {
         });
 
         ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix) => {
-            const secondaryData = this.getSecondaryData(genMsxId, suffix);
+            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code);
             this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
         });
 
@@ -80,7 +80,7 @@ export class FilesService {
         });
     }
 
-    private getSecondaryData(genMsxId: number, suffix: string): GameSecondaryData {
+    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string): GameSecondaryData {
         let screenshotsPath1: string;
         if (suffix == null) {
             screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a.png');
@@ -113,7 +113,7 @@ export class FilesService {
         }
 
         const musicFiles = this.getMusicFiles(genMsxId);
-        let moreScreenshots = this.getMoreScreenshots(genMsxId);
+        let moreScreenshots = this.getMoreScreenshots(genMsxId, sha1Code);
         if (PlatformUtils.isWindows()) {
             // Front end appends 'unsafe' to the image file path if it encounters Windows drive name
             // so we replace the backslashes and remove the drive name
@@ -153,7 +153,13 @@ export class FilesService {
         }
     }
 
-    private getMoreScreenshots(genMsxId: number): string[] {
+    private getMoreScreenshots(genMsxId: number, sha1Code: string): string[] {
+        let identifier: string;
+        if (genMsxId) {
+            identifier = genMsxId.toString();
+        } else {
+            identifier = sha1Code;
+        }
         if (this.cachedMoreScreenshots.length > 0 || fs.existsSync(this.openmsxDataScrrenshotsFolder)) {
             const list: string[] = [];
             let folderContents: string[];
@@ -163,7 +169,7 @@ export class FilesService {
                 folderContents = fs.readdirSync(this.openmsxDataScrrenshotsFolder, 'utf8');
                 this.cachedMoreScreenshots = folderContents;
             }
-            folderContents.filter(f => f.startsWith(genMsxId + '-'))
+            folderContents.filter(f => f.startsWith(identifier + '-'))
                 .sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()))
                 .forEach(f => list.push(path.join(this.openmsxDataScrrenshotsFolder, f)));
             return list;
