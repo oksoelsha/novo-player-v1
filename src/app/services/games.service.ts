@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { EventSource } from '../models/event';
 import { Game } from '../models/game';
+import { GameSavedState } from '../models/saved-state';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
 import { LaunchActivityService } from './launch-activity.service';
@@ -255,6 +256,15 @@ export class GamesService {
         resolve(favorites);
       });
       this.ipc.send('getFavorites');
+    });
+  }
+
+  async getGameSavedStates(game: Game): Promise<GameSavedState[]> {
+    return new Promise<GameSavedState[]>((resolve, reject) => {
+      this.ipc.once('getGameSavedStatesResponse' + game.sha1Code, (event, savedStates) => {
+        resolve(savedStates);
+      });
+      this.ipc.send('getGameSavedStates', game.sha1Code);
     });
   }
 }

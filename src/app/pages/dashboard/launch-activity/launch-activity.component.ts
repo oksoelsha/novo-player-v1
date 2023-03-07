@@ -123,4 +123,13 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  saveState(pid: number, game: Game) {
+    this.launchActivityService.saveState(pid, game).then(saved => {
+      if (saved) {
+        this.alertService.success(this.localizationService.translate('dashboard.statesaved') + ': ' +
+          game.name + ' [' + game.listing + ']');
+      }
+    });
+  }
 }

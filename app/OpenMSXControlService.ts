@@ -21,6 +21,9 @@ export class OpenMSXControlService {
         ipcMain.on('takeScreenshotOnOpenmsx', (event, pid: number, game: Game) => {
             this.takeScreenshotOnOpenmsx(pid, game);
         });
+        ipcMain.on('saveStateOnOpenmsx', (event, pid: number, game: Game) => {
+            this.saveStateOnOpenmsx(pid, game);
+        });
     }
 
     private async resetOnOpenmsx(pid: number) {
@@ -54,6 +57,13 @@ export class OpenMSXControlService {
         this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + screenshotName + '-');
 
         this.win.webContents.send('takeScreenshotOnOpenmsxResponse', true);
+    }
+
+    private async saveStateOnOpenmsx(pid: number, game: Game) {
+        const sanitizedName = game.name.replace(/ /g, '_');
+        this.executeCommandOnOpenmsx(pid, 'savestate ' + game.sha1Code + '-' + sanitizedName + '-' +  Date.now());
+
+        this.win.webContents.send('saveStateOnOpenmsxResponse', true);
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {

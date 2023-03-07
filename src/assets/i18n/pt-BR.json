@@ -193,7 +193,9 @@
     "totalperday": "Total por dia",
     "reset": "openMSX foi reiniciado",
     "takeascreenshot": "Tirar uma captura de tela",
-    "screenshottaken": "Captura de tela foi tirada"
+    "screenshottaken": "Captura de tela foi tirada",
+    "savestate": "Salvar estado",
+    "statesaved": "Estado foi salvado"
   },
   "help": {
     "uptodate": "Atualizado",

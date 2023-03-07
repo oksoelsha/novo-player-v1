@@ -193,7 +193,9 @@
     "totalperday": "1日あたりの合計",
     "reset": "openMSXがリセットされました",
     "takeascreenshot": "スクリーンショットをとる",
-    "screenshottaken": "スクリーンショットが撮られました"
+    "screenshottaken": "スクリーンショットが撮られました",
+    "savestate": "状態の保存",
+    "statesaved": "状態が保存されました"
   },
   "help": {
     "uptodate": "最新",

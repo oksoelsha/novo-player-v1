@@ -25,6 +25,9 @@
                                     <button ngbDropdownItem type="button" (click)="takeScreenshot(activity.pid, activity.game)">
                                         {{ 'dashboard.takeascreenshot' | translate }}
                                     </button>
+                                    <button ngbDropdownItem type="button" (click)="saveState(activity.pid, activity.game)">
+                                        {{ 'dashboard.savestate' | translate }}
+                                    </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
                                         <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{ 'dashboard.switchdisks' | translate }}:</h6>

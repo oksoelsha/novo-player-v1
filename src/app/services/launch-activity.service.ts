@@ -73,6 +73,15 @@ export class LaunchActivityService {
       this.ipc.send('takeScreenshotOnOpenmsx', pid, game);
     });
   }
+
+  saveState(pid: number, game: Game) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('saveStateOnOpenmsxResponse', (event: any, saved: boolean) => {
+        resolve(saved);
+      });
+      this.ipc.send('saveStateOnOpenmsx', pid, game);
+    });
+  }
 }
 
 export class LaunchActivity {

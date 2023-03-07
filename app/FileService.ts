@@ -6,6 +6,7 @@ import { GameSecondaryData } from '../src/app/models/secondary-data';
 import * as cp from 'child_process'
 import { PlatformUtils } from './utils/PlatformUtils';
 import * as chokidar from 'chokidar';
+import { GameSavedState } from '../src/app/models/saved-state';
 
 export class FilesService {
 
@@ -15,6 +16,7 @@ export class FilesService {
     private cachedGameMusicPath: string;
     private readonly openmsxDataScrrenshotsFolder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
     private cachedMoreScreenshots: string[] = [];
+    private readonly openmsxSavedStatesFolder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'savestates');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService) {
         this.init();
@@ -64,6 +66,11 @@ export class FilesService {
         ipcMain.on('getFileGroup', (event, pid: number, filename: string) => {
             const fileGroup = this.getFileGroup(filename);
             this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
+        });
+
+        ipcMain.on('getGameSavedStates', (event, sha1Code) => {
+            const savedStates = this.getSavedStates(sha1Code);
+            this.win.webContents.send('getGameSavedStatesResponse' + sha1Code, savedStates);
         });
 
         chokidar.watch(this.openmsxDataScrrenshotsFolder, {
@@ -245,6 +252,33 @@ export class FilesService {
         }
 
         return this.examineFileFormat(filename, counterIndex);
+    }
+
+    private getSavedStates(sha1Code: string): GameSavedState[] {
+        if (fs.existsSync(this.openmsxDataScrrenshotsFolder)) {
+            const list: GameSavedState[] = [];
+            const folderContents = fs.readdirSync(this.openmsxSavedStatesFolder, 'utf8');
+            folderContents.forEach(f => {
+                if (f.startsWith(sha1Code) && f.endsWith('.oms')) {
+                    const state = this.sanitizePath(path.join(this.openmsxSavedStatesFolder, f));
+                    const screenshot = this.sanitizePath(path.join(this.openmsxSavedStatesFolder, f.substring(0, f.length - 3) + 'png'));
+                    list.push(new GameSavedState(state, screenshot));
+                }
+            });
+            return list.sort((a: GameSavedState, b: GameSavedState) => a.state.localeCompare(b.state));
+        } else {
+            return [];
+        }
+    }
+
+    private sanitizePath(filename: string): string {
+        if (PlatformUtils.isWindows()) {
+            // Front end appends 'unsafe' to the image file path if it encounters Windows drive name
+            // so we replace the backslashes and remove the drive name
+            return filename.replace(/\\/g, '/').substring(2);
+        } else {
+            return filename;
+        }
     }
 
     private examineFileFormat(filename: string, counterIndex: number): string[] {

@@ -193,7 +193,9 @@
     "totalperday": "Totaal per dag",
     "reset": "openMSX is opnieuw ingesteld",
     "takeascreenshot": "Een schermafbeelding maken",
-    "screenshottaken": "Schermafbeelding is maakt"
+    "screenshottaken": "Schermafbeelding is maakt",
+    "savestate": "Status opslaan",
+    "statesaved": "Status is opgeslagen"
   },
   "help": {
     "uptodate": "Bijgewerkt",

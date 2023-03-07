@@ -193,7 +193,9 @@
     "totalperday": "Итого за день",
     "reset": "openMSX был сброшен",
     "takeascreenshot": "Сделать снимок экрана",
-    "screenshottaken": "Снимок экрана был сделан"
+    "screenshottaken": "Снимок экрана был сделан",
+    "savestate": "Сохранить состояние",
+    "statesaved": "Состояние сохранено"
   },
   "help": {
     "uptodate": "Обновлено",

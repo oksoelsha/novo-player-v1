@@ -193,7 +193,9 @@
     "totalperday": "일일 합계",
     "reset": "openMSX가 재설정되었습니다",
     "takeascreenshot": "스크린샷 생성",
-    "screenshottaken": "스크린샷을 찍었습니다"
+    "screenshottaken": "스크린샷을 찍었습니다",
+    "savestate": "상태 저장",
+    "statesaved": "상태가 저장됨"
   },
   "help": {
     "uptodate": "최신 상태",
