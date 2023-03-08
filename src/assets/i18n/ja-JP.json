@@ -257,6 +257,9 @@
       "notingenerationmsx": "Generation-MSXにはありません",
       "viewongenerationmsx": "Generation-MSX で表示",
       "locateinnovoplayer": "Novo Playerで検索"
+    },
+    "savedstates": {
+      "normallaunch": "通常の打ち上げ"
     }
   },
   "shared": {

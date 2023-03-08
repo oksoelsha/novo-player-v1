@@ -39,7 +39,7 @@ export class GamesService {
     });
   }
 
-  async launchGame(game: Game): Promise<string> {
+  async launchGameOnOpenMSX(game: Game, state: string = null): Promise<string> {
     const time: number = Date.now();
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
@@ -50,7 +50,7 @@ export class GamesService {
       this.ipc.once('launchGameProcessIdResponse' + game.sha1Code, (event, pid: number) => {
         this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
       });
-      this.ipc.send('launchGame', game, time);
+      this.ipc.send('launchGame', game, time, state);
     });
   }
 

@@ -257,6 +257,9 @@
       "notingenerationmsx": "Generation-MSX에 없음",
       "viewongenerationmsx": "Generation-MSX에서 보기",
       "locateinnovoplayer": "Novo Player에서 찾기"
+    },
+    "savedstates": {
+      "normallaunch": "정상 발사"
     }
   },
   "shared": {

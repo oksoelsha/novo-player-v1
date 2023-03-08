@@ -257,6 +257,9 @@
       "notingenerationmsx": "Не в Generation-MSX",
       "viewongenerationmsx": "Просмотреть на Generation-MSX",
       "locateinnovoplayer": "Найти в Novo Player"
+    },
+    "savedstates": {
+      "normallaunch": "Обычный запуск"
     }
   },
   "shared": {

@@ -31,6 +31,8 @@ import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
 import { AdditionalExternalInfoComponent } from '../../popups/additional-external-info/additional-external-info.component';
 import { MoreScreenshotsComponent } from '../../popups/more-screenshots/more-screenshots.component';
+import { GameSavedState } from '../../models/saved-state';
+import { SavedStatesComponent } from '../../popups/saved-states/saved-states.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -65,6 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('moreScreenshots') moreScreenshots: MoreScreenshotsComponent;
   @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
+  @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
@@ -107,6 +110,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   showFilters = false;
   filtersTotal = 0;
   machines: string[] = [];
+  savedStates: GameSavedState[] = [];
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -340,14 +344,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   launch(game: Game) {
-    this.gamesService.launchGame(game).then((errorMessage: string) => {
-      if (errorMessage) {
-        this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsxfor') + ': ' + game.name
-          + ' [' + errorMessage + ']');
+    this.gamesService.getGameSavedStates(game).then((savedStates: GameSavedState[]) => {
+      this.savedStates = savedStates;
+      if (savedStates.length === 0) {
+        this.launchOpenmsx(game);
       } else {
-        this.alertService.info(this.localizationService.translate('home.openmsxwindowclosedfor') + ': ' + game.name);
+        this.savedStatesSelector.open();
       }
     });
+  }
+
+  launchOpenmsx(game: Game) {
+    this.launchGameOrStateOnOpenmsx(game);
+  }
+
+  launchOpenmsxWithState(state: string) {
+    this.launchGameOrStateOnOpenmsx(this.selectedGame, state);
   }
 
   launchWebmsx(game: Game) {
@@ -834,6 +846,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private setMoreScreenshots(secondaryData: GameSecondaryData) {
     this.moreScreenshotFiles = secondaryData.moreScreenshots;
+  }
+
+  private launchGameOrStateOnOpenmsx(game: Game, state: string = null) {
+    this.gamesService.launchGameOnOpenMSX(game, state).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsxfor') + ': ' + game.name
+          + ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.openmsxwindowclosedfor') + ': ' + game.name);
+      }
+    });
   }
 
   private adjustScrollForSelectedGame(game: Game) {

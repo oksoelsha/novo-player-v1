@@ -257,6 +257,9 @@
       "notingenerationmsx": "Het zit niet in Generation-MSX",
       "viewongenerationmsx": "Weergeven op Generation-MSX",
       "locateinnovoplayer": "In Novo Player vinden"
+    },
+    "savedstates": {
+      "normallaunch": "Normale lancering"
     }
   },
   "shared": {

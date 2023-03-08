@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="option normal-start-option" (click)="startNormally()">
+        {{ 'popups.savedstates.normallaunch' | translate }}
+    </div>
+    <div class="option state-option" *ngFor="let savedState of savedStates" (click)="startWithState(savedState)">
+        <img [src]="savedState.screenshot" class="screenshot">
+        <div class="ms-2">{{ getSavedStateTimeAndDate(savedState) }}</div>
+    </div>
+</div>

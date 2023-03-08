@@ -257,6 +257,9 @@
       "notingenerationmsx": "Not in Generation-MSX",
       "viewongenerationmsx": "View on Generation-MSX",
       "locateinnovoplayer": "Locate in Novo Player"
+    },
+    "savedstates": {
+      "normallaunch": "Normal Launch"
     }
   },
   "shared": {

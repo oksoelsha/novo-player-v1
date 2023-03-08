@@ -71,19 +71,19 @@ export class OpenMSXLaunchService {
     }
 
     private init() {
-        ipcMain.on('launchGame', (event, game: Game, time: number) => {
-            this.launch(game, time)
-        })
+        ipcMain.on('launchGame', (event, game: Game, time: number, state: string) => {
+            this.launch(game, time, state);
+        });
     }
 
-    private launch(game: Game, time: number) {
+    private launch(game: Game, time: number, state: string = null) {
         const self = this;
         const options = {
             cwd: this.settingsService.getSettings().openmsxPath,
             detached: true
         };
 
-        const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), this.getArguments(game), options);
+        const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), this.getArguments(game, state), options);
         process.on("error", (error) => {
             console.log(error.message);
             let errorMessage: string;
@@ -114,15 +114,20 @@ export class OpenMSXLaunchService {
         }
     }
 
-    private getArguments(game: Game): string[] {
+    private getArguments(game: Game, state: string): string[] {
         let args: string[] = [];
-        OpenMSXLaunchService.fieldsToArgs.forEach (field => {
-            if (game[field[0]]) {
-                args.push('-' + field[1]);
-                args.push(game[field[0]]);
-            }
-        });
-        this.addTclCommandArguments(args, game);
+        if (state) {
+            args.push('-savestate');
+            args.push(state);
+        } else {
+            OpenMSXLaunchService.fieldsToArgs.forEach (field => {
+                if (game[field[0]]) {
+                    args.push('-' + field[1]);
+                    args.push(game[field[0]]);
+                }
+            });
+            this.addTclCommandArguments(args, game);    
+        }
 
         return args;
     }

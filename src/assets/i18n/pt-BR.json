@@ -257,6 +257,9 @@
       "notingenerationmsx": "Não está em Generation-MSX",
       "viewongenerationmsx": "Exibir no Generation-MSX",
       "locateinnovoplayer": "Localizar em Novo Player"
+    },
+    "savedstates": {
+      "normallaunch": "Lançamento normal"
     }
   },
   "shared": {
