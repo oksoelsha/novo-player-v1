@@ -195,7 +195,9 @@
     "takeascreenshot": "Fes una captura de pantalla",
     "screenshottaken": "Captura de pantalla s'ha fet correctament",
     "savestate": "Guarda l'estat",
-    "statesaved": "L'estat s'ha guardat correctament"
+    "statesaved": "L'estat s'ha guardat correctament",
+    "loadstate": "Càrrega l'estat",
+    "stateloaded": "L'estat s'ha carregat correctament"
   },
   "help": {
     "uptodate": "Està actualitzat",

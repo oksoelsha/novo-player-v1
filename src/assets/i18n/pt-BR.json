@@ -195,7 +195,9 @@
     "takeascreenshot": "Tirar uma captura de tela",
     "screenshottaken": "Captura de tela foi tirada",
     "savestate": "Salvar estado",
-    "statesaved": "Estado foi salvado"
+    "statesaved": "Estado foi salvado",
+    "loadstate": "Carregar estado",
+    "stateloaded": "Estado foi carregado"
   },
   "help": {
     "uptodate": "Atualizado",

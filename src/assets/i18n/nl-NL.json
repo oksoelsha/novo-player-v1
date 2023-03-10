@@ -195,7 +195,9 @@
     "takeascreenshot": "Een schermafbeelding maken",
     "screenshottaken": "Schermafbeelding is maakt",
     "savestate": "Status opslaan",
-    "statesaved": "Status is opgeslagen"
+    "statesaved": "Status is opgeslagen",
+    "loadstate": "Status laden",
+    "stateloaded": "Status is geladen"
   },
   "help": {
     "uptodate": "Bijgewerkt",

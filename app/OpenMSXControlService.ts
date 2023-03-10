@@ -24,6 +24,9 @@ export class OpenMSXControlService {
         ipcMain.on('saveStateOnOpenmsx', (event, pid: number, game: Game) => {
             this.saveStateOnOpenmsx(pid, game);
         });
+        ipcMain.on('loadStateOnOpenmsx', (event, pid: number, state: string) => {
+            this.loadStateOnOpenmsx(pid, state);
+        });
     }
 
     private async resetOnOpenmsx(pid: number) {
@@ -64,6 +67,12 @@ export class OpenMSXControlService {
         this.executeCommandOnOpenmsx(pid, 'savestate ' + game.sha1Code + '-' + sanitizedName + '-' +  Date.now());
 
         this.win.webContents.send('saveStateOnOpenmsxResponse', true);
+    }
+
+    private async loadStateOnOpenmsx(pid: number, state: string) {
+        this.executeCommandOnOpenmsx(pid, 'loadstate ' + state);
+
+        this.win.webContents.send('loadStateOnOpenmsxResponse', true);
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {

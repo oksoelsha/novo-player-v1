@@ -195,7 +195,9 @@
     "takeascreenshot": "스크린샷 생성",
     "screenshottaken": "스크린샷을 찍었습니다",
     "savestate": "상태 저장",
-    "statesaved": "상태가 저장됨"
+    "statesaved": "상태가 저장되었습니다",
+    "loadstate": "상태 로드",
+    "stateloaded": "상태가 로드되었습니다"
   },
   "help": {
     "uptodate": "최신 상태",

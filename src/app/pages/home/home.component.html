@@ -352,11 +352,12 @@
   </ng-template>
 </app-popup>
 
-<app-popup popupId="saved-states-id" [titleHeader]="selectedGame?.name" (openStatus)="popupOpen = $event">
+<app-popup popupId="saved-states-id" [titleHeader]="('home.launch' | translate) + ': ' + selectedGame?.name"
+  (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-saved-states [popupId]="popupId" (openStatus)="popupOpen = $event" [savedStates]="savedStates"
-      [game]="selectedGame" (startNormallyChoice)="launchOpenmsx($event)" (startWithStateChoice)="launchOpenmsxWithState($event)"
-      #savedStatesSelector>
+      [game]="selectedGame" (startNormallyChoice)="launchOpenmsx($event)"
+      (startWithStateChoice)="launchOpenmsxWithState($event)" #savedStatesSelector>
     </app-saved-states>
   </ng-template>
 </app-popup>

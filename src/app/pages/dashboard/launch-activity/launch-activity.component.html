@@ -28,6 +28,9 @@
                                     <button ngbDropdownItem type="button" (click)="saveState(activity.pid, activity.game)">
                                         {{ 'dashboard.savestate' | translate }}
                                     </button>
+                                    <button *ngIf="savedStatesMap.get(activity.game.sha1Code)" ngbDropdownItem type="button" (click)="loadState(activity.pid, activity.game)">
+                                        {{ 'dashboard.loadstate' | translate }}
+                                    </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
                                         <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{ 'dashboard.switchdisks' | translate }}:</h6>
@@ -46,3 +49,11 @@
         </div>
     </div>
 </div>
+
+<app-popup popupId="saved-states-id" [titleHeader]="('dashboard.loadstate' | translate) + ': ' + selectedGame?.name">
+    <ng-template let-popupId="popupId">
+        <app-saved-states [popupId]="popupId" [savedStates]="savedStates" [game]="selectedGame" [hideNormalStart]="true"
+            (startWithStateChoice)="loadStateOnOpenmsx($event)" #savedStatesSelector>
+        </app-saved-states>
+    </ng-template>
+</app-popup>

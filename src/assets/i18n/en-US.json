@@ -195,7 +195,9 @@
     "takeascreenshot": "Take a screenshot",
     "screenshottaken": "Screenshot taken successfully",
     "savestate": "Save state",
-    "statesaved": "State saved successfully"
+    "statesaved": "State saved successfully",
+    "loadstate": "Load state",
+    "stateloaded": "State loaded successfully"
   },
   "help": {
     "uptodate": "Up to date",

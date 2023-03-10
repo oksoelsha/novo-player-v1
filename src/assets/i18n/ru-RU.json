@@ -195,7 +195,9 @@
     "takeascreenshot": "Сделать снимок экрана",
     "screenshottaken": "Снимок экрана был сделан",
     "savestate": "Сохранить состояние",
-    "statesaved": "Состояние сохранено"
+    "statesaved": "Состояние сохранено",
+    "loadstate": "Загрузить состояние",
+    "stateloaded": "Состояние загружено"
   },
   "help": {
     "uptodate": "Обновлено",

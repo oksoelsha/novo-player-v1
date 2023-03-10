@@ -195,7 +195,9 @@
     "takeascreenshot": "Faire une capture d’écran",
     "screenshottaken": "Capture d’écran a été faite",
     "savestate": "Enregistrer l'état",
-    "statesaved": "L'état a été enregistré"
+    "statesaved": "L'état a été enregistré",
+    "loadstate": "Charger l'état",
+    "stateloaded": "L'état a été chargé"
   },
   "help": {
     "uptodate": "À jour",

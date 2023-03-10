@@ -14,6 +14,7 @@ export class SavedStatesComponent  extends PopupComponent implements OnInit, Aft
   @Input() popupId: string;
   @Input() game: Game;
   @Input() savedStates: GameSavedState[];
+  @Input() hideNormalStart: boolean;
   @Output() startNormallyChoice: EventEmitter<Game> = new EventEmitter<Game>();
   @Output() startWithStateChoice: EventEmitter<string> = new EventEmitter<string>();
 

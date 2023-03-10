@@ -82,6 +82,16 @@ export class LaunchActivityService {
       this.ipc.send('saveStateOnOpenmsx', pid, game);
     });
   }
+
+  loadState(pid: number, state: string) {
+    const stateFilename = state.substring(state.lastIndexOf('/') + 1, state.lastIndexOf('.'));
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('loadStateOnOpenmsxResponse', (event: any, loaded: boolean) => {
+        resolve(loaded);
+      });
+      this.ipc.send('loadStateOnOpenmsx', pid, stateFilename);
+    });
+  }
 }
 
 export class LaunchActivity {

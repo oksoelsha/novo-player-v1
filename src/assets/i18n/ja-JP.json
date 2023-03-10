@@ -194,8 +194,10 @@
     "reset": "openMSXがリセットされました",
     "takeascreenshot": "スクリーンショットをとる",
     "screenshottaken": "スクリーンショットが撮られました",
-    "savestate": "状態の保存",
-    "statesaved": "状態が保存されました"
+    "savestate": "状態を保存する",
+    "statesaved": "状態が保存されました",
+    "loadstate": "状態をロードする",
+    "stateloaded": "状態が読み込まれました"
   },
   "help": {
     "uptodate": "最新",

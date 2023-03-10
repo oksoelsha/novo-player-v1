@@ -1,8 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventSource } from '../../../models/event';
 import { Game } from '../../../models/game';
+import { GameSavedState } from '../../../models/saved-state';
+import { SavedStatesComponent } from '../../../popups/saved-states/saved-states.component';
 import { FilesService } from '../../../services/files.service';
+import { GamesService } from '../../../services/games.service';
 import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
@@ -18,10 +21,16 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   fileGroupMap: Map<number, string[]> = new Map();
+  savedStatesMap: Map<string, GameSavedState[]> = new Map();
+  selectedGame: Game;
+  selectedPid: number;
+  savedStates: GameSavedState[] = [];
   private launchActivitySubscription: Subscription;
+  @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
-    private localizationService: LocalizationService, private platformService: PlatformService, private filesService: FilesService) {
+    private localizationService: LocalizationService, private platformService: PlatformService,
+    private filesService: FilesService, private gamesService: GamesService) {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
@@ -31,19 +40,8 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.launchActivities.forEach(activity => {
-      let medium: string;
-      if (this.isDisk(activity.game)) {
-        medium = activity.game.diskA;
-      } else if (this.isTape(activity.game)) {
-        medium = activity.game.tape;
-      } else {
-        medium = null;
-      }
-      if (medium) {
-        this.filesService.getFileGroup(activity.pid, medium).then((fileGroup: string[]) => {
-          this.fileGroupMap.set(activity.pid, fileGroup);
-        });
-      }
+      this.setFileGroups(activity);
+      this.setSavedStates(activity);
     });
   }
 
@@ -129,6 +127,53 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       if (saved) {
         this.alertService.success(this.localizationService.translate('dashboard.statesaved') + ': ' +
           game.name + ' [' + game.listing + ']');
+        if (!this.savedStatesMap.get(game.sha1Code)) {
+          // this is a hack to force the load to appear in the menu
+          this.savedStatesMap.set(game.sha1Code, []);
+        }
+      }
+    });
+  }
+
+  loadState(pid: number, game: Game) {
+    this.selectedGame = game;
+    this.selectedPid = pid;
+    this.gamesService.getGameSavedStates(game).then((savedStates: GameSavedState[]) => {
+      this.savedStatesMap.set(game.sha1Code, savedStates)
+      this.savedStates = savedStates;
+      this.savedStatesSelector.open();
+    });
+  }
+
+  loadStateOnOpenmsx(state: string) {
+    this.launchActivityService.loadState(this.selectedPid, state).then(loaded => {
+      if (loaded) {
+        this.alertService.success(this.localizationService.translate('dashboard.stateloaded') + ': ' +
+        this.selectedGame.name + ' [' + this.selectedGame.listing + ']');
+      }
+    });
+  }
+
+  private setFileGroups(activity: any) {
+    let medium: string;
+    if (this.isDisk(activity.game)) {
+      medium = activity.game.diskA;
+    } else if (this.isTape(activity.game)) {
+      medium = activity.game.tape;
+    } else {
+      medium = null;
+    }
+    if (medium) {
+      this.filesService.getFileGroup(activity.pid, medium).then((fileGroup: string[]) => {
+        this.fileGroupMap.set(activity.pid, fileGroup);
+      });
+    }
+  }
+
+  private setSavedStates(activity: any) {
+    this.gamesService.getGameSavedStates(activity.game).then((savedStates: GameSavedState[]) => {
+      if (savedStates.length > 0) {
+        this.savedStatesMap.set(activity.game.sha1Code, savedStates)
       }
     });
   }
