@@ -24,7 +24,6 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
   laserdisc: string;
 
   extensions: string[] = [];
-  extensionRomDisplay = '';
 
   constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
     super(changeDetector);
@@ -52,17 +51,11 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
 
     this.emulatorService.getExtensions().then((data: string[]) => {
       this.extensions = data;
-      if (this.extensionRom) {
-        this.extensionRomDisplay = this.extensionRom;
-      } else {
-        this.extensionRomDisplay = 'Select extension';
-      }
     });
   }
 
   resetExtensionRomSelection() {
     this.extensionRom = '';
-    this.extensionRomDisplay = 'Select extension';
   }
 
   save() {
