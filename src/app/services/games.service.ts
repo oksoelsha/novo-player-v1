@@ -267,4 +267,13 @@ export class GamesService {
       this.ipc.send('getGameSavedStates', game.sha1Code);
     });
   }
+
+  async deleteGameSavedState(state: GameSavedState): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('deleteGameSavedStateResponse', (event, deleted) => {
+        resolve(deleted);
+      });
+      this.ipc.send('deleteGameSavedState', state);
+    });
+  }
 }

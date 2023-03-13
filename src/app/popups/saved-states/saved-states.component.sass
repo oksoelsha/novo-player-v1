@@ -2,15 +2,8 @@
   max-height: 24.5rem
   overflow-y: scroll
 
-.option
-  margin: 2px
-  width: 20rem
-
-.option:hover
-  background-color: #3333aa
-  cursor: pointer
-
 .normal-start-option
+  width: 20rem
   height: 4rem
   font-size: 1rem
   display: flex
@@ -19,11 +12,31 @@
   border-color: #3333aa
   border-style: solid
 
-.state-option
+.normal-start-option:hover
+  background-color: #3333aa
+  cursor: pointer
+
+.state-option-row
   height: 8rem
   display: flex
   align-items: center
 
+.state-option
+  width: 20rem
+  padding: .25rem
+
+.state-option:hover
+  background-color: #3333aa
+  cursor: pointer
+
 .screenshot
   width: 160px
   margin-left: 2px
+
+.delete
+    transform: scale(0.75)
+
+.delete:hover
+    transform: scale(1.0)
+    cursor: pointer
+

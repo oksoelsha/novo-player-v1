@@ -1,9 +1,13 @@
 <div class="container">
-    <div *ngIf="!hideNormalStart" class="option normal-start-option" (click)="startNormally()">
+    <div *ngIf="!hideNormalStart" class="normal-start-option" (click)="startNormally()">
         {{ 'popups.savedstates.normallaunch' | translate }}
     </div>
-    <div class="option state-option" *ngFor="let savedState of savedStates" (click)="startWithState(savedState)">
-        <img [src]="savedState.screenshot" class="screenshot">
-        <div class="ms-2">{{ getSavedStateTimeAndDate(savedState) }}</div>
+    <div class="state-option-row" *ngFor="let savedState of savedStates">
+        <div class="state-option" (click)="selectState(savedState)">
+            <img [src]="savedState.screenshot" class="screenshot">
+            <div class="ms-2 d-inline-block">{{ getSavedStateTimeAndDate(savedState) }}</div>
+        </div>
+        <img class="delete ms-2" src="assets/images/operations/remove.png" (click)="deleteState(savedState)" placement="top"
+            [ngbTooltip]="'common.delete' | translate" container="body">
     </div>
 </div>

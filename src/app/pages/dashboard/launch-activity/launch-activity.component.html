@@ -53,7 +53,7 @@
 <app-popup popupId="saved-states-id" [titleHeader]="('dashboard.loadstate' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
         <app-saved-states [popupId]="popupId" [savedStates]="savedStates" [game]="selectedGame" [hideNormalStart]="true"
-            (startWithStateChoice)="loadStateOnOpenmsx($event)" #savedStatesSelector>
+            (stateChoice)="loadStateOnOpenmsx($event)" (updateStateList)="resetStatesMap()" #savedStatesSelector>
         </app-saved-states>
     </ng-template>
 </app-popup>

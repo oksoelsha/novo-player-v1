@@ -25,8 +25,8 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   selectedGame: Game;
   selectedPid: number;
   savedStates: GameSavedState[] = [];
-  private launchActivitySubscription: Subscription;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
+  private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
     private localizationService: LocalizationService, private platformService: PlatformService,
@@ -34,6 +34,9 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
+      if (!launchActivity.find(l => l.pid === this.selectedPid)) {
+        this.savedStatesSelector.close();
+      }
     });
     this.launchActivities = launchActivityService.getActivities();
   }
@@ -128,10 +131,16 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.alertService.success(this.localizationService.translate('dashboard.statesaved') + ': ' +
           game.name + ' [' + game.listing + ']');
         if (!this.savedStatesMap.get(game.sha1Code)) {
-          // this is a hack to force the load to appear in the menu
-          this.savedStatesMap.set(game.sha1Code, []);
+          this.resetStatesMap();
         }
       }
+    });
+  }
+
+  resetStatesMap() {
+    this.savedStatesMap = new Map();
+    this.launchActivities.forEach(activity => {
+      this.setSavedStates(activity);
     });
   }
 
@@ -139,7 +148,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.selectedGame = game;
     this.selectedPid = pid;
     this.gamesService.getGameSavedStates(game).then((savedStates: GameSavedState[]) => {
-      this.savedStatesMap.set(game.sha1Code, savedStates)
+      this.savedStatesMap.set(game.sha1Code, savedStates);
       this.savedStates = savedStates;
       this.savedStatesSelector.open();
     });
@@ -173,7 +182,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   private setSavedStates(activity: any) {
     this.gamesService.getGameSavedStates(activity.game).then((savedStates: GameSavedState[]) => {
       if (savedStates.length > 0) {
-        this.savedStatesMap.set(activity.game.sha1Code, savedStates)
+        this.savedStatesMap.set(activity.game.sha1Code, savedStates);
       }
     });
   }

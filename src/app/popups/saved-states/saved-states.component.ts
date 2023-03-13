@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
 import { GameSavedState } from '../../models/saved-state';
+import { GamesService } from '../../services/games.service';
 import { PopupComponent } from '../popup.component';
 
 @Component({
@@ -16,9 +17,10 @@ export class SavedStatesComponent  extends PopupComponent implements OnInit, Aft
   @Input() savedStates: GameSavedState[];
   @Input() hideNormalStart: boolean;
   @Output() startNormallyChoice: EventEmitter<Game> = new EventEmitter<Game>();
-  @Output() startWithStateChoice: EventEmitter<string> = new EventEmitter<string>();
+  @Output() stateChoice: EventEmitter<string> = new EventEmitter<string>();
+  @Output() updateStateList: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(protected changeDetector: ChangeDetectorRef) {
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
     super(changeDetector);
   }
 
@@ -44,9 +46,21 @@ export class SavedStatesComponent  extends PopupComponent implements OnInit, Aft
     this.close();
   }
 
-  startWithState(savedState: GameSavedState) {
-    this.startWithStateChoice.emit(savedState.state);
+  selectState(savedState: GameSavedState) {
+    this.stateChoice.emit(savedState.state);
     this.close();
+  }
+
+  deleteState(savedState: GameSavedState) {
+    this.gamesService.deleteGameSavedState(savedState).then(deleted => {
+      if (deleted) {
+        this.savedStates.splice(this.savedStates.findIndex((e) => e.state === savedState.state), 1);
+        if (this.savedStates.length === 0) {
+          this.updateStateList.emit();
+          this.close();
+        }
+      }
+    });
   }
 
   private getTimestamp(savedState: GameSavedState): string {

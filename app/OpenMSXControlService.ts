@@ -63,7 +63,7 @@ export class OpenMSXControlService {
     }
 
     private async saveStateOnOpenmsx(pid: number, game: Game) {
-        const sanitizedName = game.name.replace(/ /g, '_');
+        const sanitizedName = game.name.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').replace(/ |\[|\]/g, '_');
         this.executeCommandOnOpenmsx(pid, 'savestate ' + game.sha1Code + '-' + sanitizedName + '-' +  Date.now());
 
         this.win.webContents.send('saveStateOnOpenmsxResponse', true);

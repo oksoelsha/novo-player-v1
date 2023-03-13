@@ -68,9 +68,14 @@ export class FilesService {
             this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
         });
 
-        ipcMain.on('getGameSavedStates', (event, sha1Code) => {
+        ipcMain.on('getGameSavedStates', (event, sha1Code: string) => {
             const savedStates = this.getSavedStates(sha1Code);
             this.win.webContents.send('getGameSavedStatesResponse' + sha1Code, savedStates);
+        });
+
+        ipcMain.on('deleteGameSavedState', (event, state: GameSavedState) => {
+            const deleted = this.deleteSavedState(state);
+            this.win.webContents.send('deleteGameSavedStateResponse', deleted);
         });
 
         chokidar.watch(this.openmsxDataScrrenshotsFolder, {
@@ -269,6 +274,18 @@ export class FilesService {
         } else {
             return [];
         }
+    }
+
+    private deleteSavedState(state: GameSavedState): boolean {
+        let deleted: boolean;
+        try {
+            fs.unlinkSync(state.state);
+            fs.unlinkSync(state.screenshot);
+            deleted = true;
+        } catch (er) {
+            deleted = false;
+        }
+        return deleted;
     }
 
     private sanitizePath(filename: string): string {
