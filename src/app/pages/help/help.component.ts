@@ -8,7 +8,7 @@ import { VersionsService } from '../../services/versions.service';
 })
 export class HelpComponent implements OnInit {
 
-  readonly applicationVersion = '1.3';
+  readonly applicationVersion = '1.4';
 
   applicationVersions: Promise<any>;
   screenshotsVersions: Promise<any>;
