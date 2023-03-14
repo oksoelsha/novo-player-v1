@@ -20,29 +20,33 @@ export class OpenMSXConnector {
 	}
 
 	async connect(): Promise<void> {
-		try {
-			this.openmsx = await this.connectOpenMSX();
-			this.connected = true;
-		} catch (error) {
-			return;
-		}
-
-		this.openmsx.on('timeout', () => {
+		return new Promise<void>(async (resolve, reject) => {
+			try {
+				this.openmsx = await this.connectOpenMSX();
+				this.connected = true;
+			} catch (error) {
+				reject();
+			}
+	
+			this.openmsx.on('timeout', () => {
+			});
+			this.openmsx.on('error', err => {
+			});
+			this.openmsx.on('close', () => {
+				this.connected = false;
+			});
+			this.openmsx.on('data', data => {
+				// this.handleOpenMSXResponse(data);
+			});
+	
+			if (PlatformUtils.isWindows()) {
+				await this.authorize();
+			}
+	
+			this.openmsx.write('<openmsx-control>', cb => {
+				resolve();
+			});	
 		});
-		this.openmsx.on('error', err => {
-		});
-		this.openmsx.on('close', () => {
-			this.connected = false;
-		});
-		this.openmsx.on('data', data => {
-//			this.handleOpenMSXResponse(data);
-		});
-
-		if (PlatformUtils.isWindows()) {
-			await this.authorize();
-		}
-
-		this.openmsx.write('<openmsx-control>');
 	}
 
 	async sendCommand(cmd: string): Promise<void> {
