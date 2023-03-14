@@ -260,7 +260,7 @@ export class FilesService {
     }
 
     private getSavedStates(sha1Code: string): GameSavedState[] {
-        if (fs.existsSync(this.openmsxDataScrrenshotsFolder)) {
+        if (fs.existsSync(this.openmsxSavedStatesFolder)) {
             const list: GameSavedState[] = [];
             const folderContents = fs.readdirSync(this.openmsxSavedStatesFolder, 'utf8');
             folderContents.forEach(f => {
