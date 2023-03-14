@@ -8,33 +8,41 @@
                     <tr *ngFor="let activity of launchActivities">
                         <td *ngIf="isWindows" class="activity-game-source">{{ getLaunchSource(activity.source) }}</td>
                         <td class="activity-game-name" title="{{ activity.game.name }}">{{ activity.game.name }}</td>
-                        <td class="activity-game-listing" title="{{ activity.game.listing }}">{{ activity.game.listing }}
+                        <td class="activity-game-listing" title="{{ activity.game.listing }}">{{ activity.game.listing
+                            }}
                         </td>
                         <td>
                             <app-elapsed-time [startTime]="activity.time"></app-elapsed-time>
                         </td>
                         <td>
                             <div ngbDropdown placement="bottom-end" *ngIf="isRunningOnOpenMSX(activity)">
-                                <button type="button" class="btn btn-secondary btn-sm openmsx-connect" ngbDropdownToggle>
+                                <button type="button" class="btn btn-secondary btn-sm openmsx-connect"
+                                    ngbDropdownToggle>
                                     •••
                                 </button>
                                 <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
-                                    <button ngbDropdownItem type="button" (click)="resetMachine(activity.pid, activity.game)">
+                                    <button ngbDropdownItem type="button"
+                                        (click)="resetMachine(activity.pid, activity.game)">
                                         {{ 'common.reset' | translate }}
                                     </button>
-                                    <button ngbDropdownItem type="button" (click)="takeScreenshot(activity.pid, activity.game)">
+                                    <button ngbDropdownItem type="button"
+                                        (click)="takeScreenshot(activity.pid, activity.game)">
                                         {{ 'dashboard.takeascreenshot' | translate }}
                                     </button>
-                                    <button ngbDropdownItem type="button" (click)="saveState(activity.pid, activity.game)">
+                                    <button ngbDropdownItem type="button"
+                                        (click)="saveState(activity.pid, activity.game)">
                                         {{ 'dashboard.savestate' | translate }}
                                     </button>
-                                    <button *ngIf="savedStatesMap.get(activity.game.sha1Code)" ngbDropdownItem type="button" (click)="loadState(activity.pid, activity.game)">
+                                    <button *ngIf="savedStatesMap.get(activity.game.sha1Code)" ngbDropdownItem
+                                        type="button" (click)="loadState(activity.pid, activity.game)">
                                         {{ 'dashboard.loadstate' | translate }}
                                     </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
-                                        <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{ 'dashboard.switchdisks' | translate }}:</h6>
-                                        <h6 *ngIf="isTape(activity.game)" class="dropdown-header">{{ 'dashboard.switchtapes' | translate }}:</h6>
+                                        <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{
+                                            'dashboard.switchdisks' | translate }}:</h6>
+                                        <h6 *ngIf="isTape(activity.game)" class="dropdown-header">{{
+                                            'dashboard.switchtapes' | translate }}:</h6>
                                         <button *ngFor="let medium of fileGroupMap.get(activity.pid)" ngbDropdownItem
                                             type="button" (click)="switchMedium(activity.pid, activity.game, medium)">
                                             <div class="ms-2">{{ getMediumDisplayName(medium) }}</div>

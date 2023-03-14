@@ -131,7 +131,10 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.alertService.success(this.localizationService.translate('dashboard.statesaved') + ': ' +
           game.name + ' [' + game.listing + ']');
         if (!this.savedStatesMap.get(game.sha1Code)) {
-          this.resetStatesMap();
+          // this is a hack to force the 'Load state' to appear in the menu.
+          // I couldn't just call resetStatesMap() because by the time we get here openMSX may not be
+          // done saving the state file on disk
+          this.savedStatesMap.set(game.sha1Code, []);
         }
       }
     });
