@@ -59,7 +59,9 @@
     "movetoanotherlisting": "Naar een andere lijst verplaatsen",
     "dropfilesandfolders": "Bestanden en mappen neerzetten",
     "failedtostartopenmsxfor": "Kan openMSX niet starten voor",
+    "failedtostartopenmsx": "Kan openMSX niet starten",
     "openmsxwindowclosedfor": "openMSX-venster gesloten voor",
+    "openmsxwindowclosed": "openMSX-venster gesloten",
     "bluemsxwindowclosedfor": "blueMSX-venster gesloten voor",
     "gamewasremoved": "Spel is verwijderd",
     "gameswereremoved": "Spellen zijn verwijderd",
@@ -85,7 +87,8 @@
     "filters": "Filters",
     "infofromgiantbomb": "Info van Giant Bomb",
     "getinfofromgiantbomb": "Info ophalen van Giant Bomb",
-    "morescreenshots": "Extra schermafbeeldingen"
+    "morescreenshots": "Extra schermafbeeldingen",
+    "quicklaunch": "Snel starten"
   },
   "language": {
     "en-US": "Engels",
@@ -262,6 +265,12 @@
     },
     "savedstates": {
       "normallaunch": "Normale lancering"
+    },
+    "quicklaunch": {
+      "file": "Bestand",
+      "filetooltip": "Elk bestand ondersteund door openMSX",
+      "arguments": "Argumenten",
+      "openmsxparamstooltip": "Argumenten om te gebruiken bij het starten van openMSX (bijv. -romtype KonamiSCC)"
     }
   },
   "shared": {

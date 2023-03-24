@@ -59,7 +59,9 @@
     "movetoanotherlisting": "Muovi a un altro elenco",
     "dropfilesandfolders": "Rilascia file y cartelle",
     "failedtostartopenmsxfor": "Avvio d'openMSX fallito per",
+    "failedtostartopenmsx": "Avvio d'openMSX fallito",
     "openmsxwindowclosedfor": "La finestra di openMSX è stata chiusa per",
+    "openmsxwindowclosed": "La finestra di openMSX è stata chiusa",
     "bluemsxwindowclosedfor": "La finestra di blueMSX è stata chiusa per",
     "gamewasremoved": "Il gioco è stato rimosso",
     "gameswereremoved": "I giochi sono stati rimossi",
@@ -85,7 +87,8 @@
     "filters": "Filtri",
     "infofromgiantbomb": "Informazioni da Giant Bomb",
     "getinfofromgiantbomb": "Ottieni informazioni da Giant Bomb",
-    "morescreenshots": "Screenshot aggiuntivi"
+    "morescreenshots": "Screenshot aggiuntivi",
+    "quicklaunch": "Lancio rapido"
   },
   "language": {
     "en-US": "Inglese",
@@ -262,6 +265,12 @@
     },
     "savedstates": {
       "normallaunch": "Lancio normale"
+    },
+    "quicklaunch": {
+      "file": "File",
+      "filetooltip": "Qualsiasi file supportato da openMSX",
+      "arguments": "Argomenti",
+      "openmsxparamstooltip": "Argomenti da utilizzare quando si avvia openMSX (ad esempio -romtype KonamiSCC)"
     }
   },
   "shared": {

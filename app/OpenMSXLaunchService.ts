@@ -1,4 +1,6 @@
 import * as cp from 'child_process'
+import * as fs from 'fs';
+import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron'
 import { EventLogService } from './EventLogService'
 import { SettingsService } from './SettingsService'
@@ -6,6 +8,9 @@ import { Event, EventSource, EventType } from '../src/app/models/event'
 import { Game } from '../src/app/models/game'
 import { GameUtils } from '../src/app/models/game-utils'
 import { PlatformUtils } from './utils/PlatformUtils'
+import { QuickLaunchData } from '../src/app/models/quick-launch-data'
+import { FileTypeUtils } from '../release/win-unpacked/resources/app/utils/FileTypeUtils'
+import { HashService } from './HashService'
 
 class TCLCommands {
     field: string;
@@ -66,7 +71,8 @@ export class OpenMSXLaunchService {
     private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
 
-    constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService) {
+    constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
+        private hashService: HashService) {
         this.init();
     }
 
@@ -74,16 +80,41 @@ export class OpenMSXLaunchService {
         ipcMain.on('launchGame', (event, game: Game, time: number, state: string) => {
             this.launch(game, time, state);
         });
+        ipcMain.on('quickLaunch', (event, quickLaunchData: QuickLaunchData, time: number) => {
+            this.quickLaunch(quickLaunchData, time);
+        });
     }
 
     private launch(game: Game, time: number, state: string = null) {
+        const args: string[] = [];
+        this.setArguments(args, game, state);
+        const process = this.startOpenmsx(args, time);
+
+        this.win.webContents.send('launchGameProcessIdResponse' + game.sha1Code, process.pid);
+        this.eventLogService.logEvent(new Event(EventSource.openMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
+    }
+
+    private async quickLaunch(quickLaunchData: QuickLaunchData, time: number) {
+        const args: string[] = [];
+        if (fs.existsSync(quickLaunchData.file)) {
+            const sha1 = await this.hashService.getSha1Code(quickLaunchData.file);
+            this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename);
+        }
+        this.setQuickLaunchOtherArguments(args, quickLaunchData);
+        const process = this.startOpenmsx(args, time);
+
+        const filename = path.basename(quickLaunchData.file);
+        this.win.webContents.send('quickLaunchProcessIdResponse' + time, process.pid, filename);
+    }
+
+    private startOpenmsx(args: string[], time: number): cp.ChildProcessWithoutNullStreams {
         const self = this;
         const options = {
             cwd: this.settingsService.getSettings().openmsxPath,
             detached: true
         };
 
-        const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), this.getArguments(game, state), options);
+        const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), args, options);
         process.on("error", (error) => {
             console.log(error.message);
             let errorMessage: string;
@@ -100,8 +131,7 @@ export class OpenMSXLaunchService {
             self.win.webContents.send('launchGameResponse' + time);
         });
 
-        this.win.webContents.send('launchGameProcessIdResponse' + game.sha1Code, process.pid);
-        this.eventLogService.logEvent(new Event(EventSource.openMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
+        return process;
     }
 
     private getSplitText(error: cp.ExecException): string {
@@ -114,8 +144,7 @@ export class OpenMSXLaunchService {
         }
     }
 
-    private getArguments(game: Game, state: string): string[] {
-        let args: string[] = [];
+    private setArguments(args: string[], game: Game, state: string) {
         if (state) {
             args.push('-savestate');
             args.push(state);
@@ -128,8 +157,41 @@ export class OpenMSXLaunchService {
             });
             this.addTclCommandArguments(args, game);    
         }
+    }
+
+    private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string) {
+        if (FileTypeUtils.isROM(filename)) {
+            args.push('-carta');
+            args.push(quickLaunchData.file);
+        } else if (FileTypeUtils.isDisk(filename)) {
+            args.push('-diska');
+            args.push(quickLaunchData.file);
+        } else if (FileTypeUtils.isTape(filename)) {
+            args.push('-cassetteplayer');
+            args.push(quickLaunchData.file);
+        }
+    }
+
+    private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData): string[] {
+        args.push('-machine');
+        args.push(quickLaunchData.machine);
+
+        this.appendParams(args, quickLaunchData.parameters);
 
         return args;
+    }
+
+    private appendParams(args: string[], argsString: string) {
+        if (argsString) {
+            const params = argsString.split('-');
+            params.forEach((param) => {
+                const space = param.indexOf(' ');
+                if (space > -1) {
+                    args.push('-' + param.substring(0, space));
+                    args.push(param.substring(space + 1).replace(/"/g,''));
+                }
+            });
+        }
     }
 
     private addTclCommandArguments(args: string[], game: Game) {

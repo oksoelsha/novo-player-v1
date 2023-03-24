@@ -1,12 +1,12 @@
-import { BrowserWindow } from 'electron'
-import { ExtraData, ExtraDataService } from './ExtraDataService'
-import * as fs from 'fs'
-import * as path from 'path'
-import { FileTypeUtils } from './utils/FileTypeUtils'
-import { Game } from '../src/app/models/game'
-import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService'
-import { GamesService } from './GamesService'
-import { HashService } from './HashService'
+import { BrowserWindow } from 'electron';
+import { ExtraData, ExtraDataService } from './ExtraDataService';
+import * as fs from 'fs';
+import * as path from 'path';
+import { FileTypeUtils } from './utils/FileTypeUtils';
+import { Game } from '../src/app/models/game';
+import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
+import { GamesService } from './GamesService';
+import { HashService } from './HashService';
 
 export class ScanService {
     private extraDataInfo: Map<string, ExtraData>;
@@ -57,7 +57,7 @@ export class ScanService {
         }
     }
 
-    private scan(items: string[], listing:string, machine: string) {
+    private scan(items: string[], listing: string, machine: string) {
         for (const item of items) {
             this.readItem(item, listing, machine);
         }

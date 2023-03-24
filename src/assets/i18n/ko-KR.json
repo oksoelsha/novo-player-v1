@@ -59,7 +59,9 @@
     "movetoanotherlisting": "다른 목록으로 이동",
     "dropfilesandfolders": "파일 및 폴더 삭제",
     "failedtostartopenmsxfor": "openMSX을 시작하지 못함",
+    "failedtostartopenmsx": "openMSX을 시작하지 못함",
     "openmsxwindowclosedfor": "openMSX 창이 닫힘",
+    "openmsxwindowclosed": "openMSX 창이 닫힘",
     "bluemsxwindowclosedfor": "blueMSX 창이 닫힘",
     "gamewasremoved": "게임이 삭제되었습니다",
     "gameswereremoved": "게임이 삭제되었습니다",
@@ -85,7 +87,8 @@
     "filters": "필터",
     "infofromgiantbomb": "Giant Bomb의 정보",
     "getinfofromgiantbomb": "Giant Bomb에서 정보 얻기",
-    "morescreenshots": "추가 스크린샷"
+    "morescreenshots": "추가 스크린샷",
+    "quicklaunch": "빠른 실행"
   },
   "language": {
     "en-US": "영어",
@@ -262,6 +265,12 @@
     },
     "savedstates": {
       "normallaunch": "정상 발사"
+    },
+    "quicklaunch": {
+      "file": "파일",
+      "filetooltip": "openMSX에서 지원하는 모든 파일",
+      "arguments": "인수",
+      "openmsxparamstooltip": "openMSX를 시작할 때 사용할 인수(예: -romtype KonamiSCC)"
     }
   },
   "shared": {

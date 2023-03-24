@@ -57,6 +57,7 @@ import { VersionMatchIndicatorComponent } from './pages/help/version-match-indic
 import { MoreScreenshotsComponent } from './popups/more-screenshots/more-screenshots.component';
 import { FieldWithSuggestionsComponent } from './shared/components/field-with-suggestions/field-with-suggestions.component';
 import { SavedStatesComponent } from './popups/saved-states/saved-states.component';
+import { QuickLaunchComponent } from './popups/quick-launch/quick-launch.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -96,6 +97,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RelatedGamesComponent,
     MoreScreenshotsComponent,
     SavedStatesComponent,
+    QuickLaunchComponent,
     RangeSelectorComponent,
     FiltersComponent,
     AdditionalExternalInfoComponent,

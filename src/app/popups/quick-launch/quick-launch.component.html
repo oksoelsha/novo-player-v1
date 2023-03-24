@@ -1,0 +1,35 @@
+<form spellcheck="false">
+    <div class="table-view">
+        <div class="table-row">
+            <div class="table-cell">{{ 'popups.quicklaunch.file' | translate }}</div>
+            <div class="table-cell medium-input">
+                <div class="d-flex justify-content-start">
+                    <input type="text" class="form-control form-control-sm" id="file" [(ngModel)]="file"
+                        [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="file = $event" placement="bottom"
+                        [ngbTooltip]="'popups.quicklaunch.filetooltip' | translate">
+                    <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="file = $event"
+                        [useIcon]="true">
+                    </app-file-system-chooser>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4"></div>
+        <div class="table-row">
+            <div class="table-cell">{{ 'common.machine' | translate }}</div>
+            <app-drop-down [list]="machines" [selectedItem]="machines[0]" (selection)="selectedMachine = $event">
+            </app-drop-down>
+        </div>
+        <div class="mb-4"></div>
+        <div class="table-row">
+            <div class="table-cell">{{ 'popups.quicklaunch.arguments' | translate }}</div>
+            <div class="table-cell medium-input">
+                <app-field-with-suggestions [suggestionsMap]="getOpenMSXArgumentsMap()" trigger="-"
+                    (userInputOutput)="setOpenmsxParams($event)" placement="bottom"
+                    [ngbTooltip]="'popups.quicklaunch.openmsxparamstooltip' | translate"></app-field-with-suggestions>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-sm mt-3" (click)="launch()" (keyup.enter)="launch()">{{ 'home.launch' |
+        translate
+        }}</button>
+</form>

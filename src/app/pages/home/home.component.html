@@ -44,6 +44,12 @@
           </button>
         </div>
         <div class="d-inline-block ps-1">
+          <button class="btn btn-secondary btn-sm action-button" type="button" (click)="quickLaunch.open()"
+            [disabled]="scanRunning" [title]="'home.quicklaunch' | translate">
+            <span class="bi-caret-right-square"></span>
+          </button>
+        </div>
+        <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
             [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.addgames' | translate">
             <span class="bi-plus-lg"></span>
@@ -359,6 +365,14 @@
       [game]="selectedGame" (startNormallyChoice)="launchOpenmsx($event)"
       (stateChoice)="launchOpenmsxWithState($event)" #savedStatesSelector>
     </app-saved-states>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="quick-launch-id" [titleHeader]="'home.quicklaunch' | translate" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-quick-launch [popupId]="popupId" (openStatus)="popupOpen = $event" [machines]="machines"
+      (gameToLaunch)="quickLaunchOpenmsx($event)" #quickLaunch>
+    </app-quick-launch>
   </ng-template>
 </app-popup>
 

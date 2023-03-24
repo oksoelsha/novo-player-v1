@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { EventSource } from '../models/event';
 import { Game } from '../models/game';
+import { QuickLaunchData } from '../models/quick-launch-data';
 import { GameSavedState } from '../models/saved-state';
 import { GameSecondaryData } from '../models/secondary-data';
 import { Totals } from '../models/totals';
@@ -51,6 +52,28 @@ export class GamesService {
         this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
       });
       this.ipc.send('launchGame', game, time, state);
+    });
+  }
+
+  async quickLaunchOnOpenMSX(quickLaunchData: QuickLaunchData): Promise<string> {
+    const time: number = Date.now();
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
+        // this resolving means that either openMSX failed to start or the window was closed
+        this.launchActivityService.recordGameFinish(null, time);
+        resolve(errorMessage);
+      });
+      this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string) => {
+        let displayName: string;
+        if (filename != null) {
+          displayName = '<' + filename + '>';
+        } else {
+          displayName = '<>';
+        }
+        const game = new Game(displayName, '', 0);
+        this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
+      });
+      this.ipc.send('quickLaunch', quickLaunchData, time);
     });
   }
 

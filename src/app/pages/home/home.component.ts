@@ -33,6 +33,8 @@ import { AdditionalExternalInfoComponent } from '../../popups/additional-externa
 import { MoreScreenshotsComponent } from '../../popups/more-screenshots/more-screenshots.component';
 import { GameSavedState } from '../../models/saved-state';
 import { SavedStatesComponent } from '../../popups/saved-states/saved-states.component';
+import { QuickLaunchComponent } from '../../popups/quick-launch/quick-launch.component';
+import { QuickLaunchData } from '../../models/quick-launch-data';
 
 export enum SortDirection {
   ASC, DESC
@@ -68,6 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
+  @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
@@ -360,6 +363,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   launchOpenmsxWithState(state: string) {
     this.launchGameOrStateOnOpenmsx(this.selectedGame, state);
+  }
+
+  quickLaunchOpenmsx(quickLaunchData: QuickLaunchData) {
+    this.gamesService.quickLaunchOnOpenMSX(quickLaunchData).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsx') +
+        ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.openmsxwindowclosed'));
+      }
+    });
   }
 
   launchWebmsx(game: Game) {

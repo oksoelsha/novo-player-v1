@@ -59,7 +59,9 @@
     "movetoanotherlisting": "Desplaça a una altra llista",
     "dropfilesandfolders": "Deixa anar fitxers i carpetes",
     "failedtostartopenmsxfor": "Error en llançar openMSX per",
+    "failedtostartopenmsx": "Error en llançar openMSX",
     "openmsxwindowclosedfor": "La finestra de openMSX s'ha tancat per",
+    "openmsxwindowclosed": "La finestra de openMSX s'ha tancat",
     "bluemsxwindowclosedfor": "La finestra de blueMSX s'ha tancat per",
     "gamewasremoved": "El joc s'ha suprimit",
     "gameswereremoved": "Els jocs s'han suprimit",
@@ -85,7 +87,8 @@
     "filters": "Filtres",
     "infofromgiantbomb": "Informació de Giant Bomb",
     "getinfofromgiantbomb": "Obtén informació de Giant Bomb",
-    "morescreenshots": "Captures de pantalla addicionals"
+    "morescreenshots": "Captures de pantalla addicionals",
+    "quicklaunch": "Llançament ràpid"
   },
   "language": {
     "en-US": "Anglès",
@@ -262,6 +265,12 @@
     },
     "savedstates": {
       "normallaunch": "Llançament normal"
+    },
+    "quicklaunch": {
+      "file": "Fitxer",
+      "filetooltip": "Qualsevol fitxer compatible amb openMSX",
+      "arguments": "Arguments",
+      "openmsxparamstooltip": "Arguments per utilitzar en iniciar openMSX (per exemple, -romtype KonamiSCC)"
     }
   },
   "shared": {

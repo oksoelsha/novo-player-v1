@@ -59,7 +59,9 @@
     "movetoanotherlisting": "Déplacer vers une autre liste",
     "dropfilesandfolders": "Déposer les fichiers et les dossiers",
     "failedtostartopenmsxfor": "Erreur lors du lancement d'openMSX pour",
+    "failedtostartopenmsx": "Erreur lors du lancement d'openMSX",
     "openmsxwindowclosedfor": "Fenêtre d'openMSX fermée por",
+    "openmsxwindowclosed": "Fenêtre d'openMSX fermée",
     "bluemsxwindowclosedfor": "Fenêtre de blueMSX fermée por",
     "gamewasremoved": "Le jeu a été enlevé",
     "gameswereremoved": "Les jeux ont été enlevés",
@@ -85,7 +87,8 @@
     "filters": "Filtres",
     "infofromgiantbomb": "Informations de Giant Bomb",
     "getinfofromgiantbomb": "Obtenir des informations de Giant Bomb",
-    "morescreenshots": "Captures d'écran supplémentaires"
+    "morescreenshots": "Captures d'écran supplémentaires",
+    "quicklaunch": "Lancement rapide"
   },
   "language": {
     "en-US": "Anglais",
@@ -248,7 +251,7 @@
       "mergelistingsconfirmation": "Le nom existe déjà. Fusionner ?"
     },
     "setInfoFile": {
-      "infoFile": "Dossier"
+      "infoFile": "Fichier"
     },
     "editBluemsxArguments": {
       "bluemsxArguments": "Arguments de blueMSX",
@@ -262,6 +265,12 @@
     },
     "savedstates": {
       "normallaunch": "Lancement normal"
+    },
+    "quicklaunch": {
+      "file": "Fichier",
+      "filetooltip": "Tout fichier pris en charge par openMSX",
+      "arguments": "Arguments",
+      "openmsxparamstooltip": "Arguments à utiliser lors du lancement de openMSX (par exemple, -romtype KonamiSCC)"
     }
   },
   "shared": {
