@@ -32,16 +32,18 @@ export class FieldWithSuggestionsComponent {
   }
 
   onSelectSuggestion(event: any, suggestion: string) {
-    if (suggestion.indexOf(' ') > -1) {
-      this.value = this.value + '"' + suggestion + '"';
-    } else {
-      this.value = this.value + suggestion;
+    if (this.suggestionsDropdown.isOpen()) {
+      if (suggestion.indexOf(' ') > -1) {
+        this.value = this.value + '"' + suggestion + '"';
+      } else {
+        this.value = this.value + suggestion;
+      }
+      this.inputField.nativeElement.focus();
+      setTimeout(() => {
+        this.showSuggestionsForGivenInput(this.value);
+      }, 0);
+      this.userInputOutput.emit(this.value);  
     }
-    this.inputField.nativeElement.focus();
-    setTimeout(() => {
-      this.showSuggestionsForGivenInput(this.value);
-    }, 0);
-    this.userInputOutput.emit(this.value);
     event.preventDefault();
     event.stopPropagation();
   }
