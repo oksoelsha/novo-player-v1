@@ -25,11 +25,11 @@
                                         (click)="resetMachine(activity.pid, activity.game)">
                                         {{ 'common.reset' | translate }}
                                     </button>
-                                    <button ngbDropdownItem type="button"
+                                    <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
                                         (click)="takeScreenshot(activity.pid, activity.game)">
                                         {{ 'dashboard.takeascreenshot' | translate }}
                                     </button>
-                                    <button ngbDropdownItem type="button"
+                                    <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
                                         (click)="saveState(activity.pid, activity.game)">
                                         {{ 'dashboard.savestate' | translate }}
                                     </button>

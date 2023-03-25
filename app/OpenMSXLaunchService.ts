@@ -96,14 +96,15 @@ export class OpenMSXLaunchService {
 
     private async quickLaunch(quickLaunchData: QuickLaunchData, time: number) {
         const args: string[] = [];
+        let filename: string;
         if (fs.existsSync(quickLaunchData.file)) {
             const sha1 = await this.hashService.getSha1Code(quickLaunchData.file);
-            this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename);
+            this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename, sha1.size);
+            filename = path.basename(quickLaunchData.file);
         }
         this.setQuickLaunchOtherArguments(args, quickLaunchData);
         const process = this.startOpenmsx(args, time);
 
-        const filename = path.basename(quickLaunchData.file);
         this.win.webContents.send('quickLaunchProcessIdResponse' + time, process.pid, filename);
     }
 
@@ -159,26 +160,30 @@ export class OpenMSXLaunchService {
         }
     }
 
-    private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string) {
-        if (FileTypeUtils.isROM(filename)) {
-            args.push('-carta');
-            args.push(quickLaunchData.file);
-        } else if (FileTypeUtils.isDisk(filename)) {
-            args.push('-diska');
-            args.push(quickLaunchData.file);
-        } else if (FileTypeUtils.isTape(filename)) {
-            args.push('-cassetteplayer');
+    private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string, size: number) {
+        if (FileTypeUtils.isMSXFile(quickLaunchData.file)) {
+            if (FileTypeUtils.isROM(filename)) {
+                args.push('-carta');
+            } else if (FileTypeUtils.isDisk(filename)) {
+                if (size <= FileTypeUtils.MAX_DISK_FILE_SIZE) {
+                    args.push('-diska');
+                } else {
+                    args.push('-hda');
+                }
+            } else if (FileTypeUtils.isTape(filename)) {
+                args.push('-cassetteplayer');
+            } else if (FileTypeUtils.isLaserdisc(filename)) {
+                args.push('-laserdisc');
+            }
             args.push(quickLaunchData.file);
         }
     }
 
-    private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData): string[] {
+    private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData) {
         args.push('-machine');
         args.push(quickLaunchData.machine);
 
         this.appendParams(args, quickLaunchData.parameters);
-
-        return args;
     }
 
     private appendParams(args: string[], argsString: string) {

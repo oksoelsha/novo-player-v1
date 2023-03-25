@@ -85,7 +85,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivityService.resetMachine(pid).then(reset => {
       if (reset) {
         this.alertService.success(this.localizationService.translate('dashboard.reset') + ': ' +
-          game.name + ' [' + game.listing + ']');
+          game.name + this.getListingIfExists(game));
       }
     });
   }
@@ -120,7 +120,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivityService.takeScreenshot(pid, game).then(taken => {
       if (taken) {
         this.alertService.success(this.localizationService.translate('dashboard.screenshottaken') + ': ' +
-          game.name + ' [' + game.listing + ']');
+          game.name + this.getListingIfExists(game));
       }
     });
   }
@@ -129,7 +129,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivityService.saveState(pid, game).then(saved => {
       if (saved) {
         this.alertService.success(this.localizationService.translate('dashboard.statesaved') + ': ' +
-          game.name + ' [' + game.listing + ']');
+          game.name + this.getListingIfExists(game));
         if (!this.savedStatesMap.get(game.sha1Code)) {
           // this is a hack to force the 'Load state' to appear in the menu.
           // I couldn't just call resetStatesMap() because by the time we get here openMSX may not be
@@ -161,7 +161,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivityService.loadState(this.selectedPid, state).then(loaded => {
       if (loaded) {
         this.alertService.success(this.localizationService.translate('dashboard.stateloaded') + ': ' +
-        this.selectedGame.name + ' [' + this.selectedGame.listing + ']');
+        this.selectedGame.name + this.getListingIfExists(this.selectedGame));
       }
     });
   }
@@ -188,5 +188,13 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.savedStatesMap.set(activity.game.sha1Code, savedStates);
       }
     });
+  }
+
+  private getListingIfExists(game: Game): string {
+    if (game.listing) {
+      return ' [' + game.listing + ']';
+    } else {
+      return '';
+    }
   }
 }

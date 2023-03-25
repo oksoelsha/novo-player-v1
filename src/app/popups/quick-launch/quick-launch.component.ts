@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { OpenMSXUtils } from '../../models/openmsx-utils';
 import { QuickLaunchData } from '../../models/quick-launch-data';
 import { PopupComponent } from '../popup.component';
 
@@ -23,6 +24,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
 
   ngOnInit() {
     super.commonInit();
+    this.selectedMachine = 'Boosted_MSX2_EN';
   }
 
   ngAfterViewInit(): void {
@@ -30,29 +32,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   }
 
   getOpenMSXArgumentsMap(): Map<string, string[]> {
-    const commandLineArguments = new Map<string, string[]>();
-    const romTypes = [
-      'ASCII8',
-      'ASCII16',
-      'KonamiSCC',
-      'page23'
-    ];
-    const extensions = [
-      'scc',
-      'scc+'
-    ];
-
-    commandLineArguments.set('carta', []);
-    commandLineArguments.set('cartb', []);
-    commandLineArguments.set('command', []);
-    commandLineArguments.set('diska', []);
-    commandLineArguments.set('diskb', []);
-    commandLineArguments.set('ext', extensions);
-    commandLineArguments.set('ips', []);
-    commandLineArguments.set('romtype', romTypes);
-    commandLineArguments.set('script', []);
-
-    return commandLineArguments;
+    return OpenMSXUtils.getCommandLineArgumentsMap();
   }
 
   setOpenmsxParams(parameters: string) {

@@ -16,7 +16,7 @@
         <div class="mb-4"></div>
         <div class="table-row">
             <div class="table-cell">{{ 'common.machine' | translate }}</div>
-            <app-drop-down [list]="machines" [selectedItem]="machines[0]" (selection)="selectedMachine = $event">
+            <app-drop-down [list]="machines" [selectedItem]="selectedMachine" (selection)="selectedMachine = $event">
             </app-drop-down>
         </div>
         <div class="mb-4"></div>
