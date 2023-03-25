@@ -45,7 +45,7 @@
         </div>
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="quickLaunch.open()"
-            [disabled]="scanRunning" [title]="'home.quicklaunch' | translate">
+            [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.quicklaunch' | translate">
             <span class="bi-caret-right-square"></span>
           </button>
         </div>
