@@ -42,6 +42,10 @@ export class OpenMSXLaunchService {
     private static readonly Input_Device_ARKANOID_PAD = 'plug joyporta arkanoidpad';
     private static readonly Input_Device_TRACKBALL = 'plug joyportb trackball';
     private static readonly Input_Device_TOUCHPAD = 'plug joyportb touchpad';
+    private static readonly Input_Device_MAGICKEY = 'plug joyportb magic-key';
+    private static readonly Input_Device_NINJATAP = 'plug joyporta ninjatap';
+    private static readonly Input_Device_TETRIS2PROTECTION = 'plug joyportb tetris2-protection';
+    private static readonly Input_Device_PADDLE = 'plug joyporta paddle';
 
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
@@ -55,7 +59,11 @@ export class OpenMSXLaunchService {
             ['3', OpenMSXLaunchService.Input_Device_MOUSE],
             ['4', OpenMSXLaunchService.Input_Device_ARKANOID_PAD],
             ['5', OpenMSXLaunchService.Input_Device_TRACKBALL],
-            ['6', OpenMSXLaunchService.Input_Device_TOUCHPAD]
+            ['6', OpenMSXLaunchService.Input_Device_TOUCHPAD],
+            ['7', OpenMSXLaunchService.Input_Device_MAGICKEY],
+            ['8', OpenMSXLaunchService.Input_Device_NINJATAP],
+            ['9', OpenMSXLaunchService.Input_Device_TETRIS2PROTECTION],
+            ['10', OpenMSXLaunchService.Input_Device_PADDLE]
         ])
         ,
         new TCLCommands('fddMode', [

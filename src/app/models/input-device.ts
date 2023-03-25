@@ -5,5 +5,9 @@ export const InputDevice = [
     'mouse',
     'arkanoidpad',
     'trackball',
-    'touchpad'
+    'touchpad',
+    'magickey',
+    'ninjatap',
+    'tetris2protection',
+    'paddle'
 ];

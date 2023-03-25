@@ -241,6 +241,10 @@
       "arkanoidpad": "Arkanoid Pad",
       "trackball": "Trackball",
       "touchpad": "Touchpad",
+      "magickey": "Magic Key",
+      "ninjatap": "Ninja Tap",
+      "tetris2protection": "Tetris II Special Edition dongle",
+      "paddle": "MSX Paddle",
       "on": "オン",
       "off": "オフ",
       "infomsg": "openMSX 0.16 以降で動作します"

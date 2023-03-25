@@ -241,6 +241,10 @@
       "arkanoidpad": "Arkanoid Pad",
       "trackball": "Trackball",
       "touchpad": "Touchpad",
+      "magickey": "Magic Key",
+      "ninjatap": "Ninja Tap",
+      "tetris2protection": "Tetris II Special Edition dongle",
+      "paddle": "MSX Paddle",
       "on": "Aan",
       "off": "Uit",
       "infomsg": "Werkt met openMSX 0.16 of hoger"
