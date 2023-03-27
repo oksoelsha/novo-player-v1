@@ -46,7 +46,7 @@
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="quickLaunch.open()"
             [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.quicklaunch' | translate">
-            <span class="bi-caret-right-square"></span>
+            ▶
           </button>
         </div>
         <div class="d-inline-block ps-1">
@@ -225,7 +225,7 @@
         <div *ngIf="moreScreenshotFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
           <button class="btn btn-secondary btn-sm me-1" (click)="moreScreenshots.open()"
             [title]="'home.morescreenshots' | translate">
-            <span class="bi bi-image"></span>
+            <span class="bi-image"></span>
           </button>
         </div>
         <div *ngIf="musicFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">

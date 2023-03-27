@@ -13,6 +13,8 @@ export class OpenMSXUtils {
         'page23'
       ];
       const extensions = [
+        'fmpac',
+        'gfx9000',
         'ide',
         'scc',
         'scc+'
