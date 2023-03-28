@@ -67,7 +67,9 @@ export class SettingsService {
     }
 
     private getSuggestedOpenMSXPath(): string {
-        if (PlatformUtils.isLinux()) {
+        if (PlatformUtils.isWindows()) {
+            return 'C:\\Program Files\\openMSX';
+        } else if (PlatformUtils.isLinux()) {
             return '/usr/bin';
         } else if (PlatformUtils.isMacOS()) {
             return '/Applications';
