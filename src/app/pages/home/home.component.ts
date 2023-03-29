@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   readonly isWindows = this.platformService.isOnWindows();
   readonly webmsxMachines = WebMSXMachinesData;
+  readonly undoShortcut = this.platformService.isOnMac() ? 'Cmd+Z' : 'Ctrl+Z';
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';
   games: Game[] = [];

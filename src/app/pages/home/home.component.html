@@ -6,6 +6,7 @@
         <div ngbDropdownMenu>
           <button ngbDropdownItem type="button" (click)="undo()" [disabled]="!showUndo">
             {{ 'home.undo' | translate }}
+            <div class="d-inline-block float-end">{{ undoShortcut }}</div>
           </button>
           <div class="dropdown-divider"></div>
           <button ngbDropdownItem type="button" (click)="manageListings.open()" [disabled]="!listings.length">

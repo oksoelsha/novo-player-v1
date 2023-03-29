@@ -10,4 +10,8 @@ export class PlatformService {
   isOnWindows(): boolean {
     return navigator.userAgent.indexOf('Win') > -1;
   }
+
+  isOnMac(): boolean {
+    return navigator.userAgent.indexOf('Mac') > -1;
+  }
 }
