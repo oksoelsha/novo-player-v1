@@ -16,6 +16,8 @@ export class OpenMSXUtils {
         'fmpac',
         'gfx9000',
         'ide',
+        'mbstereo',
+        'moonsound',
         'scc',
         'scc+'
       ];
