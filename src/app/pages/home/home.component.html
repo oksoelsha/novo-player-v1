@@ -5,8 +5,11 @@
         <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle></button>
         <div ngbDropdownMenu>
           <button ngbDropdownItem type="button" (click)="undo()" [disabled]="!showUndo">
-            {{ 'home.undo' | translate }}
-            <div class="d-inline-block float-end">{{ undoShortcut }}</div>
+            <div class="d-flex">
+              <div class="me-4">{{ 'home.undo' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Z
+              </div>
+            </div>
           </button>
           <div class="dropdown-divider"></div>
           <button ngbDropdownItem type="button" (click)="manageListings.open()" [disabled]="!listings.length">
@@ -106,8 +109,9 @@
             <td class="medium-img"><img src="{{ game | gameMediumIcon }}" draggable="false"></td>
             <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">
               <td class="name">
-                <input id="gameNameEditInput" #gameNameEditInput type="text" spellcheck="false" [(ngModel)]="editedGameName"
-                  (keyup.enter)="processNewGameName($event)" (keyup.escape)="cancelEditMode()" (focusout)="cancelEditMode()" />
+                <input id="gameNameEditInput" #gameNameEditInput type="text" spellcheck="false"
+                  [(ngModel)]="editedGameName" (keyup.enter)="processNewGameName($event)"
+                  (keyup.escape)="cancelEditMode()" (focusout)="cancelEditMode()" />
               </td>
             </ng-container>
             <ng-template #editRow>
@@ -144,119 +148,127 @@
           <div ngbDropdownMenu>
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launch(selectedGame)" [disabled]="!isOpenMSXPathDefined">
-              {{ 'home.onopenmsx' | translate }}
+              <div class="d-flex">
+                <div class="me-4">{{ 'home.onopenmsx' | translate }}</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">Enter</div>
+              </div>
             </button>
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
-              {{ 'home.onwebmsx' | translate }}
+              <div class="d-flex">
+                <div class="me-4">{{ 'home.onwebmsx' | translate }}</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}W</div>
+              </div>
             </button>
             <button *ngIf="isWindows" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
-              {{ 'home.onbluemsx' | translate }}
-            </button>
-          </div>
-        </div>
-        <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
-          <button class="btn btn-secondary btn-sm me-1" ngbDropdownToggle type="button">
-            {{ 'home.actions' | translate }}
+              <div class="d-flex">
+                <div class="me-4">{{ 'home.onbluemsx' | translate }}</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}B</div>
+              </div>
           </button>
-          <div ngbDropdownMenu>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
-              (click)="edit(selectedGame)">
-              <div class="actions-menu-icon"></div>
-              {{ 'common.rename' | translate }}
-            </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
-              (click)="mediaEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.editmedia' | translate }}
-            </button>
-            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="hardwareEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.edithardware' | translate }}
-            </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
-              (click)="infoFileFieldEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.setInfoFile' | translate }}
-            </button>
-            <div class="dropdown-divider"></div>
-            <button class="actions-menu-button" *ngIf="isWindows" ngbDropdownItem type="button"
-              (click)="bluemsxArgumentsEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.editbluemsxarguments' | translate }}
-            </button>
-            <button class="actions-menu-button" *ngIf="isWebMSXPathDefined" ngbDropdownItem type="button"
-              (click)="webmsxMachineSet.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'webmsx.setwebmsxmachine' | translate }}
-            </button>
-            <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
-              (click)="relatedGames.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.findrelatedgames' | translate }}
-            </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
-              ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.getinfofromgiantbomb' | translate }}
-            </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
-              ngbDropdownItem type="button" (click)="setFavoritesFlag(true)">
-              <div class="actions-menu-icon">&starf;</div>
-              {{ 'home.addtofavorites' | translate }}
-            </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="selectedGame.favorite"
-              ngbDropdownItem type="button" (click)="setFavoritesFlag(false)">
-              <div class="actions-menu-icon">&starf;</div>
-              {{ 'home.removefromfavorites' | translate }}
-            </button>
-            <button class="actions-menu-button" ngbDropdownItem type="button"
-              (click)="remove(null, selectedGame, true)">
-              <div class="actions-menu-icon bi-x"></div>
-              {{ 'home.removefromlisting' | translate }}
-            </button>
-            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.movetoanotherlisting' | translate }}
-            </button>
-          </div>
-        </div>
-        <div *ngIf="moreScreenshotFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
-          <button class="btn btn-secondary btn-sm me-1" (click)="moreScreenshots.open()"
-            [title]="'home.morescreenshots' | translate">
-            <span class="bi-image"></span>
-          </button>
-        </div>
-        <div *ngIf="musicFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
-          <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">
-            <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
-              &#9836;
-            </button>
-            <div ngbDropdownMenu class="dropdown-scroll">
-              <button *ngFor="let musicFile of musicFiles" ngbDropdownItem type="button"
-                (click)="setSelectedMusicFile(musicFile)">
-                {{ getMusicName(musicFile) }}
-              </button>
-            </div>
-          </div>
-          <div class="d-inline-block">
-            <app-home-game-music [musicUrl]="selectedMusicFile" [title]="getMusicName(selectedMusicFile)">
-            </app-home-game-music>
-          </div>
-        </div>
-        <div id="game-details">
-          <app-home-game-details [selectedGame]="selectedGame"></app-home-game-details>
         </div>
       </div>
-    </div>
-    <div *ngIf="showFilters" class="scrollable-filters">
-      <app-home-filters [filters]="filters" [machines]="machines" (appliedFilters)="applyFilters($event)"
-        (close)="toggleFiltersForm()" (reset)="resetFilters()" (openedMenu)="handleOpenMenuEvents($event)">
-      </app-home-filters>
+      <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
+        <button class="btn btn-secondary btn-sm me-1" ngbDropdownToggle type="button">
+          {{ 'home.actions' | translate }}
+        </button>
+        <div ngbDropdownMenu>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            (click)="edit(selectedGame)">
+            <div class="actions-menu-icon"></div>
+            {{ 'common.rename' | translate }}
+          </button>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            (click)="mediaEdit.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.editmedia' | translate }}
+          </button>
+          <button class="actions-menu-button" ngbDropdownItem type="button" (click)="hardwareEdit.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.edithardware' | translate }}
+          </button>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            (click)="infoFileFieldEdit.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.setInfoFile' | translate }}
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="actions-menu-button" *ngIf="isWindows" ngbDropdownItem type="button"
+            (click)="bluemsxArgumentsEdit.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.editbluemsxarguments' | translate }}
+          </button>
+          <button class="actions-menu-button" *ngIf="isWebMSXPathDefined" ngbDropdownItem type="button"
+            (click)="webmsxMachineSet.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'webmsx.setwebmsxmachine' | translate }}
+          </button>
+          <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+            (click)="relatedGames.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.findrelatedgames' | translate }}
+          </button>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
+            ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.getinfofromgiantbomb' | translate }}
+          </button>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
+            ngbDropdownItem type="button" (click)="setFavoritesFlag(true)">
+            <div class="actions-menu-icon">&starf;</div>
+            {{ 'home.addtofavorites' | translate }}
+          </button>
+          <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="selectedGame.favorite"
+            ngbDropdownItem type="button" (click)="setFavoritesFlag(false)">
+            <div class="actions-menu-icon">&starf;</div>
+            {{ 'home.removefromfavorites' | translate }}
+          </button>
+          <button class="actions-menu-button" ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
+            <div class="actions-menu-icon bi-x"></div>
+            {{ 'home.removefromlisting' | translate }}
+          </button>
+          <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
+            <div class="actions-menu-icon"></div>
+            {{ 'home.movetoanotherlisting' | translate }}
+          </button>
+        </div>
+      </div>
+      <div *ngIf="moreScreenshotFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
+        <button class="btn btn-secondary btn-sm me-1" (click)="moreScreenshots.open()"
+          [title]="'home.morescreenshots' | translate">
+          <span class="bi-image"></span>
+        </button>
+      </div>
+      <div *ngIf="musicFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
+        <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">
+          <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
+            &#9836;
+          </button>
+          <div ngbDropdownMenu class="dropdown-scroll">
+            <button *ngFor="let musicFile of musicFiles" ngbDropdownItem type="button"
+              (click)="setSelectedMusicFile(musicFile)">
+              {{ getMusicName(musicFile) }}
+            </button>
+          </div>
+        </div>
+        <div class="d-inline-block">
+          <app-home-game-music [musicUrl]="selectedMusicFile" [title]="getMusicName(selectedMusicFile)">
+          </app-home-game-music>
+        </div>
+      </div>
+      <div id="game-details">
+        <app-home-game-details [selectedGame]="selectedGame"></app-home-game-details>
+      </div>
     </div>
   </div>
+  <div *ngIf="showFilters" class="scrollable-filters">
+    <app-home-filters [filters]="filters" [machines]="machines" (appliedFilters)="applyFilters($event)"
+      (close)="toggleFiltersForm()" (reset)="resetFilters()" (openedMenu)="handleOpenMenuEvents($event)">
+    </app-home-filters>
+  </div>
+</div>
 </div>
 
 <div id="drag-area" #dragArea>
@@ -363,8 +375,8 @@
   (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-saved-states [popupId]="popupId" (openStatus)="popupOpen = $event" [savedStates]="savedStates"
-      [game]="selectedGame" (startNormallyChoice)="launchOpenmsx($event)"
-      (stateChoice)="launchOpenmsxWithState($event)" #savedStatesSelector>
+      [game]="selectedGame" (startNormallyChoice)="launchOpenmsx($event)" (stateChoice)="launchOpenmsxWithState($event)"
+      #savedStatesSelector>
     </app-saved-states>
   </ng-template>
 </app-popup>
