@@ -143,12 +143,15 @@ try {
   app.on('browser-window-focus', function () {
     globalShortcut.register("CommandOrControl+R", () => {
     });
+    globalShortcut.register("CommandOrControl+W", () => {
+    });
     globalShortcut.register("F5", () => {
     });
   });
 
   app.on('browser-window-blur', function () {
     globalShortcut.unregister('CommandOrControl+R');
+    globalShortcut.unregister('CommandOrControl+W');
     globalShortcut.unregister('F5');
   });
 

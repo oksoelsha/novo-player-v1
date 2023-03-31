@@ -157,14 +157,14 @@
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.onwebmsx' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}W</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+W</div>
               </div>
             </button>
             <button *ngIf="isWindows" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.onbluemsx' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}B</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+B</div>
               </div>
           </button>
         </div>
@@ -226,7 +226,7 @@
             {{ 'home.removefromfavorites' | translate }}
           </button>
           <button class="actions-menu-button" ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
-            <div class="actions-menu-icon bi-x"></div>
+            <div class="actions-menu-icon text-warning bi-x"></div>
             {{ 'home.removefromlisting' | translate }}
           </button>
           <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
@@ -464,7 +464,7 @@
     {{ 'home.removefromfavorites' | translate }}
   </ng-template>
   <ng-template contextMenuItem (execute)="remove(null, $event.item)">
-    <div class="bi-x context-menu-icon"></div>
+    <div class="bi-x text-warning context-menu-icon"></div>
     {{ 'home.removefromlisting' | translate }}
   </ng-template>
   <ng-template contextMenuItem (execute)="changeListing.open()">

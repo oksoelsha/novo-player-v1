@@ -183,11 +183,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.launch(this.selectedGame);
         } else if (event.key === 'Delete') {
           this.remove(event, this.selectedGame);
-        } else if(this.ctrlOrCommandKey(event) && (event.key === 'b' || event.key === 'B')) {
+        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'b' || event.key === 'B')) {
           if (this.isBlueMSXPathDefined) {
             this.launchBlueMSX(this.selectedGame);
           }
-        } else if(this.ctrlOrCommandKey(event) && (event.key === 'w' || event.key === 'W')) {
+        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'w' || event.key === 'W')) {
           if (this.isWebMSXPathDefined) {
             this.launchWebmsx(this.selectedGame);
           }
