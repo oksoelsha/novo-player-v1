@@ -3,7 +3,8 @@
     <div class="d-inline-block mb-3">
         <div class="bluemsx-arguments">
             <app-field-with-suggestions [value]="bluemsxArguments" [suggestionsMap]="getBlueMSXArgumentsMap()"
-                trigger="/" (userInputOutput)="bluemsxArguments = $event"></app-field-with-suggestions>
+                trigger="/" (userInputOutput)="bluemsxArguments = $event" placement="bottom"
+                [ngbTooltip]="'settings.bluemsxparamstooltip' | translate"></app-field-with-suggestions>
         </div>
     </div>
     <div class="form-check ms-3">
