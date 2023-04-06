@@ -42,7 +42,7 @@ export class FieldWithSuggestionsComponent {
       setTimeout(() => {
         this.showSuggestionsForGivenInput(this.value);
       }, 0);
-      this.userInputOutput.emit(this.value);  
+      this.userInputOutput.emit(this.value);
     }
     event.preventDefault();
     event.stopPropagation();

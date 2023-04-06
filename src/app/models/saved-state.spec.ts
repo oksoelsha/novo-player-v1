@@ -1,4 +1,4 @@
-import { GameSavedState } from "./saved-state";
+import { GameSavedState } from './saved-state';
 
 describe('GameSavedState', () => {
   it('should create an instance', () => {

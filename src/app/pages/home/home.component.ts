@@ -57,7 +57,6 @@ export class SortData {
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('scanParameters') scanParameters: ScanParametersComponent;
   @ViewChild('manageListings') manageListings: ManageListingsComponent;
   @ViewChild('mediaEdit') mediaEdit: MediaEditComponent;
@@ -71,10 +70,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
+  @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
+  @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
-  @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
   readonly webmsxMachines = WebMSXMachinesData;

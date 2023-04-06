@@ -1,4 +1,4 @@
-import { QuickLaunchData } from "./quick-launch-data";
+import { QuickLaunchData } from './quick-launch-data';
 
 describe('QuickLaunchData', () => {
   it('should create an instance', () => {

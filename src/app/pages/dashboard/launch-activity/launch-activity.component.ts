@@ -18,6 +18,7 @@ import { AlertsService } from '../../../shared/components/alerts/alerts.service'
 })
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
+  @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   fileGroupMap: Map<number, string[]> = new Map();
@@ -25,7 +26,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   selectedGame: Game;
   selectedPid: number;
   savedStates: GameSavedState[] = [];
-  @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
