@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, OnDestroy, NgZone } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Game } from '../../models/game';
@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   transparent1 = '';
   transparent2 = 'transparent';
   scanRunning = false;
+  scanProgress: string;
   listings: string[] = [];
   openMenuEventCounter = 0;
   contextMenuOpened = false;
@@ -125,17 +126,32 @@ export class HomeComponent implements OnInit, OnDestroy {
   private quickTypeTimer: NodeJS.Timer = null;
   private dragCounter = 0;
   private historyToUndoSubscription: Subscription;
+  private scanEndSubscription: Subscription;
+  private scanProgressSubscription: Subscription;
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
     private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
-    private emulatorService: EmulatorService) {
+    private emulatorService: EmulatorService, private ngZone: NgZone) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
       self.showUndo = isDataToUndo;
     });
+
+    this.scanEndSubscription = this.scanner.getScannerFinishedEvent().subscribe(addedGamesTotal => {
+      this.ngZone.run(() => {
+        self.processScanEndEvent(addedGamesTotal);
+      });
+    });
+
+    this.scanProgressSubscription = this.scanner.getScannerProgressEvent().subscribe(progress => {
+      this.ngZone.run(() => {
+        self.processScanProgressEvents(progress);
+      });
+    });
+
     this.showUndo = this.undoService.isThereUndoHistory();
   }
 
@@ -251,10 +267,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.sortData = new SortData('name', SortDirection.ASC);
     }
+    this.scanRunning = (sessionStorage.getItem('scanRunning') != null);
 
     const self = this;
     this.settingsService.getSettings().then((settings: Settings) => {
-
       this.gamesService.getListings().then((data: string[]) => {
         this.listings = data;
         let gameSha1Code: string = null;
@@ -292,6 +308,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.historyToUndoSubscription.unsubscribe();
+    this.scanProgressSubscription.unsubscribe();
+    this.scanEndSubscription.unsubscribe();
   }
 
   handleOpenMenuEvents(opened: boolean) {
@@ -314,7 +332,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getGames(listing: string, sha1Code: string = null) {
     this.selectedListing = listing;
-    sessionStorage.setItem('selectedListing', listing);
+    if (listing) {
+      sessionStorage.setItem('selectedListing', listing);
+    }
 
     this.gamesService.getGames(this.selectedListing).then((data: Game[]) => {
       this.sortGames(data);
@@ -715,19 +735,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   startScan(parameters: any/*ScanParameters*/) {
     this.alertService.info(this.localizationService.translate('home.startedscanprocess'));
     this.scanRunning = true;
-    this.scanner.scan(parameters).then((addedGames: Game[]) => {
-      this.alertService.info(this.localizationService.translate('home.totalgamesadded') + ' = ' + addedGames.length);
-
-      this.gamesService.getListings().then((data: string[]) => {
-        this.listings = data;
-        if (!this.selectedListing) {
-          // this can happen after a scan that adds the first listing
-          this.selectedListing = this.listings[0];
-        }
-        this.getGames(this.selectedListing);
-      });
-      this.scanRunning = false;
-    });
+    sessionStorage.setItem('scanRunning', 't');
+    this.scanner.scan(parameters);
   }
 
   setSelectedMusicFile(musicFile: string) {
@@ -997,5 +1006,26 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     this.games = this.games.slice();
+  }
+
+  private processScanEndEvent(addedGamesTotal: number) {
+    this.alertService.info(this.localizationService.translate('home.totalgamesadded') + ' = ' + addedGamesTotal);
+
+    this.gamesService.getListings().then((data: string[]) => {
+      this.listings = data;
+      if (!this.selectedListing) {
+        // this can happen after a scan that adds the first listing
+        this.selectedListing = this.listings[0];
+      }
+      this.getGames(this.selectedListing);
+    });
+    this.scanRunning = false;
+    this.scanProgress = null;
+  }
+
+  private processScanProgressEvents(progress: string) {
+    if (this.scanProgress != progress) {
+      this.scanProgress = progress;
+    }
   }
 }

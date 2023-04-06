@@ -81,18 +81,19 @@ export class ScanService {
 
     private incrementScanCounterAndCheckIfFinished() {
         this.scannedFilesCounter++;
-        this.win.setProgressBar(this.scannedFilesCounter / this.totalFilesToScan);
+        if (this.scannedFilesCounter % 50 === 0) {
+            this.win.webContents.send('scanProgress', this.scannedFilesCounter, this.totalFilesToScan);
+        }
         if (this.scannedFilesCounter == this.totalFilesToScan) {
             this.finishScan();
         }
     }
 
     private finishScan() {
-        this.win.setProgressBar(0);
         this.win.webContents.send('scanResponse', this.addedGames);
     }
 
-    private processFile(filename: string, listing:string, machine: string) {
+    private processFile(filename: string, listing: string, machine: string) {
         const sha1 = this.hashService.getSha1Code(filename);
 
         sha1.then((data: any) => {

@@ -33,7 +33,8 @@
       </div>
       <div class="d-inline-block ms-2" *ngIf="scanRunning">
         <img src="assets/images/general/loading.gif">
-        {{ 'home.scanning' | translate }} . . .
+        {{ 'home.scanning' | translate }}
+        <span *ngIf="scanProgress">{{ scanProgress }}%</span>
       </div>
       <div class="d-inline-block ms-2" *ngIf="otherSelectedGames.size > 0">
         <img src="assets/images/general/select.png">{{ otherSelectedGames.size + 1 }}
