@@ -39,7 +39,8 @@
     "knownDumps": "知らDump",
     "infoFile": "追加情報",
     "undo": "元に戻す",
-    "managelistings": "リストを管理する",
+    "managelistings": "リストを管理",
+    "managebackups": "バックアップの管理",
     "addgames": "ゲームを追加",
     "favorites": "お気に入り",
     "search": "検索",
@@ -275,6 +276,13 @@
       "filetooltip": "openMSX でサポートされているすべてのファイル",
       "arguments": "引数",
       "openmsxparamstooltip": "openMSX の起動時に使用する引数 (例: -romtype KonamiSCC)"
+    },
+    "managebackups": {
+      "restore": "復元",
+      "noname": "名前なし",
+      "backupnow": "今すぐバックアップ",
+      "deletebackupconfirmation": "選択したバックアップを削除しますか？",
+      "restorebackupconfirmation": "既存のデータを上書きしますか?"
     }
   },
   "shared": {

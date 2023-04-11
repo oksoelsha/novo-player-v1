@@ -35,6 +35,7 @@ import { GameSavedState } from '../../models/saved-state';
 import { SavedStatesComponent } from '../../popups/saved-states/saved-states.component';
 import { QuickLaunchComponent } from '../../popups/quick-launch/quick-launch.component';
 import { QuickLaunchData } from '../../models/quick-launch-data';
+import { ManageBackupsComponent } from '../../popups/manage-backups/manage-backups.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -70,6 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
+  @ViewChild('manageBackups') manageBackups: ManageBackupsComponent;
   @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
   @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;

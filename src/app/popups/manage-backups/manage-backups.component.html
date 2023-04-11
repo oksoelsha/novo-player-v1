@@ -1,0 +1,42 @@
+<div [ngClass]="{backups: true, disabled: deleteMode || restoreMode}" #backupsTable>
+    <table>
+        <tr *ngFor="let backup of backups" [ngClass]="{selected: backupsSelectionMap.get(backup.timestamp)}">
+            <td class="backup-timestamp">
+                {{ getDate(backup) }}
+            </td>
+            <td *ngIf="!(renameMode && backupsSelectionMap.get(backup.timestamp))" [id]="backup" class="backup-name">
+                {{ getBackupName(backup) }}
+            </td>
+            <td *ngIf="renameMode && backupsSelectionMap.get(backup.timestamp)" class="backup-name">
+                <input class="backupRenameInput" #backupRenameInput type="text" spellcheck="false"
+                    [(ngModel)]="renamedBackup" (keyup.enter)="renameBackup($event)" (keyup.escape)="resetState()"
+                    (focusout)="resetState()" />
+            </td>
+            <td class="actions">
+                <img src="assets/images/operations/history.png" (click)="enableRestoreMode(backup)" placement="top"
+                    [ngbTooltip]="'popups.managebackups.restore' | translate" container="body">
+                <img src="assets/images/operations/rename.png" (click)="enableRenameMode(backup)" placement="top"
+                    [ngbTooltip]="'common.rename' | translate" container="body">
+                <img src="assets/images/operations/remove.png" (click)="enableDeleteMode(backup)" placement="top"
+                    [ngbTooltip]="'common.delete' | translate" container="body">
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="bottom-part">
+    <button *ngIf="!deleteMode && !restoreMode" class="btn btn-primary btn-sm" (click)="backupNow()"
+        (keyup.enter)="backupNow()" [disabled]="backupTaken">{{ 'popups.managebackups.backupnow' | translate
+        }}</button>
+    <div *ngIf="deleteMode">
+        {{ 'popups.managebackups.deletebackupconfirmation' | translate }}
+        <button class="btn btn-primary btn-sm ms-1" (click)="deleteBackup()">{{ 'common.yes' | translate }}</button>
+        <button class="btn btn-secondary btn-sm ms-1" (click)="resetState()">{{ 'common.no' | translate }}</button>
+    </div>
+    <div *ngIf="restoreMode">
+        {{ 'popups.managebackups.restorebackupconfirmation' | translate }}
+        <button class="btn btn-primary btn-sm ms-1" (click)="restoreBackup()">{{ 'common.yes' | translate
+            }}</button>
+        <button class="btn btn-secondary btn-sm ms-1" (click)="resetState()">{{ 'common.no' |
+            translate }}</button>
+    </div>
+</div>

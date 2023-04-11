@@ -40,6 +40,7 @@
     "infoFile": "Informations supplémentaires",
     "undo": "Annuler",
     "managelistings": "Gérer les listes",
+    "managebackups": "Gérer les sauvegardes",
     "addgames": "Ajouter des jeux",
     "favorites": "Favoris",
     "search": "Chercher",
@@ -275,6 +276,13 @@
       "filetooltip": "Tout fichier pris en charge par openMSX",
       "arguments": "Arguments",
       "openmsxparamstooltip": "Arguments à utiliser lors du lancement de openMSX (par exemple, -romtype KonamiSCC)"
+    },
+    "managebackups": {
+      "restore": "Restaurer",
+      "noname": "Sans nom",
+      "backupnow": "Sauvegarder maintenant",
+      "deletebackupconfirmation": "Supprimer la sauvegarde sélectionnée ?",
+      "restorebackupconfirmation": "Restauration va remplacer les données actuelles. Autoriser ?"
     }
   },
   "shared": {

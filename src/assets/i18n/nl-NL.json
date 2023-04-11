@@ -40,6 +40,7 @@
     "infoFile": "Extra informatie",
     "undo": "Ongedaan maken",
     "managelistings": "Lijsten beheren",
+    "managebackups": "Back-ups beheren",
     "addgames": "Spellen toevoegen",
     "favorites": "Favorieten",
     "search": "Zoeken",
@@ -275,6 +276,13 @@
       "filetooltip": "Elk bestand ondersteund door openMSX",
       "arguments": "Argumenten",
       "openmsxparamstooltip": "Argumenten om te gebruiken bij het starten van openMSX (bijv. -romtype KonamiSCC)"
+    },
+    "managebackups": {
+      "restore": "Herstellen",
+      "noname": "Geen naam",
+      "backupnow": "Nu een back-up maken",
+      "deletebackupconfirmation": "Geselecteerde back-up verwijderen?",
+      "restorebackupconfirmation": "Hiermee worden alle gegevens overschreven. Toestaan?"
     }
   },
   "shared": {

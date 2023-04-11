@@ -40,6 +40,7 @@
     "infoFile": "Informação extra",
     "undo": "Desfazer",
     "managelistings": "Gerenciar listagens",
+    "managebackups": "Gerenciar backups",
     "addgames": "Adicionar jogos",
     "favorites": "Favoritos",
     "search": "Procurar",
@@ -275,6 +276,13 @@
       "filetooltip": "Qualquer arquivo suportado pelo openMSX",
       "arguments": "Argumentos",
       "openmsxparamstooltip": "Argumentos a serem usados ao lançar blueMSX (por exemplo, -romtype KonamiSCC)"
+    },
+    "managebackups": {
+      "restore": "Restaurar",
+      "noname": "Sem nome",
+      "backupnow": "Fazer backup agora",
+      "deletebackupconfirmation": "Excluir o backup selecionado?",
+      "restorebackupconfirmation": "Restauração substituirá os dados atuais. Permitir?"
     }
   },
   "shared": {

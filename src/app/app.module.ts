@@ -58,6 +58,7 @@ import { MoreScreenshotsComponent } from './popups/more-screenshots/more-screens
 import { FieldWithSuggestionsComponent } from './shared/components/field-with-suggestions/field-with-suggestions.component';
 import { SavedStatesComponent } from './popups/saved-states/saved-states.component';
 import { QuickLaunchComponent } from './popups/quick-launch/quick-launch.component';
+import { ManageBackupsComponent } from './popups/manage-backups/manage-backups.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -98,6 +99,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     MoreScreenshotsComponent,
     SavedStatesComponent,
     QuickLaunchComponent,
+    ManageBackupsComponent,
     RangeSelectorComponent,
     FiltersComponent,
     AdditionalExternalInfoComponent,

@@ -15,6 +15,9 @@
           <button ngbDropdownItem type="button" (click)="manageListings.open()" [disabled]="!listings.length">
             {{ 'home.managelistings' | translate }}
           </button>
+          <button ngbDropdownItem type="button" (click)="manageBackups.open()" [disabled]="!listings.length">
+            {{ 'home.managebackups' | translate }}
+          </button>
         </div>
       </div>
       <div *ngIf="listings.length > 0" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
@@ -387,6 +390,13 @@
     <app-quick-launch [popupId]="popupId" (openStatus)="popupOpen = $event" [machines]="machines"
       (gameToLaunch)="quickLaunchOpenmsx($event)" #quickLaunch>
     </app-quick-launch>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="manage-backups-id" [titleHeader]="'home.managebackups' | translate"
+  (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-manage-backups [popupId]="popupId" (openStatus)="popupOpen = $event" #manageBackups></app-manage-backups>
   </ng-template>
 </app-popup>
 

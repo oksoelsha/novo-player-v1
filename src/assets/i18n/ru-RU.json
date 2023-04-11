@@ -40,6 +40,7 @@
     "infoFile": "Дополнительная информация",
     "undo": "Отменить",
     "managelistings": "Управление списки",
+    "managebackups": "Управление резервными копиями",
     "addgames": "Добавление игры",
     "favorites": "Избранное",
     "search": "Поиск",
@@ -275,6 +276,13 @@
       "filetooltip": "Любой файл, поддерживаемый openMSX",
       "arguments": "Аргументы",
       "openmsxparamstooltip": "Аргументы для использования при запуске openMSX (например -romtype KonamiSCC)"
+    },
+    "managebackups": {
+      "restore": "Восстановить",
+      "noname": "Без имени",
+      "backupnow": "Выполнить архивацию",
+      "deletebackupconfirmation": "Удалить выбранную резервную копию?",
+      "restorebackupconfirmation": "Переписать существующие данные?"
     }
   },
   "shared": {
