@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Backup } from '../../models/backup';
 import { BackupsService } from '../../services/backups.service';
 import { LocalizationService } from '../../services/localization.service';
@@ -7,13 +7,13 @@ import { PopupComponent } from '../popup.component';
 @Component({
   selector: 'app-manage-backups',
   templateUrl: './manage-backups.component.html',
-  styleUrls: ['../../common-styles.sass', './manage-backups.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['../../common-styles.sass', './manage-backups.component.sass']
 })
 export class ManageBackupsComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @ViewChild('backupRenameInput', { static: false }) private backupRenameInput: ElementRef;
   @ViewChild('backupsTable', { static: true }) private backupsTable: ElementRef;
+  @Output() dataRestored: EventEmitter<void> = new EventEmitter<void>();
 
   renamedBackup: string;
   restoreMode = false;
@@ -33,6 +33,7 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     super.commonInit();
     this.backupsService.getBackups().then(backups => {
       this.backups = backups;
+      this.backups.sort((a, b) => a.timestamp - b.timestamp);
     });
   }
 
@@ -88,8 +89,8 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
 
   restoreBackup() {
     this.backupsService.restoreBackup(this.selectedBackup).then(() => {
-      // TODO - maybe add confirmation??? and update main display with new game list
       this.resetState();
+      this.dataRestored.emit();
     });
   }
 

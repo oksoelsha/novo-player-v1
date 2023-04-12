@@ -396,7 +396,8 @@
 <app-popup popupId="manage-backups-id" [titleHeader]="'home.managebackups' | translate"
   (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
-    <app-manage-backups [popupId]="popupId" (openStatus)="popupOpen = $event" #manageBackups></app-manage-backups>
+    <app-manage-backups [popupId]="popupId" (openStatus)="popupOpen = $event" (dataRestored)="reloadAfterRestore()"
+      #manageBackups></app-manage-backups>
   </ng-template>
 </app-popup>
 

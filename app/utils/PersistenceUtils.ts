@@ -35,4 +35,8 @@ export class PersistenceUtils {
     static getStoragePath(): string {
         return path.join(os.homedir(), 'Novo Player');
     }
+
+    static getBackupsStoragePath(): string {
+        return path.join(this.getStoragePath(), 'backups');
+    }
 }

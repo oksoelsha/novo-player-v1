@@ -21,6 +21,18 @@ export class GamesService {
         this.init();
     }
 
+    reloadDatabase() {
+        this.database.loadDatabase((err: any) => {
+            if (err) {
+                console.log('Error reloading db', err);
+            }
+        });
+    }
+
+    getDatabaseFile(): string {
+        return this.databaseFile;
+    }
+
     saveGameFromScan(game: Game): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
             const gameDO = new GameDO(game);

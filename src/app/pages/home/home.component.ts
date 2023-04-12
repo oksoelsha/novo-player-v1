@@ -792,6 +792,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.games = this.filtersService.filter(this.originalGames, this.filters);
   }
 
+  reloadAfterRestore() {
+    this.gamesService.getListings().then((data: string[]) => {
+      this.listings = data;
+      this.getGames(this.selectedListing);
+    });
+  }
+
   private initialize() {
     this.selectedGame = null;
     this.screenshotA1 = this.screenshotA2 = this.noScreenshotImage1;
