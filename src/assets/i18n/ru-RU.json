@@ -17,7 +17,8 @@
     "delete": "Удалить",
     "yes": "Да",
     "no": "Нет",
-    "select": "Выберите"
+    "select": "Выберите",
+    "ok": "ОК"
   },
   "home": {
     "name": "Имя",
@@ -282,7 +283,8 @@
       "noname": "Без имени",
       "backupnow": "Выполнить архивацию",
       "deletebackupconfirmation": "Удалить выбранную резервную копию?",
-      "restorebackupconfirmation": "Переписать существующие данные?"
+      "restorebackupconfirmation": "Переписать существующие данные?",
+      "error": "Ошибка в операции"
     }
   },
   "shared": {

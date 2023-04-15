@@ -17,7 +17,8 @@
     "delete": "Verwijderen",
     "yes": "Ja",
     "no": "Nee",
-    "select": "Selecteren"
+    "select": "Selecteren",
+    "ok": "OK"
   },
   "home": {
     "name": "Naam",
@@ -282,7 +283,8 @@
       "noname": "Geen naam",
       "backupnow": "Nu een back-up maken",
       "deletebackupconfirmation": "Geselecteerde back-up verwijderen?",
-      "restorebackupconfirmation": "Hiermee worden alle gegevens overschreven. Toestaan?"
+      "restorebackupconfirmation": "Hiermee worden alle gegevens overschreven. Toestaan?",
+      "error": "Fout in de bewerking"
     }
   },
   "shared": {

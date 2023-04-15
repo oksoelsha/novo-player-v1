@@ -50,7 +50,7 @@ export class BackupsService {
                         name = null;
                     }
                     backups.push(new Backup(timestamp, name));
-                });    
+                });
             }
             this.win.webContents.send('getBackupsResponse', backups);
         });
@@ -62,15 +62,15 @@ export class BackupsService {
         const backupFolderPath = PersistenceUtils.getBackupsStoragePath();
         const backupFilePath = path.join(backupFolderPath, filename);
 
-        if (!fs.existsSync(backupFolderPath)) {
-            fs.mkdirSync(backupFolderPath);
-        }
-
         const zip = new this.AdmZip();
         zip.addLocalFile(this.gamesService.getDatabaseFile());
-        zip.writeZip(backupFilePath);
-
-        this.win.webContents.send('backupNowResponse', backup);
+        try {
+            zip.writeZip(backupFilePath);
+            this.win.webContents.send('backupNowResponse', backup);
+        } catch (e) {
+            console.log(e);
+            this.win.webContents.send('backupNowResponse', null);
+        }
     }
 
     private renameBackup(backup: Backup, newName: string) {
@@ -82,14 +82,20 @@ export class BackupsService {
         const newFilePath = path.join(backupFolderPath, newFilename);
 
         fs.rename(currentFilePath, newFilePath, (err) => {
-            this.win.webContents.send('renameBackupResponse', newBackup);
+            if (err) {
+                console.log(err);
+            }
+            this.win.webContents.send('renameBackupResponse', err ? null : newBackup);
         });
     }
 
     private deleteBackup(backup: Backup) {
         const filename = this.getBackupFilename(backup);
         fs.unlink(path.join(PersistenceUtils.getBackupsStoragePath(), filename), (err) => {
-            this.win.webContents.send('deleteBackupResponse');
+            if (err) {
+                console.log(err);
+            }
+            this.win.webContents.send('deleteBackupResponse', err);
         });
     }
 
@@ -97,12 +103,16 @@ export class BackupsService {
         const filename = this.getBackupFilename(backup);
         const backupFilePath = path.join(PersistenceUtils.getBackupsStoragePath(), filename);
 
-        const zip = new this.AdmZip(backupFilePath);
-        zip.extractAllTo(PersistenceUtils.getStoragePath(), true);
+        try {
+            const zip = new this.AdmZip(backupFilePath);
+            zip.extractAllTo(PersistenceUtils.getStoragePath(), true);
+            this.win.webContents.send('restoreBackupResponse');
+        } catch (e) {
+            console.log(e);
+            this.win.webContents.send('restoreBackupResponse', true);
+        }
 
         this.gamesService.reloadDatabase();
-
-        this.win.webContents.send('restoreBackupResponse');
     }
 
     private getBackupFilename(backup: Backup): string {

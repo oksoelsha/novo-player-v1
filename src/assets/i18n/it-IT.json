@@ -17,7 +17,8 @@
     "delete": "Elimina",
     "yes": "Sì",
     "no": "No",
-    "select": "Seleziona"
+    "select": "Seleziona",
+    "ok": "OK"
   },
   "home": {
     "name": "Nome",
@@ -282,7 +283,8 @@
       "noname": "Nessun nome",
       "backupnow": "Esegui backup ora",
       "deletebackupconfirmation": "Elimina il backup selezionato?",
-      "restorebackupconfirmation": "Il ripristino sovrascriverà i dati correnti. Consentire l'operazione?"
+      "restorebackupconfirmation": "Il ripristino sovrascriverà i dati correnti. Consentire l'operazione?",
+      "error": "Errore nell'operazione"
     }
   },
   "shared": {

@@ -1,4 +1,4 @@
-<div [ngClass]="{backups: true, disabled: deleteMode || restoreMode}" #backupsTable>
+<div [ngClass]="{backups: true, disabled: deleteMode || restoreMode || errorMode}" #backupsTable>
     <table>
         <tr *ngFor="let backup of backups" [ngClass]="{selected: backupsSelectionMap.get(backup.timestamp)}">
             <td class="backup-timestamp">
@@ -24,9 +24,14 @@
     </table>
 </div>
 <div class="bottom-part">
-    <button *ngIf="!deleteMode && !restoreMode" class="btn btn-primary btn-sm" (click)="backupNow()"
+    <button *ngIf="!deleteMode && !restoreMode && !errorMode" class="btn btn-primary btn-sm" (click)="backupNow()"
         (keyup.enter)="backupNow()" [disabled]="backupTaken">{{ 'popups.managebackups.backupnow' | translate
         }}</button>
+    <div *ngIf="errorMode">
+        <span class="text-danger">{{ 'popups.managebackups.error' | translate }}</span>
+        <button class="btn btn-primary btn-sm ms-1" (click)="resetState()">{{ 'common.ok' | translate
+            }}</button>
+    </div>
     <div *ngIf="deleteMode">
         {{ 'popups.managebackups.deletebackupconfirmation' | translate }}
         <button class="btn btn-primary btn-sm ms-1" (click)="deleteBackup()">{{ 'common.yes' | translate }}</button>

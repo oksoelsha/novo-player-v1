@@ -17,7 +17,8 @@
     "delete": "削除",
     "yes": "はい",
     "no": "ノー",
-    "select": "選択"
+    "select": "選択",
+    "ok": "Ok"
   },
   "home": {
     "name": "名前",
@@ -282,7 +283,8 @@
       "noname": "名前なし",
       "backupnow": "今すぐバックアップ",
       "deletebackupconfirmation": "選択したバックアップを削除しますか？",
-      "restorebackupconfirmation": "既存のデータを上書きしますか?"
+      "restorebackupconfirmation": "既存のデータを上書きしますか?",
+      "error": "操作エラー"
     }
   },
   "shared": {

@@ -17,7 +17,8 @@
     "delete": "Eliminar",
     "yes": "Sí",
     "no": "No",
-    "select": "Seleccionar"
+    "select": "Seleccionar",
+    "ok": "Aceptar"
   },
   "home": {
     "name": "Nombre",
@@ -282,7 +283,8 @@
       "noname": "Sin nombre",
       "backupnow": "Hacer copia de seguridad ahora",
       "deletebackupconfirmation": "¿Eliminar la copia de seguridad seleccionada?",
-      "restorebackupconfirmation": "Restauración sobrescribirá los datos actuales. ¿Permitir?"
+      "restorebackupconfirmation": "Restauración sobrescribirá los datos actuales. ¿Permitir?",
+      "error": "Error en la operación"
     }
   },
   "shared": {

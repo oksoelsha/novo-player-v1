@@ -11,14 +11,15 @@ import { PopupComponent } from '../popup.component';
 })
 export class ManageBackupsComponent extends PopupComponent implements OnInit, AfterViewInit {
 
+  @Output() dataRestored: EventEmitter<void> = new EventEmitter<void>();
   @ViewChild('backupRenameInput', { static: false }) private backupRenameInput: ElementRef;
   @ViewChild('backupsTable', { static: true }) private backupsTable: ElementRef;
-  @Output() dataRestored: EventEmitter<void> = new EventEmitter<void>();
 
   renamedBackup: string;
   restoreMode = false;
   renameMode = false;
   deleteMode = false;
+  errorMode = false;
   backups: Backup[] = [];
   selectedBackup: Backup;
   backupsSelectionMap: Map<number, boolean> = new Map();
@@ -84,6 +85,9 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.backupsService.deleteBackup(this.selectedBackup).then(() => {
       this.removeFromBackups(this.selectedBackup);
       this.resetState();
+    }).catch(() => {
+      this.deleteMode = false;
+      this.errorMode = true;
     });
   }
 
@@ -91,6 +95,9 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.backupsService.restoreBackup(this.selectedBackup).then(() => {
       this.resetState();
       this.dataRestored.emit();
+    }).catch(() => {
+      this.restoreMode = false;
+      this.errorMode = true;
     });
   }
 
@@ -98,6 +105,11 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.backupsService.renameBackup(this.selectedBackup, this.renamedBackup).then(backupWithNewName => {
       this.removeFromBackups(this.selectedBackup);
       this.addToBackups(backupWithNewName);
+    }).catch(() => {
+      this.renameMode = false;
+      setTimeout(() => {
+        this.errorMode = true;
+      }, 0);
     });
     event.stopPropagation();
   }
@@ -106,6 +118,8 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.backupTaken = true;
     this.backupsService.backupNow().then(backup => {
       this.addToBackups(backup);
+    }).catch(() => {
+      this.errorMode = true;
     });
   }
 
@@ -117,6 +131,7 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.renamedBackup = '';
     this.selectedBackup = null;
     this.backupTaken = false;
+    this.errorMode = false;
   };
 
   private resetStateAndScrollPosition = () => {

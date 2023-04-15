@@ -17,7 +17,8 @@
     "delete": "삭제",
     "yes": "예",
     "no": "아니요",
-    "select": "선택"
+    "select": "선택",
+    "ok": "확인"
   },
   "home": {
     "name": "이름",
@@ -282,7 +283,8 @@
       "noname": "이름 없음",
       "backupnow": "지금 백업",
       "deletebackupconfirmation": "선택한 백업을 삭제하시겠습니까?",
-      "restorebackupconfirmation": "기존 데이터를 덮어쓰시겠습니까?"
+      "restorebackupconfirmation": "기존 데이터를 덮어쓰시겠습니까?",
+      "error": "작업 오류"
     }
   },
   "shared": {

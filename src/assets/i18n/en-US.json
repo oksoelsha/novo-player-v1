@@ -17,7 +17,8 @@
     "delete": "Delete",
     "yes": "Yes",
     "no": "No",
-    "select": "Select"
+    "select": "Select",
+    "ok": "OK"
   },
   "home": {
     "name": "Name",
@@ -282,7 +283,8 @@
       "noname": "No name",
       "backupnow": "Backup now",
       "deletebackupconfirmation": "Delete selected backup?",
-      "restorebackupconfirmation": "Restoration will overwrite current data. Allow?"
+      "restorebackupconfirmation": "Restoration will overwrite current data. Allow?",
+      "error": "Error in the operation"
     }
   },
   "shared": {

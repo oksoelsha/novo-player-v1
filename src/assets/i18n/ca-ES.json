@@ -17,7 +17,8 @@
     "delete": "Suprimeix",
     "yes": "Sí",
     "no": "No",
-    "select": "Selecciona"
+    "select": "Selecciona",
+    "ok": "D’acord"
   },
   "home": {
     "name": "Nom",
@@ -282,7 +283,8 @@
       "noname": "Sense nom",
       "backupnow": "Fes còpia de seguretat ara",
       "deletebackupconfirmation": "Vols suprimir la còpia de seguretat seleccionada?",
-      "restorebackupconfirmation": "Restauració sobreescriurà les dades actuals. Permet?"
+      "restorebackupconfirmation": "Restauració sobreescriurà les dades actuals. Permet?",
+      "error": "Error en l'operació"
     }
   },
   "shared": {

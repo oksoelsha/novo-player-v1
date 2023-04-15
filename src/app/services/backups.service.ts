@@ -26,7 +26,11 @@ export class BackupsService {
   async backupNow(): Promise<Backup> {
     return new Promise<Backup>((resolve, reject) => {
       this.ipc.once('backupNowResponse', (event, backup) => {
-        resolve(backup);
+        if (backup) {
+          resolve(backup);
+        } else {
+          reject();
+        }
       });
       this.ipc.send('backupNow');
     });
@@ -34,8 +38,12 @@ export class BackupsService {
 
   async deleteBackup(backup: Backup): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.ipc.once('deleteBackupResponse', (event) => {
-        resolve();
+      this.ipc.once('deleteBackupResponse', (event, err) => {
+        if (err) {
+          reject();
+        } else {
+          resolve();
+        }
       });
       this.ipc.send('deleteBackup', backup);
     });
@@ -44,7 +52,11 @@ export class BackupsService {
   async renameBackup(backup: Backup, newName: string): Promise<Backup> {
     return new Promise<Backup>((resolve, reject) => {
       this.ipc.once('renameBackupResponse', (event, renamedBackup) => {
-        resolve(renamedBackup);
+        if (renamedBackup) {
+          resolve(renamedBackup);
+        } else {
+          reject();
+        }
       });
       this.ipc.send('renameBackup', backup, newName);
     });
@@ -52,8 +64,12 @@ export class BackupsService {
 
   async restoreBackup(backup: Backup): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.ipc.once('restoreBackupResponse', (event) => {
-        resolve();
+      this.ipc.once('restoreBackupResponse', (event, err) => {
+        if (err) {
+          reject();
+        } else {
+          resolve();
+        }
       });
       this.ipc.send('restoreBackup', backup);
     });
