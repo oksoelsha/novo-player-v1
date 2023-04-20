@@ -17,7 +17,7 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
   @Output() parameters: EventEmitter<ScanParameters> = new EventEmitter<ScanParameters>();
 
   selectedListing = '';
-  selectedMachine = '';
+  selectedMachine: string;
 
   constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
     super(changeDetector);
@@ -29,17 +29,13 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
 
   ngAfterViewInit(): void {
     super.commonViewInit();
+    if (!this.selectedMachine) {
+      this.selectedMachine = 'Boosted_MSX2_EN';
+    }
   }
 
   open(): void {
     super.open();
-
-    this.emulatorService.getMachines().then((data: string[]) => {
-      this.machines = data;
-      if (!this.selectedMachine) {
-        this.selectedMachine = data[0];
-      }
-    });
   }
 
   close(): void {

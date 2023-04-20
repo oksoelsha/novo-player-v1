@@ -53,13 +53,13 @@
         </div>
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="quickLaunch.open()"
-            [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.quicklaunch' | translate">
+            [disabled]="!isOpenMSXPathDefined || machines.length === 0" [title]="'home.quicklaunch' | translate">
             ▶
           </button>
         </div>
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="scanParameters.open()"
-            [disabled]="!isOpenMSXPathDefined || scanRunning" [title]="'home.addgames' | translate">
+            [disabled]="!isOpenMSXPathDefined || machines.length === 0 || scanRunning" [title]="'home.addgames' | translate">
             <span class="bi-plus-lg"></span>
           </button>
         </div>
