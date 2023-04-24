@@ -9,8 +9,8 @@ import { Game } from '../src/app/models/game'
 import { GameUtils } from '../src/app/models/game-utils'
 import { PlatformUtils } from './utils/PlatformUtils'
 import { QuickLaunchData } from '../src/app/models/quick-launch-data'
-import { FileTypeUtils } from '../release/win-unpacked/resources/app/utils/FileTypeUtils'
 import { HashService } from './HashService'
+import { FileTypeUtils } from './utils/FileTypeUtils';
 
 class TCLCommands {
     field: string;
