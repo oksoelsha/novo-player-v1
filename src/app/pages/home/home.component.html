@@ -15,12 +15,12 @@
           <button ngbDropdownItem type="button" (click)="manageListings.open()" [disabled]="!listings.length">
             {{ 'home.managelistings' | translate }}
           </button>
-          <button ngbDropdownItem type="button" (click)="manageBackups.open()" [disabled]="!listings.length">
+          <button ngbDropdownItem type="button" (click)="manageBackups.open()">
             {{ 'home.managebackups' | translate }}
           </button>
         </div>
       </div>
-      <div *ngIf="listings.length > 0" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
+      <div *ngIf="listings.length" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
         <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
           {{ selectedListing }}
           <span class="badge bg-light text-dark">
@@ -39,7 +39,7 @@
         {{ 'home.scanning' | translate }}
         <span *ngIf="scanProgress">{{ scanProgress }}%</span>
       </div>
-      <div class="d-inline-block ms-2" *ngIf="otherSelectedGames.size > 0">
+      <div class="d-inline-block ms-2" *ngIf="otherSelectedGames.size">
         <img src="assets/images/general/select.png">{{ otherSelectedGames.size + 1 }}
       </div>
       <div class="action-buttons">
@@ -239,13 +239,13 @@
           </button>
         </div>
       </div>
-      <div *ngIf="moreScreenshotFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
+      <div *ngIf="moreScreenshotFiles.length && !otherSelectedGames.size" class="d-inline-block">
         <button class="btn btn-secondary btn-sm me-1" (click)="moreScreenshots.open()"
           [title]="'home.morescreenshots' | translate">
           <span class="bi-image"></span>
         </button>
       </div>
-      <div *ngIf="musicFiles.length > 0 && otherSelectedGames.size === 0" class="d-inline-block">
+      <div *ngIf="musicFiles.length && !otherSelectedGames.size" class="d-inline-block">
         <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">
           <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
             &#9836;
@@ -462,7 +462,7 @@
     <div class="context-menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isMenuItemVisible && isGiantbombApikeyDefined"
+  <ng-template contextMenuItem [visible]="isGiantbombApikeyDefined && isMenuItemVisible"
     (execute)="additionalExternalInfo.open()">
     <div class="context-menu-icon"></div>
     {{ 'home.getinfofromgiantbomb' | translate }}
