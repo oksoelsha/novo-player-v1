@@ -334,18 +334,15 @@ export class GamesService {
     private search(text: string) {
         const self = this;
         const games: Game[] = [];
-        const sanitizedText: string = text.replace(/[(){}[\]\\?|]/g,'');
+        const sanitizedText = text.replace(/[(){}[\]\\?|]/g, '');
 
-        this.database.find({$or: [{name:{$regex: new RegExp(sanitizedText, 'i') }}, {_id:{$regex: new RegExp('^' + sanitizedText, 'i')}}]}, (err: any, entries: any) => {
-            let index = 0;
+        this.database.find({ $or: [{ name: { $regex: new RegExp(sanitizedText, 'i') } }, { _id: { $regex: new RegExp('^' + sanitizedText, 'i') } }] })
+            .limit(10).exec((err: any, entries: any) => {
             for (const entry of entries) {
                 const game = new Game(entry.name, entry._id, entry.size);
                 game.setListing(entry.listing);
 
                 games.push(game)
-                if (++index == 10) {
-                    break;
-                }
             }
             games.sort((a: Game, b: Game) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
