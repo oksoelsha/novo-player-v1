@@ -87,8 +87,6 @@
   margin-bottom: 4rem
   table
     font-size: .875rem
-    tr
-      transition: 0.1s
     tr:hover
       background-color: #3e3e3e
       cursor: pointer
@@ -97,7 +95,6 @@
       transform: scale(0.75)
     tr td span img
       opacity: 0
-      transition: 0.1s
     tr td span img:hover
       transform: scale(1.0)
     th
@@ -137,8 +134,10 @@
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
+
 .year-title
   width: 5.625rem
+
 .year
   width: 2.625rem
 
@@ -158,7 +157,7 @@
   top: 0
   left: 0
   pointer-events: none
-  -webkit-transition: opacity 0.7s ease-in-out
+  transition: opacity 0.75s ease-in-out
 
 @media screen and (max-width: 83.5rem)
   #second-screenshot
