@@ -7,6 +7,140 @@ import { Game } from '../models/game';
 export class AdditionalExternalInfoService {
 
   private readonly idToName = new Map<number, string>();
+  private readonly idsToNames = [
+    [54, 'Ninja-kun'],
+    [57, 'Hustle! Chumy'],
+    [108, 'Exerion'],
+    [135, 'Mobile Suit Gundam: Last Shooting'],
+    [204, 'Exerion II: Zorni'],
+    [256, 'Nessen Koushien: Exciting Baseball'],
+    [263, 'Hyper Sports'],
+    [264, 'Hyper Sports II'],
+    [268, 'Pachinko-U.F.O.'],
+    [272, 'MSX Baseball'],
+    [283, 'Pretty Sheep'],
+    [313, 'Stop the Express'],
+    [318, 'HAL\'s Hole In One Golf'],
+    [319, 'Boggy \'84'],
+    [378, 'Yie Ar Kung-Fu 2: The Emperor Yie-Gah'],
+    [386, 'Moonsweeper'],
+    [406, 'King\'s Valley'],
+    [474, 'Ping Pong'],
+    [478, 'Golgo 13: Ōkami no Su'],
+    [495, 'C_So!'],
+    [531, 'Kung-Fu Master'],
+    [539, 'Daidassou'],
+    [556, 'Choro Q'],
+    [563, 'DoorDoor MK II'],
+    [566, 'Dragon Slayer'],
+    [572, 'Ninja-Kid'],
+    [575, 'Harry Fox: Yuki no Maou hen'],
+    [577, 'Hydlide'],
+    [579, 'Hyper Sports III'],
+    [625, 'The Black Onyx'],
+    [642, 'Penguin-Kun Wars'],
+    [674, 'Yokai Tantei Chima Chima'],
+    [695, 'Genghis Khan'],
+    [696, 'Vampire Killer'],
+    [729, 'The Legend of Kage'],
+    [730, 'Come On Picot'],
+    [733, 'Gall Force: Defense of Chaos'],
+    [739, 'Q*Bert'],
+    [742, 'Gradius'],
+    [754, 'Zanac'],
+    [755, 'Zanac EX'],
+    [757, 'Romance of the Three Kingdoms'],
+    [773, 'Scarlet 7: The Mightiest Women'],
+    [785, 'Dunkshot'],
+    [803, 'Topple Zip'],
+    [818, 'Ninja JaJaMaru-kun'],
+    [824, 'Harry Fox'],
+    [825, 'Hydlide II: Shine of Darkness'],
+    [830, 'MSX Baseball II'],
+    [841, 'The Black Onyx II: Search For The Fire Crystal'],
+    [853, 'Jackie Chan in The Police Story'],
+    [855, 'Knightmare'],
+    [860, 'Valis: The Fantasm Soldier'],
+    [869, 'Yami no Ryūō Hades no Monshō'],
+    [873, 'Penguin Adventure'],
+    [880, 'Romancia: Dragon Slayer Jr.'],
+    [894, 'Wingman 2: Kitakura no Fukkatsu'],
+    [900, 'Aliens: Alien 2'],
+    [905, 'F-1 Spirit: The Way To Formula-1'],
+    [916, 'Knightmare II: The Maze of Galious'],
+    [929, 'King Kong 2: Yomigaeru Densetsu'],
+    [931, 'Kudokikata Oshiemasu Part II: Kind Gals'],
+    [932, 'Nemesis 2'],
+    [939, 'Xanadu: Dragon Slayer II'],
+    [941, 'Life Force'],
+    [946, 'Shalom: Knightmare III'],
+    [951, 'War of the Dead'],
+    [960, 'Snake It'],
+    [967, 'Dynamite Bowl'],
+    [974, 'Digital Devil Monogatari: Megami Tensei'],
+    [985, 'Ninja-Kid II'],
+    [991, 'Hydlide 3'],
+    [993, 'Vaxol: Heavy Armed Storming Vehicle'],
+    [1017, 'Higemaru Makaijima'],
+    [1020, 'Mashō no Yakata Goblin'],
+    [1025, 'Mirai'],
+    [1053, 'Arkanoid: Revenge of DOH'],
+    [1059, 'Ys II: Ancient Ys Vanished: The Final Chapter'],
+    [1073, 'F-1 Spirit: 3D Special'],
+    [1078, 'King\'s Valley 2'],
+    [1079, 'King\'s Valley 2'],
+    [1117, 'Cosmic Soldier 2: Psychic War'],
+    [1119, 'Psychic World'],
+    [1135, 'War of the Dead Part 2'],
+    [1136, 'Shin Ku Gyoku Den'],
+    [1138, 'Shin Maō Golvellius'],
+    [1188, 'Parodius'],
+    [1191, 'Victorious Nine II'],
+    [1239, 'Ys III: Wanderers from Ys'],
+    [1241, 'Rune Worth: Kokui no Kikoushi'],
+    [1243, 'Xak: The Art of Visual Stage'],
+    [1247, 'Pro Yakyuu Family Stadium: Pennant Race'],
+    [1249, 'Fire Hawk: Thexder the Second Contact'],
+    [1252, 'Valis II'],
+    [1254, 'Nemesis 3: The Eve of Destruction'],
+    [1257, 'Pro Yakyuu Family Stadium: Home Run Contest'],
+    [1259, 'Fantasy Zone II: The Tears of Opa-Opa'],
+    [1262, 'Tashiro Masashi no Princess ga Ippai'],
+    [1318, 'Intruder: Sakura Yashiki no Tansaku'],
+    [1324, 'Master of Monsters'],
+    [1331, 'Schwarzschild: Kyōran no Ginga'],
+    [1386, 'Xak II: Rising of The Redmoon'],
+    [1387, 'Dragon Slayer: The Legend of Heroes'],
+    [1544, 'Illusion City - Gen\'ei Toshi'],
+    [1545, 'Inindo: Way of the Ninja'],
+    [1550, 'Xak: The Tower of Gazzel'],
+    [1666, 'Action RPG Construction Tool: Dante 2'],
+    [1703, 'Dead of the Brain: Shiryou no Sakebi'],
+    [1707, 'The Tower? Of Cabin: Cabin Panic'],
+    [1772, 'Mirai'],
+    [1798, 'BC\'s Quest for Tires'],
+    [1827, 'Topple Zip'],
+    [1828, 'Fantasy Zone'],
+    [1835, 'Bandit Kings of Ancient China'],
+    [1843, 'Jack Nicklaus\' Greatest 18 Holes of Major Championship Golf'],
+    [2152, 'El Cid'],
+    [2223, 'El Misterio del Nilo'],
+    [2241, 'La Abadía del Crimen'],
+    [2252, 'The Last Mission'],
+    [2277, 'Choy-Lee-Fut Kung-Fu Warrior'],
+    [2349, 'El Poder Oscuro'],
+    [2414, 'Who Dares Wins II'],
+    [2601, 'BC\'s Quest for Tires II: Grog\'s Revenge'],
+    [2697, 'Boulder Dash'],
+    [2833, 'Confused?'],
+    [2911, 'The Activision Decathlon'],
+    [3107, 'Return to Eden'],
+    [3211, 'Dynamite Bowl'],
+    [3217, 'The Light Corridor'],
+    [3278, 'The Day II'],
+    [3280, 'Agi Gongnyong Dooly'],
+    [3687, 'Universe: Unknown']
+  ];
 
   constructor() {
     this.initIdToName();
@@ -62,120 +196,8 @@ export class AdditionalExternalInfoService {
   }
 
   private initIdToName() {
-    this.idToName.set(57, 'Hustle! Chumy');
-    this.idToName.set(108, 'Exerion');
-    this.idToName.set(204, 'Exerion II: Zorni');
-    this.idToName.set(263, 'Hyper Sports');
-    this.idToName.set(264, 'Hyper Sports II');
-    this.idToName.set(268, 'Pachinko-U.F.O.');
-    this.idToName.set(272, 'MSX Baseball');
-    this.idToName.set(313, 'Stop the Express');
-    this.idToName.set(318, 'HAL\'s Hole In One Golf');
-    this.idToName.set(319, 'Boggy \'84');
-    this.idToName.set(378, 'Yie Ar Kung-Fu 2: The Emperor Yie-Gah');
-    this.idToName.set(406, 'King\'s Valley');
-    this.idToName.set(474, 'Ping Pong');
-    this.idToName.set(478, 'Golgo 13: Ōkami no Su');
-    this.idToName.set(495, 'C_So!');
-    this.idToName.set(531, 'Kung-Fu Master');
-    this.idToName.set(539, 'Daidassou');
-    this.idToName.set(563, 'DoorDoor MK II');
-    this.idToName.set(566, 'Dragon Slayer');
-    this.idToName.set(572, 'Ninja-Kid');
-    this.idToName.set(577, 'Hydlide');
-    this.idToName.set(579, 'Hyper Sports III');
-    this.idToName.set(625, 'The Black Onyx');
-    this.idToName.set(642, 'Penguin-Kun Wars');
-    this.idToName.set(674, 'Yokai Tantei Chima Chima');
-    this.idToName.set(695, 'Genghis Khan');
-    this.idToName.set(696, 'Vampire Killer');
-    this.idToName.set(729, 'The Legend of Kage');
-    this.idToName.set(730, 'Come On Picot');
-    this.idToName.set(733, 'Gall Force: Defense of Chaos');
-    this.idToName.set(739, 'Q*Bert');
-    this.idToName.set(742, 'Gradius');
-    this.idToName.set(754, 'Zanac');
-    this.idToName.set(755, 'Zanac EX');
-    this.idToName.set(773, 'Scarlet 7: The Mightiest Women');
-    this.idToName.set(785, 'Dunkshot');
-    this.idToName.set(803, 'Topple Zip');
-    this.idToName.set(825, 'Hydlide II: Shine of Darkness');
-    this.idToName.set(830, 'MSX Baseball II');
-    this.idToName.set(841, 'The Black Onyx II: Search For The Fire Crystal');
-    this.idToName.set(855, 'Knightmare');
-    this.idToName.set(860, 'Valis: The Fantasm Soldier');
-    this.idToName.set(873, 'Penguin Adventure');
-    this.idToName.set(880, 'Romancia: Dragon Slayer Jr.');
-    this.idToName.set(894, 'Wingman 2: Kitakura no Fukkatsu');
-    this.idToName.set(905, 'F-1 Spirit: The Way To Formula-1');
-    this.idToName.set(916, 'Knightmare II: The Maze of Galious');
-    this.idToName.set(929, 'King Kong 2: Yomigaeru Densetsu');
-    this.idToName.set(931, 'Kudokikata Oshiemasu Part II: Kind Gals');
-    this.idToName.set(932, 'Nemesis 2');
-    this.idToName.set(939, 'Xanadu: Dragon Slayer II');
-    this.idToName.set(941, 'Life Force');
-    this.idToName.set(946, 'Shalom: Knightmare III');
-    this.idToName.set(951, 'War of the Dead');
-    this.idToName.set(960, 'Snake It');
-    this.idToName.set(967, 'Dynamite Bowl');
-    this.idToName.set(985, 'Ninja-Kid II');
-    this.idToName.set(991, 'Hydlide 3');
-    this.idToName.set(993, 'Vaxol: Heavy Armed Storming Vehicle');
-    this.idToName.set(1017, 'Higemaru Makaijima');
-    this.idToName.set(1025, 'Mirai');
-    this.idToName.set(1053, 'Arkanoid: Revenge of DOH');
-    this.idToName.set(1059, 'Ys II: Ancient Ys Vanished: The Final Chapter');
-    this.idToName.set(1073, 'F-1 Spirit: 3D Special');
-    this.idToName.set(1078, 'King\'s Valley 2');
-    this.idToName.set(1079, 'King\'s Valley 2');
-    this.idToName.set(1117, 'Cosmic Soldier 2: Psychic War');
-    this.idToName.set(1119, 'Psychic World');
-    this.idToName.set(1135, 'War of the Dead Part 2');
-    this.idToName.set(1136, 'Shin Ku Gyoku Den');
-    this.idToName.set(1138, 'Shin Maō Golvellius');
-    this.idToName.set(1188, 'Parodius');
-    this.idToName.set(1191, 'Victorious Nine II');
-    this.idToName.set(1239, 'Ys III: Wanderers from Ys');
-    this.idToName.set(1241, 'Rune Worth: Kokui no Kikoushi');
-    this.idToName.set(1243, 'Xak: The Art of Visual Stage');
-    this.idToName.set(1247, 'Pro Yakyuu Family Stadium: Pennant Race');
-    this.idToName.set(1249, 'Fire Hawk: Thexder the Second Contact');
-    this.idToName.set(1252, 'Valis II');
-    this.idToName.set(1254, 'Nemesis 3: The Eve of Destruction');
-    this.idToName.set(1257, 'Pro Yakyuu Family Stadium: Home Run Contest');
-    this.idToName.set(1259, 'Fantasy Zone II: The Tears of Opa-Opa');
-    this.idToName.set(1262, 'Tashiro Masashi no Princess ga Ippai');
-    this.idToName.set(1318, 'Intruder: Sakura Yashiki no Tansaku');
-    this.idToName.set(1324, 'Master of Monsters');
-    this.idToName.set(1331, 'Schwarzschild: Kyōran no Ginga');
-    this.idToName.set(1386, 'Xak II: Rising of The Redmoon');
-    this.idToName.set(1387, 'Dragon Slayer: The Legend of Heroes');
-    this.idToName.set(1544, 'Illusion City - Gen\'ei Toshi');
-    this.idToName.set(1545, 'Inindo: Way of the Ninja');
-    this.idToName.set(1550, 'Xak: The Tower of Gazzel');
-    this.idToName.set(1666, 'Action RPG Construction Tool: Dante 2');
-    this.idToName.set(1703, 'Dead of the Brain: Shiryou no Sakebi');
-    this.idToName.set(1707, 'The Tower? Of Cabin: Cabin Panic');
-    this.idToName.set(1772, 'Mirai');
-    this.idToName.set(1798, 'BC\'s Quest for Tires');
-    this.idToName.set(1827, 'Topple Zip');
-    this.idToName.set(1828, 'Fantasy Zone');
-    this.idToName.set(1835, 'Bandit Kings of Ancient China');
-    this.idToName.set(1843, 'Jack Nicklaus\' Greatest 18 Holes of Major Championship Golf');
-    this.idToName.set(2152, 'El Cid');
-    this.idToName.set(2223, 'El Misterio del Nilo');
-    this.idToName.set(2241, 'La Abadía del Crimen');
-    this.idToName.set(2252, 'The Last Mission');
-    this.idToName.set(2349, 'El Poder Oscuro');
-    this.idToName.set(2414, 'Who Dares Wins II');
-    this.idToName.set(2601, 'BC\'s Quest for Tires II: Grog\'s Revenge');
-    this.idToName.set(2697, 'Boulder Dash');
-    this.idToName.set(2911, 'The Activision Decathlon');
-    this.idToName.set(3107, 'Return to Eden');
-    this.idToName.set(3211, 'Dynamite Bowl');
-    this.idToName.set(3217, 'The Light Corridor');
-    this.idToName.set(3278, 'The Day II');
-    this.idToName.set(3280, 'Agi Gongnyong Dooly');
-    this.idToName.set(3687, 'Universe: Unknown');
+    this.idsToNames.forEach(pair => {
+      this.idToName.set(Number(pair[0]), pair[1].toString());
+    });
   }
 }
