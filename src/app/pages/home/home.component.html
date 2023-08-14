@@ -211,13 +211,19 @@
           <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
           <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
             (click)="relatedGames.open()">
-            <div class="actions-menu-icon"></div>
-            {{ 'home.findrelatedgames' | translate }}
+            <div class="d-flex">
+              <div class="actions-menu-icon"></div>
+              <div class="me-4">{{ 'home.findrelatedgames' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+T</div>
+            </div>
           </button>
           <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
             ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
-            <div class="actions-menu-icon"></div>
-            {{ 'home.getinfofromgiantbomb' | translate }}
+            <div class="d-flex">
+              <div class="actions-menu-icon"></div>
+              <div class="me-4">{{ 'home.getinfofromgiantbomb' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+G</div>
+            </div>
           </button>
           <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
             ngbDropdownItem type="button" (click)="setFavoritesFlag(true)">
@@ -230,8 +236,11 @@
             {{ 'home.removefromfavorites' | translate }}
           </button>
           <button class="actions-menu-button" ngbDropdownItem type="button" (click)="remove(null, selectedGame, true)">
-            <div class="actions-menu-icon text-warning bi-x"></div>
-            {{ 'home.removefromlisting' | translate }}
+            <div class="d-flex">
+              <div class="actions-menu-icon text-warning bi-x"></div>
+              <div class="me-4">{{ 'home.removefromlisting' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-center shortcut">Del</div>
+            </div>
           </button>
           <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
             <div class="actions-menu-icon"></div>
@@ -461,11 +470,13 @@
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
     <div class="context-menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+T</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isGiantbombApikeyDefined && isMenuItemVisible"
     (execute)="additionalExternalInfo.open()">
     <div class="context-menu-icon"></div>
     {{ 'home.getinfofromgiantbomb' | translate }}
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+G</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
     <div class="context-menu-icon">&starf;</div>
@@ -478,6 +489,7 @@
   <ng-template contextMenuItem (execute)="remove(null, $event.item)">
     <div class="bi-x text-warning context-menu-icon"></div>
     {{ 'home.removefromlisting' | translate }}
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">Del</div>
   </ng-template>
   <ng-template contextMenuItem (execute)="changeListing.open()">
     <div class="context-menu-icon"></div>

@@ -13,7 +13,9 @@ export class PopupComponent implements OnDestroy {
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ContentChild(TemplateRef) templateVariable: TemplateRef<any>;
 
-  constructor(protected changeDetector: ChangeDetectorRef) {}
+  constructor(protected changeDetector: ChangeDetectorRef) {
+    this.handleEscape = this.handleEscape.bind(this);
+  }
 
   commonInit() {
     const self = this;
@@ -41,12 +43,14 @@ export class PopupComponent implements OnDestroy {
   }
 
   open(): void {
+    window.addEventListener('keydown', this.handleEscape);
     this.openStatus.emit(true);
     document.getElementById(this.popupId).classList.add('popup-fade');
     this.changeDetector.reattach();
   }
 
   close(cleanup: () => void = null): void {
+    window.removeEventListener('keydown', this.handleEscape);
     this.openStatus.emit(false);
     const popup = document.getElementById(this.popupId);
     popup.addEventListener('transitionend', (() => {
@@ -60,5 +64,11 @@ export class PopupComponent implements OnDestroy {
     })());
     popup.classList.remove('popup-fade');
     this.changeDetector.detach();
+  }
+
+  private handleEscape(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      this.close();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Game } from '../../models/game';
 import { Settings } from '../../models/settings';
 import { AdditionalExternalInfoService } from '../../services/additional-external-info.service';
@@ -15,6 +15,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
 
   @Input() popupId: string;
   @Input() game: Game;
+  @ViewChild('externalInfoDiv', { static: true }) private externalInfoDiv: ElementRef;
 
   showData = false;
   error = false;
@@ -58,6 +59,10 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
             this.allPlatforms = platforms;
             this.getImages(dataForMSX, platforms);
             this.giantbombGamePage = dataForMSX.site_detail_url;
+            const popup = document.getElementById(this.popupId);
+            popup.ontransitionend = () => {
+              this.externalInfoDiv.nativeElement.focus();
+            };
           } else {
             this.matchedName = this.localizationService.translate('giantbomb.notfound');
           }

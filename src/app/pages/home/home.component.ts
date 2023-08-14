@@ -209,6 +209,15 @@ export class HomeComponent implements OnInit, OnDestroy {
           if (this.isWebMSXPathDefined) {
             this.launchWebmsx(this.selectedGame);
           }
+        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 't' || event.key === 'T')) {
+          this.relatedGames.open();
+        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
+          if (this.isGiantbombApikeyDefined) {
+            this.additionalExternalInfo.open();
+          }
+        } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+          event.stopPropagation();
+          event.preventDefault();
         }
       }
     }
@@ -893,10 +902,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private adjustScrollForSelectedGame(game: Game) {
-    const gamesTableTop: number = this.gamesTable.getBoundingClientRect().top;
-    const gamesTableBottom: number = this.gamesTable.getBoundingClientRect().bottom;
-    const tableCellTop: number = document.getElementById(game.sha1Code).getBoundingClientRect().top;
-    const tableCellBottom: number = document.getElementById(game.sha1Code).getBoundingClientRect().bottom;
+    const gamesTableTop = this.gamesTable.getBoundingClientRect().top;
+    const gamesTableBottom = this.gamesTable.getBoundingClientRect().bottom;
+    const tableCellTop = document.getElementById(game.sha1Code).getBoundingClientRect().top;
+    const tableCellBottom = document.getElementById(game.sha1Code).getBoundingClientRect().bottom;
 
     if (tableCellTop < gamesTableTop) {
       this.gamesTable.scrollTop = (tableCellTop + this.gamesTable.scrollTop) - gamesTableTop;

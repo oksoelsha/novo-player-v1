@@ -1,4 +1,4 @@
-<div class="related-games" #relatedGamesDiv>
+<div class="related-games" tabindex="0" #relatedGamesDiv>
     <div *ngIf="relatedGames.length === 0" class="no-results">{{ 'popups.relatedgames.noresults' | translate }}</div>
     <div *ngFor="let relatedGame of relatedGames; let i = index" class="mt-4">
         <img src="{{ imageData1[i] }}" class="screenshots" draggable="false">

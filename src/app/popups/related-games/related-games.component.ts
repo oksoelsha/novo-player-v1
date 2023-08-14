@@ -41,6 +41,10 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
         this.imageData2[index] = this.getScreenshot(secondaryData.screenshot2);
       }
       super.open();
+      const popup = document.getElementById(this.popupId);
+      popup.ontransitionend = () => {
+        this.relatedGamesDiv.nativeElement.focus();
+      };
     });
   }
 
