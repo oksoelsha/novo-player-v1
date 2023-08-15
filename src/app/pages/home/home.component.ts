@@ -197,23 +197,25 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'z' || event.key === 'Z')) {
         this.undo();
       } else if (this.selectedGame != null) {
-        if (event.key === 'Enter') {
-          this.launch(this.selectedGame);
-        } else if (event.key === 'Delete') {
+        if (event.key === 'Delete') {
           this.remove(event, this.selectedGame);
-        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'b' || event.key === 'B')) {
-          if (this.isBlueMSXPathDefined) {
-            this.launchBlueMSX(this.selectedGame);
-          }
-        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'w' || event.key === 'W')) {
-          if (this.isWebMSXPathDefined) {
-            this.launchWebmsx(this.selectedGame);
-          }
-        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 't' || event.key === 'T')) {
-          this.relatedGames.open();
-        } else if(this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
-          if (this.isGiantbombApikeyDefined) {
-            this.additionalExternalInfo.open();
+        } else if (this.otherSelectedGames.size === 0) {
+          if (event.key === 'Enter') {
+            this.launch(this.selectedGame);
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'b' || event.key === 'B')) {
+            if (this.isBlueMSXPathDefined) {
+              this.launchBlueMSX(this.selectedGame);
+            }
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'w' || event.key === 'W')) {
+            if (this.isWebMSXPathDefined) {
+              this.launchWebmsx(this.selectedGame);
+            }
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 't' || event.key === 'T')) {
+            this.relatedGames.open();
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
+            if (this.isGiantbombApikeyDefined) {
+              this.additionalExternalInfo.open();
+            }
           }
         } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
           event.stopPropagation();

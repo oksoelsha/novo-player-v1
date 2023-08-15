@@ -59,10 +59,9 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
             this.allPlatforms = platforms;
             this.getImages(dataForMSX, platforms);
             this.giantbombGamePage = dataForMSX.site_detail_url;
-            const popup = document.getElementById(this.popupId);
-            popup.ontransitionend = () => {
+            setTimeout(() => {
               this.externalInfoDiv.nativeElement.focus();
-            };
+            }, 0);
           } else {
             this.matchedName = this.localizationService.translate('giantbomb.notfound');
           }

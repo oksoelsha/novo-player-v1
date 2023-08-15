@@ -419,14 +419,17 @@
     <ng-template contextMenuItem [visible]="isOpenMSXPathDefined" (execute)="launch($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onopenmsx' | translate }}
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">Enter</div>
     </ng-template>
     <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onwebmsx' | translate }}
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+W</div>
     </ng-template>
     <ng-template contextMenuItem [visible]="isWindows && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onbluemsx' | translate }}
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+B</div>
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
