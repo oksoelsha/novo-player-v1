@@ -61,7 +61,7 @@
 <ng-template #gameDetailGenerationMSXLink>
     <app-web-link *ngIf="isDisplayGenerationMSX(); else generationMSXNotAvailable" [address]="getGenerationMSXAddress()"
         [label]="$any(selectedGame.generationMSXId)"></app-web-link>
-    <ng-template #generationMSXNotAvailable>Not added yet</ng-template>
+    <ng-template #generationMSXNotAvailable>{{ 'home.notyetadded' | translate }}</ng-template>
 </ng-template>
 
 <ng-template #gameDetailInfoFile let-detail>
