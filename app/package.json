@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "@types/node": "^17.0.30",
-    "electron": "22.0.0"
+    "electron": "22.0.1"
   },
   "dependencies": {
     "adm-zip": "^0.5.10",
