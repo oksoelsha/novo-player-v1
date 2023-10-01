@@ -8,9 +8,10 @@ export class Settings {
     bluemsxParams: string;
     language: string;
     giantbombApiKey: string;
+    enableNews: boolean;
 
     constructor(openmsxPath: string, screenshotsPath: string, gameMusicPath: string, defaultListing: string, webmsxPath: string,
-        bluemsxPath: string, bluemsxParams: string, language: string, giantbombApiKey: string) {
+        bluemsxPath: string, bluemsxParams: string, language: string, giantbombApiKey: string, enableNews: boolean) {
         this.openmsxPath = openmsxPath;
         this.screenshotsPath = screenshotsPath;
         this.gameMusicPath = gameMusicPath;
@@ -20,5 +21,6 @@ export class Settings {
         this.bluemsxParams = bluemsxParams;
         this.language = language;
         this.giantbombApiKey = giantbombApiKey;
+        this.enableNews = enableNews;
     }
 }

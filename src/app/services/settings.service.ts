@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { Settings } from '../models/settings';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
   private ipc: IpcRenderer;
+  private subject = new Subject<Settings>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
@@ -23,5 +25,10 @@ export class SettingsService {
 
   saveSettings(settings: Settings) {
     this.ipc.send('saveSettings', settings);
+    this.subject.next(settings);
+  }
+
+  getUpdatedSettings(): Observable<Settings> {
+    return this.subject.asObservable();
   }
 }

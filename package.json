@@ -53,6 +53,7 @@
     "node-expose-sspi": "0.1.60",
     "node-stream-zip": "1.15.0",
     "p-limit": "3.1.0",
+    "rss-parser": "3.13.0",
     "rxjs": "7.5.5",
     "timed-cache": "2.0.0",
     "tslib": "^2.1.0",

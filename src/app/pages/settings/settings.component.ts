@@ -26,6 +26,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   bluemsxPath = '';
   bluemsxParams = '';
   giantbombApiKey = '';
+  news = false;
   submitDisabled = true;
   listings: string[] = [];
   language = '';
@@ -51,6 +52,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.bluemsxParams = settings.bluemsxParams;
       self.setSelectedLanguage(settings);
       self.giantbombApiKey = settings.giantbombApiKey;
+      self.news = settings.enableNews;
     });
   }
 
@@ -90,7 +92,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
-      this.languageReverseMap.get(this.language), form.value['giantbomb-apikey']);
+      this.languageReverseMap.get(this.language), form.value['giantbomb-apikey'], form.value.news);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);

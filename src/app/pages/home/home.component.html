@@ -51,6 +51,24 @@
             <span *ngIf="filtersTotal > 0" class="badge bg-primary">{{ filtersTotal }}</span>
           </button>
         </div>
+        <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenNews($event)">
+          <button class="btn btn-secondary btn-sm position-relative action-button" type="button" ngbDropdownToggle
+            [title]="'home.news' | translate" [disabled]="!isMSXNewsEnabled">
+            <span class="bi-newspaper"></span>
+            <span *ngIf="newsUpdated"
+              class="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+            </span>
+          </button>
+          <div ngbDropdownMenu>
+            <div *ngFor="let newsitem of news" ngbDropdownItem>
+              <div class="d-inline-block news-date">{{ newsitem.pubDate | newsDate }}</div>
+              <div class="d-inline-block me-2 news-title">
+                <app-web-link [address]="newsitem.link" [label]="newsitem.title"></app-web-link>
+              </div>
+              <app-web-link [address]="newsitem.feedSiteUrl" [label]="newsitem.feedSiteName" [buttonLook]="true"></app-web-link>
+            </div>
+          </div>
+        </div>
         <div class="d-inline-block ps-1">
           <button class="btn btn-secondary btn-sm action-button" type="button" (click)="quickLaunch.open()"
             [disabled]="!isOpenMSXPathDefined || machines.length === 0" [title]="'home.quicklaunch' | translate">

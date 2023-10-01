@@ -36,6 +36,8 @@ import { SavedStatesComponent } from '../../popups/saved-states/saved-states.com
 import { QuickLaunchComponent } from '../../popups/quick-launch/quick-launch.component';
 import { QuickLaunchData } from '../../models/quick-launch-data';
 import { ManageBackupsComponent } from '../../popups/manage-backups/manage-backups.component';
+import { NewsItem } from '../../models/news-collection';
+import { MsxnewsService } from '../../services/msxnews.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -107,6 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isWebMSXPathDefined: boolean;
   isBlueMSXPathDefined: boolean;
   isGiantbombApikeyDefined: boolean;
+  isMSXNewsEnabled: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
   moreScreenshotFiles: string[] = [];
@@ -118,6 +121,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   filtersTotal = 0;
   machines: string[] = [];
   savedStates: GameSavedState[] = [];
+  newsUpdated: boolean;
+  news: NewsItem[] = [];
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -130,12 +135,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   private historyToUndoSubscription: Subscription;
   private scanEndSubscription: Subscription;
   private scanProgressSubscription: Subscription;
+  private newsSubscription: Subscription;
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
     private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
-    private emulatorService: EmulatorService, private ngZone: NgZone) {
+    private emulatorService: EmulatorService, private msxnewsService: MsxnewsService, private ngZone: NgZone) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -155,6 +161,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     this.showUndo = this.undoService.isThereUndoHistory();
+
+    this.newsSubscription = this.msxnewsService.getNews().subscribe(newsCollection => {
+      this.ngZone.run(() => {
+        self.news = newsCollection.news;
+        self.newsUpdated = newsCollection.updated;
+        sessionStorage.setItem('news', JSON.stringify(newsCollection.news));
+        sessionStorage.setItem('newsUpdated', newsCollection.updated.toString());
+      });
+    });
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -306,11 +321,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
       this.isGiantbombApikeyDefined = settings.giantbombApiKey != null && settings.giantbombApiKey.trim() !== '';
+      this.isMSXNewsEnabled = settings.enableNews;
       this.localizationService.useLanguage(settings.language);
 
       this.emulatorService.getMachines().then((data: string[]) => {
         this.machines = data;
       });
+
+      if (sessionStorage.getItem('news') != null) {
+        this.news = JSON.parse(sessionStorage.getItem('news'));
+        this.newsUpdated = sessionStorage.getItem('newsUpdated') === 'true';
+      }
     });
 
     this.getFavorites();
@@ -323,10 +344,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyToUndoSubscription.unsubscribe();
     this.scanProgressSubscription.unsubscribe();
     this.scanEndSubscription.unsubscribe();
+    this.newsSubscription.unsubscribe();
   }
 
   handleOpenMenuEvents(opened: boolean) {
     opened ? this.openMenuEventCounter++ : this.openMenuEventCounter--;
+  }
+
+  handleOpenNews(opened: boolean) {
+    this.handleOpenMenuEvents(opened);
+    this.newsUpdated = false;
+    sessionStorage.setItem('newsUpdated', 'false');
   }
 
   setSelectedListing(listing: string) {
@@ -1044,7 +1072,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private processScanProgressEvents(progress: string) {
-    if (this.scanProgress != progress) {
+    if (this.scanProgress !== progress) {
       this.scanProgress = progress;
     }
   }

@@ -10,7 +10,7 @@ export class SettingsService {
 
     private settings: Settings;
     private settingsPath = PersistenceUtils.getStoragePath();
-    private settingsFile = path.join(this.settingsPath, 'settings.nps');
+    private readonly settingsFile = path.join(this.settingsPath, 'settings.nps');
     private listeners: UpdateListerner[] = [];
 
     constructor(private win: BrowserWindow) {
@@ -20,7 +20,7 @@ export class SettingsService {
     getSettings(): Settings {
         if (this.settings === undefined) {
             if (!fs.existsSync(this.settingsFile)) {
-                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '');
+                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '', false);
             } else {
                 const fileData = fs.readFileSync(this.settingsFile);
                 return JSON.parse(fileData.toString());

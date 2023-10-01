@@ -59,6 +59,7 @@ import { FieldWithSuggestionsComponent } from './shared/components/field-with-su
 import { SavedStatesComponent } from './popups/saved-states/saved-states.component';
 import { QuickLaunchComponent } from './popups/quick-launch/quick-launch.component';
 import { ManageBackupsComponent } from './popups/manage-backups/manage-backups.component';
+import { NewsDatePipe } from './pages/home/pipes/news-date.pipe';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -108,7 +109,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,
-    SortStatusPipe
+    SortStatusPipe,
+    NewsDatePipe
   ],
   imports: [
     BrowserModule,

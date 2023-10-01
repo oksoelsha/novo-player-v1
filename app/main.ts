@@ -18,6 +18,7 @@ import { OpenMSXControlService } from './OpenMSXControlService';
 import { RelatedGamesService } from './RelatedGamesService';
 import { EnvironmentService } from './EnvironmentService';
 import { BackupsService } from './BackupsService';
+import { NewsService } from './NewsService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -77,6 +78,8 @@ function initializeServices() {
   
     new BackupsService(win, gamesService);
 
+    new NewsService(win);
+  
     // services that are rare to execute and have internal state -> create new instance per request
     ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
         const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);

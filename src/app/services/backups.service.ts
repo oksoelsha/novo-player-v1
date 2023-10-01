@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
-import { rename } from 'fs';
 import { Backup } from '../models/backup';
 
 @Injectable({
