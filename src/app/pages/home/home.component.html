@@ -55,8 +55,8 @@
           <button class="btn btn-secondary btn-sm position-relative action-button" type="button" ngbDropdownToggle
             [title]="'home.news' | translate" [disabled]="!isMSXNewsEnabled">
             <span class="bi-newspaper"></span>
-            <span *ngIf="newsUpdated"
-              class="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+            <span *ngIf="newsUpdated && isMSXNewsEnabled"
+              class="position-absolute news-alert-shift p-1 bg-danger border border-light rounded-circle">
             </span>
           </button>
           <div ngbDropdownMenu>
