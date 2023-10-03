@@ -60,6 +60,7 @@
             </span>
           </button>
           <div ngbDropdownMenu>
+            <div *ngIf="news.length === 0" ngbDropdownItem>{{ 'home.waitingfornews' | translate }}</div>
             <div *ngFor="let newsitem of news" ngbDropdownItem>
               <div class="d-inline-block news-date">{{ newsitem.pubDate | newsDate }}</div>
               <div class="d-inline-block me-2 news-title">
