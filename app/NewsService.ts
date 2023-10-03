@@ -9,8 +9,7 @@ export class NewsService {
 
     private readonly latestNewsPath = PersistenceUtils.getStoragePath();
     private readonly latestNewsFile = path.join(this.latestNewsPath, 'latest-news');
-    private latestNewsDates: Map<string,Date>;
-    private readonly startingDate = new Date(0);
+    private latestNewsDates: Map<string,number>;
     private readonly sites: string[][] = [
         ['http://www.msxlaunchers.info/', 'http://www.msxlaunchers.info/feed', 'MSX Launchers'],
         ['https://www.msx.org/', 'https://www.msx.org/feed/news/', 'MSX Resource Center'],
@@ -36,9 +35,9 @@ export class NewsService {
             results.forEach(result => {
                 if (result.status === 'fulfilled') {
                     news.push(...result.value.news);
-                    if (this.latestNewsDates.get(result.value.site) < result.value.latestDate) {
+                    if (this.latestNewsDates.get(result.value.site) < result.value.latestTime) {
                         updatedNews = true;
-                        this.latestNewsDates.set(result.value.site, result.value.latestDate);
+                        this.latestNewsDates.set(result.value.site, result.value.latestTime);
                     }
                 } else {
                     console.log(result.status, result.reason);
@@ -56,28 +55,28 @@ export class NewsService {
         let parser = new Parser();
         const news: NewsItem[] = [];
         return new Promise<SiteNews>((resolve, reject) => {
-            let latestDate = this.startingDate;
+            let latestTime = 0;
             parser.parseURL(feedInfo[1]).then(feed => {
                 feed.items.forEach(item => {
-                    const publishDate = new Date(item.pubDate);
-                    news.push(new NewsItem(item.title, item.link, publishDate.getTime(), feedInfo[2], feedInfo[0]));
-                    if (publishDate > latestDate) {
-                        latestDate = publishDate;
+                    const publishTime = new Date(item.pubDate).getTime();
+                    news.push(new NewsItem(item.title, item.link, publishTime, feedInfo[2], feedInfo[0]));
+                    if (publishTime > latestTime) {
+                        latestTime = publishTime;
                     }
                 });
-                resolve(new SiteNews(feedInfo[2], news, latestDate));
+                resolve(new SiteNews(feedInfo[2], news, latestTime));
             });
         });
     }
 
-    private getSavedLatestNews(): Map<string,Date> {
+    private getSavedLatestNews(): Map<string,number> {
         if (fs.existsSync(this.latestNewsFile)) {
             const fileData = fs.readFileSync(this.latestNewsFile);
             return new Map(JSON.parse(fileData.toString()));    
         } else {
             const initialMap = new Map();
             this.sites.forEach(site => {
-                initialMap.set(site[2], this.startingDate);
+                initialMap.set(site[2], 0);
             });
             return initialMap;
         }
@@ -92,11 +91,11 @@ export class NewsService {
 class SiteNews {
     site: string;
     news: NewsItem[];
-    latestDate: Date;
+    latestTime: number;
 
-    constructor(site: string, news: NewsItem[], latestDate: Date) {
+    constructor(site: string, news: NewsItem[], latestTime: number) {
         this.site = site;
         this.news = news;
-        this.latestDate = latestDate;
+        this.latestTime = latestTime;
     }
 }
