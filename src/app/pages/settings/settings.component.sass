@@ -2,6 +2,9 @@
   width: 44.5rem
   margin-bottom: 1rem
 
+#settingsForm
+  height: 100vh
+
 .header
   font-weight: bold
   color: #cef
@@ -10,9 +13,19 @@
 hr
   margin-top: .125rem
 
-.section
-  border-bottom: 1em solid transparent
-
 .form-check-input:focus
   outline: none
   box-shadow: none
+
+.wrapper
+  display: flex
+  flex-direction: column
+  max-height: 100%
+
+.form-fields
+  flex-grow: 1
+  overflow-y: auto
+  scroll-behavior: smooth
+
+.buttons
+  margin-bottom: 4.5rem
