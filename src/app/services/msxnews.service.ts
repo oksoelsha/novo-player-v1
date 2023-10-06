@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { NewsCollection } from '../models/news-collection';
+import { NewsCollection, NewsItem } from '../models/news-collection';
 import { SettingsService } from './settings.service';
 
 @Injectable({
@@ -11,7 +11,9 @@ export class MsxnewsService {
 
   private readonly feedCheckPeriod = 10*60*1000; //10 minutes
   private ipc: IpcRenderer;
-  private subject = new Subject<NewsCollection>();
+  private subject = new Subject<void>();
+  private news: NewsItem[] = [];
+  private newNews = false;
   private checkFrequency: any;
 
   constructor(private settingsService: SettingsService) {
@@ -31,8 +33,20 @@ export class MsxnewsService {
     });
   }
 
-  getNews(): Observable<NewsCollection> {
+  getNewsNotification(): Observable<void> {
     return this.subject.asObservable();
+  }
+
+  getNews(): NewsItem[] {
+    return this.news;
+  }
+
+  getNewNewsStatus() {
+    return this.newNews;
+  }
+
+  resetNewNewsStatus() {
+    this.newNews = false;
   }
 
   private setCheckInterval() {
@@ -50,7 +64,11 @@ export class MsxnewsService {
 
   private checkNews() {
     this.ipc.once('getNewsResponse', (event, newsCollection: NewsCollection) => {
-      this.subject.next(newsCollection);
+      this.news = newsCollection.news;
+      if (newsCollection.updated) {
+        this.newNews = true;
+      }
+      this.subject.next();
     });
     this.ipc.send('getNews');
   }

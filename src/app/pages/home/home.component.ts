@@ -162,12 +162,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.showUndo = this.undoService.isThereUndoHistory();
 
-    this.newsSubscription = this.msxnewsService.getNews().subscribe(newsCollection => {
+    this.newsSubscription = this.msxnewsService.getNewsNotification().subscribe(() => {
       this.ngZone.run(() => {
-        self.news = newsCollection.news;
-        self.newsUpdated = newsCollection.updated;
-        sessionStorage.setItem('news', JSON.stringify(newsCollection.news));
-        sessionStorage.setItem('newsUpdated', newsCollection.updated.toString());
+        self.news = self.msxnewsService.getNews();
+        self.newsUpdated = self.msxnewsService.getNewNewsStatus();
       });
     });
   }
@@ -328,10 +326,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.machines = data;
       });
 
-      if (sessionStorage.getItem('news') != null) {
-        this.news = JSON.parse(sessionStorage.getItem('news'));
-        this.newsUpdated = sessionStorage.getItem('newsUpdated') === 'true';
-      }
+      this.news = this.msxnewsService.getNews();
+      this.newsUpdated = this.msxnewsService.getNewNewsStatus();
     });
 
     this.getFavorites();
@@ -354,7 +350,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   handleOpenNews(opened: boolean) {
     this.handleOpenMenuEvents(opened);
     this.newsUpdated = false;
-    sessionStorage.setItem('newsUpdated', 'false');
+    this.msxnewsService.resetNewNewsStatus();
   }
 
   setSelectedListing(listing: string) {
