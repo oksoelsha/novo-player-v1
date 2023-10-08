@@ -15,5 +15,7 @@ describe('VersionsUtils', () => {
     expect(VersionUtils.isVersionNewer(null, '3.4')).toBeFalse();
     expect(VersionUtils.isVersionNewer('1.3', '')).toBeFalse();
     expect(VersionUtils.isVersionNewer('', '3.4')).toBeFalse();
+    expect(VersionUtils.isVersionNewer('1.6', '1.5.2')).toBeFalse();
+    expect(VersionUtils.isVersionNewer('1.5.2', '1.6')).toBeTrue();
   });
 });
