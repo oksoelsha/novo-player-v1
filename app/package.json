@@ -1,6 +1,6 @@
 {
   "name": "novo-player-v1",
-  "version": "1.5.2",
+  "version": "1.6",
   "description": "Multi-platform front-end for openMSX, WebMSX (offline mode) and blueMSX",
   "main": "main.js",
   "private": true,
