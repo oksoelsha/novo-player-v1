@@ -39,8 +39,6 @@ export class NewsService {
                         updatedNews = true;
                         this.latestNewsDates.set(result.value.site, result.value.latestTime);
                     }
-                } else {
-                    console.log(result.status, result.reason);
                 }
             });
             if (updatedNews) {
@@ -51,12 +49,14 @@ export class NewsService {
         });
     }
 
-    private getFeedData(feedInfo: string[]): Promise<SiteNews> {
+    private async getFeedData(feedInfo: string[]): Promise<SiteNews> {
         let parser = new Parser();
         const news: NewsItem[] = [];
-        return new Promise<SiteNews>((resolve, reject) => {
+        return new Promise<SiteNews>(async (resolve, reject) => {
             let latestTime = 0;
-            parser.parseURL(feedInfo[1]).then(feed => {
+            let feed: Parser.Output<{[key: string]: any}>;
+            try {
+                feed = await parser.parseURL(feedInfo[1]);
                 feed.items.forEach(item => {
                     const publishTime = new Date(item.pubDate).getTime();
                     news.push(new NewsItem(item.title, item.link, publishTime, feedInfo[2], feedInfo[0]));
@@ -65,7 +65,10 @@ export class NewsService {
                     }
                 });
                 resolve(new SiteNews(feedInfo[2], news, latestTime));
-            });
+            } catch (err) {
+                console.log(new Date(), 'Error connecting to news site: ', feedInfo[0]);
+                reject();
+            }
         });
     }
 
