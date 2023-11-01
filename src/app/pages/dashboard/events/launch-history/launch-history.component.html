@@ -1,0 +1,14 @@
+<div>
+    <table class="table table-sm text-white">
+        <tbody>
+            <tr *ngFor="let event of launchHistory">
+                <td class="event-time" title="{{ event.timestamp | longEventDate }}">{{ event.timestamp | eventDate }}</td>
+                <td class="event-source">{{ getLaunchSource(event.source) }}</td>
+                <td class="event-game-name" title="{{ event.data.name }}">{{ event.data.name }}</td>
+                <td class="event-game-listing" title="{{ event.data.listing }}">{{ event.data.listing }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize" (page)="getEvents($event)"
+        *ngIf="launchHistory.length > 0"></app-pagination>
+</div>

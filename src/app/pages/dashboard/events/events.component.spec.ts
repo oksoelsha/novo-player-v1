@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { LaunchEventsComponent } from './launch-events.component';
+import { EventsComponent } from './events.component';
 
-describe('LaunchEventsComponent', () => {
-  let component: LaunchEventsComponent;
-  let fixture: ComponentFixture<LaunchEventsComponent>;
+describe('EventsComponent', () => {
+  let component: EventsComponent;
+  let fixture: ComponentFixture<EventsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ TranslateModule.forRoot() ],
-      declarations: [ LaunchEventsComponent ]
+      declarations: [ EventsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LaunchEventsComponent);
+    fixture = TestBed.createComponent(EventsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,6 +4,7 @@ import * as fs from 'fs'
 import { NewsCollection, NewsItem } from '../src/app/models/news-collection'
 import Parser from 'rss-parser';
 import { PersistenceUtils } from './utils/PersistenceUtils';
+import { ErrorLogService } from './ErrorLogService';
 
 export class NewsService {
 
@@ -17,7 +18,7 @@ export class NewsService {
         ['https://pressplayontape.nl/', 'http://pressplayontape.nl/category/homecomputers/msx/feed/', 'Press Play on Tape']
     ];
 
-    constructor(private win: BrowserWindow) {
+    constructor(private win: BrowserWindow, private errorLogService: ErrorLogService) {
         this.init();
     }
 
@@ -66,7 +67,7 @@ export class NewsService {
                 });
                 resolve(new SiteNews(feedInfo[2], news, latestTime));
             } catch (err) {
-                console.log(new Date(), 'Error connecting to news site: ', feedInfo[0]);
+                this.errorLogService.logError('Error connecting to news site', feedInfo[0]);
                 reject();
             }
         });

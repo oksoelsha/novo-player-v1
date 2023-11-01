@@ -43,4 +43,13 @@ export class EventsService {
       this.ipc.send('getLaunchTotalsForLast30Days');
     });
   }
+
+  async getErrors(pageSize: number, currentPage: number): Promise<string[]> {
+    return new Promise<string[]>((resolve, reject) => {
+      this.ipc.once('getErrorsResponse', (event, errorsData) => {
+        resolve(errorsData);
+      });
+      this.ipc.send('getErrors', pageSize, currentPage);
+    });
+  }
 }

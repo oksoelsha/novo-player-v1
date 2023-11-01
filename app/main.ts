@@ -19,6 +19,7 @@ import { RelatedGamesService } from './RelatedGamesService';
 import { EnvironmentService } from './EnvironmentService';
 import { BackupsService } from './BackupsService';
 import { NewsService } from './NewsService';
+import { ErrorLogService } from './ErrorLogService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -66,6 +67,7 @@ function initializeServices() {
     new FilesService(win, settingsService);
 
     const eventLogService = new EventLogService(win);
+    const errorLogService = new ErrorLogService(win);
   
     new OpenMSXLaunchService(win, settingsService, eventLogService, hashService);
     new BlueMSXLaunchService(win, settingsService, eventLogService);
@@ -78,7 +80,7 @@ function initializeServices() {
   
     new BackupsService(win, gamesService);
 
-    new NewsService(win);
+    new NewsService(win, errorLogService);
   
     // services that are rare to execute and have internal state -> create new instance per request
     ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
