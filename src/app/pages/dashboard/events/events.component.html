@@ -1,0 +1,17 @@
+<div class="card text-white widget widget-wide mb-3">
+    <div class="card-body container">
+        <h5 class="card-title">{{ 'dashboard.events' | translate }}</h5>
+        <div [ngClass]="isLaunchHistoryMode() ? 'd-block' : 'd-none'">
+            <span class="badge bg-primary bg-size">{{ 'dashboard.launchhistory' | translate }}</span>
+            <a class="badge bg-dark bg-size bg-link" (click)="setErrorsMode()">{{ 'dashboard.errors' |
+                translate }}</a>
+                <app-dashboard-launch-history></app-dashboard-launch-history>
+        </div>
+        <div [ngClass]="isErrorsMode() ? 'd-block' : 'd-none'">
+            <a class="badge bg-dark bg-size bg-link" (click)="setLaunchHistoryMode()">{{ 'dashboard.launchhistory' | translate
+                }}</a>
+            <span class="badge bg-primary bg-size">{{ 'dashboard.errors' | translate }}</span>
+            <app-dashboard-errors></app-dashboard-errors>
+        </div>
+    </div>
+</div>

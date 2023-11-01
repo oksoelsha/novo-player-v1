@@ -1,0 +1,12 @@
+<div>
+    <table class="table table-sm text-white">
+        <tbody>
+            <tr *ngFor="let error of errors">
+                <td class="event-time" title="{{ error.timestamp | longEventDate }}">{{ error.timestamp | eventDate }}</td>
+                <td class="error-message" title="{{ error.message }}">{{ error.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize" (page)="getErrors($event)"
+        *ngIf="errors.length > 0"></app-pagination>
+</div>
