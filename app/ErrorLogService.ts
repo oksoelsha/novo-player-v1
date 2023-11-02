@@ -43,7 +43,7 @@ export class ErrorLogService {
         const total = this.errors.length;
         const start = currentPage * pageSize;
         const end = start + pageSize;
-        const errors = this.errors.slice(start, end);
+        const errors = this.errors.slice().reverse().slice(start, end);
 
         this.win.webContents.send('getErrorsResponse', { total, errors });
     }
