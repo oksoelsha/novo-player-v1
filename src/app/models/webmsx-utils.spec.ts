@@ -1,3 +1,4 @@
+import { FDDMode } from './fdd-mode';
 import { Game } from './game';
 import { Generation } from './generation';
 import { InputDevice } from './input-device';
@@ -112,5 +113,15 @@ describe('WebMSXUtils', () => {
         PRESETS: 'OPL4'
       }
     );
+
+    game = new Game('nameDiskAndFDDModeDisableSecond', '1', 1);
+    game.setDiskA('diskA');
+    game.setFddMode(FDDMode.indexOf('disablesecond'));
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', BOOT_KEYS: 'CONTROL', PRESETS: 'OPL4'});
+
+    game = new Game('nameDiskAndFDDModeDisableBoth', '1', 1);
+    game.setDiskA('diskA');
+    game.setFddMode(FDDMode.indexOf('disableboth'));
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', BOOT_KEYS: 'SHIFT', PRESETS: 'OPL4'});
   });
 });

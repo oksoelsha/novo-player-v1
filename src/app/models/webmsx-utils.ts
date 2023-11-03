@@ -1,3 +1,4 @@
+import { FDDMode } from './fdd-mode';
 import { Game } from './game';
 import { Generation } from './generation';
 import { InputDevice } from './input-device';
@@ -68,6 +69,12 @@ export class WebMSXUtils {
         webMSXParams.CONFIG_URL = 'assets/webmsx-config/machines.json';
       }
       webMSXParams.MACHINE = WebMSXUtils.getMachineNameFromValue(game.webmsxMachine);
+    }
+
+    if (game.fddMode === FDDMode.indexOf('disablesecond')) {
+      webMSXParams.BOOT_KEYS	= 'CONTROL';
+    } else if (game.fddMode === FDDMode.indexOf('disableboth')) {
+      webMSXParams.BOOT_KEYS	= 'SHIFT';
     }
 
     return webMSXParams;
