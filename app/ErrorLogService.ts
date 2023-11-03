@@ -26,6 +26,7 @@ export class ErrorLogService {
             this.errors.shift();
         }
         this.writeErrorsToFile();
+        this.win.webContents.send('logErrorResponse');
         console.log(new Date(error.timestamp).toString(), error.message);
     }
 
