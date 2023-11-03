@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { Event } from '../models/event';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,13 @@ import { Event } from '../models/event';
 export class EventsService {
 
   private ipc: IpcRenderer;
+  private subject = new Subject<void>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
+    this.ipc.on('logErrorResponse', (event) => {
+      this.subject.next();
+    });
   }
 
   logEvent(event: Event) {
@@ -51,5 +56,9 @@ export class EventsService {
       });
       this.ipc.send('getErrors', pageSize, currentPage);
     });
+  }
+
+  getNewErrorNotification(): Observable<void> {
+    return this.subject.asObservable();
   }
 }

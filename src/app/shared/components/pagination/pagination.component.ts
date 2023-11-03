@@ -7,17 +7,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
 
-  @Input() total: number;
   @Input() pageSize: number;
   @Input() hideFirstAndLastNav: boolean;
   @Output() page: EventEmitter<number> = new EventEmitter<number>();
   currentPage = 0;
   totalPages = 0;
+  private totalInputValue: number;
 
   constructor() { }
 
+  @Input()
+  get total(): number { return this.totalInputValue; }
+  set total(value: number) {
+    this.totalInputValue = value;
+    this.calculateTotalPages();
+  }
+
   ngOnInit(): void {
-    this.totalPages = Math.trunc((this.total - 1) / this.pageSize) + 1;
+    this.calculateTotalPages();
   }
 
   getCurrentPage(): number {
@@ -42,5 +49,9 @@ export class PaginationComponent implements OnInit {
   firstPage() {
     this.currentPage = 0;
     this.page.emit(this.currentPage);
+  }
+
+  private calculateTotalPages() {
+    this.totalPages = Math.trunc((this.total - 1) / this.pageSize) + 1;
   }
 }
