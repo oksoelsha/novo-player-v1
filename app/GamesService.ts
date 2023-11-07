@@ -19,12 +19,17 @@ export class GamesService {
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
         private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
-        if (environmentService.isNeedToUpdateApplicationData()) {
-            // let this run in the background. By the time it is done, UI will be ready
-            this.updateGamesForNewExtraData();
-            environmentService.saveEnvironmentDataForNewApplicationVersion();
-        }
         this.init();
+    }
+
+    async checkIfNeedUpdateDbWithExtraData() {
+        return new Promise<void>(async (resolve, reject) => {
+            if (this.environmentService.isNeedToUpdateApplicationData()) {
+                await this.updateGamesForNewExtraData();
+                this.environmentService.saveEnvironmentDataForNewApplicationVersion();
+            }
+            resolve();
+        });
     }
 
     reloadDatabase() {

@@ -86,7 +86,9 @@ function initializeServices() {
       scanService.start(directories, listing, machine);
   });
 
-  initializeWindow();
+  gamesService.checkIfNeedUpdateDbWithExtraData().then(() => {
+    initializeWindow();
+  });
 }
 
 function initializeWindow() {
