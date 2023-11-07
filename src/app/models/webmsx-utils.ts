@@ -63,6 +63,7 @@ export class WebMSXUtils {
       webMSXParams.MOUSE_MODE	= 1;
     }
     this.addWebMSXPresets(webMSXParams, 'OPL4');
+    this.addWebMSXPresets(webMSXParams, 'MSXMUSIC');
 
     if (game.webmsxMachine) {
       if (WebMSXUtils.isMachineCustom(game.webmsxMachine)) {
