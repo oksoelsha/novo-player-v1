@@ -1,7 +1,7 @@
 export class EnvironmentData {
-    readonly extraDataVersion: string;
+    readonly applicationVersion: string;
 
-    constructor(extraDataVersion: string) {
-        this.extraDataVersion = extraDataVersion;
+    constructor(applicationVersion: string) {
+        this.applicationVersion = applicationVersion;
     }
 }
