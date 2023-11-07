@@ -9,6 +9,7 @@ import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryS
 import { ExtraData, ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
+import { EnvironmentService } from './EnvironmentService';
 
 export class GamesService {
 
@@ -16,8 +17,13 @@ export class GamesService {
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'datafile');
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
-        private hashService: HashService, private extraDataService: ExtraDataService) {
+        private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
+        if (environmentService.isNeedToUpdateApplicationData()) {
+            // let this run in the background. By the time it is done, UI will be ready
+            this.updateGamesForNewExtraData();
+            environmentService.saveEnvironmentDataForNewApplicationVersion();
+        }
         this.init();
     }
 

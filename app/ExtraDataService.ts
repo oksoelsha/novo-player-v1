@@ -2,15 +2,25 @@ import { BrowserWindow, ipcMain } from 'electron'
 import * as fs from 'fs'
 import * as path from 'path'
 import { UpdateListerner } from './UpdateListerner';
+import { PersistenceUtils } from './utils/PersistenceUtils';
+import { EnvironmentService } from './EnvironmentService';
 
 export class ExtraDataService implements UpdateListerner {
 
-    private extraDataPath: string = path.join(__dirname, 'extra/extra-data.dat');
+    private extraDataPathInBundle: string = path.join(__dirname, 'extra/extra-data.dat');
+    private extraDataPathOnDisc: string = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
     private extraDataInfo: Map<string, ExtraData> = new Map();
     private extraDataVersion = '';
 
-    constructor(private win: BrowserWindow) {
+    constructor(private win: BrowserWindow, private environmentService: EnvironmentService) {
+        this.moveExtraDataFileIfNecessary();
         this.init();
+    }
+
+    private moveExtraDataFileIfNecessary() {
+        if (this.environmentService.isNeedToUpdateApplicationData()) {
+            fs.copyFileSync(this.extraDataPathInBundle, this.extraDataPathOnDisc);
+        }
     }
 
     private init(): void {
@@ -29,7 +39,7 @@ export class ExtraDataService implements UpdateListerner {
         let suffix: string;
         let extraData: ExtraData;
 
-        const data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
+        const data = fs.readFileSync(this.extraDataPathOnDisc, { encoding: 'ascii' });
         const lines = data.split(/\r?\n/);
     
         lines.forEach((line) => {

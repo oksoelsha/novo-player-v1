@@ -52,44 +52,41 @@ function initializeServices() {
 
   const settingsService = new SettingsService(win);
 
-  const extraDataService = new ExtraDataService(win);
+  const environmentService = new EnvironmentService();
+
+  const extraDataService = new ExtraDataService(win, environmentService);
 
   const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
 
   const hashService = new HashService();
 
-  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService);
+  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService);
 
-  const environmentService = new EnvironmentService(extraDataService, gamesService);
-  environmentService.init().then(() => {
-    // finish setting up environment (e.g. update games with new extra-date) before initializing
-    // other services and starting the UI
-    new FilesService(win, settingsService);
+  new FilesService(win, settingsService);
 
-    const eventLogService = new EventLogService(win);
-    const errorLogService = new ErrorLogService(win);
-  
-    new OpenMSXLaunchService(win, settingsService, eventLogService, hashService);
-    new BlueMSXLaunchService(win, settingsService, eventLogService);
-  
-    new EmulatorHardwareService(win, settingsService);
-  
-    new OpenMSXControlService(win);
-  
-    new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
-  
-    new BackupsService(win, gamesService);
+  const eventLogService = new EventLogService(win);
+  const errorLogService = new ErrorLogService(win);
 
-    new NewsService(win, errorLogService);
-  
-    // services that are rare to execute and have internal state -> create new instance per request
-    ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
-        const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
-        scanService.start(directories, listing, machine);
-    });
+  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService);
+  new BlueMSXLaunchService(win, settingsService, eventLogService);
 
-    initializeWindow();
+  new EmulatorHardwareService(win, settingsService);
+
+  new OpenMSXControlService(win);
+
+  new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
+
+  new BackupsService(win, gamesService);
+
+  new NewsService(win, errorLogService);
+
+  // services that are rare to execute and have internal state -> create new instance per request
+  ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
+      const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
+      scanService.start(directories, listing, machine);
   });
+
+  initializeWindow();
 }
 
 function initializeWindow() {
