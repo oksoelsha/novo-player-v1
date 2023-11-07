@@ -47,8 +47,8 @@ export class OpenMSXLaunchService {
     private static readonly Input_Device_TETRIS2PROTECTION = 'plug joyportb tetris2-protection';
     private static readonly Input_Device_PADDLE = 'plug joyporta paddle';
 
-    private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
-    private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
+    private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after boot \"keymatrixup 6 2\" }';
+    private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after boot \"keymatrixup 6 1\" }';
 
     private static readonly ENABLE_GFX9000_CMD = 'ext gfx9000; after time 10 \"set videosource GFX9000\"';
 
