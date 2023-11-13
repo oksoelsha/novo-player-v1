@@ -9,6 +9,7 @@ export class OpenMSXUtils {
         'ASCII16',
         'Konami',
         'KonamiSCC',
+        'KonamiUltimateCollection',
         'Normal',
         'page23'
       ];
@@ -17,6 +18,7 @@ export class OpenMSXUtils {
         'gfx9000',
         'ide',
         'mbstereo',
+        'MegaFlashROM_SCC+_SD',
         'moonsound',
         'scc',
         'scc+'
