@@ -213,7 +213,10 @@
     "uptodate": "Обновлено",
     "newversionavailable": "Доступна новая версия",
     "cannotconnecttoserver": "Не удалось подключиться к серверу",
-    "undefined": "Не определен"
+    "undefined": "Не определен",
+    "versions": "Версии",
+    "download": "Скачать",
+    "downloading": "в ходе выполнения"
   },
   "popups": {
     "newlisting": "Новый список",

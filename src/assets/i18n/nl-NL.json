@@ -213,7 +213,10 @@
     "uptodate": "Bijgewerkt",
     "newversionavailable": "Nieuwe versie beschikbaar",
     "cannotconnecttoserver": "Kan geen verbinding maken met server",
-    "undefined": "Niet-gedefinieerd"
+    "undefined": "Niet-gedefinieerd",
+    "versions": "Versies",
+    "download": "Downloaden",
+    "downloading": "Bezig"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",

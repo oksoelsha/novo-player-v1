@@ -20,6 +20,7 @@ import { EnvironmentService } from './EnvironmentService';
 import { BackupsService } from './BackupsService';
 import { NewsService } from './NewsService';
 import { ErrorLogService } from './ErrorLogService';
+import { DownloadService } from './DownloadService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -79,6 +80,8 @@ function initializeServices() {
   new BackupsService(win, gamesService);
 
   new NewsService(win, errorLogService);
+
+  new DownloadService(win, extraDataService, gamesService);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

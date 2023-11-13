@@ -1,16 +1,41 @@
-<span *ngIf="showData">
-    <span *ngIf="currentVersion === null; else defined" class="badge bg-light text-dark">
-        {{ 'help.undefined' | translate }}
-    </span>
-    <ng-template #defined>
-        <span class="badge bg-light text-dark">{{ currentVersion }}</span>
-        <span *ngIf="errorConnecting; else noError" class="bi bi-exclamation-circle-fill text-danger" placement="bottom"
-            [ngbTooltip]="'help.cannotconnecttoserver' | translate"></span>
-        <ng-template #noError>
-            <span *ngIf="newVersionAvailable" class="bi bi-exclamation-circle-fill text-warning" placement="bottom"
-                [ngbTooltip]="('help.newversionavailable' | translate) + ': ' + versionOnServer"></span>
-            <span *ngIf="!newVersionAvailable" class="bi bi-check-circle-fill text-success" placement="bottom"
-                [ngbTooltip]="'help.uptodate' | translate"></span>
-        </ng-template>
-    </ng-template>
+<span class="align-text-bottom">
+    <table class="d-inline align-top">
+        <tr>
+            <td>
+                <span *ngIf="currentVersion === null; else defined" class="badge bg-light text-dark">
+                    {{ 'help.undefined' | translate }}
+                </span>
+            </td>
+            <ng-template #defined>
+                <td>
+                    <span class="badge bg-light text-dark">{{ currentVersion }}</span>
+                </td>
+                <td>
+                    <span *ngIf="errorConnecting; else noError" class="bi bi-exclamation-circle-fill text-danger"
+                        placement="bottom" [ngbTooltip]="'help.cannotconnecttoserver' | translate"></span>
+                </td>
+                <ng-template #noError>
+                    <td>
+                        <span class="badge bg-light text-dark" *ngIf="!newVersionAvailable"
+                            class="bi bi-check-circle-fill text-success" placement="bottom"
+                            [ngbTooltip]="'help.uptodate' | translate"></span>
+                        <span *ngIf="newVersionAvailable" class="bi bi-exclamation-circle-fill text-warning"
+                            placement="bottom"
+                            [ngbTooltip]="('help.newversionavailable' | translate) + ': ' + versionOnServer">
+                        </span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="newVersionAvailable && downloadButton && !downloadInProgress" class="badge bg-dark bg-size bg-link"
+                            (click)="handleDownload()">
+                            {{ 'help.download' | translate }}
+                        </span>
+                        <span *ngIf="downloadInProgress" class="badge bg-dark bg-size">
+                            {{ 'help.downloading' | translate }}...
+                        </span>
+                    </td>
+                </ng-template>
+            </ng-template>
+        </tr>
+    </table>
 </span>

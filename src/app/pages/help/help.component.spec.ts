@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HelpComponent } from './help.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('HelpComponent', () => {
   let component: HelpComponent;
@@ -8,6 +9,7 @@ describe('HelpComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ HelpComponent ]
     })
     .compileComponents();

@@ -75,8 +75,7 @@ export class GamesService {
                     if (extraData) {
                         const gameDO = new GameDO(entry);
                         gameDO._id = entry._id;
-                        this.updateGameWithExtraData(gameDO, extraData);
-
+                        this.updateGameDOWithExtraData(gameDO, extraData);
                         await this.updateGameWithNewExtraData(gameDO);
                     }
                 }
@@ -267,7 +266,7 @@ export class GamesService {
                     gameDO.size = data.size;
                     const extraDataInfo = this.extraDataService.getExtraDataInfo();
                     const extraData = extraDataInfo.get(gameDO._id);
-                    this.updateGameWithExtraData(gameDO, extraData);
+                    this.updateGameDOWithExtraData(gameDO, extraData);
 
                     this.database.remove({ _id: oldGame.sha1Code }, {}, (removeErr: any) => {
                         if (!removeErr) {
@@ -406,7 +405,7 @@ export class GamesService {
         });
     }
 
-    private updateGameWithExtraData(gameDO: GameDO, extraData: ExtraData) {
+    private updateGameDOWithExtraData(gameDO: GameDO, extraData: ExtraData) {
         if (extraData == null) {
             gameDO.generationMSXId = 0;
             gameDO.screenshotSuffix = null;
