@@ -201,7 +201,7 @@ export class OpenMSXLaunchService {
                 const space = param.indexOf(' ');
                 if (space > -1) {
                     args.push('-' + param.substring(0, space));
-                    args.push(param.substring(space + 1).replace(/"/g,''));
+                    args.push(param.substring(space + 1).trimEnd().replace(/"/g,''));
                 }
             });
         }
