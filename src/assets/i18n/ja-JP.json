@@ -213,7 +213,10 @@
     "uptodate": "最新",
     "newversionavailable": "新しいバージョンを入手できます",
     "cannotconnecttoserver": "サーバーに接続できません",
-    "undefined": "未定義"
+    "undefined": "未定義",
+    "versions": "バージョン",
+    "download": "ダウンロード",
+    "downloading": "進行中"
   },
   "popups": {
     "newlisting": "新しいリスト",

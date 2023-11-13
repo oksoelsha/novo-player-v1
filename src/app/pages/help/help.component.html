@@ -6,29 +6,35 @@
   <p>Get the latest from <app-web-link address="http://msxlaunchers.info" label="MSX Launchers"></app-web-link>,
     and the source code from <app-web-link address="https://github.com/oksoelsha/novo-player-v1" label="GitHub">
     </app-web-link>.</p>
-  <p>
-    Versions:
-    <span class="versions">
-      <div class="d-inline-block">
+  <div>
+    <div class="d-inline-block align-top h-100">
+      {{ 'help.versions' | translate }}
+    </div>
+    <div class="d-inline-block versions">
+      <div class="ps-2">
         Novo Player
         <app-help-version-match-indicator [versions]="applicationVersions"
           versionMapKey="novo-player"></app-help-version-match-indicator>
       </div>
-      -
-      <div class="d-inline-block">
+      <div class="ps-2">
+        Extra Data
+        <app-help-version-match-indicator [versions]="extraDataVersions" versionMapKey="extra-data" [downloadButton]="true"
+          (downloadAction)="downloadNewExtraData()" #extraDataVersionIndicator>
+        </app-help-version-match-indicator>
+      </div>
+      <div class="ps-2">
         Screenshots
         <app-help-version-match-indicator [versions]="screenshotsVersions"
           versionMapKey="screenshots"></app-help-version-match-indicator>
       </div>
-      -
-      <div class="d-inline-block">
+      <div class="ps-2">
         Game Music
         <app-help-version-match-indicator [versions]="gameMusicVersions"
           versionMapKey="game-music"></app-help-version-match-indicator>
       </div>
-    </span>
-  </p>
-  <div id="data-part">
+    </div>
+  </div>
+  <div id="data-part" class="mt-2">
     <h5>Basic Help</h5>
     After starting the player for the first time, you need to set a few fields in the settings page. The bare minimum is the
     path to openMSX, which will be set initially to a default that you can change if needed.

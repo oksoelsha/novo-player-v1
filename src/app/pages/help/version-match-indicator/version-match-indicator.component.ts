@@ -1,21 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { VersionUtils } from '../../../models/version-utils';
 
 @Component({
   selector: 'app-help-version-match-indicator',
   templateUrl: './version-match-indicator.component.html',
-  styleUrls: ['./version-match-indicator.component.sass']
+  styleUrls: ['../../../common-styles.sass', './version-match-indicator.component.sass']
 })
 export class VersionMatchIndicatorComponent implements OnInit {
 
   @Input() versions: Promise<any>;
+  @Input() downloadButton = false;
   @Input() versionMapKey: string;
+  @Output() downloadAction: EventEmitter<void> = new EventEmitter<void>();
 
-  showData: boolean;
+
   errorConnecting: boolean;
   currentVersion: string;
   newVersionAvailable: boolean;
   versionOnServer: string;
+
+  downloadInProgress = false;
 
   constructor() { }
 
@@ -27,8 +31,21 @@ export class VersionMatchIndicatorComponent implements OnInit {
       } else {
         this.processErrorConnecting(versions[0]);
       }
-      this.showData = true;
     });
+  }
+
+  handleDownload() {
+    this.downloadAction.emit();
+  }
+
+  indicateDownloadStart() {
+    this.downloadInProgress = true;
+  }
+
+  indicateDownloadDone() {
+    this.downloadInProgress = false;
+    this.currentVersion = this.versionOnServer;
+    this.newVersionAvailable = false;
   }
 
   private processVersions(currentVersion: string, versionOnServer: string) {

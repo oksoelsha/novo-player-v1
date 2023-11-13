@@ -213,7 +213,10 @@
     "uptodate": "Actualizado",
     "newversionavailable": "Nueva versión disponible",
     "cannotconnecttoserver": "No se puede conectar con el servidor",
-    "undefined": "Indefinido"
+    "undefined": "Indefinido",
+    "versions": "Versiones",
+    "download": "Descargar",
+    "downloading": "descargando"
   },
   "popups": {
     "newlisting": "Nueva lista",

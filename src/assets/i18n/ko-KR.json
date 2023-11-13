@@ -213,7 +213,10 @@
     "uptodate": "최신 상태",
     "newversionavailable": "새 버전 사용 가능",
     "cannotconnecttoserver": "서버에 연결할 수 없습니다",
-    "undefined": "정의되지 않음"
+    "undefined": "정의되지 않음",
+    "versions": "버전",
+    "download": "다운로드",
+    "downloading": "진행 중"
   },
   "popups": {
     "newlisting": "새 목록",

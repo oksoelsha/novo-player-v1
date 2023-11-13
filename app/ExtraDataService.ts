@@ -9,12 +9,28 @@ export class ExtraDataService implements UpdateListerner {
 
     private extraDataPathInBundle: string = path.join(__dirname, 'extra/extra-data.dat');
     private extraDataPathOnDisc: string = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
-    private extraDataInfo: Map<string, ExtraData> = new Map();
+    private extraDataInfo: Map<string, ExtraData>;
     private extraDataVersion = '';
 
     constructor(private win: BrowserWindow, private environmentService: EnvironmentService) {
         this.moveExtraDataFileIfNecessary();
         this.init();
+    }
+
+    getExtraDataInfo(): Map<string, ExtraData> {
+        return this.extraDataInfo;
+    }
+
+    reinit(): void {
+        this.readExtraData();
+    }
+
+    sendExtraDataVersion(): void {
+        this.win.webContents.send('getExtraDataVersionResponse', this.extraDataVersion);
+    }
+
+    getExtraDataVersion(): string {
+        return this.extraDataVersion;
     }
 
     private moveExtraDataFileIfNecessary() {
@@ -27,9 +43,14 @@ export class ExtraDataService implements UpdateListerner {
         ipcMain.on('getExtraDataVersion', (event, arg) => {
             this.sendExtraDataVersion();
         });
+        this.readExtraData();
+    }
 
-        let readInfo: boolean = false;
-        let readCodes: boolean = false;
+    private readExtraData() {
+        this.extraDataInfo = new Map();
+
+        let readInfo = false;
+        let readCodes = false;
     
         let generationMSXID: number;
         let generations: number;
@@ -91,22 +112,6 @@ export class ExtraDataService implements UpdateListerner {
                 }
             }
         });
-    }
-
-    getExtraDataInfo(): Map<string, ExtraData> {
-        return this.extraDataInfo;
-    }
-
-    reinit(): void {
-        this.init();
-    }
-
-    sendExtraDataVersion(): void {
-        this.win.webContents.send('getExtraDataVersionResponse', this.extraDataVersion);
-    }
-
-    getExtraDataVersion(): string {
-        return this.extraDataVersion;
     }
 }
 

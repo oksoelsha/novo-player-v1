@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VersionMatchIndicatorComponent } from './version-match-indicator.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('VersionMatchIndicatorComponent', () => {
   let component: VersionMatchIndicatorComponent;
@@ -8,6 +9,7 @@ describe('VersionMatchIndicatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ VersionMatchIndicatorComponent ]
     })
     .compileComponents();

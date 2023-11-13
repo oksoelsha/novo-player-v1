@@ -213,7 +213,10 @@
     "uptodate": "Està actualitzat",
     "newversionavailable": "Nova versió disponible",
     "cannotconnecttoserver": "No es pot connectar amb el servidor",
-    "undefined": "No definit"
+    "undefined": "No definit",
+    "versions": "Versions",
+    "download": "Descarregar",
+    "downloading": "descarregant"
   },
   "popups": {
     "newlisting": "Nova llista",
