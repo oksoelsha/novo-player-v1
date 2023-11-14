@@ -14,11 +14,11 @@ export class VersionMatchIndicatorComponent implements OnInit {
   @Output() downloadAction: EventEmitter<void> = new EventEmitter<void>();
 
 
+  showData: boolean;
   errorConnecting: boolean;
   currentVersion: string;
   newVersionAvailable: boolean;
   versionOnServer: string;
-
   downloadInProgress = false;
 
   constructor() { }
@@ -31,6 +31,7 @@ export class VersionMatchIndicatorComponent implements OnInit {
       } else {
         this.processErrorConnecting(versions[0]);
       }
+      this.showData = true;
     });
   }
 
