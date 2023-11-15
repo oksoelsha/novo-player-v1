@@ -61,6 +61,7 @@ export class RelatedGamesService {
         this.excludedStrings.add('el');
         this.excludedStrings.add('los');
         this.excludedStrings.add('en');
+        this.excludedStrings.add('&');
     }
 
     private initIdToCluster() {
@@ -68,8 +69,8 @@ export class RelatedGamesService {
             // Gradius series
             [742, 932, 1254, 941, 1188],
 
-            // Knightmare series
-            [855, 916, 946],
+            // Knightmare series and Pampas & Selene
+            [855, 916, 946, 7989],
 
             // Space Manbow and Manbow 2
             [1238, 3607],
