@@ -20,7 +20,7 @@
 
 <ng-template #gameDetailFiles>
     <div class="long-names" *ngFor="let file of getSelectedGameFiles()">
-        <a href="#" (click)="exploreFile(file)">{{ file }}</a>
+        <a href="#" (click)="exploreFile(file)" draggable="false">{{ file }}</a>
     </div>
 </ng-template>
 
@@ -66,6 +66,6 @@
 
 <ng-template #gameDetailInfoFile let-detail>
     <div class="long-names">
-        <a href="#" (click)="openInfoFile()">{{ selectedGame[detail.value] }}</a>
+        <a href="#" (click)="openInfoFile()" draggable="false">{{ selectedGame[detail.value] }}</a>
     </div>
 </ng-template>
