@@ -221,6 +221,9 @@
   "popups": {
     "newlisting": "Nova llista",
     "specifyalisting": "Especifica una llista",
+    "on": "Activat",
+    "off": "Desactivat",
+    "infomsg": "Funciona amb openMSX 0.16 o posterior",
     "addgames": {
       "addfolder": "+Carpeta",
       "addfile": "+Fitxer",
@@ -254,10 +257,7 @@
       "magickey": "Magic Key",
       "ninjatap": "Ninja Tap",
       "tetris2protection": "Tetris II Special Edition dongle",
-      "paddle": "MSX Paddle",
-      "on": "Activat",
-      "off": "Desactivat",
-      "infomsg": "Funciona amb openMSX 0.16 o posterior"
+      "paddle": "MSX Paddle"
     },
     "managelistings": {
       "total": "Total",

@@ -201,6 +201,11 @@ export class OpenMSXLaunchService {
         args.push('-machine');
         args.push(quickLaunchData.machine);
 
+        if (quickLaunchData.connectGFX9000) {
+            args.push('-command');
+            args.push(OpenMSXLaunchService.ENABLE_GFX9000_CMD);    
+        }
+
         this.appendParams(args, quickLaunchData.parameters);
     }
 
