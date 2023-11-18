@@ -106,9 +106,14 @@ export class OpenMSXLaunchService {
         const args: string[] = [];
         let filename: string;
         if (fs.existsSync(quickLaunchData.file)) {
-            const sha1 = await this.hashService.getSha1Code(quickLaunchData.file);
-            this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename, sha1.size);
-            filename = path.basename(quickLaunchData.file);
+            if (fs.statSync(quickLaunchData.file).isFile()) {
+                const sha1 = await this.hashService.getSha1Code(quickLaunchData.file);
+                this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename, sha1.size);
+                filename = path.basename(quickLaunchData.file);
+            } else {
+                this.setQuickLaunchDirectoryAsDisk(args, quickLaunchData);
+                filename = path.basename(quickLaunchData.file) + '/';
+            }    
         }
         this.setQuickLaunchOtherArguments(args, quickLaunchData);
         const process = this.startOpenmsx(args, time);
@@ -185,6 +190,11 @@ export class OpenMSXLaunchService {
             }
             args.push(quickLaunchData.file);
         }
+    }
+
+    private setQuickLaunchDirectoryAsDisk(args: string[], quickLaunchData: QuickLaunchData) {
+        args.push('-diska');
+        args.push(quickLaunchData.file);
     }
 
     private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData) {

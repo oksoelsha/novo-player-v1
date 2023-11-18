@@ -282,7 +282,7 @@
     },
     "quicklaunch": {
       "file": "Fitxer",
-      "filetooltip": "Qualsevol fitxer compatible amb openMSX",
+      "filetooltip": "Qualsevol fitxer o carpeta compatible amb openMSX",
       "arguments": "Arguments",
       "openmsxparamstooltip": "Arguments per utilitzar en iniciar openMSX (per exemple, -romtype KonamiSCC)"
     },

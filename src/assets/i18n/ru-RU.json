@@ -282,7 +282,7 @@
     },
     "quicklaunch": {
       "file": "Файл",
-      "filetooltip": "Любой файл, поддерживаемый openMSX",
+      "filetooltip": "Любой файл или папка, поддерживаемые openMSX",
       "arguments": "Аргументы",
       "openmsxparamstooltip": "Аргументы для использования при запуске openMSX (например -romtype KonamiSCC)"
     },
