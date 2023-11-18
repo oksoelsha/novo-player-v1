@@ -17,6 +17,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   file: string;
   selectedMachine: string;
   parameters: string;
+  connectGFX9000 = false;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
     super(changeDetector);
@@ -40,7 +41,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   }
 
   launch() {
-    const quickLaunchData = new QuickLaunchData(this.file, this.selectedMachine, this.parameters);
+    const quickLaunchData = new QuickLaunchData(this.file, this.selectedMachine, this.parameters, this.connectGFX9000);
     this.gameToLaunch.emit(quickLaunchData);
   }
 }

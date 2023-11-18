@@ -221,6 +221,9 @@
   "popups": {
     "newlisting": "Новый список",
     "specifyalisting": "Укажите список",
+    "on": "Вкл",
+    "off": "Выкл",
+    "infomsg": "Работает с openMSX 0.16 или более поздней версии",
     "addgames": {
       "addfolder": "+Папка",
       "addfile": "+Файл",
@@ -254,10 +257,7 @@
       "magickey": "Magic Key",
       "ninjatap": "Ninja Tap",
       "tetris2protection": "Tetris II Special Edition dongle",
-      "paddle": "MSX Paddle",
-      "on": "Вкл",
-      "off": "Выкл",
-      "infomsg": "Работает с openMSX 0.16 или более поздней версии"
+      "paddle": "MSX Paddle"
     },
     "managelistings": {
       "total": "Итог",

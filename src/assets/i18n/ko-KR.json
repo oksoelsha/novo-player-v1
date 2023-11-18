@@ -221,6 +221,9 @@
   "popups": {
     "newlisting": "새 목록",
     "specifyalisting": "목록을 지정하다",
+    "on": "온",
+    "off": "오프",
+    "infomsg": "openMSX 0.16 이상에서 작동",
     "addgames": {
       "addfolder": "+폴더",
       "addfile": "+파일",
@@ -254,10 +257,7 @@
       "magickey": "Magic Key",
       "ninjatap": "Ninja Tap",
       "tetris2protection": "Tetris II Special Edition dongle",
-      "paddle": "MSX Paddle",
-      "on": "온",
-      "off": "오프",
-      "infomsg": "openMSX 0.16 이상에서 작동"
+      "paddle": "MSX Paddle"
     },
     "managelistings": {
       "total": "전체",

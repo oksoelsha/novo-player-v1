@@ -221,6 +221,9 @@
   "popups": {
     "newlisting": "Nieuwe lijst",
     "specifyalisting": "Lijst opgeven",
+    "on": "Aan",
+    "off": "Uit",
+    "infomsg": "Werkt met openMSX 0.16 of hoger",
     "addgames": {
       "addfolder": "+Map",
       "addfile": "+Bestand",
@@ -254,10 +257,7 @@
       "magickey": "Magic Key",
       "ninjatap": "Ninja Tap",
       "tetris2protection": "Tetris II Special Edition dongle",
-      "paddle": "MSX Paddle",
-      "on": "Aan",
-      "off": "Uit",
-      "infomsg": "Werkt met openMSX 0.16 of hoger"
+      "paddle": "MSX Paddle"
     },
     "managelistings": {
       "total": "Totaal",
