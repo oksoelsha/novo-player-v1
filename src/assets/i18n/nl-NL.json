@@ -282,7 +282,7 @@
     },
     "quicklaunch": {
       "file": "Bestand",
-      "filetooltip": "Elk bestand ondersteund door openMSX",
+      "filetooltip": "Elk bestand of elke map die door openMSX wordt ondersteund",
       "arguments": "Argumenten",
       "openmsxparamstooltip": "Argumenten om te gebruiken bij het starten van openMSX (bijv. -romtype KonamiSCC)"
     },

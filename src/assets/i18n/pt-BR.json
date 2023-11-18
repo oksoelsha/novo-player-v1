@@ -282,7 +282,7 @@
     },
     "quicklaunch": {
       "file": "Arquivo",
-      "filetooltip": "Qualquer arquivo suportado pelo openMSX",
+      "filetooltip": "Qualquer arquivo ou pasta suportado pelo openMSX",
       "arguments": "Argumentos",
       "openmsxparamstooltip": "Argumentos a serem usados ao lançar blueMSX (por exemplo, -romtype KonamiSCC)"
     },
