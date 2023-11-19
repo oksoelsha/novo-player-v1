@@ -68,7 +68,7 @@ function initializeServices() {
   const eventLogService = new EventLogService(win);
   const errorLogService = new ErrorLogService(win);
 
-  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService);
+  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService);
   new BlueMSXLaunchService(win, settingsService, eventLogService);
 
   new EmulatorHardwareService(win, settingsService);

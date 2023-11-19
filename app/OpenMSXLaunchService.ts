@@ -11,6 +11,7 @@ import { PlatformUtils } from './utils/PlatformUtils'
 import { QuickLaunchData } from '../src/app/models/quick-launch-data'
 import { HashService } from './HashService'
 import { FileTypeUtils } from './utils/FileTypeUtils';
+import { ErrorLogService } from './ErrorLogService';
 
 class TCLCommands {
     field: string;
@@ -80,7 +81,7 @@ export class OpenMSXLaunchService {
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
-        private hashService: HashService) {
+        private hashService: HashService, private errorLogService: ErrorLogService) {
         this.init();
     }
 
@@ -127,6 +128,7 @@ export class OpenMSXLaunchService {
             cwd: this.settingsService.getSettings().openmsxPath,
             detached: true
         };
+        let errorMessage: string;
 
         const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), args, options);
         process.on("error", (error) => {
@@ -138,11 +140,18 @@ export class OpenMSXLaunchService {
             } else {
                 errorMessage = 'Error launching openMSX';
             }
-            self.win.webContents.send('launchGameResponse' + time, errorMessage);
         });
 
-        process.on("close", (error: any) => {
-            self.win.webContents.send('launchGameResponse' + time);
+        process.stderr.setEncoding('utf8');
+        process.stderr.on('data', (data) => {
+            errorMessage = data.toString();
+        });
+
+        process.on("close", (error: number) => {
+            if (error) {
+                this.errorLogService.logError('openMSX:', errorMessage);
+            }
+            self.win.webContents.send('launchGameResponse' + time, error === 1 ? errorMessage : null);
         });
 
         return process;
