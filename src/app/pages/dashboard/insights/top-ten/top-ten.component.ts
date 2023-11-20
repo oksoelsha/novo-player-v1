@@ -4,7 +4,7 @@ import { EventsService } from '../../../../services/events.service';
 @Component({
   selector: 'app-dashboard-top-ten',
   templateUrl: './top-ten.component.html',
-  styleUrls: ['./top-ten.component.sass']
+  styleUrls: ['../../dashboard.component.sass', './top-ten.component.sass']
 })
 export class TopTenComponent implements OnInit {
 

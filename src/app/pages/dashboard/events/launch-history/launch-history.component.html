@@ -1,5 +1,5 @@
 <div>
-    <table class="table table-sm text-white">
+    <table class="table table-sm hover-effect text-white">
         <tbody>
             <tr *ngFor="let event of launchHistory">
                 <td class="event-time" title="{{ event.timestamp | longEventDate }}">{{ event.timestamp | eventDate }}</td>
