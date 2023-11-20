@@ -212,6 +212,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else if (this.selectedGame != null) {
         if (event.key === 'Delete') {
           this.remove(event, this.selectedGame);
+        } else if (this.ctrlOrCommandKey(event) && (event.key === 'e' || event.key === 'E')) {
+          this.edit(this.selectedGame);
         } else if (this.otherSelectedGames.size === 0) {
           if (event.key === 'Enter') {
             this.launch(this.selectedGame);
