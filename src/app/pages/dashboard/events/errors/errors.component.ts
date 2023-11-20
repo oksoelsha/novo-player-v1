@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dashboard-errors',
   templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.sass']
+  styleUrls: ['../../dashboard.component.sass', './errors.component.sass']
 })
 export class ErrorsComponent implements OnInit, OnDestroy {
 

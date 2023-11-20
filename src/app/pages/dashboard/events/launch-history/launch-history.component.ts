@@ -5,7 +5,7 @@ import { EventsService } from '../../../../services/events.service';
 @Component({
   selector: 'app-dashboard-launch-history',
   templateUrl: './launch-history.component.html',
-  styleUrls: ['./launch-history.component.sass']
+  styleUrls: ['../../dashboard.component.sass', './launch-history.component.sass']
 })
 export class LaunchHistoryComponent implements OnInit {
 
