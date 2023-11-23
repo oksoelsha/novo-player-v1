@@ -592,8 +592,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       if (this.filtersTotal > 0) {
         this.games = this.filtersService.filter(this.originalGames, this.filters);
-        this.otherSelectedGames.clear();
-        this.removeAllOtherSelectedGames();
+        if (this.games.indexOf(this.selectedGame) < 0) {
+          // this means selected game was filtered out of new list after hardware update
+          this.selectedGame = null;
+          this.removeAllOtherSelectedGames();
+        }
       }
     });
   }
@@ -707,8 +710,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.setAsAnotherSelectedGame(this.games[index]);
           }
         }
-      }
-      else {
+      } else {
         this.showInfo(game);
       }
     }
@@ -861,8 +863,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         selectedGameElement.classList.remove('selected-game');
       }
     }
-    this.selectedGame = game;
 
+    this.selectedGame = game;
     document.getElementById(game.sha1Code).classList.add('selected-game');
 
     this.otherSelectedGames.forEach(otherSelectedGame => {
