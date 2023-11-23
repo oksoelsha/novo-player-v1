@@ -93,18 +93,18 @@
         </div>
     </div>
     <div class="mb-1 selection-row">
-        <div class="filter-field d-inline-block">{{ 'popups.edithardware.inputdevice' | translate }}</div>
+        <div class="filter-field d-inline-block">{{ 'popups.edithardware.fddmode' | translate }}</div>
         <div class="d-inline-block">
-            <app-drop-down [list]="inputDevices" (selection)="applyInputDeviceFilter($event)"
+            <app-drop-down [list]="fddModes" (selection)="applyFDDModeFilter($event)"
                 [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
                 (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
         </div>
     </div>
     <div class="mb-1 selection-row">
-        <div class="filter-field d-inline-block">{{ 'popups.edithardware.fddmode' | translate }}</div>
+        <div class="filter-field d-inline-block">{{ 'popups.edithardware.inputdevice' | translate }}</div>
         <div class="d-inline-block">
-            <app-drop-down [list]="fddModes" (selection)="applyFDDModeFilter($event)"
+            <app-drop-down [list]="inputDevices" (selection)="applyInputDeviceFilter($event)"
                 [defaultLabel]="'common.select' | translate" [doNotDisplaySelectedItem]="true"
                 (openStatus)="emitMenuOpenStatus($event)">
             </app-drop-down>
