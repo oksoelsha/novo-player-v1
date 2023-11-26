@@ -194,7 +194,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: KeyboardEvent) {
     if (this.canHandleEvents()) {
-      if (event.key.length === 1 && !this.ctrlOrCommandKey(event) && (
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        event.stopPropagation();
+        event.preventDefault();
+      } else if (event.key.length === 1 && !this.ctrlOrCommandKey(event) && (
         (event.key >= 'a' && event.key <= 'z') || (event.key >= '0' && event.key <= '9') ||
         (event.key >= 'A' && event.key <= 'Z') || event.key === ' ' || event.key === '-')) {
         if (this.quickTypeTimer != null) {
@@ -232,9 +235,6 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.additionalExternalInfo.open();
             }
           }
-        } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-          event.stopPropagation();
-          event.preventDefault();
         }
       }
     }
