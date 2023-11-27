@@ -244,13 +244,13 @@ export class FilesService {
         const tapePatternIndex = filename.lastIndexOf('(Side ');
         let counterIndex: number;
 
-        if (diskPatternIndexParenthesisVariant1 > 0 && filename.lastIndexOf(' of ') == (diskPatternIndexParenthesisVariant1 + 7)) {
+        if (diskPatternIndexParenthesisVariant1 > 0 && filename.indexOf(' of ', diskPatternIndexParenthesisVariant1) === (diskPatternIndexParenthesisVariant1 + 7)) {
             counterIndex = diskPatternIndexParenthesisVariant1 + 6;
-        } else if (diskPatternIndexParenthesisVariant2 > 0 && filename.lastIndexOf('of') == (diskPatternIndexParenthesisVariant2 + 6)) {
+        } else if (diskPatternIndexParenthesisVariant2 > 0 && filename.indexOf('of', diskPatternIndexParenthesisVariant2) === (diskPatternIndexParenthesisVariant2 + 6)) {
             counterIndex = diskPatternIndexParenthesisVariant2 + 5;
-        } else if (diskPatternIndexSquare > 0 && filename.lastIndexOf(' of ') == (diskPatternIndexSquare + 7)) {
+        } else if (diskPatternIndexSquare > 0 && filename.indexOf(' of ', diskPatternIndexSquare) === (diskPatternIndexSquare + 7)) {
             counterIndex = diskPatternIndexSquare + 6;
-        } else if (tapePatternIndex > 0 && filename.lastIndexOf(')', tapePatternIndex) == (tapePatternIndex + 7)) {
+        } else if (tapePatternIndex > 0 && filename.indexOf(')', tapePatternIndex) === (tapePatternIndex + 7)) {
             counterIndex = tapePatternIndex + 6;
         } else {
             counterIndex = filename.lastIndexOf('.') - 1;
@@ -305,8 +305,8 @@ export class FilesService {
         const files = fs.readdirSync(currentDirectory, 'utf8');
         files.forEach(file => {
             const fullPath: string = path.join(currentDirectory, file);
-            if (fullPath.substring(0, counterIndex - 1) == filename.substring(0, counterIndex - 1) &&
-                fullPath.substring(counterIndex + 1) == filename.substring(counterIndex + 1)) {
+            if (fullPath.substring(0, counterIndex - 1) === filename.substring(0, counterIndex - 1) &&
+                fullPath.substring(counterIndex + 1) === filename.substring(counterIndex + 1)) {
                 potentialMatches.push(fullPath);
             }
         });
@@ -314,15 +314,19 @@ export class FilesService {
         const matches: string[] = [];
         let done = false;
         let index = 0;
-        let fileCounter = counterCharacter;
+        let fileCounter = potentialMatches[0].charAt(counterIndex);
         for (index; index < potentialMatches.length && !done; index++) {
-            if (fileCounter == potentialMatches[index].charAt(counterIndex)) {
+            if (fileCounter === potentialMatches[index].charAt(counterIndex)) {
                 matches.push(potentialMatches[index]);
                 fileCounter = String.fromCharCode((fileCounter.charCodeAt(0) + 1));
             } else {
                 done = true;
             }
         }
-        return matches;
+        if (matches.indexOf(filename) > -1) {
+            return matches;
+        } else {
+            return [];
+        }
     }
 }
