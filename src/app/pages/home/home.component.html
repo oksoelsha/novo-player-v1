@@ -99,9 +99,9 @@
           </div>
         </div>
         <div ngbDropdown class="d-inline-block ps-1"
-          (openChange)="handleOpenMenuEvents($event); searchMenuOpen = $event;" #searchDropdown="ngbDropdown">
+          (openChange)="handleOpenSearch($event)" #searchDropdown="ngbDropdown">
           <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
-            [title]="'home.search' | translate">
+            [title]="'home.search' | translate" #searchButton>
             <span class="bi-search"></span>
           </button>
           <div ngbDropdownMenu>
