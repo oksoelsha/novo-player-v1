@@ -10,6 +10,7 @@ export const Country = [
     'KR',
     'KW',
     'NL',
+    'NO',
     'PT',
     'RU',
     'SA',
