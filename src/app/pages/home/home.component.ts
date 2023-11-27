@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
+  @ViewChild('searchButton', { static: true }) private searchButton: ElementRef;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
 
   readonly isWindows = this.platformService.isOnWindows();
@@ -347,6 +348,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   handleOpenMenuEvents(opened: boolean) {
     opened ? this.openMenuEventCounter++ : this.openMenuEventCounter--;
+  }
+
+  handleOpenSearch(opened: boolean) {
+    this.handleOpenMenuEvents(opened);
+    this.searchMenuOpen = opened;
+    if (!opened) {
+      setTimeout(() => {
+        this.searchButton.nativeElement.blur();
+      }, 0);
+    }
   }
 
   handleOpenNews(opened: boolean) {
