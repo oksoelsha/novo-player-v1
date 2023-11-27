@@ -42,6 +42,7 @@ export class GameDetailsComponent implements OnChanges {
     ['KR', 'ko_KR'],
     ['KW', 'KW'],
     ['NL', 'nl_NL'],
+    ['NO', 'NO'],
     ['PT', 'PT'],
     ['RU', 'ru_RU'],
     ['SA', 'SA'],
