@@ -75,10 +75,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
   @ViewChild('manageBackups') manageBackups: ManageBackupsComponent;
   @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
+  @ViewChild('gamesTableData', { static: true }) private gamesTableData: ElementRef;
   @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
-  @ViewChild('searchButton', { static: true }) private searchButton: ElementRef;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
 
   readonly isWindows = this.platformService.isOnWindows();
@@ -348,16 +348,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   handleOpenMenuEvents(opened: boolean) {
     opened ? this.openMenuEventCounter++ : this.openMenuEventCounter--;
+    if (!opened) {
+      setTimeout(() => {
+        this.gamesTableData.nativeElement.focus();
+      }, 0);
+    }
   }
 
   handleOpenSearch(opened: boolean) {
     this.handleOpenMenuEvents(opened);
     this.searchMenuOpen = opened;
-    if (!opened) {
-      setTimeout(() => {
-        this.searchButton.nativeElement.blur();
-      }, 0);
-    }
   }
 
   handleOpenNews(opened: boolean) {
