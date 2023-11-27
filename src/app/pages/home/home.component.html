@@ -101,7 +101,7 @@
         <div ngbDropdown class="d-inline-block ps-1"
           (openChange)="handleOpenSearch($event)" #searchDropdown="ngbDropdown">
           <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
-            [title]="'home.search' | translate" #searchButton>
+            [title]="'home.search' | translate">
             <span class="bi-search"></span>
           </button>
           <div ngbDropdownMenu>
@@ -125,7 +125,7 @@
           </th>
         </tr>
       </table>
-      <div id="games-table-data" tabindex="0" (keydown)="processKeyEventsOnTable($event)">
+      <div id="games-table-data" tabindex="-1" (keydown)="processKeyEventsOnTable($event)" #gamesTableData>
         <table>
           <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
             (contextmenu)="onContextMenu($event, game)">
