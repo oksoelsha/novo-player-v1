@@ -156,12 +156,12 @@
   <div class="area-on-the-right">
     <div *ngIf="!showFilters">
       <div class="screenshot">
-        <img src="{{ screenshotA1.screenshot1 }}" class="{{ transparent1 }}">
-        <img src="{{ screenshotA2.screenshot1 }}" class="{{ transparent2 }}">
+        <img id="screenshotA1" src="{{ screenshotA1.screenshot1 }}" class="{{ transparent1 }}">
+        <img id="screenshotA2" src="{{ screenshotA2.screenshot1 }}" class="{{ transparent2 }}">
       </div>
       <div class="screenshot" id="second-screenshot">
-        <img src="{{ screenshotB1.screenshot2 }}" class="{{ transparent1 }}">
-        <img src="{{ screenshotB2.screenshot2 }}" class="{{ transparent2 }}">
+        <img id="screenshotB1" src="{{ screenshotB1.screenshot2 }}" class="{{ transparent1 }}">
+        <img id="screenshotB2" src="{{ screenshotB2.screenshot2 }}" class="{{ transparent2 }}">
       </div>
       <div class="additional-info" *ngIf="selectedGame">
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
