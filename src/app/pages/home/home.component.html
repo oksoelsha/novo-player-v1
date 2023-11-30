@@ -199,8 +199,11 @@
         <div ngbDropdownMenu>
           <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
             (click)="edit(selectedGame)">
-            <div class="actions-menu-icon"></div>
-            {{ 'common.rename' | translate }}
+            <div class="d-flex">
+              <div class="actions-menu-icon"></div>
+              {{ 'common.rename' | translate }}
+              <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}E</div>
+              </div>
           </button>
           <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
             (click)="mediaEdit.open()">
@@ -455,6 +458,7 @@
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="edit($event.item)">
     <div class="context-menu-icon"></div>
     {{ 'common.rename' | translate }}
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}E</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="mediaEdit.open()">
     <div class="context-menu-icon"></div>
