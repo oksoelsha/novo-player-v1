@@ -41,9 +41,9 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   startWebmsx() {
     const doneLoadingWMSXCheckInterval = setInterval(() => {
-      if (typeof window['WMSX'] !== 'undefined' && typeof window['WMSX']['start'] !== 'undefined') {
+      if (typeof window['WMSX'] !== 'undefined' && typeof window['WMSX'].start !== 'undefined') {
         clearInterval(doneLoadingWMSXCheckInterval);
-        window['WMSX']['start']();
+        window['WMSX'].start();
       }
     }, 20);
   }
@@ -54,7 +54,7 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (!this.error) {
-      window['WMSX']['shutdown']();
+      window['WMSX'].shutdown();
       this.renderer.removeChild(document.body, this.wmsxScript);
     }
   }

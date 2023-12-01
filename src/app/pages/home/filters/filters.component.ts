@@ -54,8 +54,8 @@ export class FiltersComponent implements OnInit {
   @Input() machines: string[] = [];
   @Output() appliedFilters: EventEmitter<Filters> = new EventEmitter<Filters>();
   @Output() openedMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() close: EventEmitter<void> = new EventEmitter<void>();
-  @Output() reset: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeAction: EventEmitter<void> = new EventEmitter<void>();
+  @Output() resetAction: EventEmitter<void> = new EventEmitter<void>();
 
   readonly startYear = 1982;
   readonly endYear = 2026;
@@ -208,13 +208,13 @@ export class FiltersComponent implements OnInit {
   }
 
   closeWindow() {
-    this.close.emit();
+    this.closeAction.emit();
   }
 
   resetFilters() {
     this.filterButtons = [];
     this.filters.reset();
-    this.reset.emit();
+    this.resetAction.emit();
   }
 
   private applyFilter(filter: Filter) {
