@@ -10,14 +10,14 @@ import { VersionMatchIndicatorComponent } from './version-match-indicator/versio
 })
 export class HelpComponent implements OnInit {
 
+  @ViewChild('extraDataVersionIndicator') extraDataVersionIndicator: VersionMatchIndicatorComponent;
+
   readonly applicationVersion = '1.6';
 
   applicationVersions: Promise<any>;
   extraDataVersions: Promise<any>;
   screenshotsVersions: Promise<any>;
   gameMusicVersions: Promise<any>;
-
-  @ViewChild('extraDataVersionIndicator') extraDataVersionIndicator: VersionMatchIndicatorComponent;
 
   constructor(private versionsService: VersionsService, private downloadService: DownloadService) { }
 

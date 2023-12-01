@@ -300,7 +300,7 @@
   </div>
   <div *ngIf="showFilters" class="scrollable-filters">
     <app-home-filters [filters]="filters" [machines]="machines" (appliedFilters)="applyFilters($event)"
-      (close)="toggleFiltersForm()" (reset)="resetFilters()" (openedMenu)="handleOpenMenuEvents($event)">
+      (closeAction)="toggleFiltersForm()" (resetAction)="resetFilters()" (openedMenu)="handleOpenMenuEvents($event)">
     </app-home-filters>
   </div>
 </div>
