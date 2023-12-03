@@ -5,12 +5,14 @@ import * as http from 'http'
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { GamesService } from './GamesService';
 import { ExtraDataService } from './ExtraDataService';
+import { ErrorLogService } from './ErrorLogService';
 
 export class DownloadService {
 
     private extraDataPathOnDisc: string = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
 
-    constructor(private win: BrowserWindow, private extraDataService: ExtraDataService, private gamesService: GamesService) {
+    constructor(private win: BrowserWindow, private extraDataService: ExtraDataService, private gamesService: GamesService,
+        private errorLogService: ErrorLogService) {
         this.init();
     }
 
@@ -21,11 +23,15 @@ export class DownloadService {
     }
 
     private async downloadNewExtraData() {
-        await this.downloadExtraData();
-        this.extraDataService.reinit();
-        await this.gamesService.updateGamesForNewExtraData();
+        try {
+            await this.downloadExtraData();
+            this.extraDataService.reinit();
+            await this.gamesService.updateGamesForNewExtraData();    
 
-        this.win.webContents.send('downloadNewExtraDataResponse', false);
+            this.win.webContents.send('downloadNewExtraDataResponse', false);
+        } catch (error) {
+            this.win.webContents.send('downloadNewExtraDataResponse', true);
+        }
     }
 
     private async downloadExtraData() {
@@ -37,6 +43,9 @@ export class DownloadService {
                     filePath.close();
                     resolve();
                 });
+            }).on('error', err => {
+                this.errorLogService.logError('failed to download from http://www.msxlaunchers.info/');
+                reject();
             });
         });
     }

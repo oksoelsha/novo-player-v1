@@ -217,7 +217,8 @@
     "undefined": "Niet-gedefinieerd",
     "versions": "Versies",
     "download": "Downloaden",
-    "downloading": "Bezig"
+    "downloading": "Bezig",
+    "errordownloading": "Download mislukt"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",

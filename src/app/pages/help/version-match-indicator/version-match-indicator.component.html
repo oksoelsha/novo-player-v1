@@ -26,12 +26,15 @@
                             </span>
                         </td>
                         <td>
-                            <span *ngIf="newVersionAvailable && downloadButton && !downloadInProgress" class="badge bg-dark bg-size bg-link"
-                                (click)="handleDownload()">
+                            <span *ngIf="newVersionAvailable && downloadButton && !downloadInProgress && !downloadError"
+                                class="badge bg-dark bg-size bg-link" (click)="handleDownload()">
                                 {{ 'help.download' | translate }}
                             </span>
-                            <span *ngIf="downloadInProgress" class="badge bg-dark bg-size">
+                            <span *ngIf="downloadInProgress && !downloadError" class="badge bg-dark bg-size">
                                 {{ 'help.downloading' | translate }}...
+                            </span>
+                            <span *ngIf="downloadError" class="badge bg-danger bg-size">
+                                {{ 'help.errordownloading' | translate }}
                             </span>
                         </td>
                     </ng-template>

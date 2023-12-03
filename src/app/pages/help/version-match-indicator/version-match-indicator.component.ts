@@ -11,6 +11,7 @@ export class VersionMatchIndicatorComponent implements OnInit {
   @Input() versions: Promise<any>;
   @Input() downloadButton = false;
   @Input() versionMapKey: string;
+  @Input() downloadError = false;
   @Output() downloadAction: EventEmitter<void> = new EventEmitter<void>();
 
 

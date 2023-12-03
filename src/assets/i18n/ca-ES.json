@@ -217,7 +217,8 @@
     "undefined": "No definit",
     "versions": "Versions",
     "download": "Descarregar",
-    "downloading": "descarregant"
+    "downloading": "descarregant",
+    "errordownloading": "No s'ha pogut descarregar"
   },
   "popups": {
     "newlisting": "Nova llista",

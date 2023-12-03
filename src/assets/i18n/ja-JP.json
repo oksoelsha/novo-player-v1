@@ -217,7 +217,8 @@
     "undefined": "未定義",
     "versions": "バージョン",
     "download": "ダウンロード",
-    "downloading": "進行中"
+    "downloading": "進行中",
+    "errordownloading": "ダウンロードに失敗しました"
   },
   "popups": {
     "newlisting": "新しいリスト",

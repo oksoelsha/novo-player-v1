@@ -19,6 +19,8 @@ export class HelpComponent implements OnInit {
   screenshotsVersions: Promise<any>;
   gameMusicVersions: Promise<any>;
 
+  downloadNewExtraDataFailed = false;
+
   constructor(private versionsService: VersionsService, private downloadService: DownloadService) { }
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class HelpComponent implements OnInit {
     this.downloadService.downloadNewExtraData().then(() => {
       this.extraDataVersionIndicator.indicateDownloadDone();
     }).catch(error => {
-
+      this.downloadNewExtraDataFailed = true;
     });
   }
 }
