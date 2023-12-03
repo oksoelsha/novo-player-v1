@@ -217,7 +217,8 @@
     "undefined": "Non défini",
     "versions": "Versions",
     "download": "Télécharger",
-    "downloading": "en cours"
+    "downloading": "en cours",
+    "errordownloading": "Échec du téléchargement"
   },
   "popups": {
     "newlisting": "Nouvelle liste",

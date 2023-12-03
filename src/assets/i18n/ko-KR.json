@@ -217,7 +217,8 @@
     "undefined": "정의되지 않음",
     "versions": "버전",
     "download": "다운로드",
-    "downloading": "진행 중"
+    "downloading": "진행 중",
+    "errordownloading": "다운로드 실패"
   },
   "popups": {
     "newlisting": "새 목록",

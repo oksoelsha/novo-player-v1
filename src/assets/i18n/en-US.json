@@ -217,7 +217,8 @@
     "undefined": "Undefined",
     "versions": "Versions",
     "download": "Download",
-    "downloading": "downloading"
+    "downloading": "downloading",
+    "errordownloading": "Failed to download"
   },
   "popups": {
     "newlisting": "New listing",

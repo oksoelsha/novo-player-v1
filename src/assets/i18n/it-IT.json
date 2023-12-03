@@ -217,7 +217,8 @@
     "undefined": "Indefinito",
     "versions": "Versioni",
     "download": "Scarica",
-    "downloading": "In corso"
+    "downloading": "In corso",
+    "errordownloading": "Scaricamento fallito"
   },
   "popups": {
     "newlisting": "Nuovo elenco",

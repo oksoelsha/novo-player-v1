@@ -81,7 +81,7 @@ function initializeServices() {
 
   new NewsService(win, errorLogService);
 
-  new DownloadService(win, extraDataService, gamesService);
+  new DownloadService(win, extraDataService, gamesService, errorLogService);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

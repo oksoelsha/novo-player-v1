@@ -217,7 +217,8 @@
     "undefined": "Не определен",
     "versions": "Версии",
     "download": "Скачать",
-    "downloading": "в ходе выполнения"
+    "downloading": "в ходе выполнения",
+    "errordownloading": "Не удалось загрузить"
   },
   "popups": {
     "newlisting": "Новый список",
