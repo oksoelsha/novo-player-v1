@@ -74,7 +74,7 @@ export class HashService {
     private getMSXFileIndexInZip(entries: any): number {
         let index: number;
         for(index = 0; index < entries.length; index++) {
-            if (FileTypeUtils.isMSXFile(entries[index].name)) {
+            if (!FileTypeUtils.isZip(entries[index].name) && FileTypeUtils.isMSXFile(entries[index].name)) {
                 return index;
             }
         }
