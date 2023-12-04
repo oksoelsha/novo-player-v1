@@ -1,4 +1,6 @@
 export const Country = [
+    'AU',
+    'BE',
     'BR',
     'DE',
     'ES',
@@ -11,6 +13,8 @@ export const Country = [
     'KW',
     'NL',
     'NO',
+    'NZ',
+    'PL',
     'PT',
     'RU',
     'SA',
