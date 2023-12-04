@@ -141,6 +141,8 @@
     "giantbombapikeytooltip": "API-sleutel vereist om verbinding te maken met de Giant Bomb-website om gegevens zoals platforms en illustraties voor de game te verkrijgen"
   },
   "country": {
+    "AU": "Australië",
+    "BE": "België",
     "BR": "Brazilië",
     "DE": "Duitsland",
     "ES": "Spanje",
@@ -153,6 +155,8 @@
     "KW": "Koeweit",
     "NL": "Nederland",
     "NO": "Noorwegen",
+    "NZ": "Nieuw-Zeeland",
+    "PL": "Polen",
     "PT": "Portugal",
     "RU": "Rusland",
     "SA": "Saudi-Arabië",

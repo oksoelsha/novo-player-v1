@@ -141,6 +141,8 @@
     "giantbombapikeytooltip": "Clave de API necesaria para conectarse al sitio web de Giant Bomb para obtener datos como las plataformas y materiales gráficos para el juego"
   },
   "country": {
+    "AU": "Australia",
+    "BE": "Bélgica",
     "BR": "Brasil",
     "DE": "Alemania",
     "ES": "España",
@@ -153,6 +155,8 @@
     "KW": "Kuwait",
     "NL": "Países Bajos",
     "NO": "Noruega",
+    "NZ": "Nueva Zelanda",
+    "PL": "Polonia",
     "PT": "Portugal",
     "RU": "Rusia",
     "SA": "Arabia Saudita",

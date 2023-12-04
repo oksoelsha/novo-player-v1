@@ -31,9 +31,13 @@ export class GameDetailsComponent implements OnChanges {
   selectedMediumGroupTotal: string;
 
   readonly countryFlags: Map<string, string> = new Map([
+    ['AU', 'AU'],
+    ['BE', 'BE'],
     ['BR', 'pt_BR'],
+    ['CA', 'CA'],
     ['DE', 'de_DE'],
     ['ES', 'es_ES'],
+    ['EU', 'EU'],
     ['FR', 'fr_FR'],
     ['GB', 'UK'],
     ['HK', 'HK'],
@@ -43,15 +47,15 @@ export class GameDetailsComponent implements OnChanges {
     ['KW', 'KW'],
     ['NL', 'nl_NL'],
     ['NO', 'NO'],
+    ['NZ', 'NZ'],
+    ['PL', 'PL'],
     ['PT', 'PT'],
     ['RU', 'ru_RU'],
     ['SA', 'SA'],
     ['SE', 'sv_SE'],
     ['UK', 'UK'],
     ['US', 'en_US'],
-    ['TW', 'zh_TW'],
-    ['CA', 'CA'],
-    ['EU', 'EU']
+    ['TW', 'zh_TW']
   ]);
 
   private readonly gameDetails = [

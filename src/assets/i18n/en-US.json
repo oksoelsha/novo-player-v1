@@ -141,6 +141,8 @@
     "giantbombapikeytooltip": "API key needed to connect to Giant Bomb website to get data such as platforms and box art for the game"
   },
   "country": {
+    "AU": "Australia",
+    "BE": "Belgium",
     "BR": "Brazil",
     "DE": "Germany",
     "ES": "Spain",
@@ -153,6 +155,8 @@
     "KW": "Kuwait",
     "NL": "The Netherlands",
     "NO": "Norway",
+    "NZ": "New Zealand",
+    "PL": "Poland",
     "PT": "Portugal",
     "RU": "Russia",
     "SA": "Saudi Arabia",
