@@ -79,7 +79,13 @@ export class RelatedGamesService {
             [684, 412],
 
             // Knightlore and Knightlore Remake
-            [810, 4221]
+            [810, 4221],
+
+            // Street Fighter and Pointless Fighting
+            [7496, 7878],
+
+            // Green Beret and S.A.K.
+            [3091, 8100],
         ];
 
         groups.forEach((group) => {

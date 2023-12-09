@@ -91,6 +91,7 @@ export class AdditionalExternalInfoService {
     [1079, 'King\'s Valley 2'],
     [1117, 'Cosmic Soldier 2: Psychic War'],
     [1119, 'Psychic World'],
+    [1126, 'The Pro Yakyū Gekitotsu: Pennant Race'],
     [1135, 'War of the Dead Part 2'],
     [1136, 'Shin Ku Gyoku Den'],
     [1138, 'Shin Maō Golvellius'],
