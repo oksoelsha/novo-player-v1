@@ -38,6 +38,7 @@ import { QuickLaunchData } from '../../models/quick-launch-data';
 import { ManageBackupsComponent } from '../../popups/manage-backups/manage-backups.component';
 import { NewsItem } from '../../models/news-collection';
 import { MsxnewsService } from '../../services/msxnews.service';
+import { FiltersComponent } from './filters/filters.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -80,6 +81,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
+  @ViewChild('filtersComponent') filtersComponent: FiltersComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
   readonly webmsxMachines = WebMSXMachinesData;
@@ -211,6 +213,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         }, 600);
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'f' || event.key === 'F')) {
         this.searchDropdown.open();
+      } else if (this.ctrlOrCommandKey(event) && (event.key === 'q' || event.key === 'Q')) {
+        this.resetAllFilters();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'z' || event.key === 'Z')) {
         this.undo();
       } else if (this.selectedGame != null) {
@@ -835,10 +839,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.filters = filters;
     this.filtersTotal = this.filters.getTotalFilters();
     this.games = this.filtersService.filter(this.originalGames, this.filters);
+    if (this.games.indexOf(this.selectedGame) < 0) {
+      // this can happen if the selected game was filtered out
+      this.initialize();
+      sessionStorage.removeItem('selectedGame');
+    }
   }
 
-  resetFilters() {
+  resetAllFilters() {
+    if (this.filtersComponent) {
+      this.filtersComponent.resetFilters();
+    } else {
+      this.resetFiltersData();
+    }
+  }
+
+  resetFiltersData() {
     this.filtersTotal = 0;
+    this.filters.reset();
     this.games = this.filtersService.filter(this.originalGames, this.filters);
   }
 

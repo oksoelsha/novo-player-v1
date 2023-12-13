@@ -87,6 +87,8 @@
     "findrelatedgames": "関連するゲームを探す",
     "relatedgames": "関連ゲーム",
     "filters": "フィルター",
+    "showfilters": "フィルターを表示",
+    "hidefilters": "フィルターを非表示にする",
     "infofromgiantbomb": "Giant Bombからの情報",
     "getinfofromgiantbomb": "Giant Bombから情報を得る",
     "morescreenshots": "追加のスクリーンショット",

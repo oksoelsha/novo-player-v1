@@ -213,7 +213,6 @@ export class FiltersComponent implements OnInit {
 
   resetFilters() {
     this.filterButtons = [];
-    this.filters.reset();
     this.resetAction.emit();
   }
 
