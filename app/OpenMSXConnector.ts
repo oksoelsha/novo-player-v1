@@ -8,7 +8,7 @@ import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
 
 // This class was based on the following implementation:
-// https://github.com/S0urceror/DeZog/blob/master/src/remotes/openmsx/openmsxremote.ts
+// https://github.com/S0urceror/DeZog/blob/v1.3.5/src/remotes/openmsx/openmsxremote.ts
 export class OpenMSXConnector {
 	openmsx: net.Socket;
 	pid: number;
