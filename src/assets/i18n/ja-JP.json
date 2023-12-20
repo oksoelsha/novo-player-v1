@@ -214,7 +214,11 @@
     "savestate": "状態を保存する",
     "statesaved": "状態が保存されました",
     "loadstate": "状態をロードする",
-    "stateloaded": "状態が読み込まれました"
+    "stateloaded": "状態が読み込まれました",
+    "typetext": "入力する",
+    "type": "入力する",
+    "clear": "クリア",
+    "texttyped": "テキストはopenMSXで入力"
   },
   "help": {
     "uptodate": "最新",

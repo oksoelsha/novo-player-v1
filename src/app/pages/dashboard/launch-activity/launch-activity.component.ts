@@ -10,6 +10,7 @@ import { LaunchActivity, LaunchActivityService } from '../../../services/launch-
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
+import { TypeTextComponent as TypeTextComponent } from '../../../popups/type-text/type-text.component';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
@@ -19,6 +20,7 @@ import { AlertsService } from '../../../shared/components/alerts/alerts.service'
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
+  @ViewChild('typeTextInterface') typeTextInterface: TypeTextComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   fileGroupMap: Map<number, string[]> = new Map();
@@ -36,6 +38,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       self.launchActivities = launchActivity;
       if (!launchActivity.find(l => l.pid === this.selectedPid)) {
         this.savedStatesSelector.close();
+        this.typeTextInterface.close();
       }
     });
     this.launchActivities = launchActivityService.getActivities();
@@ -164,6 +167,11 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.selectedGame.name + this.getListingIfExists(this.selectedGame));
       }
     });
+  }
+
+  typeText(pid: number) {
+    this.selectedPid = pid;
+    this.typeTextInterface.open();
   }
 
   private setFileGroups(activity: any) {

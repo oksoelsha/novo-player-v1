@@ -214,7 +214,11 @@
     "savestate": "상태 저장",
     "statesaved": "상태가 저장되었습니다",
     "loadstate": "상태 로드",
-    "stateloaded": "상태가 로드되었습니다"
+    "stateloaded": "상태가 로드되었습니다",
+    "typetext": "텍스트 입력",
+    "type": "입력하",
+    "clear": "삭제",
+    "texttyped": "텍스트는 openMSX로 입력되었습니다"
   },
   "help": {
     "uptodate": "최신 상태",

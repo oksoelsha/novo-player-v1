@@ -214,7 +214,11 @@
     "savestate": "Salvar estado",
     "statesaved": "Estado foi salvado",
     "loadstate": "Carregar estado",
-    "stateloaded": "Estado foi carregado"
+    "stateloaded": "Estado foi carregado",
+    "typetext": "Digitar texto",
+    "type": "Digitar",
+    "clear": "Limpar",
+    "texttyped": "O texto foi digitado no openMSX"
   },
   "help": {
     "uptodate": "Atualizado",

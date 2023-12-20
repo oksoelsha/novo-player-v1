@@ -27,6 +27,9 @@ export class OpenMSXControlService {
         ipcMain.on('loadStateOnOpenmsx', (event, pid: number, state: string) => {
             this.loadStateOnOpenmsx(pid, state);
         });
+        ipcMain.on('typeTextOnOpenmsx', (event, pid: number, text: string) => {
+            this.typeTextOnOpenmsx(pid, text);
+        });
     }
 
     private async resetOnOpenmsx(pid: number) {
@@ -73,6 +76,27 @@ export class OpenMSXControlService {
         this.executeCommandOnOpenmsx(pid, 'loadstate ' + state);
 
         this.win.webContents.send('loadStateOnOpenmsxResponse', true);
+    }
+
+    private async typeTextOnOpenmsx(pid: number, text: string) {
+        const sanitizedText = (text == null) ? '' : this.escapeText(text);
+        this.executeCommandOnOpenmsx(pid, 'type ' + '"' + sanitizedText + '"');
+
+        this.win.webContents.send('typeTextOnOpenmsxResponse', true);
+    }
+
+    private escapeText(text: string) {
+        let escapedText = text;
+
+        escapedText = escapedText.split('\\').join('\\\\');
+        escapedText = escapedText.split('"').join('\\\"');
+        escapedText = escapedText.split('\n').join('\r');
+        escapedText = escapedText.split('[').join('\\[');
+        escapedText = escapedText.split('$').join('\\$');
+        escapedText = escapedText.split('&').join('&amp;');
+        escapedText = escapedText.split('<').join('&lt;');
+
+        return escapedText;
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {

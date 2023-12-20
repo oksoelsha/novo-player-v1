@@ -63,6 +63,7 @@ import { WindowControlsComponent } from './shared/components/window-controls/win
 import { DropfileDirective } from './shared/directives/dropfile/dropfile.directive';
 import { EventDatePipe } from './pages/dashboard/pipes/event-date.pipe';
 import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe';
+import { TypeTextComponent } from './popups/type-text/type-text.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -106,6 +107,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RelatedGamesComponent,
     MoreScreenshotsComponent,
     SavedStatesComponent,
+    TypeTextComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,

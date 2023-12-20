@@ -33,9 +33,13 @@
                                         (click)="saveState(activity.pid, activity.game)">
                                         {{ 'dashboard.savestate' | translate }}
                                     </button>
-                                    <button *ngIf="savedStatesMap.get(activity.game.sha1Code)" ngbDropdownItem
+                                    <button ngbDropdownItem *ngIf="savedStatesMap.get(activity.game.sha1Code)"
                                         type="button" (click)="loadState(activity.pid, activity.game)">
                                         {{ 'dashboard.loadstate' | translate }}
+                                    </button>
+                                    <button ngbDropdownItem type="button"
+                                        (click)="typeText(activity.pid)">
+                                        {{ 'dashboard.typetext' | translate }}
                                     </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
@@ -63,5 +67,12 @@
         <app-saved-states [popupId]="popupId" [savedStates]="savedStates" [game]="selectedGame" [hideNormalStart]="true"
             (stateChoice)="loadStateOnOpenmsx($event)" (updateStateList)="resetStatesMap()" #savedStatesSelector>
         </app-saved-states>
+    </ng-template>
+</app-popup>
+
+<app-popup popupId="type-text-id" [titleHeader]="'dashboard.typetext' | translate">
+    <ng-template let-popupId="popupId">
+        <app-type-text [popupId]="popupId" [pid]="selectedPid" #typeTextInterface>
+        </app-type-text>
     </ng-template>
 </app-popup>

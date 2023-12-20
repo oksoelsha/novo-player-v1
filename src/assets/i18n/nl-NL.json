@@ -214,7 +214,11 @@
     "savestate": "Status opslaan",
     "statesaved": "Status is opgeslagen",
     "loadstate": "Status laden",
-    "stateloaded": "Status is geladen"
+    "stateloaded": "Status is geladen",
+    "typetext": "Tekst typen",
+    "type": "Typen",
+    "clear": "Wissen",
+    "texttyped": "De tekst is getypt in openMSX"
   },
   "help": {
     "uptodate": "Bijgewerkt",

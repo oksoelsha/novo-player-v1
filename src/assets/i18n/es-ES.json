@@ -214,7 +214,11 @@
     "savestate": "Guardar estado",
     "statesaved": "Estado se guardó correctamente",
     "loadstate": "Cargar estado",
-    "stateloaded": "Estado se cargadó correctamente"
+    "stateloaded": "Estado se cargadó correctamente",
+    "typetext": "Escribir texto",
+    "type": "Escribir",
+    "clear": "Despejar",
+    "texttyped": "El texto se escribió en openMSX"
   },
   "help": {
     "uptodate": "Actualizado",

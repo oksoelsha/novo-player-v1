@@ -214,7 +214,11 @@
     "savestate": "Guarda l'estat",
     "statesaved": "L'estat s'ha guardat correctament",
     "loadstate": "Càrrega l'estat",
-    "stateloaded": "L'estat s'ha carregat correctament"
+    "stateloaded": "L'estat s'ha carregat correctament",
+    "typetext": "Escriviu text",
+    "type": "Escriviu",
+    "clear": "Esborra",
+    "texttyped": "El text es va escriure a openMSX"
   },
   "help": {
     "uptodate": "Està actualitzat",

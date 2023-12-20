@@ -214,7 +214,11 @@
     "savestate": "Save state",
     "statesaved": "State saved successfully",
     "loadstate": "Load state",
-    "stateloaded": "State loaded successfully"
+    "stateloaded": "State loaded successfully",
+    "typetext": "Type text",
+    "type": "Type",
+    "clear": "Clear",
+    "texttyped": "Text was typed in openMSX"
   },
   "help": {
     "uptodate": "Up to date",

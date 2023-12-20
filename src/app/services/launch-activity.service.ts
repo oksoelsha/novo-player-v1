@@ -91,6 +91,15 @@ export class LaunchActivityService {
       this.ipc.send('loadStateOnOpenmsx', pid, stateFilename);
     });
   }
+
+  typeText(pid: number, textToType: string) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('typeTextOnOpenmsxResponse', (event: any, typed: boolean) => {
+        resolve(typed);
+      });
+      this.ipc.send('typeTextOnOpenmsx', pid, textToType);
+    });
+  }
 }
 
 export class LaunchActivity {

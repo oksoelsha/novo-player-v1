@@ -10,7 +10,7 @@ import { PopupComponent } from '../popup.component';
   styleUrls: ['../../common-styles.sass', './saved-states.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SavedStatesComponent  extends PopupComponent implements OnInit, AfterViewInit {
+export class SavedStatesComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Input() popupId: string;
   @Input() game: Game;
