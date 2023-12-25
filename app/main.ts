@@ -21,6 +21,7 @@ import { BackupsService } from './BackupsService';
 import { NewsService } from './NewsService';
 import { ErrorLogService } from './ErrorLogService';
 import { DownloadService } from './DownloadService';
+import { GamePasswordsService } from './GamePasswordsService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -80,6 +81,8 @@ function initializeServices() {
   new BackupsService(win, gamesService);
 
   new NewsService(win, errorLogService);
+
+  new GamePasswordsService(win);
 
   new DownloadService(win, extraDataService, gamesService, errorLogService);
 

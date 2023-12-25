@@ -64,6 +64,7 @@ import { DropfileDirective } from './shared/directives/dropfile/dropfile.directi
 import { EventDatePipe } from './pages/dashboard/pipes/event-date.pipe';
 import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe';
 import { TypeTextComponent } from './popups/type-text/type-text.component';
+import { PickPasswordComponent } from './popups/pick-password/pick-password.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -108,6 +109,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     MoreScreenshotsComponent,
     SavedStatesComponent,
     TypeTextComponent,
+    PickPasswordComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,

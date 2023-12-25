@@ -11,6 +11,8 @@ import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
 import { TypeTextComponent as TypeTextComponent } from '../../../popups/type-text/type-text.component';
+import { GamePasswordsInfo } from '../../../models/game-passwords-info';
+import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
@@ -21,13 +23,16 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('typeTextInterface') typeTextInterface: TypeTextComponent;
+  @ViewChild('passwordSelector') pickPasswordInterface: PickPasswordComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   fileGroupMap: Map<number, string[]> = new Map();
   savedStatesMap: Map<string, GameSavedState[]> = new Map();
+  gamePasswordsMap: Map<number, GamePasswordsInfo> = new Map();
   selectedGame: Game;
   selectedPid: number;
   savedStates: GameSavedState[] = [];
+  gamePasswords: GamePasswordsInfo;
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
@@ -39,6 +44,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       if (!launchActivity.find(l => l.pid === this.selectedPid)) {
         this.savedStatesSelector.close();
         this.typeTextInterface.close();
+        this.pickPasswordInterface.close();
       }
     });
     this.launchActivities = launchActivityService.getActivities();
@@ -48,6 +54,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivities.forEach(activity => {
       this.setFileGroups(activity);
       this.setSavedStates(activity);
+      this.setPasswords(activity);
     });
   }
 
@@ -174,6 +181,13 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.typeTextInterface.open();
   }
 
+  pickPassword(pid: number, game: Game) {
+    this.selectedGame = game;
+    this.selectedPid = pid;
+    this.gamePasswords = this.gamePasswordsMap.get(game.generationMSXId);
+    this.pickPasswordInterface.open();
+  }
+
   private setFileGroups(activity: any) {
     let medium: string;
     if (this.isDisk(activity.game)) {
@@ -194,6 +208,14 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.gamesService.getGameSavedStates(activity.game).then((savedStates: GameSavedState[]) => {
       if (savedStates.length > 0) {
         this.savedStatesMap.set(activity.game.sha1Code, savedStates);
+      }
+    });
+  }
+
+  private setPasswords(activity: any) {
+    this.gamesService.getGamePasswords(activity.game).then((gamePasswordsInfo: GamePasswordsInfo) => {
+      if (gamePasswordsInfo) {
+        this.gamePasswordsMap.set(activity.game.generationMSXId, gamePasswordsInfo);
       }
     });
   }

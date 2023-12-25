@@ -1,6 +1,7 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { Game } from '../src/app/models/game';
 import { OpenMSXConnector } from './OpenMSXConnector';
+import { GamePassword } from '../src/app/models/game-passwords-info';
 
 export class OpenMSXControlService {
 
@@ -28,7 +29,10 @@ export class OpenMSXControlService {
             this.loadStateOnOpenmsx(pid, state);
         });
         ipcMain.on('typeTextOnOpenmsx', (event, pid: number, text: string) => {
-            this.typeTextOnOpenmsx(pid, text);
+            this.typeTextOnOpenmsx(pid, text, false);
+        });
+        ipcMain.on('typePasswordOnOpenmsx', (event, pid: number, gamePassword: GamePassword) => {
+            this.typeTextOnOpenmsx(pid, gamePassword.password, true, gamePassword.pressReturn);
         });
     }
 
@@ -78,11 +82,18 @@ export class OpenMSXControlService {
         this.win.webContents.send('loadStateOnOpenmsxResponse', true);
     }
 
-    private async typeTextOnOpenmsx(pid: number, text: string) {
-        const sanitizedText = (text == null) ? '' : this.escapeText(text);
-        this.executeCommandOnOpenmsx(pid, 'type ' + '"' + sanitizedText + '"');
+    private async typeTextOnOpenmsx(pid: number, text: string, passwordMode: boolean, autoPressEnter: boolean = false) {
+        let sanitizedText = this.escapeText(text);
+        if (autoPressEnter) {
+            sanitizedText = sanitizedText + '\r';
+        }
+        let typeCommand = 'type ';
+        if (passwordMode) {
+            typeCommand = typeCommand + '-release ';
+        }
+        this.executeCommandOnOpenmsx(pid, typeCommand + '"' + sanitizedText + '"');
 
-        this.win.webContents.send('typeTextOnOpenmsxResponse', true);
+        this.win.webContents.send('typePasswordOnOpenmsxResponse', true);    
     }
 
     private escapeText(text: string) {

@@ -41,6 +41,10 @@
                                         (click)="typeText(activity.pid)">
                                         {{ 'dashboard.typetext' | translate }}
                                     </button>
+                                    <button ngbDropdownItem *ngIf="gamePasswordsMap.get(activity.game.generationMSXId)"
+                                        type="button" (click)="pickPassword(activity.pid, activity.game)">
+                                        {{ 'dashboard.enterpassword' | translate }}
+                                    </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
                                         <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{
@@ -74,5 +78,12 @@
     <ng-template let-popupId="popupId">
         <app-type-text [popupId]="popupId" [pid]="selectedPid" #typeTextInterface>
         </app-type-text>
+    </ng-template>
+</app-popup>
+
+<app-popup popupId="pick-password-id" [titleHeader]="('dashboard.enterpassword' | translate)">
+    <ng-template let-popupId="popupId">
+        <app-pick-password [popupId]="popupId" [pid]="selectedPid" [gamePasswordsInfo]="gamePasswords" #passwordSelector>
+        </app-pick-password>
     </ng-template>
 </app-popup>

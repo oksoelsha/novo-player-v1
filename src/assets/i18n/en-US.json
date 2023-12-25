@@ -218,7 +218,9 @@
     "typetext": "Type text",
     "type": "Type",
     "clear": "Clear",
-    "texttyped": "Text was typed in openMSX"
+    "texttyped": "Text was typed in openMSX",
+    "enterpassword" :"Enter password",
+    "enter": "Enter"
   },
   "help": {
     "uptodate": "Up to date",

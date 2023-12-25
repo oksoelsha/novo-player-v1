@@ -9,6 +9,7 @@ import { Totals } from '../models/totals';
 import { LaunchActivityService } from './launch-activity.service';
 import { OperationCacheService } from './operation-cache.service';
 import { UndoService } from './undo.service';
+import { GamePasswordsInfo } from '../models/game-passwords-info';
 
 @Injectable({
   providedIn: 'root'
@@ -297,6 +298,15 @@ export class GamesService {
         resolve(deleted);
       });
       this.ipc.send('deleteGameSavedState', state);
+    });
+  }
+
+  async getGamePasswords(game: Game): Promise<GamePasswordsInfo> {
+    return new Promise<GamePasswordsInfo>((resolve, reject) => {
+      this.ipc.once('getGamePasswordsResponse' + game.generationMSXId, (event, savedStates) => {
+        resolve(savedStates);
+      });
+      this.ipc.send('getGamePasswords', game.generationMSXId);
     });
   }
 }

@@ -3,6 +3,7 @@ import { IpcRenderer } from 'electron';
 import { Observable, Subject } from 'rxjs';
 import { EventSource } from '../models/event';
 import { Game } from '../models/game';
+import { GamePassword } from '../models/game-passwords-info';
 
 @Injectable({
   providedIn: 'root'
@@ -98,6 +99,15 @@ export class LaunchActivityService {
         resolve(typed);
       });
       this.ipc.send('typeTextOnOpenmsx', pid, textToType);
+    });
+  }
+
+  enterPassword(pid: number, password: GamePassword) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('typePasswordOnOpenmsxResponse', (event: any, typed: boolean) => {
+        resolve(typed);
+      });
+      this.ipc.send('typePasswordOnOpenmsx', pid, password);
     });
   }
 }
