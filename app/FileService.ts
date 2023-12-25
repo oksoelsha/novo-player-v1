@@ -64,8 +64,12 @@ export class FilesService {
         });
 
         ipcMain.on('getFileGroup', (event, pid: number, filename: string) => {
-            const fileGroup = this.getFileGroup(filename);
-            this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
+            if (fs.existsSync(filename)) {
+                const fileGroup = this.getFileGroup(filename);
+                this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
+            } else {
+                this.win.webContents.send('getFileGroupResponse' + pid, []);
+            }
         });
 
         ipcMain.on('getGameSavedStates', (event, sha1Code: string) => {
@@ -299,7 +303,6 @@ export class FilesService {
     }
 
     private examineFileFormat(filename: string, counterIndex: number): string[] {
-        const counterCharacter = filename.charAt(counterIndex);
         let potentialMatches: string[] = [];
         const currentDirectory = path.dirname(filename);
         const files = fs.readdirSync(currentDirectory, 'utf8');
