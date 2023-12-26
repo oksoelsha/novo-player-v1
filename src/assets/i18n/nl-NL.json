@@ -218,7 +218,10 @@
     "typetext": "Tekst typen",
     "type": "Typen",
     "clear": "Wissen",
-    "texttyped": "De tekst is getypt in openMSX"
+    "texttyped": "De tekst is getypt in openMSX",
+    "enterpassword" :"Wachtwoord invoeren",
+    "enter": "Invoeren",
+    "passwordentered": "Wachtwoord is ingevoerd"
   },
   "help": {
     "uptodate": "Bijgewerkt",

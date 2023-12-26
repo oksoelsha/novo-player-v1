@@ -218,7 +218,10 @@
     "typetext": "Escriviu text",
     "type": "Escriviu",
     "clear": "Esborra",
-    "texttyped": "El text es va escriure a openMSX"
+    "texttyped": "El text es va escriure a openMSX",
+    "enterpassword" :"Introduïu contrasenya",
+    "enter": "Introduïu",
+    "passwordentered": "La contrasenya s'ha introduït"
   },
   "help": {
     "uptodate": "Està actualitzat",

@@ -218,7 +218,10 @@
     "typetext": "Taper texte",
     "type": "Taper",
     "clear": "Effacer",
-    "texttyped": "Le texte a été tapé sur openMSX"
+    "texttyped": "Le texte a été tapé sur openMSX",
+    "enterpassword" :"Entrer le mot de passe",
+    "enter": "Entrer",
+    "passwordentered": "Le mot de passe a été entré"
   },
   "help": {
     "uptodate": "À jour",

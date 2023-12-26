@@ -44,7 +44,7 @@ export class PickPasswordComponent extends PopupComponent implements OnInit, Aft
     if (this.selectedPassword) {
       this.launchActivityService.enterPassword(this.pid, this.selectedPassword).then(entered => {
         if (entered) {
-          this.alertService.success(this.localizationService.translate('dashboard.passwordEntered'));
+          this.alertService.success(this.localizationService.translate('dashboard.passwordentered'));
         }
       });  
     }

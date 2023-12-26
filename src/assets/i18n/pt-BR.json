@@ -218,7 +218,10 @@
     "typetext": "Digitar texto",
     "type": "Digitar",
     "clear": "Limpar",
-    "texttyped": "O texto foi digitado no openMSX"
+    "texttyped": "O texto foi digitado no openMSX",
+    "enterpassword" :"Inserir senha",
+    "enter": "Inserir",
+    "passwordentered": "A senha foi inserida"
   },
   "help": {
     "uptodate": "Atualizado",

@@ -218,7 +218,10 @@
     "typetext": "入力する",
     "type": "入力する",
     "clear": "クリア",
-    "texttyped": "テキストはopenMSXで入力"
+    "texttyped": "テキストはopenMSXで入力",
+    "enterpassword" :"パスワードを入力する",
+    "enter": "入力する",
+    "passwordentered": "パスワードが入力されました"
   },
   "help": {
     "uptodate": "最新",

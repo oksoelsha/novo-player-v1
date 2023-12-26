@@ -218,7 +218,10 @@
     "typetext": "Escribir texto",
     "type": "Escribir",
     "clear": "Despejar",
-    "texttyped": "El texto se escribió en openMSX"
+    "texttyped": "El texto se escribió en openMSX",
+    "enterpassword" :"Ingresar contraseña",
+    "enter": "Ingresar",
+    "passwordentered": "Se ingresó la contraseña"
   },
   "help": {
     "uptodate": "Actualizado",

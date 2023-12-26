@@ -218,7 +218,10 @@
     "typetext": "Digita testo",
     "type": "Digita",
     "clear": "Cancella",
-    "texttyped": "Il testo è stato digitato in openMSX"
+    "texttyped": "Il testo è stato digitato in openMSX",
+    "enterpassword" :"Inserisci password",
+    "enter": "Inserisci",
+    "passwordentered": "La password è stata inserita"
   },
   "help": {
     "uptodate": "Aggiornato",

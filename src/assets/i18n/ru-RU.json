@@ -218,7 +218,10 @@
     "typetext": "Наберите текст",
     "type": "Наберите",
     "clear": "Очистите",
-    "texttyped": "Текст был набран на openMSX"
+    "texttyped": "Текст был набран на openMSX",
+    "enterpassword" :"Введите пароль",
+    "enter": "Введите",
+    "passwordentered": "Пароль был введен"
   },
   "help": {
     "uptodate": "Обновлено",

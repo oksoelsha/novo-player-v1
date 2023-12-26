@@ -218,7 +218,10 @@
     "typetext": "텍스트 입력",
     "type": "입력하",
     "clear": "삭제",
-    "texttyped": "텍스트는 openMSX로 입력되었습니다"
+    "texttyped": "텍스트는 openMSX로 입력되었습니다",
+    "enterpassword" :"암호를 입력",
+    "enter": "입력",
+    "passwordentered": "비밀번호가 입력되었습니다"
   },
   "help": {
     "uptodate": "최신 상태",

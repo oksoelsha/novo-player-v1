@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PickPasswordComponent } from './pick-password.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('PickPasswordComponent', () => {
   let component: PickPasswordComponent;
@@ -8,6 +9,7 @@ describe('PickPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ PickPasswordComponent ]
     })
     .compileComponents();

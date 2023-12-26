@@ -220,7 +220,8 @@
     "clear": "Clear",
     "texttyped": "Text was typed in openMSX",
     "enterpassword" :"Enter password",
-    "enter": "Enter"
+    "enter": "Enter",
+    "passwordentered": "Password was entered"
   },
   "help": {
     "uptodate": "Up to date",
