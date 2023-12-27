@@ -351,6 +351,11 @@ export class GamesService {
             for (const entry of entries) {
                 const game = new Game(entry.name, entry._id, entry.size);
                 game.setListing(entry.listing);
+                game.setRomA(entry.romA);
+                game.setDiskA(entry.diskA);
+                game.setTape(entry.tape);
+                game.setHarddisk(entry.harddisk);
+                game.setLaserdisc(entry.laserdisc);
 
                 games.push(game)
             }
