@@ -224,28 +224,38 @@
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="mediaEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.editmedia' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.editmedia' | translate }}
+              </div>
             </button>
             <button class="actions-menu-button" ngbDropdownItem type="button" (click)="hardwareEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.edithardware' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.edithardware' | translate }}
+              </div>
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="infoFileFieldEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.setInfoFile' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.setInfoFile' | translate }}
+              </div>
             </button>
             <div class="dropdown-divider"></div>
             <button class="actions-menu-button" *ngIf="isWindows" ngbDropdownItem type="button"
               (click)="bluemsxArgumentsEdit.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.editbluemsxarguments' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.editbluemsxarguments' | translate }}
+              </div>
             </button>
             <button class="actions-menu-button" *ngIf="isWebMSXPathDefined" ngbDropdownItem type="button"
               (click)="webmsxMachineSet.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'webmsx.setwebmsxmachine' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'webmsx.setwebmsxmachine' | translate }}
+              </div>
             </button>
             <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
@@ -266,13 +276,17 @@
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
               ngbDropdownItem type="button" (click)="setFavoritesFlag(true)">
-              <div class="actions-menu-icon">&starf;</div>
-              {{ 'home.addtofavorites' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon">&starf;</div>
+                {{ 'home.addtofavorites' | translate }}
+              </div>
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="selectedGame.favorite"
               ngbDropdownItem type="button" (click)="setFavoritesFlag(false)">
-              <div class="actions-menu-icon">&starf;</div>
-              {{ 'home.removefromfavorites' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon">&starf;</div>
+                {{ 'home.removefromfavorites' | translate }}
+              </div>
             </button>
             <button class="actions-menu-button" ngbDropdownItem type="button"
               (click)="remove(null, selectedGame, true)">
@@ -283,8 +297,10 @@
               </div>
             </button>
             <button class="actions-menu-button" ngbDropdownItem type="button" (click)="changeListing.open()">
-              <div class="actions-menu-icon"></div>
-              {{ 'home.movetoanotherlisting' | translate }}
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.movetoanotherlisting' | translate }}
+              </div>
             </button>
           </div>
         </div>
