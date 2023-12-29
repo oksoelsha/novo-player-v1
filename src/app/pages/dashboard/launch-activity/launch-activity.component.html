@@ -23,27 +23,45 @@
                                 <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
                                     <button ngbDropdownItem type="button"
                                         (click)="resetMachine(activity.pid, activity.game)">
-                                        {{ 'common.reset' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem"></div>
+                                            {{ 'common.reset' | translate }}
+                                        </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
                                         (click)="takeScreenshot(activity.pid, activity.game)">
-                                        {{ 'dashboard.takeascreenshot' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem bi-image"></div>
+                                            {{ 'dashboard.takeascreenshot' | translate }}
+                                        </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
                                         (click)="saveState(activity.pid, activity.game)">
-                                        {{ 'dashboard.savestate' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem"></div>
+                                            {{ 'dashboard.savestate' | translate }}
+                                        </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="savedStatesMap.get(activity.game.sha1Code)"
                                         type="button" (click)="loadState(activity.pid, activity.game)">
-                                        {{ 'dashboard.loadstate' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem"></div>
+                                            {{ 'dashboard.loadstate' | translate }}
+                                        </div>
                                     </button>
                                     <button ngbDropdownItem type="button"
                                         (click)="typeText(activity.pid)">
-                                        {{ 'dashboard.typetext' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem bi-keyboard"></div>
+                                            {{ 'dashboard.typetext' | translate }}
+                                        </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="gamePasswordsMap.get(activity.game.generationMSXId)"
                                         type="button" (click)="pickPassword(activity.pid, activity.game)">
-                                        {{ 'dashboard.enterpassword' | translate }}
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem"></div>
+                                            {{ 'dashboard.enterpassword' | translate }}
+                                        </div>
                                     </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
@@ -53,7 +71,7 @@
                                             'dashboard.switchtapes' | translate }}:</h6>
                                         <button *ngFor="let medium of fileGroupMap.get(activity.pid)" ngbDropdownItem
                                             type="button" (click)="switchMedium(activity.pid, activity.game, medium)">
-                                            <div class="ms-2">{{ getMediumDisplayName(medium) }}</div>
+                                            <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
                                         </button>
                                     </ng-container>
                                 </div>
