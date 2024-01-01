@@ -6,6 +6,7 @@ import { SecBufferDesc } from 'node-expose-sspi';
 import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
+import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 
 // This class was based on the following implementation:
 // https://github.com/S0urceror/DeZog/blob/v1.3.5/src/remotes/openmsx/openmsxremote.ts
@@ -14,7 +15,7 @@ export class OpenMSXConnector {
 	pid: number;
 	connected: boolean;
 
-	constructor(pid: number) {
+	constructor(pid: number, private connectionManager: OpenMSXConnectionManager) {
 		this.pid = pid;
 		this.connected = false;
 	}
@@ -34,9 +35,6 @@ export class OpenMSXConnector {
 			});
 			this.openmsx.on('close', () => {
 				this.connected = false;
-			});
-			this.openmsx.on('data', data => {
-				// this.handleOpenMSXResponse(data);
 			});
 	
 			if (PlatformUtils.isWindows()) {
@@ -118,16 +116,7 @@ export class OpenMSXConnector {
 			}
 		});
 	}
-/*
-	private async parse(str: string): Promise<any> {
-		return new Promise<any>((resolve, reject) => {
-			parseString(str, (error: any, result: any) => {
-				if (error) reject(error);
-				else resolve(result);
-			});
-		});
-	}
-*/
+
 	private async waitResponse(): Promise<ArrayBuffer> {
 		return new Promise<ArrayBuffer>(async (resolve, reject) => {
 			this.openmsx.once('readable', () => {
@@ -216,23 +205,4 @@ export class OpenMSXConnector {
 			resolve(true);
 		});
 	}
-/*
-	private async handleOpenMSXResponse(data: Buffer) {
-		let str: string = data.toString();
-		if (str.indexOf('<openmsx-output>') == 0) {
-		} else {
-			if (str.indexOf('<openmsx>') == 0) {
-				let v: any = await this.parse(`<openmsx>${str}</openmsx>`);
-				if (v.openmsx.reply != undefined) {
-					for (let r of v.openmsx.reply) {
-					}
-				}
-				if (v.openmsx.update != undefined) {
-					for (let u of v.openmsx.update) {
-					}
-				}
-			}
-		}
-	}
-*/
 }

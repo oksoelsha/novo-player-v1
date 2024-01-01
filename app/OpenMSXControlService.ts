@@ -1,11 +1,11 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { Game } from '../src/app/models/game';
-import { OpenMSXConnector } from './OpenMSXConnector';
 import { GamePassword } from '../src/app/models/game-passwords-info';
+import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 
 export class OpenMSXControlService {
 
-    constructor(private win: BrowserWindow) {
+    constructor(private win: BrowserWindow, private connectionManager: OpenMSXConnectionManager) {
         this.init();
     }
 
@@ -29,29 +29,29 @@ export class OpenMSXControlService {
             this.loadStateOnOpenmsx(pid, state);
         });
         ipcMain.on('typeTextOnOpenmsx', (event, pid: number, text: string) => {
-            this.typeTextOnOpenmsx(pid, text, false);
+            this.typeTextOnOpenmsx(pid, text);
         });
         ipcMain.on('typePasswordOnOpenmsx', (event, pid: number, gamePassword: GamePassword) => {
-            this.typeTextOnOpenmsx(pid, gamePassword.password, true, gamePassword.pressReturn);
+            this.typePasswordOnOpenmsx(pid, gamePassword.password, gamePassword.pressReturn);
         });
     }
 
     private async resetOnOpenmsx(pid: number) {
-        this.executeCommandOnOpenmsx(pid, 'reset');
-
-        this.win.webContents.send('resetOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'reset').then(result => {
+            this.win.webContents.send('resetOnOpenmsxResponse', result.success);
+        });
     }
 
     private async switchDiskOnOpenmsx(pid: number, disk: string) {
-        this.executeCommandOnOpenmsx(pid, 'diska {' + disk.replace(/\\/g, '/') + '}');
-
-        this.win.webContents.send('switchDiskOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'diska {' + disk.replace(/\\/g, '/') + '}').then(result => {
+            this.win.webContents.send('switchDiskOnOpenmsxResponse', result.success);
+        });
     }
 
     private async switchTapeOnOpenmsx(pid: number, tape: string) {
-        this.executeCommandOnOpenmsx(pid, 'cassetteplayer {' + tape.replace(/\\/g, '/') + '}');
-
-        this.win.webContents.send('switchTapeOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'cassetteplayer {' + tape.replace(/\\/g, '/') + '}').then(result => {
+            this.win.webContents.send('switchTapeOnOpenmsxResponse', result.success);
+        });
     }
 
     private async takeScreenshotOnOpenmsx(pid: number, game: Game) {
@@ -64,36 +64,39 @@ export class OpenMSXControlService {
         } else {
             screenshotName = game.sha1Code;
         }
-        this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + screenshotName + '-');
-
-        this.win.webContents.send('takeScreenshotOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + screenshotName + '-').then(result => {
+            this.win.webContents.send('takeScreenshotOnOpenmsxResponse', result.success);
+        });
     }
 
     private async saveStateOnOpenmsx(pid: number, game: Game) {
         const sanitizedName = game.name.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').replace(/ |\[|\]/g, '_');
-        this.executeCommandOnOpenmsx(pid, 'savestate ' + game.sha1Code + '-' + sanitizedName + '-' +  Date.now());
-
-        this.win.webContents.send('saveStateOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'savestate ' + game.sha1Code + '-' + sanitizedName + '-' +  Date.now()).then(result => {
+            this.win.webContents.send('saveStateOnOpenmsxResponse', result.success);
+        });
     }
 
     private async loadStateOnOpenmsx(pid: number, state: string) {
-        this.executeCommandOnOpenmsx(pid, 'loadstate ' + state);
-
-        this.win.webContents.send('loadStateOnOpenmsxResponse', true);
+        this.executeCommandOnOpenmsx(pid, 'loadstate ' + state).then(result => {
+            this.win.webContents.send('loadStateOnOpenmsxResponse', result.success);
+        });
     }
 
-    private async typeTextOnOpenmsx(pid: number, text: string, passwordMode: boolean, autoPressEnter: boolean = false) {
+    private async typeTextOnOpenmsx(pid: number, text: string) {
         let sanitizedText = this.escapeText(text);
+        this.executeCommandOnOpenmsx(pid, 'type "' + sanitizedText + '"').then(result => {
+            this.win.webContents.send('typeTextOnOpenmsxResponse', result.success);
+        });
+    }
+
+    private async typePasswordOnOpenmsx(pid: number, password: string, autoPressEnter: boolean) {
+        let sanitizedText = this.escapeText(password);
         if (autoPressEnter) {
             sanitizedText = sanitizedText + '\r';
         }
-        let typeCommand = 'type ';
-        if (passwordMode) {
-            typeCommand = typeCommand + '-release ';
-        }
-        this.executeCommandOnOpenmsx(pid, typeCommand + '"' + sanitizedText + '"');
-
-        this.win.webContents.send('typePasswordOnOpenmsxResponse', true);    
+        this.executeCommandOnOpenmsx(pid, 'type -release "' + sanitizedText + '"').then(result => {
+            this.win.webContents.send('typePasswordOnOpenmsxResponse', result.success);
+        });
     }
 
     private escapeText(text: string) {
@@ -111,10 +114,6 @@ export class OpenMSXControlService {
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {
-        const openmsxConnector = new OpenMSXConnector(pid);
-
-        await openmsxConnector.connect();
-        await openmsxConnector.sendCommand(command);
-        openmsxConnector.disconnect();
+        return this.connectionManager.executeCommand(pid, command);
     }
 }

@@ -22,6 +22,7 @@ import { NewsService } from './NewsService';
 import { ErrorLogService } from './ErrorLogService';
 import { DownloadService } from './DownloadService';
 import { GamePasswordsService } from './GamePasswordsService';
+import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -69,12 +70,14 @@ function initializeServices() {
   const eventLogService = new EventLogService(win);
   const errorLogService = new ErrorLogService(win);
 
-  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService);
+  const connectionManager = new OpenMSXConnectionManager();
+  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager);
+
   new BlueMSXLaunchService(win, settingsService, eventLogService);
 
   new EmulatorHardwareService(win, settingsService);
 
-  new OpenMSXControlService(win);
+  new OpenMSXControlService(win, connectionManager);
 
   new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
 

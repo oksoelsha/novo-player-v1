@@ -12,6 +12,7 @@ import { QuickLaunchData } from '../src/app/models/quick-launch-data'
 import { HashService } from './HashService'
 import { FileTypeUtils } from './utils/FileTypeUtils';
 import { ErrorLogService } from './ErrorLogService';
+import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 
 class TCLCommands {
     field: string;
@@ -81,7 +82,7 @@ export class OpenMSXLaunchService {
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
-        private hashService: HashService, private errorLogService: ErrorLogService) {
+        private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager) {
         this.init();
     }
 
@@ -151,6 +152,7 @@ export class OpenMSXLaunchService {
             if (error) {
                 this.errorLogService.logError('openMSX:', errorMessage);
             }
+            this.connectionManager.disconnect(process.pid);
             self.win.webContents.send('launchGameResponse' + time, error === 1 ? errorMessage : null);
         });
 
