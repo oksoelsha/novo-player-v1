@@ -22,10 +22,10 @@
                                 </button>
                                 <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
                                     <button ngbDropdownItem type="button"
-                                        (click)="resetMachine(activity.pid, activity.game)">
+                                        (click)="openManagement(activity.pid)">
                                         <div class="d-flex">
                                             <div class="connect-menuitem"></div>
-                                            {{ 'common.reset' | translate }}
+                                            {{ 'dashboard.manage' | translate }}
                                         </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
@@ -103,5 +103,12 @@
     <ng-template let-popupId="popupId">
         <app-pick-password [popupId]="popupId" [pid]="selectedPid" [gamePasswordsInfo]="gamePasswords" #passwordSelector>
         </app-pick-password>
+    </ng-template>
+</app-popup>
+
+<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.manage' | translate)">
+    <ng-template let-popupId="popupId">
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [event]="openmsxEvent" #openmsxManagementInterface>
+        </app-openmsx-management>
     </ng-template>
 </app-popup>

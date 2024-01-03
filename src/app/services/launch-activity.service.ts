@@ -10,24 +10,32 @@ import { GamePassword } from '../models/game-passwords-info';
 })
 export class LaunchActivityService {
 
-  private subject = new Subject<LaunchActivity[]>();
+  private launchActivitiesSubject = new Subject<LaunchActivity[]>();
   private launchActivities: LaunchActivity[] = [];
+  private openmsxEventSubject = new Subject<OpenmsxEvent>();
   private ipc: IpcRenderer;
+  private openmsxCurrentStatus: Map<number, Set<string>> = new Map();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
+    this.ipc.on('openmsxUpdateEvent', (event: any, pid: number, name: string, state: string) => {
+      const openmsxEvent = new OpenmsxEvent(pid, name, state === 'on');
+      this.updateOpenmsxCurrentStatus(pid, openmsxEvent);
+      this.openmsxEventSubject.next(openmsxEvent);
+    });
   }
 
   recordGameStart(game: Game, time: number, pid: number, source: EventSource) {
     this.launchActivities.push(new LaunchActivity(game, time, pid, source));
-    this.subject.next(this.launchActivities);
+    this.launchActivitiesSubject.next(this.launchActivities);
   }
 
   recordGameFinish(game: Game, time: number) {
     let index: number;
     for (index = 0; index < this.launchActivities.length && this.launchActivities[index].time !== time; index++) {}
+    this.openmsxCurrentStatus.delete(this.launchActivities[index].pid);
     this.launchActivities.splice(index, 1);
-    this.subject.next(this.launchActivities);
+    this.launchActivitiesSubject.next(this.launchActivities);
   }
 
   getActivities(): LaunchActivity[] {
@@ -35,7 +43,11 @@ export class LaunchActivityService {
   }
 
   getUpdatedActivities(): Observable<LaunchActivity[]> {
-    return this.subject.asObservable();
+    return this.launchActivitiesSubject.asObservable();
+  }
+
+  getOpenmsxEvent(): Observable<OpenmsxEvent> {
+    return this.openmsxEventSubject.asObservable();
   }
 
   switchDisk(pid: number, medium: string) {
@@ -110,13 +122,30 @@ export class LaunchActivityService {
       this.ipc.send('typePasswordOnOpenmsx', pid, password);
     });
   }
+
+  getOpenmsxCurrentStatus(pid: number): Set<string> {
+    return this.openmsxCurrentStatus.get(pid);
+  }
+
+  private updateOpenmsxCurrentStatus(pid: number, event: OpenmsxEvent) {
+    let currentStatus = this.openmsxCurrentStatus.get(pid);
+    if (!currentStatus) {
+      currentStatus = new Set();
+      this.openmsxCurrentStatus.set(pid, currentStatus);
+    }
+    if (event.on) {
+      currentStatus.add(event.name);
+    } else {
+      currentStatus.delete(event.name);
+    }
+  }
 }
 
 export class LaunchActivity {
-  game: Game;
-  time: number;
-  pid: number;
-  source: EventSource;
+  readonly game: Game;
+  readonly time: number;
+  readonly pid: number;
+  readonly source: EventSource;
 
   constructor(game: Game, time: number, pid: number, source: EventSource) {
     this.game = game;
@@ -125,3 +154,16 @@ export class LaunchActivity {
     this.source = source;
   }
 }
+
+export class OpenmsxEvent {
+  readonly pid: number;
+  readonly name: string;
+  readonly on: boolean;
+
+  constructor(pid: number, name: string, on: boolean) {
+    this.pid = pid;
+    this.name = name;
+    this.on = on;
+  }
+}
+

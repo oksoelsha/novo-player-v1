@@ -2,8 +2,11 @@ import { BrowserWindow, ipcMain } from 'electron';
 import { Game } from '../src/app/models/game';
 import { GamePassword } from '../src/app/models/game-passwords-info';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
+import EventEmitter from 'events';
 
 export class OpenMSXControlService {
+
+    private updateEmitter = new EventEmitter();
 
     constructor(private win: BrowserWindow, private connectionManager: OpenMSXConnectionManager) {
         this.init();
@@ -33,6 +36,10 @@ export class OpenMSXControlService {
         });
         ipcMain.on('typePasswordOnOpenmsx', (event, pid: number, gamePassword: GamePassword) => {
             this.typePasswordOnOpenmsx(pid, gamePassword.password, gamePassword.pressReturn);
+        });
+        this.connectionManager.registerEventEmitter(this.updateEmitter);
+        this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, state: string) => {
+            this.handleOpenmsxUpdateEvents(pid, type, name, state);
         });
     }
 
@@ -97,6 +104,15 @@ export class OpenMSXControlService {
         this.executeCommandOnOpenmsx(pid, 'type -release "' + sanitizedText + '"').then(result => {
             this.win.webContents.send('typePasswordOnOpenmsxResponse', result.success);
         });
+    }
+
+    private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, state: string) {
+        if (type === 'setting') {
+            if (name.startsWith('led_')) {
+                const led = name.substring(name.indexOf('_') + 1);
+                this.win.webContents.send('openmsxUpdateEvent', pid, led, state);
+            }
+        }
     }
 
     private escapeText(text: string) {

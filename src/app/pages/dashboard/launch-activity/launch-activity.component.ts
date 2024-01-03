@@ -6,13 +6,14 @@ import { GameSavedState } from '../../../models/saved-state';
 import { SavedStatesComponent } from '../../../popups/saved-states/saved-states.component';
 import { FilesService } from '../../../services/files.service';
 import { GamesService } from '../../../services/games.service';
-import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
+import { LaunchActivity, LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
 import { TypeTextComponent as TypeTextComponent } from '../../../popups/type-text/type-text.component';
 import { GamePasswordsInfo } from '../../../models/game-passwords-info';
 import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
+import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
@@ -24,8 +25,10 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('typeTextInterface') typeTextInterface: TypeTextComponent;
   @ViewChild('passwordSelector') pickPasswordInterface: PickPasswordComponent;
+  @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
+  openmsxEvent: OpenmsxEvent;
   fileGroupMap: Map<number, string[]> = new Map();
   savedStatesMap: Map<string, GameSavedState[]> = new Map();
   gamePasswordsMap: Map<number, GamePasswordsInfo> = new Map();
@@ -34,6 +37,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   savedStates: GameSavedState[] = [];
   gamePasswords: GamePasswordsInfo;
   private launchActivitySubscription: Subscription;
+  private openmsxEventSubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
     private localizationService: LocalizationService, private platformService: PlatformService,
@@ -45,9 +49,13 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.savedStatesSelector.close();
         this.typeTextInterface.close();
         this.pickPasswordInterface.close();
+        this.openmsxManagementInterface.close();
       }
     });
     this.launchActivities = launchActivityService.getActivities();
+    this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
+      self.openmsxEvent = openmsxEvent;
+    });
   }
 
   ngOnInit(): void {
@@ -60,6 +68,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.launchActivitySubscription.unsubscribe();
+    this.openmsxEventSubscription.unsubscribe();
   }
 
   getMediumDisplayName(medium: string) {
@@ -186,6 +195,11 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.selectedPid = pid;
     this.gamePasswords = this.gamePasswordsMap.get(game.generationMSXId);
     this.pickPasswordInterface.open();
+  }
+
+  openManagement(pid: number) {
+    this.selectedPid = pid;
+    this.openmsxManagementInterface.open();
   }
 
   private setFileGroups(activity: any) {

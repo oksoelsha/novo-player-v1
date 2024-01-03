@@ -7,6 +7,7 @@ import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
+//import { XMLParser } from 'fast-xml-parser';
 
 // This class was based on the following implementation:
 // https://github.com/S0urceror/DeZog/blob/v1.3.5/src/remotes/openmsx/openmsxremote.ts
@@ -36,11 +37,11 @@ export class OpenMSXConnector {
 			this.openmsx.on('close', () => {
 				this.connected = false;
 			});
-	
+
 			if (PlatformUtils.isWindows()) {
 				await this.authorize();
 			}
-	
+
 			this.openmsx.write('<openmsx-control>', cb => {
 				resolve();
 			});	
@@ -76,7 +77,7 @@ export class OpenMSXConnector {
 				let socketpath: string = path.join(folder, 'socket.' + this.pid);
 				if (!PlatformUtils.isWindows()) {
 					const client = net.createConnection(socketpath);
-					var timer = setTimeout(function () {
+					var timer = setTimeout(() => {
 						client.destroy();
 						reject(new Error(`Timeout connecting to OpenMSX`));
 					}, 15000);
@@ -95,7 +96,7 @@ export class OpenMSXConnector {
 					let ports: Buffer = fs.readFileSync(socketpath);
 					let port = Number.parseInt(ports.toString());
 					const client = net.createConnection(port);
-					var timer = setTimeout(function () {
+					var timer = setTimeout(() => {
 						client.destroy();
 						reject(new Error(`Timeout connecting to OpenMSX:${port}`));
 					}, 15000);
