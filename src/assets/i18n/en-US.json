@@ -221,7 +221,8 @@
     "texttyped": "Text was typed in openMSX",
     "enterpassword" :"Enter password",
     "enter": "Enter",
-    "passwordentered": "Password was entered"
+    "passwordentered": "Password was entered",
+    "manage": "Manage"
   },
   "help": {
     "uptodate": "Up to date",

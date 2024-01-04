@@ -156,6 +156,11 @@ export class OpenMSXLaunchService {
             self.win.webContents.send('launchGameResponse' + time, error === 1 ? errorMessage : null);
         });
 
+        // give process id socket file enough time to be written
+        setTimeout(() => {
+            this.connectionManager.executeCommand(process.pid, 'openmsx_update enable setting');
+        }, 4000);
+
         return process;
     }
 
