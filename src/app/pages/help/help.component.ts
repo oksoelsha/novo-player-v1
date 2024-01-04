@@ -12,7 +12,7 @@ export class HelpComponent implements OnInit {
 
   @ViewChild('extraDataVersionIndicator') extraDataVersionIndicator: VersionMatchIndicatorComponent;
 
-  readonly applicationVersion = '1.7';
+  readonly applicationVersion = '1.8';
 
   applicationVersions: Promise<any>;
   extraDataVersions: Promise<any>;
