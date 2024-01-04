@@ -20,10 +20,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   private eventInputValue: OpenmsxEvent;
 
   powerLed: boolean;
-  fddLed: boolean;
   capsLed: boolean;
   langLed: boolean;
   turboLed: boolean;
+  fddLed: boolean;
+  pauseIndicator: boolean;
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService) {
     super(changeDetector);
@@ -42,10 +43,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
       const currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
       if (currentStatus) {
         this.powerLed = currentStatus.has('power');
-        this.fddLed = currentStatus.has('FDD');
         this.capsLed = currentStatus.has('caps');
         this.langLed = currentStatus.has('kana');
         this.turboLed = currentStatus.has('turbo');
+        this.fddLed = currentStatus.has('FDD');
+        this.pauseIndicator = currentStatus.has('pause');
       }
     }, 0);
 
@@ -56,14 +58,16 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     if (this.eventInputValue && this.pid === this.eventInputValue.pid) {
       if (this.eventInputValue.name === 'power') {
         this.powerLed = this.eventInputValue.on;
-      } else if (this.eventInputValue.name === 'FDD') {
-        this.fddLed = this.eventInputValue.on;
       } else if (this.eventInputValue.name === 'caps') {
         this.capsLed = this.eventInputValue.on;
       } else if (this.eventInputValue.name === 'kana') {
         this.langLed = this.eventInputValue.on;
       } else if (this.eventInputValue.name === 'turbo') {
         this.turboLed = this.eventInputValue.on;
+      } else if (this.eventInputValue.name === 'FDD') {
+        this.fddLed = this.eventInputValue.on;
+      } else if (this.eventInputValue.name === 'pause') {
+        this.pauseIndicator = this.eventInputValue.on;
       }
     }
   }

@@ -70,7 +70,7 @@ export class OpenMSXConnectionManager {
                 const type = result.update['@_type'];
                 if (type === 'setting') {
                     const name = result.update['@_name'];
-                    const state = result.update['#text'];
+                    const state = result.update['#text'].toString();
                     this.updateEmitter.emit('openmsxUpdate', openmsxConnector.pid, type, name, state);
                 }
             }

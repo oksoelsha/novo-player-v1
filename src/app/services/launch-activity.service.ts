@@ -18,8 +18,8 @@ export class LaunchActivityService {
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
-    this.ipc.on('openmsxUpdateEvent', (event: any, pid: number, name: string, state: string) => {
-      const openmsxEvent = new OpenmsxEvent(pid, name, state === 'on');
+    this.ipc.on('openmsxUpdateEvent', (event: any, pid: number, name: string, state: boolean) => {
+      const openmsxEvent = new OpenmsxEvent(pid, name, state);
       this.updateOpenmsxCurrentStatus(pid, openmsxEvent);
       this.openmsxEventSubject.next(openmsxEvent);
     });

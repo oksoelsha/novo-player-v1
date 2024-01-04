@@ -110,7 +110,9 @@ export class OpenMSXControlService {
         if (type === 'setting') {
             if (name.startsWith('led_')) {
                 const led = name.substring(name.indexOf('_') + 1);
-                this.win.webContents.send('openmsxUpdateEvent', pid, led, state);
+                this.win.webContents.send('openmsxUpdateEvent', pid, led, state === 'on');
+            } else if (name === 'pause') {
+                this.win.webContents.send('openmsxUpdateEvent', pid, name, state === 'true');
             }
         }
     }

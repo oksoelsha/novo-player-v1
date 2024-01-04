@@ -4,13 +4,18 @@
 </div>
 
 <div class="d-inline-block led-container">
+    <div [ngClass]="capsLed ? 'led led-on' : 'led led-off'"></div>
+    <div>CAPS</div>
+</div>
+
+<div class="d-inline-block led-container">
     <div [ngClass]="langLed ? 'led led-on' : 'led led-off'"></div>
     <div>Lang</div>
 </div>
 
 <div class="d-inline-block led-container">
-    <div [ngClass]="capsLed ? 'led led-on' : 'led led-off'"></div>
-    <div>CAPS</div>
+    <div [ngClass]="turboLed ? 'led led-on' : 'led led-off'"></div>
+    <div>Turbo</div>
 </div>
 
 <div class="d-inline-block led-container">
@@ -18,7 +23,8 @@
     <div>FDD</div>
 </div>
 
-<div class="d-inline-block led-container">
-    <div [ngClass]="turboLed ? 'led led-on' : 'led led-off'"></div>
-    <div>turbo</div>
+<div class="d-inline-block led-container" [ngStyle]="{'visibility': pauseIndicator ? 'visible' : 'hidden'}">
+    <div class="d-inline-block pause-bar"></div>
+    <div class="d-inline-block pause-bar"></div>
+    <div>Pause</div>
 </div>
