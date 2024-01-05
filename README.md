@@ -12,7 +12,7 @@ This project is a continuation of the previous Novo Player that stopped at versi
  * Scan the hard disk to automatically fill listings with ROMs, disks, tapes, hard disks and laserdiscs, and sync the listing to your hard disk any time later.
  * Display two screenshots, details and available game music for each selected game.
  * Search for exact or partial name or SHA1 code.
- * Connect to a running instance of openMSX to reset, switch disks or tapes and take screenshots.
+ * Connect to a running instance of openMSX to reset, switch disks or tapes, take screenshots, type text and enter passwords using a built-in game passwords database.
  * Sort games in the table by name, company or year.
  * Undo game deletes and updates.
  * Display the text in English, Catalan, Dutch, French, Italian, Japanese, Korean, Portuguese, Russian or Spanish.
