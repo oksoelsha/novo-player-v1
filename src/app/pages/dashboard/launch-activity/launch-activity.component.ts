@@ -100,15 +100,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     return launchActivity.source === EventSource.openMSX;
   }
 
-  resetMachine(pid: number, game: Game) {
-    this.launchActivityService.resetMachine(pid).then(reset => {
-      if (reset) {
-        this.alertService.success(this.localizationService.translate('dashboard.reset') + ': ' +
-          game.name + this.getListingIfExists(game));
-      }
-    });
-  }
-
   switchMedium(pid: number, game: Game, medium: string) {
     if (this.isDisk(game)) {
       this.launchActivityService.switchDisk(pid, medium).then(switched => {
@@ -191,14 +182,15 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   }
 
   pickPassword(pid: number, game: Game) {
-    this.selectedGame = game;
     this.selectedPid = pid;
+    this.selectedGame = game;
     this.gamePasswords = this.gamePasswordsMap.get(game.generationMSXId);
     this.pickPasswordInterface.open();
   }
 
-  openManagement(pid: number) {
+  openManagement(pid: number, game: Game) {
     this.selectedPid = pid;
+    this.selectedGame = game;
     this.openmsxManagementInterface.open();
   }
 

@@ -208,7 +208,6 @@
     "nov": "November",
     "dec": "December",
     "totalperday": "Total per Day",
-    "reset": "openMSX reset successfully",
     "takeascreenshot": "Take a screenshot",
     "screenshottaken": "Screenshot taken successfully",
     "savestate": "Save state",
@@ -222,7 +221,13 @@
     "enterpassword" :"Enter password",
     "enter": "Enter",
     "passwordentered": "Password was entered",
-    "manage": "Manage"
+    "managesession": "Manage session",
+    "pause": "Pause",
+    "resume": "Resume",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "fullscreen": "Full screen",
+    "exitfullscreen": "Exit full screen"
   },
   "help": {
     "uptodate": "Up to date",

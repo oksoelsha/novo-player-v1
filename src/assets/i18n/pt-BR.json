@@ -208,7 +208,6 @@
     "nov": "Novembro",
     "dec": "Dezembro",
     "totalperday": "Total por dia",
-    "reset": "openMSX foi reiniciado",
     "takeascreenshot": "Tirar uma captura de tela",
     "screenshottaken": "Captura de tela foi tirada",
     "savestate": "Salvar estado",
@@ -221,7 +220,14 @@
     "texttyped": "O texto foi digitado no openMSX",
     "enterpassword" :"Inserir senha",
     "enter": "Inserir",
-    "passwordentered": "A senha foi inserida"
+    "passwordentered": "A senha foi inserida",
+    "managesession": "Gerenciar sessão",
+    "pause": "Pausa",
+    "resume": "Continuar",
+    "mute": "Desativar o som",
+    "unmute": "Ativar o som",
+    "fullscreen": "Tela cheia",
+    "exitfullscreen": "Sair da tela cheia"
   },
   "help": {
     "uptodate": "Atualizado",

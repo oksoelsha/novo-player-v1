@@ -208,7 +208,6 @@
     "nov": "Novembre",
     "dec": "Desembre",
     "totalperday": "Total per dia",
-    "reset": "openMSX s'ha reinicialitzat correctament",
     "takeascreenshot": "Fes una captura de pantalla",
     "screenshottaken": "Captura de pantalla s'ha fet correctament",
     "savestate": "Guarda l'estat",
@@ -221,7 +220,14 @@
     "texttyped": "El text es va escriure a openMSX",
     "enterpassword" :"Introduïu contrasenya",
     "enter": "Introduïu",
-    "passwordentered": "La contrasenya s'ha introduït"
+    "passwordentered": "La contrasenya s'ha introduït",
+    "managesession": "Gestiona la sessió",
+    "pause": "Pausa",
+    "resume": "Reprèn",
+    "mute": "Silenci",
+    "unmute": "Activa so",
+    "fullscreen": "Pantalla completa",
+    "exitfullscreen": "Surt de la pantalla completa"
   },
   "help": {
     "uptodate": "Està actualitzat",

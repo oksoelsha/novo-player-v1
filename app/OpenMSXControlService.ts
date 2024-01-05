@@ -37,6 +37,15 @@ export class OpenMSXControlService {
         ipcMain.on('typePasswordOnOpenmsx', (event, pid: number, gamePassword: GamePassword) => {
             this.typePasswordOnOpenmsx(pid, gamePassword.password, gamePassword.pressReturn);
         });
+        ipcMain.on('togglePauseOnOpenmsx', (event, pid: number) => {
+            this.togglePauseOnOpenmsx(pid);
+        });
+        ipcMain.on('toggleMuteOnOpenmsx', (event, pid: number) => {
+            this.toggleMuteOnOpenmsx(pid);
+        });
+        ipcMain.on('toggleFullscreenOnOpenmsx', (event, pid: number) => {
+            this.toggleFullscreenOnOpenmsx(pid);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, state: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, state);
@@ -106,12 +115,30 @@ export class OpenMSXControlService {
         });
     }
 
+    private async togglePauseOnOpenmsx(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'toggle pause').then(result => {
+            this.win.webContents.send('togglePauseOnOpenmsxResponse', result.success);
+        });
+    }
+
+    private async toggleMuteOnOpenmsx(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'toggle mute').then(result => {
+            this.win.webContents.send('toggleMuteOnOpenmsxResponse', result.success);
+        });
+    }
+
+    private async toggleFullscreenOnOpenmsx(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'toggle fullscreen').then(result => {
+            this.win.webContents.send('toggleFullscreenOnOpenmsxResponse', result.success);
+        });
+    }
+
     private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, state: string) {
         if (type === 'setting') {
             if (name.startsWith('led_')) {
                 const led = name.substring(name.indexOf('_') + 1);
                 this.win.webContents.send('openmsxUpdateEvent', pid, led, state === 'on');
-            } else if (name === 'pause') {
+            } else if (name === 'pause' || name === 'mute' || name === 'fullscreen') {
                 this.win.webContents.send('openmsxUpdateEvent', pid, name, state === 'true');
             }
         }

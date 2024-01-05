@@ -22,10 +22,10 @@
                                 </button>
                                 <div class="dropdown-menu-end openmsx-connect-dropdown-scroll" ngbDropdownMenu>
                                     <button ngbDropdownItem type="button"
-                                        (click)="openManagement(activity.pid)">
+                                        (click)="openManagement(activity.pid, activity.game)">
                                         <div class="d-flex">
                                             <div class="connect-menuitem"></div>
-                                            {{ 'dashboard.manage' | translate }}
+                                            {{ 'dashboard.managesession' | translate }}
                                         </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
@@ -106,9 +106,10 @@
     </ng-template>
 </app-popup>
 
-<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.manage' | translate)">
+<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate)">
     <ng-template let-popupId="popupId">
-        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [event]="openmsxEvent" #openmsxManagementInterface>
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" [event]="openmsxEvent"
+            #openmsxManagementInterface>
         </app-openmsx-management>
     </ng-template>
 </app-popup>

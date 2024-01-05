@@ -123,6 +123,33 @@ export class LaunchActivityService {
     });
   }
 
+  togglePause(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('togglePauseOnOpenmsxResponse', (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('togglePauseOnOpenmsx', pid);
+    });
+  }
+
+  toggleMute(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('toggleMuteOnOpenmsxResponse', (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('toggleMuteOnOpenmsx', pid);
+    });
+  }
+
+  toggleFullscreen(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('toggleFullscreenOnOpenmsxResponse', (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('toggleFullscreenOnOpenmsx', pid);
+    });
+  }
+
   getOpenmsxCurrentStatus(pid: number): Set<string> {
     return this.openmsxCurrentStatus.get(pid);
   }

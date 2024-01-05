@@ -208,7 +208,6 @@
     "nov": "11 月",
     "dec": "12 月",
     "totalperday": "1日あたりの合計",
-    "reset": "openMSXがリセットされました",
     "takeascreenshot": "スクリーンショットをとる",
     "screenshottaken": "スクリーンショットが撮られました",
     "savestate": "状態を保存する",
@@ -221,7 +220,14 @@
     "texttyped": "テキストはopenMSXで入力",
     "enterpassword" :"パスワードを入力する",
     "enter": "入力する",
-    "passwordentered": "パスワードが入力されました"
+    "passwordentered": "パスワードが入力されました",
+    "managesession": "セッションの管理",
+    "pause": "一時停止",
+    "resume": "再開します",
+    "mute": "ミュート",
+    "unmute": "ミュート解除",
+    "fullscreen": "全画面表示",
+    "exitfullscreen": "全画面表示を終了する"
   },
   "help": {
     "uptodate": "最新",

@@ -208,7 +208,6 @@
     "nov": "November",
     "dec": "December",
     "totalperday": "Totaal per dag",
-    "reset": "openMSX is opnieuw ingesteld",
     "takeascreenshot": "Een schermafbeelding maken",
     "screenshottaken": "Schermafbeelding is maakt",
     "savestate": "Status opslaan",
@@ -221,7 +220,14 @@
     "texttyped": "De tekst is getypt in openMSX",
     "enterpassword" :"Wachtwoord invoeren",
     "enter": "Invoeren",
-    "passwordentered": "Wachtwoord is ingevoerd"
+    "passwordentered": "Wachtwoord is ingevoerd",
+    "managesession": "Sessie beheren",
+    "pause": "Pauze",
+    "resume": "Hervatten",
+    "mute": "Dempen",
+    "unmute": "Dempen opheffen",
+    "fullscreen": "Volledig scherm",
+    "exitfullscreen": "Volledig scherm verlaten"
   },
   "help": {
     "uptodate": "Bijgewerkt",

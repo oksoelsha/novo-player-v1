@@ -1,30 +1,51 @@
+<div class="ps-3 pe-3">
+    <button type="button" class="btn btn-secondary btn-sm" (click)="togglePause(pid, game)"
+        [title]="pauseIndicator ? unpauseLabel : pauseLabel">
+        <span *ngIf="!pauseIndicator" class="bi-pause"></span>
+        <span *ngIf="pauseIndicator" class="bi-play-fill"></span>
+    </button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleMute(pid, game)"
+        [title]="muteIndicator ? unmuteLabel : muteLabel">
+        <span *ngIf="!muteIndicator" class="bi-volume-up"></span>
+        <span *ngIf="muteIndicator" class="bi-volume-mute"></span>
+    </button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleFullscreen(pid, game)"
+        [title]="fullscreenIndicator ? windowLabel : fullscreenLabel">
+        <span *ngIf="!fullscreenIndicator" class="bi-fullscreen"></span>
+        <span *ngIf="fullscreenIndicator" class="bi-fullscreen-exit"></span>
+    </button>
+    <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid, game)"
+        [title]="'common.reset' | translate">
+        <span class="bi-arrow-counterclockwise"></span>
+    </button>
+</div>
+
 <div class="d-inline-block led-container">
     <div [ngClass]="powerLed ? 'led led-on' : 'led led-off'"></div>
     <div>Power</div>
 </div>
-
 <div class="d-inline-block led-container">
     <div [ngClass]="capsLed ? 'led led-on' : 'led led-off'"></div>
-    <div>CAPS</div>
+    <div>Caps</div>
 </div>
-
 <div class="d-inline-block led-container">
     <div [ngClass]="langLed ? 'led led-on' : 'led led-off'"></div>
     <div>Lang</div>
 </div>
-
 <div class="d-inline-block led-container">
     <div [ngClass]="turboLed ? 'led led-on' : 'led led-off'"></div>
     <div>Turbo</div>
 </div>
-
 <div class="d-inline-block led-container">
     <div [ngClass]="fddLed ? 'led led-on' : 'led led-off'"></div>
     <div>FDD</div>
 </div>
-
 <div class="d-inline-block led-container" [ngStyle]="{'visibility': pauseIndicator ? 'visible' : 'hidden'}">
     <div class="d-inline-block pause-bar"></div>
     <div class="d-inline-block pause-bar"></div>
-    <div>Pause</div>
+    <div>Paused</div>
+</div>
+<div class="d-inline-block led-container" [ngStyle]="{'visibility': muteIndicator ? 'visible' : 'hidden'}">
+    <img src="assets/images/general/silent.png">
+    <div>Muted</div>
 </div>
