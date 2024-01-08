@@ -227,7 +227,8 @@
     "mute": "Silenci",
     "unmute": "Activa so",
     "fullscreen": "Pantalla completa",
-    "exitfullscreen": "Surt de la pantalla completa"
+    "exitfullscreen": "Surt de la pantalla completa",
+    "emulationspeed": "Velocitat d'emulació"
   },
   "help": {
     "uptodate": "Està actualitzat",

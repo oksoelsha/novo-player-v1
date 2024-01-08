@@ -227,7 +227,8 @@
     "mute": "Desactivar audio",
     "unmute": "Activar audio",
     "fullscreen": "Pantalla completa",
-    "exitfullscreen": "Salir de pantalla completa"
+    "exitfullscreen": "Salir de pantalla completa",
+    "emulationspeed": "Velocidad de emulación"
   },
   "help": {
     "uptodate": "Actualizado",

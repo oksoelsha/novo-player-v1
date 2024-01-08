@@ -227,7 +227,8 @@
     "mute": "Désactiver le son",
     "unmute": "Activer le son",
     "fullscreen": "Plein écran",
-    "exitfullscreen": "Quitter le mode plein écran"
+    "exitfullscreen": "Quitter le mode plein écran",
+    "emulationspeed": "Vitesse d'émulation"
   },
   "help": {
     "uptodate": "À jour",

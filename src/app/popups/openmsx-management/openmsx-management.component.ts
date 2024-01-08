@@ -35,6 +35,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   pauseIndicator: boolean;
   muteIndicator: boolean;
   fullscreenIndicator: boolean;
+  speed: number;
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService) {
@@ -60,14 +61,17 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     setTimeout(() => {
       const currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
       if (currentStatus) {
-        this.powerLed = currentStatus.has('power');
-        this.capsLed = currentStatus.has('caps');
-        this.langLed = currentStatus.has('kana');
-        this.turboLed = currentStatus.has('turbo');
-        this.fddLed = currentStatus.has('FDD');
-        this.pauseIndicator = currentStatus.has('pause');
-        this.muteIndicator = currentStatus.has('mute');
-        this.fullscreenIndicator = currentStatus.has('fullscreen');
+        this.powerLed = currentStatus.get('power') === 'on';
+        this.capsLed = currentStatus.get('caps') === 'on';
+        this.langLed = currentStatus.get('kana') === 'on';
+        this.turboLed = currentStatus.get('turbo') === 'on';
+        this.fddLed = currentStatus.get('FDD') === 'on';
+        this.pauseIndicator = currentStatus.get('pause') === 'true';
+        this.muteIndicator = currentStatus.get('mute') === 'true';
+        this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
+        this.speed = currentStatus.get('speed') ? Number(currentStatus.get('speed')) : 100;
+      } else {
+        this.speed = 100;
       }
     }, 0);
 
@@ -97,24 +101,31 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     });
   }
 
+  setSpeed(pid: number) {
+    this.launchActivityService.setSpeed(pid, this.speed).then(success => {
+    });
+  }
+
   private processEvents() {
     if (this.eventInputValue && this.pid === this.eventInputValue.pid) {
       if (this.eventInputValue.name === 'power') {
-        this.powerLed = this.eventInputValue.on;
+        this.powerLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'caps') {
-        this.capsLed = this.eventInputValue.on;
+        this.capsLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'kana') {
-        this.langLed = this.eventInputValue.on;
+        this.langLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'turbo') {
-        this.turboLed = this.eventInputValue.on;
+        this.turboLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'FDD') {
-        this.fddLed = this.eventInputValue.on;
+        this.fddLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'pause') {
-        this.pauseIndicator = this.eventInputValue.on;
+        this.pauseIndicator = this.eventInputValue.value === 'true';
       } else if (this.eventInputValue.name === 'mute') {
-        this.muteIndicator = this.eventInputValue.on;
+        this.muteIndicator = this.eventInputValue.value === 'true';
       } else if (this.eventInputValue.name === 'fullscreen') {
-        this.fullscreenIndicator = this.eventInputValue.on;
+        this.fullscreenIndicator = this.eventInputValue.value === 'true';
+      } else if (this.eventInputValue.name === 'speed') {
+        this.speed = Number(this.eventInputValue.value);
       }
     }
   }

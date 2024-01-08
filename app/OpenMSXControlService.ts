@@ -46,9 +46,12 @@ export class OpenMSXControlService {
         ipcMain.on('toggleFullscreenOnOpenmsx', (event, pid: number) => {
             this.toggleFullscreenOnOpenmsx(pid);
         });
+        ipcMain.on('setSpeedOnOpenmsx', (event, pid: number, speed: number) => {
+            this.setSpeedOnOpenmsx(pid, speed);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
-        this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, state: string) => {
-            this.handleOpenmsxUpdateEvents(pid, type, name, state);
+        this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
+            this.handleOpenmsxUpdateEvents(pid, type, name, value);
         });
     }
 
@@ -133,14 +136,21 @@ export class OpenMSXControlService {
         });
     }
 
-    private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, state: string) {
+    private async setSpeedOnOpenmsx(pid: number, speed: number) {
+        this.executeCommandOnOpenmsx(pid, 'set speed ' + speed).then(result => {
+            this.win.webContents.send('setSpeedOnOpenmsxResponse', result.success);
+        });
+    }
+
+    private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, value: string) {
         if (type === 'setting') {
+            let eventName: string;
             if (name.startsWith('led_')) {
-                const led = name.substring(name.indexOf('_') + 1);
-                this.win.webContents.send('openmsxUpdateEvent', pid, led, state === 'on');
-            } else if (name === 'pause' || name === 'mute' || name === 'fullscreen') {
-                this.win.webContents.send('openmsxUpdateEvent', pid, name, state === 'true');
+                eventName = name.substring(name.indexOf('_') + 1);
+            } else {
+                eventName = name;
             }
+            this.win.webContents.send('openmsxUpdateEvent', pid, eventName, value);
         }
     }
 

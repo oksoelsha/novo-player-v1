@@ -227,7 +227,8 @@
     "mute": "Muto",
     "unmute": "Riattiva audio",
     "fullscreen": "Schermo intero",
-    "exitfullscreen": "Esci schermo intero"
+    "exitfullscreen": "Esci schermo intero",
+    "emulationspeed": "Velocità di emulazione"
   },
   "help": {
     "uptodate": "Aggiornato",

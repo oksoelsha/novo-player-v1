@@ -227,7 +227,8 @@
     "mute": "Mute",
     "unmute": "Unmute",
     "fullscreen": "Full screen",
-    "exitfullscreen": "Exit full screen"
+    "exitfullscreen": "Exit full screen",
+    "emulationspeed": "Emulation Speed"
   },
   "help": {
     "uptodate": "Up to date",

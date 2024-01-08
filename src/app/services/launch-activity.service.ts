@@ -14,12 +14,12 @@ export class LaunchActivityService {
   private launchActivities: LaunchActivity[] = [];
   private openmsxEventSubject = new Subject<OpenmsxEvent>();
   private ipc: IpcRenderer;
-  private openmsxCurrentStatus: Map<number, Set<string>> = new Map();
+  private openmsxCurrentStatus: Map<number, Map<string, string>> = new Map();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
-    this.ipc.on('openmsxUpdateEvent', (event: any, pid: number, name: string, state: boolean) => {
-      const openmsxEvent = new OpenmsxEvent(pid, name, state);
+    this.ipc.on('openmsxUpdateEvent', (event: any, pid: number, name: string, value: string) => {
+      const openmsxEvent = new OpenmsxEvent(pid, name, value);
       this.updateOpenmsxCurrentStatus(pid, openmsxEvent);
       this.openmsxEventSubject.next(openmsxEvent);
     });
@@ -150,21 +150,26 @@ export class LaunchActivityService {
     });
   }
 
-  getOpenmsxCurrentStatus(pid: number): Set<string> {
+  setSpeed(pid: number, speed: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('setSpeedOnOpenmsxResponse', (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('setSpeedOnOpenmsx', pid, speed);
+    });
+  }
+
+  getOpenmsxCurrentStatus(pid: number): Map<string, string> {
     return this.openmsxCurrentStatus.get(pid);
   }
 
   private updateOpenmsxCurrentStatus(pid: number, event: OpenmsxEvent) {
     let currentStatus = this.openmsxCurrentStatus.get(pid);
     if (!currentStatus) {
-      currentStatus = new Set();
+      currentStatus = new Map();
       this.openmsxCurrentStatus.set(pid, currentStatus);
     }
-    if (event.on) {
-      currentStatus.add(event.name);
-    } else {
-      currentStatus.delete(event.name);
-    }
+    currentStatus.set(event.name, event.value);
   }
 }
 
@@ -185,12 +190,12 @@ export class LaunchActivity {
 export class OpenmsxEvent {
   readonly pid: number;
   readonly name: string;
-  readonly on: boolean;
+  readonly value: string;
 
-  constructor(pid: number, name: string, on: boolean) {
+  constructor(pid: number, name: string, value: string) {
     this.pid = pid;
     this.name = name;
-    this.on = on;
+    this.value = value;
   }
 }
 

@@ -227,7 +227,8 @@
     "mute": "Dempen",
     "unmute": "Dempen opheffen",
     "fullscreen": "Volledig scherm",
-    "exitfullscreen": "Volledig scherm verlaten"
+    "exitfullscreen": "Volledig scherm verlaten",
+    "emulationspeed": "Emulatiesnelheid"
   },
   "help": {
     "uptodate": "Bijgewerkt",

@@ -227,7 +227,8 @@
     "mute": "Desativar o som",
     "unmute": "Ativar o som",
     "fullscreen": "Tela cheia",
-    "exitfullscreen": "Sair da tela cheia"
+    "exitfullscreen": "Sair da tela cheia",
+    "emulationspeed": "Velocidade de emulação"
   },
   "help": {
     "uptodate": "Atualizado",
