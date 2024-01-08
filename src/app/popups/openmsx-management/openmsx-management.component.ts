@@ -71,6 +71,14 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
         this.speed = currentStatus.get('speed') ? Number(currentStatus.get('speed')) : 100;
       } else {
+        this.powerLed = false
+        this.capsLed = false;
+        this.langLed = false;
+        this.turboLed = false;
+        this.fddLed = false;
+        this.pauseIndicator = false;
+        this.muteIndicator = false;
+        this.fullscreenIndicator = false;
         this.speed = 100;
       }
     }, 0);
