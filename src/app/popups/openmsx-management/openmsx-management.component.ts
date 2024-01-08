@@ -2,7 +2,6 @@ import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@ang
 import { PopupComponent } from '../popup.component';
 import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../services/launch-activity.service';
 import { LocalizationService } from '../../services/localization.service';
-import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -13,7 +12,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   @Input() popupId: string;
   @Input() pid: number;
-  @Input() game: Game;
   @Input()
   get event(): OpenmsxEvent { return this.eventInputValue; }
   set event(value: OpenmsxEvent) {
@@ -76,25 +74,25 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     super.open();
   }
 
-  togglePause(pid: number, game: Game) {
+  togglePause(pid: number) {
     this.pauseIndicator != this.pauseIndicator;
     this.launchActivityService.togglePause(pid).then(success => {
     });
   }
 
-  toggleMute(pid: number, game: Game) {
+  toggleMute(pid: number) {
     this.muteIndicator != this.muteIndicator;
     this.launchActivityService.toggleMute(pid).then(success => {
     });
   }
 
-  toggleFullscreen(pid: number, game: Game) {
+  toggleFullscreen(pid: number) {
     this.fullscreenIndicator != this.fullscreenIndicator;
     this.launchActivityService.toggleFullscreen(pid).then(success => {
     });
   }
 
-  resetMachine(pid: number, game: Game) {
+  resetMachine(pid: number) {
     this.launchActivityService.resetMachine(pid).then(reset => {
     });
   }

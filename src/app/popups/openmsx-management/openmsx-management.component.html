@@ -1,20 +1,20 @@
 <div class="ps-3 pe-3">
-    <button type="button" class="btn btn-secondary btn-sm" (click)="togglePause(pid, game)"
+    <button type="button" class="btn btn-secondary btn-sm" (click)="togglePause(pid)"
         [title]="pauseIndicator ? unpauseLabel : pauseLabel">
         <span *ngIf="!pauseIndicator" class="bi-pause"></span>
         <span *ngIf="pauseIndicator" class="bi-play-fill"></span>
     </button>
-    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleMute(pid, game)"
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleMute(pid)"
         [title]="muteIndicator ? unmuteLabel : muteLabel">
         <span *ngIf="!muteIndicator" class="bi-volume-up"></span>
         <span *ngIf="muteIndicator" class="bi-volume-mute"></span>
     </button>
-    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleFullscreen(pid, game)"
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleFullscreen(pid)"
         [title]="fullscreenIndicator ? windowLabel : fullscreenLabel">
         <span *ngIf="!fullscreenIndicator" class="bi-fullscreen"></span>
         <span *ngIf="fullscreenIndicator" class="bi-fullscreen-exit"></span>
     </button>
-    <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid, game)"
+    <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid)"
         [title]="'common.reset' | translate">
         <span class="bi-arrow-counterclockwise"></span>
     </button>

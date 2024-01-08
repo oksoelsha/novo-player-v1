@@ -176,8 +176,9 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     });
   }
 
-  typeText(pid: number) {
+  typeText(pid: number, game: Game) {
     this.selectedPid = pid;
+    this.selectedGame = game;
     this.typeTextInterface.open();
   }
 
