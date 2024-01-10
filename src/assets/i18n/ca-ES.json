@@ -228,7 +228,8 @@
     "unmute": "Activa so",
     "fullscreen": "Pantalla completa",
     "exitfullscreen": "Surt de la pantalla completa",
-    "emulationspeed": "Velocitat d'emulació"
+    "emulationspeed": "Velocitat d'emulació",
+    "restoredefault": "Restaura el valor predeterminat"
   },
   "help": {
     "uptodate": "Està actualitzat",

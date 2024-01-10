@@ -228,7 +228,8 @@
     "unmute": "Activar audio",
     "fullscreen": "Pantalla completa",
     "exitfullscreen": "Salir de pantalla completa",
-    "emulationspeed": "Velocidad de emulación"
+    "emulationspeed": "Velocidad de emulación",
+    "restoredefault": "Restaurar valor predeterminado"
   },
   "help": {
     "uptodate": "Actualizado",

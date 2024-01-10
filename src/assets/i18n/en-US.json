@@ -228,7 +228,8 @@
     "unmute": "Unmute",
     "fullscreen": "Full screen",
     "exitfullscreen": "Exit full screen",
-    "emulationspeed": "Emulation Speed"
+    "emulationspeed": "Emulation Speed",
+    "restoredefault": "Restore default"
   },
   "help": {
     "uptodate": "Up to date",

@@ -6,7 +6,7 @@ import { LocalizationService } from '../../services/localization.service';
 @Component({
   selector: 'app-openmsx-management',
   templateUrl: './openmsx-management.component.html',
-  styleUrls: ['./openmsx-management.component.sass']
+  styleUrls: ['../../common-styles.sass', './openmsx-management.component.sass']
 })
 export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit {
 
@@ -25,6 +25,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   readonly fullscreenLabel: string;
   readonly windowLabel: string;
 
+  readonly defaultSpeed = 100;
+  private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
+
   private eventInputValue: OpenmsxEvent;
 
   powerLed: boolean;
@@ -36,6 +39,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   muteIndicator: boolean;
   fullscreenIndicator: boolean;
   speed: number;
+  speedDisable: boolean;
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService) {
@@ -69,7 +73,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.pauseIndicator = currentStatus.get('pause') === 'true';
         this.muteIndicator = currentStatus.get('mute') === 'true';
         this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
-        this.speed = currentStatus.get('speed') ? Number(currentStatus.get('speed')) : 100;
+        this.initSpeedValue(currentStatus);
       } else {
         this.powerLed = false
         this.capsLed = false;
@@ -79,11 +83,21 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.pauseIndicator = false;
         this.muteIndicator = false;
         this.fullscreenIndicator = false;
-        this.speed = 100;
+        this.speed = this.defaultSpeed;
       }
     }, 0);
 
     super.open();
+  }
+
+  initSpeedValue(currentStatus: Map<string, string>) {
+    const value = currentStatus.get('speed');
+    if (!value) {
+      this.speed = this.defaultSpeed;
+    } else {
+      this.speed = Number(currentStatus.get('speed'));
+      this.speedDisable = !this.acceptedSpeeds.has(this.speed);
+    }
   }
 
   togglePause(pid: number) {
@@ -114,6 +128,12 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     });
   }
 
+  resetSpeed(pid: number) {
+    this.launchActivityService.setSpeed(pid, this.defaultSpeed).then(success => {
+      this.speed = this.defaultSpeed;
+    });
+  }
+
   private processEvents() {
     if (this.eventInputValue && this.pid === this.eventInputValue.pid) {
       if (this.eventInputValue.name === 'power') {
@@ -134,6 +154,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = this.eventInputValue.value === 'true';
       } else if (this.eventInputValue.name === 'speed') {
         this.speed = Number(this.eventInputValue.value);
+        this.speedDisable = !this.acceptedSpeeds.has(this.speed);
       }
     }
   }

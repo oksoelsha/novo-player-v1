@@ -228,7 +228,8 @@
     "unmute": "음소거 해제",
     "fullscreen": "전체 화면",
     "exitfullscreen": "전체 화면 종료",
-    "emulationspeed": "에뮬레이션 속도"
+    "emulationspeed": "에뮬레이션 속도",
+    "restoredefault": "기본값 복원"
   },
   "help": {
     "uptodate": "최신 상태",

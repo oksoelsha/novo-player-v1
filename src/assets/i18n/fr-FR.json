@@ -228,7 +228,8 @@
     "unmute": "Activer le son",
     "fullscreen": "Plein écran",
     "exitfullscreen": "Quitter le mode plein écran",
-    "emulationspeed": "Vitesse d'émulation"
+    "emulationspeed": "Vitesse d'émulation",
+    "restoredefault": "Restaurer par défaut"
   },
   "help": {
     "uptodate": "À jour",

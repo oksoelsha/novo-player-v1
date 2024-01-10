@@ -228,7 +228,8 @@
     "unmute": "Dempen opheffen",
     "fullscreen": "Volledig scherm",
     "exitfullscreen": "Volledig scherm verlaten",
-    "emulationspeed": "Emulatiesnelheid"
+    "emulationspeed": "Emulatiesnelheid",
+    "restoredefault": "Standaard herstellen"
   },
   "help": {
     "uptodate": "Bijgewerkt",

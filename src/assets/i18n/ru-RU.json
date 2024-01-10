@@ -228,7 +228,8 @@
     "unmute": "Включить звук",
     "fullscreen": "Весь экран",
     "exitfullscreen": "Выйти весь экран",
-    "emulationspeed": "Скорость эмуляции"
+    "emulationspeed": "Скорость эмуляции",
+    "restoredefault": "Сброс настроек"
   },
   "help": {
     "uptodate": "Обновлено",

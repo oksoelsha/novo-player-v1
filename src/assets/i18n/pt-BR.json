@@ -228,7 +228,8 @@
     "unmute": "Ativar o som",
     "fullscreen": "Tela cheia",
     "exitfullscreen": "Sair da tela cheia",
-    "emulationspeed": "Velocidade de emulação"
+    "emulationspeed": "Velocidade de emulação",
+    "restoredefault": "Restaurar padrão"
   },
   "help": {
     "uptodate": "Atualizado",
