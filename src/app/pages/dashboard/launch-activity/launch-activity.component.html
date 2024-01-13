@@ -63,6 +63,13 @@
                                             {{ 'dashboard.enterpassword' | translate }}
                                         </div>
                                     </button>
+                                    <button ngbDropdownItem *ngIf="gameTrainersSet.has(activity.pid)" type="button"
+                                        (click)="showTrainer(activity.pid, activity.game)">
+                                        <div class="d-flex">
+                                            <div class="connect-menuitem"></div>
+                                            Trainer
+                                        </div>
+                                    </button>
                                     <ng-container
                                         *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
                                         <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{
@@ -83,6 +90,14 @@
         </div>
     </div>
 </div>
+
+<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
+    <ng-template let-popupId="popupId">
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [event]="openmsxEvent"
+            #openmsxManagementInterface>
+        </app-openmsx-management>
+    </ng-template>
+</app-popup>
 
 <app-popup popupId="saved-states-id" [titleHeader]="('dashboard.loadstate' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
@@ -106,10 +121,9 @@
     </ng-template>
 </app-popup>
 
-<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
+<app-popup popupId="enable-cheats-id" [titleHeader]="'Trainer' + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
-        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [event]="openmsxEvent"
-            #openmsxManagementInterface>
-        </app-openmsx-management>
+        <app-enable-cheats [popupId]="popupId" [pid]="selectedPid" [gameName]="selectedGame?.title"
+            #trainerInterface></app-enable-cheats>
     </ng-template>
 </app-popup>

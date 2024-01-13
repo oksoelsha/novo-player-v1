@@ -33,8 +33,11 @@ export class OpenMSXConnectionManager {
         if (result.reply) {
             const success = result.reply['@_result'] === 'ok';
             const content = result.reply['#text'];
-            connection.openmsx.off('data', ref.handlers.get(connection.pid));
-            ref.handlers.delete(connection.pid);
+            const handler = ref.handlers.get(connection.pid);
+            if (handler) {
+                connection.openmsx.off('data', handler);
+                ref.handlers.delete(connection.pid);    
+            }
             resolve({ success, content });
         }
     }

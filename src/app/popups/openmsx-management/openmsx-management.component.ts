@@ -10,6 +10,14 @@ import { LocalizationService } from '../../services/localization.service';
 })
 export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit {
 
+  readonly pauseLabel: string;
+  readonly unpauseLabel: string;
+  readonly muteLabel: string;
+  readonly unmuteLabel: string;
+  readonly fullscreenLabel: string;
+  readonly windowLabel: string;
+  readonly defaultSpeed = 100;
+
   @Input() popupId: string;
   @Input() pid: number;
   @Input()
@@ -18,16 +26,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.eventInputValue = value;
     this.processEvents();
   }
-  readonly pauseLabel: string;
-  readonly unpauseLabel: string;
-  readonly muteLabel: string;
-  readonly unmuteLabel: string;
-  readonly fullscreenLabel: string;
-  readonly windowLabel: string;
-
-  readonly defaultSpeed = 100;
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
-
   private eventInputValue: OpenmsxEvent;
 
   powerLed: boolean;
@@ -75,7 +74,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
         this.initSpeedValue(currentStatus);
       } else {
-        this.powerLed = false
+        this.powerLed = false;
         this.capsLed = false;
         this.langLed = false;
         this.turboLed = false;
@@ -101,19 +100,19 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   togglePause(pid: number) {
-    this.pauseIndicator != this.pauseIndicator;
+    this.pauseIndicator = !this.pauseIndicator;
     this.launchActivityService.togglePause(pid).then(success => {
     });
   }
 
   toggleMute(pid: number) {
-    this.muteIndicator != this.muteIndicator;
+    this.muteIndicator = !this.muteIndicator;
     this.launchActivityService.toggleMute(pid).then(success => {
     });
   }
 
   toggleFullscreen(pid: number) {
-    this.fullscreenIndicator != this.fullscreenIndicator;
+    this.fullscreenIndicator = !this.fullscreenIndicator;
     this.launchActivityService.toggleFullscreen(pid).then(success => {
     });
   }

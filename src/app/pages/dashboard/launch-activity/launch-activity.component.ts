@@ -14,6 +14,7 @@ import { TypeTextComponent as TypeTextComponent } from '../../../popups/type-tex
 import { GamePasswordsInfo } from '../../../models/game-passwords-info';
 import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
+import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-cheats.component';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
@@ -22,16 +23,18 @@ import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../
 })
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
+  @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('typeTextInterface') typeTextInterface: TypeTextComponent;
   @ViewChild('passwordSelector') pickPasswordInterface: PickPasswordComponent;
-  @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
+  @ViewChild('trainerInterface') enableCheatsInterface: EnableCheatsComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
   openmsxEvent: OpenmsxEvent;
   fileGroupMap: Map<number, string[]> = new Map();
   savedStatesMap: Map<string, GameSavedState[]> = new Map();
   gamePasswordsMap: Map<number, GamePasswordsInfo> = new Map();
+  gameTrainersSet: Set<number> = new Set();
   selectedGame: Game;
   selectedPid: number;
   savedStates: GameSavedState[] = [];
@@ -50,6 +53,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.typeTextInterface.close();
         this.pickPasswordInterface.close();
         this.openmsxManagementInterface.close();
+        this.enableCheatsInterface.close();
       }
     });
     this.launchActivities = launchActivityService.getActivities();
@@ -63,6 +67,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       this.setFileGroups(activity);
       this.setSavedStates(activity);
       this.setPasswords(activity);
+      this.doesTrainerExist(activity);
     });
   }
 
@@ -189,6 +194,12 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.pickPasswordInterface.open();
   }
 
+  showTrainer(pid: number, game: Game) {
+    this.selectedPid = pid;
+    this.selectedGame = game;
+    this.enableCheatsInterface.open();
+  }
+
   openManagement(pid: number, game: Game) {
     this.selectedPid = pid;
     this.selectedGame = game;
@@ -223,6 +234,14 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.gamesService.getGamePasswords(activity.game).then((gamePasswordsInfo: GamePasswordsInfo) => {
       if (gamePasswordsInfo) {
         this.gamePasswordsMap.set(activity.game.generationMSXId, gamePasswordsInfo);
+      }
+    });
+  }
+
+  private doesTrainerExist(activity: any) {
+    this.launchActivityService.getTrainer(activity.pid, activity.game.title).then((trainersList: any[]) => {
+      if (trainersList.length > 0) {
+        this.gameTrainersSet.add(activity.pid);
       }
     });
   }

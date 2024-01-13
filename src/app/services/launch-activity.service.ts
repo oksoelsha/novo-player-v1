@@ -159,6 +159,24 @@ export class LaunchActivityService {
     });
   }
 
+  getTrainer(pid: number, gameName: string): Promise<any[]> {
+    return new Promise<string[]>((resolve, reject) => {
+      this.ipc.once('getTrainerFromOpenmsxResponse' + pid, (event: any, success: boolean, trainersList: any[]) => {
+        resolve(trainersList);
+      });
+      this.ipc.send('getTrainerFromOpenmsx', pid, gameName);
+    });
+  }
+
+  setCheat(pid: number, gameName: string, cheat: string) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('setCheatOnOpenmsxResponse' + pid, (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('setCheatOnOpenmsx', pid, gameName, cheat);
+    });
+  }
+
   getOpenmsxCurrentStatus(pid: number): Map<string, string> {
     return this.openmsxCurrentStatus.get(pid);
   }

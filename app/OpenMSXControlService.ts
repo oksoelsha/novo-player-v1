@@ -49,6 +49,12 @@ export class OpenMSXControlService {
         ipcMain.on('setSpeedOnOpenmsx', (event, pid: number, speed: number) => {
             this.setSpeedOnOpenmsx(pid, speed);
         });
+        ipcMain.on('getTrainerFromOpenmsx', (event, pid: number, gameName: string) => {
+            this.getTrainerFromOpenmsx(pid, gameName);
+        });
+        ipcMain.on('setCheatOnOpenmsx', (event, pid: number, gameName: string, cheat: string) => {
+            this.setCheatOnOpenmsx(pid, gameName, cheat);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -139,6 +145,23 @@ export class OpenMSXControlService {
     private async setSpeedOnOpenmsx(pid: number, speed: number) {
         this.executeCommandOnOpenmsx(pid, 'set speed ' + speed).then(result => {
             this.win.webContents.send('setSpeedOnOpenmsxResponse', result.success);
+        });
+    }
+
+    private async getTrainerFromOpenmsx(pid: number, gameName: string) {
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '"').then(result => {
+            const trainerList: any[] = [];
+            const trainer = result.content.split(' [');
+            for (let ix = 1; ix < trainer.length; ix++) {
+                trainerList.push({ on: trainer[ix].startsWith('x'), label: trainer[ix].split('&#x0a;')[0].substring(3) });
+            }
+            this.win.webContents.send('getTrainerFromOpenmsxResponse' + pid, result.success, trainerList);
+        });
+    }
+
+    private async setCheatOnOpenmsx(pid: number, gameName: string, cheat: string) {
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '" "' + cheat + '"').then(result => {
+            this.win.webContents.send('setCheatOnOpenmsxResponse' + pid, result.success);
         });
     }
 

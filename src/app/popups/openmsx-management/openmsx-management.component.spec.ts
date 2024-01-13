@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OpenmsxManagementComponent } from './openmsx-management.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('OpenmsxManagementComponent', () => {
   let component: OpenmsxManagementComponent;
@@ -8,6 +9,7 @@ describe('OpenmsxManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ OpenmsxManagementComponent ]
     })
     .compileComponents();

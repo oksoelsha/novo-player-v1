@@ -46,7 +46,7 @@ export class PickPasswordComponent extends PopupComponent implements OnInit, Aft
         if (entered) {
           this.alertService.success(this.localizationService.translate('dashboard.passwordentered'));
         }
-      });  
+      });
     }
   }
 }

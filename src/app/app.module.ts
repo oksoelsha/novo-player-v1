@@ -66,6 +66,7 @@ import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe'
 import { TypeTextComponent } from './popups/type-text/type-text.component';
 import { PickPasswordComponent } from './popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
+import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -111,6 +112,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SavedStatesComponent,
     TypeTextComponent,
     PickPasswordComponent,
+    EnableCheatsComponent,
     OpenmsxManagementComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
