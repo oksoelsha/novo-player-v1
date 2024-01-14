@@ -321,7 +321,7 @@
   },
   "shared": {
     "elapsedtime": {
-      "lessthan1minago": "В последнюю минуту",
+      "lessthan1minago": "< 1 мин",
       "lessthan1minagodetail": "Запущено меньше минуты назад",
       "launched": "Запущен"
     },

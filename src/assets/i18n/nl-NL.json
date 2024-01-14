@@ -321,7 +321,7 @@
   },
   "shared": {
     "elapsedtime": {
-      "lessthan1minago": "< 1 minuut geleden",
+      "lessthan1minago": "< 1 minuut",
       "lessthan1minagodetail": "Actief gedurende minder dan één minuut",
       "launched": "Lanceerde"
     },
