@@ -28,8 +28,9 @@ export class OpenMSXConnector {
 				this.connected = true;
 			} catch (error) {
 				reject();
+				return;
 			}
-	
+
 			this.openmsx.on('timeout', () => {
 			});
 			this.openmsx.on('error', err => {

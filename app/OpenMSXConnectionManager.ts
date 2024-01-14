@@ -13,7 +13,11 @@ export class OpenMSXConnectionManager {
     async executeCommand(pid: number, command: string): Promise<any> {
         let connection = this.connections.get(pid);
         if (!connection) {
-            connection = await this.initializeConnection(pid);
+            try {
+                connection = await this.initializeConnection(pid);
+            } catch (error) {
+                return null;
+            }
         }
         const self = this;
         return new Promise<any>((resolve, reject) => {
