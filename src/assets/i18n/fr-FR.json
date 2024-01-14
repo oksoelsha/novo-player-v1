@@ -229,7 +229,8 @@
     "fullscreen": "Plein écran",
     "exitfullscreen": "Quitter le mode plein écran",
     "emulationspeed": "Vitesse d'émulation",
-    "restoredefault": "Restaurer par défaut"
+    "restoredefault": "Restaurer par défaut",
+    "toggleall": "Basculer tout"
   },
   "help": {
     "uptodate": "À jour",

@@ -1,6 +1,9 @@
 <div class="cheats">
     <div *ngFor="let cheat of trainer" class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" [ngModel]="cheat.on" (change)="setCheat(cheat.label)">
+        <input class="form-check-input" type="checkbox" role="switch" [ngModel]="cheat.on" (change)="setCheat(cheat)">
         <label class="form-check-label">{{ cheat.label }}</label>
     </div>
 </div>
+<button class="btn btn-primary btn-sm mt-3" (click)="toggleAllCheats()" (keyup.enter)="toggleAllCheats()">
+    {{ 'dashboard.toggleall' | translate }}
+</button>

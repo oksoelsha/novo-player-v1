@@ -229,7 +229,8 @@
     "fullscreen": "Volledig scherm",
     "exitfullscreen": "Volledig scherm verlaten",
     "emulationspeed": "Emulatiesnelheid",
-    "restoredefault": "Standaard herstellen"
+    "restoredefault": "Standaard herstellen",
+    "toggleall": "Schakel alles"
   },
   "help": {
     "uptodate": "Bijgewerkt",

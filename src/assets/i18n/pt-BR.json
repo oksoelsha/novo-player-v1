@@ -229,7 +229,8 @@
     "fullscreen": "Tela cheia",
     "exitfullscreen": "Sair da tela cheia",
     "emulationspeed": "Velocidade de emulação",
-    "restoredefault": "Restaurar padrão"
+    "restoredefault": "Restaurar padrão",
+    "toggleall": "Alternar tudo"
   },
   "help": {
     "uptodate": "Atualizado",

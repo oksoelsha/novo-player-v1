@@ -229,7 +229,8 @@
     "fullscreen": "全画面表示",
     "exitfullscreen": "全画面表示を終了する",
     "emulationspeed": "エミュレーション速度",
-    "restoredefault": "デフォルトを復元"
+    "restoredefault": "デフォルトを復元",
+    "toggleall": "すべてを切り替える"
   },
   "help": {
     "uptodate": "最新",

@@ -229,7 +229,8 @@
     "fullscreen": "Pantalla completa",
     "exitfullscreen": "Surt de la pantalla completa",
     "emulationspeed": "Velocitat d'emulació",
-    "restoredefault": "Restaura el valor predeterminat"
+    "restoredefault": "Restaura el valor predeterminat",
+    "toggleall": "Commuta-ho tot"
   },
   "help": {
     "uptodate": "Està actualitzat",

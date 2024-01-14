@@ -229,7 +229,8 @@
     "fullscreen": "Весь экран",
     "exitfullscreen": "Выйти весь экран",
     "emulationspeed": "Скорость эмуляции",
-    "restoredefault": "Сброс настроек"
+    "restoredefault": "Сброс настроек",
+    "toggleall": "Переключить все"
   },
   "help": {
     "uptodate": "Обновлено",

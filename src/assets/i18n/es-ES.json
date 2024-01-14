@@ -229,7 +229,8 @@
     "fullscreen": "Pantalla completa",
     "exitfullscreen": "Salir de pantalla completa",
     "emulationspeed": "Velocidad de emulación",
-    "restoredefault": "Restaurar valor predeterminado"
+    "restoredefault": "Restaurar valor predeterminado",
+    "toggleall": "Alternar todo"
   },
   "help": {
     "uptodate": "Actualizado",

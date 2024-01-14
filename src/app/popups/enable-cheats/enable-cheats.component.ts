@@ -36,8 +36,18 @@ export class EnableCheatsComponent extends PopupComponent implements OnInit, Aft
     super.open();
   }
 
-  setCheat(cheat: string) {
-    this.launchActivityService.setCheat(this.pid, this.gameName, cheat).then((success: boolean) => {
+  setCheat(cheat: any) {
+    cheat.on = !cheat.on;
+    this.launchActivityService.setCheat(this.pid, this.gameName, cheat.label).then((success: boolean) => {
+    });
+  }
+
+  toggleAllCheats() {
+    this.trainer = this.trainer.map(cheat => {
+      cheat.on = !cheat.on;
+      return cheat;
+    });
+    this.launchActivityService.toggleAllCheats(this.pid, this.gameName).then((success: boolean) => {
     });
   }
 }

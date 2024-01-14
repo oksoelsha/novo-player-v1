@@ -229,7 +229,8 @@
     "fullscreen": "Full screen",
     "exitfullscreen": "Exit full screen",
     "emulationspeed": "Emulation Speed",
-    "restoredefault": "Restore default"
+    "restoredefault": "Restore default",
+    "toggleall": "Toggle all"
   },
   "help": {
     "uptodate": "Up to date",

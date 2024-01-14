@@ -177,6 +177,15 @@ export class LaunchActivityService {
     });
   }
 
+  toggleAllCheats(pid: number, gameName: string) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('toggleAllCheatsOnOpenmsxResponse' + pid, (event: any, success: boolean) => {
+        resolve(success);
+      });
+      this.ipc.send('toggleAllCheatsOnOpenmsx', pid, gameName);
+    });
+  }
+
   getOpenmsxCurrentStatus(pid: number): Map<string, string> {
     return this.openmsxCurrentStatus.get(pid);
   }

@@ -55,6 +55,9 @@ export class OpenMSXControlService {
         ipcMain.on('setCheatOnOpenmsx', (event, pid: number, gameName: string, cheat: string) => {
             this.setCheatOnOpenmsx(pid, gameName, cheat);
         });
+        ipcMain.on('toggleAllCheatsOnOpenmsx', (event, pid: number, gameName: string) => {
+            this.toggleAllCheatsOnOpenmsx(pid, gameName);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -162,6 +165,12 @@ export class OpenMSXControlService {
     private async setCheatOnOpenmsx(pid: number, gameName: string, cheat: string) {
         this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '" "' + cheat + '"').then(result => {
             this.win.webContents.send('setCheatOnOpenmsxResponse' + pid, result.success);
+        });
+    }
+
+    private async toggleAllCheatsOnOpenmsx(pid: number, gameName: string) {
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '" all').then(result => {
+            this.win.webContents.send('toggleAllCheatsOnOpenmsxResponse' + pid, result.success);
         });
     }
 

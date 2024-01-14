@@ -229,7 +229,8 @@
     "fullscreen": "Schermo intero",
     "exitfullscreen": "Esci schermo intero",
     "emulationspeed": "Velocità di emulazione",
-    "restoredefault": "Ripristina predefinito"
+    "restoredefault": "Ripristina predefinito",
+    "toggleall": "Attiva/disattiva tutto"
   },
   "help": {
     "uptodate": "Aggiornato",
