@@ -54,6 +54,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
         this.pickPasswordInterface.close();
         this.openmsxManagementInterface.close();
         this.enableCheatsInterface.close();
+        this.gameTrainersSet.delete(this.selectedPid);
       }
     });
     this.launchActivities = launchActivityService.getActivities();
