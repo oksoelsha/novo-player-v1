@@ -7,6 +7,7 @@ import EventEmitter from 'events';
 export class OpenMSXControlService {
 
     private updateEmitter = new EventEmitter();
+    private readonly modifiedGameNamesForTrainer: Map<string, string> = new Map();
 
     constructor(private win: BrowserWindow, private connectionManager: OpenMSXConnectionManager) {
         this.init();
@@ -151,25 +152,41 @@ export class OpenMSXControlService {
         });
     }
 
-    private async getTrainerFromOpenmsx(pid: number, gameName: string) {
+    private async getTrainerFromOpenmsx(pid: number, gameName: string, gameNameBeforeModification: string = null) {
         this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '"').then(result => {
-            const trainerList: any[] = [];
-            const trainer = result.content.split(' [');
-            for (let ix = 1; ix < trainer.length; ix++) {
-                trainerList.push({ on: trainer[ix].startsWith('x'), label: trainer[ix].split('&#x0a;')[0].substring(3) });
+            if (!gameNameBeforeModification && !result.success && gameName.startsWith('The ')) {
+                // Need to account for name differences between openMSX softwaredb and the _trainerdefs.tcl script for
+                // games that start with 'The'. In this case we'll try a second time after moving 'The' to the end of the name.
+                // Note: games that start with 'The' and don't have trainers will always be searched twice. That's fine as
+                // it allows for trainer definitions to be added without having to restart Novo Player.
+                const modifiedGameName = gameName.substring('The '.length) + ', The';
+                this.getTrainerFromOpenmsx(pid, modifiedGameName, gameName);
+            } else {
+                const cheats: any[] = [];
+                if (result.success) {
+                    const trainer = result.content.split(' [');
+                    for (let ix = 1; ix < trainer.length; ix++) {
+                        cheats.push({ on: trainer[ix].startsWith('x'), label: trainer[ix].split('&#x0a;')[0].substring(3) });
+                    }
+                    if (cheats.length > 1 && gameNameBeforeModification) {
+                        this.modifiedGameNamesForTrainer.set(gameNameBeforeModification, gameName);
+                    }    
+                }
+                this.win.webContents.send('getTrainerFromOpenmsxResponse' + pid, result.success, cheats);    
             }
-            this.win.webContents.send('getTrainerFromOpenmsxResponse' + pid, result.success, trainerList);
         });
     }
 
     private async setCheatOnOpenmsx(pid: number, gameName: string, cheat: string) {
-        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '" "' + cheat + '"').then(result => {
+        const gameNameToUse = this.getModifiedGameNameIfNeeded(gameName);
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameNameToUse + '" "' + cheat + '"').then(result => {
             this.win.webContents.send('setCheatOnOpenmsxResponse' + pid, result.success);
         });
     }
 
     private async toggleAllCheatsOnOpenmsx(pid: number, gameName: string) {
-        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '" all').then(result => {
+        const gameNameToUse = this.getModifiedGameNameIfNeeded(gameName);
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameNameToUse + '" all').then(result => {
             this.win.webContents.send('toggleAllCheatsOnOpenmsxResponse' + pid, result.success);
         });
     }
@@ -198,6 +215,11 @@ export class OpenMSXControlService {
         escapedText = escapedText.split('<').join('&lt;');
 
         return escapedText;
+    }
+
+    private getModifiedGameNameIfNeeded(gameName: string): string {
+        const modifiedName = this.modifiedGameNamesForTrainer.get(gameName);
+        return modifiedName ? modifiedName : gameName;
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {

@@ -160,12 +160,16 @@ export class LaunchActivityService {
   }
 
   getTrainer(pid: number, gameName: string): Promise<any[]> {
-    return new Promise<string[]>((resolve, reject) => {
-      this.ipc.once('getTrainerFromOpenmsxResponse' + pid, (event: any, success: boolean, trainersList: any[]) => {
-        resolve(trainersList);
-      });
-      this.ipc.send('getTrainerFromOpenmsx', pid, gameName);
-    });
+    if (gameName) {
+      return new Promise<string[]>((resolve, reject) => {
+        this.ipc.once('getTrainerFromOpenmsxResponse' + pid, (event: any, success: boolean, trainersList: any[]) => {
+          resolve(trainersList);
+        });
+        this.ipc.send('getTrainerFromOpenmsx', pid, gameName);
+      });  
+    } else {
+      return Promise.resolve([]);
+    }
   }
 
   setCheat(pid: number, gameName: string, cheat: string) {
