@@ -230,7 +230,9 @@
     "exitfullscreen": "Volledig scherm verlaten",
     "emulationspeed": "Emulatiesnelheid",
     "restoredefault": "Standaard herstellen",
-    "toggleall": "Schakel alles"
+    "cheats": "Cheating",
+    "enableall": "Alles inschakelen",
+    "disableall": "Alles uitschakelen"
   },
   "help": {
     "uptodate": "Bijgewerkt",

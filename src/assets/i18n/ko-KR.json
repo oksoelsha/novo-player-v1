@@ -230,7 +230,9 @@
     "exitfullscreen": "전체 화면 종료",
     "emulationspeed": "에뮬레이션 속도",
     "restoredefault": "기본값 복원",
-    "toggleall": "모두 전환"
+    "cheats": "치트키",
+    "enableall": "모두 사용하다",
+    "disableall": "모두 사용 중지"
   },
   "help": {
     "uptodate": "최신 상태",

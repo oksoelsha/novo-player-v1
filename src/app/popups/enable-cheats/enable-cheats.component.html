@@ -4,6 +4,9 @@
         <label class="form-check-label">{{ cheat.label }}</label>
     </div>
 </div>
-<button class="btn btn-primary btn-sm mt-3" (click)="toggleAllCheats()" (keyup.enter)="toggleAllCheats()">
-    {{ 'dashboard.toggleall' | translate }}
+<button class="btn btn-primary btn-sm mt-3" (click)="setAllCheats(true)" (keyup.enter)="setAllCheats(true)">
+    {{ 'dashboard.enableall' | translate }}
+</button>
+<button class="btn btn-primary btn-sm mt-3" (click)="setAllCheats(false)" (keyup.enter)="setAllCheats(false)">
+    {{ 'dashboard.disableall' | translate }}
 </button>

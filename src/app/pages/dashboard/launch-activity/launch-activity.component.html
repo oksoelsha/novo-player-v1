@@ -67,7 +67,7 @@
                                         (click)="showTrainer(activity.pid, activity.game)">
                                         <div class="d-flex">
                                             <div class="connect-menuitem"></div>
-                                            Trainer
+                                            {{ 'dashboard.cheats' | translate }}
                                         </div>
                                     </button>
                                     <ng-container
@@ -121,7 +121,7 @@
     </ng-template>
 </app-popup>
 
-<app-popup popupId="enable-cheats-id" [titleHeader]="'Trainer' + ': ' + selectedGame?.name">
+<app-popup popupId="enable-cheats-id" [titleHeader]="('dashboard.cheats' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
         <app-enable-cheats [popupId]="popupId" [pid]="selectedPid" [gameName]="selectedGame?.title"
             #trainerInterface></app-enable-cheats>

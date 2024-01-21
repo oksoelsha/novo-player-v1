@@ -42,12 +42,12 @@ export class EnableCheatsComponent extends PopupComponent implements OnInit, Aft
     });
   }
 
-  toggleAllCheats() {
+  setAllCheats(flag: boolean) {
     this.trainer = this.trainer.map(cheat => {
-      cheat.on = !cheat.on;
+      cheat.on = flag;
       return cheat;
     });
-    this.launchActivityService.toggleAllCheats(this.pid, this.gameName).then((success: boolean) => {
+    this.launchActivityService.setAllCheats(this.pid, this.gameName, flag).then((success: boolean) => {
     });
   }
 }

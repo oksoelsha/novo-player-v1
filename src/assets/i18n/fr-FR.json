@@ -230,7 +230,9 @@
     "exitfullscreen": "Quitter le mode plein écran",
     "emulationspeed": "Vitesse d'émulation",
     "restoredefault": "Restaurer par défaut",
-    "toggleall": "Basculer tout"
+    "cheats": "Codes de triche",
+    "enableall": "Activer tout",
+    "disableall": "Désactiver tout"
   },
   "help": {
     "uptodate": "À jour",

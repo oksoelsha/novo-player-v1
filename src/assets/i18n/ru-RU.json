@@ -230,7 +230,9 @@
     "exitfullscreen": "Выйти весь экран",
     "emulationspeed": "Скорость эмуляции",
     "restoredefault": "Сброс настроек",
-    "toggleall": "Переключить все"
+    "cheats": "Чит-код",
+    "enableall": "Включить все",
+    "disableall": "Отключить все"
   },
   "help": {
     "uptodate": "Обновлено",

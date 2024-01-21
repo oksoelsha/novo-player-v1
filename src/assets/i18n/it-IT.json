@@ -230,7 +230,9 @@
     "exitfullscreen": "Esci schermo intero",
     "emulationspeed": "Velocità di emulazione",
     "restoredefault": "Ripristina predefinito",
-    "toggleall": "Attiva/disattiva tutto"
+    "cheats": "Trucchi",
+    "enableall": "Attiva tutto",
+    "disableall": "Disattiva tutto"
   },
   "help": {
     "uptodate": "Aggiornato",

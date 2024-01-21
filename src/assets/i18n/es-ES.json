@@ -230,7 +230,9 @@
     "exitfullscreen": "Salir de pantalla completa",
     "emulationspeed": "Velocidad de emulación",
     "restoredefault": "Restaurar valor predeterminado",
-    "toggleall": "Alternar todo"
+    "cheats": "Trampas",
+    "enableall": "Activar todo",
+    "disableall": "Desactivar todo"
   },
   "help": {
     "uptodate": "Actualizado",

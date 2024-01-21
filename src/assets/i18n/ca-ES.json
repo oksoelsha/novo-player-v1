@@ -230,7 +230,9 @@
     "exitfullscreen": "Surt de la pantalla completa",
     "emulationspeed": "Velocitat d'emulació",
     "restoredefault": "Restaura el valor predeterminat",
-    "toggleall": "Commuta-ho tot"
+    "cheats": "Cheat",
+    "enableall": "Habilita-ho tot",
+    "disableall": "Inhabilita-ho tot"
   },
   "help": {
     "uptodate": "Està actualitzat",

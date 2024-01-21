@@ -181,12 +181,12 @@ export class LaunchActivityService {
     });
   }
 
-  toggleAllCheats(pid: number, gameName: string) {
+  setAllCheats(pid: number, gameName: string, flag: boolean) {
     return new Promise<boolean>((resolve, reject) => {
-      this.ipc.once('toggleAllCheatsOnOpenmsxResponse' + pid, (event: any, success: boolean) => {
+      this.ipc.once('setAllCheatsOnOpenmsxResponse' + pid, (event: any, success: boolean) => {
         resolve(success);
       });
-      this.ipc.send('toggleAllCheatsOnOpenmsx', pid, gameName);
+      this.ipc.send('setAllCheatsOnOpenmsx', pid, gameName, flag);
     });
   }
 

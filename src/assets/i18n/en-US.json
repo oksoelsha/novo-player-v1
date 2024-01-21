@@ -230,7 +230,9 @@
     "exitfullscreen": "Exit full screen",
     "emulationspeed": "Emulation Speed",
     "restoredefault": "Restore default",
-    "toggleall": "Toggle all"
+    "cheats": "Cheats",
+    "enableall": "Enable all",
+    "disableall": "Disable all"
   },
   "help": {
     "uptodate": "Up to date",

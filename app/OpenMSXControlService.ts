@@ -56,8 +56,8 @@ export class OpenMSXControlService {
         ipcMain.on('setCheatOnOpenmsx', (event, pid: number, gameName: string, cheat: string) => {
             this.setCheatOnOpenmsx(pid, gameName, cheat);
         });
-        ipcMain.on('toggleAllCheatsOnOpenmsx', (event, pid: number, gameName: string) => {
-            this.toggleAllCheatsOnOpenmsx(pid, gameName);
+        ipcMain.on('setAllCheatsOnOpenmsx', (event, pid: number, gameName: string, flag: boolean) => {
+            this.setAllCheatsOnOpenmsx(pid, gameName, flag);
         });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
@@ -170,9 +170,9 @@ export class OpenMSXControlService {
                     }
                     if (cheats.length > 1 && gameNameBeforeModification) {
                         this.modifiedGameNamesForTrainer.set(gameNameBeforeModification, gameName);
-                    }    
+                    }
                 }
-                this.win.webContents.send('getTrainerFromOpenmsxResponse' + pid, result.success, cheats);    
+                this.win.webContents.send('getTrainerFromOpenmsxResponse' + pid, result.success, cheats);
             }
         });
     }
@@ -184,10 +184,21 @@ export class OpenMSXControlService {
         });
     }
 
-    private async toggleAllCheatsOnOpenmsx(pid: number, gameName: string) {
+    private async setAllCheatsOnOpenmsx(pid: number, gameName: string, flag: boolean) {
         const gameNameToUse = this.getModifiedGameNameIfNeeded(gameName);
-        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameNameToUse + '" all').then(result => {
-            this.win.webContents.send('toggleAllCheatsOnOpenmsxResponse' + pid, result.success);
+        this.executeCommandOnOpenmsx(pid, 'trainer "' + gameNameToUse + '"').then(result => {
+            if (result.success) {
+                const trainer = result.content.split(' [');
+                let cheats: string[] = [];
+                for (let ix = 1; ix < trainer.length; ix++) {
+                    if (trainer[ix].startsWith('x') !== flag) {
+                        cheats.push('"' + trainer[ix].split('&#x0a;')[0].substring(3) + '"');
+                    }
+                }
+                this.executeCommandOnOpenmsx(pid, 'trainer "' + gameNameToUse + '" ' + cheats.join(' ')).then(result => {
+                    this.win.webContents.send('setAllCheatsOnOpenmsxResponse' + pid, result.success);
+                });
+            }
         });
     }
 
