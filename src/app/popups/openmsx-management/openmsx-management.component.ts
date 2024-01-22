@@ -29,7 +29,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
   private eventInputValue: OpenmsxEvent;
 
-  powerLed: boolean;
   capsLed: boolean;
   langLed: boolean;
   turboLed: boolean;
@@ -64,7 +63,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     setTimeout(() => {
       const currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
       if (currentStatus) {
-        this.powerLed = currentStatus.get('power') === 'on';
         this.capsLed = currentStatus.get('caps') === 'on';
         this.langLed = currentStatus.get('kana') === 'on';
         this.turboLed = currentStatus.get('turbo') === 'on';
@@ -74,7 +72,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
         this.initSpeedValue(currentStatus);
       } else {
-        this.powerLed = false;
         this.capsLed = false;
         this.langLed = false;
         this.turboLed = false;
@@ -135,9 +132,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   private processEvents() {
     if (this.eventInputValue && this.pid === this.eventInputValue.pid) {
-      if (this.eventInputValue.name === 'power') {
-        this.powerLed = this.eventInputValue.value === 'on';
-      } else if (this.eventInputValue.name === 'caps') {
+      if (this.eventInputValue.name === 'caps') {
         this.capsLed = this.eventInputValue.value === 'on';
       } else if (this.eventInputValue.name === 'kana') {
         this.langLed = this.eventInputValue.value === 'on';
