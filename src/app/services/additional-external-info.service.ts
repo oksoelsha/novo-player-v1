@@ -115,6 +115,7 @@ export class AdditionalExternalInfoService {
     [1318, 'Intruder: Sakura Yashiki no Tansaku'],
     [1324, 'Master of Monsters'],
     [1331, 'Schwarzschild: Kyōran no Ginga'],
+    [1367, 'Aleste Gaiden'],
     [1386, 'Xak II: Rising of The Redmoon'],
     [1387, 'Dragon Slayer: The Legend of Heroes'],
     [1544, 'Illusion City - Gen\'ei Toshi'],
