@@ -42,6 +42,11 @@
     After that you can start adding games to the player. You can create new listings and populate them with games by clicking
     on the + button, or you can drag and drop files and folders on top of the currently selected listing.
     <p></p>
+    User data and settings are saved in default folders based on the platform ("%userprofile%\Documents\Novo Player" on Windows
+    and "~/.Novo Player" on Linux). To make Novo Player use a local folder for storage, create a text file named "portable.txt"
+    in the same folder as application binary. Novo Player will then create a folder named "portable" in the same folder and use
+    that for storage.
+    <p></p>
     Uniqueness in the player is determined by the SHA1 code of the game file. This means that a specific game file can only be
     added once to the player no matter what the listing is. In the previous blueMSX and openMSX launchers, uniqueness was based
     on the game name within the same database.
@@ -113,6 +118,11 @@
       </tbody>
     </table>
     Typing the first few letters of a game name quickly while on the listing page will take you to the first matched game.
+    <p></p>
+    After launching games on openMSX, you can connect to the openMSX process in the dashboard to perform operations such as
+    session management (reset, mute/unmute, pause, fullscreen and emulation speed), taking screenshots that can then be viewed
+    on the listing page, save and load states, type text, enter passwords (using a built-in database of known game passwords) and
+    enable cheats (using openMSX's trainer feature).
     <p></p>
     To be able to view which platforms the selected game was released on, and to view its box art and additional screenshots,
     you'll need to get an API key from the
