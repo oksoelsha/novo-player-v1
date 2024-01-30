@@ -1,12 +1,12 @@
-import * as path from 'path'
-import * as fs from 'fs'
+import * as path from 'path';
+import * as fs from 'fs';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentData } from '../src/app/models/environment-data';
 import { VersionUtils } from '../src/app/models/version-utils';
 
 export class EnvironmentService {
 
-    private readonly APPLICATION_VERSION = '1.8';
+    private readonly APPLICATION_VERSION = '1.9';
     private readonly environmentFile = path.join(PersistenceUtils.getStoragePath(), 'environment');
     private readonly environmentData: EnvironmentData;
 
