@@ -48,7 +48,9 @@ export class PersistenceUtils {
                 binaryPath = process.env.PORTABLE_EXECUTABLE_DIR;
             } else if (PlatformUtils.isLinux()) {
                 defaultStoragePath = path.join(os.homedir(), '.Novo Player');
-                binaryPath = path.dirname(process.env.APPIMAGE);
+                if (process.env.APPIMAGE) {
+                    binaryPath = path.dirname(process.env.APPIMAGE);
+                }
             } else if (PlatformUtils.isMacOS()) {
                 defaultStoragePath = path.join(os.homedir(), 'Library/Application Support/Novo Player');
             } else {
