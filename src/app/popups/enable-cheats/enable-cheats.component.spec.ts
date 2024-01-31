@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EnableCheatsComponent } from './enable-cheats.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('EnableCheatsComponent', () => {
   let component: EnableCheatsComponent;
@@ -8,6 +9,7 @@ describe('EnableCheatsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ EnableCheatsComponent ]
     })
     .compileComponents();
