@@ -10,24 +10,8 @@ import { LocalizationService } from '../../services/localization.service';
 })
 export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  readonly pauseLabel: string;
-  readonly unpauseLabel: string;
-  readonly muteLabel: string;
-  readonly unmuteLabel: string;
-  readonly fullscreenLabel: string;
-  readonly windowLabel: string;
-  readonly defaultSpeed = 100;
-
   @Input() popupId: string;
   @Input() pid: number;
-  @Input()
-  get event(): OpenmsxEvent { return this.eventInputValue; }
-  set event(value: OpenmsxEvent) {
-    this.eventInputValue = value;
-    this.processEvents();
-  }
-  private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
-  private eventInputValue: OpenmsxEvent;
 
   capsLed: boolean;
   langLed: boolean;
@@ -38,6 +22,24 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   fullscreenIndicator: boolean;
   speed: number;
   speedDisable: boolean;
+
+  readonly pauseLabel: string;
+  readonly unpauseLabel: string;
+  readonly muteLabel: string;
+  readonly unmuteLabel: string;
+  readonly fullscreenLabel: string;
+  readonly windowLabel: string;
+  readonly defaultSpeed = 100;
+
+  private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
+  private eventInputValue: OpenmsxEvent;
+
+  @Input()
+  get event(): OpenmsxEvent { return this.eventInputValue; }
+  set event(value: OpenmsxEvent) {
+    this.eventInputValue = value;
+    this.processEvents();
+  }
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService) {

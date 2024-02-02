@@ -166,7 +166,7 @@ export class LaunchActivityService {
           resolve(trainersList);
         });
         this.ipc.send('getTrainerFromOpenmsx', pid, gameName);
-      });  
+      });
     } else {
       return Promise.resolve([]);
     }
