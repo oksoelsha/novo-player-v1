@@ -67,6 +67,7 @@ import { TypeTextComponent } from './popups/type-text/type-text.component';
 import { PickPasswordComponent } from './popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
 import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.component';
+import { MoreDetailsComponent } from './popups/more-details/more-details.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -121,6 +122,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     AdditionalExternalInfoComponent,
     VersionMatchIndicatorComponent,
     FieldWithSuggestionsComponent,
+    MoreDetailsComponent,
     DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,

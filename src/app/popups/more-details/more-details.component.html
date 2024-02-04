@@ -1,0 +1,28 @@
+<table>
+    <tr>
+        <td class="field">CRC-32</td>
+        <td class="value">
+            <div *ngIf="crc32">
+                {{ crc32 }}
+                <img src="assets/images/general/copy.png" class="copy" draggable="false" (click)="copy(crc32)"
+                    [title]="'home.copy' | translate" [ngbPopover]="'home.copied' | translate" placement="bottom" />    
+            </div>
+            <div *ngIf="!crc32">
+                <img src="assets/images/general/loading.gif">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="field">MD5</td>
+        <td class="value">
+            <div *ngIf="md5">
+                {{ md5 }}
+                <img src="assets/images/general/copy.png" class="copy" draggable="false" (click)="copy(md5)"
+                    [title]="'home.copy' | translate" [ngbPopover]="'home.copied' | translate" placement="bottom" />
+            </div>
+            <div *ngIf="!md5">
+                <img src="assets/images/general/loading.gif">
+            </div>
+        </td>
+    </tr>
+</table>

@@ -329,6 +329,9 @@
         </div>
         <div id="game-details">
           <app-home-game-details [selectedGame]="selectedGame"></app-home-game-details>
+          <div class="pt-1"><a href="#" (click)="showMoreDetails(selectedGame)" draggable="false">
+            {{ 'home.more' | translate }}...
+          </a></div>
         </div>
       </div>
     </div>
@@ -464,6 +467,15 @@
   <ng-template let-popupId="popupId">
     <app-manage-backups [popupId]="popupId" (openStatus)="popupOpen = $event" (dataRestored)="reloadAfterRestore()"
       #manageBackups></app-manage-backups>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="more-details-id" [titleHeader]="('home.moredetails' | translate) + ' - ' + selectedGame?.name"
+  (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-more-details [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
+      #moreDetails>
+    </app-more-details>
   </ng-template>
 </app-popup>
 

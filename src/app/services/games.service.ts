@@ -309,4 +309,13 @@ export class GamesService {
       this.ipc.send('getGamePasswords', game.generationMSXId);
     });
   }
+
+  async getMoreGameHashes(game: Game): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.ipc.once('getMoreGameHashesResponse', (event, hashes: any) => {
+        resolve(hashes);
+      });
+      this.ipc.send('getMoreGameHashes', game);
+    });
+  }
 }

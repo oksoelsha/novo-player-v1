@@ -95,7 +95,9 @@
     "quicklaunch": "Быстрый запуск",
     "notyetadded": "Еще не добавлено",
     "news": "Новости MSX",
-    "waitingfornews": "Жду новостей"
+    "waitingfornews": "Жду новостей",
+    "more": "Более",
+    "moredetails": "Более подробная информация"
   },
   "language": {
     "en-US": "Английский",

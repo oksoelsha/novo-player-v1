@@ -1,17 +1,23 @@
+import crc32 from 'crc/crc32';
+import md5File from 'md5-file';
 import * as crypto from 'crypto';
+import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
-import { Stream } from 'stream';
-import { FileTypeUtils } from './utils/FileTypeUtils';
 import pLimit from 'p-limit';
+import { Stream } from 'stream';
+import { Game } from '../src/app/models/game';
+import { FileTypeUtils } from './utils/FileTypeUtils';
+import { GameUtils } from './utils/GameUtils';
 
 export class HashService {
 
     private smallFileScanBatchSize: any;
     private largeFileScanBatchSize: any;
 
-    constructor() {
+    constructor(private win: BrowserWindow) {
         this.smallFileScanBatchSize = pLimit(50);
         this.largeFileScanBatchSize = pLimit(1);
+        this.init();
      }
 
     getSha1Code(filename: string): Promise<any> {
@@ -24,6 +30,12 @@ export class HashService {
         }
 
         return sha1;
+    }
+
+    private init() {
+        ipcMain.on('getMoreGameHashes', (event, game: Game) => {
+            this.getMoreGameHashes(game);
+        });
     }
 
     private getSha1(filename: string): Promise<any> {
@@ -80,5 +92,12 @@ export class HashService {
         }
 
         return index;
+    }
+
+    private getMoreGameHashes(game: Game) {
+        const mainFilename = GameUtils.getGameMainFile(game);
+        const crc32Hash = crc32(fs.readFileSync(mainFilename)).toString(16);
+        const md5Hash = md5File.sync(mainFilename);
+        this.win.webContents.send('getMoreGameHashesResponse', { crc32: crc32Hash, md5: md5Hash });
     }
 }

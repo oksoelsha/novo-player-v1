@@ -10,6 +10,7 @@ import { ExtraData, ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
+import { GameUtils } from './utils/GameUtils';
 
 export class GamesService {
 
@@ -254,7 +255,7 @@ export class GamesService {
     private updateGame(oldGame: Game, newGame: Game) {
         const self = this;
         const gameDO = new GameDO(newGame);
-        const gameMainFile = this.getGameMainFile(newGame);
+        const gameMainFile = GameUtils.getGameMainFile(newGame);
         if (fs.existsSync(gameMainFile)) {
             this.hashService.getSha1Code(gameMainFile).then(data => {
                 if (data._id === oldGame.sha1Code) {

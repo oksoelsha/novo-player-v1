@@ -95,7 +95,9 @@
     "quicklaunch": "빠른 실행",
     "notyetadded": "아직 추가되지 않았습니다",
     "news": "MSX 뉴스",
-    "waitingfornews": "소식을 기다리는 중"
+    "waitingfornews": "소식을 기다리는 중",
+    "more": "더",
+    "moredetails": "추가 정보"
   },
   "language": {
     "en-US": "영어",

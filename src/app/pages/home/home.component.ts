@@ -39,6 +39,7 @@ import { ManageBackupsComponent } from '../../popups/manage-backups/manage-backu
 import { NewsItem } from '../../models/news-collection';
 import { MsxnewsService } from '../../services/msxnews.service';
 import { FiltersComponent } from './filters/filters.component';
+import { MoreDetailsComponent } from '../../popups/more-details/more-details.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -82,6 +83,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
   @ViewChild('filtersComponent') filtersComponent: FiltersComponent;
+  @ViewChild('moreDetails') moreDetails: MoreDetailsComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
   readonly webmsxMachines = WebMSXMachinesData;
@@ -812,6 +814,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       return filename.substring(separaterIndex + 1);
     }
+  }
+
+  showMoreDetails(game: Game) {
+    this.moreDetails.open();
   }
 
   setWebmsxMachine(machine: number) {

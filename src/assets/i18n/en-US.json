@@ -95,7 +95,9 @@
     "quicklaunch": "Quick Launch",
     "notyetadded": "Not yet added",
     "news": "MSX News",
-    "waitingfornews": "Waiting for the news"
+    "waitingfornews": "Waiting for the news",
+    "more": "More",
+    "moredetails": "More details"
   },
   "language": {
     "en-US": "English",

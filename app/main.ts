@@ -61,7 +61,7 @@ function initializeServices() {
 
   const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
 
-  const hashService = new HashService();
+  const hashService = new HashService(win);
 
   const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService);
 
