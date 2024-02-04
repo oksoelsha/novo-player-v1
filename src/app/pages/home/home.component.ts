@@ -287,8 +287,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.dragArea.nativeElement.classList.remove('drag-over');
       const files = event.dataTransfer.files;
       if (files.length > 0) {
-        this.draggedFilesAndFolders = Array.from(files).map(f => f.path);
-        this.scanParameters.open();
+        this.draggedFilesAndFolders = Array.from(files).map(f => f.path).filter(f => f !== '');
+        if (this.draggedFilesAndFolders.length > 0) {
+          this.scanParameters.open();
+        }
       }
     }
   }
