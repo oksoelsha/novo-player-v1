@@ -99,6 +99,10 @@
     "more": "더",
     "moredetails": "추가 정보"
   },
+  "moredetails": {
+    "lastplayed": "마지막 플레이",
+    "notplayed": "최근에 재생되지 않음"
+  },
   "language": {
     "en-US": "영어",
     "ca-ES": "카탈로니아어",

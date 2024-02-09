@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import { Event } from '../models/event';
 import { Observable, Subject } from 'rxjs';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,15 @@ export class EventsService {
         resolve(errorsData);
       });
       this.ipc.send('getErrors', pageSize, currentPage);
+    });
+  }
+
+  async getLastPlayedTime(game: Game): Promise<Event> {
+    return new Promise<Event>((resolve, reject) => {
+      this.ipc.once('getLastPlayedTimeResponse', (event, loggedEvent: Event) => {
+        resolve(loggedEvent);
+      });
+      this.ipc.send('getLastPlayedTime', game);
     });
   }
 

@@ -99,6 +99,10 @@
     "more": "もっと",
     "moredetails": "さらなるデータ"
   },
+  "moredetails": {
+    "lastplayed": "最後のプレイ",
+    "notplayed": "最近プレイしていない"
+  },
   "language": {
     "en-US": "英語",
     "ca-ES": "カタルニア語",

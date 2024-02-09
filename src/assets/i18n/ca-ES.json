@@ -99,6 +99,10 @@
     "more": "Més",
     "moredetails": "Més detalls"
   },
+  "moredetails": {
+    "lastplayed": "Últim jugat",
+    "notplayed": "No s'ha jugat recentment"
+  },
   "language": {
     "en-US": "Anglès",
     "ca-ES": "Català",

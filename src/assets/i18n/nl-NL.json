@@ -99,6 +99,10 @@
     "more": "Meer",
     "moredetails": "Meer details"
   },
+  "moredetails": {
+    "lastplayed": "Laatste lancering",
+    "notplayed": "Recentelijk niet gespeeld"
+  },
   "language": {
     "en-US": "Engels",
     "ca-ES": "Catalaans",

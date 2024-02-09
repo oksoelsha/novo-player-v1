@@ -99,6 +99,10 @@
     "more": "More",
     "moredetails": "More details"
   },
+  "moredetails": {
+    "lastplayed": "Last played",
+    "notplayed": "Not played recently"
+  },
   "language": {
     "en-US": "English",
     "ca-ES": "Catalan",

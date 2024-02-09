@@ -84,6 +84,7 @@ describe('GameUtils', () => {
     game.setListing('listing');
     expect(GameUtils.getMonikor(game).name).toEqual('name');
     expect(GameUtils.getMonikor(game).listing).toEqual('listing');
+    expect(GameUtils.getMonikor(game).sha1).toEqual('123abc');
   });
 });
 

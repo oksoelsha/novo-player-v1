@@ -68,7 +68,7 @@ export class GameUtils {
     }
 
     static getMonikor(game: Game): any {
-        return {name: game.name, listing: game.listing};
+        return {name: game.name, listing: game.listing, sha1: game.sha1Code};
     }
 
     static getGenerationMSXURLForGame(generationMSXId: number) {
