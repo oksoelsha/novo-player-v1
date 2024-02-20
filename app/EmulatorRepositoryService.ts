@@ -33,32 +33,35 @@ export class EmulatorRepositoryService implements UpdateListerner {
         this.knownDumps = new Map<RepositorySoftwareData, number>();
         const softwaredbFilenames: string[] = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
+            PlatformUtils.getOpenmsxSoftwareDb(PlatformUtils.getOpenmsxDataFolder()),
             path.join(__dirname, 'extra/msxdskdb.xml'),
             path.join(__dirname, 'extra/msxcaswavdb.xml'),
             path.join(__dirname, 'extra/segadb.xml')
         ];
         const parser = new XMLParser();
-        /*
-        const options = {
-            parseTrueNumberOnly: true,
-            tagValueProcessor: (val: any, tagName: any) => val.replace(/&amp;/g, '&').replace(/&#34;/g, '"').replace(/&#38;/g, '&').replace(/&#39;/g, "'")
-        }
-        */
         for(const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
                 fs.readFile(softwaredbFilename, function (err, data) {
                     const result = parser.parse(data.toString());
-                    for (const s in result.softwaredb.software) {
-                        const software = result.softwaredb.software;
-                        const softwareData = new RepositorySoftwareData(software[s].title, software[s].system,
-                            software[s].company, software[s].year, software[s].country);
-                        if (Object.prototype.toString.call(software[s].dump) === '[object Array]') {
-                            for (const y in software[s].dump) {
-                                self.processDump(softwareData, software[s].dump[y]);
-                            }
+                    if (result.softwaredb && result.softwaredb.software) {
+                        let softwares: any;
+                        if (Array.isArray(result.softwaredb.software)) {
+                            softwares = result.softwaredb.software;
                         } else {
-                            self.processDump(softwareData, software[s].dump);
+                            softwares = [ result.softwaredb.software ];
                         }
+                        for (const s in softwares) {
+                            const software = softwares;
+                            const softwareData = new RepositorySoftwareData(software[s].title, software[s].system,
+                                software[s].company, software[s].year, software[s].country);
+                            if (Object.prototype.toString.call(software[s].dump) === '[object Array]') {
+                                for (const y in software[s].dump) {
+                                    self.processDump(softwareData, software[s].dump[y]);
+                                }
+                            } else {
+                                self.processDump(softwareData, software[s].dump);
+                            }
+                        }    
                     }
                 });
             }
@@ -66,67 +69,69 @@ export class EmulatorRepositoryService implements UpdateListerner {
     }
 
     private processDump(softwareData: RepositorySoftwareData, dump: any): void {
-        if (dump.hasOwnProperty('rom')) {
-            const repositoryData = new RepositoryData(softwareData);
+        if (dump) {
+            if (dump.hasOwnProperty('rom')) {
+                const repositoryData = new RepositoryData(softwareData);
 
-            if (dump.hasOwnProperty('original')) {
-                repositoryData.setDump(dump.original);
+                if (dump.hasOwnProperty('original')) {
+                    repositoryData.setDump(dump.original);
+                }
+
+                if (dump.rom.hasOwnProperty('type')) {
+                    repositoryData.setMapper(dump.rom.type);
+                } else {
+                    repositoryData.setMapper('Mirrored ROM');
+                }
+
+                if (dump.rom.hasOwnProperty('start')) {
+                    repositoryData.setStart(dump.rom.start);
+                }
+
+                if (dump.rom.hasOwnProperty('remark')) {
+                    repositoryData.setRemark(dump.rom.remark);
+                }
+
+                this.updateMaps(dump.rom.hash, repositoryData);
             }
+            if (dump.hasOwnProperty('megarom')) {
+                const repositoryData = new RepositoryData(softwareData);
 
-            if (dump.rom.hasOwnProperty('type')) {
-                repositoryData.setMapper(dump.rom.type);
-            } else {
-                repositoryData.setMapper('Mirrored ROM');
+                if (dump.hasOwnProperty('original')) {
+                    repositoryData.setDump(dump.original);
+                }
+
+                repositoryData.setMapper(dump.megarom.type);
+
+                if (dump.megarom.hasOwnProperty('remark')) {
+                    repositoryData.setRemark(dump.megarom.remark);
+                }
+
+                this.updateMaps(dump.megarom.hash, repositoryData);
             }
+            if (dump.hasOwnProperty('dsk')) {
+                const repositoryData = new RepositoryData(softwareData);
 
-            if (dump.rom.hasOwnProperty('start')) {
-                repositoryData.setStart(dump.rom.start);
+                if (dump.dsk.hasOwnProperty('remark')) {
+                    repositoryData.setRemark(dump.dsk.remark.text);
+                }
+
+                this.updateMaps(dump.dsk.format.hash, repositoryData);
             }
+            if (dump.hasOwnProperty('cas')) {
+                const repositoryData = new RepositoryData(softwareData);
 
-            if (dump.rom.hasOwnProperty('remark')) {
-                repositoryData.setRemark(dump.rom.remark);
-            }
+                if (dump.cas.hasOwnProperty('remark')) {
+                    repositoryData.setRemark(dump.cas.remark.text);
+                }
 
-            this.updateMaps(dump.rom.hash, repositoryData);
-        }
-        if (dump.hasOwnProperty('megarom')) {
-            const repositoryData = new RepositoryData(softwareData);
+                if (dump.cas.hasOwnProperty('start')) {
+                    repositoryData.setStart(dump.cas.start.text);
+                }
 
-            if (dump.hasOwnProperty('original')) {
-                repositoryData.setDump(dump.original);
-            }
-
-            repositoryData.setMapper(dump.megarom.type);
-
-            if (dump.megarom.hasOwnProperty('remark')) {
-                repositoryData.setRemark(dump.megarom.remark);
-            }
-
-            this.updateMaps(dump.megarom.hash, repositoryData);
-        }
-        if (dump.hasOwnProperty('dsk')) {
-            const repositoryData = new RepositoryData(softwareData);
-
-            if (dump.dsk.hasOwnProperty('remark')) {
-                repositoryData.setRemark(dump.dsk.remark.text);
-            }
-
-            this.updateMaps(dump.dsk.format.hash, repositoryData);
-        }
-        if (dump.hasOwnProperty('cas')) {
-            const repositoryData = new RepositoryData(softwareData);
-
-            if (dump.cas.hasOwnProperty('remark')) {
-                repositoryData.setRemark(dump.cas.remark.text);
-            }
-
-            if (dump.cas.hasOwnProperty('start')) {
-                repositoryData.setStart(dump.cas.start.text);
-            }
-
-            for (const f in dump.cas.format) {
-                this.updateMaps(dump.cas.format[f].hash, repositoryData);
-            }
+                for (const f in dump.cas.format) {
+                    this.updateMaps(dump.cas.format[f].hash, repositoryData);
+                }
+            }    
         }
     }
 
@@ -143,11 +148,11 @@ export class EmulatorRepositoryService implements UpdateListerner {
 }
 
 class RepositorySoftwareData {
-    title: string;
-    system: string;
-    company: string;
-    year: string;
-    country: string;
+    readonly title: string;
+    readonly system: string;
+    readonly company: string;
+    readonly year: string;
+    readonly country: string;
 
     constructor(title: string, system: string, company: string, year: string, country: string) {
         this.title = title;
@@ -159,7 +164,7 @@ class RepositorySoftwareData {
 }
 
 export class RepositoryData {
-    softwareData: RepositorySoftwareData;
+    readonly softwareData: RepositorySoftwareData;
 
     dump: string;
     mapper: string;
