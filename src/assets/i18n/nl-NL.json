@@ -96,12 +96,10 @@
     "notyetadded": "Nog niet toegevoegd",
     "news": "MSX Nieuws",
     "waitingfornews": "Wachtend op nieuws",
+    "lastplayed": "Laatste lancering",
+    "notplayed": "Recentelijk niet gespeeld",
     "more": "Meer",
     "moredetails": "Meer details"
-  },
-  "moredetails": {
-    "lastplayed": "Laatste lancering",
-    "notplayed": "Recentelijk niet gespeeld"
   },
   "language": {
     "en-US": "Engels",

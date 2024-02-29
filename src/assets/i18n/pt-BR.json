@@ -96,12 +96,10 @@
     "notyetadded": "Ainda não adicionado",
     "news": "Notícias do MSX",
     "waitingfornews": "À espera de notícias",
+    "lastplayed": "Última jogada",
+    "notplayed": "Não jogado recentemente",
     "more": "Mais",
     "moredetails": "Mais detalhes"
-  },
-  "moredetails": {
-    "lastplayed": "Última jogada",
-    "notplayed": "Não jogado recentemente"
   },
   "language": {
     "en-US": "Inglês",

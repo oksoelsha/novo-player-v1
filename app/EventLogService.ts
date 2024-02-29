@@ -12,6 +12,7 @@ export class EventLogService {
     private database: Datastore;
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'events');
     private readonly MAXIMUM_LOG_ENTRIES = 600;
+    private readonly lastEventMap: Map<string, Event> = new Map();
 
     constructor(private win: BrowserWindow) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
@@ -31,6 +32,7 @@ export class EventLogService {
                 });
             }
             self.database.insert(eventDO, (err: any, savedEvent: EventDO) => {
+                this.lastEventMap.set(userEvent.data.sha1, userEvent);
             });
         });
     }
@@ -67,13 +69,18 @@ export class EventLogService {
     }
 
     private getLastPlayedTime(game: Game) {
-        this.database.find({ 'data.sha1': game.sha1Code }).sort({ timestamp: -1 }).exec((err: any, entries: any) => {
-            if (entries.length > 0) {
-                const event = new Event(entries[0].source, entries[0].type, entries[0].data, entries[0].timestamp);
-                this.win.webContents.send('getLastPlayedTimeResponse', event);
-            } else {
-                this.win.webContents.send('getLastPlayedTimeResponse', null);
-            }
-        });
+        if (this.lastEventMap.get(game.sha1Code)) {
+            this.win.webContents.send('getLastPlayedTimeResponse', this.lastEventMap.get(game.sha1Code));
+        } else {
+            this.database.find({ 'data.sha1': game.sha1Code }).sort({ timestamp: -1 }).exec((err: any, entries: any) => {
+                if (entries.length > 0) {
+                    const event = new Event(entries[0].source, entries[0].type, entries[0].data, entries[0].timestamp);
+                    this.lastEventMap.set(game.sha1Code, event);
+                    this.win.webContents.send('getLastPlayedTimeResponse', event);
+                } else {
+                    this.win.webContents.send('getLastPlayedTimeResponse', null);
+                }
+            });    
+        }
     }
 }

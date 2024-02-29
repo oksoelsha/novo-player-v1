@@ -96,12 +96,10 @@
     "notyetadded": "Not yet added",
     "news": "MSX News",
     "waitingfornews": "Waiting for the news",
+    "lastplayed": "Last played",
+    "notplayed": "Not played recently",
     "more": "More",
     "moredetails": "More details"
-  },
-  "moredetails": {
-    "lastplayed": "Last played",
-    "notplayed": "Not played recently"
   },
   "language": {
     "en-US": "English",

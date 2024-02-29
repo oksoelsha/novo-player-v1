@@ -96,12 +96,10 @@
     "notyetadded": "Encara no s'ha afegit",
     "news": "Notícies de MSX",
     "waitingfornews": "Esperant les notícies",
+    "lastplayed": "Últim jugat",
+    "notplayed": "No s'ha jugat recentment",
     "more": "Més",
     "moredetails": "Més detalls"
-  },
-  "moredetails": {
-    "lastplayed": "Últim jugat",
-    "notplayed": "No s'ha jugat recentment"
   },
   "language": {
     "en-US": "Anglès",

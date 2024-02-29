@@ -96,12 +96,10 @@
     "notyetadded": "Еще не добавлено",
     "news": "Новости MSX",
     "waitingfornews": "Жду новостей",
+    "lastplayed": "Последний запуск",
+    "notplayed": "Недавно не играл",
     "more": "Более",
     "moredetails": "Более подробная информация"
-  },
-  "moredetails": {
-    "lastplayed": "Последний запуск",
-    "notplayed": "Недавно не играл"
   },
   "language": {
     "en-US": "Английский",

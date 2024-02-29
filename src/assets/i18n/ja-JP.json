@@ -96,12 +96,10 @@
     "notyetadded": "まだ追加されていません",
     "news": "MSXニュース",
     "waitingfornews": "ニュースを待っています",
+    "lastplayed": "最後のプレイ",
+    "notplayed": "最近プレイしていない",
     "more": "もっと",
     "moredetails": "さらなるデータ"
-  },
-  "moredetails": {
-    "lastplayed": "最後のプレイ",
-    "notplayed": "最近プレイしていない"
   },
   "language": {
     "en-US": "英語",

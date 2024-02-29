@@ -5,6 +5,8 @@ import { GameUtils } from '../../../models/game-utils';
 import { GamesService } from '../../../services/games.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { FilesService } from '../../../services/files.service';
+import { EventsService } from '../../../services/events.service';
+import { Event, EventSource } from '../../../models/event';
 
 @Component({
   selector: 'app-home-game-details',
@@ -29,6 +31,7 @@ export class GameDetailsComponent implements OnChanges {
 
   selectedGameMedium: string;
   selectedMediumGroupTotal: string;
+  lastPlayed: string;
 
   readonly countryFlags: Map<string, string> = new Map([
     ['AU', 'AU'],
@@ -83,12 +86,13 @@ export class GameDetailsComponent implements OnChanges {
   private readonly fileFields: string[] = ['romA', 'romB', 'diskA', 'diskB', 'tape', 'harddisk', 'laserdisc'];
 
   constructor(private gamesService: GamesService, private localizationService: LocalizationService, private clipboard: Clipboard,
-    private filesService: FilesService, private changeDetector: ChangeDetectorRef) { }
+    private filesService: FilesService, private eventsService: EventsService, private changeDetector: ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedGame.isFirstChange() ||
       changes.selectedGame.currentValue.sha1Code !== changes.selectedGame.previousValue.sha1Code) {
       this.setSelectedGameMedium();
+      this.setLastPlayed();
     }
   }
 
@@ -221,6 +225,17 @@ export class GameDetailsComponent implements OnChanges {
         this.selectedMediumGroupTotal = group.length + 'x';
         this.changeDetector.detectChanges();
       }
+    });
+  }
+
+  private setLastPlayed() {
+    this.eventsService.getLastPlayedTime(this.selectedGame).then((event: Event) => {
+      if (event) {
+        this.lastPlayed = new Date(event.timestamp).toLocaleString() + ' [' + EventSource[event.source] + ']';
+      } else {
+        this.lastPlayed = this.localizationService.translate('home.notplayed');
+      }
+      this.changeDetector.detectChanges();
     });
   }
 }
