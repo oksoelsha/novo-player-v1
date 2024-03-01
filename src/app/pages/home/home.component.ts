@@ -358,7 +358,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     opened ? this.openMenuEventCounter++ : this.openMenuEventCounter--;
     if (!opened) {
       setTimeout(() => {
-        this.gamesTableData.nativeElement.focus();
+        if (!this.gamesTableData.nativeElement.contains(document.activeElement)) {
+          this.gamesTableData.nativeElement.focus();
+        }
       }, 0);
     }
   }
@@ -816,10 +818,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       return filename.substring(separaterIndex + 1);
     }
-  }
-
-  showMoreDetails(game: Game) {
-    this.moreDetails.open();
   }
 
   setWebmsxMachine(machine: number) {
