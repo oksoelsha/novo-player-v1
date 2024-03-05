@@ -150,7 +150,7 @@
             <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">
               <td class="name">
                 <input id="gameNameEditInput" #gameNameEditInput type="text" spellcheck="false"
-                  [(ngModel)]="editedGameName" (keyup.enter)="processNewGameName($event)"
+                  [(ngModel)]="editedGameName" (keydown.enter)="processNewGameName($event)"
                   (keyup.escape)="cancelEditMode()" (focusout)="cancelEditMode()" />
               </td>
             </ng-container>

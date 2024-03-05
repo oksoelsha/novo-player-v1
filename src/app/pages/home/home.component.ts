@@ -176,7 +176,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:keyup', ['$event'])
-  keyupEvent(event: KeyboardEvent) {
+  keyupEvent(event: any) {
     if (this.canHandleEvents()) {
       if (this.selectedGame != null) {
         if (event.key === 'ArrowUp') {
@@ -197,8 +197,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:keydown', ['$event'])
-  keydownEvent(event: KeyboardEvent) {
-    if (this.canHandleEvents()) {
+  keydownEvent(event: any) {
+    if (this.canHandleEvents() && !event.repeat) {
       if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
         event.stopPropagation();
         event.preventDefault();
