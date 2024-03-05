@@ -1,4 +1,4 @@
-import crc32 from 'crc/calculators/crc32';
+import crc32 from 'crc/crc32';
 import md5File from 'md5-file';
 import * as crypto from 'crypto';
 import { BrowserWindow, ipcMain } from 'electron';
