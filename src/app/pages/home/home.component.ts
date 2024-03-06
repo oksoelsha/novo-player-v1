@@ -76,12 +76,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
   @ViewChild('manageBackups') manageBackups: ManageBackupsComponent;
-  @ViewChild(ContextMenuComponent) public rightClickMenu: ContextMenuComponent;
-  @ViewChild('gamesTableData', { static: true }) private gamesTableData: ElementRef;
-  @ViewChild('gameNameEditInput', { static: false }) private gameNameEdit: ElementRef;
-  @ViewChild('favoritesDropdownButton', { static: true }) private favoritesDropdownButton: ElementRef;
-  @ViewChild('searchDropdown', { static: true }) private searchDropdown: NgbDropdown;
-  @ViewChild('dragArea', { static: false }) private dragArea: ElementRef;
+  @ViewChild(ContextMenuComponent) rightClickMenu: ContextMenuComponent;
+  @ViewChild('gamesTableData', { static: true }) gamesTableData: ElementRef;
+  @ViewChild('gameNameEditInput', { static: false }) gameNameEdit: ElementRef;
+  @ViewChild('favoritesDropdownButton', { static: true }) favoritesDropdownButton: ElementRef;
+  @ViewChild('searchDropdown', { static: true }) searchDropdown: NgbDropdown;
+  @ViewChild('dragArea', { static: false }) dragArea: ElementRef;
   @ViewChild('filtersComponent') filtersComponent: FiltersComponent;
   @ViewChild('moreDetails') moreDetails: MoreDetailsComponent;
 
