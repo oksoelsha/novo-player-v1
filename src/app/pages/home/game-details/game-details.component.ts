@@ -7,6 +7,7 @@ import { LocalizationService } from '../../../services/localization.service';
 import { FilesService } from '../../../services/files.service';
 import { EventsService } from '../../../services/events.service';
 import { Event, EventSource } from '../../../models/event';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-game-details',
@@ -84,9 +85,18 @@ export class GameDetailsComponent implements OnChanges {
     { name: this.localizationService.translate('home.infoFile'), value: 'infoFile', blockName: 'gameDetailInfoFile' },
   ];
   private readonly fileFields: string[] = ['romA', 'romB', 'diskA', 'diskB', 'tape', 'harddisk', 'laserdisc'];
+  private lastPlayedSubscription: Subscription;
 
   constructor(private gamesService: GamesService, private localizationService: LocalizationService, private clipboard: Clipboard,
-    private filesService: FilesService, private eventsService: EventsService, private changeDetector: ChangeDetectorRef) { }
+    private filesService: FilesService, private eventsService: EventsService, private changeDetector: ChangeDetectorRef) {
+      this.lastPlayedSubscription = this.eventsService.getLaunchEvent().subscribe((event: Event) => {
+        this.updateLastPlayedTime(event);
+      });
+    }
+
+  ngOnDestroy() {
+    this.lastPlayedSubscription.unsubscribe();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedGame.isFirstChange() ||
@@ -230,12 +240,16 @@ export class GameDetailsComponent implements OnChanges {
 
   private setLastPlayed() {
     this.eventsService.getLastPlayedTime(this.selectedGame).then((event: Event) => {
-      if (event) {
-        this.lastPlayed = new Date(event.timestamp).toLocaleString() + ' [' + EventSource[event.source] + ']';
-      } else {
-        this.lastPlayed = this.localizationService.translate('home.notplayed');
-      }
-      this.changeDetector.detectChanges();
+      this.updateLastPlayedTime(event);
     });
+  }
+
+  private updateLastPlayedTime(event: Event) {
+    if (event) {
+      this.lastPlayed = new Date(event.timestamp).toLocaleString() + ' [' + EventSource[event.source] + ']';
+    } else {
+      this.lastPlayed = this.localizationService.translate('home.notplayed');
+    }
+    this.changeDetector.detectChanges();
   }
 }

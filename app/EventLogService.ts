@@ -33,6 +33,7 @@ export class EventLogService {
             }
             self.database.insert(eventDO, (err: any, savedEvent: EventDO) => {
                 this.lastEventMap.set(userEvent.data.sha1, userEvent);
+                self.win.webContents.send('launchEvent', userEvent);
             });
         });
     }

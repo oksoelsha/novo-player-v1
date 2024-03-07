@@ -10,12 +10,16 @@ import { Game } from '../models/game';
 export class EventsService {
 
   private ipc: IpcRenderer;
-  private subject = new Subject<void>();
+  private newErrorNotificationSubject = new Subject<void>();
+  private launchEventSubject = new Subject<Event>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
     this.ipc.on('logErrorResponse', (event) => {
-      this.subject.next();
+      this.newErrorNotificationSubject.next();
+    });
+    this.ipc.on('launchEvent', (event, launchEvent: Event) => {
+      this.launchEventSubject.next(launchEvent);
     });
   }
 
@@ -69,6 +73,10 @@ export class EventsService {
   }
 
   getNewErrorNotification(): Observable<void> {
-    return this.subject.asObservable();
+    return this.newErrorNotificationSubject.asObservable();
+  }
+
+  getLaunchEvent(): Observable<Event> {
+    return this.launchEventSubject.asObservable();
   }
 }
