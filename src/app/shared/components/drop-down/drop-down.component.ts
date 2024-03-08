@@ -53,6 +53,11 @@ export class DropDownComponent {
   }
 
   emitOpenStatus(open: boolean) {
+    if (open && this.selectedItem) {
+      setTimeout(() => {
+        this.jumpToExacttItem(this.selectedItem);
+      }, 0);
+    }
     this.openStatus.emit(open);
   }
 
@@ -60,6 +65,16 @@ export class DropDownComponent {
     let index: number;
     for (index = 0; index < this.list.length &&
       !this.list[index].toLowerCase().startsWith(accumulatedPressedKeys.toLowerCase()); index++) {}
+      this.goToMenuItem(index);
+    }
+
+  private jumpToExacttItem(item: string) {
+    let index: number;
+    for (index = 0; index < this.list.length && this.list[index] !== item; index++) {}
+    this.goToMenuItem(index);
+  }
+
+  private goToMenuItem(index: number) {
     if (index < this.list.length) {
       this.dropDownItems.toArray()[index].nativeElement.focus();
     }
