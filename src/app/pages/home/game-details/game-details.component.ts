@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Game } from '../../../models/game';
 import { GameUtils } from '../../../models/game-utils';
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./game-details.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GameDetailsComponent implements OnChanges {
+export class GameDetailsComponent implements OnDestroy, OnChanges {
 
   @Input() selectedGame: Game;
   @ViewChild('gameDetailSimpleText', { static: true }) private gameDetailSimpleText: TemplateRef<object>;
