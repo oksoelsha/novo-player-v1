@@ -310,7 +310,7 @@
             <span class="bi-image"></span>
           </button>
         </div>
-        <div *ngIf="musicFiles.length && !otherSelectedGames.size" class="d-inline-block">
+        <div *ngIf="musicFiles.length && !otherSelectedGames.size" class="music-player">
           <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">
             <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
               &#9836;
