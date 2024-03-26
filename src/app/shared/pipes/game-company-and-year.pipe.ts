@@ -11,7 +11,7 @@ export class GameCompanyAndYearPipe implements PipeTransform {
   }
 
   private getValue(value: string): string {
-    if (value != null && String(value).trim() != '') {
+    if (value != null && String(value).trim() !== '') {
       return value;
     } else {
       return '';
