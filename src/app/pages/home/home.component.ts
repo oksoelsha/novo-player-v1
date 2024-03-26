@@ -311,7 +311,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     const self = this;
     this.settingsService.getSettings().then((settings: Settings) => {
       this.setScreenshotsPath(settings);
-      this.displayMode = settings.displayMode;
+      if (sessionStorage.getItem('displayMode') != null) {
+        this.displayMode = sessionStorage.getItem('displayMode');
+      } else {
+        this.displayMode = settings.displayMode;
+      }
       this.gamesService.getListings().then((data: string[]) => {
         this.listings = data;
         let gameSha1Code: string = null;
@@ -883,6 +887,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.displayMode = DisplayMode[0];
     }
+    sessionStorage.setItem('displayMode', this.displayMode);
     if (this.selectedGame) {
       setTimeout(() => {
         this.showInfo(this.selectedGame);
