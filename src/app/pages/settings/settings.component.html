@@ -71,7 +71,7 @@
         <div class="header">{{ 'settings.general' | translate }}</div>
         <hr>
 
-        <div class="form-group d-inline-block me-3" *ngIf="listings.length > 0">
+        <div class="form-group d-inline-block" *ngIf="listings.length > 0">
           <label class="form-label">{{ 'settings.defaultlisting' | translate }}</label>
           <div>
             <app-drop-down [list]="listings" [selectedItem]="defaultListing"
@@ -80,7 +80,14 @@
             </app-drop-down>
           </div>
         </div>
-        <div class="form-group d-inline-block">
+        <div class="form-group d-inline-block ms-2">
+          <label class="form-label">{{ 'settings.defaultdisplaymode' | translate }}</label>
+          <div>
+            <app-drop-down [list]="displayModes" [selectedItem]="displayMode" (selection)="updateField('displayMode', $event)">
+            </app-drop-down>
+          </div>
+        </div>
+        <div class="form-group d-inline-block ms-2">
           <label class="form-label">{{ 'settings.language' | translate }}</label>
           <div>
             <app-drop-down [list]="languages" [listIcons]="languageIcons" [selectedItem]="language"

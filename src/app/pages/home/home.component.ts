@@ -3,7 +3,7 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Game } from '../../models/game';
 import { GameSecondaryData } from '../../models/secondary-data';
-import { Settings } from '../../models/settings';
+import { DisplayMode, Settings } from '../../models/settings';
 import { LocalizationService } from '../../services/localization.service';
 import { SettingsService } from '../../services/settings.service';
 import { GamesService } from '../../services/games.service';
@@ -128,6 +128,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   savedStates: GameSavedState[] = [];
   newsUpdated: boolean;
   news: NewsItem[] = [];
+  displayMode: string;
+  screenshotsPath: string;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -308,6 +310,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const self = this;
     this.settingsService.getSettings().then((settings: Settings) => {
+      this.setScreenshotsPath(settings);
+      this.displayMode = settings.displayMode;
       this.gamesService.getListings().then((data: string[]) => {
         this.listings = data;
         let gameSha1Code: string = null;
@@ -871,6 +875,31 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.listings = data;
       this.getGames(this.selectedListing);
     });
+  }
+
+  switchDisplayMode() {
+    if (this.displayMode === DisplayMode[0]) {
+      this.displayMode = DisplayMode[1];
+    } else {
+      this.displayMode = DisplayMode[0];
+    }
+    if (this.selectedGame) {
+      setTimeout(() => {
+        this.showInfo(this.selectedGame);
+      }, 0);
+    }
+}
+
+  private setScreenshotsPath(settings: Settings) {
+    if (settings.screenshotsPath.indexOf('\\') > -1 ) {
+      // this is for Windows
+      this.screenshotsPath = settings.screenshotsPath.replace(/\\/g, '/').substring(2);
+    } else {
+      this.screenshotsPath = settings.screenshotsPath;
+    }
+    if (!this.screenshotsPath.endsWith('/')) {
+      this.screenshotsPath = this.screenshotsPath + '/';
+    }
   }
 
   private initialize() {

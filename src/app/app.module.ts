@@ -68,6 +68,8 @@ import { PickPasswordComponent } from './popups/pick-password/pick-password.comp
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
 import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.component';
 import { MoreDetailsComponent } from './popups/more-details/more-details.component';
+import { GameCompanyAndYearPipe } from './shared/pipes/game-company-and-year.pipe';
+import { ScreenshotFilenamePipe } from './pages/home/pipes/screenshot-filename.pipe';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -129,7 +131,9 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SortStatusPipe,
     NewsDatePipe,
     EventDatePipe,
-    LongEventDatePipe
+    LongEventDatePipe,
+    GameCompanyAndYearPipe,
+    ScreenshotFilenamePipe
   ],
   imports: [
     BrowserModule,

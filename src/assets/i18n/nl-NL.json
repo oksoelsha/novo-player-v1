@@ -99,7 +99,9 @@
     "lastplayed": "Laatste lancering",
     "notplayed": "Recentelijk niet gespeeld",
     "more": "Meer",
-    "moredetails": "Meer details"
+    "moredetails": "Meer details",
+    "switchtolist": "Schakel over naar de lijstmodus",
+    "switchtoscreenshots": "Schakel over naar de schermafbeeldingsmodus"
   },
   "language": {
     "en-US": "Engels",
@@ -144,7 +146,8 @@
     "general": "Algemeen",
     "externalintegrations": "Externe integraties",
     "giantbombapikey": "Giant Bomb API-sleutel",
-    "giantbombapikeytooltip": "API-sleutel vereist om verbinding te maken met de Giant Bomb-website om gegevens zoals platforms en illustraties voor de game te verkrijgen"
+    "giantbombapikeytooltip": "API-sleutel vereist om verbinding te maken met de Giant Bomb-website om gegevens zoals platforms en illustraties voor de game te verkrijgen",
+    "defaultdisplaymode": "Standaard weergavemodus"
   },
   "country": {
     "AU": "Australië",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "Zoek het afbeeldingsbestand"
+  },
+  "displaymode": {
+    "list": "Lijst",
+    "screenshots": "Schermafbeeldingen"
   }
 }

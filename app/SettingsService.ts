@@ -1,7 +1,7 @@
 import { BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
 import * as fs from 'fs'
-import { Settings } from '../src/app/models/settings'
+import { DisplayMode, Settings } from '../src/app/models/settings'
 import { UpdateListerner } from './UpdateListerner';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { PersistenceUtils } from './utils/PersistenceUtils';
@@ -20,10 +20,10 @@ export class SettingsService {
     getSettings(): Settings {
         if (this.settings === undefined) {
             if (!fs.existsSync(this.settingsFile)) {
-                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '', false);
+                return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '', false, DisplayMode[0]);
             } else {
                 const fileData = fs.readFileSync(this.settingsFile);
-                return JSON.parse(fileData.toString());
+                return this.setSettingsWithDefaults(fileData.toString());
             }
         } else {
             return this.settings;
@@ -76,5 +76,13 @@ export class SettingsService {
         } else {
             return '';
         }
+    }
+
+    private setSettingsWithDefaults(settingsData: string): Settings {
+        const settings = JSON.parse(settingsData);
+        if (!settings.displayMode) {
+            settings.displayMode = DisplayMode[0];
+        }
+        return settings;
     }
 }

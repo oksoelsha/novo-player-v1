@@ -99,7 +99,9 @@
     "lastplayed": "마지막 플레이",
     "notplayed": "최근에 재생되지 않음",
     "more": "더",
-    "moredetails": "추가 정보"
+    "moredetails": "추가 정보",
+    "switchtolist": "목록 모드로 전환합니다",
+    "switchtoscreenshots": "스크린샷 모드로 전환합니다"
   },
   "language": {
     "en-US": "영어",
@@ -144,7 +146,8 @@
     "general": "일반",
     "externalintegrations": "외부 통합",
     "giantbombapikey": "Giant Bomb API 키",
-    "giantbombapikeytooltip": "게임의 플랫폼 및 박스 아트와 같은 데이터를 얻기 위해 Giant Bomb 웹 사이트에 연결하는 데 필요한 API 키"
+    "giantbombapikeytooltip": "게임의 플랫폼 및 박스 아트와 같은 데이터를 얻기 위해 Giant Bomb 웹 사이트에 연결하는 데 필요한 API 키",
+    "defaultdisplaymode": "기본 디스플레이 모드"
   },
   "country": {
     "AU": "호주",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "이미지 파일 찾기"
+  },
+  "displaymode": {
+    "list": "목록",
+    "screenshots": "스크린샷"
   }
 }

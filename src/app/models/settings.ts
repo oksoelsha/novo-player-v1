@@ -9,9 +9,10 @@ export class Settings {
     language: string;
     giantbombApiKey: string;
     enableNews: boolean;
+    displayMode: string;
 
     constructor(openmsxPath: string, screenshotsPath: string, gameMusicPath: string, defaultListing: string, webmsxPath: string,
-        bluemsxPath: string, bluemsxParams: string, language: string, giantbombApiKey: string, enableNews: boolean) {
+        bluemsxPath: string, bluemsxParams: string, language: string, giantbombApiKey: string, enableNews: boolean, displayMode: string) {
         this.openmsxPath = openmsxPath;
         this.screenshotsPath = screenshotsPath;
         this.gameMusicPath = gameMusicPath;
@@ -22,5 +23,11 @@ export class Settings {
         this.language = language;
         this.giantbombApiKey = giantbombApiKey;
         this.enableNews = enableNews;
+        this.displayMode = displayMode;
     }
 }
+
+export const DisplayMode = [
+    'list',
+    'screenshots'
+];

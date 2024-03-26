@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SettingsService } from '../../services/settings.service';
-import { Settings } from '../../models/settings';
+import { DisplayMode, Settings } from '../../models/settings';
 import { LocalizationService } from '../../services/localization.service';
 import { AlertsService } from '../../shared/components/alerts/alerts.service';
 import { GamesService } from '../../services/games.service';
@@ -33,6 +33,9 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   languages: string[] = [];
   languageReverseMap: Map<string, string>;
   languageIcons: string[] = [];
+  displayMode: string;
+  displayModes: string[] = [];
+  displayModeReverseMap: Map<string, string>;
 
   constructor(private settingsService: SettingsService, private alertService: AlertsService, private gamesService: GamesService,
     private localizationService: LocalizationService, private platformService: PlatformService) { }
@@ -41,6 +44,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     this.gamesService.getListings().then((data: string[]) => this.listings = data);
     this.setLanguages();
     this.setLanguageIcons();
+    this.setDisplayModes();
     const self = this;
     this.settingsService.getSettings().then((settings: Settings) => {
       self.openmsxPath = settings.openmsxPath;
@@ -53,6 +57,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.setSelectedLanguage(settings);
       self.giantbombApiKey = settings.giantbombApiKey;
       self.news = settings.enableNews;
+      self.setSelectedDisplayMode(settings);
     });
   }
 
@@ -92,11 +97,14 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
-      this.languageReverseMap.get(this.language), form.value['giantbomb-apikey'], form.value.news);
+      this.languageReverseMap.get(this.language), form.value['giantbomb-apikey'], form.value.news,
+      this.displayModeReverseMap.get(this.displayMode));
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);
       this.setLanguages();
+      this.setSelectedDisplayMode(settings);
+      this.setDisplayModes();
       this.alertService.success(this.localizationService.translate('settings.settingssavedsuccessfully'));
     });
     this.submitDisabled = true;
@@ -135,6 +143,28 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       this.language = this.getLanguageDisplayName(settings.language);
     } else {
       this.language = this.getLanguageDisplayName('en-US');
+    }
+  }
+
+  private setDisplayModes() {
+    this.displayModes = [];
+    this.displayModeReverseMap = new Map();
+    for (const displayMode of DisplayMode) {
+      const translatedDisplayMode = this.getDisplayModeDisplayName(displayMode);
+      this.displayModeReverseMap.set(translatedDisplayMode, displayMode);
+      this.displayModes.push(translatedDisplayMode);
+    }
+  }
+
+  private getDisplayModeDisplayName(displayMode: string) {
+    return this.localizationService.translate('displaymode.' + displayMode);
+  }
+
+  private setSelectedDisplayMode(settings: Settings) {
+    if (settings.displayMode) {
+      this.displayMode = this.getDisplayModeDisplayName(settings.displayMode);
+    } else {
+      this.displayMode = this.getDisplayModeDisplayName(DisplayMode[0]);
     }
   }
 }

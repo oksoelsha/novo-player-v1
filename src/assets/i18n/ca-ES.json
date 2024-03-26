@@ -99,7 +99,9 @@
     "lastplayed": "Últim jugat",
     "notplayed": "No s'ha jugat recentment",
     "more": "Més",
-    "moredetails": "Més detalls"
+    "moredetails": "Més detalls",
+    "switchtolist": "Canvia a la llista",
+    "switchtoscreenshots": "Canvia a captures de pantalla"
   },
   "language": {
     "en-US": "Anglès",
@@ -144,7 +146,8 @@
     "general": "General",
     "externalintegrations": "Integracions externes",
     "giantbombapikey": "Clau d'API del Giant Bomb",
-    "giantbombapikeytooltip": "La clau d'API necessària per connectar-se al lloc web de Giant Bomb per obtenir dades com ara plataformes i quadresmaterials gràfics per al joc"
+    "giantbombapikeytooltip": "La clau d'API necessària per connectar-se al lloc web de Giant Bomb per obtenir dades com ara plataformes i quadresmaterials gràfics per al joc",
+    "defaultdisplaymode": "Mode de visualització per defecte"
   },
   "country": {
     "AU": "Austràlia",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "Localitza el fitxer d'imatge"
+  },
+  "displaymode": {
+    "list": "Llista",
+    "screenshots": "Captures de pantalla"
   }
 }

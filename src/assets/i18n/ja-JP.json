@@ -99,7 +99,9 @@
     "lastplayed": "最後のプレイ",
     "notplayed": "最近プレイしていない",
     "more": "もっと",
-    "moredetails": "さらなるデータ"
+    "moredetails": "さらなるデータ",
+    "switchtolist": "リストモードに切り替えます",
+    "switchtoscreenshots": "スクリーンショットモードに切り替えます"
   },
   "language": {
     "en-US": "英語",
@@ -144,7 +146,8 @@
     "general": "全般",
     "externalintegrations": "外部統合",
     "giantbombapikey": "Giant Bomb API キー",
-    "giantbombapikeytooltip": "Giant Bomb Web サイトに接続してゲームのプラットフォームやアートワークなどのデータを取得するために必要な API キー"
+    "giantbombapikeytooltip": "Giant Bomb Web サイトに接続してゲームのプラットフォームやアートワークなどのデータを取得するために必要な API キー",
+    "defaultdisplaymode": "デフォルトの表示モード"
   },
   "country": {
     "AU": "オーストラリア",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "画像ファイルを見つける"
+  },
+  "displaymode": {
+    "list": "リスト",
+    "screenshots": "スクリーンショット"
   }
 }

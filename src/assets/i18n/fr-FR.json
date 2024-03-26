@@ -99,7 +99,9 @@
     "lastplayed": "Dernier joué",
     "notplayed": "Pas joué récemment",
     "more": "Plus",
-    "moredetails": "Plus de détails"
+    "moredetails": "Plus de détails",
+    "switchtolist": "Passer en mode liste",
+    "switchtoscreenshots": "Passer en mode captures d'écran"
   },
   "language": {
     "en-US": "Anglais",
@@ -144,7 +146,8 @@
     "general": "Général",
     "externalintegrations": "Intégrations externes",
     "giantbombapikey": "Clé API de Giant Bomb",
-    "giantbombapikeytooltip": "Clé API requise pour se connecter au site Web de Giant Bomb afin d'obtenir des données telles que les plates-formes et les illustrations du jeu"
+    "giantbombapikeytooltip": "Clé API requise pour se connecter au site Web de Giant Bomb afin d'obtenir des données telles que les plates-formes et les illustrations du jeu",
+    "defaultdisplaymode": "Mode d'affichage par défaut"
   },
   "country": {
     "AU": "Australie",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "Localiser le fichier image"
+  },
+  "displaymode": {
+    "list": "Liste",
+    "screenshots": "Captures d'écran"
   }
 }

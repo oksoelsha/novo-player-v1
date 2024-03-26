@@ -99,7 +99,9 @@
     "lastplayed": "Последний запуск",
     "notplayed": "Недавно не играл",
     "more": "Более",
-    "moredetails": "Более подробная информация"
+    "moredetails": "Более подробная информация",
+    "switchtolist": "Переключитесь в режим списка",
+    "switchtoscreenshots": "Переключитесь в режим скриншотов"
   },
   "language": {
     "en-US": "Английский",
@@ -144,7 +146,8 @@
     "general": "Общие",
     "externalintegrations": "Внешние интеграции",
     "giantbombapikey": "Ключ API Giant Bomb",
-    "giantbombapikeytooltip": "Ключ API, необходимый для подключения к веб-сайту Giant Bomb для получения таких данных, как платформы и изображения для игры"
+    "giantbombapikeytooltip": "Ключ API, необходимый для подключения к веб-сайту Giant Bomb для получения таких данных, как платформы и изображения для игры",
+    "defaultdisplaymode": "Режим отображения по умолчанию"
   },
   "country": {
     "AU": "Австралия",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "Найдите файл изображения"
+  },
+  "displaymode": {
+    "list": "Список",
+    "screenshots": "Скриншоты"
   }
 }

@@ -11,6 +11,12 @@
               </div>
             </div>
           </button>
+          <button ngbDropdownItem type="button" (click)="switchDisplayMode()">
+            <div class="d-flex">
+              <div *ngIf="displayMode === 'list'" class="switch-mode">{{ 'home.switchtoscreenshots' | translate }}</div>
+              <div *ngIf="displayMode === 'screenshots'" class="switch-mode">{{ 'home.switchtolist' | translate }}</div>
+            </div>
+          </button>
           <div class="dropdown-divider"></div>
           <button ngbDropdownItem type="button" (click)="manageListings.open()" [disabled]="!listings.length">
             {{ 'home.managelistings' | translate }}
@@ -63,7 +69,7 @@
                 <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}Q
                 </div>
               </div>
-              </button>
+            </button>
           </div>
         </div>
         <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenNews($event)">
@@ -129,7 +135,7 @@
       </div>
     </div>
     <div id="games-table">
-      <table *ngIf="games">
+      <table *ngIf="games && displayMode === 'list'">
         <tr class="table-header">
           <th class="name-title" (click)="setSort('name')">
             {{ 'home.name' | translate }} <span>{{ 'name' | sortStatus : sortData : games }}</span>
@@ -143,7 +149,7 @@
         </tr>
       </table>
       <div id="games-table-data" tabindex="-1" (keydown)="processKeyEventsOnTable($event)" #gamesTableData>
-        <table>
+        <table *ngIf="displayMode === 'list'">
           <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
             (contextmenu)="onContextMenu($event, game)">
             <td class="medium-img"><img src="{{ game | gameMediumIcon }}" draggable="false"></td>
@@ -159,6 +165,34 @@
             </ng-template>
             <td class="company">{{ game.company }}</td>
             <td class="year">{{ game.year }}</td>
+            <td class="cell-actions">
+              <span>
+                <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
+                  [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
+              </span>
+            </td>
+          </tr>
+        </table>
+        <table *ngIf="displayMode === 'screenshots'" id="images-view">
+          <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
+            (contextmenu)="onContextMenu($event, game)">
+            <td class="images-view-screenshot">
+              <img [src]="game | screenshotFilename : screenshotsPath"
+                onerror="this.onerror=null; this.src='assets/images/noscrsht.png'">
+            </td>
+            <td class="ps-2 images-view-data">
+              <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">
+                <td class="name">
+                  <input id="gameNameEditInput" #gameNameEditInput type="text" class="mb-1" spellcheck="false"
+                    [(ngModel)]="editedGameName" (keydown.enter)="processNewGameName($event)" (keyup.escape)="cancelEditMode()"
+                    (focusout)="cancelEditMode()" />
+                </td>
+              </ng-container>
+              <ng-template #editRow>
+                <div class="images-view-game-name">{{ game.name }}</div>
+              </ng-template>
+              <div class="images-view-game-data">{{ game | gameCompanyAndYear }}</div>
+            </td>
             <td class="cell-actions">
               <span>
                 <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"

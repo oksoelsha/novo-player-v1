@@ -99,7 +99,9 @@
     "lastplayed": "Last played",
     "notplayed": "Not played recently",
     "more": "More",
-    "moredetails": "More details"
+    "moredetails": "More details",
+    "switchtolist": "Switch to list",
+    "switchtoscreenshots": "Switch to screenshots"
   },
   "language": {
     "en-US": "English",
@@ -144,7 +146,8 @@
     "general": "General",
     "externalintegrations": "External Integrations",
     "giantbombapikey": "Giant Bomb API Key",
-    "giantbombapikeytooltip": "API key needed to connect to Giant Bomb website to get data such as platforms and box art for the game"
+    "giantbombapikeytooltip": "API key needed to connect to Giant Bomb website to get data such as platforms and box art for the game",
+    "defaultdisplaymode": "Default Display Mode"
   },
   "country": {
     "AU": "Australia",
@@ -362,5 +365,9 @@
   },
   "morescreenshots": {
     "locateimagefile": "Locate image file"
+  },
+  "displaymode": {
+    "list": "List",
+    "screenshots": "Screenshots"
   }
 }
