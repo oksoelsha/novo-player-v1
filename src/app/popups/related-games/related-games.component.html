@@ -6,8 +6,7 @@
         <div class="d-inline-block ms-3 me-3">
             <div class="game-name">{{ relatedGame.name }}</div>
             <div class="game-data">
-                {{ relatedGame.company }}
-                <span *ngIf="isShowYear(relatedGame)">- {{ relatedGame.year }}</span>
+                {{ relatedGame | gameCompanyAndYear }}
             </div>
             <div class="mt-2">
                 <app-web-link *ngIf="isShowGenerationMSXLink(relatedGame)" label="Generation-MSX"

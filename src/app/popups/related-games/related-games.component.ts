@@ -57,10 +57,6 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
     });
   }
 
-  isShowYear(relatedGame: Game) {
-    return relatedGame.year !== null && String(relatedGame.year).trim() !== '';
-  }
-
   isShowGenerationMSXLink(relatedGame: Game) {
     return relatedGame.generationMSXId > 0 && relatedGame.generationMSXId < 10000;
   }
