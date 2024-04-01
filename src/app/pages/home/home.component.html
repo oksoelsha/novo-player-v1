@@ -173,7 +173,7 @@
             </td>
           </tr>
         </table>
-        <table *ngIf="displayMode === 'screenshots'" id="images-view">
+        <table *ngIf="displayMode === 'screenshots'">
           <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
             (contextmenu)="onContextMenu($event, game)">
             <td class="images-view-screenshot">
