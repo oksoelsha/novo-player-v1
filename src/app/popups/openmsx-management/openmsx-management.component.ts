@@ -1,14 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { PopupComponent } from '../popup.component';
 import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../services/launch-activity.service';
 import { LocalizationService } from '../../services/localization.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-openmsx-management',
   templateUrl: './openmsx-management.component.html',
   styleUrls: ['../../common-styles.sass', './openmsx-management.component.sass']
 })
-export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit {
+export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() popupId: string;
   @Input() pid: number;
@@ -31,19 +32,13 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   readonly windowLabel: string;
   readonly defaultSpeed = 100;
 
+  private openmsxEventSubscription: Subscription;
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
-  private eventInputValue: OpenmsxEvent;
-
-  @Input()
-  get event(): OpenmsxEvent { return this.eventInputValue; }
-  set event(value: OpenmsxEvent) {
-    this.eventInputValue = value;
-    this.processEvents();
-  }
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService) {
     super(changeDetector);
+    const self = this;
 
     this.pauseLabel = this.localizationService.translate('dashboard.pause');
     this.unpauseLabel = this.localizationService.translate('dashboard.resume');
@@ -51,6 +46,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.unmuteLabel = this.localizationService.translate('dashboard.unmute');
     this.fullscreenLabel = this.localizationService.translate('dashboard.fullscreen');
     this.windowLabel = this.localizationService.translate('dashboard.exitfullscreen');
+    this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
+      self.processEvents(openmsxEvent);
+    });
   }
 
   ngOnInit() {
@@ -59,6 +57,10 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   ngAfterViewInit(): void {
     super.commonViewInit();
+  }
+
+  ngOnDestroy() {
+    this.openmsxEventSubscription.unsubscribe();
   }
 
   async open(): Promise<void> {
@@ -132,24 +134,24 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     });
   }
 
-  private processEvents() {
-    if (this.eventInputValue && this.pid === this.eventInputValue.pid) {
-      if (this.eventInputValue.name === 'caps') {
-        this.capsLed = this.eventInputValue.value === 'on';
-      } else if (this.eventInputValue.name === 'kana') {
-        this.langLed = this.eventInputValue.value === 'on';
-      } else if (this.eventInputValue.name === 'turbo') {
-        this.turboLed = this.eventInputValue.value === 'on';
-      } else if (this.eventInputValue.name === 'FDD') {
-        this.fddLed = this.eventInputValue.value === 'on';
-      } else if (this.eventInputValue.name === 'pause') {
-        this.pauseIndicator = this.eventInputValue.value === 'true';
-      } else if (this.eventInputValue.name === 'mute') {
-        this.muteIndicator = this.eventInputValue.value === 'true';
-      } else if (this.eventInputValue.name === 'fullscreen') {
-        this.fullscreenIndicator = this.eventInputValue.value === 'true';
-      } else if (this.eventInputValue.name === 'speed') {
-        this.speed = Number(this.eventInputValue.value);
+  private processEvents(openmsxEvent: OpenmsxEvent) {
+    if (openmsxEvent?.pid === this.pid) {
+      if (openmsxEvent.name === 'caps') {
+        this.capsLed = openmsxEvent.value === 'on';
+      } else if (openmsxEvent.name === 'kana') {
+        this.langLed = openmsxEvent.value === 'on';
+      } else if (openmsxEvent.name === 'turbo') {
+        this.turboLed = openmsxEvent.value === 'on';
+      } else if (openmsxEvent.name === 'FDD') {
+        this.fddLed = openmsxEvent.value === 'on';
+      } else if (openmsxEvent.name === 'pause') {
+        this.pauseIndicator = openmsxEvent.value === 'true';
+      } else if (openmsxEvent.name === 'mute') {
+        this.muteIndicator = openmsxEvent.value === 'true';
+      } else if (openmsxEvent.name === 'fullscreen') {
+        this.fullscreenIndicator = openmsxEvent.value === 'true';
+      } else if (openmsxEvent.name === 'speed') {
+        this.speed = Number(openmsxEvent.value);
         this.speedDisable = !this.acceptedSpeeds.has(this.speed);
       }
     }

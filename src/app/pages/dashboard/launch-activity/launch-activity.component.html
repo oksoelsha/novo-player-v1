@@ -93,8 +93,7 @@
 
 <app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
-        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [event]="openmsxEvent"
-            #openmsxManagementInterface>
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" #openmsxManagementInterface>
         </app-openmsx-management>
     </ng-template>
 </app-popup>

@@ -6,7 +6,7 @@ import { GameSavedState } from '../../../models/saved-state';
 import { SavedStatesComponent } from '../../../popups/saved-states/saved-states.component';
 import { FilesService } from '../../../services/files.service';
 import { GamesService } from '../../../services/games.service';
-import { LaunchActivity, LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../../services/launch-activity.service';
+import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
@@ -30,7 +30,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   @ViewChild('trainerInterface') enableCheatsInterface: EnableCheatsComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
-  openmsxEvent: OpenmsxEvent;
   fileGroupMap: Map<number, string[]> = new Map();
   savedStatesMap: Map<string, GameSavedState[]> = new Map();
   gamePasswordsMap: Map<number, GamePasswordsInfo> = new Map();
@@ -40,7 +39,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   savedStates: GameSavedState[] = [];
   gamePasswords: GamePasswordsInfo;
   private launchActivitySubscription: Subscription;
-  private openmsxEventSubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
     private localizationService: LocalizationService, private platformService: PlatformService,
@@ -58,9 +56,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       }
     });
     this.launchActivities = launchActivityService.getActivities();
-    this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
-      self.openmsxEvent = openmsxEvent;
-    });
   }
 
   ngOnInit(): void {
@@ -74,7 +69,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.launchActivitySubscription.unsubscribe();
-    this.openmsxEventSubscription.unsubscribe();
   }
 
   getMediumDisplayName(medium: string) {
