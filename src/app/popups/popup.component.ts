@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnDestroy, Output, TemplateRef } from '@angular/core';
+import { Utils } from '../models/utils';
 
 @Component({
   selector: 'app-popup',
@@ -8,10 +9,16 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Ev
 })
 export class PopupComponent implements OnDestroy {
 
-  @Input () titleHeader: string;
   @Input () popupId: string;
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ContentChild(TemplateRef) templateVariable: TemplateRef<any>;
+  @Input()
+  get titleHeader(): string { return this.titleHeaderValue; }
+  set titleHeader(value: string) {
+    this.titleHeaderValue = Utils.compressStringIfTooLong(value);
+  }
+
+  private titleHeaderValue: string;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
     this.handleEscape = this.handleEscape.bind(this);

@@ -15,6 +15,7 @@ import { GamePasswordsInfo } from '../../../models/game-passwords-info';
 import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
 import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-cheats.component';
+import { Utils } from '../../../models/utils';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
@@ -76,7 +77,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     if (separatorIndex < 0) {
       separatorIndex = medium.lastIndexOf('/');
     }
-    return medium.substring(separatorIndex + 1, medium.lastIndexOf('.'));
+    return Utils.compressStringIfTooLong(medium.substring(separatorIndex + 1, medium.lastIndexOf('.')));
   }
 
   isMediumCanHaveGroup(game: Game): boolean {
