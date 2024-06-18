@@ -82,8 +82,8 @@ export class FieldWithSuggestionsComponent {
     const lastIndexTriggerOrSpace = this.getLastIndexTriggerOrSpace(lastIndexTrigger, lastIndexSpace);
 
     if (inputText.length - 1 > lastIndexTriggerOrSpace) {
-      const inputTextPortion = inputText.substring(lastIndexTriggerOrSpace + 1);
-      this.suggestions = this.allPossibleSuggestions.filter(s => s.startsWith(inputTextPortion));
+      const inputTextPortion = inputText.substring(lastIndexTriggerOrSpace + 1).toLowerCase();
+      this.suggestions = this.allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(inputTextPortion));
     } else {
       this.suggestions = this.allPossibleSuggestions;
     }
