@@ -3,14 +3,16 @@
         (input)="onSearchGames($event)" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
         (keyup)="processArrowKey($event)" spellcheck="false" #inputField>
     <div ngbDropdownMenu class="pt-0 pb-0">
-        <button *ngFor="let game of foundGames" ngbDropdownItem (click)="onSelectGame(game)"
+        <button *ngFor="let gameData of foundGames" ngbDropdownItem (click)="onSelectGame(gameData.game)"
             class="pe-2 ps-2" #foundSearchItem>
             <div class="game-name">
-                <img src="{{ game | gameMediumIcon }}" draggable="false" class="pe-1">
-                {{ game.name }}
+                <img src="{{ gameData.game | gameMediumIcon }}" draggable="false" class="pe-1">
+                <span class="unhighlighted">{{ gameData.gameNameParts.part1 }}</span>
+                <span class="highlighted">{{ gameData.gameNameParts.part2 }}</span>
+                <span class="unhighlighted">{{ gameData.gameNameParts.part3 }}</span>
             </div>
             <div class="game-listing">
-              {{ game.listing }}
+              {{ gameData.game.listing }}
             </div>
         </button>
     </div>

@@ -19,7 +19,7 @@ export class SearchComponent implements OnChanges {
   @ViewChildren('foundSearchItem') private foundSearchItems: QueryList<ElementRef>;
 
   searchText = '';
-  foundGames: Game[] = [];
+  foundGames: GameData[] = [];
 
   constructor(private changeDetector: ChangeDetectorRef, private gamesService: GamesService) { }
 
@@ -37,9 +37,31 @@ export class SearchComponent implements OnChanges {
   onSearchGames(event: any) {
     const trimmedText = event.target.value.trim();
     if (trimmedText) {
-      this.gamesService.getSearch(trimmedText).then((data: Game[]) => {
-        if (data.length > 0) {
-          this.foundGames = data;
+      this.gamesService.getSearch(trimmedText).then((games: Game[]) => {
+        this.foundGames = [];
+        if (games.length > 0) {
+          // if the given search string contains Arabic characters, disable the highlighting because the presence
+          // of such characters messes up the highlighting
+          const containsArabic = (/[\u0600-\u06FF]/).test(trimmedText);
+          for (const game of games) {
+            let part1: string;
+            let part2: string;
+            let part3: string;
+            if (containsArabic) {
+              part1 = game.name;
+            } else {
+              const index = game.name.toLowerCase().indexOf(trimmedText.toLowerCase());
+              if (index < 0) {
+                part1 = game.name;
+              } else {
+                part1 = game.name.substring(0, index);
+                part2 = game.name.substring(index, index + trimmedText.length);
+                part3 = game.name.substring(index + trimmedText.length);
+              }
+            }
+            const gameData = new GameData(game, new GameNameParts(part1, part2, part3));
+            this.foundGames.push(gameData);
+          };
           this.foundGamesDropdown.open();
         } else {
           this.foundGamesDropdown.close();
@@ -62,5 +84,27 @@ export class SearchComponent implements OnChanges {
     this.searchText = '';
     this.foundGames = [];
     this.selectedGame.emit(game);
+  }
+}
+
+class GameData {
+  readonly game: Game;
+  readonly gameNameParts: GameNameParts;
+
+  constructor(game: Game, gameNameParts: GameNameParts) {
+    this.game = game;
+    this.gameNameParts = gameNameParts;
+  }
+}
+
+class GameNameParts {
+  readonly part1: string;
+  readonly part2: string;
+  readonly part3: string;
+
+  constructor(part1: string, part2: string, part3: string) {
+    this.part1 = part1;
+    this.part2 = part2;
+    this.part3 = part3;
   }
 }
