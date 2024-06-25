@@ -345,7 +345,7 @@ export class GamesService {
     private search(text: string) {
         const self = this;
         const games: Game[] = [];
-        const sanitizedText = text.replace(/[(){}[\]\\?|.*]/g, '\\$&');
+        const sanitizedText = text.replace(/[(){}[\]\\?|.*\\+]/g, '\\$&');
 
         this.database.find({ $or: [{ name: { $regex: new RegExp(sanitizedText, 'i') } }, { _id: { $regex: new RegExp('^' + sanitizedText, 'i') } }] })
             .limit(10).exec((err: any, entries: any) => {
