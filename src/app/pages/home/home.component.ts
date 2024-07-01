@@ -40,6 +40,7 @@ import { NewsItem } from '../../models/news-collection';
 import { MsxnewsService } from '../../services/msxnews.service';
 import { FiltersComponent } from './filters/filters.component';
 import { MoreDetailsComponent } from '../../popups/more-details/more-details.component';
+import { WindowService } from '../../services/window.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -148,7 +149,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
     private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
-    private emulatorService: EmulatorService, private msxnewsService: MsxnewsService, private ngZone: NgZone) {
+    private emulatorService: EmulatorService, private msxnewsService: MsxnewsService, private windowService: WindowService,
+    private ngZone: NgZone) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -215,6 +217,8 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.jumpToNearestGame(this.gameQuickSearch);
           this.gameQuickSearch = '';
         }, 600);
+      } else if (this.ctrlOrCommandKey(event) && event.key === '=') {
+        this.windowService.zoomIn();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'f' || event.key === 'F')) {
         this.searchDropdown.open();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'q' || event.key === 'Q')) {

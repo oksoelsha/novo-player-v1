@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { VersionsService } from '../../services/versions.service';
 import { DownloadService } from '../../services/download.service';
 import { VersionMatchIndicatorComponent } from './version-match-indicator/version-match-indicator.component';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-help',
@@ -21,7 +22,14 @@ export class HelpComponent implements OnInit {
 
   downloadNewExtraDataFailed = false;
 
-  constructor(private versionsService: VersionsService, private downloadService: DownloadService) { }
+  constructor(private versionsService: VersionsService, private downloadService: DownloadService, private windowService: WindowService) { }
+
+  @HostListener('window:keydown', ['$event'])
+  keydownEvent(event: any) {
+    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
+        this.windowService.zoomIn();
+    }
+  }
 
   ngOnInit(): void {
     const versionsOnServer = this.versionsService.getVersionsOnServer();

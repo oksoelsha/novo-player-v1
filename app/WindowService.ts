@@ -19,6 +19,9 @@ export class WindowService {
         ipcMain.on('closeMainWindow', (event: any) => {
             this.win.close();
         });
+        ipcMain.on('zoomIn', (event: any) => {
+            this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() + 0.1;
+        });
 
         this.win.on('maximize', () => {
             this.win.webContents.send('windowMaximizedEvent');

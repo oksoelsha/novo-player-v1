@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../../models/game';
 import { Settings } from '../../models/settings';
 import { EmulatorService } from '../../services/emulator.service';
 import { SettingsService } from '../../services/settings.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-web-msx',
@@ -17,8 +18,15 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   private wmsxScript: any;
 
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private settingsService: SettingsService,
-    private emulatorService: EmulatorService, private router: Router) {
+    private emulatorService: EmulatorService, private router: Router, private windowService: WindowService) {
     this.selectedGame = JSON.parse(route.snapshot.paramMap.get('gameParams'));
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  keydownEvent(event: any) {
+    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
+        this.windowService.zoomIn();
+    }
   }
 
   ngOnInit(): void {

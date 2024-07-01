@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SettingsService } from '../../services/settings.service';
 import { DisplayMode, Settings } from '../../models/settings';
@@ -8,6 +8,7 @@ import { GamesService } from '../../services/games.service';
 import { DeactivateComponent } from '../../guards/deactivate-guard.service';
 import { PlatformService } from '../../services/platform.service';
 import { BlueMSXUtils } from '../../models/bluemsx-utils';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-settings',
@@ -38,7 +39,14 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   displayModeReverseMap: Map<string, string>;
 
   constructor(private settingsService: SettingsService, private alertService: AlertsService, private gamesService: GamesService,
-    private localizationService: LocalizationService, private platformService: PlatformService) { }
+    private localizationService: LocalizationService, private platformService: PlatformService, private windowService: WindowService) { }
+
+  @HostListener('window:keydown', ['$event'])
+  keydownEvent(event: any) {
+    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
+        this.windowService.zoomIn();
+    }
+  }
 
   ngOnInit() {
     this.gamesService.getListings().then((data: string[]) => this.listings = data);
