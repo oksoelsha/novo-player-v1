@@ -88,7 +88,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('moreDetails') moreDetails: MoreDetailsComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
-  readonly webmsxMachines = WebMSXMachinesData;
   readonly ctrlCmdKey = this.platformService.isOnMac() ? 'Cmd+' : 'Ctrl+';
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';

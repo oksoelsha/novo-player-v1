@@ -559,21 +559,10 @@
     <span class="context-menu-icon"></span>
     {{ 'home.editbluemsxarguments' | translate }}
   </ng-template>
-  <ng-template contextMenuItem [visible]="isWebMSXPathDefined" [subMenu]="webmsxMachinesSubMenu">
+  <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="webmsxMachineSet.open()">
     <div class="context-menu-icon"></div>
     {{ 'webmsx.setwebmsxmachine' | translate }}
   </ng-template>
-  <context-menu [menuClass]="'context-menu'" #webmsxMachinesSubMenu>
-    <ng-template *ngFor="let machine of webmsxMachines" contextMenuItem (execute)="setWebmsxMachine(machine.value)">
-      <div class="context-menu-icon"></div>
-      {{ machine.label }}
-    </ng-template>
-    <ng-template contextMenuItem [divider]="true"></ng-template>
-    <ng-template contextMenuItem (execute)="setWebmsxMachine(0)">
-      <div class="context-menu-icon"></div>
-      {{ 'webmsx.settodefault' | translate }}
-    </ng-template>
-  </context-menu>
   <ng-template contextMenuItem [visible]="isWindows || isWebMSXPathDefined" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
     <div class="context-menu-icon"></div>
