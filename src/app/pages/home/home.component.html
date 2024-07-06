@@ -26,7 +26,8 @@
           </button>
         </div>
       </div>
-      <div *ngIf="listings.length" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
+      <div *ngIf="listings.length" ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)"
+        #listingsDropdown="ngbDropdown">
         <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
           {{ selectedListing }}
           <span class="badge bg-light text-dark">

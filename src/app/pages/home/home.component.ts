@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, OnDestroy, NgZone, QueryList, ViewChildren } from '@angular/core';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Game } from '../../models/game';
@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('gamesTableData', { static: true }) gamesTableData: ElementRef;
   @ViewChild('gameNameEditInput', { static: false }) gameNameEdit: ElementRef;
   @ViewChild('favoritesDropdownButton', { static: true }) favoritesDropdownButton: ElementRef;
+  @ViewChildren('listingsDropdown') private listingsDropdown: QueryList<NgbDropdown>;
   @ViewChild('searchDropdown', { static: true }) searchDropdown: NgbDropdown;
   @ViewChild('dragArea', { static: false }) dragArea: ElementRef;
   @ViewChild('filtersComponent') filtersComponent: FiltersComponent;
@@ -221,6 +222,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.windowService.zoomIn();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'f' || event.key === 'F')) {
         this.searchDropdown.open();
+      } else if (this.ctrlOrCommandKey(event) && (event.key === 't' || event.key === 'T')) {
+        const listingsDropdownArray = this.listingsDropdown.toArray();
+        if (listingsDropdownArray.length === 1) {
+          listingsDropdownArray[0].open();
+        }
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'q' || event.key === 'Q')) {
         this.resetAllFilters();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'z' || event.key === 'Z')) {
