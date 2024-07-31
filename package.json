@@ -47,7 +47,7 @@
     "bootstrap-icons": "1.11.0",
     "chokidar": "3.5.3",
     "crc": "4.3.2",
-    "fast-xml-parser": "4.2.7",
+    "fast-xml-parser": "4.4.1",
     "md5-file": "5.0.0",
     "nedb": "1.8.0",
     "network-byte-order": "0.2.0",
