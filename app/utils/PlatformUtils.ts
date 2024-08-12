@@ -10,7 +10,7 @@ export class PlatformUtils {
         } else if (this.isLinux()) {
             return path.join('/usr/share/openmsx/', hardwareType);
         } else if (this.isMacOS()) {
-            return path.join(openmsxPath, 'openmsx.app/share/' + hardwareType);
+            return path.join(openmsxPath, 'openmsx.app/Contents/Resources/share/' + hardwareType);
         } else {
             return this.unsupportedPlatform();
         }
@@ -34,10 +34,15 @@ export class PlatformUtils {
         } else if (this.isLinux()) {
             return '/usr/share/openmsx/softwaredb.xml';
         } else if (this.isMacOS()) {
-            return path.join(openmsxPath, 'openmsx.app/share/softwaredb.xml');
+            return path.join(openmsxPath, 'openmsx.app/Contents/Resources/share/softwaredb.xml');
         } else {
             return this.unsupportedPlatform();
         }
+    }
+
+    static getOpenmsxUserSoftwareDb(): string {
+        const openmsxDataFolder = PlatformUtils.getOpenmsxDataFolder();
+        return path.join(openmsxDataFolder, 'share/softwaredb.xml');
     }
 
     static getFileManagerCommand(file: string): string {
