@@ -246,7 +246,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             if (this.isWebMSXPathDefined) {
               this.launchWebmsx(this.selectedGame);
             }
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 't' || event.key === 'T')) {
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
             this.relatedGames.open();
           } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
             if (this.isGiantbombApikeyDefined) {
