@@ -3,24 +3,24 @@ import * as Datastore from 'nedb';
 
 export class TopTenEventProcessor {
 
-    constructor(private win: BrowserWindow, private database: Datastore) {
+    constructor(private readonly win: BrowserWindow, private readonly database: Datastore) {
         this.init();
     }
 
-    private init() {
+    private init(): void {
         ipcMain.on('getTopTenLaunchedGames', (event, pageSize: number, currentPage: number) => {
             this.getTopTenLaunchedGames(pageSize, currentPage);
         });
     }
 
-    private getTopTenLaunchedGames(pageSize: number, currentPage: number) {
+    private getTopTenLaunchedGames(pageSize: number, currentPage: number): void {
         const self = this;
         const launchTimes: Map<string, number> = new Map<string, number>();
 
         this.database.find({}).exec((err: any, entries: any) => {
             for (let entry of entries) {
                 const key = JSON.stringify({ name: entry.data.name, listing: entry.data.listing });
-                launchTimes.set(key, this.getCount(launchTimes.get(key)));
+                launchTimes.set(key, this.getCount(launchTimes.get(key) || 0));
             }
 
             const allCounts = this.getTopTen(launchTimes);
@@ -33,11 +33,7 @@ export class TopTenEventProcessor {
     }
 
     private getCount(count: number): number {
-        if (count) {
-            return ++count;
-        } else {
-            return 1;
-        }
+        return count + 1;
     }
 
     private getTopTen(launchTimes: Map<string, number>): any[] {
@@ -47,3 +43,4 @@ export class TopTenEventProcessor {
             .slice(0, 10);
     }
 }
+

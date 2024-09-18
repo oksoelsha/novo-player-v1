@@ -116,11 +116,7 @@ function initializeWindow() {
       pathIndex = '../dist/index.html';
     }
 
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, pathIndex),
-      protocol: 'file:',
-      slashes: true
-    }));
+    win.loadURL(url.pathToFileURL(path.join(__dirname, pathIndex)).toString());
   }
 
   // Emitted when the window is closed.

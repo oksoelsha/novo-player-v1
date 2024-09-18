@@ -57,7 +57,7 @@ export class ExtraDataService implements UpdateListerner {
         let soundChips: number;
         let genre1: number;
         let genre2: number;
-        let suffix: string;
+        let suffix: string | null;
         let extraData: ExtraData;
 
         const data = fs.readFileSync(this.extraDataPathOnDisc, { encoding: 'ascii' });
@@ -69,11 +69,11 @@ export class ExtraDataService implements UpdateListerner {
                     generationMSXID = +line.substring(1);
                     readInfo = true;
                 } else if (readInfo) {
-                    const tokens: string[] = line.split(',');
+                    const tokens = line.split(',');
                     generations = +tokens[0];
                     soundChips = +tokens[1];
                     if (tokens.length > 2) {
-                        const genres: string[] = tokens[2].split('|');
+                        const genres = tokens[2].split('|');
                         genre1 = +genres[0];
                         if (genres.length > 1) {
                             genre2 = +genres[1];
@@ -96,17 +96,17 @@ export class ExtraDataService implements UpdateListerner {
                     readInfo = false;
                     readCodes = true;
                 } else if (readCodes) {
-                    const codes: string[] = line.split('|');
-                    codes.forEach((code) => {
+                    const codes = line.split('|');
+                    codes.forEach(code => {
                         this.extraDataInfo.set(code, extraData);
-                    })
+                    });
     
                     readCodes = false;
                 }
             } else {
-                const lineParts: string[] = line.split(/\s/);
+                const lineParts = line.split(/\s/);
                 if (lineParts.length >= 3) {
-                    if (lineParts[1] == 'Version') {
+                    if (lineParts[1] === 'Version') {
                         this.extraDataVersion = lineParts[2];
                     }
                 }
@@ -116,12 +116,12 @@ export class ExtraDataService implements UpdateListerner {
 }
 
 export class ExtraData {
-    generationMSXID: number;
-    generations: number;
-    soundChips: number;
-    genre1: number;
-    genre2: number;
-    suffix: string;
+    readonly generationMSXID: number;
+    readonly generations: number;
+    readonly soundChips: number;
+    readonly genre1: number;
+    readonly genre2: number;
+    readonly suffix: string;
 
     constructor(generationMSXID: number, generations: number, soundChips: number,
         genre1: number, genre2: number, suffix: string) {

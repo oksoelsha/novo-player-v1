@@ -1,11 +1,10 @@
 import { Error } from "../../src/app/models/error";
 
 export class ErrorDO {
-    message: string;
-    timestamp: number;
+    readonly message: string;
+    readonly timestamp: number;
 
-    constructor(error: Error) {
-        this.message = error.message;
-        this.timestamp = error.timestamp;
+    constructor({ message, timestamp }: Error) {
+        Object.assign(this, { message, timestamp });
     }
 }

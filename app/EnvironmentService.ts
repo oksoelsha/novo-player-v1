@@ -26,10 +26,10 @@ export class EnvironmentService {
         return needToUpdate;
     }
 
-    saveEnvironmentDataForNewApplicationVersion() {
+    saveEnvironmentDataForNewApplicationVersion(): void {
         const newEnvironmentData = new EnvironmentData(this.APPLICATION_VERSION);
         const data = JSON.stringify(newEnvironmentData);
-        fs.writeFileSync(this.environmentFile, data);    
+        fs.writeFileSync(this.environmentFile, data);
     }
 
     private getEnvironmentDataUponStart(): EnvironmentData {
@@ -41,3 +41,4 @@ export class EnvironmentService {
         }
     }
 }
+

@@ -4,7 +4,7 @@ import { TopTenEventProcessor } from './eventprocessors/TopTenEventProcessor'
 import { TotalsForLast30DaysProcessor } from './eventprocessors/TotalsForLast30DaysProcessor';
 
 export class EventProcessor {
-    static initEventProcessors(win: BrowserWindow, database: Datastore) {
+    static initEventProcessors(win: BrowserWindow, database: Datastore): void {
         new TopTenEventProcessor(win, database);
         new TotalsForLast30DaysProcessor(win, database);
     }

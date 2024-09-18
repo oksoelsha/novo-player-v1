@@ -11,18 +11,22 @@ export class DownloadService {
 
     private extraDataPathOnDisc: string = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
 
-    constructor(private win: BrowserWindow, private extraDataService: ExtraDataService, private gamesService: GamesService,
-        private errorLogService: ErrorLogService) {
+    constructor(
+        private readonly win: BrowserWindow,
+        private readonly extraDataService: ExtraDataService,
+        private readonly gamesService: GamesService,
+        private readonly errorLogService: ErrorLogService,
+    ) {
         this.init();
     }
 
-    private init() {
+    private init(): void {
         ipcMain.on('downloadNewExtraData', (event: any) => {
             this.downloadNewExtraData();
         });
     }
 
-    private async downloadNewExtraData() {
+    private async downloadNewExtraData(): Promise<void> {
         try {
             await this.downloadExtraData();
             this.extraDataService.reinit();
@@ -34,7 +38,7 @@ export class DownloadService {
         }
     }
 
-    private async downloadExtraData() {
+    private async downloadExtraData(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             http.get('http://msxlaunchers.info/openmsx-launcher/new/extra-data', (res) => {
                 const filePath = fs.createWriteStream(this.extraDataPathOnDisc);

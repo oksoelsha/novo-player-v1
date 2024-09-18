@@ -11,29 +11,19 @@ export class BackupsService {
     private readonly separatorChar = '_';
     private readonly AdmZip = require("adm-zip");
 
-    constructor(private win: BrowserWindow, private gamesService: GamesService) {
+    constructor(private readonly win: BrowserWindow, private readonly gamesService: GamesService) {
         this.init();
     }
 
-    private init() {
-        ipcMain.on('getBackups', (event) => {
-            this.getBackups();
-        });
-        ipcMain.on('backupNow', (event) => {
-            this.backupNow();
-        });
-        ipcMain.on('renameBackup', (event, backup: Backup, newName: string) => {
-            this.renameBackup(backup, newName);
-        });
-        ipcMain.on('deleteBackup', (event, backup: Backup) => {
-            this.deleteBackup(backup);
-        });
-        ipcMain.on('restoreBackup', (event, backup: Backup) => {
-            this.restoreBackup(backup);
-        });
+    private init(): void {
+        ipcMain.on('getBackups', (event) => this.getBackups());
+        ipcMain.on('backupNow', (event) => this.backupNow());
+        ipcMain.on('renameBackup', (event, backup: Backup, newName: string) => this.renameBackup(backup, newName));
+        ipcMain.on('deleteBackup', (event, backup: Backup) => this.deleteBackup(backup));
+        ipcMain.on('restoreBackup', (event, backup: Backup) => this.restoreBackup(backup));
     }
 
-    private getBackups() {
+    private getBackups(): void {
         fs.readdir(PersistenceUtils.getBackupsStoragePath(), (err, files) => {
             const backups: Backup[] = [];
             if (files) {
@@ -56,7 +46,7 @@ export class BackupsService {
         });
     }
 
-    private backupNow() {
+    private backupNow(): void {
         const backup = new Backup(Date.now());
         const filename = this.getBackupFilename(backup);
         const backupFolderPath = PersistenceUtils.getBackupsStoragePath();
@@ -73,7 +63,7 @@ export class BackupsService {
         }
     }
 
-    private renameBackup(backup: Backup, newName: string) {
+    private renameBackup(backup: Backup, newName: string): void {
         const currentFilename = this.getBackupFilename(backup);
         const newBackup = new Backup(backup.timestamp, newName);
         const newFilename = this.getBackupFilename(newBackup);
@@ -89,7 +79,7 @@ export class BackupsService {
         });
     }
 
-    private deleteBackup(backup: Backup) {
+    private deleteBackup(backup: Backup): void {
         const filename = this.getBackupFilename(backup);
         fs.unlink(path.join(PersistenceUtils.getBackupsStoragePath(), filename), (err) => {
             if (err) {
@@ -99,7 +89,7 @@ export class BackupsService {
         });
     }
 
-    private restoreBackup(backup: Backup) {
+    private restoreBackup(backup: Backup): void {
         const filename = this.getBackupFilename(backup);
         const backupFilePath = path.join(PersistenceUtils.getBackupsStoragePath(), filename);
 

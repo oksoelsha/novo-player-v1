@@ -19,7 +19,7 @@ export class ErrorLogService {
         this.init();
     }
 
-    logError(...errorParts: string[]) {
+    logError(...errorParts: string[]): void {
         const error = new Error(errorParts.join(' '));
         this.errors.push(error);
         if (this.errors.length > this.MAXIMUM_ERROR_ENTRIES) {
@@ -30,17 +30,17 @@ export class ErrorLogService {
         console.log(new Date(error.timestamp).toString(), error.message);
     }
 
-    private init() {
+    private init(): void {
         ipcMain.on('getErrors', (event, pageSize: number, currentPage: number) => {
             this.getErrors(pageSize, currentPage);
         });
     }
 
-    private writeErrorsToFile() {
+    private writeErrorsToFile(): void {
         fs.writeFileSync(this.errorFile, JSON.stringify(this.errors));
     }
 
-    private getErrors(pageSize: number, currentPage: number) {
+    private getErrors(pageSize: number, currentPage: number): void {
         const total = this.errors.length;
         const start = currentPage * pageSize;
         const end = start + pageSize;

@@ -9,18 +9,18 @@ import { Game } from '../src/app/models/game';
 
 export class EventLogService {
 
-    private database: Datastore;
+    private readonly database: Datastore;
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'events');
     private readonly MAXIMUM_LOG_ENTRIES = 600;
     private readonly lastEventMap: Map<string, Event> = new Map();
 
-    constructor(private win: BrowserWindow) {
+    constructor(private readonly win: BrowserWindow) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
         EventProcessor.initEventProcessors(win, this.database);
         this.init();
     }
 
-    logEvent(userEvent: Event) {
+    logEvent(userEvent: Event): void {
         const self = this;
         const eventDO = new EventDO(userEvent);
 
@@ -38,7 +38,7 @@ export class EventLogService {
         });
     }
 
-    private init() {
+    private init(): void {
         ipcMain.on('logEvent', (event, userEvent: Event) => {
             this.logEvent(userEvent);
         });
@@ -52,7 +52,7 @@ export class EventLogService {
         });
     }
 
-    private getEvents(pageSize: number, currentPage: number) {
+    private getEvents(pageSize: number, currentPage: number): void {
         const self = this;
         const events: Event[] = [];
 
@@ -69,7 +69,7 @@ export class EventLogService {
         });
     }
 
-    private getLastPlayedTime(game: Game) {
+    private getLastPlayedTime(game: Game): void {
         if (this.lastEventMap.get(game.sha1Code)) {
             this.win.webContents.send('getLastPlayedTimeResponse', this.lastEventMap.get(game.sha1Code));
         } else {

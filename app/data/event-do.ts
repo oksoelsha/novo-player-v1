@@ -1,15 +1,22 @@
 import { Event } from "../../src/app/models/event";
 
 export class EventDO {
-    source: number;
-    type: number;
-    data: string;
-    timestamp: number;
+    readonly source: number;
+    readonly type: number;
+    readonly data: string;
+    readonly timestamp: number;
 
-    constructor(event: Event) {
-        this.source = event.source;
-        this.type = event.type;
-        this.data = event.data;
-        this.timestamp = event.timestamp;
+    constructor({
+        source,
+        type,
+        data,
+        timestamp,
+    }: EventDO) {
+        Object.assign(this, {
+            source,
+            type,
+            data,
+            timestamp,
+        });
     }
 }

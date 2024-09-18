@@ -7,13 +7,13 @@ import { PlatformUtils } from './utils/PlatformUtils';
 
 export class EmulatorHardwareService {
 
-    private readonly HARDWARE_CONFIG_FILENAME = 'hardwareconfig.xml';
+    private static readonly HARDWARE_CONFIG_FILENAME = 'hardwareconfig.xml';
 
-    constructor(private win: BrowserWindow, private settingsService: SettingsService) {
+    constructor(private readonly win: BrowserWindow, private readonly settingsService: SettingsService) {
         this.init();
     }
 
-    private init() {
+    private init(): void {
         ipcMain.on('getMachines', (event, arg) => {
             const machines = this.getFromEmulator('machines');
             this.win.webContents.send('getMachinesResponse', machines);
@@ -26,7 +26,6 @@ export class EmulatorHardwareService {
     }
 
     private getFromEmulator(hardware: string): string[] {
-        const self = this;
         const openMSXPath = this.settingsService.getSettings().openmsxPath;
         const hardwarePath = PlatformUtils.getHardwarePath(openMSXPath, hardware);
         const hardwareList: string[] = [];
@@ -40,7 +39,7 @@ export class EmulatorHardwareService {
                         hardwareList.push(FileTypeUtils.getFilenameWithoutExt(path.basename(hardwareFullPath)));
                     }
                 } else {
-                    const hardwareConfigFile: string = path.join(hardwareFullPath, this.HARDWARE_CONFIG_FILENAME);
+                    const hardwareConfigFile: string = path.join(hardwareFullPath, EmulatorHardwareService.HARDWARE_CONFIG_FILENAME);
                     if (fs.existsSync(hardwareConfigFile)) {
                         hardwareList.push(path.basename(hardwareFullPath));
                     }
