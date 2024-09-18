@@ -26,11 +26,11 @@ export class ScanService {
         this.repositoryInfo = emulatorRepositoryService.getRepositoryInfo();
     }
 
-    start(items: string[], listing:string, machine: string) {
-            // before scanning, first get total files in given file and directories
-            this.totalFilesToScan = this.countTotalFilesToScan(items);
+    start(items: string[], listing: string, machine: string) {
+        // before scanning, first get total files in given file and directories
+        this.totalFilesToScan = this.countTotalFilesToScan(items);
 
-            this.scan(items, listing, machine);
+        this.scan(items, listing, machine);
     }
 
     private countTotalFilesToScan(items: string[]): number {
@@ -84,7 +84,7 @@ export class ScanService {
         if (this.scannedFilesCounter % 50 === 0) {
             this.win.webContents.send('scanProgress', this.scannedFilesCounter, this.totalFilesToScan);
         }
-        if (this.scannedFilesCounter == this.totalFilesToScan) {
+        if (this.scannedFilesCounter === this.totalFilesToScan) {
             this.finishScan();
         }
     }

@@ -22,8 +22,8 @@ export class SettingsService {
             if (!fs.existsSync(this.settingsFile)) {
                 return new Settings(this.getSuggestedOpenMSXPath(), '', '', '', '', '', '', '', '', false, DisplayMode[0]);
             } else {
-                const fileData = fs.readFileSync(this.settingsFile);
-                return this.setSettingsWithDefaults(fileData.toString());
+                const fileData = fs.readFileSync(this.settingsFile).toString();
+                return this.setSettingsWithDefaults(fileData);
             }
         } else {
             return this.settings;
@@ -39,11 +39,11 @@ export class SettingsService {
 
         ipcMain.on('getSettings', (event, arg) => {
             this.settings = this.getSettings();
-            this.win.webContents.send('getSettingsResponse', this.settings)
+            this.win.webContents.send('getSettingsResponse', this.settings);
         });
 
         ipcMain.on('saveSettings', (event, arg) => {
-            this.saveSettings(arg)
+            this.saveSettings(arg);
         });
     }
 

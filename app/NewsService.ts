@@ -93,9 +93,9 @@ export class NewsService {
 }
 
 class SiteNews {
-    site: string;
-    news: NewsItem[];
-    latestTime: number;
+    readonly site: string;
+    readonly news: NewsItem[];
+    readonly latestTime: number;
 
     constructor(site: string, news: NewsItem[], latestTime: number) {
         this.site = site;
