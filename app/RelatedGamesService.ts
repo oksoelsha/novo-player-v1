@@ -116,7 +116,7 @@ export class RelatedGamesService {
             const repositoryInfo = entry[1];
 
             // limit the results to MSX system only (i.e. exclude others such as ColecoVision)
-            if (repositoryInfo.softwareData.system === 'MSX') {
+            if (repositoryInfo.softwareData.system?.startsWith('MSX')) {
                 const extraDataInfo = this.extraDataInfo.get(sha1);
                 if (extraDataInfo != null) {
                     const similarGame = similarGames.get(extraDataInfo.generationMSXID);
