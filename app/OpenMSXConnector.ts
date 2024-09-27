@@ -7,7 +7,6 @@ import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
-//import { XMLParser } from 'fast-xml-parser';
 
 // This class was based on the following implementation:
 // https://github.com/S0urceror/DeZog/blob/v1.3.5/src/remotes/openmsx/openmsxremote.ts
@@ -74,11 +73,11 @@ export class OpenMSXConnector {
 					username = os.userInfo().username;
 				}
 
-				let folder = path.join(os.tmpdir(), 'openmsx-' + username);
-				let socketpath: string = path.join(folder, 'socket.' + this.pid);
+				const folder = path.join(os.tmpdir(), 'openmsx-' + username);
+				const socketpath: string = path.join(folder, 'socket.' + this.pid);
 				if (!PlatformUtils.isWindows()) {
 					const client = net.createConnection(socketpath);
-					var timer = setTimeout(() => {
+					const timer = setTimeout(() => {
 						client.destroy();
 						reject(new Error(`Timeout connecting to OpenMSX`));
 					}, 15000);
@@ -94,10 +93,10 @@ export class OpenMSXConnector {
 						}
 					});
 				} else {
-					let ports: Buffer = fs.readFileSync(socketpath);
-					let port = Number.parseInt(ports.toString());
+					const ports = fs.readFileSync(socketpath);
+					const port = Number.parseInt(ports.toString());
 					const client = net.createConnection(port);
-					var timer = setTimeout(() => {
+					const timer = setTimeout(() => {
 						client.destroy();
 						reject(new Error(`Timeout connecting to OpenMSX:${port}`));
 					}, 15000);
@@ -124,7 +123,7 @@ export class OpenMSXConnector {
 			this.openmsx.once('readable', () => {
 				let buflen: Buffer;
 				while (null == (buflen = this.openmsx.read(4))) { };
-				let len: number = ntohl(buflen, 0);
+				const len = ntohl(buflen, 0);
 				let chunk: Buffer;
 				while (null == (chunk = this.openmsx.read(len))) { };
 				if (len != chunk.byteLength) {
@@ -151,7 +150,7 @@ export class OpenMSXConnector {
 			const packageInfo = nes.sspi.QuerySecurityPackageInfo('Negotiate');
 
 			// Challenge
-			var input: NES.InitializeSecurityContextInput = {
+			let input: NES.InitializeSecurityContextInput = {
 				credential: clientCred.credential,
 				targetName: '',
 				cbMaxToken: packageInfo.cbMaxToken
@@ -160,10 +159,10 @@ export class OpenMSXConnector {
 			if (clientSecurityContext.SECURITY_STATUS !== 'SEC_I_CONTINUE_NEEDED') {
 				throw new Error('Authentication error');
 			}
-			let len: number = clientSecurityContext.SecBufferDesc.buffers[0].byteLength;
-			var blen: Uint8Array = new Uint8Array(4);
+			let len = clientSecurityContext.SecBufferDesc.buffers[0].byteLength;
+			let blen = new Uint8Array(4);
 			htonl(blen, 0, len);
-			let buffer: Uint8Array = new Uint8Array(clientSecurityContext.SecBufferDesc.buffers[0]);
+			let buffer = new Uint8Array(clientSecurityContext.SecBufferDesc.buffers[0]);
 
 			this.openmsx.write(blen);
 			this.openmsx.write(buffer);
@@ -176,7 +175,7 @@ export class OpenMSXConnector {
 			}
 
 			// Response
-			let secBufferDesc: SecBufferDesc = {
+			const secBufferDesc: SecBufferDesc = {
 				ulVersion: 0,
 				buffers: [response],
 			};
@@ -191,7 +190,7 @@ export class OpenMSXConnector {
 			clientSecurityContext = nes.sspi.InitializeSecurityContext(input);
 
 			len = clientSecurityContext.SecBufferDesc.buffers[0].byteLength;
-			var blen: Uint8Array = new Uint8Array(4);
+			blen = new Uint8Array(4);
 			htonl(blen, 0, len);
 			buffer = new Uint8Array(clientSecurityContext.SecBufferDesc.buffers[0]);
 

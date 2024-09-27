@@ -51,7 +51,7 @@ export class NewsService {
     }
 
     private async getFeedData(feedInfo: string[]): Promise<SiteNews> {
-        let parser = new Parser();
+        const parser = new Parser();
         const news: NewsItem[] = [];
         return new Promise<SiteNews>(async (resolve, reject) => {
             let latestTime = 0;

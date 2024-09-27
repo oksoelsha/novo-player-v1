@@ -50,7 +50,7 @@ export class OpenMSXConnectionManager {
         const connection = this.connections.get(pid);
         if (connection) {
             connection.disconnect();
-            this.connections.delete(pid);    
+            this.connections.delete(pid);
         }
     }
 
