@@ -1,13 +1,18 @@
 export const InputDevice = [
     'none',
-    'joystick',
+    'joytap',
     'joystickkeyboard',
     'mouse',
     'arkanoidpad',
     'trackball',
     'touchpad',
-    'magickey',
+    'magic-key',
     'ninjatap',
     'tetris2protection',
-    'paddle'
+    'paddle',
+    'msxjoystick1',
+    'msxjoystick2',
+    'joymega1',
+    'joymega2',
+    'circuit-designer-rd-dongle'
 ];

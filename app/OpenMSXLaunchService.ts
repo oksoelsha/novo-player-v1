@@ -38,7 +38,7 @@ export class OpenMSXLaunchService {
         ['laserdisc', 'laserdisc']
     ];
 
-    private static readonly Input_Device_JOYSTICK = 'plug joyporta joystick1';
+    private static readonly Input_Device_JOYTAP = 'plug joyporta joytap';
     private static readonly Input_Device_JOYSTICK_KEYBOARD = 'plug joyporta keyjoystick1';
     private static readonly Input_Device_MOUSE = 'plug joyporta mouse';
     private static readonly Input_Device_ARKANOID_PAD = 'plug joyporta arkanoidpad';
@@ -48,6 +48,11 @@ export class OpenMSXLaunchService {
     private static readonly Input_Device_NINJATAP = 'plug joyporta ninjatap';
     private static readonly Input_Device_TETRIS2PROTECTION = 'plug joyportb tetris2-protection';
     private static readonly Input_Device_PADDLE = 'plug joyporta paddle';
+    private static readonly Input_Device_MSX_JOYSTICK1 = 'plug joyporta msxjoystick1';
+    private static readonly Input_Device_MSX_JOYSTICK2 = 'plug joyportb msxjoystick2';
+    private static readonly Input_Device_JOYMEGA1 = 'plug joyporta joymega1';
+    private static readonly Input_Device_JOYMEGA2 = 'plug joyportb joymega2';
+    private static readonly Input_Device_CIRCUIT_DESIGNER_RD_DONGLE = 'plug joyportb circuit-designer-rd-dongle';
 
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
@@ -56,7 +61,7 @@ export class OpenMSXLaunchService {
 
     private static readonly tclCommandArgs: TCLCommands[] = [
         new TCLCommands('inputDevice', [
-            ['1', OpenMSXLaunchService.Input_Device_JOYSTICK],
+            ['1', OpenMSXLaunchService.Input_Device_JOYTAP],
             ['2', OpenMSXLaunchService.Input_Device_JOYSTICK_KEYBOARD],
             ['3', OpenMSXLaunchService.Input_Device_MOUSE],
             ['4', OpenMSXLaunchService.Input_Device_ARKANOID_PAD],
@@ -65,7 +70,12 @@ export class OpenMSXLaunchService {
             ['7', OpenMSXLaunchService.Input_Device_MAGICKEY],
             ['8', OpenMSXLaunchService.Input_Device_NINJATAP],
             ['9', OpenMSXLaunchService.Input_Device_TETRIS2PROTECTION],
-            ['10', OpenMSXLaunchService.Input_Device_PADDLE]
+            ['10', OpenMSXLaunchService.Input_Device_PADDLE],
+            ['11', OpenMSXLaunchService.Input_Device_MSX_JOYSTICK1],
+            ['12', OpenMSXLaunchService.Input_Device_MSX_JOYSTICK2],
+            ['13', OpenMSXLaunchService.Input_Device_JOYMEGA1],
+            ['14', OpenMSXLaunchService.Input_Device_JOYMEGA2],
+            ['15', OpenMSXLaunchService.Input_Device_CIRCUIT_DESIGNER_RD_DONGLE]
         ])
         ,
         new TCLCommands('fddMode', [
