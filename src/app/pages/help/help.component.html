@@ -42,10 +42,10 @@
     After that you can start adding games to the player. You can create new listings and populate them with games by clicking
     on the + button, or you can drag and drop files and folders on top of the currently selected listing.
     <p></p>
-    User data and settings are saved in default folders based on the platform ("%userprofile%\Documents\Novo Player" on Windows
-    and "~/.Novo Player" on Linux). To make Novo Player use a local folder for storage, create a text file named "portable.txt"
-    in the same folder as application binary. Novo Player will then create a folder named "portable" in the same folder and use
-    that for storage.
+    User data and settings are saved in default folders based on the platform ("%userprofile%\Documents\Novo Player" on Windows,
+    "~/.Novo Player" on Linux and "~/Library/Application Support/Novo Player" on macOS). To make Novo Player use a local folder
+    for storage (on Windows and Linux only), create a text file named "portable.txt" in the same folder as application binary.
+    Novo Player will then create a folder named "portable" in the same folder and use that for storage.
     <p></p>
     Uniqueness in the player is determined by the SHA1 code of the game file. This means that a specific game file can only be
     added once to the player no matter what the listing is. In the previous blueMSX and openMSX launchers, uniqueness was based
@@ -153,6 +153,12 @@
     Center, MSX Blog and Press Play on Tape.
     <p></p>
     <h5>History</h5>
+    <div>Version 1.10.2 - Oct 13, 2024</div>
+    <ul>
+      <li>Added new devices to plug into openMSX (introduced in version 20.0), and fixed some of the existing ones</li>
+      <li>Account for MSX2 in the system element in openMSX's softwaredb (introduced in version 20.0) - that was only impacting
+        Related Games feature</li>
+    </ul>
     <div>Version 1.10.1 - Aug 17, 2024</div>
     <ul>
       <li>Fixed a few issues on macOS</li>

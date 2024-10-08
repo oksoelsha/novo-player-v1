@@ -6,7 +6,7 @@ import { VersionUtils } from '../src/app/models/version-utils';
 
 export class EnvironmentService {
 
-    private readonly APPLICATION_VERSION = '1.10.1';
+    private readonly APPLICATION_VERSION = '1.10.2';
     private readonly environmentFile = path.join(PersistenceUtils.getStoragePath(), 'environment');
     private readonly environmentData: EnvironmentData;
 
