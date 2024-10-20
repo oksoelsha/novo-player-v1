@@ -127,15 +127,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     return game.romA == null && game.diskA == null && game.tape != null;
   }
 
-  takeScreenshot(pid: number, game: Game) {
-    this.launchActivityService.takeScreenshot(pid, game).then(taken => {
-      if (taken) {
-        this.alertService.success(this.localizationService.translate('dashboard.screenshottaken') + ': ' +
-          game.name + this.getListingIfExists(game));
-      }
-    });
-  }
-
   saveState(pid: number, game: Game) {
     this.launchActivityService.saveState(pid, game).then(saved => {
       if (saved) {

@@ -3,6 +3,7 @@ import { PopupComponent } from '../popup.component';
 import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../services/launch-activity.service';
 import { LocalizationService } from '../../services/localization.service';
 import { Subscription } from 'rxjs';
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -13,6 +14,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   @Input() popupId: string;
   @Input() pid: number;
+  @Input() game: Game;
 
   capsLed: boolean;
   langLed: boolean;
@@ -115,6 +117,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   toggleFullscreen(pid: number) {
     this.fullscreenIndicator = !this.fullscreenIndicator;
     this.launchActivityService.toggleFullscreen(pid).then(success => {
+    });
+  }
+
+  takeScreenshot(pid: number, game: Game) {
+    this.launchActivityService.takeScreenshot(pid, game).then(success => {
     });
   }
 

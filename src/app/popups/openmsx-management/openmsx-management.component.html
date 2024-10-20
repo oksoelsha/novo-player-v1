@@ -14,6 +14,10 @@
         <span *ngIf="!fullscreenIndicator" class="bi-fullscreen"></span>
         <span *ngIf="fullscreenIndicator" class="bi-fullscreen-exit"></span>
     </button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="takeScreenshot(pid, game)"
+        [title]="'dashboard.takeascreenshot' | translate" [ngbPopover]="'dashboard.screenshottaken' | translate" placement="right">
+        <span class="bi-image"></span>
+    </button>
     <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid)"
         [title]="'common.reset' | translate">
         <span class="bi-arrow-counterclockwise"></span>

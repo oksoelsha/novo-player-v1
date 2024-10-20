@@ -29,13 +29,6 @@
                                         </div>
                                     </button>
                                     <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
-                                        (click)="takeScreenshot(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem bi-image"></div>
-                                            {{ 'dashboard.takeascreenshot' | translate }}
-                                        </div>
-                                    </button>
-                                    <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
                                         (click)="saveState(activity.pid, activity.game)">
                                         <div class="d-flex">
                                             <div class="connect-menuitem"></div>
@@ -93,7 +86,7 @@
 
 <app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
-        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" #openmsxManagementInterface>
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>
     </ng-template>
 </app-popup>
