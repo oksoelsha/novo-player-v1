@@ -4,6 +4,10 @@ import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../servi
 import { LocalizationService } from '../../services/localization.service';
 import { Subscription } from 'rxjs';
 import { Game } from '../../models/game';
+import { GameSavedState } from '../../models/saved-state';
+import { GamesService } from '../../services/games.service';
+import { FilesService } from '../../services/files.service';
+import { Utils } from '../../models/utils';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -25,6 +29,8 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   fullscreenIndicator: boolean;
   speed: number;
   speedDisable: boolean;
+  savedStates: GameSavedState[] = [];
+  fileGroup: string[] = [];
 
   readonly pauseLabel: string;
   readonly unpauseLabel: string;
@@ -38,7 +44,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
-    private localizationService: LocalizationService) {
+    private localizationService: LocalizationService, private gamesService: GamesService, private filesService: FilesService) {
     super(changeDetector);
     const self = this;
 
@@ -87,6 +93,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = false;
         this.speed = this.defaultSpeed;
       }
+
+      this.setSavedStates();
+      this.setFileGroup();
     }, 0);
 
     super.open();
@@ -122,6 +131,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   takeScreenshot(pid: number, game: Game) {
     this.launchActivityService.takeScreenshot(pid, game).then(success => {
+      super.alert(this.localizationService.translate('dashboard.screenshottaken'));
     });
   }
 
@@ -139,6 +149,64 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.launchActivityService.setSpeed(pid, this.defaultSpeed).then(success => {
       this.speed = this.defaultSpeed;
     });
+  }
+
+  saveState(pid: number, game: Game) {
+    this.launchActivityService.saveState(pid, game).then(saved => {
+      if (saved) {
+        super.alert(this.localizationService.translate('dashboard.statesaved'));
+        this.setSavedStates();
+      }
+    });
+  }
+
+  loadState(gameState: GameSavedState) {
+    this.launchActivityService.loadState(this.pid, gameState.state).then(loaded => {
+      if (loaded) {
+        super.alert(this.localizationService.translate('dashboard.stateloaded'));
+      }
+    });
+  }
+
+  getSavedStateTimeAndDate(savedState: GameSavedState): string {
+    const timestamp = savedState.state.substring(savedState.state.lastIndexOf('-') + 1, savedState.state.lastIndexOf('.'));
+    return new Date(+timestamp).toLocaleString();
+  }
+
+  getMediumDisplayName(medium: string) {
+    let separatorIndex = medium.lastIndexOf('\\');
+    if (separatorIndex < 0) {
+      separatorIndex = medium.lastIndexOf('/');
+    }
+    return Utils.compressStringIfTooLong(medium.substring(separatorIndex + 1, medium.lastIndexOf('.')));
+  }
+
+  isMediumCanHaveGroup(game: Game): boolean {
+    return this.isDisk(game) || this.isTape(game);
+  }
+
+  switchMedium(pid: number, game: Game, medium: string) {
+    if (this.isDisk(game)) {
+      this.launchActivityService.switchDisk(pid, medium).then(switched => {
+        if (switched) {
+          super.alert(this.localizationService.translate('dashboard.diskswitched'));
+        }
+      });
+    } else {
+      this.launchActivityService.switchTape(pid, medium).then(switched => {
+        if (switched) {
+          super.alert(this.localizationService.translate('dashboard.tapeswitched'));
+        }
+      });
+    }
+  }
+
+  isDisk(game: Game) {
+    return game.romA == null && game.diskA != null;
+  }
+
+  isTape(game: Game) {
+    return game.romA == null && game.diskA == null && game.tape != null;
   }
 
   private processEvents(openmsxEvent: OpenmsxEvent) {
@@ -161,6 +229,28 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.speed = Number(openmsxEvent.value);
         this.speedDisable = !this.acceptedSpeeds.has(this.speed);
       }
+    }
+  }
+
+  private setSavedStates() {
+    this.gamesService.getGameSavedStates(this.game).then((savedStates: GameSavedState[]) => {
+      this.savedStates = savedStates;
+    });
+  }
+
+  private setFileGroup() {
+    let medium: string;
+    if (this.isDisk(this.game)) {
+      medium = this.game.diskA;
+    } else if (this.isTape(this.game)) {
+      medium = this.game.tape;
+    } else {
+      medium = null;
+    }
+    if (medium) {
+      this.filesService.getFileGroup(this.pid, medium).then((fileGroup: string[]) => {
+        this.fileGroup = fileGroup;
+      });
     }
   }
 }
