@@ -14,12 +14,44 @@
         <span *ngIf="!fullscreenIndicator" class="bi-fullscreen"></span>
         <span *ngIf="fullscreenIndicator" class="bi-fullscreen-exit"></span>
     </button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="takeScreenshot(pid, game)"
+        [title]="'dashboard.takeascreenshot' | translate">
+        <span class="bi-image"></span>
+    </button>
     <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid)"
         [title]="'common.reset' | translate">
         <span class="bi-arrow-counterclockwise"></span>
     </button>
 </div>
-
+<div ngbDropdown class="d-inline-block ps-3 pt-2">
+    <button class="btn btn-secondary btn-sm" type="button" (click)="saveState(pid, game)">
+        {{ 'dashboard.savestate' | translate }}
+    </button>
+</div>
+<div ngbDropdown class="d-inline-block ps-1 pt-2">
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
+        [disabled]="savedStates.length === 0">
+        {{ 'dashboard.loadstate' | translate }}
+    </button>
+    <div ngbDropdownMenu class="dropdown-scroll pt-0 pb-0">
+        <button *ngFor="let savedState of savedStates" ngbDropdownItem type="button" (click)="loadState(savedState)">
+            <img [src]="savedState.screenshot" class="screenshot">
+            <div class="ms-2 d-inline-block">{{ getSavedStateTimeAndDate(savedState) }}</div>
+        </button>
+    </div>
+</div>
+<div ngbDropdown class="ps-3 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 0">
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle>
+        <span *ngIf="isDisk(game)">{{ 'dashboard.switchdisks' | translate }}</span>
+        <span *ngIf="isTape(game)">{{ 'dashboard.switchtapes' | translate }}</span>
+    </button>
+    <div ngbDropdownMenu class="dropdown-scroll pt-0 pb-0">
+        <button *ngFor="let medium of fileGroup" ngbDropdownItem type="button"
+            (click)="switchMedium(pid, game, medium)">
+            <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
+        </button>
+    </div>
+</div>
 <div class="ps-3 pe-3 pt-4 controls">
     <div class="d-inline-block pe-2">{{ 'dashboard.emulationspeed' | translate }}</div>
     <div *ngIf="!speedDisable" class="d-inline-block pe-2 pt-2">

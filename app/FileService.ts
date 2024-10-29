@@ -207,9 +207,8 @@ export class FilesService {
         // the screenshot file was returned to the renderer process. Here we're putting it back
         let file: string;
         if (PlatformUtils.isWindows()) {
-            const folder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
             const filename = path.basename(imagefile);
-            file = path.join(folder, filename);
+            file = path.join(this.openmsxDataScrrenshotsFolder, filename);
         } else {
             file = imagefile;
         }

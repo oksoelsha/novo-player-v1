@@ -28,27 +28,6 @@
                                             {{ 'dashboard.managesession' | translate }}
                                         </div>
                                     </button>
-                                    <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
-                                        (click)="takeScreenshot(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem bi-image"></div>
-                                            {{ 'dashboard.takeascreenshot' | translate }}
-                                        </div>
-                                    </button>
-                                    <button ngbDropdownItem *ngIf="activity.game.listing" type="button"
-                                        (click)="saveState(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem"></div>
-                                            {{ 'dashboard.savestate' | translate }}
-                                        </div>
-                                    </button>
-                                    <button ngbDropdownItem *ngIf="savedStatesMap.get(activity.game.sha1Code)"
-                                        type="button" (click)="loadState(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem"></div>
-                                            {{ 'dashboard.loadstate' | translate }}
-                                        </div>
-                                    </button>
                                     <button ngbDropdownItem type="button"
                                         (click)="typeText(activity.pid, activity.game)">
                                         <div class="d-flex">
@@ -70,17 +49,6 @@
                                             {{ 'dashboard.cheats' | translate }}
                                         </div>
                                     </button>
-                                    <ng-container
-                                        *ngIf="isMediumCanHaveGroup(activity.game) && fileGroupMap.get(activity.pid)?.length > 1">
-                                        <h6 *ngIf="isDisk(activity.game)" class="dropdown-header">{{
-                                            'dashboard.switchdisks' | translate }}:</h6>
-                                        <h6 *ngIf="isTape(activity.game)" class="dropdown-header">{{
-                                            'dashboard.switchtapes' | translate }}:</h6>
-                                        <button *ngFor="let medium of fileGroupMap.get(activity.pid)" ngbDropdownItem
-                                            type="button" (click)="switchMedium(activity.pid, activity.game, medium)">
-                                            <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
-                                        </button>
-                                    </ng-container>
                                 </div>
                             </div>
                         </td>
@@ -93,16 +61,8 @@
 
 <app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
-        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" #openmsxManagementInterface>
+        <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>
-    </ng-template>
-</app-popup>
-
-<app-popup popupId="saved-states-id" [titleHeader]="('dashboard.loadstate' | translate) + ': ' + selectedGame?.name">
-    <ng-template let-popupId="popupId">
-        <app-saved-states [popupId]="popupId" [savedStates]="savedStates" [game]="selectedGame" [hideNormalStart]="true"
-            (stateChoice)="loadStateOnOpenmsx($event)" (updateStateList)="resetStatesMap()" #savedStatesSelector>
-        </app-saved-states>
     </ng-template>
 </app-popup>
 

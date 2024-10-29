@@ -17,6 +17,7 @@ export class PopupComponent implements OnDestroy {
   set titleHeader(value: string) {
     this.titleHeaderValue = Utils.compressStringIfTooLong(value);
   }
+  private timer: NodeJS.Timer = null;
 
   private titleHeaderValue: string;
 
@@ -71,6 +72,20 @@ export class PopupComponent implements OnDestroy {
     })());
     popup.classList.remove('popup-fade');
     this.changeDetector.detach();
+  }
+
+  alert(message: string) {
+    const alertElement = document.getElementById('popup-alert-area');
+    alertElement.innerText = message;
+    alertElement.classList.add('success-alert');
+
+    if (this.timer != null) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(() => {
+      alertElement.innerText = '';
+      alertElement.classList.remove('success-alert');
+    }, 10000);
   }
 
   private handleEscape(e: KeyboardEvent) {
