@@ -15,6 +15,8 @@ export class LaunchActivityService {
   private openmsxEventSubject = new Subject<OpenmsxEvent>();
   private ipc: IpcRenderer;
   private openmsxCurrentStatus: Map<number, Map<string, string>> = new Map();
+  private screenNumberCheckFrequency: any;
+  private screenNumberSubject = new Subject<number>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
@@ -192,6 +194,30 @@ export class LaunchActivityService {
 
   getOpenmsxCurrentStatus(pid: number): Map<string, string> {
     return this.openmsxCurrentStatus.get(pid);
+  }
+
+  startGettingScreenNumber(pid: number) {
+    this.getScreenNumber(pid);
+    this.screenNumberCheckFrequency = setInterval(() => {
+      this.getScreenNumber(pid);
+    }, 2000);
+  }
+
+  stopGettingScreenNumber(pid: number) {
+    if (this.screenNumberCheckFrequency) {
+      clearInterval(this.screenNumberCheckFrequency);
+    }
+  }
+
+  getScreenNumberNotification(): Observable<number> {
+    return this.screenNumberSubject.asObservable();
+  }
+
+  private getScreenNumber(pid: number) {
+    this.ipc.once('getScreenNumberResponse', (event, screen: number) => {
+      this.screenNumberSubject.next(screen);
+    });
+    this.ipc.send('getScreenNumber', pid);
   }
 
   private updateOpenmsxCurrentStatus(pid: number, event: OpenmsxEvent) {

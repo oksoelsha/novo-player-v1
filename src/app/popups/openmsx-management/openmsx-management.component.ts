@@ -31,6 +31,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   speedDisable: boolean;
   savedStates: GameSavedState[] = [];
   fileGroup: string[] = [];
+  screen: number;
 
   readonly pauseLabel: string;
   readonly unpauseLabel: string;
@@ -41,6 +42,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   readonly defaultSpeed = 100;
 
   private openmsxEventSubscription: Subscription;
+  private screenNumberSubscription: Subscription;
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
@@ -57,6 +59,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
       self.processEvents(openmsxEvent);
     });
+    this.screenNumberSubscription = this.launchActivityService.getScreenNumberNotification().subscribe((screen: number) => {
+      self.screen = screen;
+    });
   }
 
   ngOnInit() {
@@ -69,6 +74,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   ngOnDestroy() {
     this.openmsxEventSubscription.unsubscribe();
+    this.screenNumberSubscription.unsubscribe();
   }
 
   async open(): Promise<void> {
@@ -96,9 +102,17 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
       this.setSavedStates();
       this.setFileGroup();
+      this.launchActivityService.startGettingScreenNumber(this.pid);
     }, 0);
 
     super.open();
+  }
+
+  close(): void {
+    super.close(() => {
+      this.screen = null;
+      this.launchActivityService.stopGettingScreenNumber(this.pid);
+    });
   }
 
   initSpeedValue(currentStatus: Map<string, string>) {

@@ -59,6 +59,9 @@ export class OpenMSXControlService {
         ipcMain.on('setAllCheatsOnOpenmsx', (event, pid: number, gameName: string, flag: boolean) => {
             this.setAllCheatsOnOpenmsx(pid, gameName, flag);
         });
+        ipcMain.on('getScreenNumber', (event, pid: number) => {
+            this.getScreenNumber(pid);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -199,6 +202,12 @@ export class OpenMSXControlService {
                     this.win.webContents.send('setAllCheatsOnOpenmsxResponse' + pid, result.success);
                 });
             }
+        });
+    }
+
+    private async getScreenNumber(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'get_screen_mode_number').then(result => {
+            this.win.webContents.send('getScreenNumberResponse', result.content);
         });
     }
 
