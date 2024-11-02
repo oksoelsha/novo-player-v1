@@ -236,7 +236,7 @@
     "unmute": "ミュート解除",
     "fullscreen": "全画面表示",
     "exitfullscreen": "全画面表示を終了する",
-    "emulationspeed": "エミュレーション速度",
+    "speed": "速度",
     "restoredefault": "デフォルトを復元",
     "cheats": "チート",
     "enableall": "全てオンにする",

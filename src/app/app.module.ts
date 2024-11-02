@@ -70,6 +70,8 @@ import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.comp
 import { MoreDetailsComponent } from './popups/more-details/more-details.component';
 import { GameCompanyAndYearPipe } from './shared/pipes/game-company-and-year.pipe';
 import { ScreenshotFilenamePipe } from './pages/home/pipes/screenshot-filename.pipe';
+import { ScreenNumberComponent } from './popups/openmsx-management/screen-number/screen-number.component';
+import { EmulationSpeedComponent } from './popups/openmsx-management/emulation-speed/emulation-speed.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -117,6 +119,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     PickPasswordComponent,
     EnableCheatsComponent,
     OpenmsxManagementComponent,
+    ScreenNumberComponent,
+    EmulationSpeedComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,

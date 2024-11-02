@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit }
 import { PopupComponent } from '../popup.component';
 import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../services/launch-activity.service';
 import { LocalizationService } from '../../services/localization.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { Game } from '../../models/game';
 import { GameSavedState } from '../../models/saved-state';
 import { GamesService } from '../../services/games.service';
@@ -27,11 +27,10 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   pauseIndicator: boolean;
   muteIndicator: boolean;
   fullscreenIndicator: boolean;
-  speed: number;
-  speedDisable: boolean;
   savedStates: GameSavedState[] = [];
   fileGroup: string[] = [];
-  screen: number;
+  openEventSubject: Subject<boolean> = new Subject<boolean>();
+  currentStatus: Map<string, string>;
 
   readonly pauseLabel: string;
   readonly unpauseLabel: string;
@@ -39,11 +38,8 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   readonly unmuteLabel: string;
   readonly fullscreenLabel: string;
   readonly windowLabel: string;
-  readonly defaultSpeed = 100;
 
   private openmsxEventSubscription: Subscription;
-  private screenNumberSubscription: Subscription;
-  private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
 
   constructor(protected changeDetector: ChangeDetectorRef, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService, private gamesService: GamesService, private filesService: FilesService) {
@@ -59,9 +55,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
       self.processEvents(openmsxEvent);
     });
-    this.screenNumberSubscription = this.launchActivityService.getScreenNumberNotification().subscribe((screen: number) => {
-      self.screen = screen;
-    });
   }
 
   ngOnInit() {
@@ -74,21 +67,19 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   ngOnDestroy() {
     this.openmsxEventSubscription.unsubscribe();
-    this.screenNumberSubscription.unsubscribe();
   }
 
   async open(): Promise<void> {
     setTimeout(() => {
-      const currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
-      if (currentStatus) {
-        this.capsLed = currentStatus.get('caps') === 'on';
-        this.langLed = currentStatus.get('kana') === 'on';
-        this.turboLed = currentStatus.get('turbo') === 'on';
-        this.fddLed = currentStatus.get('FDD') === 'on';
-        this.pauseIndicator = currentStatus.get('pause') === 'true';
-        this.muteIndicator = currentStatus.get('mute') === 'true';
-        this.fullscreenIndicator = currentStatus.get('fullscreen') === 'true';
-        this.initSpeedValue(currentStatus);
+      this.currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
+      if (this.currentStatus) {
+        this.capsLed = this.currentStatus.get('caps') === 'on';
+        this.langLed = this.currentStatus.get('kana') === 'on';
+        this.turboLed = this.currentStatus.get('turbo') === 'on';
+        this.fddLed = this.currentStatus.get('FDD') === 'on';
+        this.pauseIndicator = this.currentStatus.get('pause') === 'true';
+        this.muteIndicator = this.currentStatus.get('mute') === 'true';
+        this.fullscreenIndicator = this.currentStatus.get('fullscreen') === 'true';
       } else {
         this.capsLed = false;
         this.langLed = false;
@@ -97,12 +88,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.pauseIndicator = false;
         this.muteIndicator = false;
         this.fullscreenIndicator = false;
-        this.speed = this.defaultSpeed;
       }
 
       this.setSavedStates();
       this.setFileGroup();
-      this.launchActivityService.startGettingScreenNumber(this.pid);
+      this.openEventSubject.next(true);
     }, 0);
 
     super.open();
@@ -110,19 +100,8 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   close(): void {
     super.close(() => {
-      this.screen = null;
-      this.launchActivityService.stopGettingScreenNumber(this.pid);
+      this.openEventSubject.next(false);
     });
-  }
-
-  initSpeedValue(currentStatus: Map<string, string>) {
-    const value = currentStatus.get('speed');
-    if (!value) {
-      this.speed = this.defaultSpeed;
-    } else {
-      this.speed = Number(currentStatus.get('speed'));
-      this.speedDisable = !this.acceptedSpeeds.has(this.speed);
-    }
   }
 
   togglePause(pid: number) {
@@ -151,17 +130,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   resetMachine(pid: number) {
     this.launchActivityService.resetMachine(pid).then(reset => {
-    });
-  }
-
-  setSpeed(pid: number) {
-    this.launchActivityService.setSpeed(pid, this.speed).then(success => {
-    });
-  }
-
-  resetSpeed(pid: number) {
-    this.launchActivityService.setSpeed(pid, this.defaultSpeed).then(success => {
-      this.speed = this.defaultSpeed;
     });
   }
 
@@ -239,9 +207,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.muteIndicator = openmsxEvent.value === 'true';
       } else if (openmsxEvent.name === 'fullscreen') {
         this.fullscreenIndicator = openmsxEvent.value === 'true';
-      } else if (openmsxEvent.name === 'speed') {
-        this.speed = Number(openmsxEvent.value);
-        this.speedDisable = !this.acceptedSpeeds.has(this.speed);
       }
     }
   }

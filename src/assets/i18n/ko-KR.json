@@ -236,7 +236,7 @@
     "unmute": "음소거 해제",
     "fullscreen": "전체 화면",
     "exitfullscreen": "전체 화면 종료",
-    "emulationspeed": "에뮬레이션 속도",
+    "speed": "속도",
     "restoredefault": "기본값 복원",
     "cheats": "치트키",
     "enableall": "모두 사용하다",

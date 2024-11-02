@@ -1,0 +1,13 @@
+<div class="p-1 text-center management-card">
+    <div class="small">{{ 'dashboard.speed' | translate }}</div>
+    <div class="font-weight-bold fs-3">{{ speed }}%</div>
+    <div *ngIf="!speedDisable">
+        <input type="range" class="form-range" min="50" max="300" step="50" [(ngModel)]="speed"
+            (change)="setSpeed()">
+    </div>
+    <div *ngIf="speedDisable" class="ps-2 d-inline-block">
+        <a class="badge bg-secondary bg-size bg-link" (click)="resetSpeed()">
+            <span class="bi-arrow-clockwise" [title] = "'dashboard.restoredefault' | translate"></span>
+        </a>
+    </div>
+</div>

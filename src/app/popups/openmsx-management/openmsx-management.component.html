@@ -52,24 +52,16 @@
         </button>
     </div>
 </div>
-<div class="ps-3 pe-3 pt-4 controls">
-    <div class="d-inline-block pe-2">{{ 'dashboard.emulationspeed' | translate }}</div>
-    <div *ngIf="!speedDisable" class="d-inline-block pe-2 pt-2">
-        <input type="range" class="form-range" min="50" max="300" step="50" [(ngModel)]="speed"
-            (change)="setSpeed(pid)">
+<div class="d-flex">
+    <div class="ps-3 pt-2">
+        <app-openmsx-management-screen-number [pid]="pid"
+            [events]="openEventSubject.asObservable()"></app-openmsx-management-screen-number>
     </div>
-    <div class="d-inline-block">{{ speed }}%</div>
-    <div *ngIf="speedDisable" class="ps-2 d-inline-block">
-        <a class="badge bg-secondary bg-size bg-link" (click)="resetSpeed(pid)">
-            <span class="bi-arrow-clockwise" [title] = "'dashboard.restoredefault' | translate"></span>
-        </a>
+    <div class="ps-2 pt-2">
+        <app-openmsx-management-emulation-speed [pid]="pid" [events]="openEventSubject.asObservable()"
+            [currentStatus]="currentStatus"></app-openmsx-management-emulation-speed>
     </div>
 </div>
-
-<div class="ps-3 pt-4">
-    Screen: {{ screen }}
-</div>
-
 <div class="d-inline-block led-container">
     <div [ngClass]="capsLed ? 'led led-on' : 'led led-off'"></div>
     <div>Caps</div>
