@@ -1,25 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmulationSpeedComponent } from './emulation-speed.component';
+import { StateSaveLoadComponent } from './state-save-load.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { Game } from '../../../models/game';
 
-describe('EmulationSpeedComponent', () => {
-  let component: EmulationSpeedComponent;
-  let fixture: ComponentFixture<EmulationSpeedComponent>;
+describe('StateSaveLoadComponent', () => {
+  let component: StateSaveLoadComponent;
+  let fixture: ComponentFixture<StateSaveLoadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ TranslateModule.forRoot() ],
-      declarations: [ EmulationSpeedComponent ]
+      declarations: [ StateSaveLoadComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmulationSpeedComponent);
+    fixture = TestBed.createComponent(StateSaveLoadComponent);
     component = fixture.componentInstance;
     component.events = of(true);
+    const game = new Game('name', '1234', 2345);
+    component.game = game;
     fixture.detectChanges();
   });
 

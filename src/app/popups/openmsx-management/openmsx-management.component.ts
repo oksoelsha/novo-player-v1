@@ -4,7 +4,6 @@ import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../servi
 import { LocalizationService } from '../../services/localization.service';
 import { Subject, Subscription } from 'rxjs';
 import { Game } from '../../models/game';
-import { GameSavedState } from '../../models/saved-state';
 import { GamesService } from '../../services/games.service';
 import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
@@ -27,7 +26,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   pauseIndicator: boolean;
   muteIndicator: boolean;
   fullscreenIndicator: boolean;
-  savedStates: GameSavedState[] = [];
   fileGroup: string[] = [];
   openEventSubject: Subject<boolean> = new Subject<boolean>();
   currentStatus: Map<string, string>;
@@ -90,7 +88,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = false;
       }
 
-      this.setSavedStates();
       this.setFileGroup();
       this.openEventSubject.next(true);
     }, 0);
@@ -133,28 +130,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     });
   }
 
-  saveState(pid: number, game: Game) {
-    this.launchActivityService.saveState(pid, game).then(saved => {
-      if (saved) {
-        super.alert(this.localizationService.translate('dashboard.statesaved'));
-        this.setSavedStates();
-      }
-    });
-  }
-
-  loadState(gameState: GameSavedState) {
-    this.launchActivityService.loadState(this.pid, gameState.state).then(loaded => {
-      if (loaded) {
-        super.alert(this.localizationService.translate('dashboard.stateloaded'));
-      }
-    });
-  }
-
-  getSavedStateTimeAndDate(savedState: GameSavedState): string {
-    const timestamp = savedState.state.substring(savedState.state.lastIndexOf('-') + 1, savedState.state.lastIndexOf('.'));
-    return new Date(+timestamp).toLocaleString();
-  }
-
   getMediumDisplayName(medium: string) {
     let separatorIndex = medium.lastIndexOf('\\');
     if (separatorIndex < 0) {
@@ -191,6 +166,10 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     return game.romA == null && game.diskA == null && game.tape != null;
   }
 
+  alertMessage(message: string) {
+    super.alert(message);
+  }
+
   private processEvents(openmsxEvent: OpenmsxEvent) {
     if (openmsxEvent?.pid === this.pid) {
       if (openmsxEvent.name === 'caps') {
@@ -209,12 +188,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = openmsxEvent.value === 'true';
       }
     }
-  }
-
-  private setSavedStates() {
-    this.gamesService.getGameSavedStates(this.game).then((savedStates: GameSavedState[]) => {
-      this.savedStates = savedStates;
-    });
   }
 
   private setFileGroup() {

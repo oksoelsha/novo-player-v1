@@ -12,10 +12,12 @@ export class EmulationSpeedComponent implements OnInit, OnDestroy {
   @Input() pid: number;
   @Input() currentStatus: Map<String, string>;
   @Input() events: Observable<boolean>;
+
   speed: number;
   speedDisable: boolean;
+
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
-  readonly defaultSpeed = 100;
+  private readonly defaultSpeed = 100;
   private openmsxEventSubscription: Subscription;
   private eventsSubscription: Subscription;
 
