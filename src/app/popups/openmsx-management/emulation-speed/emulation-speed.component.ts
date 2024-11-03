@@ -5,7 +5,7 @@ import { LaunchActivityService, OpenmsxEvent } from '../../../services/launch-ac
 @Component({
   selector: 'app-openmsx-management-emulation-speed',
   templateUrl: './emulation-speed.component.html',
-  styleUrls: ['./emulation-speed.component.sass']
+  styleUrls: ['../openmsx-management.component.sass', './emulation-speed.component.sass']
 })
 export class EmulationSpeedComponent implements OnInit, OnDestroy {
 

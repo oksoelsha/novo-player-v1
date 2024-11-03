@@ -9,7 +9,7 @@ import { LocalizationService } from '../../../services/localization.service';
 @Component({
   selector: 'app-openmsx-management-state-save-load',
   templateUrl: './state-save-load.component.html',
-  styleUrls: ['./state-save-load.component.sass']
+  styleUrls: ['../../../common-styles.sass', '../openmsx-management.component.sass', './state-save-load.component.sass']
 })
 export class StateSaveLoadComponent implements OnInit, OnDestroy {
 

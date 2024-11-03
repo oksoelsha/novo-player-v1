@@ -23,18 +23,6 @@
         <span class="bi-arrow-counterclockwise"></span>
     </button>
 </div>
-<div ngbDropdown class="ps-3 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 0">
-    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle>
-        <span *ngIf="isDisk(game)">{{ 'dashboard.switchdisks' | translate }}</span>
-        <span *ngIf="isTape(game)">{{ 'dashboard.switchtapes' | translate }}</span>
-    </button>
-    <div ngbDropdownMenu class="dropdown-scroll pt-0 pb-0">
-        <button *ngFor="let medium of fileGroup" ngbDropdownItem type="button"
-            (click)="switchMedium(pid, game, medium)">
-            <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
-        </button>
-    </div>
-</div>
 <div class="d-flex">
     <div class="ps-3 pt-2">
         <app-openmsx-management-screen-number [pid]="pid"
@@ -47,6 +35,18 @@
     <div class="ps-2 pt-2">
         <app-openmsx-management-state-save-load [pid]="pid" [game]="game" (alertMessage)="alertMessage($event)"
             [events]="openEventSubject.asObservable()"></app-openmsx-management-state-save-load>
+    </div>
+</div>
+<div ngbDropdown class="ps-3 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 0">
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle>
+        <span *ngIf="isDisk(game)">{{ 'dashboard.switchdisks' | translate }}</span>
+        <span *ngIf="isTape(game)">{{ 'dashboard.switchtapes' | translate }}</span>
+    </button>
+    <div ngbDropdownMenu class="dropdown-scroll pt-0 pb-0">
+        <button *ngFor="let medium of fileGroup" ngbDropdownItem type="button"
+            (click)="switchMedium(pid, game, medium)">
+            <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
+        </button>
     </div>
 </div>
 <div class="d-inline-block led-container">

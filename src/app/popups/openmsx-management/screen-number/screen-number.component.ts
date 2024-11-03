@@ -5,7 +5,7 @@ import { LaunchActivityService } from '../../../services/launch-activity.service
 @Component({
   selector: 'app-openmsx-management-screen-number',
   templateUrl: './screen-number.component.html',
-  styleUrls: ['./screen-number.component.sass']
+  styleUrls: ['../openmsx-management.component.sass', './screen-number.component.sass']
 })
 export class ScreenNumberComponent implements OnInit, OnDestroy {
 
