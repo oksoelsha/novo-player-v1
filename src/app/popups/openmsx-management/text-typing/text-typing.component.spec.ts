@@ -1,23 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeTextComponent } from './type-text.component';
+import { TextTypingComponent } from './text-typing.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { of } from 'rxjs';
 
-describe('TypeTextComponent', () => {
-  let component: TypeTextComponent;
-  let fixture: ComponentFixture<TypeTextComponent>;
+describe('TextTypingComponent', () => {
+  let component: TextTypingComponent;
+  let fixture: ComponentFixture<TextTypingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ TranslateModule.forRoot() ],
-      declarations: [ TypeTextComponent ]
+      declarations: [ TextTypingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeTextComponent);
+    fixture = TestBed.createComponent(TextTypingComponent);
     component = fixture.componentInstance;
+    component.events = of(true);
     fixture.detectChanges();
   });
 

@@ -1,0 +1,15 @@
+<div ngbDropdown>
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle [title]="'dashboard.typetext' | translate">
+        {{ 'dashboard.type' | translate }}
+    </button>
+    <div ngbDropdownMenu class="p-3">
+        <textarea class="form-control form-control-sm input-text" rows="12" [(ngModel)]="textToType"
+            spellcheck="false"></textarea>
+        <button class="btn btn-primary btn-sm mt-3" (click)="type()" (keyup.enter)="type()">
+            {{ 'dashboard.type' | translate }}
+        </button>
+        <button class="btn btn-primary btn-sm ms-2 mt-3" (click)="clear()" (keyup.enter)="clear()">
+            {{ 'dashboard.clear' | translate }}
+        </button>
+    </div>
+</div>

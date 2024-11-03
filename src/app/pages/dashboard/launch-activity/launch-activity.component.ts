@@ -8,7 +8,6 @@ import { LaunchActivity, LaunchActivityService } from '../../../services/launch-
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
-import { TypeTextComponent as TypeTextComponent } from '../../../popups/type-text/type-text.component';
 import { GamePasswordsInfo } from '../../../models/game-passwords-info';
 import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
@@ -22,7 +21,6 @@ import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-chea
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
-  @ViewChild('typeTextInterface') typeTextInterface: TypeTextComponent;
   @ViewChild('passwordSelector') pickPasswordInterface: PickPasswordComponent;
   @ViewChild('trainerInterface') enableCheatsInterface: EnableCheatsComponent;
   readonly isWindows = this.platformService.isOnWindows();
@@ -41,7 +39,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
       if (!launchActivity.find(l => l.pid === this.selectedPid)) {
-        this.typeTextInterface.close();
         this.pickPasswordInterface.close();
         this.openmsxManagementInterface.close();
         this.enableCheatsInterface.close();
@@ -77,12 +74,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   isRunningOnOpenMSX(launchActivity: LaunchActivity): boolean {
     return launchActivity.source === EventSource.openMSX;
-  }
-
-  typeText(pid: number, game: Game) {
-    this.selectedPid = pid;
-    this.selectedGame = game;
-    this.typeTextInterface.open();
   }
 
   pickPassword(pid: number, game: Game) {

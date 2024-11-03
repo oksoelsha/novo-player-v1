@@ -28,13 +28,6 @@
                                             {{ 'dashboard.managesession' | translate }}
                                         </div>
                                     </button>
-                                    <button ngbDropdownItem type="button"
-                                        (click)="typeText(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem bi-keyboard"></div>
-                                            {{ 'dashboard.typetext' | translate }}
-                                        </div>
-                                    </button>
                                     <button ngbDropdownItem *ngIf="gamePasswordsMap.get(activity.game.generationMSXId)"
                                         type="button" (click)="pickPassword(activity.pid, activity.game)">
                                         <div class="d-flex">
@@ -63,13 +56,6 @@
     <ng-template let-popupId="popupId">
         <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>
-    </ng-template>
-</app-popup>
-
-<app-popup popupId="type-text-id" [titleHeader]="('dashboard.typetext' | translate) + ': ' + selectedGame?.name">
-    <ng-template let-popupId="popupId">
-        <app-type-text [popupId]="popupId" [pid]="selectedPid" #typeTextInterface>
-        </app-type-text>
     </ng-template>
 </app-popup>
 

@@ -18,6 +18,10 @@
         [title]="'dashboard.takeascreenshot' | translate">
         <span class="bi-image"></span>
     </button>
+    <div class="d-inline-block">
+        <app-openmsx-management-text-typing [pid]="pid" [events]="openEventSubject.asObservable()"
+            (alertMessage)="alertMessage($event)"></app-openmsx-management-text-typing>
+    </div>
     <button type="button" class="btn btn-warning btn-sm float-end" (click)="resetMachine(pid)"
         [title]="'common.reset' | translate">
         <span class="bi-arrow-counterclockwise"></span>
