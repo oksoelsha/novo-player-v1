@@ -97,7 +97,7 @@ export class BlueMSXLaunchService {
 
     private appendParams(args: string[], argsString: string): void {
         if (argsString) {
-            const params = argsString.split('/');
+            const params = argsString.split(/\/(?=(?:[^"]*"[^"]*")*$)/g);
             params.forEach((param) => {
                 const space = param.indexOf(' ');
                 if (space > -1) {

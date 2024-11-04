@@ -237,7 +237,7 @@ export class OpenMSXLaunchService {
 
     private appendParams(args: string[], argsString: string) {
         if (argsString) {
-            const params = argsString.split('-');
+            const params = argsString.split(/-(?=(?:[^"]*"[^"]*")*$)/g);
             params.forEach((param) => {
                 const space = param.indexOf(' ');
                 if (space > -1) {
