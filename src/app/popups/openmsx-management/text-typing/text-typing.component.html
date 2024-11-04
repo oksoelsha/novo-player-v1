@@ -2,7 +2,7 @@
     <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle [title]="'dashboard.typetext' | translate">
         {{ 'dashboard.type' | translate }}
     </button>
-    <div ngbDropdownMenu class="p-3">
+    <div ngbDropdownMenu class="p-3 button-popups">
         <textarea class="form-control form-control-sm input-text" rows="12" [(ngModel)]="textToType"
             spellcheck="false"></textarea>
         <button class="btn btn-primary btn-sm mt-3" (click)="type()" (keyup.enter)="type()">

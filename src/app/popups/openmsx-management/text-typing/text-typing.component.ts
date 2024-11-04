@@ -6,7 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-openmsx-management-text-typing',
   templateUrl: './text-typing.component.html',
-  styleUrls: ['./text-typing.component.sass']
+  styleUrls: ['../openmsx-management.component.sass', './text-typing.component.sass']
 })
 export class TextTypingComponent implements OnInit, OnDestroy {
 

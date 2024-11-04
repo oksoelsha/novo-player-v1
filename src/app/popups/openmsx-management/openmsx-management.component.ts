@@ -7,6 +7,7 @@ import { Game } from '../../models/game';
 import { GamesService } from '../../services/games.service';
 import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
+import { GamePasswordsInfo } from '../../models/game-passwords-info';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -29,6 +30,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   fileGroup: string[] = [];
   openEventSubject: Subject<boolean> = new Subject<boolean>();
   currentStatus: Map<string, string>;
+  gamePasswordsInfo: GamePasswordsInfo;
 
   readonly pauseLabel: string;
   readonly unpauseLabel: string;
@@ -89,6 +91,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
       }
 
       this.setFileGroup();
+      this.setPasswords();
       this.openEventSubject.next(true);
     }, 0);
 
@@ -168,6 +171,12 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   alertMessage(message: string) {
     super.alert(message);
+  }
+
+  private setPasswords() {
+    this.gamesService.getGamePasswords(this.game).then((gamePasswordsInfo) => {
+      this.gamePasswordsInfo = gamePasswordsInfo;
+    });
   }
 
   private processEvents(openmsxEvent: OpenmsxEvent) {
