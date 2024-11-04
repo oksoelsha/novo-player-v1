@@ -43,14 +43,18 @@
 </div>
 <div class="d-flex ps-3">
     <div ngbDropdown class="pe-2 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 1">
-        <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle>
-            <span *ngIf="isDisk(game)">{{ 'dashboard.switchdisks' | translate }}</span>
-            <span *ngIf="isTape(game)">{{ 'dashboard.switchtapes' | translate }}</span>
+        <button *ngIf="isDisk(game)" class="btn btn-secondary btn-sm action-button" type="button"
+            [title]="'dashboard.switchdisks' | translate" ngbDropdownToggle>
+            {{ 'dashboard.disks' | translate }}
+        </button>
+        <button *ngIf="isTape(game)" class="btn btn-secondary btn-sm action-button" type="button"
+            [title]="'dashboard.switchtapes' | translate" ngbDropdownToggle>
+            {{ 'dashboard.tapes' | translate }}
         </button>
         <div ngbDropdownMenu class="pt-0 pb-0">
             <button *ngFor="let medium of fileGroup" ngbDropdownItem type="button"
                 (click)="switchMedium(pid, game, medium)">
-                <div class="switch-menuitem">{{ getMediumDisplayName(medium) }}</div>
+                <div>{{ getMediumDisplayName(medium) }}</div>
             </button>
         </div>
     </div>

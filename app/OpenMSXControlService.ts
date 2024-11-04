@@ -207,7 +207,7 @@ export class OpenMSXControlService {
 
     private async getScreenNumber(pid: number) {
         this.executeCommandOnOpenmsx(pid, 'get_screen_mode_number').then(result => {
-            this.win.webContents.send('getScreenNumberResponse', result.content);
+            this.win.webContents.send('getScreenNumberResponse', result?.content);
         });
     }
 
