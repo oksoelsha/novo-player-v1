@@ -63,7 +63,6 @@ import { WindowControlsComponent } from './shared/components/window-controls/win
 import { DropfileDirective } from './shared/directives/dropfile/dropfile.directive';
 import { EventDatePipe } from './pages/dashboard/pipes/event-date.pipe';
 import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe';
-import { PickPasswordComponent } from './popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
 import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.component';
 import { MoreDetailsComponent } from './popups/more-details/more-details.component';
@@ -117,7 +116,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RelatedGamesComponent,
     MoreScreenshotsComponent,
     SavedStatesComponent,
-    PickPasswordComponent,
     EnableCheatsComponent,
     OpenmsxManagementComponent,
     ScreenNumberComponent,

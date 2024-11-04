@@ -15,7 +15,11 @@ export class ScreenNumberComponent implements OnInit, OnDestroy {
   private eventsSubscription: Subscription;
   private screenNumberSubscription: Subscription;
 
-  constructor(private launchActivityService: LaunchActivityService) { }
+  constructor(private launchActivityService: LaunchActivityService) {
+    this.screenNumberSubscription = this.launchActivityService.getScreenNumberNotification().subscribe((screen: number) => {
+      this.screen = screen;
+    });
+  }
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((flag) => {
@@ -26,13 +30,10 @@ export class ScreenNumberComponent implements OnInit, OnDestroy {
         this.screen = null;
       }
     });
-    this.screenNumberSubscription = this.launchActivityService.getScreenNumberNotification().subscribe((screen: number) => {
-      this.screen = screen;
-    });
   }
 
   ngOnDestroy(): void {
-    this.eventsSubscription.unsubscribe();
+    this.eventsSubscription?.unsubscribe();
     this.screenNumberSubscription.unsubscribe();
   }
 }

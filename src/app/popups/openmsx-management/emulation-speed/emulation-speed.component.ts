@@ -42,7 +42,7 @@ export class EmulationSpeedComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.eventsSubscription.unsubscribe();
+    this.eventsSubscription?.unsubscribe();
     this.openmsxEventSubscription.unsubscribe();
   }
 

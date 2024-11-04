@@ -28,13 +28,6 @@
                                             {{ 'dashboard.managesession' | translate }}
                                         </div>
                                     </button>
-                                    <button ngbDropdownItem *ngIf="gamePasswordsMap.get(activity.game.generationMSXId)"
-                                        type="button" (click)="pickPassword(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem"></div>
-                                            {{ 'dashboard.enterpassword' | translate }}
-                                        </div>
-                                    </button>
                                     <button ngbDropdownItem *ngIf="gameTrainersSet.has(activity.pid)" type="button"
                                         (click)="showTrainer(activity.pid, activity.game)">
                                         <div class="d-flex">
@@ -56,13 +49,6 @@
     <ng-template let-popupId="popupId">
         <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>
-    </ng-template>
-</app-popup>
-
-<app-popup popupId="pick-password-id" [titleHeader]="('dashboard.enterpassword' | translate) + ': ' + selectedGame?.name">
-    <ng-template let-popupId="popupId">
-        <app-pick-password [popupId]="popupId" [pid]="selectedPid" [gamePasswordsInfo]="gamePasswords" #passwordSelector>
-        </app-pick-password>
     </ng-template>
 </app-popup>
 

@@ -28,7 +28,7 @@ export class TextTypingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.eventsSubscription.unsubscribe();
+    this.eventsSubscription?.unsubscribe();
   }
 
   type() {

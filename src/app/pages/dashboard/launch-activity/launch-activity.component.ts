@@ -8,8 +8,6 @@ import { LaunchActivity, LaunchActivityService } from '../../../services/launch-
 import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
 import { AlertsService } from '../../../shared/components/alerts/alerts.service';
-import { GamePasswordsInfo } from '../../../models/game-passwords-info';
-import { PickPasswordComponent } from '../../../popups/pick-password/pick-password.component';
 import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
 import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-cheats.component';
 
@@ -21,15 +19,12 @@ import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-chea
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
-  @ViewChild('passwordSelector') pickPasswordInterface: PickPasswordComponent;
   @ViewChild('trainerInterface') enableCheatsInterface: EnableCheatsComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
-  gamePasswordsMap: Map<number, GamePasswordsInfo> = new Map();
   gameTrainersSet: Set<number> = new Set();
   selectedGame: Game;
   selectedPid: number;
-  gamePasswords: GamePasswordsInfo;
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
@@ -39,7 +34,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
       if (!launchActivity.find(l => l.pid === this.selectedPid)) {
-        this.pickPasswordInterface.close();
         this.openmsxManagementInterface.close();
         this.enableCheatsInterface.close();
         this.gameTrainersSet.delete(this.selectedPid);
@@ -50,7 +44,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.launchActivities.forEach(activity => {
-      this.setPasswords(activity);
       this.doesTrainerExist(activity);
     });
   }
@@ -79,8 +72,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   pickPassword(pid: number, game: Game) {
     this.selectedPid = pid;
     this.selectedGame = game;
-    this.gamePasswords = this.gamePasswordsMap.get(game.generationMSXId);
-    this.pickPasswordInterface.open();
   }
 
   showTrainer(pid: number, game: Game) {
@@ -93,14 +84,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     this.selectedPid = pid;
     this.selectedGame = game;
     this.openmsxManagementInterface.open();
-  }
-
-  private setPasswords(activity: any) {
-    this.gamesService.getGamePasswords(activity.game).then((gamePasswordsInfo: GamePasswordsInfo) => {
-      if (gamePasswordsInfo) {
-        this.gamePasswordsMap.set(activity.game.generationMSXId, gamePasswordsInfo);
-      }
-    });
   }
 
   private doesTrainerExist(activity: any) {
