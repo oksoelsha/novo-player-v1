@@ -31,6 +31,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   openEventSubject: Subject<boolean> = new Subject<boolean>();
   currentStatus: Map<string, string>;
   gamePasswordsInfo: GamePasswordsInfo;
+  trainersList: any[];
 
   readonly pauseLabel: string;
   readonly unpauseLabel: string;
@@ -92,6 +93,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
       this.setFileGroup();
       this.setPasswords();
+      this.setTrainer();
       this.openEventSubject.next(true);
     }, 0);
 
@@ -176,6 +178,12 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   private setPasswords() {
     this.gamesService.getGamePasswords(this.game).then((gamePasswordsInfo) => {
       this.gamePasswordsInfo = gamePasswordsInfo;
+    });
+  }
+
+  private setTrainer() {
+    this.launchActivityService.getTrainer(this.pid, this.game.title).then((trainersList: any[]) => {
+      this.trainersList = trainersList;
     });
   }
 

@@ -73,6 +73,7 @@ import { EmulationSpeedComponent } from './popups/openmsx-management/emulation-s
 import { StateSaveLoadComponent } from './popups/openmsx-management/state-save-load/state-save-load.component';
 import { TextTypingComponent } from './popups/openmsx-management/text-typing/text-typing.component';
 import { PasswordsComponent } from './popups/openmsx-management/passwords/passwords.component';
+import { CheatsComponent } from './popups/openmsx-management/cheats/cheats.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -123,6 +124,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     StateSaveLoadComponent,
     TextTypingComponent,
     PasswordsComponent,
+    CheatsComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,

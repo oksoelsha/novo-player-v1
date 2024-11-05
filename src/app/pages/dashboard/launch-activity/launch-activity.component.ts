@@ -19,10 +19,8 @@ import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-chea
 export class LaunchActivityComponent implements OnInit, OnDestroy {
 
   @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
-  @ViewChild('trainerInterface') enableCheatsInterface: EnableCheatsComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
-  gameTrainersSet: Set<number> = new Set();
   selectedGame: Game;
   selectedPid: number;
   private launchActivitySubscription: Subscription;
@@ -35,17 +33,12 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       self.launchActivities = launchActivity;
       if (!launchActivity.find(l => l.pid === this.selectedPid)) {
         this.openmsxManagementInterface.close();
-        this.enableCheatsInterface.close();
-        this.gameTrainersSet.delete(this.selectedPid);
       }
     });
     this.launchActivities = launchActivityService.getActivities();
   }
 
   ngOnInit(): void {
-    this.launchActivities.forEach(activity => {
-      this.doesTrainerExist(activity);
-    });
   }
 
   ngOnDestroy() {
@@ -69,28 +62,9 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
     return launchActivity.source === EventSource.openMSX;
   }
 
-  pickPassword(pid: number, game: Game) {
-    this.selectedPid = pid;
-    this.selectedGame = game;
-  }
-
-  showTrainer(pid: number, game: Game) {
-    this.selectedPid = pid;
-    this.selectedGame = game;
-    this.enableCheatsInterface.open();
-  }
-
   openManagement(pid: number, game: Game) {
     this.selectedPid = pid;
     this.selectedGame = game;
     this.openmsxManagementInterface.open();
-  }
-
-  private doesTrainerExist(activity: any) {
-    this.launchActivityService.getTrainer(activity.pid, activity.game.title).then((trainersList: any[]) => {
-      if (trainersList.length > 0) {
-        this.gameTrainersSet.add(activity.pid);
-      }
-    });
   }
 }

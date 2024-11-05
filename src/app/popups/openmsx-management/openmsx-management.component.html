@@ -63,6 +63,10 @@
             [gamePasswordsInfo]="gamePasswordsInfo"
             (alertMessage)="alertMessage($event)"></app-openmsx-management-passwords>
     </div>
+    <div *ngIf="trainersList?.length > 0" class="pe-2 pt-2">
+        <app-openmsx-management-cheats [pid]="pid" [game]="game" [events]="openEventSubject.asObservable()"
+            [trainersList]="trainersList"></app-openmsx-management-cheats>
+    </div>
 </div>
 <div class="d-inline-block led-container">
     <div [ngClass]="capsLed ? 'led led-on' : 'led led-off'"></div>

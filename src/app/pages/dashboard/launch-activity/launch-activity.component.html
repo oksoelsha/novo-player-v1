@@ -28,13 +28,6 @@
                                             {{ 'dashboard.managesession' | translate }}
                                         </div>
                                     </button>
-                                    <button ngbDropdownItem *ngIf="gameTrainersSet.has(activity.pid)" type="button"
-                                        (click)="showTrainer(activity.pid, activity.game)">
-                                        <div class="d-flex">
-                                            <div class="connect-menuitem"></div>
-                                            {{ 'dashboard.cheats' | translate }}
-                                        </div>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -49,12 +42,5 @@
     <ng-template let-popupId="popupId">
         <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>
-    </ng-template>
-</app-popup>
-
-<app-popup popupId="enable-cheats-id" [titleHeader]="('dashboard.cheats' | translate) + ': ' + selectedGame?.name">
-    <ng-template let-popupId="popupId">
-        <app-enable-cheats [popupId]="popupId" [pid]="selectedPid" [gameName]="selectedGame?.title"
-            #trainerInterface></app-enable-cheats>
     </ng-template>
 </app-popup>
