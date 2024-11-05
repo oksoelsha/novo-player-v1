@@ -64,7 +64,6 @@ import { DropfileDirective } from './shared/directives/dropfile/dropfile.directi
 import { EventDatePipe } from './pages/dashboard/pipes/event-date.pipe';
 import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe';
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
-import { EnableCheatsComponent } from './popups/enable-cheats/enable-cheats.component';
 import { MoreDetailsComponent } from './popups/more-details/more-details.component';
 import { GameCompanyAndYearPipe } from './shared/pipes/game-company-and-year.pipe';
 import { ScreenshotFilenamePipe } from './pages/home/pipes/screenshot-filename.pipe';
@@ -117,7 +116,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     RelatedGamesComponent,
     MoreScreenshotsComponent,
     SavedStatesComponent,
-    EnableCheatsComponent,
     OpenmsxManagementComponent,
     ScreenNumberComponent,
     EmulationSpeedComponent,

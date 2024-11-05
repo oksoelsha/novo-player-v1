@@ -2,21 +2,16 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventSource } from '../../../models/event';
 import { Game } from '../../../models/game';
-import { FilesService } from '../../../services/files.service';
-import { GamesService } from '../../../services/games.service';
 import { LaunchActivity, LaunchActivityService } from '../../../services/launch-activity.service';
-import { LocalizationService } from '../../../services/localization.service';
 import { PlatformService } from '../../../services/platform.service';
-import { AlertsService } from '../../../shared/components/alerts/alerts.service';
 import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../../popups/openmsx-management/openmsx-management.component';
-import { EnableCheatsComponent } from '../../../popups/enable-cheats/enable-cheats.component';
 
 @Component({
   selector: 'app-dashboard-launch-activity-card',
   templateUrl: './launch-activity.component.html',
   styleUrls: ['../../../common-styles.sass', '../dashboard.component.sass', './launch-activity.component.sass']
 })
-export class LaunchActivityComponent implements OnInit, OnDestroy {
+export class LaunchActivityComponent implements OnDestroy {
 
   @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
   readonly isWindows = this.platformService.isOnWindows();
@@ -25,9 +20,7 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
   selectedPid: number;
   private launchActivitySubscription: Subscription;
 
-  constructor(private launchActivityService: LaunchActivityService, private alertService: AlertsService,
-    private localizationService: LocalizationService, private platformService: PlatformService,
-    private filesService: FilesService, private gamesService: GamesService) {
+  constructor(private launchActivityService: LaunchActivityService,  private platformService: PlatformService) {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
@@ -36,9 +29,6 @@ export class LaunchActivityComponent implements OnInit, OnDestroy {
       }
     });
     this.launchActivities = launchActivityService.getActivities();
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy() {
