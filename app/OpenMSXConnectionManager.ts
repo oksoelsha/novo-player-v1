@@ -22,13 +22,16 @@ export class OpenMSXConnectionManager {
         const self = this;
         return new Promise<any>((resolve, reject) => {
             connection.sendCommand(command);
-            const handler = this.processReply.bind(null, connection, resolve, self);
+            const timeoutId = setTimeout(() => {
+                reject({ success: false, content: null });
+            }, 2000);
+            const handler = this.processReply.bind(null, connection, resolve, self, timeoutId);
             self.handlers.set(pid, handler);
             connection.openmsx.on('data', handler);
         });
     }
 
-    private processReply(connection: OpenMSXConnector, resolve: any, ref: OpenMSXConnectionManager, buffer: any) {
+    private processReply(connection: OpenMSXConnector, resolve: any, ref: OpenMSXConnectionManager, timeoutId: NodeJS.Timeout, buffer: any) {
         const data = buffer.toString();
         const parser = new XMLParser({
             ignoreAttributes: false,
@@ -42,6 +45,7 @@ export class OpenMSXConnectionManager {
                 connection.openmsx.off('data', handler);
                 ref.handlers.delete(connection.pid);    
             }
+            clearTimeout(timeoutId);
             resolve({ success, content });
         }
     }

@@ -3,11 +3,13 @@ import { Game } from '../src/app/models/game';
 import { GamePassword } from '../src/app/models/game-passwords-info';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import EventEmitter from 'events';
+import pLimit from 'p-limit';
 
 export class OpenMSXControlService {
 
     private updateEmitter = new EventEmitter();
     private readonly modifiedGameNamesForTrainer: Map<string, string> = new Map();
+    private commandsBatchSize = pLimit(1);
 
     constructor(private win: BrowserWindow, private connectionManager: OpenMSXConnectionManager) {
         this.init();
@@ -208,6 +210,8 @@ export class OpenMSXControlService {
     private async getScreenNumber(pid: number) {
         this.executeCommandOnOpenmsx(pid, 'get_screen_mode_number').then(result => {
             this.win.webContents.send('getScreenNumberResponse', result?.content);
+        }).catch(() => {
+            // ignore for now
         });
     }
 
@@ -243,6 +247,6 @@ export class OpenMSXControlService {
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {
-        return this.connectionManager.executeCommand(pid, command);
+        return this.commandsBatchSize(() => this.connectionManager.executeCommand(pid, command));
     }
 }
