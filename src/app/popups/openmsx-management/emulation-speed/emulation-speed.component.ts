@@ -10,7 +10,7 @@ import { LaunchActivityService, OpenmsxEvent } from '../../../services/launch-ac
 export class EmulationSpeedComponent implements OnInit, OnDestroy {
 
   @Input() pid: number;
-  @Input() currentStatus: Map<String, string>;
+  @Input() currentStatus: Map<string, string>;
   @Input() events: Observable<boolean>;
 
   speed: number;

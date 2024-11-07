@@ -17,9 +17,8 @@ export class PopupComponent implements OnDestroy {
   set titleHeader(value: string) {
     this.titleHeaderValue = Utils.compressStringIfTooLong(value);
   }
-  private timer: NodeJS.Timer = null;
-
   private titleHeaderValue: string;
+  private timer: NodeJS.Timer = null;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
     this.handleEscape = this.handleEscape.bind(this);

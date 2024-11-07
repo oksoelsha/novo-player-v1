@@ -21,8 +21,8 @@ export class CheatsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((flag) => {
-      if (flag) {
-      } else {
+      if (!flag) {
+        this.trainersList = null;
       }
     });
   }

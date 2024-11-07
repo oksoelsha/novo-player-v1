@@ -23,8 +23,8 @@ export class PasswordsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((flag) => {
-      if (flag) {
-      } else {
+      if (!flag) {
+        this.selectedPassword = null;
       }
     });
   }
