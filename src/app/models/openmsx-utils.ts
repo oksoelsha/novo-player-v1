@@ -32,6 +32,7 @@ export class OpenMSXUtils {
       this.commandLineArguments.set('ext', extensions);
       this.commandLineArguments.set('ips', []);
       this.commandLineArguments.set('romtype', romTypes);
+      this.commandLineArguments.set('replay', []);
       this.commandLineArguments.set('script', []);
     }
     return this.commandLineArguments;
