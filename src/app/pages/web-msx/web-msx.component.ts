@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../../models/game';
 import { Settings } from '../../models/settings';
@@ -7,7 +7,6 @@ import { SettingsService } from '../../services/settings.service';
 import { WindowService } from '../../services/window.service';
 import { GamePassword, GamePasswordsInfo } from '../../models/game-passwords-info';
 import { GamesService } from '../../services/games.service';
-import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { WebmsxService } from '../../services/webmsx.service';
 
 @Component({
@@ -17,11 +16,9 @@ import { WebmsxService } from '../../services/webmsx.service';
 })
 export class WebMSXComponent implements OnInit, OnDestroy {
 
-  @ViewChildren('passwordsDropdown') private passwordsDropdown: QueryList<NgbDropdown>;
   selectedGame: Game;
   error: boolean;
   gamePasswordsInfo: GamePasswordsInfo;
-  selectedPassword: GamePassword;
   private wmsxScript: any;
 
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private settingsService: SettingsService,
@@ -67,13 +64,9 @@ export class WebMSXComponent implements OnInit, OnDestroy {
     }
   }
 
-  async enterPassword() {
-    const passwordsDropdownArray = this.passwordsDropdown.toArray();
-    if (passwordsDropdownArray.length === 1) {
-      passwordsDropdownArray[0].close();
-    }
+  enterPassword(selectedPassword: GamePassword) {
     document.getElementById('wmsx-screen-canvas').focus();
-    this.webmsxService.enterPassword(this.selectedPassword.password, this.selectedPassword.pressReturn);
+    this.webmsxService.enterPassword(selectedPassword.password, selectedPassword.pressReturn);
   }
 
   private setPasswords() {

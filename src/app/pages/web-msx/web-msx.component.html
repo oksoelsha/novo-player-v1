@@ -12,29 +12,9 @@
     </div>
     <div *ngIf="!error">
         <div id="wmsx-screen"></div>
-        <div *ngIf="gamePasswordsInfo" ngbDropdown class="pt-2" #passwordsDropdown="ngbDropdown">
-            <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
-                [title]="'dashboard.enterpassword' | translate">
-                {{ 'dashboard.passwords' | translate }}
-            </button>
-            <div ngbDropdownMenu class="p-3 button-popups">
-                <div class="d-flex mb-3">
-                    <div><img class="me-1 align-text-top" src="assets/images/general/post-it.png"></div>
-                    <div>{{ gamePasswordsInfo.setup }}</div>
-                </div>
-                <div class="button-popups passwords">
-                    <div class="d-flex password-line p-1" *ngFor="let gamePassword of gamePasswordsInfo.passwords"
-                        (click)="selectedPassword = gamePassword"
-                        [ngStyle]="{'background-color': selectedPassword === gamePassword ? '#555' : null}">
-                        <div class="d-inline-block password">{{ gamePassword.password }}</div>
-                        <div class="d-inline-block">
-                            <span class="badge bg-success">{{ gamePassword.description }}</span>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-sm mt-3" (click)="enterPassword()" (keyup.enter)="enterPassword()"
-                    [disabled]="selectedPassword === null">{{ 'dashboard.enter' | translate }}</button>
-            </div>
+        <div *ngIf="gamePasswordsInfo" class="pt-2">
+            <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo"
+                (passwordToEnter)="enterPassword($event)"></app-password-selector>
         </div>
     </div>
     <div id="error-message" *ngIf="error">{{ 'webmsx.errorloading' | translate }}</div>

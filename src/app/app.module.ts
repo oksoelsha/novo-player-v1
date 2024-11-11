@@ -73,6 +73,7 @@ import { StateSaveLoadComponent } from './popups/openmsx-management/state-save-l
 import { TextTypingComponent } from './popups/openmsx-management/text-typing/text-typing.component';
 import { PasswordsComponent } from './popups/openmsx-management/passwords/passwords.component';
 import { CheatsComponent } from './popups/openmsx-management/cheats/cheats.component';
+import { PasswordSelectorComponent } from './shared/components/password-selector/password-selector.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -131,6 +132,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     VersionMatchIndicatorComponent,
     FieldWithSuggestionsComponent,
     MoreDetailsComponent,
+    PasswordSelectorComponent,
     DropfileDirective,
     EditRowModePipe,
     GameMediumIconPipe,
