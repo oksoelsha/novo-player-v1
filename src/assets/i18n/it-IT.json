@@ -89,6 +89,7 @@
     "filters": "Filtri",
     "showfilters": "Mostra filtri",
     "hidefilters": "Nascondi filtri",
+    "cannotdisplayduetofilters": "Impossibile visualizzare il gioco in quanto a causa dei filtri",
     "infofromgiantbomb": "Informazioni da Giant Bomb",
     "getinfofromgiantbomb": "Ottieni informazioni da Giant Bomb",
     "morescreenshots": "Screenshot aggiuntivi",

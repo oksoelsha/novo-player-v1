@@ -89,6 +89,7 @@
     "filters": "Filtres",
     "showfilters": "Mostra els filtres",
     "hidefilters": "Amaga els filtres",
+    "cannotdisplayduetofilters": "No es pot mostrar el joc per aquests filtres",
     "infofromgiantbomb": "Informació de Giant Bomb",
     "getinfofromgiantbomb": "Obtén informació de Giant Bomb",
     "morescreenshots": "Captures de pantalla addicionals",

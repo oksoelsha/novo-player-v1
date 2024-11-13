@@ -89,6 +89,7 @@
     "filters": "Filters",
     "showfilters": "Filters weergeven",
     "hidefilters": "Filters verbergen",
+    "cannotdisplayduetofilters": "Kan niet weergeven omdat vanwege filters",
     "infofromgiantbomb": "Info van Giant Bomb",
     "getinfofromgiantbomb": "Info ophalen van Giant Bomb",
     "morescreenshots": "Extra schermafbeeldingen",

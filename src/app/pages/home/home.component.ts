@@ -755,21 +755,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   showInfo(game: Game) {
-    this.setAsSelectedGame(game);
-    this.adjustScrollForSelectedGame(game);
-    this.gamesService.getSecondaryData(game).then((secondaryData) => {
-      this.setScreenshots(secondaryData);
-      this.setMusicFiles(secondaryData);
-      this.setMoreScreenshots(secondaryData);
+    if (this.setAsSelectedGame(game)) {
+      this.adjustScrollForSelectedGame(game);
+      this.gamesService.getSecondaryData(game).then((secondaryData) => {
+        this.setScreenshots(secondaryData);
+        this.setMusicFiles(secondaryData);
+        this.setMoreScreenshots(secondaryData);
 
-      // Decrement the open menu counter because there's a case where it doesn't get decremented with the closing of the menu.
-      // That case is for the game music tracks menu where the closing menu event does not fire if the if-statement around the
-      // html segment evaluates to false after clicking on a different game without music.
-      if (this.musicFiles.length === 0 && this.musicMenuOpen) {
-        this.openMenuEventCounter--;
-        this.musicMenuOpen = false;
-      }
-    });
+        // Decrement the open menu counter because there's a case where it doesn't get decremented with the closing of the menu.
+        // That case is for the game music tracks menu where the closing menu event does not fire if the if-statement around the
+        // html segment evaluates to false after clicking on a different game without music.
+        if (this.musicFiles.length === 0 && this.musicMenuOpen) {
+          this.openMenuEventCounter--;
+          this.musicMenuOpen = false;
+        }
+      });
+    } else {
+      this.initialize();
+      this.alertService.info(this.localizationService.translate('home.cannotdisplayduetofilters'));
+    }
   }
 
   showFoundGame(game: Game) {
@@ -933,23 +937,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     return event.ctrlKey || event.metaKey;
   }
 
-  private setAsSelectedGame(game: Game) {
+  private setAsSelectedGame(game: Game): boolean {
     if (this.selectedGame) {
       const selectedGameElement = document.getElementById(this.selectedGame.sha1Code);
       // this element may not exist if, for example, another listing was switched to
       if (selectedGameElement) {
         selectedGameElement.classList.remove('selected-game');
+        sessionStorage.removeItem('selectedGame');
       }
     }
-
-    this.selectedGame = game;
-    document.getElementById(game.sha1Code).classList.add('selected-game');
 
     this.otherSelectedGames.forEach(otherSelectedGame => {
       this.removeAsAnotherSelectedGame(otherSelectedGame);
     });
 
-    sessionStorage.setItem('selectedGame', JSON.stringify(game));
+    const gameElement = document.getElementById(game?.sha1Code);
+    if (gameElement) {
+      this.selectedGame = game;
+      gameElement.classList.add('selected-game');
+  
+      sessionStorage.setItem('selectedGame', JSON.stringify(game));
+      return true;  
+    } else {
+      return false;
+    }
   }
 
   private setAsAnotherSelectedGame(game: Game) {
@@ -961,7 +972,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private removeAsAnotherSelectedGame(game: Game) {
     this.otherSelectedGames.delete(game);
-    document.getElementById(game.sha1Code).classList.remove('selected-secondary-game');
+    document.getElementById(game.sha1Code)?.classList.remove('selected-secondary-game');
   }
 
   private removeAllOtherSelectedGames() {
@@ -1114,7 +1125,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private showInfoBySha1Code(sha1Code: string) {
-    this.games.filter(g => g.sha1Code === sha1Code).forEach(match => this.showInfo(match));
+    const match = this.games.filter(g => g.sha1Code === sha1Code);
+    this.showInfo(match[0]);
   }
 
   private sortGames(games: Game[]) {

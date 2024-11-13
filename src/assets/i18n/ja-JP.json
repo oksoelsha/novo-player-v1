@@ -89,6 +89,7 @@
     "filters": "フィルター",
     "showfilters": "フィルターを表示",
     "hidefilters": "フィルターを非表示にする",
+    "cannotdisplayduetofilters": "フィルターによりゲームを表示できません",
     "infofromgiantbomb": "Giant Bombからの情報",
     "getinfofromgiantbomb": "Giant Bombから情報を得る",
     "morescreenshots": "追加のスクリーンショット",
