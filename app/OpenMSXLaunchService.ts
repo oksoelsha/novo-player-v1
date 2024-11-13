@@ -237,7 +237,7 @@ export class OpenMSXLaunchService {
 
     private appendParams(args: string[], argsString: string) {
         if (argsString) {
-            const params = argsString.split(/-(?=(?:[^"]*"[^"]*")*$)/g);
+            const params = argsString.split(/-(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             params.forEach((param) => {
                 const space = param.indexOf(' ');
                 if (space > -1) {
@@ -250,9 +250,9 @@ export class OpenMSXLaunchService {
 
     private addTclCommandArguments(args: string[], game: Game) {
         let commandLineArgs: string[] = [];
-        for (let item of OpenMSXLaunchService.tclCommandArgs) {
+        for (const item of OpenMSXLaunchService.tclCommandArgs) {
             if (game[item.field]) {
-                for (let command of item.argCommands) {
+                for (const command of item.argCommands) {
                     if (game[item.field].toString() == command[0]) {
                         commandLineArgs.push(command[1]);
                     }
