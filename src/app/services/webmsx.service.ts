@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,22 @@ export class WebmsxService {
         window['WMSX'].start();
       }
     }, 20);
+  }
+
+  isDisk(game: Game) {
+    return game.romA == null && game.diskA != null;
+  }
+
+  isTape(game: Game) {
+    return game.romA == null && game.diskA == null && game.tape != null;
+  }
+
+  switchMedium(game: Game, medium: string) {
+    if (this.isDisk(game)) {
+      window['WMSX'].fileLoader.readFromURL(medium, window['wmsx'].FileLoader.OPEN_TYPE.DISK);
+    } else if(this.isTape(game)) {
+      window['WMSX'].fileLoader.readFromURL(medium, window['wmsx'].FileLoader.OPEN_TYPE.TAPE);
+    }
   }
 
   async enterPassword(password: string, pressReturn: boolean) {
@@ -79,7 +96,7 @@ export class WebmsxService {
     window['WMSX'].room.keyboard.processKey(keyCode, 1);
     await this.delay();
     window['WMSX'].room.keyboard.processKey(keyCode, 0);
-    await this.delay();  
+    await this.delay();
   }
 
   private async delay() {

@@ -8,6 +8,8 @@ import { WindowService } from '../../services/window.service';
 import { GamePassword, GamePasswordsInfo } from '../../models/game-passwords-info';
 import { GamesService } from '../../services/games.service';
 import { WebmsxService } from '../../services/webmsx.service';
+import { FilesService } from '../../services/files.service';
+import { Utils } from '../../models/utils';
 
 @Component({
   selector: 'app-web-msx',
@@ -18,12 +20,13 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   selectedGame: Game;
   error: boolean;
+  fileGroup: string[] = [];
   gamePasswordsInfo: GamePasswordsInfo;
   private wmsxScript: any;
 
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private settingsService: SettingsService,
     private emulatorService: EmulatorService, private router: Router, private windowService: WindowService,
-    private gamesService: GamesService, private webmsxService: WebmsxService) {
+    private gamesService: GamesService, private webmsxService: WebmsxService, private filesService: FilesService) {
     this.selectedGame = JSON.parse(route.snapshot.paramMap.get('gameParams'));
   }
 
@@ -44,13 +47,8 @@ export class WebMSXComponent implements OnInit, OnDestroy {
         }
       });
     });
+    this.setFileGroup();
     this.setPasswords();
-  }
-
-  private loadWebMSX(fullpath: string) {
-    this.wmsxScript = this.renderer.createElement('script');
-    this.wmsxScript.src = fullpath;
-    this.renderer.appendChild(document.body, this.wmsxScript);
   }
 
   goBack() {
@@ -64,9 +62,56 @@ export class WebMSXComponent implements OnInit, OnDestroy {
     }
   }
 
+  isDisk() {
+    return this.webmsxService.isDisk(this.selectedGame);
+  }
+
+  isTape() {
+    return this.webmsxService.isTape(this.selectedGame);
+  }
+
+  isMediumCanHaveGroup(): boolean {
+    return this.isDisk() || this.isTape();
+  }
+
+  getMediumDisplayName(medium: string) {
+    let separatorIndex = medium.lastIndexOf('\\');
+    if (separatorIndex < 0) {
+      separatorIndex = medium.lastIndexOf('/');
+    }
+    return Utils.compressStringIfTooLong(medium.substring(separatorIndex + 1, medium.lastIndexOf('.')));
+  }
+
+  switchMedium(medium: string) {
+    document.getElementById('wmsx-screen-canvas').focus();
+    this.webmsxService.switchMedium(this.selectedGame, medium);
+  }
+
   enterPassword(selectedPassword: GamePassword) {
     document.getElementById('wmsx-screen-canvas').focus();
     this.webmsxService.enterPassword(selectedPassword.password, selectedPassword.pressReturn);
+  }
+
+  private loadWebMSX(fullpath: string) {
+    this.wmsxScript = this.renderer.createElement('script');
+    this.wmsxScript.src = fullpath;
+    this.renderer.appendChild(document.body, this.wmsxScript);
+  }
+
+  private setFileGroup() {
+    let medium: string;
+    if (this.isDisk()) {
+      medium = this.selectedGame.diskA;
+    } else if (this.isTape()) {
+      medium = this.selectedGame.tape;
+    } else {
+      medium = null;
+    }
+    if (medium) {
+      this.filesService.getFileGroup(1, medium).then((fileGroup: string[]) => {
+        this.fileGroup = fileGroup;
+      });
+    }
   }
 
   private setPasswords() {

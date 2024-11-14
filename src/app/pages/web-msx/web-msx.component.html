@@ -12,9 +12,27 @@
     </div>
     <div *ngIf="!error">
         <div id="wmsx-screen"></div>
-        <div *ngIf="gamePasswordsInfo" class="pt-2">
-            <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo"
-                (passwordToEnter)="enterPassword($event)"></app-password-selector>
+        <div class="pt-2">
+            <div ngbDropdown class="d-inline-block pe-2" *ngIf="isMediumCanHaveGroup() && fileGroup.length > 1">
+                <button *ngIf="isDisk()" class="btn btn-secondary btn-sm action-button" type="button"
+                    [title]="'dashboard.switchdisks' | translate" ngbDropdownToggle>
+                    {{ 'dashboard.disks' | translate }}
+                </button>
+                <button *ngIf="isTape()" class="btn btn-secondary btn-sm action-button" type="button"
+                    [title]="'dashboard.switchtapes' | translate" ngbDropdownToggle>
+                    {{ 'dashboard.tapes' | translate }}
+                </button>
+                <div ngbDropdownMenu>
+                    <button *ngFor="let medium of fileGroup" ngbDropdownItem type="button"
+                        (click)="switchMedium(medium)">
+                        <div>{{ getMediumDisplayName(medium) }}</div>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="gamePasswordsInfo" class="d-inline-block">
+                <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo"
+                    (passwordToEnter)="enterPassword($event)"></app-password-selector>
+            </div>
         </div>
     </div>
     <div id="error-message" *ngIf="error">{{ 'webmsx.errorloading' | translate }}</div>
