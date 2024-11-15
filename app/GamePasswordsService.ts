@@ -20,8 +20,6 @@ export class GamePasswordsService {
 
     private readGamePasswordData() {
         const fileData = fs.readFileSync(this.gamePasswords);
-        this.gamePasswordsInfo = JSON.parse(fileData.toString());
-
         this.gamePasswordsInfo = new Map(Object.entries(JSON.parse(fileData.toString()))) 
     }
 
