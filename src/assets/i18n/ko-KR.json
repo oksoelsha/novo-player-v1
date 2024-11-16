@@ -226,13 +226,14 @@
     "typetext": "텍스트 입력",
     "type": "입력하",
     "clear": "삭제",
+    "wasreset": "openMSX가 성공적으로 재설정되었습니다",
     "texttyped": "텍스트는 openMSX로 입력되었습니다",
     "passwords": "비밀번호",
     "enterpassword": "암호를 입력",
     "enter": "입력",
     "passwordentered": "비밀번호가 입력되었습니다",
     "managesession": "세션 관리",
-    "pause": " 일시 중지",
+    "pause": "일시 중지",
     "resume": "재개",
     "mute": "음소거",
     "unmute": "음소거 해제",
@@ -242,7 +243,11 @@
     "restoredefault": "기본값 복원",
     "cheats": "치트키",
     "enableall": "모두 사용하다",
-    "disableall": "모두 사용 중지"
+    "disableall": "모두 사용 중지",
+    "cheatenabled": "치트가 활성화되었습니다",
+    "cheatdisabled": "치트가 비활성화되었습니다",
+    "cheatsallenabled": "모든 치트가 활성화되었습니다",
+    "cheatsalldisabled": "모든 치트가 비활성화되었습니다"
   },
   "help": {
     "uptodate": "최신 상태",

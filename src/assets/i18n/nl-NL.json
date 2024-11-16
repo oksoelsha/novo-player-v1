@@ -226,6 +226,7 @@
     "typetext": "Tekst typen",
     "type": "Typen",
     "clear": "Wissen",
+    "wasreset": "openMSX is gereset",
     "texttyped": "De tekst is getypt in openMSX",
     "passwords": "Wachtwoorden",
     "enterpassword": "Wachtwoord invoeren",
@@ -242,7 +243,11 @@
     "restoredefault": "Standaard herstellen",
     "cheats": "Cheating",
     "enableall": "Alles inschakelen",
-    "disableall": "Alles uitschakelen"
+    "disableall": "Alles uitschakelen",
+    "cheatenabled": "Cheating is ingeschakeld",
+    "cheatdisabled": "Cheating is uitgeschakeld",
+    "cheatsallenabled": "Alle cheats zijn ingeschakeld",
+    "cheatsalldisabled": "Alle cheats zijn uitgeschakeld"
   },
   "help": {
     "uptodate": "Bijgewerkt",

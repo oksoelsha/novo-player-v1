@@ -226,6 +226,7 @@
     "typetext": "Escribir texto",
     "type": "Escribir",
     "clear": "Despejar",
+    "wasreset": "openMSX se reinició",
     "texttyped": "El texto se escribió en openMSX",
     "passwords": "Contraseñas",
     "enterpassword": "Ingresar contraseña",
@@ -242,7 +243,11 @@
     "restoredefault": "Restaurar valor predeterminado",
     "cheats": "Trampas",
     "enableall": "Activar todo",
-    "disableall": "Desactivar todo"
+    "disableall": "Desactivar todo",
+    "cheatenabled": "Trampa se activó",
+    "cheatdisabled": "Trampa se desactivó",
+    "cheatsallenabled": "Todoas las trampas se activaron",
+    "cheatsalldisabled": "Todas las trampas se desactivaron"
   },
   "help": {
     "uptodate": "Actualizado",

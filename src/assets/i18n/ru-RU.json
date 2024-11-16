@@ -226,6 +226,7 @@
     "typetext": "Наберите текст",
     "type": "Наберите",
     "clear": "Очистите",
+    "wasreset": "openMSX был сброшен",
     "texttyped": "Текст был набран на openMSX",
     "passwords": "Пароли",
     "enterpassword": "Введите пароль",
@@ -242,7 +243,11 @@
     "restoredefault": "Сброс настроек",
     "cheats": "Чит-код",
     "enableall": "Включить все",
-    "disableall": "Отключить все"
+    "disableall": "Отключить все",
+    "cheatenabled": "Чит был включен",
+    "cheatdisabled": "Чит был отключен",
+    "cheatsallenabled": "Все читы были включены",
+    "cheatsalldisabled": "Все читы были отключены"
   },
   "help": {
     "uptodate": "Обновлено",

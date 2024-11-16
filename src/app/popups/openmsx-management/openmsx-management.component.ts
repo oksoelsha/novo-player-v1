@@ -132,6 +132,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   resetMachine(pid: number) {
     this.launchActivityService.resetMachine(pid).then(reset => {
+      if (reset) {
+        super.alert(this.localizationService.translate('dashboard.wasreset'));        
+      }
     });
   }
 

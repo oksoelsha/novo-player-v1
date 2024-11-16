@@ -226,6 +226,7 @@
     "typetext": "Taper texte",
     "type": "Taper",
     "clear": "Effacer",
+    "wasreset": "openMSX a resetté",
     "texttyped": "Le texte a été tapé sur openMSX",
     "passwords": "Mots de passe",
     "enterpassword": "Entrer le mot de passe",
@@ -242,7 +243,11 @@
     "restoredefault": "Restaurer par défaut",
     "cheats": "Codes de triche",
     "enableall": "Activer tout",
-    "disableall": "Désactiver tout"
+    "disableall": "Désactiver tout",
+    "cheatenabled": "Code de triche activé",
+    "cheatdisabled": "Code de triche désactivé",
+    "cheatsallenabled": "Toutes les codes de triche activées",
+    "cheatsalldisabled": "Toutes les codes de triche désactivées"
   },
   "help": {
     "uptodate": "À jour",

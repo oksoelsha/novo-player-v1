@@ -226,6 +226,7 @@
     "typetext": "入力する",
     "type": "入力する",
     "clear": "クリア",
+    "wasreset": "openMSXがリセットされました",
     "texttyped": "テキストはopenMSXで入力",
     "passwords": "パスワード",
     "enterpassword": "パスワードを入力する",
@@ -242,7 +243,11 @@
     "restoredefault": "デフォルトを復元",
     "cheats": "チート",
     "enableall": "全てオンにする",
-    "disableall": "全てオフにする"
+    "disableall": "全てオフにする",
+    "cheatenabled": "チートが有効になった",
+    "cheatdisabled": "チートは無効になりました",
+    "cheatsallenabled": "すべてのチートが有効になりました",
+    "cheatsalldisabled": "すべてのチートが無効化されました"
   },
   "help": {
     "uptodate": "最新",

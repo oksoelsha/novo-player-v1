@@ -226,6 +226,7 @@
     "typetext": "Type text",
     "type": "Type",
     "clear": "Clear",
+    "wasreset": "openMSX was reset successfully",
     "texttyped": "Text was typed in openMSX",
     "passwords": "Passwords",
     "enterpassword": "Enter password",
@@ -242,7 +243,11 @@
     "restoredefault": "Restore default",
     "cheats": "Cheats",
     "enableall": "Enable all",
-    "disableall": "Disable all"
+    "disableall": "Disable all",
+    "cheatenabled": "Cheat was enabled",
+    "cheatdisabled": "Cheat was disabled",
+    "cheatsallenabled": "All cheats were enabled",
+    "cheatsalldisabled": "All cheats were disabled"
   },
   "help": {
     "uptodate": "Up to date",

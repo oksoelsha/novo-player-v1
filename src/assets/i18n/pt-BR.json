@@ -226,6 +226,7 @@
     "typetext": "Digitar texto",
     "type": "Digitar",
     "clear": "Limpar",
+    "wasreset": "openMSX foi reiniciado",
     "texttyped": "O texto foi digitado no openMSX",
     "passwords": "Senhas",
     "enterpassword": "Inserir senha",
@@ -242,7 +243,11 @@
     "restoredefault": "Restaurar padrão",
     "cheats": "Cheat",
     "enableall": "Habilitar tudo",
-    "disableall": "Desabilitar tudo"
+    "disableall": "Desabilitar tudo",
+    "cheatenabled": "Cheat foi ativado",
+    "cheatdisabled": "Cheat foi desativado",
+    "cheatsallenabled": "Cheat foi ativado em todos",
+    "cheatsalldisabled": "Cheat foi desativado em todos"
   },
   "help": {
     "uptodate": "Atualizado",

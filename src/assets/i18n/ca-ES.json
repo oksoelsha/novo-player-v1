@@ -226,6 +226,7 @@
     "typetext": "Escriviu text",
     "type": "Escriviu",
     "clear": "Esborra",
+    "wasreset": "openMSX s'ha reiniciat correctament",
     "texttyped": "El text es va escriure a openMSX",
     "passwords": "Contrasenyes",
     "enterpassword": "Introduïu contrasenya",
@@ -242,7 +243,11 @@
     "restoredefault": "Restaura el valor predeterminat",
     "cheats": "Cheat",
     "enableall": "Habilita-ho tot",
-    "disableall": "Inhabilita-ho tot"
+    "disableall": "Inhabilita-ho tot",
+    "cheatenabled": "Cheat s'ha habilitat",
+    "cheatdisabled": "Cheat s'ha inhabilitat",
+    "cheatsallenabled": "Tots els cheats s'han habilitat",
+    "cheatsalldisabled": "Tots els cheats s'han inhabilitat"
   },
   "help": {
     "uptodate": "Està actualitzat",
