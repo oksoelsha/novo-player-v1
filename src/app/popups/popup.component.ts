@@ -17,11 +17,12 @@ export class PopupComponent implements OnDestroy {
   set titleHeader(value: string) {
     this.titleHeaderValue = Utils.compressStringIfTooLong(value);
   }
+  private popupElement: HTMLElement;
   private titleHeaderValue: string;
   private timer: NodeJS.Timer = null;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
-    this.handleEscape = this.handleEscape.bind(this);
+    this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
 
   commonInit() {
@@ -50,26 +51,26 @@ export class PopupComponent implements OnDestroy {
   }
 
   open(): void {
-    window.addEventListener('keydown', this.handleEscape);
+    window.addEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(true);
-    document.getElementById(this.popupId).classList.add('popup-fade');
+    this.popupElement = document.getElementById(this.popupId);
+    this.popupElement.classList.add('popup-fade');
     this.changeDetector.reattach();
   }
 
   close(cleanup: () => void = null): void {
-    window.removeEventListener('keydown', this.handleEscape);
+    window.removeEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(false);
-    const popup = document.getElementById(this.popupId);
-    popup.addEventListener('transitionend', (() => {
+    this.popupElement.addEventListener('transitionend', (() => {
       const customCleanup = cleanup;
       return () => {
         if (customCleanup !== null) {
           customCleanup();
         }
-        popup.removeAllListeners();
+        this.popupElement.removeAllListeners();
       };
     })());
-    popup.classList.remove('popup-fade');
+    this.popupElement.classList.remove('popup-fade');
     this.changeDetector.detach();
   }
 
@@ -87,9 +88,14 @@ export class PopupComponent implements OnDestroy {
     }, 10000);
   }
 
-  private handleEscape(e: KeyboardEvent) {
+  private handleKeyEvent(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       this.close();
+    } else if (!this.popupElement.contains(e.target as Node)) {
+      // if the key event occurs outside of the open popup, prevent the event from bubbling up.
+      // that prevents arraow keys, for example, from scrolling the page outside the popup
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 }
