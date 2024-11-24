@@ -34,7 +34,7 @@ export class TextTypingComponent implements OnInit, OnDestroy {
   type() {
     this.launchActivityService.typeText(this.pid, this.textToType).then(typed => {
       if (typed) {
-        this.alertMessage.emit(this.localizationService.translate('dashboard.texttyped'));
+        this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.texttyped'));
       }
     });
   }

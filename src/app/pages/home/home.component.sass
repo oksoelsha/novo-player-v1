@@ -109,7 +109,7 @@
 
 #games-table-data
   height: 100%
-  width: 41.875rem
+  width: 42.5rem
   overflow-y: auto
   scroll-behavior: smooth
   margin-bottom: 4rem
@@ -148,27 +148,38 @@
   padding: 0 0 .1875rem .1875rem !important
 
 .name-title
-  width: 26.875rem
+  width: 27.875rem
 
 .name
-  width: 25.625rem
-  max-width: 25.625rem
+  width: 26.625rem
+  max-width: 26.625rem
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
 
 .company-title, .company
-  width: 9.375rem
-  max-width: 9.375rem
+  width: 9.875rem
+  max-width: 9.875rem
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
 
 .year-title
-  width: 5.625rem
+  width: 5.75rem
 
 .year
-  width: 2.625rem
+  width: 2.75rem
+
+.running-indicator
+  width: 1.625rem
+
+.blink
+  color: #0ef00e
+  animation: blinker 1s linear infinite
+
+@keyframes blinker
+  50%
+    opacity: 0
 
 .images-view-screenshot
   height: 8rem
@@ -189,10 +200,6 @@
 
 .images-view-game-data
   font-size: .8rem
-
-.cell-actions
-  min-width: 2.75rem
-  text-align: center
 
 .screenshot
   position: relative

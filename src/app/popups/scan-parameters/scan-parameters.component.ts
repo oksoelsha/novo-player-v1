@@ -35,6 +35,7 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
   }
 
   open(): void {
+    super.reattach();
     super.open();
   }
 

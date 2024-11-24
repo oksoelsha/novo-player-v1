@@ -35,8 +35,8 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
   }
 
   open(): void {
+    super.reattach();
     this.setSelectionFromValue(this.game.webmsxMachine);
-
     super.open();
   }
 

@@ -41,6 +41,8 @@ import { MsxnewsService } from '../../services/msxnews.service';
 import { FiltersComponent } from './filters/filters.component';
 import { MoreDetailsComponent } from '../../popups/more-details/more-details.component';
 import { WindowService } from '../../services/window.service';
+import { OpenmsxManagementComponent } from '../../popups/openmsx-management/openmsx-management.component';
+import { LaunchActivity, LaunchActivityService } from '../../services/launch-activity.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -86,6 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('dragArea', { static: false }) dragArea: ElementRef;
   @ViewChild('filtersComponent') filtersComponent: FiltersComponent;
   @ViewChild('moreDetails') moreDetails: MoreDetailsComponent;
+  @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
   readonly ctrlCmdKey = this.platformService.isOnMac() ? 'Cmd+' : 'Ctrl+';
@@ -131,6 +134,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   news: NewsItem[] = [];
   displayMode: string;
   screenshotsPath: string;
+  selectedPid = 0;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -144,13 +148,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   private scanEndSubscription: Subscription;
   private scanProgressSubscription: Subscription;
   private newsSubscription: Subscription;
+  private launchActivities: LaunchActivity[] = [];
+  private launchActivitySubscription: Subscription;
+  private runningGamesBySha1Code = new Map<string, number>();
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
     private settingsService: SettingsService, private eventsService: EventsService, private router: Router,
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
     private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
     private emulatorService: EmulatorService, private msxnewsService: MsxnewsService, private windowService: WindowService,
-    private ngZone: NgZone) {
+    private launchActivityService: LaunchActivityService, private ngZone: NgZone) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -177,6 +184,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         self.newsUpdated = self.msxnewsService.getNewNewsStatus();
       });
     });
+
+    this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
+      self.launchActivities = launchActivity;
+      if (this.selectedPid && !launchActivity.find(l => l.pid === this.selectedPid)) {
+        this.selectedPid = 0;
+        this.openmsxManagementInterface.close();
+      }
+    });
+    this.launchActivities = launchActivityService.getActivities();
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -369,6 +385,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.scanProgressSubscription.unsubscribe();
     this.scanEndSubscription.unsubscribe();
     this.newsSubscription.unsubscribe();
+    this.launchActivitySubscription.unsubscribe();
   }
 
   handleOpenMenuEvents(opened: boolean) {
@@ -417,6 +434,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.sortGames(data);
       this.originalGames = data;
       this.games = this.filtersService.filter(data, this.filters);
+      this.reshowRunningGameIndicators();
+
       this.gameToRename = null;
       if (sha1Code) {
         const game = data.find(g => g.sha1Code === sha1Code);
@@ -867,6 +886,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.initialize();
       sessionStorage.removeItem('selectedGame');
     }
+    this.reshowRunningGameIndicators();
   }
 
   resetAllFilters() {
@@ -897,12 +917,34 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.displayMode = DisplayMode[0];
     }
     sessionStorage.setItem('displayMode', this.displayMode);
+    this.reshowRunningGameIndicators();
     if (this.selectedGame) {
       setTimeout(() => {
         this.showInfo(this.selectedGame);
       }, 0);
     }
-}
+  }
+
+  openOpenmsxSessionManagement(game: Game) {
+    const launchActivities = this.launchActivities.filter(activity => activity.game.sha1Code === game.sha1Code);
+    if (launchActivities.length > 1) {
+      this.alertService.info(this.localizationService.translate('home.cannotstartopenmsxsessionmanagement'));
+    } else {
+      this.selectedPid = launchActivities[0].pid;
+      this.openmsxManagementInterface.open();
+    }
+  }
+
+  /*
+  * Only called from the openMSX management popup if a screenshot is taken
+  */
+  updateMoreScreenshots() {
+    if (this.moreScreenshotFiles.length === 0) {
+      this.gamesService.getSecondaryData(this.selectedGame).then((secondaryData) => {
+        this.setMoreScreenshots(secondaryData);
+      });
+    }
+  }
 
   private setScreenshotsPath(settings: Settings) {
     if (settings.screenshotsPath.indexOf('\\') > -1 ) {
@@ -951,9 +993,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (gameElement) {
       this.selectedGame = game;
       gameElement.classList.add('selected-game');
-  
       sessionStorage.setItem('selectedGame', JSON.stringify(game));
-      return true;  
+      return true;
     } else {
       return false;
     }
@@ -1006,6 +1047,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private launchGameOrStateOnOpenmsx(game: Game, state: string = null) {
+    this.startRunningIndicator(game);
     this.gamesService.launchGameOnOpenMSX(game, state).then((errorMessage: string) => {
       if (errorMessage) {
         this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsxfor') + ': ' + game.name
@@ -1013,7 +1055,43 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.info(this.localizationService.translate('home.openmsxwindowclosedfor') + ': ' + game.name);
       }
+      this.stopRunningIndicator(game);
     });
+  }
+
+  private startRunningIndicator(game: Game) {
+    const sameSha1RunningTotal = this.runningGamesBySha1Code.get(game.sha1Code);
+    if (sameSha1RunningTotal) {
+      // already running - increment only
+      this.runningGamesBySha1Code.set(game.sha1Code, sameSha1RunningTotal + 1);
+    } else {
+      this.runningGamesBySha1Code.set(game.sha1Code, 1);
+      document.getElementById(game.sha1Code + '-running').style.display = 'inline';
+      const allAnimations = document.getAnimations();
+      if (allAnimations.length > 1) {
+        // restart all of them to keep them in sync
+        allAnimations.forEach((blinker) => {
+          if ((blinker as CSSAnimation).animationName === 'blinker') {
+            blinker.cancel();
+            blinker.play();
+          }
+        });
+      }
+    }
+  }
+
+  private stopRunningIndicator(game: Game) {
+    const sameSha1RunningTotal = this.runningGamesBySha1Code.get(game.sha1Code);
+    if (sameSha1RunningTotal === 1) {
+      this.runningGamesBySha1Code.delete(game.sha1Code);
+      const indicator = document.getElementById(game.sha1Code + '-running');
+      if (indicator) {
+        // this may happen if openMSX is closed while not in the home page
+        indicator.style.display = 'none';
+      }
+    } else {
+      this.runningGamesBySha1Code.set(game.sha1Code, sameSha1RunningTotal - 1);
+    }
   }
 
   private adjustScrollForSelectedGame(game: Game) {
@@ -1161,5 +1239,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.scanProgress !== progress) {
       this.scanProgress = progress;
     }
+  }
+
+  private reshowRunningGameIndicators() {
+    this.runningGamesBySha1Code.clear();
+    const runningGames = new Set<string>();
+    this.launchActivities.forEach(activity => {
+      runningGames.add(activity.game.sha1Code);
+    });
+    setTimeout(() => {
+      this.games.forEach(game => {
+        if (runningGames.has(game.sha1Code)) {
+          this.startRunningIndicator(game);
+        }
+      });
+    }, 0);
   }
 }

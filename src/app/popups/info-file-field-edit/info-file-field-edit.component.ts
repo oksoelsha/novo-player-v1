@@ -30,6 +30,7 @@ export class InfoFileFieldEditComponent  extends PopupComponent implements OnIni
   }
 
   open(): void {
+    super.reattach();
     super.open();
 
     this.infoFile = this.game.infoFile;

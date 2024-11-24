@@ -1,7 +1,7 @@
 {
   "navigation": {
     "main": "Pantalla principal",
-    "dashboard": "Escriptori digital",
+    "dashboard": "Tauler de control",
     "settings": "Configuració",
     "about": "Informació"
   },
@@ -18,7 +18,8 @@
     "yes": "Sí",
     "no": "No",
     "select": "Selecciona",
-    "ok": "D’acord"
+    "ok": "D’acord",
+    "managesession": "Gestiona la sessió"
   },
   "home": {
     "name": "Nom",
@@ -102,7 +103,8 @@
     "more": "Més",
     "moredetails": "Més detalls",
     "switchtolist": "Canvia a la llista",
-    "switchtoscreenshots": "Canvia a captures de pantalla"
+    "switchtoscreenshots": "Canvia a captures de pantalla",
+    "cannotstartopenmsxsessionmanagement": "No es pot llançar la gestió de sessions d'openMSX per més d'una instància d'un joc. Vés al tauler de control"
   },
   "language": {
     "en-US": "Anglès",
@@ -200,10 +202,6 @@
     "insights": "Conclusions",
     "toptenlaunched": "Més jugats",
     "launchtotals": "Totals de llançaments",
-    "switchdisks": "Canvia disc",
-    "switchtapes": "Canvia casset",
-    "diskswitched": "El disc s'ha canviat",
-    "tapeswitched": "El casset s'ha canviat",
     "jan": "Gener",
     "feb": "Febrer",
     "mar": "Març",
@@ -217,37 +215,9 @@
     "nov": "Novembre",
     "dec": "Desembre",
     "totalperday": "Total per dia",
-    "takeascreenshot": "Fes una captura de pantalla",
-    "screenshottaken": "Captura de pantalla s'ha fet correctament",
-    "state": "Estat",
-    "statesaved": "L'estat s'ha guardat correctament",
-    "load": "Càrrega",
-    "stateloaded": "L'estat s'ha carregat correctament",
-    "typetext": "Escriviu text",
-    "type": "Escriviu",
-    "clear": "Esborra",
-    "wasreset": "openMSX s'ha reiniciat correctament",
-    "texttyped": "El text es va escriure a openMSX",
     "passwords": "Contrasenyes",
     "enterpassword": "Introduïu contrasenya",
-    "enter": "Introduïu",
-    "passwordentered": "La contrasenya s'ha introduït",
-    "managesession": "Gestiona la sessió",
-    "pause": "Pausa",
-    "resume": "Reprèn",
-    "mute": "Silenci",
-    "unmute": "Activa so",
-    "fullscreen": "Pantalla completa",
-    "exitfullscreen": "Surt de la pantalla completa",
-    "speed": "Velocitat",
-    "restoredefault": "Restaura el valor predeterminat",
-    "cheats": "Cheat",
-    "enableall": "Habilita-ho tot",
-    "disableall": "Inhabilita-ho tot",
-    "cheatenabled": "Cheat s'ha habilitat",
-    "cheatdisabled": "Cheat s'ha inhabilitat",
-    "cheatsallenabled": "Tots els cheats s'han habilitat",
-    "cheatsalldisabled": "Tots els cheats s'han inhabilitat"
+    "enter": "Introduïu"
   },
   "help": {
     "uptodate": "Està actualitzat",
@@ -339,6 +309,39 @@
       "deletebackupconfirmation": "Vols suprimir la còpia de seguretat seleccionada?",
       "restorebackupconfirmation": "Restauració sobreescriurà les dades actuals. Permet?",
       "error": "Error en l'operació"
+    },
+    "openmsxmanagement": {
+      "takescreenshot": "Fes una captura de pantalla",
+      "screenshottaken": "Captura de pantalla s'ha fet correctament",
+      "wasreset": "openMSX s'ha reiniciat correctament",
+      "pause": "Pausa",
+      "resume": "Reprèn",
+      "mute": "Silenci",
+      "unmute": "Activa so",
+      "fullscreen": "Pantalla completa",
+      "exitfullscreen": "Surt de la pantalla completa",
+      "switchdisks": "Canvia disc",
+      "switchtapes": "Canvia casset",
+      "diskswitched": "El disc s'ha canviat",
+      "tapeswitched": "El casset s'ha canviat",
+      "cheats": "Cheat",
+      "enableall": "Habilita-ho tot",
+      "disableall": "Inhabilita-ho tot",
+      "cheatenabled": "Cheat s'ha habilitat",
+      "cheatdisabled": "Cheat s'ha inhabilitat",
+      "cheatsallenabled": "Tots els cheats s'han habilitat",
+      "cheatsalldisabled": "Tots els cheats s'han inhabilitat",
+      "speed": "Velocitat",
+      "restoredefault": "Restaura el valor predeterminat",
+      "passwordentered": "La contrasenya s'ha introduït",
+      "state": "Estat",
+      "statesaved": "L'estat s'ha guardat correctament",
+      "load": "Càrrega",
+      "stateloaded": "L'estat s'ha carregat correctament",
+      "typetext": "Escriviu text",
+      "type": "Escriviu",
+      "clear": "Esborra",
+      "texttyped": "El text es va escriure a openMSX"
     }
   },
   "shared": {

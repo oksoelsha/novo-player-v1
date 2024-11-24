@@ -1,7 +1,7 @@
 <div ngbDropdown>
     <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
-        [title]="'dashboard.cheats' | translate">
-        {{ 'dashboard.cheats' | translate }}
+        [title]="'popups.openmsxmanagement.cheats' | translate">
+        {{ 'popups.openmsxmanagement.cheats' | translate }}
     </button>
     <div ngbDropdownMenu class="p-3 button-popups">
         <div class="cheats">
@@ -12,10 +12,10 @@
             </div>
         </div>
         <button class="btn btn-primary btn-sm mt-3" (click)="setAllCheats(true)" (keyup.enter)="setAllCheats(true)">
-            {{ 'dashboard.enableall' | translate }}
+            {{ 'popups.openmsxmanagement.enableall' | translate }}
         </button>
         <button class="btn btn-primary btn-sm mt-3" (click)="setAllCheats(false)" (keyup.enter)="setAllCheats(false)">
-            {{ 'dashboard.disableall' | translate }}
+            {{ 'popups.openmsxmanagement.disableall' | translate }}
         </button>
     </div>
 </div>

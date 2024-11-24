@@ -42,6 +42,11 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     super.commonViewInit();
   }
 
+  open(): void {
+    super.reattach();
+    super.open();
+  }
+
   close(): void {
     super.close(this.resetStateAndScrollPosition);
   }

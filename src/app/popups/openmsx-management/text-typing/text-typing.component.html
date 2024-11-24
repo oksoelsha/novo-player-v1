@@ -1,15 +1,16 @@
 <div ngbDropdown>
-    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle [title]="'dashboard.typetext' | translate">
-        {{ 'dashboard.type' | translate }}
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
+        [title]="'popups.openmsxmanagement.typetext' | translate">
+        {{ 'popups.openmsxmanagement.type' | translate }}
     </button>
     <div ngbDropdownMenu class="p-3 button-popups">
         <textarea class="form-control form-control-sm input-text" rows="12" [(ngModel)]="textToType"
             spellcheck="false"></textarea>
         <button class="btn btn-primary btn-sm mt-3" (click)="type()" (keyup.enter)="type()">
-            {{ 'dashboard.type' | translate }}
+            {{ 'popups.openmsxmanagement.type' | translate }}
         </button>
         <button class="btn btn-primary btn-sm ms-2 mt-3" (click)="clear()" (keyup.enter)="clear()">
-            {{ 'dashboard.clear' | translate }}
+            {{ 'popups.openmsxmanagement.clear' | translate }}
         </button>
     </div>
 </div>

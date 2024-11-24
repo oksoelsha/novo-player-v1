@@ -30,6 +30,7 @@ export class ChangeListingComponent extends PopupComponent implements OnInit, Af
   }
 
   open(): void {
+    super.reattach();
     super.open();
 
     this.destinationListings  = Object.assign([], this.listings);

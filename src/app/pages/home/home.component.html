@@ -166,11 +166,15 @@
             </ng-template>
             <td class="company">{{ game.company }}</td>
             <td class="year">{{ game.year }}</td>
-            <td class="cell-actions">
+            <td>
               <span>
                 <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
                   [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
               </span>
+            </td>
+            <td class="running-indicator">
+              <span id="{{ game.sha1Code + '-running'}}" class="bi-circle-fill blink" style="display: none" placement="top"
+                [ngbTooltip]="'common.managesession' | translate" (click)="openOpenmsxSessionManagement(game)"></span>
             </td>
           </tr>
         </table>
@@ -194,11 +198,15 @@
               </ng-template>
               <div class="images-view-game-data">{{ game | gameCompanyAndYear }}</div>
             </td>
-            <td class="cell-actions">
+            <td>
               <span>
                 <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
                   [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
               </span>
+            </td>
+            <td class="running-indicator">
+              <span id="{{ game.sha1Code + '-running'}}" class="bi-circle-fill blink" style="display: none" placement="top"
+                [ngbTooltip]="'common.managesession' | translate" (click)="openOpenmsxSessionManagement(game)"></span>
             </td>
           </tr>
         </table>
@@ -511,6 +519,15 @@
     <app-more-details [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
       #moreDetails>
     </app-more-details>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="openmsx-management-id"
+  [titleHeader]="('common.managesession' | translate) + ': ' + selectedGame?.name" (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-openmsx-management [popupId]="popupId" (openStatus)="popupOpen = $event" [pid]="selectedPid"
+      [game]="selectedGame" (updateMoreScreenshots)="updateMoreScreenshots()" #openmsxManagementInterface>
+    </app-openmsx-management>
   </ng-template>
 </app-popup>
 

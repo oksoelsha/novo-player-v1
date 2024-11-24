@@ -30,6 +30,7 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
   }
 
   async open(): Promise<void> {
+    super.reattach();
     this.imageIndex = 0;
     this.showImage();
     super.open();

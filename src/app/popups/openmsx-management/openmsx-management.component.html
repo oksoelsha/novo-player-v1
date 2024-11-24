@@ -15,7 +15,7 @@
         <span *ngIf="fullscreenIndicator" class="bi-fullscreen-exit"></span>
     </button>
     <button type="button" class="btn btn-secondary btn-sm" (click)="takeScreenshot(pid, game)"
-        [title]="'dashboard.takeascreenshot' | translate">
+        [title]="'popups.openmsxmanagement.takescreenshot' | translate">
         <span class="bi-image"></span>
     </button>
     <div class="d-inline-block">
@@ -44,11 +44,11 @@
 <div class="d-flex ps-3">
     <div ngbDropdown class="pe-2 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 1">
         <button *ngIf="isDisk(game)" class="btn btn-secondary btn-sm action-button" type="button"
-            [title]="'dashboard.switchdisks' | translate" ngbDropdownToggle>
+            [title]="'popups.openmsxmanagement.switchdisks' | translate" ngbDropdownToggle>
             {{ 'dashboard.disks' | translate }}
         </button>
         <button *ngIf="isTape(game)" class="btn btn-secondary btn-sm action-button" type="button"
-            [title]="'dashboard.switchtapes' | translate" ngbDropdownToggle>
+            [title]="'popups.openmsxmanagement.switchtapes' | translate" ngbDropdownToggle>
             {{ 'dashboard.tapes' | translate }}
         </button>
         <div ngbDropdownMenu class="pt-0 pb-0">
@@ -59,8 +59,7 @@
         </div>
     </div>
     <div *ngIf="gamePasswordsInfo" class="pe-2 pt-2">
-        <app-openmsx-management-passwords [pid]="pid" [events]="openEventSubject.asObservable()"
-            [gamePasswordsInfo]="gamePasswordsInfo"
+        <app-openmsx-management-passwords [pid]="pid" [gamePasswordsInfo]="gamePasswordsInfo"
             (alertMessage)="alertMessage($event)"></app-openmsx-management-passwords>
     </div>
     <div *ngIf="trainersList?.length > 0" class="pe-2 pt-2">

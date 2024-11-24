@@ -50,12 +50,16 @@ export class PopupComponent implements OnDestroy {
     window.removeAllListeners();
   }
 
+  reattach(): void {
+    // this must be called by the child class's open method at the beginning
+    this.changeDetector.reattach();
+  }
+
   open(): void {
     window.addEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(true);
     this.popupElement = document.getElementById(this.popupId);
     this.popupElement.classList.add('popup-fade');
-    this.changeDetector.reattach();
   }
 
   close(cleanup: () => void = null): void {
@@ -75,7 +79,7 @@ export class PopupComponent implements OnDestroy {
   }
 
   alert(message: string) {
-    const alertElement = document.getElementById('popup-alert-area');
+    const alertElement = document.getElementById(this.popupId + '-popup-alert-area');
     alertElement.innerText = message;
     alertElement.classList.add('success-alert');
 

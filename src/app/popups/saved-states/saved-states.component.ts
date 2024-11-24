@@ -33,6 +33,7 @@ export class SavedStatesComponent extends PopupComponent implements OnInit, Afte
   }
 
   async open(): Promise<void> {
+    super.reattach();
     super.open();
   }
 

@@ -32,6 +32,7 @@ export class BluemsxArgumentsEditComponent extends PopupComponent implements OnI
   }
 
   open(): void {
+    super.reattach();
     super.open();
 
     this.bluemsxArguments = this.game.bluemsxArguments;

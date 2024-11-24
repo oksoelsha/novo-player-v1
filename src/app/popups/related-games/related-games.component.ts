@@ -33,6 +33,7 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
   }
 
   async open(): Promise<void> {
+    super.reattach();
     this.gamesService.getRelatedGames(this.game).then(async (data: Game[]) => {
       this.relatedGames = data;
       for (let index = 0; index < data.length; index++) {

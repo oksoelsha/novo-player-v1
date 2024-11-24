@@ -24,7 +24,8 @@ export class LaunchActivityComponent implements OnDestroy {
     const self = this;
     this.launchActivitySubscription = this.launchActivityService.getUpdatedActivities().subscribe(launchActivity => {
       self.launchActivities = launchActivity;
-      if (!launchActivity.find(l => l.pid === this.selectedPid)) {
+      if (this.selectedPid && !launchActivity.find(l => l.pid === this.selectedPid)) {
+        this.selectedPid = 0;
         this.openmsxManagementInterface.close();
       }
     });

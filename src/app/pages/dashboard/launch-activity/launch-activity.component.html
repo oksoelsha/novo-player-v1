@@ -16,7 +16,7 @@
                         </td>
                         <td>
                             <button *ngIf="isRunningOnOpenMSX(activity)" type="button" class="btn btn-secondary btn-sm  openmsx-connect"
-                                (click)="openManagement(activity.pid, activity.game)" [title]="'dashboard.managesession' | translate">
+                                (click)="openManagement(activity.pid, activity.game)" [title]="'common.managesession' | translate">
                                 •••
                             </button>
                         </td>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<app-popup popupId="openmsx-management-id" [titleHeader]="('dashboard.managesession' | translate) + ': ' + selectedGame?.name">
+<app-popup popupId="openmsx-management-id" [titleHeader]="('common.managesession' | translate) + ': ' + selectedGame?.name">
     <ng-template let-popupId="popupId">
         <app-openmsx-management [popupId]="popupId" [pid]="selectedPid" [game]="selectedGame" #openmsxManagementInterface>
         </app-openmsx-management>

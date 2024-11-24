@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PopupComponent } from '../popup.component';
 import { LaunchActivityService, OpenmsxEvent as OpenmsxEvent } from '../../services/launch-activity.service';
 import { LocalizationService } from '../../services/localization.service';
@@ -19,6 +19,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   @Input() popupId: string;
   @Input() pid: number;
   @Input() game: Game;
+  @Output() updateMoreScreenshots: EventEmitter<void> = new EventEmitter<void>();
 
   capsLed: boolean;
   langLed: boolean;
@@ -33,12 +34,12 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   gamePasswordsInfo: GamePasswordsInfo;
   trainersList: any[];
 
-  readonly pauseLabel: string;
-  readonly unpauseLabel: string;
-  readonly muteLabel: string;
-  readonly unmuteLabel: string;
-  readonly fullscreenLabel: string;
-  readonly windowLabel: string;
+  pauseLabel: string;
+  unpauseLabel: string;
+  muteLabel: string;
+  unmuteLabel: string;
+  fullscreenLabel: string;
+  windowLabel: string;
 
   private openmsxEventSubscription: Subscription;
 
@@ -47,12 +48,6 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     super(changeDetector);
     const self = this;
 
-    this.pauseLabel = this.localizationService.translate('dashboard.pause');
-    this.unpauseLabel = this.localizationService.translate('dashboard.resume');
-    this.muteLabel = this.localizationService.translate('dashboard.mute');
-    this.unmuteLabel = this.localizationService.translate('dashboard.unmute');
-    this.fullscreenLabel = this.localizationService.translate('dashboard.fullscreen');
-    this.windowLabel = this.localizationService.translate('dashboard.exitfullscreen');
     this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {
       self.processEvents(openmsxEvent);
     });
@@ -71,6 +66,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   async open(): Promise<void> {
+    super.reattach();
     setTimeout(() => {
       this.currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
       if (this.currentStatus) {
@@ -91,12 +87,18 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
         this.fullscreenIndicator = false;
       }
 
+      this.pauseLabel = this.localizationService.translate('popups.openmsxmanagement.pause');
+      this.unpauseLabel = this.localizationService.translate('popups.openmsxmanagement.resume');
+      this.muteLabel = this.localizationService.translate('popups.openmsxmanagement.mute');
+      this.unmuteLabel = this.localizationService.translate('popups.openmsxmanagement.unmute');
+      this.fullscreenLabel = this.localizationService.translate('popups.openmsxmanagement.fullscreen');
+      this.windowLabel = this.localizationService.translate('popups.openmsxmanagement.exitfullscreen');
+
       this.setFileGroup();
       this.setPasswords();
       this.setTrainer();
       this.openEventSubject.next(true);
     }, 0);
-
     super.open();
   }
 
@@ -126,14 +128,15 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   takeScreenshot(pid: number, game: Game) {
     this.launchActivityService.takeScreenshot(pid, game).then(success => {
-      super.alert(this.localizationService.translate('dashboard.screenshottaken'));
+      this.updateMoreScreenshots.emit();
+      super.alert(this.localizationService.translate('popups.openmsxmanagement.screenshottaken'));
     });
   }
 
   resetMachine(pid: number) {
     this.launchActivityService.resetMachine(pid).then(reset => {
       if (reset) {
-        super.alert(this.localizationService.translate('dashboard.wasreset'));        
+        super.alert(this.localizationService.translate('popups.openmsxmanagement.wasreset'));
       }
     });
   }
@@ -154,13 +157,13 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     if (this.isDisk(game)) {
       this.launchActivityService.switchDisk(pid, medium).then(switched => {
         if (switched) {
-          super.alert(this.localizationService.translate('dashboard.diskswitched'));
+          super.alert(this.localizationService.translate('popups.openmsxmanagement.diskswitched'));
         }
       });
     } else {
       this.launchActivityService.switchTape(pid, medium).then(switched => {
         if (switched) {
-          super.alert(this.localizationService.translate('dashboard.tapeswitched'));
+          super.alert(this.localizationService.translate('popups.openmsxmanagement.tapeswitched'));
         }
       });
     }

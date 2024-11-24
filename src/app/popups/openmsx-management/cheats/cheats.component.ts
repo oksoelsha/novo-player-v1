@@ -38,9 +38,9 @@ export class CheatsComponent implements OnInit, OnDestroy {
     this.launchActivityService.setCheat(this.pid, this.game.title, cheat.label).then((success: boolean) => {
       if (success) {
         if (cheat.on) {
-          this.alertMessage.emit(this.localizationService.translate('dashboard.cheatenabled'));
+          this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatenabled'));
         } else {
-          this.alertMessage.emit(this.localizationService.translate('dashboard.cheatdisabled'));
+          this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatdisabled'));
         }
       }
     });
@@ -54,9 +54,9 @@ export class CheatsComponent implements OnInit, OnDestroy {
     this.launchActivityService.setAllCheats(this.pid, this.game.title, flag).then((success: boolean) => {
       if (success) {
         if (flag) {
-          this.alertMessage.emit(this.localizationService.translate('dashboard.cheatsallenabled'));
+          this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatsallenabled'));
         } else {
-          this.alertMessage.emit(this.localizationService.translate('dashboard.cheatsalldisabled'));
+          this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatsalldisabled'));
         }
       }
     });

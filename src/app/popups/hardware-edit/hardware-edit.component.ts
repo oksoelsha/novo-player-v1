@@ -39,6 +39,7 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
   }
 
   open(): void {
+    super.reattach();
     super.open();
 
     this.emulatorService.getMachines().then((data: string[]) => {

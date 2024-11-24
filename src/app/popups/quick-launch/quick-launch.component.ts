@@ -32,6 +32,11 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
     super.commonViewInit();
   }
 
+  open(): void {
+    super.reattach();
+    super.open();
+  }
+
   getOpenMSXArgumentsMap(): Map<string, string[]> {
     return OpenMSXUtils.getCommandLineArgumentsMap();
   }

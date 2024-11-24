@@ -39,7 +39,7 @@ export class StateSaveLoadComponent implements OnInit, OnDestroy {
   saveState() {
     this.launchActivityService.saveState(this.pid, this.game).then(saved => {
       if (saved) {
-        this.alertMessage.emit(this.localizationService.translate('dashboard.statesaved'));
+        this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.statesaved'));
         this.setSavedStates();
       }
     });
@@ -48,7 +48,7 @@ export class StateSaveLoadComponent implements OnInit, OnDestroy {
   loadState(gameState: GameSavedState) {
     this.launchActivityService.loadState(this.pid, gameState.state).then(loaded => {
       if (loaded) {
-        this.alertMessage.emit(this.localizationService.translate('dashboard.stateloaded'));
+        this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.stateloaded'));
       }
     });
   }

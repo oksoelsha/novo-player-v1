@@ -32,6 +32,7 @@ export class MoreDetailsComponent  extends PopupComponent implements OnInit, Aft
   }
 
   async open(): Promise<void> {
+    super.reattach();
     this.gamesService.getMoreGameHashes(this.game).then((hashes: any) => {
       this.crc32 = hashes.crc32;
       this.md5 = hashes.md5;

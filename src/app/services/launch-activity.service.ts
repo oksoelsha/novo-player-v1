@@ -29,7 +29,7 @@ export class LaunchActivityService {
 
   recordGameStart(game: Game, time: number, pid: number, source: EventSource) {
     this.launchActivities.push(new LaunchActivity(game, time, pid, source));
-    this.launchActivitiesSubject.next(this.launchActivities);
+//    this.launchActivitiesSubject.next(this.launchActivities);
   }
 
   recordGameFinish(game: Game, time: number) {

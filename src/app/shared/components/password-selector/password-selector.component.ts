@@ -12,10 +12,9 @@ export class PasswordSelectorComponent implements OnInit, OnDestroy {
 
   @Input() gamePasswordsInfo: GamePasswordsInfo;
   @Input() clearEvent: Observable<void>;
-  selectedPassword: GamePassword;
   @Output() passwordToEnter: EventEmitter<GamePassword> = new EventEmitter<GamePassword>();
   @ViewChild('passwordsDropdown', { static: true }) dropdown: NgbDropdown;
-
+  selectedPassword: GamePassword;
   private clearEventSubscription: Subscription;
 
   constructor() { }

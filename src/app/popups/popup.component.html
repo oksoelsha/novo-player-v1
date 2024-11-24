@@ -4,7 +4,7 @@
             <div class="popup-title me-3">{{ titleHeader }}</div>
             <div id="{{ popupId + '-close' }}" class="popup-close">&times;</div>
         </div>
-        <div id="popup-alert-area"></div>
+        <div id="{{ popupId + '-popup-alert-area' }}" class="popup-alert"></div>
         <div class="p-2">
             <ng-template [ngTemplateOutletContext]='{ popupId: popupId }' [ngTemplateOutlet]="templateVariable">
             </ng-template>

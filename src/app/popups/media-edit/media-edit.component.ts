@@ -38,6 +38,7 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
   }
 
   open(): void {
+    super.reattach();
     super.open();
 
     this.romA = this.game.romA;

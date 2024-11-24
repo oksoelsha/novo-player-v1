@@ -45,6 +45,7 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
   }
 
   async open(): Promise<void> {
+    super.reattach();
     this.additionalExternalInfoService.getAdditionalExternalInfo(this.game, this.giantbombApiKey)
       .then((data: any) => {
         this.showData = true;

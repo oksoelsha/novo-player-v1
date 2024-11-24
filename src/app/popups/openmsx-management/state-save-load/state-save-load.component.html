@@ -1,5 +1,5 @@
 <div class="p-1 text-center management-card">
-    <div class="small">{{ 'dashboard.state' | translate }}</div>
+    <div class="small">{{ 'popups.openmsxmanagement.state' | translate }}</div>
     <div>
         <div ngbDropdown class="d-inline-block ps-2 pt-2">
             <button class="btn btn-secondary btn-sm" type="button" (click)="saveState()" [title]="'common.save' | translate">
@@ -9,7 +9,7 @@
         <div ngbDropdown class="d-inline-block ps-1 pt-2 pe-2">
             <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
                 [disabled]="savedStates.length === 0">
-                {{ 'dashboard.load' | translate }}
+                {{ 'popups.openmsxmanagement.load' | translate }}
             </button>
             <div ngbDropdownMenu class="dropdown-scroll">
                 <button *ngFor="let savedState of savedStates" ngbDropdownItem type="button" (click)="loadState(savedState)">
