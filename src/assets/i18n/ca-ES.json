@@ -214,10 +214,7 @@
     "oct": "Octubre",
     "nov": "Novembre",
     "dec": "Desembre",
-    "totalperday": "Total per dia",
-    "passwords": "Contrasenyes",
-    "enterpassword": "Introduïu contrasenya",
-    "enter": "Introduïu"
+    "totalperday": "Total per dia"
   },
   "help": {
     "uptodate": "Està actualitzat",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "Premeu Enter o feu clic a la fletxa per utilitzar el nou nom"
+    },
+    "password": {
+      "passwords": "Contrasenyes",
+      "enterpassword": "Introduïu contrasenya",
+      "enter": "Introduïu"
     }
   },
   "filters": {

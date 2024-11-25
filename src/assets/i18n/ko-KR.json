@@ -214,10 +214,7 @@
     "oct": "10월",
     "nov": "11월",
     "dec": "12월",
-    "totalperday": "일일 합계",
-    "passwords": "비밀번호",
-    "enterpassword": "암호를 입력",
-    "enter": "입력"
+    "totalperday": "일일 합계"
   },
   "help": {
     "uptodate": "최신 상태",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "<Enter> 키를 누르거나 화살표를 클릭하여 새 이름을 사용합니다"
+    },
+    "password": {
+      "passwords": "비밀번호",
+      "enterpassword": "암호를 입력",
+      "enter": "입력"
     }
   },
   "filters": {

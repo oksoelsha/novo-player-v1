@@ -214,10 +214,7 @@
     "oct": "Ottobre",
     "nov": "Novembre",
     "dec": "Dicembre",
-    "totalperday": "Totale al giorno",
-    "passwords": "Password",
-    "enterpassword": "Inserisci password",
-    "enter": "Inserisci"
+    "totalperday": "Totale al giorno"
   },
   "help": {
     "uptodate": "Aggiornato",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "Premi Invio o fai clic sulla freccia per utilizzare il nuovo nome"
+    },
+    "password": {
+      "passwords": "Password",
+      "enterpassword": "Inserisci password",
+      "enter": "Inserisci"
     }
   },
   "filters": {

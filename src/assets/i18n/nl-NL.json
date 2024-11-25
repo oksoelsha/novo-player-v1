@@ -214,10 +214,7 @@
     "oct": "Oktober",
     "nov": "November",
     "dec": "December",
-    "totalperday": "Totaal per dag",
-    "passwords": "Wachtwoorden",
-    "enterpassword": "Wachtwoord invoeren",
-    "enter": "Invoeren"
+    "totalperday": "Totaal per dag"
   },
   "help": {
     "uptodate": "Bijgewerkt",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "Druk op Enter of klik op de pijl om de nieuwe naam te gebruiken"
+    },
+    "password": {
+      "passwords": "Wachtwoorden",
+      "enterpassword": "Wachtwoord invoeren",
+      "enter": "Invoeren"
     }
   },
   "filters": {

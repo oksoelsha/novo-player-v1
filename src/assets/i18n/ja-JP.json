@@ -214,10 +214,7 @@
     "oct": "10 月",
     "nov": "11 月",
     "dec": "12 月",
-    "totalperday": "1日あたりの合計",
-    "passwords": "パスワード",
-    "enterpassword": "パスワードを入力する",
-    "enter": "入力する"
+    "totalperday": "1日あたりの合計"
   },
   "help": {
     "uptodate": "最新",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "Enterキーを押すか、矢印をクリックして新しい名前を使用します"
+    },
+    "password": {
+      "passwords": "パスワード",
+      "enterpassword": "パスワードを入力する",
+      "enter": "入力する"
     }
   },
   "filters": {

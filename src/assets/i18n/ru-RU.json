@@ -214,10 +214,7 @@
     "oct": "Октябрь",
     "nov": "Ноябрь",
     "dec": "Декабрь",
-    "totalperday": "Итого за день",
-    "passwords": "Пароли",
-    "enterpassword": "Введите пароль",
-    "enter": "Введите"
+    "totalperday": "Итого за день"
   },
   "help": {
     "uptodate": "Обновлено",
@@ -352,6 +349,11 @@
     },
     "dropdownwithinput": {
       "inputfieldhelp": "Нажмите Enter или щелкните стрелку, чтобы использовать новое имя"
+    },
+    "password": {
+      "passwords": "Пароли",
+      "enterpassword": "Введите пароль",
+      "enter": "Введите"
     }
   },
   "filters": {
