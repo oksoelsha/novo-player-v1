@@ -155,14 +155,14 @@
             (contextmenu)="onContextMenu($event, game)">
             <td class="medium-img"><img src="{{ game | gameMediumIcon }}" draggable="false"></td>
             <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">
-              <td class="name">
+              <div class="name name-height">
                 <input id="gameNameEditInput" #gameNameEditInput type="text" spellcheck="false"
                   [(ngModel)]="editedGameName" (keydown.enter)="processNewGameName($event)"
-                  (keyup.escape)="cancelEditMode()" (focusout)="cancelEditMode()" />
-              </td>
+                  (keyup.escape)="cancelEditMode()"  />
+              </div>
             </ng-container>
             <ng-template #editRow>
-              <td class="name">{{ game.name }}</td>
+              <td class="name name-height">{{ game.name }}</td>
             </ng-template>
             <td class="company">{{ game.company }}</td>
             <td class="year">{{ game.year }}</td>
@@ -187,14 +187,14 @@
             </td>
             <td class="ps-2 images-view-data">
               <ng-container *ngIf="(game | editRowMode : gameToRename); else editRow">
-                <td class="name">
+                <div class="images-view-game-name-height">
                   <input id="gameNameEditInput" #gameNameEditInput type="text" class="mb-1" spellcheck="false"
                     [(ngModel)]="editedGameName" (keydown.enter)="processNewGameName($event)" (keyup.escape)="cancelEditMode()"
                     (focusout)="cancelEditMode()" />
-                </td>
+                </div>
               </ng-container>
               <ng-template #editRow>
-                <div class="images-view-game-name">{{ game.name }}</div>
+                <div class="images-view-game-name images-view-game-name-height">{{ game.name }}</div>
               </ng-template>
               <div class="images-view-game-data">{{ game | gameCompanyAndYear }}</div>
             </td>
