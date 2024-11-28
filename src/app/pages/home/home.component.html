@@ -166,11 +166,11 @@
             </ng-template>
             <td class="company">{{ game.company }}</td>
             <td class="year">{{ game.year }}</td>
-            <td>
-              <span>
-                <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
-                  [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
-              </span>
+            <td class="play-game-hover">
+              <div>
+                <span class="bi-play-circle-fill" placement="top"
+                  [ngbTooltip]="'home.launchonopenmsx' | translate" (click)="launch(game)"></span>
+              </div>
             </td>
             <td class="running-indicator">
               <span id="{{ game.sha1Code + '-running'}}" class="bi-circle-fill blink" style="display: none" placement="top"
@@ -198,11 +198,11 @@
               </ng-template>
               <div class="images-view-game-data">{{ game | gameCompanyAndYear }}</div>
             </td>
-            <td>
-              <span>
-                <img src="assets/images/operations/play.png" (click)="launch(game)" placement="top"
-                  [ngbTooltip]="'home.launchonopenmsx' | translate" draggable="false">
-              </span>
+            <td class="play-game-hover">
+              <div>
+                <span class="bi-play-circle-fill" placement="top"
+                  [ngbTooltip]="'home.launchonopenmsx' | translate" (click)="launch(game)"></span>
+              </div>
             </td>
             <td class="running-indicator">
               <span id="{{ game.sha1Code + '-running'}}" class="bi-circle-fill blink" style="display: none" placement="top"
