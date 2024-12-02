@@ -25,7 +25,7 @@ import { BluemsxArgumentsEditComponent } from '../../popups/bluemsx-arguments-ed
 import { Subscription } from 'rxjs';
 import { RelatedGamesComponent } from '../../popups/related-games/related-games.component';
 import { WebmsxMachineSetComponent } from '../../popups/webmsx-machine-set/webmsx-machine-set.component';
-import { WebMSXMachinesData, WebMSXUtils } from '../../models/webmsx-utils';
+import { WebMSXUtils } from '../../models/webmsx-utils';
 import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
