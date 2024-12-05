@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 import { GamePassword, GamePasswordsInfo } from '../../../models/game-passwords-info';
 import { LaunchActivityService } from '../../../services/launch-activity.service';
 import { LocalizationService } from '../../../services/localization.service';
@@ -13,9 +12,7 @@ export class PasswordsComponent {
 
   @Input() pid: number;
   @Input() gamePasswordsInfo: GamePasswordsInfo;
-  @Output() alertMessage: EventEmitter<string> = new EventEmitter<string>();
-
-  clearEventSubject: Subject<void> = new Subject<void>();
+  @Output() alertMessage = new EventEmitter<string>();
 
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }
 
