@@ -13,7 +13,7 @@ This project is a continuation of the previous Novo Player that stopped at versi
  * Display two screenshots, details and available game music for each selected game.
  * Search for exact or partial name or SHA1 code.
  * Connect to a running openMSX process to perform operations such as session management (mute, pause, etc), take screenshots, save and load states, type text, enter passwords (using a built-in database of known game passwords), enable cheats and switch disks or tapes.
- * Enter passwords (using the same built-in database of known game oasswords) and switch disks/tapes on WebMSX.
+ * Enter passwords (using the same built-in database of known game passwords) and switch disks/tapes on WebMSX.
  * Sort games in the table by name, company or year.
  * Undo game deletes and updates.
  * Display the text in English, Catalan, Dutch, French, Italian, Japanese, Korean, Portuguese, Russian or Spanish.
