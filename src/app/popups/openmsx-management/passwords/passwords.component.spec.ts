@@ -20,7 +20,6 @@ describe('PasswordsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordsComponent);
     component = fixture.componentInstance;
-    component.events = of(true);
     const gamePasswordsInfo = new GamePasswordsInfo([], 'setup');
     component.gamePasswordsInfo = gamePasswordsInfo;
     fixture.detectChanges();
