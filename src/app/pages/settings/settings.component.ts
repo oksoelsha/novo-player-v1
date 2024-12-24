@@ -9,6 +9,7 @@ import { DeactivateComponent } from '../../guards/deactivate-guard.service';
 import { PlatformService } from '../../services/platform.service';
 import { BlueMSXUtils } from '../../models/bluemsx-utils';
 import { WindowService } from '../../services/window.service';
+import { EmuliciousUtils } from '../../models/emulicious-utils';
 
 @Component({
   selector: 'app-settings',
@@ -26,6 +27,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   webmsxPath = '';
   bluemsxPath = '';
   bluemsxParams = '';
+  emuliciousPath = '';
+  emuliciousParams = '';
   giantbombApiKey = '';
   news = false;
   submitDisabled = true;
@@ -62,6 +65,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.webmsxPath = settings.webmsxPath;
       self.bluemsxPath = settings.bluemsxPath;
       self.bluemsxParams = settings.bluemsxParams;
+      self.emuliciousPath = settings.emuliciousPath;
+      self.emuliciousParams = settings.emuliciousParams;
       self.setSelectedLanguage(settings);
       self.giantbombApiKey = settings.giantbombApiKey;
       self.news = settings.enableNews;
@@ -102,11 +107,20 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     this.submitDisabled = false;
   }
 
+  getEmuliciousArgumentsMap(): Map<string, string[]> {
+    return EmuliciousUtils.getCommandLineArgumentsMap();
+  }
+
+  setEmuliciousParams(emuliciousParams: string) {
+    this.emuliciousParams = emuliciousParams;
+    this.submitDisabled = false;
+  }
+
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
       this.languageReverseMap.get(this.language), form.value['giantbomb-apikey'], form.value.news,
-      this.displayModeReverseMap.get(this.displayMode));
+      this.displayModeReverseMap.get(this.displayMode), form.value['emulicious-path'], this.emuliciousParams);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);

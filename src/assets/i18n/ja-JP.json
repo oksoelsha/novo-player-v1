@@ -52,11 +52,13 @@
     "onopenmsx": "openMSX で実行",
     "onwebmsx": "WebMSX で実行",
     "onbluemsx": "blueMSX で実行",
+    "onemulicious": "Emulicious で実行",
     "actions": "操作",
     "editmedia": "メディア編集",
     "edithardware": "ハードウェア編集",
-    "setInfoFile": "追加情報を設定する",
+    "setinfofile": "追加情報を設定する",
     "editbluemsxarguments": "blueMSX引数を編集する",
+    "editemuliciousarguments": "Emulicious引数を編集する",
     "addtofavorites": "お気に入りに追加",
     "removefromfavorites": "お気に入りから削除",
     "movetoanotherlisting": "別のリストに移動",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "openMSXの起動に失敗しました",
     "openmsxwindowclosedfor": "openMSXウィンドウを閉じました",
     "openmsxwindowclosed": "openMSXウィンドウを閉じました",
+    "failedtostartbluemsxfor": "blueMSXの起動に失敗しました",
     "bluemsxwindowclosedfor": "blueMSXウィンドウを閉じました",
+    "failedtostartemuliciousfor": "Emuliciousの起動に失敗しました",
+    "emuliciouswindowclosedfor": "Emuliciousウィンドウを閉じました",
     "gamewasremoved": "ゲームが削除されました",
     "gameswereremoved": "ゲームが削除されました",
     "gamewasnotremoved": "ゲームは削除されませんでした",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "blueMSXがあるフォルダ",
     "bluemsxparams": "その他の blueMSX 引数",
     "bluemsxparamstooltip": "blueMSXを起動するときに使用する追加の引数(例:/machine MSX2)",
+    "emuliciouspath": "Emulicious のパス",
+    "emuliciouspathtooltip": "Emuliciousがあるフォルダ",
+    "emuliciousparams": "その他の Emulicious 引数",
+    "emuliciousparamstooltip": "Emuliciousを起動するときに使用する追加の引数(例:-set System=MSX)",
     "language": "言語",
     "systemdefault": "システムの既定値",
     "confirmation": "確認",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "選択したリストを削除しますか？",
       "mergelistingsconfirmation": "名前はすでに存在します。マージ？"
     },
-    "setInfoFile": {
-      "infoFile": "ファイル"
+    "setinfofile": {
+      "infofile": "ファイル"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "blueMSX引数",
+    "editemulatorarguments": {
+      "bluemsxarguments": "blueMSX引数",
+      "emuliciousarguments": "Emulicious引数",
       "overrideargumentsinsettings": "設定の引数をオーバーライドする"
     },
     "relatedgames": {

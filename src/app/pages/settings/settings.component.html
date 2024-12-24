@@ -68,6 +68,24 @@
             [ngbTooltip]="'settings.bluemsxparamstooltip' | translate"></app-field-with-suggestions>
         </div>
 
+        <div class="form-group mb-3">
+          <label class="form-label">{{ 'settings.emuliciouspath' | translate }}</label>
+          <div class="d-flex justify-content-start">
+            <input type="text" class="form-control form-control-sm" name="emulicious-path" [(ngModel)]="emuliciousPath"
+              placement="bottom" [ngbTooltip]="'settings.emuliciouspathtooltip' | translate" />
+            <app-file-system-chooser [directoryMode]=true [label]="'common.browse' | translate"
+              (chosen)="updateControl('emulicious-path', $event)" [useIcon]="true">
+            </app-file-system-chooser>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="form-label">{{ 'settings.emuliciousparams' | translate }}</label>
+          <app-field-with-suggestions [value]="emuliciousParams" [suggestionsMap]="getEmuliciousArgumentsMap()" trigger="-"
+            (userInputOutput)="setEmuliciousParams($event)" placement="bottom"
+            [ngbTooltip]="'settings.emuliciousparamstooltip' | translate"></app-field-with-suggestions>
+        </div>
+
         <div class="header">{{ 'settings.general' | translate }}</div>
         <hr>
 

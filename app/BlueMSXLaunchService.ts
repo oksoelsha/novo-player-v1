@@ -4,7 +4,7 @@ import { EventLogService } from './EventLogService'
 import { SettingsService } from './SettingsService'
 import { Event, EventSource, EventType } from '../src/app/models/event'
 import { Game } from '../src/app/models/game'
-import { GameUtils } from '../src/app/models/game-utils'
+import { GameUtils } from './utils/GameUtils'
 
 export class BlueMSXLaunchService {
 

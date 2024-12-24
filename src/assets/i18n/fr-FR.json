@@ -52,11 +52,13 @@
     "onopenmsx": "sur openMSX",
     "onwebmsx": "sur WebMSX",
     "onbluemsx": "sur blueMSX",
+    "onemulicious": "sur Emulicious",
     "actions": "Actions",
     "editmedia": "Modifier le médium",
     "edithardware": "Modifier le matériel",
-    "setInfoFile": "Définir des informations supplémentaires",
+    "setinfofile": "Définir des informations supplémentaires",
     "editbluemsxarguments": "Modifier les arguments de blueMSX",
+    "editemuliciousarguments": "Modifier les arguments d'Emulicious",
     "addtofavorites": "Ajouter aux favoris",
     "removefromfavorites": "Retirer des favoris",
     "movetoanotherlisting": "Déplacer vers une autre liste",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "Erreur lors du lancement d'openMSX",
     "openmsxwindowclosedfor": "Fenêtre d'openMSX fermée por",
     "openmsxwindowclosed": "Fenêtre d'openMSX fermée",
+    "failedtostartbluemsxfor": "Erreur lors du lancement de blueMSX pour",
     "bluemsxwindowclosedfor": "Fenêtre de blueMSX fermée por",
+    "failedtostartemuliciousfor": "Erreur lors du lancement d'Emulicious pour",
+    "emuliciouswindowclosedfor": "Fenêtre de Emulicious fermée por",
     "gamewasremoved": "Le jeu a été enlevé",
     "gameswereremoved": "Les jeux ont été enlevés",
     "gamewasnotremoved": "Le jeu n'a pas été enlevé",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "Dossier où blueMSX se trouve",
     "bluemsxparams": "Autres arguments blueMSX",
     "bluemsxparamstooltip": "Arguments supplémentaires à utiliser lors du lancement de blueMSX (par exemple, /machine MSX2)",
+    "emuliciouspath": "Chemin d'accès de Emulicious",
+    "emuliciouspathtooltip": "Dossier où Emulicious se trouve",
+    "emuliciousparams": "Autres arguments Emulicious",
+    "emuliciousparamstooltip": "Arguments supplémentaires à utiliser lors du lancement d'Emulicious (par exemple, -set System=MSX)",
     "language": "Langue",
     "systemdefault": "Système par défaut",
     "confirmation": "Confirmation",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "Supprimer la liste sélectionnée ?",
       "mergelistingsconfirmation": "Le nom existe déjà. Fusionner ?"
     },
-    "setInfoFile": {
-      "infoFile": "Fichier"
+    "setinfofile": {
+      "infofile": "Fichier"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "Arguments de blueMSX",
+    "editemulatorarguments": {
+      "bluemsxarguments": "Arguments de blueMSX",
+      "emuliciousarguments": "Arguments d'Emulicious",
       "overrideargumentsinsettings": "Remplacer les arguments dans les paramètres"
     },
     "relatedgames": {

@@ -42,7 +42,7 @@ export class GamesService {
   }
 
   async launchGameOnOpenMSX(game: Game, state: string = null): Promise<string> {
-    const time: number = Date.now();
+    const time = Date.now();
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either openMSX failed to start or the window was closed
@@ -57,7 +57,7 @@ export class GamesService {
   }
 
   async quickLaunchOnOpenMSX(quickLaunchData: QuickLaunchData): Promise<string> {
-    const time: number = Date.now();
+    const time = Date.now();
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either openMSX failed to start or the window was closed
@@ -79,7 +79,7 @@ export class GamesService {
   }
 
   async launchGameOnBlueMSX(game: Game): Promise<string> {
-    const time: number = Date.now();
+    const time = Date.now();
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameOnBlueMSXResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either blueMSX failed to start or the window was closed
@@ -88,6 +88,19 @@ export class GamesService {
       });
       this.launchActivityService.recordGameStart(game, time, 0, EventSource.blueMSX);
       this.ipc.send('launchGameOnBlueMSX', game, time);
+    });
+  }
+
+  async launchGameOnEmulicious(game: Game): Promise<string> {
+    const time = Date.now();
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('launchGameOnEmuliciousResponse' + time, (event, errorMessage: string) => {
+        // this resolving means that either Emulicious failed to start or the window was closed
+        this.launchActivityService.recordGameFinish(game, time);
+        resolve(errorMessage);
+      });
+      this.launchActivityService.recordGameStart(game, time, 0, EventSource.blueMSX);
+      this.ipc.send('launchGameOnEmulicious', game, time);
     });
   }
 
@@ -183,6 +196,24 @@ export class GamesService {
         resolve(updated);
       });
       this.ipc.send('setWebmsxMachine', gamesToUpdate, machine);
+    });
+  }
+
+  async setEmuliciousArguments(gamesToUpdate: Game[], args: string, overrideSettings: boolean) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('setEmuliciousArgumentsResponse', (event, updated: boolean) => {
+        if (updated) {
+          for (const game of gamesToUpdate) {
+            const oldGame = Object.assign({}, game);
+            game.emuliciousArguments = args;
+            game.emuliciousOverrideSettings = overrideSettings;
+            this.undoService.addToHistory(oldGame, game);
+            this.operationCacheService.cacheUpdateOperation(game);
+          }
+        }
+        resolve(updated);
+      });
+      this.ipc.send('setEmuliciousArguments', gamesToUpdate, args, overrideSettings);
     });
   }
 

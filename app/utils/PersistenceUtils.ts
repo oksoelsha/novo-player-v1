@@ -31,7 +31,9 @@ export class PersistenceUtils {
         'infoFile',
         'bluemsxArguments',
         'bluemsxOverrideSettings',
-        'webmsxMachine'
+        'webmsxMachine',
+        'emuliciousArguments',
+        'emuliciousOverrideSettings'
     ];
     static storagePath: string;
 

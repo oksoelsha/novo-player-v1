@@ -52,11 +52,13 @@
     "onopenmsx": "a openMSX",
     "onwebmsx": "a WebMSX",
     "onbluemsx": "a blueMSX",
+    "onemulicious": "a Emulicious",
     "actions": "Accions",
     "editmedia": "Edita mitjans",
     "edithardware": "Edita maquinari",
-    "setInfoFile": "Defineix informació adicional",
+    "setinfofile": "Defineix informació adicional",
     "editbluemsxarguments": "Edita arguments de blueMSX",
+    "editemuliciousarguments": "Edita arguments d'Emulicious",
     "addtofavorites": "Afegeix-ho a preferits",
     "removefromfavorites": "Suprimeix de preferits",
     "movetoanotherlisting": "Desplaça a una altra llista",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "Error en llançar openMSX",
     "openmsxwindowclosedfor": "La finestra de openMSX s'ha tancat per",
     "openmsxwindowclosed": "La finestra de openMSX s'ha tancat",
+    "failedtostartbluemsxfor": "Error en llançar blueMSX per",
     "bluemsxwindowclosedfor": "La finestra de blueMSX s'ha tancat per",
+    "failedtostartemuliciousfor": "Error en llançar Emulicious per",
+    "emuliciouswindowclosedfor": "La finestra d'Emulicious s'ha tancat per",
     "gamewasremoved": "El joc s'ha suprimit",
     "gameswereremoved": "Els jocs s'han suprimit",
     "gamewasnotremoved": "El joc no s'ha suprimit",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "La carpeta on es troba blueMSX",
     "bluemsxparams": "Altres arguments de blueMSX",
     "bluemsxparamstooltip": "Arguments addicionals per utilitzar en iniciar blueMSX (per exemple, /machine MSX2)",
+    "emuliciouspath": "Camí d'Emulicious",
+    "emuliciouspathtooltip": "La carpeta on es troba Emulicious",
+    "emuliciousparams": "Altres arguments d'Emulicious",
+    "emuliciousparamstooltip": "Arguments addicionals per utilitzar en iniciar Emulicious (per exemple, -set System=MSX)",
     "language": "Idioma",
     "systemdefault": "Valor per defecte del sistema",
     "confirmation": "Confirmació",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "Vols suprimir la llista seleccionada?",
       "mergelistingsconfirmation": "Nom ja existeix. Combina?"
     },
-    "setInfoFile": {
-      "infoFile": "Fitxer"
+    "setinfofile": {
+      "infofile": "Fitxer"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "Arguments de blueMSX",
+    "editemulatorarguments": {
+      "bluemsxarguments": "Arguments de blueMSX",
+      "emuliciousarguments": "Arguments d'Emulicious",
       "overrideargumentsinsettings": "Substitueix arguments a la configuració"
     },
     "relatedgames": {

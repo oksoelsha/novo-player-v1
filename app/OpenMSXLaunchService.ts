@@ -6,13 +6,13 @@ import { EventLogService } from './EventLogService'
 import { SettingsService } from './SettingsService'
 import { Event, EventSource, EventType } from '../src/app/models/event'
 import { Game } from '../src/app/models/game'
-import { GameUtils } from '../src/app/models/game-utils'
 import { PlatformUtils } from './utils/PlatformUtils'
 import { QuickLaunchData } from '../src/app/models/quick-launch-data'
 import { HashService } from './HashService'
 import { FileTypeUtils } from './utils/FileTypeUtils';
 import { ErrorLogService } from './ErrorLogService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
+import { GameUtils } from './utils/GameUtils';
 
 class TCLCommands {
     field: string;

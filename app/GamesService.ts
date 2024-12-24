@@ -122,6 +122,10 @@ export class GamesService {
             this.setWebmsxMachine(games, machine);
         });
 
+        ipcMain.on('setEmuliciousArguments', (event, games: Game[], args: string, overrideSettings: boolean) => {
+            this.setEmuliciousArguments(games, args, overrideSettings);
+        });
+
         ipcMain.on('getTotals', (event, arg) => {
             this.getTotals();
         });
@@ -186,6 +190,11 @@ export class GamesService {
 
     private setWebmsxMachine(games: Game[], machine: number) {
         this.updateMultipleGames(games, ['webmsxMachine'], [machine], 'setWebmsxMachineResponse');
+    }
+
+    private setEmuliciousArguments(games: Game[], args: string, overrideSettings: boolean) {
+        this.updateMultipleGames(games, ['emuliciousArguments', 'emuliciousOverrideSettings'],
+            [args, overrideSettings], 'setEmuliciousArgumentsResponse');
     }
 
     private updateMultipleGames(games: Game[], fields: string[], values: any[], response: string) {

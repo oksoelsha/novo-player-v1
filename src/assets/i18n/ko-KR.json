@@ -52,11 +52,13 @@
     "onopenmsx": "openMSX에서",
     "onwebmsx": "WebMSX에서",
     "onbluemsx": "blueMSX에서",
+    "onemulicious": "Emulicious에서",
     "actions": "동작",
     "editmedia": "미디어 편집",
     "edithardware": "하드웨어 편집",
-    "setInfoFile": "추가 정보 설정",
+    "setinfofile": "추가 정보 설정",
     "editbluemsxarguments": "blueMSX 인수 편집",
+    "editemuliciousarguments": "Emulicious 인수 편집",
     "addtofavorites": "즐겨찾기에 추가",
     "removefromfavorites": "즐겨찾기에서 제거",
     "movetoanotherlisting": "다른 목록으로 이동",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "openMSX을 시작하지 못함",
     "openmsxwindowclosedfor": "openMSX 창이 닫힘",
     "openmsxwindowclosed": "openMSX 창이 닫힘",
+    "failedtostartbluemsxfor": "blueMSX을 시작하지 못함",
     "bluemsxwindowclosedfor": "blueMSX 창이 닫힘",
+    "failedtostartemuliciousfor": "Emulicious을 시작하지 못함",
+    "emuliciouswindowclosedfor": "Emulicious 창이 닫힘",
     "gamewasremoved": "게임이 삭제되었습니다",
     "gameswereremoved": "게임이 삭제되었습니다",
     "gamewasnotremoved": "게임이 삭제되지 않았습니다",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "blueMSX가 있는 폴더",
     "bluemsxparams": "기타 blueMSX 인수",
     "bluemsxparamstooltip": "blueMSX를 시작할 때 사용할 추가 인수(예: /machine MSX2)",
+    "emuliciouspath": "Emulicious 경로",
+    "emuliciouspathtooltip": "Emulicious가 있는 폴더",
+    "emuliciousparams": "기타 Emulicious 인수",
+    "emuliciousparamstooltip": "Emulicious를 시작할 때 사용할 추가 인수(예: -set System=MSX)",
     "language": "언어",
     "systemdefault": "시스템 기본값",
     "confirmation": "확인",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "선택한 목록 삭제하시겠습니까?",
       "mergelistingsconfirmation": "이름이 이미 존재합니다. 병합할까요?"
     },
-    "setInfoFile": {
-      "infoFile": "추가 정보"
+    "setinfofile": {
+      "infofile": "추가 정보"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "blueMSX 인수",
+    "editemulatorarguments": {
+      "bluemsxarguments": "blueMSX 인수",
+      "emuliciousarguments": "Emulicious 인수",
       "overrideargumentsinsettings": "설정에서 인수 재정의"
     },
     "relatedgames": {

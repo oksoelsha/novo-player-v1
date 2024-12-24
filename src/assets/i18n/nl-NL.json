@@ -52,11 +52,13 @@
     "onopenmsx": "op openMSX",
     "onwebmsx": "op WebMSX",
     "onbluemsx": "op blueMSX",
+    "onemulicious": "op Emulicious",
     "actions": "Acties",
     "editmedia": "Media bewerken",
     "edithardware": "Hardware bewerken",
-    "setInfoFile": "Extra informatie instellen",
+    "setinfofile": "Extra informatie instellen",
     "editbluemsxarguments": "blueMSX-argumenten bewerken",
+    "editemuliciousarguments": "Emulicious-argumenten bewerken",
     "addtofavorites": "Toevoegen aan favorieten",
     "removefromfavorites": "Verwijderen uit favorieten",
     "movetoanotherlisting": "Naar een andere lijst verplaatsen",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "Kan openMSX niet starten",
     "openmsxwindowclosedfor": "openMSX-venster gesloten voor",
     "openmsxwindowclosed": "openMSX-venster gesloten",
+    "failedtostartbluemsxfor": "Kan blueMSX niet starten voor",
     "bluemsxwindowclosedfor": "blueMSX-venster gesloten voor",
+    "failedtostartemuliciousfor": "Kan Emulicious niet starten voor",
+    "emuliciouswindowclosedfor": "Emulicious-venster gesloten voor",
     "gamewasremoved": "Spel is verwijderd",
     "gameswereremoved": "Spellen zijn verwijderd",
     "gamewasnotremoved": "Spel is niet verwijderd",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "Map met blueMSX",
     "bluemsxparams": "Andere blueMSX-argumenten",
     "bluemsxparamstooltip": "Extra argumenten om te gebruiken bij het starten van blueMSX (bijv. /machine MSX2)",
+    "emuliciouspath": "Emulicious-pad",
+    "emuliciouspathtooltip": "Map met Emulicious",
+    "emuliciousparams": "Andere Emulicious-argumenten",
+    "emuliciousparamstooltip": "Extra argumenten om te gebruiken bij het starten van Emulicious (bijv. -set System=MSX)",
     "language": "Taal",
     "systemdefault": "Systeemstandaard",
     "confirmation": "Bevestiging",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "Geselecteerde lijst verwijderen?",
       "mergelistingsconfirmation": "Naam bestaat al. Samenvoegen?"
     },
-    "setInfoFile": {
-      "infoFile": "Bestand"
+    "setinfofile": {
+      "infofile": "Bestand"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "blueMSX-argumenten",
+    "editemulatorarguments": {
+      "bluemsxarguments": "blueMSX-argumenten",
+      "emuliciousarguments": "Emulicious-argumenten",
       "overrideargumentsinsettings": "Overschrijf argumenten in de instellingen"
     },
     "relatedgames": {

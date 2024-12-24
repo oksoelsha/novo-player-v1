@@ -1,7 +1,8 @@
 export enum EventSource {
     openMSX = 0,
     WebMSX = 1,
-    blueMSX = 2
+    blueMSX = 2,
+    Emulicious = 3
 }
 
 export enum EventType {

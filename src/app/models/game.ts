@@ -46,6 +46,9 @@ export class Game {
 
     webmsxMachine: number;
 
+    emuliciousArguments: string;
+    emuliciousOverrideSettings: boolean;
+
     public readonly MASK_GENERATION_MSX = 1;
     public readonly MASK_GENERATION_MSX2 = 2;
     public readonly MASK_GENERATION_MSX2PLUS = 4;
@@ -200,5 +203,13 @@ export class Game {
 
     setWebmsxMachine(machine: number) {
         this.webmsxMachine = machine;
+    }
+
+    setEmuliciousArguments(emuliciousArguments: string) {
+        this.emuliciousArguments = emuliciousArguments;
+    }
+
+    setEmuliciousOverrideSettings(flag: boolean) {
+        this.emuliciousOverrideSettings = flag;
     }
 }

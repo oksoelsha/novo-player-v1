@@ -52,11 +52,13 @@
     "onopenmsx": "on openMSX",
     "onwebmsx": "on WebMSX",
     "onbluemsx": "on blueMSX",
+    "onemulicious": "on Emulicious",
     "actions": "Actions",
     "editmedia": "Edit media",
     "edithardware": "Edit hardware",
-    "setInfoFile": "Set info file",
+    "setinfofile": "Set info file",
     "editbluemsxarguments": "Edit blueMSX arguments",
+    "editemuliciousarguments": "Edit Emulicious arguments",
     "addtofavorites": "Add to favorites",
     "removefromfavorites": "Remove from favorites",
     "movetoanotherlisting": "Move to another listing",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "Failed to start openMSX",
     "openmsxwindowclosedfor": "openMSX window closed for",
     "openmsxwindowclosed": "openMSX window closed",
+    "failedtostartbluemsxfor": "Failed to start blueMSX for",
     "bluemsxwindowclosedfor": "blueMSX window closed for",
+    "failedtostartemuliciousfor": "Failed to start Emulicious for",
+    "emuliciouswindowclosedfor": "Emulicious window closed for",
     "gamewasremoved": "Game was removed",
     "gameswereremoved": "Games were removed",
     "gamewasnotremoved": "Game was not removed",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "Folder where blueMSX is",
     "bluemsxparams": "Other blueMSX arguments",
     "bluemsxparamstooltip": "Additional arguments to use when launching blueMSX (e.g. /machine MSX2)",
+    "emuliciouspath": "Emulicious Path",
+    "emuliciouspathtooltip": "Folder where Emulicious is",
+    "emuliciousparams": "Other Emulicious arguments",
+    "emuliciousparamstooltip": "Additional arguments to use when launching Emulicious (e.g. -set System=MSX)",
     "language": "Language",
     "systemdefault": "System Default",
     "confirmation": "Confirmation",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "Delete selected listing?",
       "mergelistingsconfirmation": "Name exists already. Merge?"
     },
-    "setInfoFile": {
-      "infoFile": "info File"
+    "setinfofile": {
+      "infofile": "Info file"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "blueMSX Arguments",
+    "editemulatorarguments": {
+      "bluemsxarguments": "blueMSX Arguments",
+      "emuliciousarguments": "Emulicious Arguments",
       "overrideargumentsinsettings": "Override arguments in the settings"
     },
     "relatedgames": {

@@ -52,11 +52,13 @@
     "onopenmsx": "на openMSX",
     "onwebmsx": "на WebMSX",
     "onbluemsx": "на blueMSX",
+    "onemulicious": "на Emulicious",
     "actions": "Действия",
     "editmedia": "Изменить носители",
     "edithardware": "Изменить аппаратный",
-    "setInfoFile": "Установить Файл сведений",
+    "setinfofile": "Установить Файл сведений",
     "editbluemsxarguments": "Изменить аргументы blueMSX",
+    "editemuliciousarguments": "Изменить аргументы Emulicious",
     "addtofavorites": "Добавить в избранное",
     "removefromfavorites": "Удаление из избранное",
     "movetoanotherlisting": "Переместить в другой список",
@@ -65,7 +67,10 @@
     "failedtostartopenmsx": "Не удалось запустить openMSX",
     "openmsxwindowclosedfor": "openMSX окно закрыто",
     "openmsxwindowclosed": "openMSX окно закрыто",
+    "failedtostartbluemsxfor": "Не удалось запустить blueMSX",
     "bluemsxwindowclosedfor": "blueMSX окно закрыто",
+    "failedtostartemuliciousfor": "Не удалось запустить Emulicious",
+    "emuliciouswindowclosedfor": "Emulicious окно закрыто",
     "gamewasremoved": "Игра была удалена",
     "gameswereremoved": "Игры были удалены",
     "gamewasnotremoved": "Игра не удалена",
@@ -140,6 +145,10 @@
     "bluemsxpathtooltip": "Папка, в которой находится blueMSX",
     "bluemsxparams": "Другие аргументы blueMSX",
     "bluemsxparamstooltip": "Дополнительные аргументы для использования при запуске blueMSX (например /machine MSX2)",
+    "emuliciouspath": "Путь Emulicious",
+    "emuliciouspathtooltip": "Папка, в которой находится Emulicious",
+    "emuliciousparams": "Другие аргументы Emulicious",
+    "emuliciousparamstooltip": "Дополнительные аргументы для использования при запуске Emulicious (например -set System=MSX)",
     "language": "Язык",
     "systemdefault": "Системный по умолчанию",
     "confirmation": "Подтверждение",
@@ -277,11 +286,12 @@
       "deletelistingconfirmation": "Удалить выбранный список?",
       "mergelistingsconfirmation": "Имя уже существует. Объединить?"
     },
-    "setInfoFile": {
-      "infoFile": "Файл сведений"
+    "setinfofile": {
+      "infofile": "Файл сведений"
     },
-    "editBluemsxArguments": {
-      "bluemsxArguments": "Аргументы blueMSX",
+    "editemulatorarguments": {
+      "bluemsxarguments": "Аргументы blueMSX",
+      "emuliciousarguments": "Аргументы Emulicious",
       "overrideargumentsinsettings": "Переопределить аргументы в настройках"
     },
     "relatedgames": {

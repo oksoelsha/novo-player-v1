@@ -17,4 +17,8 @@ export class GameUtils {
             return '';
         }
     }
+
+    static getMonikor(game: Game): any {
+        return {name: game.name, listing: game.listing, sha1: game.sha1Code};
+    }
 }

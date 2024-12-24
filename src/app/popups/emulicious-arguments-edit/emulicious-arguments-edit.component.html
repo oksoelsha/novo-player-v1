@@ -1,0 +1,22 @@
+<form spellcheck="false">
+    <div class="d-inline-block me-3">{{ 'popups.editemulatorarguments.emuliciousarguments' | translate }}</div>
+    <div class="d-inline-block mb-3">
+        <div class="emulicious-arguments">
+            <app-field-with-suggestions [value]="emuliciousArguments" [suggestionsMap]="getEmuliciousArgumentsMap()"
+                trigger="-" (userInputOutput)="emuliciousArguments = $event" placement="bottom"
+                [ngbTooltip]="'settings.emuliciousparamstooltip' | translate"></app-field-with-suggestions>
+        </div>
+    </div>
+    <div class="form-check ms-3">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="emuliciousOverrideSettings"
+            id="emuliciousOverrideSettings">
+        <label class="form-check-label">
+            {{ 'popups.editemulatorarguments.overrideargumentsinsettings' | translate }}
+        </label>
+    </div>
+    <div>
+        <button class="btn btn-primary btn-sm mt-2" (click)="save()" (keyup.enter)="save()">
+            {{ 'common.save' | translate }}
+        </button>
+    </div>
+</form>

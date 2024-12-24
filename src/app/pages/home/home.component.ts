@@ -43,6 +43,7 @@ import { MoreDetailsComponent } from '../../popups/more-details/more-details.com
 import { WindowService } from '../../services/window.service';
 import { OpenmsxManagementComponent } from '../../popups/openmsx-management/openmsx-management.component';
 import { LaunchActivity, LaunchActivityService } from '../../services/launch-activity.service';
+import { EmuliciousArgumentsEditComponent } from '../../popups/emulicious-arguments-edit/emulicious-arguments-edit.component';
 
 export enum SortDirection {
   ASC, DESC
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('infoFileFieldEdit') infoFileFieldEdit: InfoFileFieldEditComponent;
   @ViewChild('bluemsxArgumentsEdit') bluemsxArgumentsEdit: BluemsxArgumentsEditComponent;
   @ViewChild('webmsxMachineSet') webmsxMachineSet: WebmsxMachineSetComponent;
+  @ViewChild('emuliciousArgumentsEdit') emuliciousArgumentsEdit: EmuliciousArgumentsEditComponent;
   @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
   @ViewChild('moreScreenshots') moreScreenshots: MoreScreenshotsComponent;
   @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
@@ -117,6 +119,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isOpenMSXPathDefined: boolean;
   isWebMSXPathDefined: boolean;
   isBlueMSXPathDefined: boolean;
+  isEmuliciousPathDefined: boolean;
   isGiantbombApikeyDefined: boolean;
   isMSXNewsEnabled: boolean;
   musicFiles: string[] = [];
@@ -262,6 +265,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             if (this.isWebMSXPathDefined) {
               this.launchWebmsx(this.selectedGame);
             }
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'm' || event.key === 'M')) {
+            if (this.isEmuliciousPathDefined) {
+              this.launchEmulicious(this.selectedGame);
+            }
           } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
             this.relatedGames.open();
           } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
@@ -362,6 +369,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isOpenMSXPathDefined = settings.openmsxPath != null && settings.openmsxPath.trim() !== '';
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
+      this.isEmuliciousPathDefined = settings.emuliciousPath != null && settings.emuliciousPath.trim() !== '';
       this.isGiantbombApikeyDefined = settings.giantbombApiKey != null && settings.giantbombApiKey.trim() !== '';
       this.isMSXNewsEnabled = settings.enableNews;
       this.localizationService.useLanguage(settings.language);
@@ -508,6 +516,17 @@ export class HomeComponent implements OnInit, OnDestroy {
           + ' [' + errorMessage + ']');
       } else {
         this.alertService.info(this.localizationService.translate('home.bluemsxwindowclosedfor') + ': ' + game.name);
+      }
+    });
+  }
+
+  launchEmulicious(game: Game) {
+    this.gamesService.launchGameOnEmulicious(game).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartemuliciousfor') + ': ' + game.name
+          + ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.emuliciouswindowclosedfor') + ': ' + game.name);
       }
     });
   }
@@ -661,6 +680,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   setBluemsxArguments(bluemsxData: any) {
     const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
     this.gamesService.setBluemsxArguments(gamesToUpdate, bluemsxData.bluemsxArguments, bluemsxData.bluemsxOverrideSettings).then(() => {
+      if (this.otherSelectedGames.size === 0) {
+        this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
+      } else {
+        this.alertService.success(this.localizationService.translate('home.gameswereupdated'));
+      }
+    });
+  }
+
+  setEmuliciousArguments(emuliciousData: any) {
+    const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
+    this.gamesService.setEmuliciousArguments(gamesToUpdate, emuliciousData.emuliciousArguments, emuliciousData.emuliciousOverrideSettings).then(() => {
       if (this.otherSelectedGames.size === 0) {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
       } else {

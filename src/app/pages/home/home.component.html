@@ -250,6 +250,13 @@
                 <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+B</div>
               </div>
             </button>
+            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+              (click)="launchEmulicious(selectedGame)" [disabled]="!isEmuliciousPathDefined">
+              <div class="d-flex">
+                <div class="me-4">{{ 'home.onemulicious' | translate }}</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+M</div>
+              </div>
+            </button>
           </div>
         </div>
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
@@ -282,7 +289,7 @@
               (click)="infoFileFieldEdit.open()">
               <div class="d-flex">
                 <div class="actions-menu-icon"></div>
-                {{ 'home.setInfoFile' | translate }}
+                {{ 'home.setinfofile' | translate }}
               </div>
             </button>
             <div class="dropdown-divider"></div>
@@ -298,6 +305,12 @@
               <div class="d-flex">
                 <div class="actions-menu-icon"></div>
                 {{ 'webmsx.setwebmsxmachine' | translate }}
+              </div>
+            </button>
+            <button class="actions-menu-button" ngbDropdownItem type="button" (click)="emuliciousArgumentsEdit.open()">
+              <div class="d-flex">
+                <div class="actions-menu-icon"></div>
+                {{ 'home.editemuliciousarguments' | translate }}
               </div>
             </button>
             <div class="dropdown-divider" *ngIf="isWindows || isWebMSXPathDefined"></div>
@@ -416,7 +429,7 @@
   </ng-template>
 </app-popup>
 
-<app-popup popupId="info-file-field-edit-id" [titleHeader]="'home.setInfoFile' | translate"
+<app-popup popupId="info-file-field-edit-id" [titleHeader]="'home.setinfofile' | translate"
   (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-info-file-field-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
@@ -457,6 +470,15 @@
     <app-webmsx-machine-set [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
       (webmsxMachine)="setWebmsxMachine($event)" #webmsxMachineSet>
     </app-webmsx-machine-set>
+  </ng-template>
+</app-popup>
+
+<app-popup popupId="emulicious-arguments-edit-id" [titleHeader]="'home.editemuliciousarguments' | translate"
+  (openStatus)="popupOpen = $event">
+  <ng-template let-popupId="popupId">
+    <app-emulicious-arguments-edit [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
+      (emuliciousData)="setEmuliciousArguments($event)" #emuliciousArgumentsEdit>
+    </app-emulicious-arguments-edit>
   </ng-template>
 </app-popup>
 
@@ -552,6 +574,11 @@
       {{ 'home.onbluemsx' | translate }}
       <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+B</div>
     </ng-template>
+    <ng-template contextMenuItem [visible]="isEmuliciousPathDefined" (execute)="launchEmulicious($event.item)">
+      <div class="context-menu-icon"></div>
+      {{ 'home.onemulicious' | translate }}
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+M</div>
+    </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="edit($event.item)">
@@ -569,7 +596,7 @@
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="infoFileFieldEdit.open()">
     <div class="context-menu-icon"></div>
-    {{ 'home.setInfoFile' | translate }}
+    {{ 'home.setinfofile' | translate }}
   </ng-template>
   <ng-template contextMenuItem [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isWindows" (execute)="bluemsxArgumentsEdit.open()">
@@ -579,6 +606,10 @@
   <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="webmsxMachineSet.open()">
     <div class="context-menu-icon"></div>
     {{ 'webmsx.setwebmsxmachine' | translate }}
+  </ng-template>
+  <ng-template contextMenuItem (execute)="emuliciousArgumentsEdit.open()">
+    <span class="context-menu-icon"></span>
+    {{ 'home.editemuliciousarguments' | translate }}
   </ng-template>
   <ng-template contextMenuItem [visible]="isWindows || isWebMSXPathDefined" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">

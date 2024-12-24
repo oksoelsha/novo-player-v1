@@ -23,6 +23,7 @@ import { ErrorLogService } from './ErrorLogService';
 import { DownloadService } from './DownloadService';
 import { GamePasswordsService } from './GamePasswordsService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
+import { EmuliciousLaunchService } from './EmuliciousLaunchService';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -74,6 +75,8 @@ function initializeServices() {
   new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager);
 
   new BlueMSXLaunchService(win, settingsService, eventLogService);
+
+  new EmuliciousLaunchService(win, settingsService, eventLogService);
 
   new EmulatorHardwareService(win, settingsService);
 
