@@ -18,7 +18,6 @@ export class FieldWithSuggestionsComponent {
   @ViewChildren('suggestionsList') private suggestionsList: QueryList<ElementRef>;
 
   suggestions: string[] = [];
-  private allPossibleSuggestions: string[] = [];
 
   constructor() { }
 
@@ -46,7 +45,6 @@ export class FieldWithSuggestionsComponent {
       }
       this.inputField.nativeElement.focus();
       this.suggestionsDropdown.close();
-      this.allPossibleSuggestions = [];
       this.userInputOutput.emit(this.value);
     }
     event.preventDefault();
@@ -58,19 +56,37 @@ export class FieldWithSuggestionsComponent {
       const lastIndexTrigger = inputText.lastIndexOf(this.trigger);
       const lastIndexSpace = inputText.lastIndexOf(' ');
       if (lastIndexTrigger === inputText.length - 1) {
-        this.allPossibleSuggestions = Array.from(this.suggestionsMap.keys());
-        this.setSuggestionsList(inputText, lastIndexTrigger, -1);
-      } else if (lastIndexTrigger > -1 && lastIndexSpace === inputText.length - 1) {
+        if (lastIndexTrigger === 0 || inputText.charAt(lastIndexTrigger - 1) === ' ') {
+          const allPossibleSuggestions = Array.from(this.suggestionsMap.keys());
+          this.setSuggestionsList(null, allPossibleSuggestions);            
+        } else {
+          this.suggestionsDropdown.close();
+        }
+      } else if (lastIndexTrigger > -1 && lastIndexSpace === inputText.length - 1 &&
+          inputText.indexOf(' ', lastIndexTrigger) === lastIndexSpace) {
+        // we typed the complete command
         const argument = inputText.substring(lastIndexTrigger + 1, lastIndexSpace);
         const values = this.suggestionsMap.get(argument);
         if (values != null) {
-          this.allPossibleSuggestions = values;
-          this.setSuggestionsList(inputText, lastIndexTrigger, lastIndexSpace);
+          const allPossibleSuggestions = values;
+          this.setSuggestionsList(null, allPossibleSuggestions);
         } else {
           this.suggestionsDropdown.close();
         }
       } else {
-        this.setSuggestionsList(inputText, lastIndexTrigger, lastIndexSpace);
+        let textToMatch: string;
+        let allPossibleSuggestions: string[];
+        if (inputText.length - 1 > lastIndexSpace && lastIndexSpace > lastIndexTrigger) {
+          // we're inside the argument value
+          const argument = inputText.substring(lastIndexTrigger + 1, lastIndexSpace);
+          allPossibleSuggestions = this.suggestionsMap.get(argument);
+          textToMatch = inputText.substring(lastIndexSpace + 1);
+        } else {
+          // we're inside the argument
+          allPossibleSuggestions = Array.from(this.suggestionsMap.keys());
+          textToMatch = inputText.substring(lastIndexTrigger + 1);
+        }
+        this.setSuggestionsList(textToMatch, allPossibleSuggestions);
       }
     } else {
       this.suggestionsDropdown.close();
@@ -78,16 +94,12 @@ export class FieldWithSuggestionsComponent {
     this.userInputOutput.emit(this.value);
   }
 
-  private setSuggestionsList(inputText: string, lastIndexTrigger: number, lastIndexSpace: number) {
-    const lastIndexTriggerOrSpace = this.getLastIndexTriggerOrSpace(lastIndexTrigger, lastIndexSpace);
-
-    if (inputText.length - 1 > lastIndexTriggerOrSpace) {
-      const inputTextPortion = inputText.substring(lastIndexTriggerOrSpace + 1).toLowerCase();
-      this.suggestions = this.allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(inputTextPortion));
+  private setSuggestionsList(textToMatch: string, allPossibleSuggestions: string[]) {
+    if (textToMatch) {
+      this.suggestions = allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(textToMatch.toLowerCase()));
     } else {
-      this.suggestions = this.allPossibleSuggestions;
+      this.suggestions = allPossibleSuggestions;
     }
-
     this.suggestionsDropdown.open();
   }
 
