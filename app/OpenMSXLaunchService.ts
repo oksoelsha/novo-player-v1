@@ -13,6 +13,7 @@ import { FileTypeUtils } from './utils/FileTypeUtils';
 import { ErrorLogService } from './ErrorLogService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import { GameUtils } from './utils/GameUtils';
+import { EmulatorUtils } from './utils/EmulatorUtils';
 
 class TCLCommands {
     field: string;
@@ -26,6 +27,7 @@ class TCLCommands {
 
 export class OpenMSXLaunchService {
 
+    private static readonly ARGS_SEPARATOR = '-';
     private static readonly fieldsToArgs = [
         ['machine', 'machine'],
         ['romA', 'carta'],
@@ -232,20 +234,7 @@ export class OpenMSXLaunchService {
             args.push(OpenMSXLaunchService.ENABLE_GFX9000_CMD);    
         }
 
-        this.appendParams(args, quickLaunchData.parameters);
-    }
-
-    private appendParams(args: string[], argsString: string) {
-        if (argsString) {
-            const params = argsString.split(/-(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            params.forEach((param) => {
-                const space = param.indexOf(' ');
-                if (space > -1) {
-                    args.push('-' + param.substring(0, space));
-                    args.push(param.substring(space + 1).trimEnd().replace(/"/g,''));
-                }
-            });
-        }
+        EmulatorUtils.appendParams(args, quickLaunchData.parameters, OpenMSXLaunchService.ARGS_SEPARATOR);
     }
 
     private addTclCommandArguments(args: string[], game: Game) {

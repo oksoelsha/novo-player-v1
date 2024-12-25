@@ -5,6 +5,7 @@ import { SettingsService } from './SettingsService'
 import { Event, EventSource, EventType } from '../src/app/models/event'
 import { Game } from '../src/app/models/game'
 import { GameUtils } from './utils/GameUtils'
+import { EmulatorUtils } from './utils/EmulatorUtils'
 
 export class BlueMSXLaunchService {
 
@@ -19,6 +20,7 @@ export class BlueMSXLaunchService {
 
     private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
+    private static readonly ARGS_SEPARATOR = '\/';
 
     constructor(
         private readonly win: BrowserWindow,
@@ -86,25 +88,12 @@ export class BlueMSXLaunchService {
 
     private addOtherParams(game: Game, args: string[]): void {
         if (!game.bluemsxOverrideSettings) {
-            this.appendParams(args, this.settingsService.getSettings().bluemsxParams);
+            EmulatorUtils.appendParams(args, this.settingsService.getSettings().bluemsxParams, BlueMSXLaunchService.ARGS_SEPARATOR);
         }
-        this.appendParams(args, game.bluemsxArguments);
+        EmulatorUtils.appendParams(args, game.bluemsxArguments, BlueMSXLaunchService.ARGS_SEPARATOR);
         // if SCC extension is set, force it on blueMSX
         if (game.extensionRom === 'scc') {
-            this.appendParams(args, '/romtype1 scc');
-        }
-    }
-
-    private appendParams(args: string[], argsString: string): void {
-        if (argsString) {
-            const params = argsString.split(/\/(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            params.forEach((param) => {
-                const space = param.indexOf(' ');
-                if (space > -1) {
-                    args.push('/' + param.substring(0, space));
-                    args.push(param.substring(space + 1).replace(/"/g, ''));
-                }
-            });
+            EmulatorUtils.appendParams(args, '/romtype1 scc', BlueMSXLaunchService.ARGS_SEPARATOR);
         }
     }
 }

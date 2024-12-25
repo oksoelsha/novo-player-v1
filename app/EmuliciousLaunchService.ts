@@ -7,8 +7,11 @@ import { Event, EventSource, EventType } from '../src/app/models/event';
 import { Game } from '../src/app/models/game';
 import { GameUtils } from './utils/GameUtils';
 import { PlatformUtils } from './utils/PlatformUtils';
+import { EmulatorUtils } from './utils/EmulatorUtils';
 
 export class EmuliciousLaunchService {
+
+    private static readonly ARGS_SEPARATOR = '-';
 
     constructor(
         private readonly win: BrowserWindow,
@@ -75,21 +78,8 @@ export class EmuliciousLaunchService {
 
     private addOtherParams(game: Game, args: string[]): void {
         if (!game.emuliciousOverrideSettings) {
-            this.appendParams(args, this.settingsService.getSettings().emuliciousParams);
+            EmulatorUtils.appendParams(args, this.settingsService.getSettings().emuliciousParams, EmuliciousLaunchService.ARGS_SEPARATOR);
         }
-        this.appendParams(args, game.emuliciousArguments);
-    }
-
-    private appendParams(args: string[], argsString: string) {
-        if (argsString) {
-            const params = argsString.split(/-(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            params.forEach((param) => {
-                const space = param.indexOf(' ');
-                if (space > -1) {
-                    args.push('-' + param.substring(0, space));
-                    args.push(param.substring(space + 1).trimEnd().replace(/"/g,''));
-                }
-            });
-        }
+        EmulatorUtils.appendParams(args, game.emuliciousArguments, EmuliciousLaunchService.ARGS_SEPARATOR);
     }
 }
