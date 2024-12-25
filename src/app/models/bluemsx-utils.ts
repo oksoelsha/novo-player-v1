@@ -18,32 +18,24 @@ export class BlueMSXUtils {
       ];
       const romTypes = [
         'ASCII8',
+        'ASCII8SRAM8',
         'ASCII16',
+        'ASCII16SRAM2',
+        'Konami',
         'KonamiSCC',
+        'GenericKonami',
+        'MSXDOS2',
         'scc',
         'scc+',
         'Coleco',
         'SG1000'
       ];
 
-      this.commandLineArguments.set('cas', []);
-      this.commandLineArguments.set('caszip', []);
-      this.commandLineArguments.set('diskA', []);
-      this.commandLineArguments.set('diskAzip', []);
-      this.commandLineArguments.set('diskB', []);
-      this.commandLineArguments.set('diskBzip', []);
-      this.commandLineArguments.set('fullscreen', []);
       this.commandLineArguments.set('ide1primary', []);
       this.commandLineArguments.set('ide1secondary', []);
-      this.commandLineArguments.set('language', []);
       this.commandLineArguments.set('machine', machines);
-      this.commandLineArguments.set('rom1', []);
-      this.commandLineArguments.set('rom1zip', []);
-      this.commandLineArguments.set('rom2', []);
-      this.commandLineArguments.set('rom2zip', []);
       this.commandLineArguments.set('romtype1', romTypes);
       this.commandLineArguments.set('romtype2', romTypes);
-      this.commandLineArguments.set('theme', []);
     }
     return this.commandLineArguments;
   }
