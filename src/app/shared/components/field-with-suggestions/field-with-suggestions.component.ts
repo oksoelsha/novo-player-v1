@@ -96,11 +96,14 @@ export class FieldWithSuggestionsComponent {
 
   private setSuggestionsList(textToMatch: string, allPossibleSuggestions: string[]) {
     if (textToMatch) {
-      this.suggestions = allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(textToMatch.toLowerCase()));
+      if (allPossibleSuggestions) {
+        this.suggestions = allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(textToMatch.toLowerCase()));
+        this.suggestionsDropdown.open();
+      }
     } else {
       this.suggestions = allPossibleSuggestions;
+      this.suggestionsDropdown.open();
     }
-    this.suggestionsDropdown.open();
   }
 
   private getLastIndexTriggerOrSpace(lastIndexTrigger: number, lastIndexSpace: number): number {
