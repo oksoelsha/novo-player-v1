@@ -21,6 +21,7 @@ export class EmuliciousUtils {
       ];
 
       this.commandLineArguments.set('muted', []);
+      this.commandLineArguments.set('scale', []);
       this.commandLineArguments.set('link', []);
       this.commandLineArguments.set('linkport', []);
       this.commandLineArguments.set('fullscreen', []);
