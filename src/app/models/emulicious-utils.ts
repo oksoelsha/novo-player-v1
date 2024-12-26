@@ -15,9 +15,7 @@ export class EmuliciousUtils {
         'MSXModel=0',
         'MSXModel=1',
         'Scale=',
-        'System=MSX',
-        'System=GAME_GEAR',
-        'System=MASTER_SYSTEM',
+        'System=MSX'
       ];
 
       this.commandLineArguments.set('muted', []);
