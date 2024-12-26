@@ -690,7 +690,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   setEmuliciousArguments(emuliciousData: any) {
     const gamesToUpdate = this.getAllSelectedGames(this.selectedGame);
-    this.gamesService.setEmuliciousArguments(gamesToUpdate, emuliciousData.emuliciousArguments, emuliciousData.emuliciousOverrideSettings).then(() => {
+    this.gamesService.setEmuliciousArguments(gamesToUpdate, emuliciousData.emuliciousArguments,
+      emuliciousData.emuliciousOverrideSettings).then(() => {
       if (this.otherSelectedGames.size === 0) {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + this.selectedGame.name);
       } else {

@@ -58,7 +58,7 @@ export class FieldWithSuggestionsComponent {
       if (lastIndexTrigger === inputText.length - 1) {
         if (lastIndexTrigger === 0 || inputText.charAt(lastIndexTrigger - 1) === ' ') {
           const allPossibleSuggestions = Array.from(this.suggestionsMap.keys());
-          this.setSuggestionsList(null, allPossibleSuggestions);            
+          this.setSuggestionsList(null, allPossibleSuggestions);
         } else {
           this.suggestionsDropdown.close();
         }
