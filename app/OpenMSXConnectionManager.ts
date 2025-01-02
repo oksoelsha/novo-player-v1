@@ -43,7 +43,7 @@ export class OpenMSXConnectionManager {
             const handler = ref.handlers.get(connection.pid);
             if (handler) {
                 connection.openmsx.off('data', handler);
-                ref.handlers.delete(connection.pid);    
+                ref.handlers.delete(connection.pid);
             }
             clearTimeout(timeoutId);
             resolve({ success, content });
@@ -78,11 +78,19 @@ export class OpenMSXConnectionManager {
             });
             const result = parser.parse(data);
             if (result.update) {
-                const type = result.update['@_type'];
-                if (type === 'setting') {
-                    const name = result.update['@_name'];
-                    const state = result.update['#text']?.toString();
-                    this.updateEmitter.emit('openmsxUpdate', openmsxConnector.pid, type, name, state);
+                let updates: any;
+                if (Array.isArray(result.update)) {
+                    updates = result.update;
+                } else {
+                    updates = [result.update];
+                }
+                for (const update of updates) {
+                    const type = update['@_type'];
+                    if (type === 'setting') {
+                        const name = update['@_name'];
+                        const state = update['#text']?.toString();
+                        this.updateEmitter.emit('openmsxUpdate', openmsxConnector.pid, type, name, state);
+                    }
                 }
             }
         });
