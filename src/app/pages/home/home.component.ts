@@ -625,10 +625,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.removeGameFromList(newGame, false);
             }
             if (updatedGame.listing === this.selectedListing) {
-              this.addGameToSortedList(updatedGame);
-              setTimeout(() => {
-                this.showInfo(updatedGame);
-              }, 0);
+              this.addGameToSortedList(updatedGame, true);
             }
             // to simplify logic, simply get all listings to account for removed or added ones
             this.gamesService.getListings().then((data: string[]) => {
@@ -649,10 +646,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.success(this.localizationService.translate('home.gamewasupdated') + ': ' + updatedGame.name);
         this.removeGameFromList(oldGame, false);
-        this.addGameToSortedList(updatedGame);
-        setTimeout(() => {
-          this.showInfo(updatedGame);
-        }, 0);
+        this.addGameToSortedList(updatedGame, true);
       }
     });
   }
@@ -1198,9 +1192,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private addGameToSortedList(game: Game) {
+  private addGameToSortedList(game: Game, navigateToGame: boolean = false) {
     if (this.filtersTotal > 0) {
-      this.getGames(this.selectedListing);
+      this.getGames(this.selectedListing, navigateToGame ? game.sha1Code : null);
     } else {
       this.games.push(game);
       this.sortGames(this.games);
