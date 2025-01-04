@@ -17,6 +17,8 @@ export class LaunchActivityService {
   private openmsxCurrentStatus: Map<number, Map<string, string>> = new Map();
   private screenNumberCheckFrequency: any;
   private screenNumberSubject = new Subject<number>();
+  private detectedSoundChipsCheckFrequency: any;
+  private detectedSoundChipsSubject = new Subject<number>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
@@ -32,10 +34,13 @@ export class LaunchActivityService {
 //    this.launchActivitiesSubject.next(this.launchActivities);
   }
 
-  recordGameFinish(game: Game, time: number) {
+  recordGameFinish(time: number) {
     let index: number;
     for (index = 0; index < this.launchActivities.length && this.launchActivities[index].time !== time; index++) {}
-    this.openmsxCurrentStatus.delete(this.launchActivities[index].pid);
+    if (this.launchActivities[index].pid > 0) {
+      // only openMSX processes have pid
+      this.openmsxCurrentStatus.delete(this.launchActivities[index].pid);
+    }
     this.launchActivities.splice(index, 1);
     this.launchActivitiesSubject.next(this.launchActivities);
   }
@@ -203,9 +208,22 @@ export class LaunchActivityService {
     }, 2000);
   }
 
+  startGettingDetectedSoundChips(pid: number) {
+    this.getDetectedSoundChips(pid);
+    this.detectedSoundChipsCheckFrequency = setInterval(() => {
+      this.getDetectedSoundChips(pid);
+    }, 2000);
+  }
+
   stopGettingScreenNumber(pid: number) {
     if (this.screenNumberCheckFrequency) {
       clearInterval(this.screenNumberCheckFrequency);
+    }
+  }
+
+  stopGettingDetectedSoundChips(pid: number) {
+    if (this.detectedSoundChipsCheckFrequency) {
+      clearInterval(this.detectedSoundChipsCheckFrequency);
     }
   }
 
@@ -213,11 +231,32 @@ export class LaunchActivityService {
     return this.screenNumberSubject.asObservable();
   }
 
+  getDetectedSoundChipsNotification(): Observable<number> {
+    return this.detectedSoundChipsSubject.asObservable();
+  }
+
   private getScreenNumber(pid: number) {
     this.ipc.once('getScreenNumberResponse', (event, screen: number) => {
       this.screenNumberSubject.next(screen);
     });
     this.ipc.send('getScreenNumber', pid);
+  }
+
+  private getDetectedSoundChips(pid: number) {
+    this.ipc.once('getDetectedSoundChipsResponse', (event, result: string) => {
+      if (result) {
+        const parts = result.split(',');
+        const firstDetectionTime = +parts[0];
+        const detectedSoundChips = +parts[1];
+        if (firstDetectionTime > 0 && Math.round(Date.now() / 1000 - firstDetectionTime) > 60) {
+          // stop getting detected sound chips if the result is older than a minute.
+          // by then all sound chips must have been detected
+          this.stopGettingDetectedSoundChips(pid);
+        }
+        this.detectedSoundChipsSubject.next(detectedSoundChips);
+      }
+    });
+    this.ipc.send('getDetectedSoundChips', pid);
   }
 
   private updateOpenmsxCurrentStatus(pid: number, event: OpenmsxEvent) {
@@ -255,4 +294,3 @@ export class OpenmsxEvent {
     this.value = value;
   }
 }
-

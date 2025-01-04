@@ -19,7 +19,8 @@
     "no": "No",
     "select": "Select",
     "ok": "OK",
-    "managesession": "Manage session"
+    "managesession": "Manage session",
+    "sound": "Sound"
   },
   "home": {
     "name": "Name",
@@ -29,7 +30,6 @@
     "system": "System",
     "size": "Size",
     "generations": "Generations",
-    "sound": "Sound",
     "commonname": "Common Name",
     "files": "Files",
     "medium": "Medium",

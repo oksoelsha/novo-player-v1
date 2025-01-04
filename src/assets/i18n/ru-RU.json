@@ -19,7 +19,8 @@
     "no": "Нет",
     "select": "Выберите",
     "ok": "ОК",
-    "managesession": "Управление сеансом"
+    "managesession": "Управление сеансом",
+    "sound": "Звук"
   },
   "home": {
     "name": "Имя",
@@ -29,7 +30,6 @@
     "system": "Система",
     "size": "Размер",
     "generations": "Поколение",
-    "sound": "Звук",
     "commonname": "Общее имя",
     "files": "Файлы",
     "medium": "Носитель",

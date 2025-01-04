@@ -64,6 +64,9 @@ export class OpenMSXControlService {
         ipcMain.on('getScreenNumber', (event, pid: number) => {
             this.getScreenNumber(pid);
         });
+        ipcMain.on('getDetectedSoundChips', (event, pid: number) => {
+            this.getDetectedSoundChips(pid);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -210,6 +213,14 @@ export class OpenMSXControlService {
     private async getScreenNumber(pid: number) {
         this.executeCommandOnOpenmsx(pid, 'get_screen_mode_number').then(result => {
             this.win.webContents.send('getScreenNumberResponse', result?.content);
+        }).catch(() => {
+            // ignore for now
+        });
+    }
+
+    private async getDetectedSoundChips(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'sound_detector::get_detected_chips').then(result => {
+            this.win.webContents.send('getDetectedSoundChipsResponse', result?.content);
         }).catch(() => {
             // ignore for now
         });

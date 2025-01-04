@@ -19,7 +19,8 @@
     "no": "ノー",
     "select": "選択",
     "ok": "Ok",
-    "managesession": "セッションの管理"
+    "managesession": "セッションの管理",
+    "sound": "サウンド"
   },
   "home": {
     "name": "名前",
@@ -29,7 +30,6 @@
     "system": "システム",
     "size": "サイズ",
     "generations": "世代",
-    "sound": "サウンド",
     "commonname": "一般名",
     "files": "ファイル",
     "medium": "メディア",

@@ -27,22 +27,26 @@
         <span class="bi-arrow-counterclockwise"></span>
     </button>
 </div>
-<div class="d-flex">
-    <div class="ps-3 pt-2">
+<div class="d-flex ps-3 pe-3 pb-2 pt-2">
+    <div class="pe-2">
         <app-openmsx-management-screen-number [pid]="pid"
             [events]="openEventSubject.asObservable()"></app-openmsx-management-screen-number>
     </div>
-    <div class="ps-2 pt-2">
+    <div class="pe-2">
+        <app-openmsx-management-detected-sound-chips [pid]="pid"
+            [events]="openEventSubject.asObservable()"></app-openmsx-management-detected-sound-chips>
+    </div>
+    <div class="pe-2">
         <app-openmsx-management-emulation-speed [pid]="pid" [events]="openEventSubject.asObservable()"
             [currentStatus]="currentStatus"></app-openmsx-management-emulation-speed>
     </div>
-    <div class="ps-2 pt-2">
+    <div>
         <app-openmsx-management-state-save-load [pid]="pid" [game]="game" (alertMessage)="alertMessage($event)"
             [events]="openEventSubject.asObservable()"></app-openmsx-management-state-save-load>
     </div>
 </div>
-<div class="d-flex ps-3">
-    <div ngbDropdown class="pe-2 pt-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 1">
+<div class="d-flex ps-3 pt-2">
+    <div ngbDropdown class="pe-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 1">
         <button *ngIf="isDisk(game)" class="btn btn-secondary btn-sm action-button" type="button"
             [title]="'popups.openmsxmanagement.switchdisks' | translate" ngbDropdownToggle>
             {{ 'dashboard.disks' | translate }}
@@ -58,11 +62,11 @@
             </button>
         </div>
     </div>
-    <div *ngIf="gamePasswordsInfo" class="pe-2 pt-2">
+    <div *ngIf="gamePasswordsInfo" class="pe-2">
         <app-openmsx-management-passwords [pid]="pid" [gamePasswordsInfo]="gamePasswordsInfo"
             (alertMessage)="alertMessage($event)"></app-openmsx-management-passwords>
     </div>
-    <div *ngIf="trainersList?.length > 0" class="pe-2 pt-2">
+    <div *ngIf="trainersList.length > 0" class="pe-2">
         <app-openmsx-management-cheats [pid]="pid" [game]="game" [events]="openEventSubject.asObservable()"
             [trainersList]="trainersList" (alertMessage)="alertMessage($event)"></app-openmsx-management-cheats>
     </div>

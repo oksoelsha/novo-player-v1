@@ -32,7 +32,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   openEventSubject: Subject<boolean> = new Subject<boolean>();
   currentStatus: Map<string, string>;
   gamePasswordsInfo: GamePasswordsInfo;
-  trainersList: any[];
+  trainersList: any[] = [];
 
   pauseLabel: string;
   unpauseLabel: string;
@@ -103,9 +103,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   close(): void {
-    super.close(() => {
-      this.openEventSubject.next(false);
-    });
+    if (super.isWindowOpen()) {
+      super.close(() => {
+        this.openEventSubject.next(false);
+      });
+    }
   }
 
   togglePause(pid: number) {

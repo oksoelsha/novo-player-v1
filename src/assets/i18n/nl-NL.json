@@ -19,7 +19,8 @@
     "no": "Nee",
     "select": "Selecteren",
     "ok": "OK",
-    "managesession": "Sessie beheren"
+    "managesession": "Sessie beheren",
+    "sound": "Geluid"
   },
   "home": {
     "name": "Naam",
@@ -29,7 +30,6 @@
     "system": "Systeem",
     "size": "Grootte",
     "generations": "Generatie",
-    "sound": "Geluid",
     "commonname": "Algemene naam",
     "files": "Bestanden",
     "medium": "Medium",

@@ -19,7 +19,8 @@
     "no": "아니요",
     "select": "선택",
     "ok": "확인",
-    "managesession": "세션 관리"
+    "managesession": "세션 관리",
+    "sound": "사운드"
   },
   "home": {
     "name": "이름",
@@ -29,7 +30,6 @@
     "system": "시스템",
     "size": "크기",
     "generations": "세대",
-    "sound": "사운드",
     "commonname": "일반 이름",
     "files": "파일",
     "medium": "미디어",

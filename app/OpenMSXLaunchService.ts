@@ -92,6 +92,7 @@ export class OpenMSXLaunchService {
 
     private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
+    private soundDetectorScript = path.join(__dirname, 'extra/detect_sound_chips.tcl');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
         private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager) {
@@ -199,6 +200,8 @@ export class OpenMSXLaunchService {
             });
             this.addTclCommandArguments(args, game);    
         }
+        args.push('-script');
+        args.push(this.soundDetectorScript);
     }
 
     private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string, size: number) {

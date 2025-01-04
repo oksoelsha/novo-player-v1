@@ -74,7 +74,7 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
     { name: 'SHA1', value: 'sha1Code', blockName: 'gameDetailSimpleTextWithCopy' },
     { name: this.localizationService.translate('home.size'), value: 'size', blockName: 'gameDetailSize' },
     { name: this.localizationService.translate('home.generations'), value: 'generations', blockName: 'gameDetailGenerations' },
-    { name: this.localizationService.translate('home.sound'), value: 'sounds', blockName: 'gameDetailSounds' },
+    { name: this.localizationService.translate('common.sound'), value: 'sounds', blockName: 'gameDetailSounds' },
     { name: this.localizationService.translate('home.genres'), value: 'genre1', blockName: 'gameDetailGenres' },
     { name: this.localizationService.translate('home.dump'), value: 'dump', blockName: 'gameDetailSimpleText' },
     { name: this.localizationService.translate('home.mapper'), value: 'mapper', blockName: 'gameDetailSimpleText' },

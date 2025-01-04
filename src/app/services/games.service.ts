@@ -46,7 +46,7 @@ export class GamesService {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either openMSX failed to start or the window was closed
-        this.launchActivityService.recordGameFinish(game, time);
+        this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
       this.ipc.once('launchGameProcessIdResponse' + game.sha1Code, (event, pid: number) => {
@@ -61,7 +61,7 @@ export class GamesService {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either openMSX failed to start or the window was closed
-        this.launchActivityService.recordGameFinish(null, time);
+        this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
       this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string) => {
@@ -83,7 +83,7 @@ export class GamesService {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameOnBlueMSXResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either blueMSX failed to start or the window was closed
-        this.launchActivityService.recordGameFinish(game, time);
+        this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
       this.launchActivityService.recordGameStart(game, time, 0, EventSource.blueMSX);
@@ -96,10 +96,10 @@ export class GamesService {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameOnEmuliciousResponse' + time, (event, errorMessage: string) => {
         // this resolving means that either Emulicious failed to start or the window was closed
-        this.launchActivityService.recordGameFinish(game, time);
+        this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
-      this.launchActivityService.recordGameStart(game, time, 0, EventSource.blueMSX);
+      this.launchActivityService.recordGameStart(game, time, 0, EventSource.Emulicious);
       this.ipc.send('launchGameOnEmulicious', game, time);
     });
   }

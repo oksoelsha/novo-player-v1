@@ -19,7 +19,8 @@
     "no": "No",
     "select": "Selecciona",
     "ok": "D’acord",
-    "managesession": "Gestiona la sessió"
+    "managesession": "Gestiona la sessió",
+    "sound": "So"
   },
   "home": {
     "name": "Nom",
@@ -29,7 +30,6 @@
     "system": "Sistema",
     "size": "Mida",
     "generations": "Generacions",
-    "sound": "So",
     "commonname": "Nom comú",
     "files": "Fitxers",
     "medium": "Mitjà",

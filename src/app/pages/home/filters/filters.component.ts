@@ -235,7 +235,7 @@ export class FiltersComponent implements OnInit {
     } else if (filter instanceof GenerationFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.generations'), filter.generation));
     } else if (filter instanceof SoundFilter) {
-      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.sound'),
+      this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('common.sound'),
         Sound.filter(s => s.value === filter.sound).map(s => s.label)[0]));
     } else if (filter instanceof GenreFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.genres'),

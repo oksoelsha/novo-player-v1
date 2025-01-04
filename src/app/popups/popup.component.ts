@@ -20,6 +20,7 @@ export class PopupComponent implements OnDestroy {
   private popupElement: HTMLElement;
   private titleHeaderValue: string;
   private timer: NodeJS.Timer = null;
+  private isOpen = false;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
@@ -56,6 +57,7 @@ export class PopupComponent implements OnDestroy {
   }
 
   open(): void {
+    this.isOpen = true;
     window.addEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(true);
     this.popupElement = document.getElementById(this.popupId);
@@ -63,6 +65,7 @@ export class PopupComponent implements OnDestroy {
   }
 
   close(cleanup: () => void = null): void {
+    this.isOpen = false;
     window.removeEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(false);
     this.popupElement.addEventListener('transitionend', (() => {
@@ -90,6 +93,10 @@ export class PopupComponent implements OnDestroy {
       alertElement.innerText = '';
       alertElement.classList.remove('success-alert');
     }, 10000);
+  }
+
+  protected isWindowOpen(): boolean {
+    return this.isOpen;
   }
 
   private handleKeyEvent(e: KeyboardEvent) {
