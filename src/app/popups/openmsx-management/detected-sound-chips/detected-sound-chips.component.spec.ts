@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetectedSoundChipsComponent } from './detected-sound-chips.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { of } from 'rxjs';
 
 describe('DetectedSoundChipsComponent', () => {
   let component: DetectedSoundChipsComponent;
@@ -8,6 +10,7 @@ describe('DetectedSoundChipsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ DetectedSoundChipsComponent ]
     })
     .compileComponents();
@@ -16,6 +19,7 @@ describe('DetectedSoundChipsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DetectedSoundChipsComponent);
     component = fixture.componentInstance;
+    component.events = of(true);
     fixture.detectChanges();
   });
 
