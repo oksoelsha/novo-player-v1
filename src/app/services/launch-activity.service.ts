@@ -19,6 +19,7 @@ export class LaunchActivityService {
   private screenNumberSubject = new Subject<number>();
   private detectedSoundChipsCheckFrequency: any;
   private detectedSoundChipsSubject = new Subject<number>();
+  private finishOfOpenMSXProcessSubject = new Subject<Game>();
 
   constructor() {
     this.ipc = window.require('electron').ipcRenderer;
@@ -45,6 +46,10 @@ export class LaunchActivityService {
     this.launchActivitiesSubject.next(this.launchActivities);
   }
 
+  handleFinishOfOpenMSXProcess(game: Game) {
+    this.finishOfOpenMSXProcessSubject.next(game);
+  }
+  
   getActivities(): LaunchActivity[] {
     return this.launchActivities;
   }
@@ -233,6 +238,10 @@ export class LaunchActivityService {
 
   getDetectedSoundChipsNotification(): Observable<number> {
     return this.detectedSoundChipsSubject.asObservable();
+  }
+
+  getFinishOfOpenMSXProcessSubject(): Observable<Game> {
+    return this.finishOfOpenMSXProcessSubject.asObservable();
   }
 
   private getScreenNumber(pid: number) {

@@ -29,7 +29,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   muteIndicator: boolean;
   fullscreenIndicator: boolean;
   fileGroup: string[] = [];
-  openEventSubject: Subject<boolean> = new Subject<boolean>();
+  openEventSubject = new Subject<boolean>();
   currentStatus: Map<string, string>;
   gamePasswordsInfo: GamePasswordsInfo;
   trainersList: any[] = [];

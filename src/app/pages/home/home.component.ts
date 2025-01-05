@@ -153,6 +153,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private newsSubscription: Subscription;
   private launchActivities: LaunchActivity[] = [];
   private launchActivitySubscription: Subscription;
+  private finshedOpenMSXProcessSubscription: Subscription;
   private runningGamesBySha1Code = new Map<string, number>();
 
   constructor(private gamesService: GamesService, private scanner: ScannerService, private alertService: AlertsService,
@@ -196,6 +197,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     this.launchActivities = launchActivityService.getActivities();
+
+    this.finshedOpenMSXProcessSubscription = this.launchActivityService.getFinishOfOpenMSXProcessSubject().subscribe(game => {
+      this.stopRunningIndicator(game);
+    });
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -394,6 +399,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.scanEndSubscription.unsubscribe();
     this.newsSubscription.unsubscribe();
     this.launchActivitySubscription.unsubscribe();
+    this.finshedOpenMSXProcessSubscription.unsubscribe();
   }
 
   handleOpenMenuEvents(opened: boolean) {
@@ -1080,7 +1086,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         this.alertService.info(this.localizationService.translate('home.openmsxwindowclosedfor') + ': ' + game.name);
       }
-      this.stopRunningIndicator(game);
+      // use Subject/Observable subscription to infrorm that the process has finished to stop the running indicator rather
+      // than calling the stop indicator function directly. Reason is that calling the stop indicator function directly
+      // will access an older copy of the runningGamesBySha1Code map after leaving the home page and coming back to it
+      this.launchActivityService.handleFinishOfOpenMSXProcess(game);
     });
   }
 
