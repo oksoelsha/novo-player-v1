@@ -4,13 +4,17 @@
 
 namespace eval sound_detector {
 
-variable chips 0
-variable first_detection_time 0
+variable psg_register -1
+variable detected 0
+variable currently_used 0
 
-proc get_detected_chips {} {
-	variable chips
-	variable first_detection_time
-	return "$first_detection_time,$chips"
+proc get_sound_chips {} {
+	variable detected
+	variable currently_used
+	set currently_used_temp $currently_used
+	set psg_register -1
+	set currently_used 0
+	return "$detected,$currently_used_temp"
 }
 
 proc find_all_scc {} {
@@ -39,75 +43,94 @@ proc find_all_scc {} {
 	return $result
 }
 
-proc detected_psg {} {
-	variable chips
-	set chips [expr {$chips | 1}]
-	variable first_detection_time
-	set first_detection_time [clock seconds]
+proc detected_psg_address {} {
+	variable psg_register $::wp_last_value
+}
+
+proc detected_psg_data {} {
+	variable psg_register
+	if {$psg_register >= 0 && $psg_register < 14} {
+		variable detected
+		variable currently_used
+		set detected [expr {$detected | 1}]
+		set currently_used [expr {$currently_used | 1}]
+	}
 }
 
 proc detected_scc {} {
-	variable chips
-	set chips [expr {$chips | 2}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 2}]
+	set currently_used [expr {$currently_used | 2}]
 }
 
 proc detected_sccp {} {
-	variable chips
-	set chips [expr {$chips | 4}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 4}]
+	set currently_used [expr {$currently_used | 4}]
 }
 
 proc detected_pcm {} {
-	variable chips
-	set chips [expr {$chips | 8}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 8}]
+	set currently_used [expr {$currently_used | 8}]
 }
 
 proc detected_msxmusic {} {
-	variable chips
-	set chips [expr {$chips | 16}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 16}]
+	set currently_used [expr {$currently_used | 16}]
 }
 
 proc detected_msxaudio {} {
-	variable chips
-	set chips [expr {$chips | 32}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 32}]
+	set currently_used [expr {$currently_used | 32}]
 }
 
 proc detected_moonsound {} {
-	variable chips
-	set chips [expr {$chips | 64}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | 64}]
+	set currently_used [expr {$currently_used | 64}]
 }
 
 # PSG
-#after time 5 "debug set_watchpoint -once write_io 0xA0 {} {sound_detector::detected_psg}"
-after time 5 "debug set_watchpoint -once write_io 0xA1 {} {sound_detector::detected_psg}"
+debug set_watchpoint write_io 0xA0 {} {sound_detector::detected_psg_address}
+debug set_watchpoint write_io 0xA1 {} {sound_detector::detected_psg_data}
 
 # SCC
 foreach {ps ss plus} [find_all_scc] {
 	if {$plus} {
-		debug set_watchpoint -once write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
+		debug set_watchpoint write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
 	} else {
-		debug set_watchpoint -once write_mem {0x9800 0x988F} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_scc}
+		debug set_watchpoint write_mem {0x9800 0x988F} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_scc}
 	}
 }
 
 # PCM
-#after time 5 "debug set_watchpoint -once write_io 0xA4 {} {sound_detector::detected_pcm}"
-after time 5 "debug set_watchpoint -once write_io 0xA5 {} {sound_detector::detected_pcm}"
+#after time 5 "debug set_watchpoint write_io 0xA4 {} {sound_detector::detected_pcm}"
+after time 5 "debug set_watchpoint write_io 0xA5 {} {sound_detector::detected_pcm}"
 
 # MSX-MUSIC
-#debug set_watchpoint -once write_io 0x7C {} {sound_detector::detected_msxmusic}
-debug set_watchpoint -once write_io 0x7D {} {sound_detector::detected_msxmusic}
+#debug set_watchpoint write_io 0x7C {} {sound_detector::detected_msxmusic}
+debug set_watchpoint write_io 0x7D {} {sound_detector::detected_msxmusic}
 
 # MSX-AUDIO
-#debug set_watchpoint -once write_io 0xC0 {} {sound_detector::detected_msxaudio}
-debug set_watchpoint -once write_io 0xC1 {} {sound_detector::detected_msxaudio}
+#debug set_watchpoint write_io 0xC0 {} {sound_detector::detected_msxaudio}
+debug set_watchpoint write_io 0xC1 {} {sound_detector::detected_msxaudio}
 
 # Moonsound
-#debug set_watchpoint -once write_io 0x7E {} {sound_detector::detected_moonsound}
-#debug set_watchpoint -once write_io 0x7F {} {sound_detector::detected_moonsound}
-#debug set_watchpoint -once write_io 0xC4 {} {sound_detector::detected_moonsound}
-debug set_watchpoint -once write_io 0xC5 {} {sound_detector::detected_moonsound}
-debug set_watchpoint -once write_io 0xC6 {} {sound_detector::detected_moonsound}
-#debug set_watchpoint -once write_io 0xC7 {} {sound_detector::detected_moonsound}
+#debug set_watchpoint write_io 0x7E {} {sound_detector::detected_moonsound}
+debug set_watchpoint write_io 0x7F {} {sound_detector::detected_moonsound}
+#debug set_watchpoint write_io 0xC4 {} {sound_detector::detected_moonsound}
+#debug set_watchpoint write_io 0xC5 {} {sound_detector::detected_moonsound}
+#debug set_watchpoint write_io 0xC6 {} {sound_detector::detected_moonsound}
+#debug set_watchpoint write_io 0xC7 {} {sound_detector::detected_moonsound}
 
 } ;# namespace sound_detector
 

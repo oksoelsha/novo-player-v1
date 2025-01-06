@@ -64,8 +64,8 @@ export class OpenMSXControlService {
         ipcMain.on('getScreenNumber', (event, pid: number) => {
             this.getScreenNumber(pid);
         });
-        ipcMain.on('getDetectedSoundChips', (event, pid: number) => {
-            this.getDetectedSoundChips(pid);
+        ipcMain.on('getSoundChips', (event, pid: number) => {
+            this.getSoundChips(pid);
         });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
@@ -218,9 +218,9 @@ export class OpenMSXControlService {
         });
     }
 
-    private async getDetectedSoundChips(pid: number) {
-        this.executeCommandOnOpenmsx(pid, 'sound_detector::get_detected_chips').then(result => {
-            this.win.webContents.send('getDetectedSoundChipsResponse', result?.content);
+    private async getSoundChips(pid: number) {
+        this.executeCommandOnOpenmsx(pid, 'sound_detector::get_sound_chips').then(result => {
+            this.win.webContents.send('getSoundChipsResponse', result?.content);
         }).catch(() => {
             // ignore for now
         });

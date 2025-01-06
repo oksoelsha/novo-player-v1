@@ -11,13 +11,15 @@ export class DetectedSoundChipsComponent implements OnInit, OnDestroy {
 
   @Input() pid: number;
   @Input() events: Observable<boolean>;
-  soundChips: string[] = [];
+  detected: string[] = [];
+  inUse: boolean[] = [];
+  private readonly soundChips = ['PSG', 'SCC', 'SCC-I', 'PCM', 'MSX-MUSIC', 'MSX-AUDIO', 'Moonsound'];
   private eventsSubscription: Subscription;
   private soundChipsSubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService) {
-    this.soundChipsSubscription = this.launchActivityService.getDetectedSoundChipsNotification().subscribe((soundChips: number) => {
-      this.decodeSoundChips(soundChips);
+    this.soundChipsSubscription = this.launchActivityService.getSoundChipsNotification().subscribe((soundChips: any) => {
+      this.decodeSoundChips(soundChips.detected, soundChips.currentlyUsed);
     });
   }
 
@@ -27,7 +29,8 @@ export class DetectedSoundChipsComponent implements OnInit, OnDestroy {
         this.launchActivityService.startGettingDetectedSoundChips(this.pid);
       } else {
         this.launchActivityService.stopGettingDetectedSoundChips(this.pid);
-        this.soundChips = [];
+        this.detected = [];
+        this.inUse = [];
       }
     });
   }
@@ -37,14 +40,15 @@ export class DetectedSoundChipsComponent implements OnInit, OnDestroy {
     this.soundChipsSubscription.unsubscribe();
   }
 
-  private decodeSoundChips(soundChips: number) {
-    this.soundChips = [];
-    if (soundChips & 1) this.soundChips.push('PSG');
-    if (soundChips & 2) this.soundChips.push('SCC');
-    if (soundChips & 4) this.soundChips.push('SCC-I');
-    if (soundChips & 8) this.soundChips.push('PCM');
-    if (soundChips & 16) this.soundChips.push('MSX-MUSIC');
-    if (soundChips & 32) this.soundChips.push('MSX-AUDIO');
-    if (soundChips & 64) this.soundChips.push('Moonsound');
+  private decodeSoundChips(soundChips: number, currentlyUsed: number) {
+    this.detected = [];
+    this.inUse = [];
+    for (let index = 0; index < this.soundChips.length; index++) {
+      const bit = 1 << index;
+      if (soundChips & bit) {
+        this.detected.push(this.soundChips[index]);
+        this.inUse.push((currentlyUsed & bit) > 0);
+      }
+    }
   }
 }

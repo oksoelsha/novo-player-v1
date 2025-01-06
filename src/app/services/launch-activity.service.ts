@@ -18,7 +18,7 @@ export class LaunchActivityService {
   private screenNumberCheckFrequency: any;
   private screenNumberSubject = new Subject<number>();
   private detectedSoundChipsCheckFrequency: any;
-  private detectedSoundChipsSubject = new Subject<number>();
+  private soundChipsSubject = new Subject<any>();
   private finishOfOpenMSXProcessSubject = new Subject<Game>();
 
   constructor() {
@@ -213,9 +213,9 @@ export class LaunchActivityService {
   }
 
   startGettingDetectedSoundChips(pid: number) {
-    this.getDetectedSoundChips(pid);
+    this.getSoundChips(pid);
     this.detectedSoundChipsCheckFrequency = setInterval(() => {
-      this.getDetectedSoundChips(pid);
+      this.getSoundChips(pid);
     }, 2000);
   }
 
@@ -235,8 +235,8 @@ export class LaunchActivityService {
     return this.screenNumberSubject.asObservable();
   }
 
-  getDetectedSoundChipsNotification(): Observable<number> {
-    return this.detectedSoundChipsSubject.asObservable();
+  getSoundChipsNotification(): Observable<number> {
+    return this.soundChipsSubject.asObservable();
   }
 
   getFinishOfOpenMSXProcessSubject(): Observable<Game> {
@@ -250,21 +250,16 @@ export class LaunchActivityService {
     this.ipc.send('getScreenNumber', pid);
   }
 
-  private getDetectedSoundChips(pid: number) {
-    this.ipc.once('getDetectedSoundChipsResponse', (event, result: string) => {
+  private getSoundChips(pid: number) {
+    this.ipc.once('getSoundChipsResponse', (event, result: string) => {
       if (result) {
         const parts = result.split(',');
-        const firstDetectionTime = +parts[0];
-        const detectedSoundChips = +parts[1];
-        if (firstDetectionTime > 0 && Math.round(Date.now() / 1000 - firstDetectionTime) > 60) {
-          // stop getting detected sound chips if the result is older than a minute.
-          // by then all sound chips must have been detected
-          this.stopGettingDetectedSoundChips(pid);
-        }
-        this.detectedSoundChipsSubject.next(detectedSoundChips);
+        const detected = +parts[0];
+        const currentlyUsed = +parts[1];
+        this.soundChipsSubject.next({detected, currentlyUsed});
       }
     });
-    this.ipc.send('getDetectedSoundChips', pid);
+    this.ipc.send('getSoundChips', pid);
   }
 
   private updateOpenmsxCurrentStatus(pid: number, event: OpenmsxEvent) {
