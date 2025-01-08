@@ -5,6 +5,8 @@
 namespace eval sound_detector {
 
 variable psg_register -1
+variable opl4_register_wave -1
+variable opl4_register -1
 variable detected 0
 variable currently_used 0
 
@@ -13,6 +15,8 @@ proc get_sound_chips {} {
 	variable currently_used
 	set currently_used_temp $currently_used
 	set psg_register -1
+	set opl4_register_wave -1
+	set opl4_register -1
 	set currently_used 0
 	return "$detected,$currently_used_temp"
 }
@@ -99,6 +103,29 @@ proc detected_moonsound {} {
 	set currently_used [expr {$currently_used | 64}]
 }
 
+
+proc detect_moonsound_address_wave {} {
+	variable opl4_register_wave $::wp_last_value
+}
+
+proc detect_moonsound_data_wave {} {
+	variable opl4_register_wave
+	if {$opl4_register_wave >= 0} {
+		sound_detector::detected_moonsound
+	}
+}
+
+proc detect_moonsound_address_1_or_2 {} {
+	variable opl4_register $::wp_last_value
+}
+
+proc detect_moonsound_data {} {
+	variable opl4_register
+	if {$opl4_register >= 0} {
+		sound_detector::detected_moonsound
+	}
+}
+
 # PSG
 debug set_watchpoint write_io 0xA0 {} {sound_detector::detected_psg_address}
 debug set_watchpoint write_io 0xA1 {} {sound_detector::detected_psg_data}
@@ -125,12 +152,12 @@ debug set_watchpoint write_io 0x7D {} {sound_detector::detected_msxmusic}
 debug set_watchpoint write_io 0xC1 {} {sound_detector::detected_msxaudio}
 
 # Moonsound
-#debug set_watchpoint write_io 0x7E {} {sound_detector::detected_moonsound}
-debug set_watchpoint write_io 0x7F {} {sound_detector::detected_moonsound}
-#debug set_watchpoint write_io 0xC4 {} {sound_detector::detected_moonsound}
-#debug set_watchpoint write_io 0xC5 {} {sound_detector::detected_moonsound}
-#debug set_watchpoint write_io 0xC6 {} {sound_detector::detected_moonsound}
-#debug set_watchpoint write_io 0xC7 {} {sound_detector::detected_moonsound}
+debug set_watchpoint write_io 0x7E {} {sound_detector::detect_moonsound_address_wave}
+debug set_watchpoint write_io 0x7F {} {sound_detector::detect_moonsound_data_wave}
+debug set_watchpoint write_io 0xC4 {} {sound_detector::detect_moonsound_address_1_or_2}
+debug set_watchpoint write_io 0xC5 {} {sound_detector::detect_moonsound_data}
+debug set_watchpoint write_io 0xC6 {} {sound_detector::detect_moonsound_address_1_or_2}
+debug set_watchpoint write_io 0xC7 {} {sound_detector::detect_moonsound_data}
 
 } ;# namespace sound_detector
 

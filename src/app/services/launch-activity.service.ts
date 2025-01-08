@@ -209,14 +209,14 @@ export class LaunchActivityService {
     this.getScreenNumber(pid);
     this.screenNumberCheckFrequency = setInterval(() => {
       this.getScreenNumber(pid);
-    }, 2000);
+    }, 1000);
   }
 
   startGettingDetectedSoundChips(pid: number) {
     this.getSoundChips(pid);
     this.detectedSoundChipsCheckFrequency = setInterval(() => {
       this.getSoundChips(pid);
-    }, 2000);
+    }, 1000);
   }
 
   stopGettingScreenNumber(pid: number) {
