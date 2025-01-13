@@ -82,7 +82,6 @@ proc detected_moonsound {} {
 	sound_detector::process_detection 64
 }
 
-
 proc detect_moonsound_address_wave {} {
 	variable opl4_register_wave $::wp_last_value
 }
@@ -112,10 +111,10 @@ proc detected_SN76489 {} {
 }
 
 proc process_detection {mask} {
-		variable detected
-		variable currently_used
-		set detected [expr {$detected | $mask}]
-		set currently_used [expr {$currently_used | $mask}]
+	variable detected
+	variable currently_used
+	set detected [expr {$detected | $mask}]
+	set currently_used [expr {$currently_used | $mask}]
 }
 
 # PSG
