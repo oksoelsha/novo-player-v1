@@ -54,53 +54,32 @@ proc detected_psg_address {} {
 proc detected_psg_data {} {
 	variable psg_register
 	if {$psg_register >= 0 && $psg_register < 14} {
-		variable detected
-		variable currently_used
-		set detected [expr {$detected | 1}]
-		set currently_used [expr {$currently_used | 1}]
+		sound_detector::process_detection 1 
 	}
 }
 
 proc detected_scc {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 2}]
-	set currently_used [expr {$currently_used | 2}]
+	sound_detector::process_detection 2
 }
 
 proc detected_sccp {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 4}]
-	set currently_used [expr {$currently_used | 4}]
+	sound_detector::process_detection 4
 }
 
 proc detected_pcm {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 8}]
-	set currently_used [expr {$currently_used | 8}]
+	sound_detector::process_detection 8
 }
 
 proc detected_msxmusic {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 16}]
-	set currently_used [expr {$currently_used | 16}]
+	sound_detector::process_detection 16
 }
 
 proc detected_msxaudio {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 32}]
-	set currently_used [expr {$currently_used | 32}]
+	sound_detector::process_detection 32
 }
 
 proc detected_moonsound {} {
-	variable detected
-	variable currently_used
-	set detected [expr {$detected | 64}]
-	set currently_used [expr {$currently_used | 64}]
+	sound_detector::process_detection 64
 }
 
 
@@ -124,6 +103,19 @@ proc detect_moonsound_data {} {
 	if {$opl4_register >= 0} {
 		sound_detector::detected_moonsound
 	}
+}
+
+proc detected_SN76489 {} {
+	if {$::wp_last_value > 0} {
+		sound_detector::process_detection 1
+	}
+}
+
+proc process_detection {mask} {
+		variable detected
+		variable currently_used
+		set detected [expr {$detected | $mask}]
+		set currently_used [expr {$currently_used | $mask}]
 }
 
 # PSG
@@ -158,6 +150,12 @@ debug set_watchpoint write_io 0xC4 {} {sound_detector::detect_moonsound_address_
 debug set_watchpoint write_io 0xC5 {} {sound_detector::detect_moonsound_data}
 debug set_watchpoint write_io 0xC6 {} {sound_detector::detect_moonsound_address_1_or_2}
 debug set_watchpoint write_io 0xC7 {} {sound_detector::detect_moonsound_data}
+
+# Coleco's SN76489
+debug set_watchpoint write_io 0xFF {} {sound_detector::detected_SN76489}
+
+# Sega's SN76489
+debug set_watchpoint write_io 0x7F {} {sound_detector::detected_SN76489}
 
 } ;# namespace sound_detector
 
