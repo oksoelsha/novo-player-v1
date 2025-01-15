@@ -131,6 +131,9 @@ export class OpenMSXLaunchService {
             }    
         }
         this.setQuickLaunchOtherArguments(args, quickLaunchData);
+        args.push('-script');
+        args.push(this.soundDetectorScript);
+
         const process = this.startOpenmsx(args, time);
 
         this.win.webContents.send('quickLaunchProcessIdResponse' + time, process.pid, filename);
