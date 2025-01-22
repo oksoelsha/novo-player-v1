@@ -8,7 +8,7 @@ This project is a continuation of the previous Novo Player that stopped at versi
 
 # Features
 
- * Create multiple listings of all MSX software supported by openMSX, and run them on openMSX, WebMSX (offline mode) and blueMSX.
+ * Create multiple listings of all MSX software supported by openMSX, and run them on openMSX, WebMSX (offline mode), blueMSX and Emulicious.
  * Scan the hard disk to automatically fill listings with ROMs, disks, tapes, hard disks and laserdiscs, and sync the listing to your hard disk any time later.
  * Display two screenshots, details and available game music for each selected game.
  * Search for exact or partial name or SHA1 code.
