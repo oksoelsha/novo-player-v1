@@ -35,10 +35,6 @@
                 [(ngModel)]="connectGFX9000" [ngModelOptions]="{standalone: true}">
                 <input type="checkbox" [(ngModel)]="connectGFX9000" [ngModelOptions]="{standalone: true}" />
             </ng-toggle>
-            <div class="table-cell">
-                <img src="assets/images/general/info.png" placement="top"
-                    [ngbTooltip]="'popups.infomsg' | translate">
-            </div>
         </div>
     </div>
     <button class="btn btn-primary btn-sm mt-3" (click)="launch()" (keyup.enter)="launch()">{{ 'home.launch' |

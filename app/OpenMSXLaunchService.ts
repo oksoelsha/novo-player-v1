@@ -59,8 +59,6 @@ export class OpenMSXLaunchService {
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
 
-    private static readonly ENABLE_GFX9000_CMD = 'ext gfx9000; after time 10 \"set videosource GFX9000\"';
-
     private static readonly tclCommandArgs: TCLCommands[] = [
         new TCLCommands('inputDevice', [
             ['1', OpenMSXLaunchService.Input_Device_JOYTAP],
@@ -84,15 +82,12 @@ export class OpenMSXLaunchService {
             ['1', OpenMSXLaunchService.FDD_MODE_DISABLE_SECOND],
             ['2', OpenMSXLaunchService.FDD_MODE_DISABLE_BOTH]
         ])
-        ,
-        new TCLCommands('connectGFX9000', [
-            ['true', OpenMSXLaunchService.ENABLE_GFX9000_CMD]
-        ])
     ];
 
     private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
-    private soundDetectorScript = path.join(__dirname, 'extra/detect_sound_chips.tcl');
+    private enableGFX9000Script = path.join(__dirname, 'scripts/enable_gfx9000.tcl');
+    private soundDetectorScript = path.join(__dirname, 'scripts/detect_sound_chips.tcl');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
         private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager) {
@@ -131,8 +126,7 @@ export class OpenMSXLaunchService {
             }    
         }
         this.setQuickLaunchOtherArguments(args, quickLaunchData);
-        args.push('-script');
-        args.push(this.soundDetectorScript);
+        this.addArgument(args, 'script', this.soundDetectorScript);
 
         const process = this.startOpenmsx(args, time);
 
@@ -192,52 +186,49 @@ export class OpenMSXLaunchService {
 
     private setArguments(args: string[], game: Game, state: string) {
         if (state) {
-            args.push('-savestate');
-            args.push(state);
+            this.addArgument(args, 'savestate', state);
         } else {
             OpenMSXLaunchService.fieldsToArgs.forEach (field => {
                 if (game[field[0]]) {
-                    args.push('-' + field[1]);
-                    args.push(game[field[0]]);
+                    this.addArgument(args, field[1], game[field[0]]);
                 }
             });
-            this.addTclCommandArguments(args, game);    
+            this.addTclCommandArguments(args, game);
+            if (game.connectGFX9000) {
+                this.addArgument(args, 'script', this.enableGFX9000Script);
+            }
         }
-        args.push('-script');
-        args.push(this.soundDetectorScript);
+        this.addArgument(args, 'script', this.soundDetectorScript);
     }
 
     private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string, size: number) {
         if (FileTypeUtils.isMSXFile(quickLaunchData.file)) {
             if (FileTypeUtils.isROM(filename)) {
-                args.push('-carta');
+                this.addArgument(args, 'carta', quickLaunchData.file);
             } else if (FileTypeUtils.isDisk(filename)) {
                 if (size <= FileTypeUtils.MAX_DISK_FILE_SIZE) {
-                    args.push('-diska');
+                    this.addArgument(args, 'diska', quickLaunchData.file);
                 } else {
-                    args.push('-hda');
+                    this.addArgument(args, 'hda', quickLaunchData.file);
                 }
             } else if (FileTypeUtils.isTape(filename)) {
-                args.push('-cassetteplayer');
+                this.addArgument(args, 'cassetteplayer', quickLaunchData.file);
             } else if (FileTypeUtils.isLaserdisc(filename)) {
-                args.push('-laserdisc');
+                this.addArgument(args, 'laserdisc', quickLaunchData.file);
             }
             args.push(quickLaunchData.file);
         }
     }
 
     private setQuickLaunchDirectoryAsDisk(args: string[], quickLaunchData: QuickLaunchData) {
-        args.push('-diska');
-        args.push(quickLaunchData.file);
+        this.addArgument(args, 'diska', quickLaunchData.file);
     }
 
     private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData) {
-        args.push('-machine');
-        args.push(quickLaunchData.machine);
+        this.addArgument(args, 'machine', quickLaunchData.machine);
 
         if (quickLaunchData.connectGFX9000) {
-            args.push('-command');
-            args.push(OpenMSXLaunchService.ENABLE_GFX9000_CMD);    
+            this.addArgument(args, 'script', this.enableGFX9000Script);
         }
 
         EmulatorUtils.appendParams(args, quickLaunchData.parameters, OpenMSXLaunchService.ARGS_SEPARATOR);
@@ -255,8 +246,12 @@ export class OpenMSXLaunchService {
             }
         }
         if (commandLineArgs.length > 0) {
-            args.push('-command');
-            args.push(commandLineArgs.join(';'));
+            this.addArgument(args, 'command', commandLineArgs.join(';'));
         }
+    }
+
+    private addArgument(args: string[], argument: string, value: string) {
+        args.push('-' + argument);
+        args.push(value);
     }
 }
