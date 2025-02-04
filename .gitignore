@@ -12,8 +12,6 @@ src/**/*.js
 *.js.map
 app/**/*.js
 app/**/*.map
-app/extra/*
-!app/extra/passwords.json
 
 # dependencies
 node_modules
