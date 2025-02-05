@@ -215,8 +215,9 @@ export class OpenMSXLaunchService {
                 this.addArgument(args, 'cassetteplayer', quickLaunchData.file);
             } else if (FileTypeUtils.isLaserdisc(filename)) {
                 this.addArgument(args, 'laserdisc', quickLaunchData.file);
+            } else if (FileTypeUtils.isZip(filename)) {
+                args.push(quickLaunchData.file);
             }
-            args.push(quickLaunchData.file);
         }
     }
 
