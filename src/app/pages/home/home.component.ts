@@ -452,12 +452,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       this.gameToRename = null;
       if (sha1Code) {
-        const game = data.find(g => g.sha1Code === sha1Code);
-        if (game) {
-          setTimeout(() => {
-            this.showInfo(game);
-          }, 0);
-        }
+        this.navigateToGame(data, sha1Code);
       }
     });
   }
@@ -1077,6 +1072,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.moreScreenshotFiles = secondaryData.moreScreenshots;
   }
 
+  private navigateToGame(games: Game[], sha1Code: string) {
+    const game = games.find(g => g.sha1Code === sha1Code);
+    if (game) {
+      setTimeout(() => {
+        this.showInfo(game);
+      }, 0);
+    }
+  }
+
   private launchGameOrStateOnOpenmsx(game: Game, state: string = null) {
     this.startRunningIndicator(game);
     this.gamesService.launchGameOnOpenMSX(game, state).then((errorMessage: string) => {
@@ -1208,6 +1212,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.games.push(game);
       this.sortGames(this.games);
       this.originalGames.push(game);
+      this.navigateToGame(this.games, game.sha1Code);
     }
   }
 
