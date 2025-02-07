@@ -267,7 +267,7 @@ export class GamesService {
         const gameMainFile = GameUtils.getGameMainFile(newGame);
         if (fs.existsSync(gameMainFile)) {
             this.hashService.getSha1Code(gameMainFile).then(data => {
-                if (data._id === oldGame.sha1Code) {
+                if (data.hash === oldGame.sha1Code) {
                     this.database.update({ _id: oldGame.sha1Code }, gameDO, {}, () => {
                         self.win.webContents.send('updateGameResponse', newGame);
                     });
@@ -278,16 +278,17 @@ export class GamesService {
                     const extraData = extraDataInfo.get(gameDO._id);
                     this.updateGameDOWithExtraData(gameDO, extraData);
 
-                    this.database.remove({ _id: oldGame.sha1Code }, {}, (removeErr: any) => {
-                        if (!removeErr) {
-                            this.database.insert(gameDO, (reinsertErr: any, savedGame: GameDO) => {
-                                let updatedGame: Game;
-                                if (reinsertErr == null) {
-                                    updatedGame = this.constructGame(newGame, gameDO);
+                    this.database.insert(gameDO, (err: any, savedGame: GameDO) => {
+                        if (err) {
+                            self.win.webContents.send('updateGameResponse', null);
+                        } else {
+                            this.database.remove({ _id: oldGame.sha1Code }, {}, (removeErr: any) => {
+                                if (removeErr) {
+                                    self.win.webContents.send('updateGameResponse', null);
                                 } else {
-                                    updatedGame = null;
+                                    const updatedGame = this.constructGame(newGame, gameDO);
+                                    self.win.webContents.send('updateGameResponse', updatedGame);
                                 }
-                                self.win.webContents.send('updateGameResponse', updatedGame);
                             });
                         }
                     });

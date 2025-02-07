@@ -3,15 +3,15 @@ import { Game } from "../../src/app/models/game";
 export class GameUtils {
 
     static getGameMainFile(game: Game): string {
-        if (game.romA != null) {
+        if (game.romA) {
             return game.romA;
-        } else if (game.diskA != null) {
+        } else if (game.diskA) {
             return game.diskA;
-        } else if (game.tape != null) {
+        } else if (game.tape) {
             return game.tape;
-        } else if (game.harddisk != null) {
+        } else if (game.harddisk) {
             return game.harddisk;
-        } else if (game.laserdisc != null) {
+        } else if (game.laserdisc) {
             return game.laserdisc;
         } else {
             return '';
