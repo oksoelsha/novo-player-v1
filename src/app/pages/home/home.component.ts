@@ -952,7 +952,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   openOpenmsxSessionManagement(game: Game) {
-    const launchActivities = this.launchActivities.filter(activity => activity.game.sha1Code === game.sha1Code);
+    const launchActivities = this.launchActivities.filter(activity => activity.game.sha1Code === game.sha1Code
+      && activity.source === EventSource.openMSX);
     if (launchActivities.length > 1) {
       this.alertService.info(this.localizationService.translate('home.cannotstartopenmsxsessionmanagement'));
     } else {
