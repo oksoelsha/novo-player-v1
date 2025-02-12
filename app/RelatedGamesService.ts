@@ -86,6 +86,9 @@ export class RelatedGamesService {
 
             // Green Beret and S.A.K.
             [3091, 8100],
+
+            // Galaga and Galaxian
+            [141, 142],
         ];
 
         groups.forEach((group) => {
