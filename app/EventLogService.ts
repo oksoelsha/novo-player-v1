@@ -11,8 +11,8 @@ export class EventLogService {
 
     private readonly database: Datastore;
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'events');
-    private readonly MAXIMUM_LOG_ENTRIES = 600;
-    private readonly lastEventMap: Map<string, Event> = new Map();
+    private readonly MAXIMUM_LOG_ENTRIES = 750;
+    private readonly lastEventMap = new Map<string, Event>();
 
     constructor(private readonly win: BrowserWindow) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
