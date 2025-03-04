@@ -62,7 +62,7 @@ import { WebLinkComponent } from './shared/components/web-link/web-link.componen
 import { WindowControlsComponent } from './shared/components/window-controls/window-controls.component';
 import { DropfileDirective } from './shared/directives/dropfile/dropfile.directive';
 import { EventDatePipe } from './pages/dashboard/pipes/event-date.pipe';
-import { LongEventDatePipe } from './pages/dashboard/pipes/long-event-date.pipe';
+import { LongEventDatePipe } from './shared/pipes/long-event-date.pipe';
 import { OpenmsxManagementComponent } from './popups/openmsx-management/openmsx-management.component';
 import { MoreDetailsComponent } from './popups/more-details/more-details.component';
 import { GameCompanyAndYearPipe } from './shared/pipes/game-company-and-year.pipe';

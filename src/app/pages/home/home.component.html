@@ -84,7 +84,7 @@
           <div ngbDropdownMenu>
             <div *ngIf="news.length === 0" class="news-retrieving">{{ 'home.waitingfornews' | translate }}</div>
             <div *ngFor="let newsitem of news" class="news-row">
-              <div class="d-inline-block news-date">{{ newsitem.pubDate | newsDate }}</div>
+              <div class="d-inline-block news-date" title="{{ newsitem.pubDate | longEventDate }}">{{ newsitem.pubDate | newsDate }}</div>
               <div class="d-inline-block me-2 news-title">
                 <app-web-link [address]="newsitem.link" [label]="newsitem.title"></app-web-link>
               </div>

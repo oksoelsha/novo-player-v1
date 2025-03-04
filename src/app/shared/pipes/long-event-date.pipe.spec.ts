@@ -1,4 +1,4 @@
-import { LongEventDatePipe } from './long-event-date.pipe';
+import { LongEventDatePipe } from "./long-event-date.pipe";
 
 describe('LongEventDatePipe', () => {
   it('create an instance', () => {
