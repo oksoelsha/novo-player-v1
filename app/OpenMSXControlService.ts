@@ -171,7 +171,7 @@ export class OpenMSXControlService {
                 this.getTrainerFromOpenmsx(pid, modifiedGameName, gameName);
             } else {
                 const cheats: any[] = [];
-                if (result.success) {
+                if (result.success && result.content) {
                     const trainer = result.content.split(' [');
                     for (let ix = 1; ix < trainer.length; ix++) {
                         cheats.push({ on: trainer[ix].startsWith('x'), label: trainer[ix].split('&#x0a;')[0].substring(3) });
