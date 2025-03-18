@@ -99,7 +99,7 @@ export class PopupComponent implements OnDestroy {
     return this.isOpen;
   }
 
-  private handleKeyEvent(e: KeyboardEvent) {
+  protected handleKeyEvent(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       this.close();
     } else if (!this.popupElement.contains(e.target as Node)) {

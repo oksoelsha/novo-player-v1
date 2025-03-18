@@ -72,4 +72,14 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
       imageBlocksArray[this.imageIndex].nativeElement.style.display = 'block';
     }, 0);
   }
+
+  protected handleKeyEvent(e: KeyboardEvent) {
+    if (e.key === 'ArrowRight') {
+      this.next();
+    } else if (e.key === 'ArrowLeft') {
+      this.previous();
+    } else {
+      super.handleKeyEvent(e);
+    }
+  }
 }
