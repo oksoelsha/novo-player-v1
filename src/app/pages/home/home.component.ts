@@ -1286,7 +1286,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const runningGames = new Set<string>();
     this.launchActivities.forEach(activity => {
       if (activity.source === EventSource.openMSX) {
-        runningGames.add(activity.game.sha1Code);        
+        runningGames.add(activity.game.sha1Code);
       }
     });
     setTimeout(() => {
