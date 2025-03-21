@@ -57,9 +57,9 @@ export class MoreScreenshotsComponent extends PopupComponent implements OnInit, 
   }
 
   protected handleKeyEvent(e: KeyboardEvent) {
-    if (e.key === 'ArrowRight') {
+    if (!e.repeat && e.key === 'ArrowRight') {
       this.next();
-    } else if (e.key === 'ArrowLeft') {
+    } else if (!e.repeat && e.key === 'ArrowLeft') {
       this.previous();
     } else {
       super.handleKeyEvent(e);
