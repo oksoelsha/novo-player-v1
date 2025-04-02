@@ -90,10 +90,12 @@ export class AdditionalExternalInfoComponent extends PopupComponent implements O
   }
 
   private getImages(dataForMSX: any, platforms: string[]) {
-    const onlyMSX = (platforms.length === 1);
+    // get images even if MSX is not the only platform. We can get more images if MSX was listed with another supported platform.
+    // If more than two platforms were there, then skip to avoid getting too many non-MSX images
+    const oneOrTwoPlatforms = (platforms.length === 1) || (platforms.length === 2);
     const imagesSet = new Set<string>();
     for (let ix = 0; ix < dataForMSX.image_tags.length; ix++) {
-      if ((onlyMSX && dataForMSX.image_tags[ix].name === 'All Images') ||
+      if ((oneOrTwoPlatforms && dataForMSX.image_tags[ix].name === 'All Images') ||
         dataForMSX.image_tags[ix].name === 'Box Art' ||
         dataForMSX.image_tags[ix].name === 'MSX Screenshots') {
         this.additionalExternalInfoService.getImages(dataForMSX.image_tags[ix].api_detail_url, this.giantbombApiKey).then((images: any[]) => {
