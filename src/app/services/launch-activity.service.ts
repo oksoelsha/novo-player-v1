@@ -245,8 +245,8 @@ export class LaunchActivityService {
 
   private getScreenNumber(pid: number) {
     this.ipc.once('getScreenNumberResponse', (event, screen: number) => {
-      if (typeof screen === "number") {
-        this.screenNumberSubject.next(screen);        
+      if (typeof screen === 'number') {
+        this.screenNumberSubject.next(screen);
       }
     });
     this.ipc.send('getScreenNumber', pid);
@@ -254,7 +254,7 @@ export class LaunchActivityService {
 
   private getSoundChips(pid: number) {
     this.ipc.once('getSoundChipsResponse', (event, result: string) => {
-        if (result && typeof result === "string") {
+        if (result && typeof result === 'string') {
         const parts = result.split(',');
         const detected = +parts[0];
         const currentlyUsed = +parts[1];
