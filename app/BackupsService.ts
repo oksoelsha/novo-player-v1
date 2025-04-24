@@ -9,7 +9,7 @@ export class BackupsService {
 
     private readonly backupExtension = '.npb';
     private readonly separatorChar = '_';
-    private readonly AdmZip = require("adm-zip");
+    private readonly AdmZip = require('adm-zip');
 
     constructor(private readonly win: BrowserWindow, private readonly gamesService: GamesService) {
         this.init();

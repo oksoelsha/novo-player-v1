@@ -41,7 +41,7 @@
     "@nth-cloud/ng-toggle": "9.0.1",
     "@perfectmemory/ngx-contextmenu": "7.0.0",
     "@popperjs/core": "2.11.7",
-    "adm-zip": "0.5.10",
+    "adm-zip": "0.5.16",
     "apexcharts": "3.42.0",
     "bootstrap": "5.2.3",
     "bootstrap-icons": "1.11.0",
