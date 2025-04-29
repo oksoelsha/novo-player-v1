@@ -283,7 +283,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           }
         }
       }
-    } else if (event.repeat && !this.gameToRename) {
+    } else if (event.repeat && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
       // prevent scrolling of games div when up/down arrow keys are held down.
       // that happens sometimes after a game is renamed
       event.stopPropagation();
