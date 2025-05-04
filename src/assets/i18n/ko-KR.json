@@ -348,7 +348,9 @@
       "typetext": "텍스트 입력",
       "type": "입력하",
       "clear": "삭제",
-      "texttyped": "텍스트는 openMSX로 입력되었습니다"
+      "texttyped": "텍스트는 openMSX로 입력되었습니다",
+      "specialkeys": "특수키 누르기",
+      "specialkeyspressed": "특수키가 눌렸습니다"
     }
   },
   "shared": {

@@ -348,7 +348,9 @@
       "typetext": "Type text",
       "type": "Type",
       "clear": "Clear",
-      "texttyped": "Text was typed in openMSX"
+      "texttyped": "Text was typed in openMSX",
+      "specialkeys": "Press special keys",
+      "specialkeyspressed": "Special keys were pressed"
     }
   },
   "shared": {

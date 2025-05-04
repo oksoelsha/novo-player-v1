@@ -348,7 +348,9 @@
       "typetext": "Tekst typen",
       "type": "Typen",
       "clear": "Wissen",
-      "texttyped": "De tekst is getypt in openMSX"
+      "texttyped": "De tekst is getypt in openMSX",
+      "specialkeys": "Speciale toetsen indrukken",
+      "specialkeyspressed": "Er werden speciale toetsen ingedrukt"
     }
   },
   "shared": {

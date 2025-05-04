@@ -348,7 +348,9 @@
       "typetext": "Escriviu text",
       "type": "Escriviu",
       "clear": "Esborra",
-      "texttyped": "El text es va escriure a openMSX"
+      "texttyped": "El text es va escriure a openMSX",
+      "specialkeys": "Premeu tecles especials",
+      "specialkeyspressed": "Tecles especials s'han premut"
     }
   },
   "shared": {

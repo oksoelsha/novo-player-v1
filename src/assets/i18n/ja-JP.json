@@ -348,7 +348,9 @@
       "typetext": "入力する",
       "type": "入力する",
       "clear": "クリア",
-      "texttyped": "テキストはopenMSXで入力"
+      "texttyped": "テキストはopenMSXで入力",
+      "specialkeys": "特殊キーを押す",
+      "specialkeyspressed": "特殊キーが押されました"
     }
   },
   "shared": {

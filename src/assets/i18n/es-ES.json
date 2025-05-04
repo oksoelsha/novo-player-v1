@@ -348,7 +348,9 @@
       "typetext": "Escribir texto",
       "type": "Escribir",
       "clear": "Despejar",
-      "texttyped": "El texto se escribió en openMSX"
+      "texttyped": "El texto se escribió en openMSX",
+      "specialkeys": "Pulsar teclas especiales",
+      "specialkeyspressed": "Se presionaron teclas especiales"
     }
   },
   "shared": {

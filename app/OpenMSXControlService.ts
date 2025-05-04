@@ -67,6 +67,15 @@ export class OpenMSXControlService {
         ipcMain.on('getSoundChips', (event, pid: number) => {
             this.getSoundChips(pid);
         });
+        ipcMain.on('pressCtrlStopOnOpenmsx', (event, pid: number) => {
+            this.pressCtrlStopOnOpenmsx(pid);
+        });
+        ipcMain.on('pressStopOnOpenmsx', (event, pid: number) => {
+            this.pressStopOnOpenmsx(pid);
+        });
+        ipcMain.on('pressCodeOnOpenmsx', (event, pid: number) => {
+            this.pressCodeOnOpenmsx(pid);
+        });
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -226,6 +235,33 @@ export class OpenMSXControlService {
         });
     }
 
+    private async pressCtrlStopOnOpenmsx(pid: number) {
+        this.pressSpecialKeysOnOpenmsx(pid, ['6 2', '7 16']);
+    }
+
+    private async pressStopOnOpenmsx(pid: number) {
+        this.pressSpecialKeysOnOpenmsx(pid, ['7 16']);        
+    }
+
+    private async pressCodeOnOpenmsx(pid: number) {
+        this.pressSpecialKeysOnOpenmsx(pid, ['6 16']);        
+    }
+
+    private async pressSpecialKeysOnOpenmsx(pid: number, keys: string[]) {
+        let keyString = '';
+        for (const key of keys) {
+            keyString += 'keymatrixdown ' + key + '; ';
+        }
+        keyString += 'after time 0.1 "';
+        for (const key of [...keys].reverse()) {
+            keyString += 'keymatrixup ' + key + '; ';
+        }
+        keyString += '"';
+        this.executeCommandOnOpenmsx(pid, keyString).then(result => {
+            this.win.webContents.send('specialKeysPressedOnOpenmsxResponse', result.success);
+        });
+    }
+    
     private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, value: string) {
         if (type === 'setting') {
             let eventName: string;

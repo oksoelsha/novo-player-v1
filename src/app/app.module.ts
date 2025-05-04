@@ -76,6 +76,7 @@ import { CheatsComponent } from './popups/openmsx-management/cheats/cheats.compo
 import { PasswordSelectorComponent } from './shared/components/password-selector/password-selector.component';
 import { EmuliciousArgumentsEditComponent } from './popups/emulicious-arguments-edit/emulicious-arguments-edit.component';
 import { DetectedSoundChipsComponent } from './popups/openmsx-management/detected-sound-chips/detected-sound-chips.component';
+import { SpecialKeysComponent } from './popups/openmsx-management/special-keys/special-keys.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -128,6 +129,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     TextTypingComponent,
     PasswordsComponent,
     CheatsComponent,
+    SpecialKeysComponent,
     QuickLaunchComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,

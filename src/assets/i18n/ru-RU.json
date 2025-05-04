@@ -348,7 +348,9 @@
       "typetext": "Наберите текст",
       "type": "Наберите",
       "clear": "Очистите",
-      "texttyped": "Текст был набран на openMSX"
+      "texttyped": "Текст был набран на openMSX",
+      "specialkeys": "Нажимайте специальные клавиши",
+      "specialkeyspressed": "Были нажаты специальные клавиши"
     }
   },
   "shared": {

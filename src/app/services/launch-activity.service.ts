@@ -243,6 +243,33 @@ export class LaunchActivityService {
     return this.finishOfOpenMSXProcessSubject.asObservable();
   }
 
+  pressControlStop(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('specialKeysPressedOnOpenmsxResponse', (event: any, pressed: boolean) => {
+        resolve(pressed);
+      });
+      this.ipc.send('pressCtrlStopOnOpenmsx', pid);
+    });
+  }
+
+  pressStop(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('specialKeysPressedOnOpenmsxResponse', (event: any, pressed: boolean) => {
+        resolve(pressed);
+      });
+      this.ipc.send('pressStopOnOpenmsx', pid);
+    });
+  }
+
+  pressCode(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('specialKeysPressedOnOpenmsxResponse', (event: any, pressed: boolean) => {
+        resolve(pressed);
+      });
+      this.ipc.send('pressCodeOnOpenmsx', pid);
+    });
+  }
+
   private getScreenNumber(pid: number) {
     this.ipc.once('getScreenNumberResponse', (event, screen: number) => {
       if (typeof screen === 'number') {

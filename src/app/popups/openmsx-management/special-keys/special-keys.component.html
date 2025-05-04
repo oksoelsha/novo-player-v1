@@ -1,0 +1,17 @@
+<div ngbDropdown>
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
+        [title]="'popups.openmsxmanagement.specialkeys' | translate">
+        <span class="bi-keyboard"></span>
+    </button>
+    <div ngbDropdownMenu>
+        <button ngbDropdownItem type="button" (click)="pressControlStop()">
+            CTRL+STOP
+        </button>
+        <button ngbDropdownItem type="button" (click)="pressStop()">
+            STOP
+        </button>
+        <button ngbDropdownItem type="button" (click)="pressCode()">
+            CODE
+        </button>
+    </div>
+</div>

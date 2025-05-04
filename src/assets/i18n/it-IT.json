@@ -348,7 +348,9 @@
       "typetext": "Digita testo",
       "type": "Digita",
       "clear": "Cancella",
-      "texttyped": "Il testo è stato digitato in openMSX"
+      "texttyped": "Il testo è stato digitato in openMSX",
+      "specialkeys": "Premere tasti speciali",
+      "specialkeyspressed": "Tasti speciali sono stati premuti"
     }
   },
   "shared": {
