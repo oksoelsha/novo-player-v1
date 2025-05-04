@@ -129,10 +129,12 @@ export class OpenMSXControlService {
     }
 
     private async typeTextOnOpenmsx(pid: number, text: string) {
-        let sanitizedText = this.escapeText(text);
-        this.executeCommandOnOpenmsx(pid, 'type "' + sanitizedText + '"').then(result => {
-            this.win.webContents.send('typeTextOnOpenmsxResponse', result.success);
-        });
+        if (text) {
+            let sanitizedText = this.escapeText(text);
+            this.executeCommandOnOpenmsx(pid, 'type "' + sanitizedText + '"').then(result => {
+                this.win.webContents.send('typeTextOnOpenmsxResponse', result.success);
+            });
+        }
     }
 
     private async typePasswordOnOpenmsx(pid: number, password: string, autoPressEnter: boolean) {
