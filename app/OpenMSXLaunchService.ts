@@ -37,6 +37,7 @@ export class OpenMSXLaunchService {
         ['tape', 'cassetteplayer'],
         ['harddisk', 'hda'],
         ['extensionRom', 'ext'],
+        ['extensionRom2', 'ext'],
         ['laserdisc', 'laserdisc']
     ];
 

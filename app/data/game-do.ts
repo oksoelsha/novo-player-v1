@@ -10,6 +10,7 @@ export class GameDO {
     romA: string;
     romB: string;
     extensionRom: string;
+    extensionRom2: string;
     diskA: string;
     diskB: string;
     tape: string;

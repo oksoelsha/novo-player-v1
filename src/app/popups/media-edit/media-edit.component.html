@@ -31,6 +31,13 @@
           [selectedItem]="extensionRom" [resetButton]="true" (selection)="extensionRom = $event"></app-drop-down>
       </div>
     </div>
+    <div class="table-row">
+      <div class="table-cell">{{ 'popups.editmedia.extension' | translate }}</div>
+      <div class="table-cell medium-input">
+        <app-drop-down [list]="extensions" [defaultLabel]="'popups.editmedia.selectextension' | translate"
+          [selectedItem]="extensionRom2" [resetButton]="true" (selection)="extensionRom2 = $event"></app-drop-down>
+      </div>
+    </div>
     <div class="mb-4"></div>
     <div class="table-row">
       <div class="table-cell">{{ 'popups.editmedia.diska' | translate }}</div>

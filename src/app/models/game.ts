@@ -7,6 +7,7 @@ export class Game {
     romA: string;
     romB: string;
     extensionRom: string;
+    extensionRom2: string;
     diskA: string;
     diskB: string;
     tape: string;
@@ -83,6 +84,10 @@ export class Game {
 
     setExtensionRom(extensionRom: string) {
         this.extensionRom = extensionRom;
+    }
+
+    setExtensionRom2(extensionRom: string) {
+        this.extensionRom2 = extensionRom;
     }
 
     setDiskA(diskA: string) {

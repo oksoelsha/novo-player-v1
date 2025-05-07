@@ -17,6 +17,7 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
   romA: string;
   romB: string;
   extensionRom: string;
+  extensionRom2: string;
   diskA: string;
   diskB: string;
   tape: string;
@@ -44,6 +45,7 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
     this.romA = this.game.romA;
     this.romB = this.game.romB;
     this.extensionRom = this.game.extensionRom;
+    this.extensionRom2 = this.game.extensionRom2;
     this.diskA = this.game.diskA;
     this.diskB = this.game.diskB;
     this.tape = this.game.tape;
@@ -55,16 +57,13 @@ export class MediaEditComponent extends PopupComponent implements OnInit, AfterV
     });
   }
 
-  resetExtensionRomSelection() {
-    this.extensionRom = '';
-  }
-
   save() {
     const updatedGame: Game = Object.assign({}, this.game);
 
     updatedGame.romA = this.romA;
     updatedGame.romB = this.romB;
     updatedGame.extensionRom = this.extensionRom;
+    updatedGame.extensionRom2 = this.extensionRom2;
     updatedGame.diskA = this.diskA;
     updatedGame.diskB = this.diskB;
     updatedGame.tape = this.tape;

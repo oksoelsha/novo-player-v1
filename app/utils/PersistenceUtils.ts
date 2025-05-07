@@ -12,6 +12,7 @@ export class PersistenceUtils {
         'romA',
         'romB',
         'extensionRom',
+        'extensionRom2',
         'diskA',
         'diskB',
         'tape',
