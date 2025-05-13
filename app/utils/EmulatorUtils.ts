@@ -2,8 +2,7 @@ export class EmulatorUtils {
 
     static appendParams(args: string[], argsString: string, separator: string) {
         if (argsString) {
-            const regex = new RegExp(String.raw`${separator}(?=(?:(?:[^"]*"){2})*[^"]*$)`, 'g');
-            const params = argsString.split(regex);
+            const params = this.splitArgs(argsString, separator);
             params.forEach((param) => {
                 const sanitizedParam = param.trimEnd();
                 if (sanitizedParam) {
@@ -17,5 +16,27 @@ export class EmulatorUtils {
                 }
             });
         }
+    }
+
+    private static splitArgs(args: string, separator: string): string[] {
+        const argsArray = [];
+        let current = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < args.length; i++) {
+            const char = args[i];
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === separator && (!inQuotes && (i === 0 || args[i - 1] === ' '))) {
+                argsArray.push(current);
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        if (current) {
+            argsArray.push(current);
+        }
+        return argsArray;
     }
 }

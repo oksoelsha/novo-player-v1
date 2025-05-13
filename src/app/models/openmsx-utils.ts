@@ -7,6 +7,7 @@ export class OpenMSXUtils {
       const romTypes = [
         'ASCII8',
         'ASCII16',
+        'ASCII16-X',
         'Konami',
         'KonamiSCC',
         'KonamiUltimateCollection',

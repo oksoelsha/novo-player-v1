@@ -33,7 +33,7 @@ export class FieldWithSuggestionsComponent {
 
   onSelectSuggestion(event: any, suggestion: string) {
     if (this.suggestionsDropdown.isOpen()) {
-      const lastIndexTrigger = this.value.lastIndexOf(this.trigger);
+      const lastIndexTrigger = this.getLastIndexTrigger(this.value);
       const lastIndexSpace = this.value.lastIndexOf(' ');
       const lastIndexTriggerOrSpace = this.getLastIndexTriggerOrSpace(lastIndexTrigger, lastIndexSpace);
       const valueToAppendTo = this.value.substring(0, lastIndexTriggerOrSpace + 1);
@@ -53,7 +53,7 @@ export class FieldWithSuggestionsComponent {
 
   private showSuggestionsForGivenInput(inputText: string) {
     if (inputText) {
-      const lastIndexTrigger = inputText.lastIndexOf(this.trigger);
+      const lastIndexTrigger = this.getLastIndexTrigger(inputText);
       const lastIndexSpace = inputText.lastIndexOf(' ');
       if (lastIndexTrigger === inputText.length - 1) {
         if (lastIndexTrigger === 0 || inputText.charAt(lastIndexTrigger - 1) === ' ') {
@@ -92,6 +92,20 @@ export class FieldWithSuggestionsComponent {
       this.suggestionsDropdown.close();
     }
     this.userInputOutput.emit(this.value);
+  }
+
+  getLastIndexTrigger(inputText: string): number {
+    let lastIndexTrigger = inputText.lastIndexOf(this.trigger);
+    let done = lastIndexTrigger === -1;
+    while (!done) {
+      if (lastIndexTrigger === 0 || inputText.charAt(lastIndexTrigger - 1) === ' ') {
+        done = true;
+      } else {
+        lastIndexTrigger = inputText.lastIndexOf(this.trigger, lastIndexTrigger - 1);
+      }
+    }
+
+    return lastIndexTrigger;
   }
 
   private setSuggestionsList(textToMatch: string, allPossibleSuggestions: string[]) {
