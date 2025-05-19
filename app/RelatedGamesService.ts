@@ -11,6 +11,7 @@ export class RelatedGamesService {
 
     private readonly excludedStrings = new Set<string>();
     private readonly idToCluster = new Map<number, Set<number>>();
+    private readonly wordSynonyms = new Map<string, Set<string>>();
     private readonly NAME_MATCH_ONE_WORD_GAME_SCORE = 5;
     private readonly NAME_MATCH_ONE_IN_MANY_WORDS_SCORE = 3;
     private readonly NAME_MATCH_TWO_OR_MORE_IN_MANY_WORDS_SCORE = 5;
@@ -39,6 +40,7 @@ export class RelatedGamesService {
     private init() {
         this.initExcludedStrings();
         this.initIdToCluster();
+        this.initWordToSynonyms();
 
         ipcMain.on('findRelatedGames', (event: any, game: Game) => {
             this.findRelated(game);
@@ -99,18 +101,36 @@ export class RelatedGamesService {
         });
     }
 
+    private initWordToSynonyms() {
+        const groups: string[][] = [
+            ['soccer', 'football', 'fútbol', 'futbol'],
+            ['dunk', 'basketball'],
+            ['tennis', 'tenis'],
+            ['viper', 'gusano'],
+            ['mystery', 'misterio'],
+            ['q-bert', 'quebert']
+        ];
+
+        groups.forEach((group) => {
+            const groupSet = new Set<string>(group);
+            group.forEach((name) => {
+                this.wordSynonyms.set(name, groupSet);
+            });
+        });
+    }
+
     private async findRelated(game: Game) {
         const similarGames = new Map<number, SimilarGame>();
 
         const repositoryGame = this.repositoryInfo.get(game.sha1Code);
         let companyOfSelectedGame: string;
-        let gameNameParts: Set<string>;
+        let gameNameParts: Set<string>[] = [];
         if (!repositoryGame) {
             companyOfSelectedGame = '';
-            gameNameParts = this.getNormalizedStrings(game.name);
+            gameNameParts = this.getNormalizedStringsWithSynonyms(game.name);
         } else {
             companyOfSelectedGame = repositoryGame.softwareData.company;
-            gameNameParts = this.getNormalizedStrings(repositoryGame.softwareData.title);
+            gameNameParts = this.getNormalizedStringsWithSynonyms(repositoryGame.softwareData.title);
         }
         const clusterForGivenGame = this.idToCluster.get(game.generationMSXId);
 
@@ -175,22 +195,23 @@ export class RelatedGamesService {
         this.win.webContents.send('findRelatedGamesResponse', relatedGames);
     }
 
-    private getNameScore(title: string, gameNameParts: Set<string>): number {
+    private getNameScore(title: string, gameNamePartSets: Set<string>[]): number {
         const repositoryTitleParts = this.getNormalizedStrings(title);
         let score = 0;
         let matches = 0;
-        gameNameParts.forEach((part) => {
-            if (repositoryTitleParts.has(part)) {
-                if (repositoryTitleParts.size == 1 || gameNameParts.size == 1) {
-                    score = score + this.NAME_MATCH_ONE_WORD_GAME_SCORE;
-                } else {
-                    matches++;
-                    score = score + ((matches == 1)
-                        ? this.NAME_MATCH_ONE_IN_MANY_WORDS_SCORE : this.NAME_MATCH_TWO_OR_MORE_IN_MANY_WORDS_SCORE);
+        gameNamePartSets.forEach((partSet) => {
+            partSet.forEach((part) => {
+                if (repositoryTitleParts.has(part)) {
+                    if (repositoryTitleParts.size === 1 || gameNamePartSets.length === 1) {
+                        score = score + this.NAME_MATCH_ONE_WORD_GAME_SCORE;
+                    } else {
+                        matches++;
+                        score = score + ((matches === 1)
+                            ? this.NAME_MATCH_ONE_IN_MANY_WORDS_SCORE : this.NAME_MATCH_TWO_OR_MORE_IN_MANY_WORDS_SCORE);
+                    }
                 }
-            }
+            })
         });
-
         return score;
     }
 
@@ -203,7 +224,7 @@ export class RelatedGamesService {
             const genre2OfRepositoryGame = extraData.genre2;
             let firstMatch = false;
 
-            if (selectedGameGenre1 != 0) {
+            if (selectedGameGenre1 !== 0) {
                 if (selectedGameGenre1 == genre1OfRepositoryGame || selectedGameGenre1 == genre2OfRepositoryGame) {
                     if (selectedGameGenre1 === this.ACTION_GENRE_CODE) {
                         score = score + this.GENRE_ACTION_MATCH_SCORE;
@@ -213,7 +234,7 @@ export class RelatedGamesService {
                     firstMatch = true;
                 }
             }
-            if (selectedGameGenre2 != 0) {
+            if (selectedGameGenre2 !== 0) {
                 if (selectedGameGenre2 == genre1OfRepositoryGame || selectedGameGenre2 == genre2OfRepositoryGame) {
                     if (firstMatch) {
                         score = score + this.GENRE_SECOND_MATCH_SCORE;
@@ -247,6 +268,16 @@ export class RelatedGamesService {
         }
     }
 
+    private getNormalizedStringsWithSynonyms(str: string): Set<string>[] {
+        const parts = (str + '').split(' ');
+
+        return parts.map((s) => s.toLowerCase())
+            .map((s) => s.replace(',', ''))
+            .filter((s) => !this.excludedStrings.has(s))
+            .filter((s) => !(this.isNumber(s) && this.getNumber(s) < 5))
+            .map((s) => this.getSynonyms(s));
+    }
+
     private getNormalizedStrings(str: string): Set<string> {
         const parts = (str + '').split(' ');
 
@@ -254,6 +285,14 @@ export class RelatedGamesService {
             .map((s) => s.replace(',', ''))
             .filter((s) => !this.excludedStrings.has(s))
             .filter((s) => !(this.isNumber(s) && this.getNumber(s) < 5)));
+    }
+
+    private getSynonyms(word: string): Set<string> {
+        let synonyms = this.wordSynonyms.get(word);
+        if (!synonyms) {
+            synonyms = new Set<string>([word]);
+        }
+        return synonyms;        
     }
 
     private isNumber(str: string): boolean {
