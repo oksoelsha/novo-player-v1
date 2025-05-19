@@ -58,11 +58,16 @@ export class RelatedGamesService {
         this.excludedStrings.add('on');
         this.excludedStrings.add('at');
         this.excludedStrings.add('to');
+        this.excludedStrings.add('for');
         this.excludedStrings.add('version');
         this.excludedStrings.add('de');
+        this.excludedStrings.add('del');
         this.excludedStrings.add('el');
+        this.excludedStrings.add('la');
         this.excludedStrings.add('los');
+        this.excludedStrings.add('las');
         this.excludedStrings.add('en');
+        this.excludedStrings.add('y');
         this.excludedStrings.add('&');
     }
 
