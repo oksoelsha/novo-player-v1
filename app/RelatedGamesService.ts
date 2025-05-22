@@ -96,6 +96,15 @@ export class RelatedGamesService {
 
             // Galaga and Galaxian
             [141, 142],
+
+            // Q-Berts
+            [739, 2440, 2990, 8717],
+
+            // Commando style (T.N.T, Who Dares Wins, etc.)
+            [778, 838, 2414, 3148, 5437, 7011],
+
+            // Frogger, Hopper, etc.
+            [70, 2390, 2720, 3442]
         ];
 
         groups.forEach((group) => {
@@ -112,8 +121,7 @@ export class RelatedGamesService {
             ['dunk', 'basketball'],
             ['tennis', 'tenis'],
             ['viper', 'gusano'],
-            ['mystery', 'misterio'],
-            ['q-bert', 'quebert']
+            ['mystery', 'misterio']
         ];
 
         groups.forEach((group) => {
