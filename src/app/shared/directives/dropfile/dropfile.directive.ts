@@ -29,6 +29,8 @@ export class DropfileDirective {
     this.unhighlightForDrop(event);
     if (event.dataTransfer.files.length > 0) {
       this.droppedFile.emit(event.dataTransfer.files[0].path);
+    } else if (event.dataTransfer.getData("text/plain")) {
+      this.droppedFile.emit(event.dataTransfer.getData("text/plain"));
     }
   }
 

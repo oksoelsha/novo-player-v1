@@ -6,7 +6,7 @@
                 <div class="d-flex justify-content-start">
                     <input type="text" class="form-control form-control-sm" id="file" [(ngModel)]="file"
                         [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="file = $event" placement="bottom"
-                        [ngbTooltip]="'popups.quicklaunch.filetooltip' | translate">
+                        [ngbTooltip]="'popups.quicklaunch.filetooltip' | translate" (click)="highlightFileInput()" #fileInput>
                     <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="file = $event"
                         [useIcon]="true">
                     </app-file-system-chooser>

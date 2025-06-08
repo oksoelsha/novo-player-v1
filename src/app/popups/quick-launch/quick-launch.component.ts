@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { OpenMSXUtils } from '../../models/openmsx-utils';
 import { QuickLaunchData } from '../../models/quick-launch-data';
 import { PopupComponent } from '../popup.component';
@@ -13,6 +13,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   @Input() popupId: string;
   @Input() machines: string[] = [];
   @Output() gameToLaunch: EventEmitter<QuickLaunchData> = new EventEmitter<QuickLaunchData>();
+  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
 
   file: string;
   selectedMachine: string;
@@ -43,6 +44,10 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
 
   setOpenmsxParams(parameters: string) {
     this.parameters = parameters;
+  }
+
+  highlightFileInput() {
+    this.fileInput.nativeElement.select();
   }
 
   launch() {

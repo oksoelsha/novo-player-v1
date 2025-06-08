@@ -1,5 +1,7 @@
 import * as cp from 'child_process'
 import * as fs from 'fs';
+import * as https from 'https';
+import * as os from 'os';
 import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron'
 import { EventLogService } from './EventLogService'
@@ -116,19 +118,32 @@ export class OpenMSXLaunchService {
     private async quickLaunch(quickLaunchData: QuickLaunchData, time: number) {
         const args: string[] = [];
         let filename: string;
-        if (fs.existsSync(quickLaunchData.file)) {
-            if (fs.statSync(quickLaunchData.file).isFile()) {
-                const sha1 = await this.hashService.getSha1Code(quickLaunchData.file);
+        let adjustedQuickLaunchData: QuickLaunchData;
+
+        if (quickLaunchData.file.startsWith('https://')) {
+            try {
+                adjustedQuickLaunchData = await this.downloadGame(quickLaunchData);
+            } catch (error) {
+                adjustedQuickLaunchData = new QuickLaunchData(null, quickLaunchData.machine, quickLaunchData.parameters,
+                    quickLaunchData.connectGFX9000);
+            }
+        } else {
+            adjustedQuickLaunchData = quickLaunchData;
+        }
+
+        if (fs.existsSync(adjustedQuickLaunchData.file)) {
+            if (fs.statSync(adjustedQuickLaunchData.file).isFile()) {
+                const sha1 = await this.hashService.getSha1Code(adjustedQuickLaunchData.file);
                 if (sha1) {
-                    this.setQuickLaunchFileArguments(args, quickLaunchData, sha1.filename, sha1.size);
-                    filename = path.basename(quickLaunchData.file);                        
+                    this.setQuickLaunchFileArguments(args, adjustedQuickLaunchData, sha1.filename, sha1.size);
+                    filename = path.basename(adjustedQuickLaunchData.file);                        
                 }
             } else {
-                this.setQuickLaunchDirectoryAsDisk(args, quickLaunchData);
-                filename = path.basename(quickLaunchData.file) + '/';
-            }    
+                this.setQuickLaunchDirectoryAsDisk(args, adjustedQuickLaunchData);
+                filename = path.basename(adjustedQuickLaunchData.file) + '/';
+            }
         }
-        this.setQuickLaunchOtherArguments(args, quickLaunchData);
+        this.setQuickLaunchOtherArguments(args, adjustedQuickLaunchData);
         this.addArgument(args, 'script', this.soundDetectorScript);
 
         const process = this.startOpenmsx(args, time);
@@ -175,6 +190,28 @@ export class OpenMSXLaunchService {
         }, 4000);
 
         return process;
+    }
+
+    private async downloadGame(quickLaunchData: QuickLaunchData) {
+        const tempDirPath = os.tmpdir()
+        const resolvedTempDirPath = fs.realpathSync(tempDirPath);
+        const remoteFilename = quickLaunchData.file.substring(quickLaunchData.file.lastIndexOf('/') + 1);
+        const tempGameFilePath = path.join(resolvedTempDirPath, remoteFilename);
+
+        return new Promise<QuickLaunchData>((resolve, reject) => {
+            https.get(quickLaunchData.file, (res) => {
+                const filePath = fs.createWriteStream(tempGameFilePath);
+                res.pipe(filePath);
+                filePath.on('finish', () => {
+                    filePath.close();
+                    resolve(new QuickLaunchData(tempGameFilePath, quickLaunchData.machine, quickLaunchData.parameters,
+                        quickLaunchData.connectGFX9000));
+                });
+            }).on('error', err => {
+                this.errorLogService.logError('failed to download ', quickLaunchData.file);
+                reject();
+            });
+        });
     }
 
     private getSplitText(error: cp.ExecException): string {
