@@ -51,7 +51,13 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   }
 
   launch() {
-    const quickLaunchData = new QuickLaunchData(this.file, this.selectedMachine, this.parameters, this.connectGFX9000);
+    let sanitizedFile: string;
+    if (this.file.startsWith('https://')) {
+      sanitizedFile = decodeURIComponent(this.file);
+    } else {
+      sanitizedFile = this.file;
+    }
+    const quickLaunchData = new QuickLaunchData(sanitizedFile, this.selectedMachine, this.parameters, this.connectGFX9000);
     this.gameToLaunch.emit(quickLaunchData);
   }
 }
