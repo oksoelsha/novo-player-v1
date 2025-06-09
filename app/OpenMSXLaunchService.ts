@@ -207,6 +207,10 @@ export class OpenMSXLaunchService {
                     resolve(new QuickLaunchData(tempGameFilePath, quickLaunchData.machine, quickLaunchData.parameters,
                         quickLaunchData.connectGFX9000));
                 });
+                filePath.on('error', () => {
+                    this.errorLogService.logError('failed to write downloaded file ', quickLaunchData.file);
+                    reject();
+                });
             }).on('error', err => {
                 this.errorLogService.logError('failed to download ', quickLaunchData.file);
                 reject();
