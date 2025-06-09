@@ -72,7 +72,7 @@ function initializeServices() {
   const errorLogService = new ErrorLogService(win);
 
   const connectionManager = new OpenMSXConnectionManager();
-  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager);
+  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager, extraDataService);
 
   new BlueMSXLaunchService(win, settingsService, eventLogService);
 

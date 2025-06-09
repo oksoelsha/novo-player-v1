@@ -64,7 +64,7 @@ export class GamesService {
         this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
-      this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string) => {
+      this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string, genMSXId: number) => {
         let displayName: string;
         if (filename != null) {
           displayName = '<' + filename + '>';
@@ -72,6 +72,7 @@ export class GamesService {
           displayName = '<>';
         }
         const game = new Game(displayName, '', 0);
+        game.setGenerationMSXId(genMSXId);
         this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
       });
       this.ipc.send('quickLaunch', quickLaunchData, time);

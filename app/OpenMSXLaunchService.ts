@@ -16,6 +16,7 @@ import { ErrorLogService } from './ErrorLogService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import { GameUtils } from './utils/GameUtils';
 import { EmulatorUtils } from './utils/EmulatorUtils';
+import { ExtraDataService } from './ExtraDataService';
 
 class TCLCommands {
     field: string;
@@ -93,7 +94,8 @@ export class OpenMSXLaunchService {
     private soundDetectorScript = path.join(__dirname, 'scripts/detect_sound_chips.tcl');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
-        private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager) {
+        private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager,
+        private extraDataService: ExtraDataService) {
         this.init();
     }
 
@@ -131,12 +133,14 @@ export class OpenMSXLaunchService {
             adjustedQuickLaunchData = quickLaunchData;
         }
 
+        let genMSXId = 0;
         if (fs.existsSync(adjustedQuickLaunchData.file)) {
             if (fs.statSync(adjustedQuickLaunchData.file).isFile()) {
                 const sha1 = await this.hashService.getSha1Code(adjustedQuickLaunchData.file);
                 if (sha1) {
                     this.setQuickLaunchFileArguments(args, adjustedQuickLaunchData, sha1.filename, sha1.size);
-                    filename = path.basename(adjustedQuickLaunchData.file);                        
+                    filename = path.basename(adjustedQuickLaunchData.file);
+                    genMSXId = this.extraDataService.getExtraDataInfo().get(sha1.hash)?.generationMSXID;
                 }
             } else {
                 this.setQuickLaunchDirectoryAsDisk(args, adjustedQuickLaunchData);
@@ -148,7 +152,7 @@ export class OpenMSXLaunchService {
 
         const process = this.startOpenmsx(args, time);
 
-        this.win.webContents.send('quickLaunchProcessIdResponse' + time, process.pid, filename);
+        this.win.webContents.send('quickLaunchProcessIdResponse' + time, process.pid, filename, genMSXId);
     }
 
     private startOpenmsx(args: string[], time: number): cp.ChildProcessWithoutNullStreams {
