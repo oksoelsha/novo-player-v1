@@ -52,7 +52,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
 
   launch() {
     let sanitizedFile: string;
-    if (this.file.startsWith('https://')) {
+    if (this.file?.startsWith('https://')) {
       sanitizedFile = decodeURIComponent(this.file);
     } else {
       sanitizedFile = this.file;

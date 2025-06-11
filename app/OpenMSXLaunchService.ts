@@ -122,7 +122,7 @@ export class OpenMSXLaunchService {
         let filename: string;
         let adjustedQuickLaunchData: QuickLaunchData;
 
-        if (quickLaunchData.file.startsWith('https://')) {
+        if (quickLaunchData.file?.startsWith('https://')) {
             try {
                 adjustedQuickLaunchData = await this.downloadGame(quickLaunchData);
             } catch (error) {
