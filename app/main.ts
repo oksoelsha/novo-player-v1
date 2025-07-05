@@ -26,8 +26,6 @@ import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import { EmuliciousLaunchService } from './EmuliciousLaunchService';
 
 let win: BrowserWindow = null;
-const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
 
@@ -94,8 +92,8 @@ function initializeServices() {
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
-      const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
-      scanService.start(directories, listing, machine);
+    const scanService = new ScanService(win, extraDataService, emulatorRepositoryService, gamesService, hashService);
+    scanService.start(directories, listing, machine);
   });
 
   gamesService.checkIfNeedUpdateDbWithExtraData().then(() => {
@@ -104,25 +102,16 @@ function initializeServices() {
 }
 
 function initializeWindow() {
-  if (serve) {
-    const debug = require('electron-debug');
-    debug();
+  // Path when running electron executable
+  let pathIndex = './index.html';
 
-    require('electron-reloader')(module);
-    win.loadURL('http://localhost:4200');
-  } else {
-    // Path when running electron executable
-    let pathIndex = './index.html';
-
-    if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
-      pathIndex = '../dist/index.html';
-    }
-
-    win.loadURL(url.pathToFileURL(path.join(__dirname, pathIndex)).toString());
+  if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
+    // Path when running electron in local folder
+    pathIndex = '../dist/index.html';
   }
 
-  // Emitted when the window is closed.
+  win.loadURL(url.pathToFileURL(path.join(__dirname, pathIndex)).toString());
+
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
     // in an array if your app supports multi windows, this is the time
@@ -132,44 +121,56 @@ function initializeWindow() {
 }
 
 try {
-  // This method will be called when Electron has finished
-  // initialization and is ready to create browser windows.
-  // Some APIs can only be used after this event occurs.
-  // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  const gotTheLock = app.requestSingleInstanceLock();
 
-  // Quit when all windows are closed.
-  app.on('window-all-closed', () => {
+  if (!gotTheLock) {
     app.quit();
-  });
-
-  app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-      createWindow();
-    }
-  });
-
-  app.on('browser-window-focus', function () {
-    globalShortcut.register("CommandOrControl+R", () => {
+  } else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+      if (win) {
+        if (win.isMinimized()) {
+          win.restore();
+        }
+        win.focus();
+      }
     });
-    globalShortcut.register("CommandOrControl+Shift+R", () => {
-    });
-    globalShortcut.register("CommandOrControl+W", () => {
-    });
-    globalShortcut.register("F5", () => {
-    });
-  });
 
-  app.on('browser-window-blur', function () {
-    globalShortcut.unregister('CommandOrControl+R');
-    globalShortcut.unregister('CommandOrControl+Shift+R');
-    globalShortcut.unregister('CommandOrControl+W');
-    globalShortcut.unregister('F5');
-  });
+    // This method will be called when Electron has finished
+    // initialization and is ready to create browser windows.
+    // Some APIs can only be used after this event occurs.
+    // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
+    app.on('ready', () => setTimeout(createWindow, 400));
 
+    app.on('window-all-closed', () => {
+      app.quit();
+    });
+
+    app.on('activate', () => {
+      // On OS X it's common to re-create a window in the app when the
+      // dock icon is clicked and there are no other windows open.
+      if (win === null) {
+        createWindow();
+      }
+    });
+
+    app.on('browser-window-focus', function () {
+      globalShortcut.register("CommandOrControl+R", () => {
+      });
+      globalShortcut.register("CommandOrControl+Shift+R", () => {
+      });
+      globalShortcut.register("CommandOrControl+W", () => {
+      });
+      globalShortcut.register("F5", () => {
+      });
+    });
+
+    app.on('browser-window-blur', function () {
+      globalShortcut.unregister('CommandOrControl+R');
+      globalShortcut.unregister('CommandOrControl+Shift+R');
+      globalShortcut.unregister('CommandOrControl+W');
+      globalShortcut.unregister('F5');
+    });
+  }
 } catch (e) {
-  // Catch Error
-  // throw e;
+  console.log(e);
 }
