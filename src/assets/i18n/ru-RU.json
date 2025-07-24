@@ -20,7 +20,8 @@
     "select": "Выберите",
     "ok": "ОК",
     "managesession": "Управление сеансом",
-    "sound": "Звук"
+    "sound": "Звук",
+    "errordownloading": "Не удалось загрузить"
   },
   "home": {
     "name": "Имя",
@@ -232,8 +233,7 @@
     "undefined": "Не определен",
     "versions": "Версии",
     "download": "Скачать",
-    "downloading": "в ходе выполнения",
-    "errordownloading": "Не удалось загрузить"
+    "downloading": "в ходе выполнения"
   },
   "popups": {
     "newlisting": "Новый список",
@@ -307,7 +307,12 @@
       "file": "Файл",
       "filetooltip": "Любой файл или папка, поддерживаемые openMSX, даже в Интернете",
       "arguments": "Аргументы",
-      "openmsxparamstooltip": "Аргументы для использования при запуске openMSX (например -romtype KonamiSCC)"
+      "openmsxparamstooltip": "Аргументы для использования при запуске openMSX (например -romtype KonamiSCC)",
+      "filehuntergames": "Игры от file-hunter.com",
+      "folder": "Папка",
+      "filter": "Фильтр",
+      "invalidfile": "Неверный файл",
+      "unknownerror": "Неизвестная ошибка"
     },
     "managebackups": {
       "restore": "Восстановить",

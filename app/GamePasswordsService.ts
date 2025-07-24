@@ -4,7 +4,7 @@ import { BrowserWindow, ipcMain } from 'electron'
 import { GamePasswordsInfo } from '../src/app/models/game-passwords-info';
 
 export class GamePasswordsService {
-    private gamePasswords: string = path.join(__dirname, 'extra/passwords.json');
+    private gamePasswords = path.join(__dirname, 'extra/passwords.json');
     private gamePasswordsInfo: Map<string, GamePasswordsInfo> = new Map();
 
     constructor(private win: BrowserWindow) {

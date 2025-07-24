@@ -20,7 +20,8 @@
     "select": "選択",
     "ok": "Ok",
     "managesession": "セッションの管理",
-    "sound": "サウンド"
+    "sound": "サウンド",
+    "errordownloading": "ダウンロードに失敗しました"
   },
   "home": {
     "name": "名前",
@@ -232,8 +233,7 @@
     "undefined": "未定義",
     "versions": "バージョン",
     "download": "ダウンロード",
-    "downloading": "進行中",
-    "errordownloading": "ダウンロードに失敗しました"
+    "downloading": "進行中"
   },
   "popups": {
     "newlisting": "新しいリスト",
@@ -307,7 +307,12 @@
       "file": "ファイル",
       "filetooltip": "Web上のものも含め、openMSX でサポートされているファイルまたはフォルダー",
       "arguments": "引数",
-      "openmsxparamstooltip": "openMSX の起動時に使用する引数 (例: -romtype KonamiSCC)"
+      "openmsxparamstooltip": "openMSX の起動時に使用する引数 (例: -romtype KonamiSCC)",
+      "filehuntergames": "file-hunter.com のゲーム",
+      "folder": "フォルダー",
+      "filter": "フィルター",
+      "invalidfile": "無効なファイル",
+      "unknownerror": "不明なエラー"
     },
     "managebackups": {
       "restore": "復元",

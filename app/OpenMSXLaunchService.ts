@@ -126,8 +126,8 @@ export class OpenMSXLaunchService {
             try {
                 adjustedQuickLaunchData = await this.downloadGame(quickLaunchData);
             } catch (error) {
-                adjustedQuickLaunchData = new QuickLaunchData(null, quickLaunchData.machine, quickLaunchData.parameters,
-                    quickLaunchData.connectGFX9000);
+                this.win.webContents.send('quickLaunchProcessIdResponse' + time, 0, null, 0, 'ERR_DOWNLOAD_FAILED');
+                return;
             }
         } else {
             adjustedQuickLaunchData = quickLaunchData;
@@ -141,6 +141,10 @@ export class OpenMSXLaunchService {
                     this.setQuickLaunchFileArguments(args, adjustedQuickLaunchData, sha1.filename, sha1.size);
                     filename = path.basename(adjustedQuickLaunchData.file);
                     genMSXId = this.extraDataService.getExtraDataInfo().get(sha1.hash)?.generationMSXID;
+                } else {
+                    this.errorLogService.logError('Invalid file: ', quickLaunchData.file);
+                    this.win.webContents.send('quickLaunchProcessIdResponse' + time, 0, null, 0, 'ERR_INVALID_FILE');
+                    return;
                 }
             } else {
                 this.setQuickLaunchDirectoryAsDisk(args, adjustedQuickLaunchData);
@@ -211,13 +215,13 @@ export class OpenMSXLaunchService {
                     resolve(new QuickLaunchData(tempGameFilePath, quickLaunchData.machine, quickLaunchData.parameters,
                         quickLaunchData.connectGFX9000));
                 });
-                filePath.on('error', () => {
-                    this.errorLogService.logError('failed to write downloaded file ', quickLaunchData.file);
-                    reject();
+                filePath.on('error', (error) => {
+                    this.errorLogService.logError('Failed to write downloaded file ', quickLaunchData.file);
+                    reject(error);
                 });
-            }).on('error', err => {
-                this.errorLogService.logError('failed to download ', quickLaunchData.file);
-                reject();
+            }).on('error', error => {
+                this.errorLogService.logError('Failed to download ', quickLaunchData.file);
+                reject(error);
             });
         });
     }

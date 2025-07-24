@@ -131,14 +131,14 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   takeScreenshot(pid: number, game: Game) {
     this.launchActivityService.takeScreenshot(pid, game).then(success => {
       this.updateMoreScreenshots.emit();
-      super.alert(this.localizationService.translate('popups.openmsxmanagement.screenshottaken'));
+      super.alertSuccess(this.localizationService.translate('popups.openmsxmanagement.screenshottaken'));
     });
   }
 
   resetMachine(pid: number) {
     this.launchActivityService.resetMachine(pid).then(reset => {
       if (reset) {
-        super.alert(this.localizationService.translate('popups.openmsxmanagement.wasreset'));
+        super.alertSuccess(this.localizationService.translate('popups.openmsxmanagement.wasreset'));
       }
     });
   }
@@ -159,13 +159,13 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     if (this.isDisk(game)) {
       this.launchActivityService.switchDisk(pid, medium).then(switched => {
         if (switched) {
-          super.alert(this.localizationService.translate('popups.openmsxmanagement.diskswitched'));
+          super.alertSuccess(this.localizationService.translate('popups.openmsxmanagement.diskswitched'));
         }
       });
     } else {
       this.launchActivityService.switchTape(pid, medium).then(switched => {
         if (switched) {
-          super.alert(this.localizationService.translate('popups.openmsxmanagement.tapeswitched'));
+          super.alertSuccess(this.localizationService.translate('popups.openmsxmanagement.tapeswitched'));
         }
       });
     }
@@ -180,7 +180,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   alertMessage(message: string) {
-    super.alert(message);
+    super.alertSuccess(message);
   }
 
   private setPasswords() {

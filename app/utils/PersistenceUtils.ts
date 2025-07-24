@@ -69,6 +69,10 @@ export class PersistenceUtils {
         return path.join(this.getStoragePath(), 'backups');
     }
 
+    static getFileHunterFilesStoragePath(): string {
+        return path.join(this.getStoragePath(), 'file-hunter');
+    }
+
     private static getPlatformStoragePath(oldStoragePath: string, defaultStoragePath: string, binaryPath: string): string {
         let storagePath: string;
 

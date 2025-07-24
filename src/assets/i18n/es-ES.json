@@ -20,7 +20,8 @@
     "select": "Seleccionar",
     "ok": "Aceptar",
     "managesession": "Administrar sesión",
-    "sound": "Sonido"
+    "sound": "Sonido",
+    "errordownloading": "Error al descargar"
   },
   "home": {
     "name": "Nombre",
@@ -232,8 +233,7 @@
     "undefined": "Indefinido",
     "versions": "Versiones",
     "download": "Descargar",
-    "downloading": "descargando",
-    "errordownloading": "Error al descargar"
+    "downloading": "descargando"
   },
   "popups": {
     "newlisting": "Nueva lista",
@@ -307,7 +307,12 @@
       "file": "Archivo",
       "filetooltip": "Cualquier archivo o carpeta soportado por openMSX, incluso en la Web",
       "arguments": "Argumentos",
-      "openmsxparamstooltip": "Argumentos para usar al iniciar openMSX (por ejemplo, -romtype KonamiSCC)"
+      "openmsxparamstooltip": "Argumentos para usar al iniciar openMSX (por ejemplo, -romtype KonamiSCC)",
+      "filehuntergames": "Juegos de file-hunter.com",
+      "folder": "Carpeta",
+      "filter": "Filtro",
+      "invalidfile": "Archivo no válido",
+      "unknownerror": "Error desconocido"
     },
     "managebackups": {
       "restore": "Restaurar",

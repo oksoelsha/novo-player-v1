@@ -20,7 +20,8 @@
     "select": "Selecteren",
     "ok": "OK",
     "managesession": "Sessie beheren",
-    "sound": "Geluid"
+    "sound": "Geluid",
+    "errordownloading": "Download mislukt"
   },
   "home": {
     "name": "Naam",
@@ -232,8 +233,7 @@
     "undefined": "Niet-gedefinieerd",
     "versions": "Versies",
     "download": "Downloaden",
-    "downloading": "Bezig",
-    "errordownloading": "Download mislukt"
+    "downloading": "Bezig"
   },
   "popups": {
     "newlisting": "Nieuwe lijst",
@@ -307,7 +307,12 @@
       "file": "Bestand",
       "filetooltip": "Elk bestand of elke map die door openMSX wordt ondersteund, zelfs op het web",
       "arguments": "Argumenten",
-      "openmsxparamstooltip": "Argumenten om te gebruiken bij het starten van openMSX (bijv. -romtype KonamiSCC)"
+      "openmsxparamstooltip": "Argumenten om te gebruiken bij het starten van openMSX (bijv. -romtype KonamiSCC)",
+      "filehuntergames": "Spellen van file-hunter.com",
+      "folder": "Map",
+      "filter": "Filter",
+      "invalidfile": "Ongeldig bestand",
+      "unknownerror": "Onbekende fout"
     },
     "managebackups": {
       "restore": "Herstellen",

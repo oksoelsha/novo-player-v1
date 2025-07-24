@@ -7,8 +7,8 @@ import { EnvironmentService } from './EnvironmentService';
 
 export class ExtraDataService implements UpdateListerner {
 
-    private extraDataPathInBundle: string = path.join(__dirname, 'extra/extra-data.dat');
-    private extraDataPathOnDisc: string = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
+    private extraDataPathInBundle = path.join(__dirname, 'extra/extra-data.dat');
+    private extraDataPathOnDisc = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
     private extraDataInfo: Map<string, ExtraData>;
     private extraDataVersion = '';
 

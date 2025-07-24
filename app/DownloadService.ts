@@ -48,7 +48,7 @@ export class DownloadService {
                     resolve();
                 });
             }).on('error', err => {
-                this.errorLogService.logError('failed to download from http://www.msxlaunchers.info/');
+                this.errorLogService.logError('Failed to download from http://www.msxlaunchers.info/');
                 reject();
             });
         });

@@ -20,7 +20,8 @@
     "select": "선택",
     "ok": "확인",
     "managesession": "세션 관리",
-    "sound": "사운드"
+    "sound": "사운드",
+    "errordownloading": "다운로드 실패"
   },
   "home": {
     "name": "이름",
@@ -232,8 +233,7 @@
     "undefined": "정의되지 않음",
     "versions": "버전",
     "download": "다운로드",
-    "downloading": "진행 중",
-    "errordownloading": "다운로드 실패"
+    "downloading": "진행 중"
   },
   "popups": {
     "newlisting": "새 목록",
@@ -307,7 +307,12 @@
       "file": "파일",
       "filetooltip": "웹에 있는 것들을 포함하여 모든 openMSX 호환 파일 또는 폴더",
       "arguments": "인수",
-      "openmsxparamstooltip": "openMSX를 시작할 때 사용할 인수(예: -romtype KonamiSCC)"
+      "openmsxparamstooltip": "openMSX를 시작할 때 사용할 인수(예: -romtype KonamiSCC)",
+      "filehuntergames": "file-hunter.com의 게임",
+      "folder": "폴더",
+      "filter": "필터",
+      "invalidfile": "잘못된 파일",
+      "unknownerror": "알 수 없는 오류"
     },
     "managebackups": {
       "restore": "복원",

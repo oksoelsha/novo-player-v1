@@ -1,4 +1,4 @@
-<button type='button' class="btn btn-secondary btn-sm" (click)="browse()">
-    <img *ngIf="useIcon" [title]="label" src="assets/images/general/browse.png">
+<button type='button' class="btn btn-secondary btn-sm ms-1" (click)="browse()">
+    <span *ngIf="useIcon" [title]="label" class="bi-folder"></span>
     <span *ngIf="!useIcon">{{ label }}</span>
 </button>

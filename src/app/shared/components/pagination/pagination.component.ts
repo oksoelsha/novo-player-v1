@@ -51,6 +51,10 @@ export class PaginationComponent implements OnInit {
     this.page.emit(this.currentPage);
   }
 
+  reset() {
+    this.currentPage = 0;
+  }
+
   private calculateTotalPages() {
     this.totalPages = Math.trunc((this.total - 1) / this.pageSize) + 1;
   }

@@ -2,6 +2,9 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, 
 import { OpenMSXUtils } from '../../models/openmsx-utils';
 import { QuickLaunchData } from '../../models/quick-launch-data';
 import { PopupComponent } from '../popup.component';
+import { GamesService } from '../../services/games.service';
+import { LocalizationService } from '../../services/localization.service';
+import { AlertsService } from '../../shared/components/alerts/alerts.service';
 
 @Component({
   selector: 'app-quick-launch',
@@ -12,7 +15,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
 
   @Input() popupId: string;
   @Input() machines: string[] = [];
-  @Output() gameToLaunch: EventEmitter<QuickLaunchData> = new EventEmitter<QuickLaunchData>();
+  @Input() showFileHunterGames: boolean;
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
 
   file: string;
@@ -20,7 +23,8 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   parameters: string;
   connectGFX9000 = false;
 
-  constructor(protected changeDetector: ChangeDetectorRef) {
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService,
+    private localizationService: LocalizationService, private alertService: AlertsService) {
     super(changeDetector);
   }
 
@@ -58,6 +62,24 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
       sanitizedFile = this.file;
     }
     const quickLaunchData = new QuickLaunchData(sanitizedFile, this.selectedMachine, this.parameters, this.connectGFX9000);
-    this.gameToLaunch.emit(quickLaunchData);
+    this.gamesService.quickLaunchOnOpenMSX(quickLaunchData).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsx') +
+        ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.openmsxwindowclosed'));
+      }
+    }).catch((error) => {
+      // These errors are returned by service before openMSX is even started
+      let translatedError: string;
+      if (error === 'ERR_DOWNLOAD_FAILED') {
+        translatedError = this.localizationService.translate('common.errordownloading');
+      } else if (error === 'ERR_INVALID_FILE') {
+        translatedError = this.localizationService.translate('popups.quicklaunch.invalidfile');
+      } else {
+        translatedError = this.localizationService.translate('popups.quicklaunch.unknownerror');
+      }
+      super.alertFailure(translatedError);
+    });
   }
 }

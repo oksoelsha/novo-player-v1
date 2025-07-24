@@ -40,6 +40,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   displayMode: string;
   displayModes: string[] = [];
   displayModeReverseMap: Map<string, string>;
+  fileHunterGames = false;
 
   constructor(private settingsService: SettingsService, private alertService: AlertsService, private gamesService: GamesService,
     private localizationService: LocalizationService, private platformService: PlatformService, private windowService: WindowService) { }
@@ -71,6 +72,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.giantbombApiKey = settings.giantbombApiKey;
       self.news = settings.enableNews;
       self.setSelectedDisplayMode(settings);
+      self.fileHunterGames = settings.enableFileHunterGames;
     });
   }
 
@@ -120,7 +122,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
       this.languageReverseMap.get(this.language), form.value['giantbomb-apikey'], form.value.news,
-      this.displayModeReverseMap.get(this.displayMode), form.value['emulicious-path'], this.emuliciousParams);
+      this.displayModeReverseMap.get(this.displayMode), form.value['emulicious-path'], this.emuliciousParams,
+      form.value.fileHunterGames);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);

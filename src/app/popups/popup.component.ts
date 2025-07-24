@@ -81,18 +81,12 @@ export class PopupComponent implements OnDestroy {
     this.changeDetector.detach();
   }
 
-  alert(message: string) {
-    const alertElement = document.getElementById(this.popupId + '-popup-alert-area');
-    alertElement.innerText = message;
-    alertElement.classList.add('success-alert');
+  alertSuccess(message: string) {
+    this.alert(message, 'success-alert');
+  }
 
-    if (this.timer != null) {
-      clearTimeout(this.timer);
-    }
-    this.timer = setTimeout(() => {
-      alertElement.innerText = '';
-      alertElement.classList.remove('success-alert');
-    }, 10000);
+  alertFailure(message: string) {
+    this.alert(message, 'failure-alert');
   }
 
   protected isWindowOpen(): boolean {
@@ -108,5 +102,19 @@ export class PopupComponent implements OnDestroy {
       e.preventDefault();
       e.stopPropagation();
     }
+  }
+
+  private alert(message: string, classname: string) {
+    const alertElement = document.getElementById(this.popupId + '-popup-alert-area');
+    alertElement.innerText = message;
+    alertElement.classList.add(classname);
+
+    if (this.timer != null) {
+      clearTimeout(this.timer);
+    }
+    this.timer = setTimeout(() => {
+      alertElement.innerText = '';
+      alertElement.classList.remove(classname);
+    }, 10000);
   }
 }

@@ -10,6 +10,7 @@
                     <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="file = $event"
                         [useIcon]="true">
                     </app-file-system-chooser>
+                    <app-file-hunter *ngIf="showFileHunterGames" (gameLink)="file = $event"></app-file-hunter>
                 </div>
             </div>
         </div>

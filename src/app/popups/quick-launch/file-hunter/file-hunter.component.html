@@ -1,0 +1,26 @@
+<div class="d-inline-block ms-1" ngbDropdown #fileHunterDropdown="ngbDropdown">
+    <button class="btn btn-secondary btn-sm file-hunter-button" type="button"
+        [title]="'popups.quicklaunch.filehuntergames' | translate" ngbDropdownToggle>
+        <span class="bi-globe2"></span>
+    </button>
+    <div ngbDropdownMenu class="pt-0 pb-0 games-list">
+        <div class="d-flex justify-content-between top-part">
+            <div class="full-path-line">{{ 'popups.quicklaunch.folder' | translate }}:
+                <span class="full-path">{{ currentFullPath }}</span>
+            </div>
+            <div class="d-flex">
+                <input type="text" class="filter-field" [(ngModel)]="filter" (input)="actOnFilter(currentFolder, 0)"
+                    spellcheck="false" [placeholder]="'popups.quicklaunch.filter' | translate" />
+            </div>
+        </div>
+        <div *ngIf="currentFolder" class="node-row pe-2 ps-2" (click)="onSelectGoUp()">
+            . . /
+        </div>
+        <div *ngFor="let fileNode of fileNodes" class="node-row pe-2 ps-2" (click)="onSelectFileNode(fileNode)">
+            <span *ngIf="fileNode.isFolder" class="folder-line">{{ fileNode.name }}/</span>
+            <span *ngIf="!fileNode.isFolder">{{ fileNode.name }}</span>
+        </div>
+        <app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize"
+            (page)="getList(currentFolder, $event)" #pagination></app-pagination>
+    </div>
+</div>

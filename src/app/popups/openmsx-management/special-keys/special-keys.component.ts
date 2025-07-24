@@ -35,6 +35,6 @@ export class SpecialKeysComponent {
       if (pressed) {
         this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.specialkeyspressed'));
       }
-    });    
+    });
   }
 }

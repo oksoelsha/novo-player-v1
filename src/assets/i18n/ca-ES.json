@@ -20,7 +20,8 @@
     "select": "Selecciona",
     "ok": "D’acord",
     "managesession": "Gestiona la sessió",
-    "sound": "So"
+    "sound": "So",
+    "errordownloading": "No s'ha pogut descarregar"
   },
   "home": {
     "name": "Nom",
@@ -232,8 +233,7 @@
     "undefined": "No definit",
     "versions": "Versions",
     "download": "Descarregar",
-    "downloading": "descarregant",
-    "errordownloading": "No s'ha pogut descarregar"
+    "downloading": "descarregant"
   },
   "popups": {
     "newlisting": "Nova llista",
@@ -307,7 +307,12 @@
       "file": "Fitxer",
       "filetooltip": "Qualsevol fitxer o carpeta compatible amb openMSX, inclòs el web",
       "arguments": "Arguments",
-      "openmsxparamstooltip": "Arguments per utilitzar en iniciar openMSX (per exemple, -romtype KonamiSCC)"
+      "openmsxparamstooltip": "Arguments per utilitzar en iniciar openMSX (per exemple, -romtype KonamiSCC)",
+      "filehuntergames": "Jocs de file-hunter.com",
+      "folder": "Carpeta",
+      "filter": "Filtre",
+      "invalidfile": "Fitxer no vàlid",
+      "unknownerror": "Error desconegut"
     },
     "managebackups": {
       "restore": "Restaurar",

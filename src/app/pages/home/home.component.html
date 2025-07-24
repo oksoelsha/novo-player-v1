@@ -522,7 +522,7 @@
 <app-popup popupId="quick-launch-id" [titleHeader]="'home.quicklaunch' | translate" (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
     <app-quick-launch [popupId]="popupId" (openStatus)="popupOpen = $event" [machines]="machines"
-      (gameToLaunch)="quickLaunchOpenmsx($event)" #quickLaunch>
+      [showFileHunterGames]="showFileHunterGames" #quickLaunch>
     </app-quick-launch>
   </ng-template>
 </app-popup>

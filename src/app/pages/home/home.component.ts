@@ -138,6 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   displayMode: string;
   screenshotsPath: string;
   selectedPid = 0;
+  showFileHunterGames = false;
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -374,6 +375,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           self.selectedListing = settings.defaultListing;
         }
         self.getGames(this.selectedListing, gameSha1Code);
+        self.showFileHunterGames = settings.enableFileHunterGames;
       });
 
       this.isOpenMSXPathDefined = settings.openmsxPath != null && settings.openmsxPath.trim() !== '';
@@ -494,17 +496,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   launchOpenmsxWithState(state: string) {
     this.launchGameOrStateOnOpenmsx(this.selectedGame, state);
-  }
-
-  quickLaunchOpenmsx(quickLaunchData: QuickLaunchData) {
-    this.gamesService.quickLaunchOnOpenMSX(quickLaunchData).then((errorMessage: string) => {
-      if (errorMessage) {
-        this.alertService.failure(this.localizationService.translate('home.failedtostartopenmsx') +
-        ' [' + errorMessage + ']');
-      } else {
-        this.alertService.info(this.localizationService.translate('home.openmsxwindowclosed'));
-      }
-    });
   }
 
   launchWebmsx(game: Game) {

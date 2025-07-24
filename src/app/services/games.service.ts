@@ -64,16 +64,20 @@ export class GamesService {
         this.launchActivityService.recordGameFinish(time);
         resolve(errorMessage);
       });
-      this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string, genMSXId: number) => {
-        let displayName: string;
-        if (filename != null) {
-          displayName = '<' + filename + '>';
+      this.ipc.once('quickLaunchProcessIdResponse' + time, (event, pid: number, filename: string, genMSXId: number, errCode: string) => {
+        if (pid > 0) {
+          let displayName: string;
+          if (filename != null) {
+            displayName = '<' + filename + '>';
+          } else {
+            displayName = '<>';
+          }
+          const game = new Game(displayName, '', 0);
+          game.setGenerationMSXId(genMSXId);
+          this.launchActivityService.recordGameStart(game, time, pid, EventSource.openMSX);
         } else {
-          displayName = '<>';
+          reject(errCode);
         }
-        const game = new Game(displayName, '', 0);
-        game.setGenerationMSXId(genMSXId);
-        this.launchActivityService.recordGameStart(game, time, pid,  EventSource.openMSX);
       });
       this.ipc.send('quickLaunch', quickLaunchData, time);
     });

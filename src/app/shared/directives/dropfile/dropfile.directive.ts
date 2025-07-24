@@ -29,8 +29,8 @@ export class DropfileDirective {
     this.unhighlightForDrop(event);
     if (event.dataTransfer.files.length > 0) {
       this.droppedFile.emit(event.dataTransfer.files[0].path);
-    } else if (event.dataTransfer.getData("text/plain")) {
-      const link = event.dataTransfer.getData("text/plain");
+    } else if (event.dataTransfer.getData('text/plain')) {
+      const link = event.dataTransfer.getData('text/plain');
       if (link.startsWith('https://')) {
         this.droppedFile.emit(decodeURIComponent(link));
       }
