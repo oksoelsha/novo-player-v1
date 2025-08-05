@@ -17,6 +17,7 @@ import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import { GameUtils } from './utils/GameUtils';
 import { EmulatorUtils } from './utils/EmulatorUtils';
 import { ExtraDataService } from './ExtraDataService';
+import { Application } from './Application';
 
 class TCLCommands {
     field: string;
@@ -207,7 +208,12 @@ export class OpenMSXLaunchService {
         const tempGameFilePath = path.join(resolvedTempDirPath, remoteFilename);
 
         return new Promise<QuickLaunchData>((resolve, reject) => {
-            https.get(quickLaunchData.file, (res) => {
+            const options = {
+                headers: {
+                    'User-Agent': 'NovoPlayer/' + Application.VERSION
+                }
+            };
+            https.get(quickLaunchData.file, options, (res) => {
                 const filePath = fs.createWriteStream(tempGameFilePath);
                 res.pipe(filePath);
                 filePath.on('finish', () => {
