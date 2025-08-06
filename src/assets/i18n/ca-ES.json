@@ -308,7 +308,7 @@
       "filetooltip": "Qualsevol fitxer o carpeta compatible amb openMSX, inclòs el web",
       "arguments": "Arguments",
       "openmsxparamstooltip": "Arguments per utilitzar en iniciar openMSX (per exemple, -romtype KonamiSCC)",
-      "filehuntergames": "Jocs de file-hunter.com",
+      "filehuntergames": "Jocs de file-hunter.com (Llançament ràpid)",
       "folder": "Carpeta",
       "filter": "Filtre",
       "invalidfile": "Fitxer no vàlid",

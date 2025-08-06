@@ -308,7 +308,7 @@
       "filetooltip": "Любой файл или папка, поддерживаемые openMSX, даже в Интернете",
       "arguments": "Аргументы",
       "openmsxparamstooltip": "Аргументы для использования при запуске openMSX (например -romtype KonamiSCC)",
-      "filehuntergames": "Игры от file-hunter.com",
+      "filehuntergames": "Игры от file-hunter.com (Быстрый запуск)",
       "folder": "Папка",
       "filter": "Фильтр",
       "invalidfile": "Неверный файл",

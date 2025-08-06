@@ -308,7 +308,7 @@
       "filetooltip": "웹에 있는 것들을 포함하여 모든 openMSX 호환 파일 또는 폴더",
       "arguments": "인수",
       "openmsxparamstooltip": "openMSX를 시작할 때 사용할 인수(예: -romtype KonamiSCC)",
-      "filehuntergames": "file-hunter.com의 게임",
+      "filehuntergames": "file-hunter.com의 게임 (빠른 실행)",
       "folder": "폴더",
       "filter": "필터",
       "invalidfile": "잘못된 파일",

@@ -308,7 +308,7 @@
       "filetooltip": "Qualsiasi file o cartella supportato da openMSX, anche sul Web",
       "arguments": "Argomenti",
       "openmsxparamstooltip": "Argomenti da utilizzare quando si avvia openMSX (ad esempio -romtype KonamiSCC)",
-      "filehuntergames": "Giochi da file-hunter.com",
+      "filehuntergames": "Giochi da file-hunter.com (Lancio rapido)",
       "folder": "Cartella",
       "filter": "Filtro",
       "invalidfile": "File non valido",

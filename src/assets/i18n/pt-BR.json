@@ -308,7 +308,7 @@
       "filetooltip": "Qualquer arquivo ou pasta suportado pelo openMSX, mesmo na Web",
       "arguments": "Argumentos",
       "openmsxparamstooltip": "Argumentos a serem usados ao lançar blueMSX (por exemplo, -romtype KonamiSCC)",
-      "filehuntergames": "Jogos do file-hunter.com",
+      "filehuntergames": "Jogos do file-hunter.com (Lançamento rápido)",
       "folder": "Pasta",
       "filter": "Filtro",
       "invalidfile": "Arquivo inválido",
