@@ -17,6 +17,7 @@
 	Jun 2023 Sam Elsharif		version 12
 	Sep 2023 Sam Elsharif		version 13
 	Oct 2024 Sam Elsharif		version 14
+	Aug 2025 Sam Elsharif		version 15
 -->
 <softwaredb>
 	<software>
@@ -44,6 +45,7 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">b97b17acd1b603ff90caf95f348625a22e50a4e3</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">2a39e835b942ab4232c714e5cbce80615becf7cd</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">db405dfd53f26b7dd459423269f81b726cda1336</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5f0ea4080628512d0c4519b51e0a0cef8a511019</hash></format><remark><text>translation by MP83 &amp; Lars the 18th</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Akin</title>
@@ -330,6 +332,7 @@
 		<country>NL</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">7436fe06ff763639c9135fd58f459f61b28262e4</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">b9cc374d734cbb275b490f253fac724dd5d2072b</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">fd3fcb18d8bed2892ffebaab6432f8523e989c80</hash></format><remark><text>English</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Bubble Rain</title>
@@ -393,6 +396,7 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">49f15ca4541883298b1380c729b02d6247fdeaa8</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">e00d8a19cb62f2192ceba27a42165830884a9fd6</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">ff4ec1cb12caaa8ac08ba3aa98461ae0386897f0</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8231ae2195ce92393165c9571cb020bf1ba889ec</hash></format><remark><text>T-En by Django</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Columns</title>
@@ -583,7 +587,11 @@
 		<country>NL</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">ce56341e7a0968370e56eb3948061fd9b752c83a</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">ce8b936c53e3559820f8239ad0e3a8d271e134d1</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">648514e72576ca0e020c2b7c8cff3d13002bf9b2</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">ee38074b6edc31799a16c3593ca4d7ef68994f4f</hash></format><remark><text>PSG Fix</text></remark></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">95ce5cbd0687552a52a3055c4ff8c667705a57ce</hash></format><remark><text>Dutch</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">45bd3a6f0ebe3e41f0cb94fd26590623f59003cc</hash></format><remark><text>Dutch</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5321909e4fff5ee8be5f3d9fdcaffce6723a3197</hash></format><remark><text>Dutch - PSG Fix</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Eggbert</title>
@@ -592,6 +600,7 @@
 		<year>1994</year>
 		<country>NL</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">ae244126c8987d530ed2461d2371ecc4addc7244</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8827357f265b5a8f9f67b72c9114d535995586a9</hash></format><remark><text>V9990 Version</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Entasis</title>
@@ -904,15 +913,28 @@
 		<year>1985</year>
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">5588dfcff4938b0740b4c13616850a6df5062d52</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">9aff5d9edb61e7e695f01c4860fc1781422c1c62</hash></format><remark><text>Fixed</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">fa712b998c1099be2a60bbce6b44b04c4e1324d6</hash></format><remark><text>FRS Fixed</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">33024080129063350b3bd9dc51a1ad7a78aea465</hash></format><remark><text>GDX Fixed</text></remark></dsk></dump>
 	</software>
 	<software>
-		<title>Knightmare Gold</title>
+		<title>Knightmare Gold 2.0</title>
 		<system>MSX</system>
 		<company>Amusement Factory</company>
 		<year>2006</year>
 		<country>BR</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">76bbabe16db07a7c8e6477f7d97d85d897508864</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Knightmare Gold 3.0</title>
+		<system>MSX</system>
+		<company>Amusement Factory</company>
+		<year>2008</year>
+		<country>BR</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">a74400276377c736d4f1f9d970e35c78c8c569c4</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">bbfd47a2b3707ee5ae53e527f994f60b726d6b61</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">cb19443b43577bdc3e7499a79e4dada392d5a324</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7fd9aa03b5c60b693ceb2dd361985d1c39983244</hash></format><remark><text>Invincible</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>KPI Ball</title>
@@ -989,6 +1011,7 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">d504ff2e64486eac90c222856bc5dd2910b055d3</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">1bdd0ff72cd6005ed2139b615c2d9fd22f73d02d</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">46f1fbd18ec6d5be27f56dbfd151e620dd39ebf7</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">910e72c17c3c8b8170156a200221b229d4a47a5e</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Laydock 2 - Last Attack</title>
@@ -1105,6 +1128,7 @@
 		<year>2001</year>
 		<country>US</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">6d2faf4cd43ede005103e50a5b8bfdaa52ad24d5</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">b67c2cceb1bc016d516a229aaccaf260a5b6d3c6</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>New Music - Turbo-R</title>
@@ -1113,6 +1137,7 @@
 		<year>2009</year>
 		<country>CA</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">015d6fbc96771e0513aaf0bafcd9b107caf85d91</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">007c7f930ef5d2398c9ece0fd23318f162a8112f</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Niko2</title>
@@ -1165,6 +1190,11 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">1ed7015ecd3f60c77638a0af7c161a3bce4bc737</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">f04abb4b149db20a860984062fc66d207e852538</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">cb2ef6028e50eb10cfda676224f8a86fc4e83151</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">4898a70bbc66af927db689007531e3ce7684ac92</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">4e9171aba651effdcaf3012c677108534f47ee79</hash></format><remark><text>NYYRIKKI Fixed</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7796e79705857bd84dddf39efe39298dd773e924</hash></format><remark><text>NYYRIKKI Fixed</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">fbccd057bf20d40a33558ec7dea2f3adbf7e2017</hash></format><remark><text>NYYRIKKI Fixed</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">d269bbe2afa41a9da6d708b5353329025c8e7d54</hash></format><remark><text>NYYRIKKI Fixed</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Palamedes</title>
@@ -1660,6 +1690,8 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">9eff907fab1ba3c3c24c297d5d23f5b7c0083466</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">7ac6de3934dd761dd4e3027c4cefacca70d5fa7e</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">f05b0b58f9ff8c64c4797c7c30183672524ace42</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">a8ce8d1f6a0d52419b239af45a314b83fe2bed32</hash></format><remark><text>Woomb</text></remark></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">46e4c3641c87e96117bd1b5cb4451002041575b1</hash></format><remark><text>Woomb - R800 Fix</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>Urusei Yatsura: Koi no Survival Birthday</title>
@@ -1679,6 +1711,8 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">1218d1446a72cc6b0023e900ba52fb21a08669df</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">dcc2e551c0017e81e275c4d3d01e21d644dd9eb4</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">7456e64aeae5c7e5efe74665a9c79d5ede3fd17d</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">2079621d00f031fd3530c31a160a5e501d5ec77c</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">c74a87995aa7031a9e2c316c2370daa90913dfcd</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Vicious Viper</title>

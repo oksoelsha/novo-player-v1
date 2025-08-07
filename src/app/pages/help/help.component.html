@@ -150,7 +150,8 @@
     built-in database of known game passwords), enable cheats (using openMSX's trainer feature) and switch disks or tapes.
     <p></p>
     The vast majority of built-in game passwords work on both openMSX and WebMSX. However, there are some exceptions, such as
-    "The Goonies r Good Enough" passwords which work only on WebMSX.
+    "The Goonies r Good Enough" passwords which work only on WebMSX. That depends on the how the keyboard input routine was implemented
+    in the game and its compatibility with the commands used on openMSX and WebMSX to type text.
     <p></p>
     To be able to view which platforms the selected game was released on, and to view its box art and additional screenshots,
     you'll need to get an API key from the
@@ -160,7 +161,22 @@
     When enabling MSX News in the settings, the player will get news from the following sites: MSX Launchers, MSX Resource
     Center, MSX Blog and Press Play on Tape.
     <p></p>
+    When enabling games from file-hunter.com in the settings, the Quick Launch window will show a button that displays games from
+    file-hunter.com (certain subfolders under Games/). When a game is selected, its URL will be copied to the file text field. openMSX
+    will be launched with the game after downloading it to a temporary folder. The text field can take local files and folders, and
+    also URLs to games on the Web, from file-hunter or otherwise.
+    <p></p>
     <h5>History</h5>
+    <div>Version 1.13 - Aug 10, 2025</div>
+    <ul>
+      <li>Display list of games from file-hunter.com in the Quick Launch window and allow to launch them on openMSX. The game
+        will be downloaded to a temporary folder before running it on openMSX</li>
+      <li>Allow games on the web to be used as openMSX files in the Quick Launch window. openMSX will be launched with the game after downloading it to a temporary folder</li>
+      <li>Allow to press special keyboard keys (CTRL+STOP, STOP, CODE) in openMSX management window</li>
+      <li>Added ability to set a second extension when editing game media</li>
+      <li>Enable use of left and right arrow keys to move between screenshots taken in the openMSX session management window</li>
+      <li>Few bug fixes, enhancements and updates</li>
+    </ul>
     <div>Version 1.12 - Jan 25, 2025</div>
     <ul>
       <li>Added sound chip detection and usage to the openMSX session management window</li>
