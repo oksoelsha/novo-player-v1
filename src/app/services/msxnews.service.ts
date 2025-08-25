@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { NewsCollection, NewsItem } from '../models/news-collection';
 import { SettingsService } from './settings.service';
 

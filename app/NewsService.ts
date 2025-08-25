@@ -67,7 +67,7 @@ export class NewsService {
                 });
                 resolve(new SiteNews(feedInfo[2], news, latestTime));
             } catch (err) {
-                this.errorLogService.logError('Error connecting to news site', feedInfo[0]);
+                this.errorLogService.logError('Error connecting to news site', feedInfo[0], ": ", err.message);
                 reject();
             }
         });
