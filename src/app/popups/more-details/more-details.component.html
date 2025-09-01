@@ -25,4 +25,17 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <td class="field">SHA-256</td>
+        <td class="value">
+            <div *ngIf="sha256">
+                {{ sha256 }}
+                <img src="assets/images/general/copy.png" class="copy" draggable="false" (click)="copy(sha256)"
+                    [title]="'home.copy' | translate" [ngbPopover]="'home.copied' | translate" placement="bottom" />
+            </div>
+            <div *ngIf="!sha256">
+                <img src="assets/images/general/loading.gif">
+            </div>
+        </td>
+    </tr>
 </table>

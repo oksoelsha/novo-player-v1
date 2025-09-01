@@ -17,9 +17,9 @@ export class MoreDetailsComponent  extends PopupComponent implements OnInit, Aft
 
   crc32: string;
   md5: string;
+  sha256: string;
 
-  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService, private clipboard: Clipboard,
-    private localizationService: LocalizationService) {
+  constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService, private clipboard: Clipboard) {
     super(changeDetector);
   }
 
@@ -36,6 +36,7 @@ export class MoreDetailsComponent  extends PopupComponent implements OnInit, Aft
     this.gamesService.getMoreGameHashes(this.game).then((hashes: any) => {
       this.crc32 = hashes.crc32;
       this.md5 = hashes.md5;
+      this.sha256 = hashes.sha256;
     });
     super.open();
   }
@@ -44,6 +45,7 @@ export class MoreDetailsComponent  extends PopupComponent implements OnInit, Aft
     super.close(() => {
       this.crc32 = null;
       this.md5 = null;
+      this.sha256 = null;
     });
   }
 

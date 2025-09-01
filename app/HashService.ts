@@ -1,5 +1,4 @@
 import crc32 from 'crc/crc32';
-import md5File from 'md5-file';
 import * as crypto from 'crypto';
 import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
@@ -24,9 +23,9 @@ export class HashService {
         let sha1: Promise<any>;
         if (fs.statSync(filename)['size'] > 10485760) {
             // any files larger than 10Mb are considered large that we need to send them to the more limited promise batch size
-            sha1 = this.largeFileScanBatchSize(() => this.getSha1(filename).catch(error => null));
+            sha1 = this.largeFileScanBatchSize(() => this.getHash(filename, 'sha1').catch(error => null));
         } else {
-            sha1 = this.smallFileScanBatchSize(() => this.getSha1(filename).catch(error => null));
+            sha1 = this.smallFileScanBatchSize(() => this.getHash(filename, 'sha1').catch(error => null));
         }
 
         return sha1;
@@ -38,8 +37,8 @@ export class HashService {
         });
     }
 
-    private getSha1(filename: string): Promise<any> {
-        const shasum = crypto.createHash('sha1');
+    private getHash(filename: string, algorithm: string): Promise<any> {
+        const shasum = crypto.createHash(algorithm);
         if (FileTypeUtils.isZip(filename)) {
             const StreamZip = require('node-stream-zip');
             return new Promise<any>((resolve, reject) => {
@@ -54,31 +53,50 @@ export class HashService {
                     const entries = Object.keys(zip.entries()).map(e => zip.entries()[e]);
                     const msxFileIndex = this.getMSXFileIndexInZip(entries);
                     if (msxFileIndex < entries.length) {
-                        zip.stream(entries[msxFileIndex].name, function (err: string, stm: Stream) {
-                            stm.on('data', function (data) {
+                        zip.stream(entries[msxFileIndex].name, (err: string, stm: Stream) => {
+                            stm.on('data', (data) => {
                                 shasum.update(data);
                             });
-                            stm.on('end', function () {
+                            stm.on('end', () => {
                                 const hash = shasum.digest('hex');
                                 zip.close();
-                                return resolve({hash: hash, size: entries[msxFileIndex].size, filename: entries[msxFileIndex].name});
+                                return resolve({
+                                    algorithm: algorithm,
+                                    hash: hash,
+                                    size: entries[msxFileIndex].size,
+                                    filename: entries[msxFileIndex].name
+                                });
                             });
-                        })
+                        });
                     } else {
-                        return resolve(null);
+                        return resolve({
+                            algorithm: algorithm,
+                            hash: '-',
+                            size: 0,
+                            filename: ''
+                        });
                     }
                 });
             });
         } else {
             return new Promise<any>((resolve, reject) => {
-                const s: fs.ReadStream = fs.createReadStream(filename);
-                s.on('data', function (data) {
+                const stream = fs.createReadStream(filename);
+                stream.on('data', (data: crypto.BinaryLike) => {
                     shasum.update(data);
-                })
-                s.on('end', function () {
+                });
+                stream.on('error', (err) => {
+                    return resolve({
+                        algorithm: algorithm,
+                        hash: '-'});
+                });
+                stream.on('end', () => {
                     const hash = shasum.digest('hex');
-                    return resolve({hash: hash, size: fs.statSync(filename)['size'], filename: filename});
-                })
+                    return resolve({
+                        algorithm: algorithm,
+                        hash: hash,
+                        size: fs.statSync(filename)['size'],
+                        filename: filename});
+                });
             });
         }
     }
@@ -96,8 +114,53 @@ export class HashService {
 
     private getMoreGameHashes(game: Game) {
         const mainFilename = GameUtils.getGameMainFile(game);
-        const crc32Hash = crc32(fs.readFileSync(mainFilename)).toString(16);
-        const md5Hash = md5File.sync(mainFilename);
-        this.win.webContents.send('getMoreGameHashesResponse', { crc32: crc32Hash, md5: md5Hash });
+        const allHashes: Promise<any>[] = [];
+        allHashes.push(this.getCRC32(mainFilename));
+        allHashes.push(this.getMD5(mainFilename));
+        allHashes.push(this.getSha256(mainFilename));
+
+        const result = {};
+        Promise.allSettled(allHashes).then((hashes) => {
+            hashes.forEach((hash) => {
+                if (hash.status === 'fulfilled') {
+                    result[hash.value.algorithm] = hash.value.hash;
+                }
+            });
+            this.win.webContents.send('getMoreGameHashesResponse', result);
+        });
+    }
+
+    private async getCRC32(filename: string): Promise<any> {
+        if (FileTypeUtils.isZip(filename)) {
+            const StreamZip = require('node-stream-zip');
+            const zip = new StreamZip.async({ file: filename });
+            const entries = await zip.entries();
+            const entriesArray = Object.keys(entries).map(e => entries[e]);
+            const msxFileIndex = this.getMSXFileIndexInZip(entriesArray);
+            if (msxFileIndex < entriesArray.length) {
+                const data = await zip.entryData(entriesArray[msxFileIndex].name);
+                await zip.close();
+                return { algorithm: 'crc32', hash: crc32(data).toString(16) };
+            } else {
+                await zip.close();
+                return { algorithm: 'crc32', hash: '-' };
+            }
+        } else {
+            let contents: Buffer;
+            try {
+                contents = fs.readFileSync(filename);
+                return { algorithm: 'crc32', hash: crc32(contents).toString(16) };
+            } catch (error) {
+                return { algorithm: 'crc32', hash: '-' };
+            }
+        }
+    }
+
+    private async getMD5(filename: string): Promise<any> {
+        return this.getHash(filename, 'md5');
+    }
+
+    private async getSha256(filename: string): Promise<any> {
+        return this.getHash(filename, 'sha256');
     }
 }
