@@ -8,6 +8,7 @@ import { GamesService } from '../../services/games.service';
 import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
 import { GamePasswordsInfo } from '../../models/game-passwords-info';
+import { Medium } from '../../models/medium';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -216,16 +217,19 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   private setFileGroup() {
-    let medium: string;
+    let medium: Medium;
+    let file: string;
     if (this.isDisk(this.game)) {
-      medium = this.game.diskA;
+      medium = Medium.disk;
+      file = this.game.diskA;
     } else if (this.isTape(this.game)) {
-      medium = this.game.tape;
+      medium = Medium.tape;
+      file = this.game.tape;
     } else {
-      medium = null;
+      file = null;
     }
-    if (medium) {
-      this.filesService.getFileGroup(this.pid, medium).then((fileGroup: string[]) => {
+    if (file) {
+      this.filesService.getFileGroup(this.pid, medium, file).then((fileGroup: string[]) => {
         this.fileGroup = fileGroup;
       });
     }

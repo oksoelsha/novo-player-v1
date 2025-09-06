@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IpcRenderer } from 'electron';
+import { Medium } from '../models/medium';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +23,17 @@ export class FilesService {
     });
   }
 
-  getFileGroup(id: number, medium: string): Promise<string[]> {
-    const cachedValue = this.cachedFileGroup.get(medium);
+  getFileGroup(id: number, medium: Medium, file: string): Promise<string[]> {
+    const cachedValue = this.cachedFileGroup.get(file);
     if (cachedValue) {
       return Promise.resolve(cachedValue);
     } else {
       return new Promise<string[]>((resolve, reject) => {
         this.ipc.once('getFileGroupResponse' + id, (event: any, fileGroup: string[]) => {
-          this.cachedFileGroup.set(medium, fileGroup);
+          this.cachedFileGroup.set(file, fileGroup);
           resolve(fileGroup);
         });
-        this.ipc.send('getFileGroup', id, medium);
+        this.ipc.send('getFileGroup', id, medium, file);
       });
     }
   }

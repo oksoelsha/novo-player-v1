@@ -7,6 +7,7 @@ import * as cp from 'child_process'
 import { PlatformUtils } from './utils/PlatformUtils';
 import * as chokidar from 'chokidar';
 import { GameSavedState } from '../src/app/models/saved-state';
+import { Medium } from '../src/app/models/medium';
 
 export class FilesService {
 
@@ -63,9 +64,9 @@ export class FilesService {
             this.win.webContents.send('getGameMusicVersionResponse', gameMusicVersion);
         });
 
-        ipcMain.on('getFileGroup', (event, pid: number, filename: string) => {
+        ipcMain.on('getFileGroup', (event, pid: number, medium: Medium, filename: string) => {
             if (fs.existsSync(filename)) {
-                const fileGroup = this.getFileGroup(filename);
+                const fileGroup = this.getFileGroup(medium, filename);
                 this.win.webContents.send('getFileGroupResponse' + pid, fileGroup);
             } else {
                 this.win.webContents.send('getFileGroupResponse' + pid, []);
@@ -227,7 +228,7 @@ export class FilesService {
         return this.getVersionValue(this.settingsService.getSettings().gameMusicPath, 'version.txt');
     }
 
-    private getVersionValue(filepath: string, filename: string) :string {
+    private getVersionValue(filepath: string, filename: string): string {
         if (filepath) {
             let versionFile = path.join(filepath, filename);
             if (fs.existsSync(versionFile)) {
@@ -240,26 +241,86 @@ export class FilesService {
         }
     }
 
-    private getFileGroup(filename: string): string[] {
-        const diskPatternIndexParenthesisVariant1 = filename.lastIndexOf('(Disk ');
-        const diskPatternIndexParenthesisVariant2 = filename.lastIndexOf('(Disk');
-        const diskPatternIndexSquare = filename.lastIndexOf('[Disk ');
-        const tapePatternIndex = filename.lastIndexOf('(Side ');
-        let counterIndex: number;
+    private getFileGroup(medium: Medium, filename: string): string[] {
+        const folder = path.dirname(filename);
+        const fileOnly = path.basename(filename);
 
-        if (diskPatternIndexParenthesisVariant1 > 0 && filename.indexOf(' of ', diskPatternIndexParenthesisVariant1) === (diskPatternIndexParenthesisVariant1 + 7)) {
-            counterIndex = diskPatternIndexParenthesisVariant1 + 6;
-        } else if (diskPatternIndexParenthesisVariant2 > 0 && filename.indexOf('of', diskPatternIndexParenthesisVariant2) === (diskPatternIndexParenthesisVariant2 + 6)) {
-            counterIndex = diskPatternIndexParenthesisVariant2 + 5;
-        } else if (diskPatternIndexSquare > 0 && filename.indexOf(' of ', diskPatternIndexSquare) === (diskPatternIndexSquare + 7)) {
-            counterIndex = diskPatternIndexSquare + 6;
-        } else if (tapePatternIndex > 0 && filename.indexOf(')', tapePatternIndex) === (tapePatternIndex + 7)) {
-            counterIndex = tapePatternIndex + 6;
-        } else {
-            counterIndex = filename.lastIndexOf('.') - 1;
+        // The last rule checks for the last character of the filename before the file extension.
+        // Therefore, it will always match files that don't match the previous rules
+        const fileExtensionIndex = fileOnly.lastIndexOf('.');
+        let toMatchList: string[][] = [];
+        if (medium === Medium.disk) {
+            toMatchList = [
+                ['(.*)', '\\([Dd]isk\\s*\\d+\\s*of\\s*\\d+\\)', ')', '(.*)'],
+                ['(.*)', '\\[Disk\\s*\\d+\\s*of\\s*\\d+\\]', ']', '(.*)'],
+                ['(.*)', '\\(Disk \\w\\)', ')', '(.*)'],
+                [
+                    this.escapeRegex(fileOnly.substring(0, fileExtensionIndex - 1)),
+                    '\\w',
+                    '',
+                    fileOnly.substring(fileExtensionIndex)
+                ]
+            ];
+        } else if (medium === Medium.tape) {
+            toMatchList = [
+                ['(.*)', '\\(Side \\w\\)', ')', '(.*)']
+            ];            
         }
 
-        return this.examineFileFormat(filename, counterIndex);
+        for(const toMatch of toMatchList) {
+            const matchedFiles = this.getMatchedFiles(folder, fileOnly, toMatch);
+            if (matchedFiles) {
+                return matchedFiles;
+            }
+        };
+
+        // no matches
+        return [];
+    }
+
+    private getMatchedFiles(folder: string, file: string, toMatch: string[]): string[] {
+        const startMatch = toMatch[0];
+        const middleMatch = toMatch[1];
+        const closingChar = toMatch[2];
+        const endMatch = toMatch[3];
+        try {
+            const pattern = new RegExp(startMatch + middleMatch + endMatch);
+            const match = pattern.exec(file);
+            if (match) {
+                if (closingChar) {
+                    const closingCharIndex = file.indexOf(closingChar, match[1].length);
+                    const regex = this.escapeRegex(match[1]) +
+                        middleMatch +
+                        this.escapeRegex(file.substring(closingCharIndex + 1));
+                    return this.getMatchedFilesOnDisk(folder, regex);
+                } else {
+                    // this is meant for the last match rule where there's no closing character
+                    const regex = this.escapeRegex(startMatch) +
+                        middleMatch +
+                        this.escapeRegex(endMatch);
+                    return this.getMatchedFilesOnDisk(folder, regex);
+                }
+            } else {
+                return null;
+            }
+        } catch (error) {
+            // this means the file name caused an regular expression syntax error. Just return no match
+            return [];
+        }
+    }
+
+    private escapeRegex(regex: string): string {
+        return regex.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    private getMatchedFilesOnDisk(folder: string, regex: string): string[] {
+        const files = fs.readdirSync(folder, 'utf8');
+        const toMatch = new RegExp(regex);
+        const sequenceFiles = files.filter(file => {
+            const match = file.match(toMatch);
+            return match !== null;
+        });
+        return sequenceFiles.map(file => path.join(folder, file));
     }
 
     private getSavedStates(sha1Code: string): GameSavedState[] {
@@ -298,37 +359,6 @@ export class FilesService {
             return filename.replace(/\\/g, '/').substring(2);
         } else {
             return filename;
-        }
-    }
-
-    private examineFileFormat(filename: string, counterIndex: number): string[] {
-        let potentialMatches: string[] = [];
-        const currentDirectory = path.dirname(filename);
-        const files = fs.readdirSync(currentDirectory, 'utf8');
-        files.forEach(file => {
-            const fullPath: string = path.join(currentDirectory, file);
-            if (fullPath.substring(0, counterIndex - 1) === filename.substring(0, counterIndex - 1) &&
-                fullPath.substring(counterIndex + 1) === filename.substring(counterIndex + 1)) {
-                potentialMatches.push(fullPath);
-            }
-        });
-        potentialMatches = potentialMatches.sort();
-        const matches: string[] = [];
-        let done = false;
-        let index = 0;
-        let fileCounter = potentialMatches[0].charAt(counterIndex);
-        for (index; index < potentialMatches.length && !done; index++) {
-            if (fileCounter === potentialMatches[index].charAt(counterIndex)) {
-                matches.push(potentialMatches[index]);
-                fileCounter = String.fromCharCode((fileCounter.charCodeAt(0) + 1));
-            } else {
-                done = true;
-            }
-        }
-        if (matches.indexOf(filename) > -1) {
-            return matches;
-        } else {
-            return [];
         }
     }
 }

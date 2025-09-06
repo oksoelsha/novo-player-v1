@@ -10,6 +10,7 @@ import { GamesService } from '../../services/games.service';
 import { WebmsxService } from '../../services/webmsx.service';
 import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
+import { Medium } from '../../models/medium';
 
 @Component({
   selector: 'app-web-msx',
@@ -99,16 +100,19 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   }
 
   private setFileGroup() {
-    let medium: string;
+    let medium: Medium;
+    let file: string;
     if (this.isDisk()) {
-      medium = this.selectedGame.diskA;
+      medium = Medium.disk;
+      file = this.selectedGame.diskA;
     } else if (this.isTape()) {
-      medium = this.selectedGame.tape;
+      medium = Medium.tape;
+      file = this.selectedGame.tape;
     } else {
-      medium = null;
+      file = null;
     }
-    if (medium) {
-      this.filesService.getFileGroup(1, medium).then((fileGroup: string[]) => {
+    if (file) {
+      this.filesService.getFileGroup(1, medium, file).then((fileGroup: string[]) => {
         this.fileGroup = fileGroup;
       });
     }

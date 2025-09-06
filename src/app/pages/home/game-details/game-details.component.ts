@@ -8,6 +8,7 @@ import { FilesService } from '../../../services/files.service';
 import { EventsService } from '../../../services/events.service';
 import { Event, EventSource } from '../../../models/event';
 import { Subscription } from 'rxjs';
+import { Medium } from '../../../models/medium';
 
 @Component({
   selector: 'app-home-game-details',
@@ -210,11 +211,11 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
     } else if (this.selectedGame.diskA != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.disk');
       this.selectedMediumGroupTotal = '';
-      this.setSelectedMediumGroupTotal(this.selectedGame.diskA);
+      this.setSelectedMediumGroupTotal(Medium.disk, this.selectedGame.diskA);
     } else if (this.selectedGame.tape != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.tape');
       this.selectedMediumGroupTotal = '';
-      this.setSelectedMediumGroupTotal(this.selectedGame.tape);
+      this.setSelectedMediumGroupTotal(Medium.tape, this.selectedGame.tape);
     } else if (this.selectedGame.harddisk != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.harddisk');
       this.selectedMediumGroupTotal = '';
@@ -229,8 +230,8 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
     this.changeDetector.markForCheck();
   }
 
-  private setSelectedMediumGroupTotal(medium: string) {
-    this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), medium).then((group: string[]) => {
+  private setSelectedMediumGroupTotal(medium: Medium, file: string) {
+    this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), medium, file).then((group: string[]) => {
       if (group.length > 1) {
         this.selectedMediumGroupTotal = group.length + 'x';
         this.changeDetector.detectChanges();
