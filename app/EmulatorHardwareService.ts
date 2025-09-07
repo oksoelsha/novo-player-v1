@@ -33,13 +33,13 @@ export class EmulatorHardwareService {
         if (fs.existsSync(hardwarePath)) {
             const hardwareDirectory = fs.readdirSync(hardwarePath, 'utf8');
             hardwareDirectory.forEach(file => {
-                const hardwareFullPath: string = path.join(hardwarePath, file);
+                const hardwareFullPath = path.join(hardwarePath, file);
                 if (fs.statSync(hardwareFullPath).isFile()) {
                     if (FileTypeUtils.isXML(hardwareFullPath)) {
                         hardwareList.push(FileTypeUtils.getFilenameWithoutExt(path.basename(hardwareFullPath)));
                     }
                 } else {
-                    const hardwareConfigFile: string = path.join(hardwareFullPath, EmulatorHardwareService.HARDWARE_CONFIG_FILENAME);
+                    const hardwareConfigFile = path.join(hardwareFullPath, EmulatorHardwareService.HARDWARE_CONFIG_FILENAME);
                     if (fs.existsSync(hardwareConfigFile)) {
                         hardwareList.push(path.basename(hardwareFullPath));
                     }

@@ -31,7 +31,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const self = this;
         this.repositoryInfo = new Map<string, RepositoryData>();
         this.knownDumps = new Map<RepositorySoftwareData, number>();
-        const softwaredbFilenames: string[] = [
+        const softwaredbFilenames = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
             PlatformUtils.getOpenmsxUserSoftwareDb(),
             path.join(__dirname, 'extra/msxdskdb.xml'),
@@ -41,7 +41,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const parser = new XMLParser();
         for(const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
-                fs.readFile(softwaredbFilename, function (err, data) {
+                fs.readFile(softwaredbFilename, (err, data) =>  {
                     const result = parser.parse(data.toString());
                     if (result.softwaredb && result.softwaredb.software) {
                         let softwares: any;

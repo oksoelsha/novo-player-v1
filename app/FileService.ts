@@ -197,7 +197,7 @@ export class FilesService {
 
     private openFileExplorer(file: string) {
         const fileManagerCommand = PlatformUtils.getFileManagerCommand(file);
-        const ls = cp.exec(fileManagerCommand, function (error: cp.ExecException, stdout, stderr) {
+        const ls = cp.exec(fileManagerCommand, (error: cp.ExecException, stdout, stderr) => {
             if (error) {
             }
         });

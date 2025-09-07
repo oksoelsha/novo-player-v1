@@ -47,7 +47,7 @@ export class LaunchCountComponent implements OnInit {
       style: {
         colors: '#bbbbbb'
       },
-      formatter: function(val) {
+      formatter: (val) => {
         return val.toFixed(0);
       }
     },
