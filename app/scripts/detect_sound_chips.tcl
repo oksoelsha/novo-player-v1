@@ -36,6 +36,7 @@ proc find_all_scc {} {
 					set mapper_type [dict get $device_info_dict "mappertype"]
 					if {[string match -nocase *scc* $mapper_type] ||
 					    [string match -nocase manbow2 $mapper_type] ||
+					    [string match -nocase Manbow2_2 $mapper_type] ||
 					    [string match -nocase KonamiUltimateCollection $mapper_type]} {
 						lappend result $ps $ss 0
 					}
