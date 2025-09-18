@@ -105,6 +105,10 @@ proc detect_moonsound_data {} {
 	}
 }
 
+proc detected_midi {} {
+	sound_detector::process_detection 128
+}
+
 proc detected_SN76489 {} {
 	if {$::wp_last_value > 0} {
 		sound_detector::process_detection 1
@@ -150,6 +154,9 @@ debug set_watchpoint write_io 0xC4 {} {sound_detector::detect_moonsound_address_
 debug set_watchpoint write_io 0xC5 {} {sound_detector::detect_moonsound_data}
 debug set_watchpoint write_io 0xC6 {} {sound_detector::detect_moonsound_address_1_or_2}
 debug set_watchpoint write_io 0xC7 {} {sound_detector::detect_moonsound_data}
+
+# MIDI
+debug set_watchpoint write_io 0xE8 {} {sound_detector::detected_midi}
 
 # Coleco's SN76489
 debug set_watchpoint write_io 0xFF {} {sound_detector::detected_SN76489}

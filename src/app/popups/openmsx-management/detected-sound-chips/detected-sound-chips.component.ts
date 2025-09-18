@@ -13,7 +13,7 @@ export class DetectedSoundChipsComponent implements OnInit, OnDestroy {
   @Input() events: Observable<boolean>;
   detected: string[] = [];
   inUse: boolean[] = [];
-  private readonly soundChips = ['PSG', 'SCC', 'SCC-I', 'PCM', 'MSX-MUSIC', 'MSX-AUDIO', 'Moonsound'];
+  private readonly soundChips = ['PSG', 'SCC', 'SCC-I', 'PCM', 'MSX-MUSIC', 'MSX-AUDIO', 'Moonsound', 'MIDI'];
   private eventsSubscription: Subscription;
   private soundChipsSubscription: Subscription;
 
