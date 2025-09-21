@@ -63,6 +63,10 @@ function initializeServices() {
 
   const hashService = new HashService(win);
 
+  // Make sure that the last service to use the environment service is the one that upgrades the internal version after
+  // the one-time upgrade - the last service in this case is GamesService
+  new FileHunterService(win, settingsService, environmentService);
+
   const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService);
 
   new FilesService(win, settingsService);
@@ -90,8 +94,6 @@ function initializeServices() {
   new GamePasswordsService(win);
 
   new DownloadService(win, extraDataService, gamesService, errorLogService);
-
-  new FileHunterService(win, settingsService);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

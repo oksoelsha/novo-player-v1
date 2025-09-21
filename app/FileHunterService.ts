@@ -5,6 +5,7 @@ import { FileTypeUtils } from './utils/FileTypeUtils';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { UpdateListerner } from './UpdateListerner';
 import { SettingsService } from './SettingsService';
+import { EnvironmentService } from './EnvironmentService';
 
 class FileNode {
     isFolder: boolean;
@@ -27,7 +28,7 @@ export class FileHunterService implements UpdateListerner {
     private cachedFolder: string;
     private cachedContents: any;
 
-    constructor(private win: BrowserWindow, private settingsService: SettingsService) {
+    constructor(private win: BrowserWindow, private settingsService: SettingsService, private environmentService: EnvironmentService) {
         settingsService.addListerner(this);
         if(settingsService.getSettings().enableFileHunterGames) {
             this.init();
@@ -102,7 +103,7 @@ export class FileHunterService implements UpdateListerner {
     }
 
     private moveFileHunterFileIfNecessary() {
-        if (!fs.existsSync(this.allFilesPath)) {
+        if (!fs.existsSync(this.allFilesPath) || this.environmentService.isNeedToUpdateApplicationData()) {
             fs.mkdirSync(PersistenceUtils.getFileHunterFilesStoragePath(), { recursive: true });
             fs.copyFileSync(path.join(__dirname, 'extra/file-hunter-allfiles.txt'), this.allFilesPath);
         }
