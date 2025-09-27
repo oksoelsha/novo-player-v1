@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import * as path from 'path'
-import * as fs from 'fs'
-import { SettingsService } from './SettingsService'
+import { BrowserWindow, ipcMain } from 'electron';
+import * as path from 'path';
+import * as fs from 'fs';
+import { SettingsService } from './SettingsService';
 import { FileTypeUtils } from './utils/FileTypeUtils';
 import { PlatformUtils } from './utils/PlatformUtils';
 

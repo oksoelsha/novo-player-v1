@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, ipcMain } from 'electron';
 import { GamePasswordsInfo } from '../src/app/models/game-passwords-info';
 
 export class GamePasswordsService {

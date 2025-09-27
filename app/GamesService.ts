@@ -227,7 +227,6 @@ export class GamesService {
                     listings.push(entry.listing);
                 }
             }
-
             self.win.webContents.send('getListingsResponse', listings);
         });
     }
@@ -409,7 +408,7 @@ export class GamesService {
             }
             favorites.sort((a: Game, b: Game) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
-            self.win.webContents.send('getFavoritesResponse', favorites)
+            self.win.webContents.send('getFavoritesResponse', favorites);
         });
     }
 

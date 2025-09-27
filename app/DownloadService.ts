@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import * as path from 'path'
-import * as fs from 'fs'
-import * as http from 'http'
+import { BrowserWindow, ipcMain } from 'electron';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as http from 'http';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { GamesService } from './GamesService';
 import { ExtraDataService } from './ExtraDataService';

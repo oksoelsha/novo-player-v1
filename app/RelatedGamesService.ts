@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import { ExtraData, ExtraDataService } from './ExtraDataService'
-import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService'
-import { Game } from '../src/app/models/game'
+import { BrowserWindow, ipcMain } from 'electron';
+import { ExtraData, ExtraDataService } from './ExtraDataService';
+import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
+import { Game } from '../src/app/models/game';
 import { GameUtils } from '../src/app/models/game-utils';
 import { GamesService } from './GamesService';
 

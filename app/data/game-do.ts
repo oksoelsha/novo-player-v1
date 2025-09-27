@@ -1,5 +1,5 @@
-import { Game } from "../../src/app/models/game";
-import { PersistenceUtils } from "../utils/PersistenceUtils";
+import { Game } from '../../src/app/models/game';
+import { PersistenceUtils } from '../utils/PersistenceUtils';
 
 export class GameDO {
     name: string;
@@ -42,7 +42,7 @@ export class GameDO {
     constructor(game: Game) {
         for (var field of PersistenceUtils.fieldsToPersist) {
             if (game[field]) {
-                this[field] = game[field]
+                this[field] = game[field];
             }
          }
          this._id = game.sha1Code;

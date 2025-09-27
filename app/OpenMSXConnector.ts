@@ -118,8 +118,8 @@ export class OpenMSXConnector {
 		});
 	}
 
-	private async waitResponse(): Promise<ArrayBuffer> {
-		return new Promise<ArrayBuffer>(async (resolve, reject) => {
+	private async waitResponse(): Promise<any> {
+		return new Promise<any>(async (resolve, reject) => {
 			this.openmsx.once('readable', () => {
 				let buflen: Buffer;
 				while (null == (buflen = this.openmsx.read(4))) { };

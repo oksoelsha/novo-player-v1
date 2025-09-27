@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { SettingsService } from './SettingsService';
 import { GameSecondaryData } from '../src/app/models/secondary-data';
-import * as cp from 'child_process'
+import * as cp from 'child_process';
 import { PlatformUtils } from './utils/PlatformUtils';
 import * as chokidar from 'chokidar';
 import { GameSavedState } from '../src/app/models/saved-state';

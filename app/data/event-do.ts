@@ -1,5 +1,3 @@
-import { Event } from "../../src/app/models/event";
-
 export class EventDO {
     readonly source: number;
     readonly type: number;

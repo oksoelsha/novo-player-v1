@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import * as path from 'path'
-import * as fs from 'fs'
-import { DisplayMode, Settings } from '../src/app/models/settings'
+import { BrowserWindow, ipcMain } from 'electron';
+import * as path from 'path';
+import * as fs from 'fs';
+import { DisplayMode, Settings } from '../src/app/models/settings';
 import { UpdateListerner } from './UpdateListerner';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { PersistenceUtils } from './utils/PersistenceUtils';

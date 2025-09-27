@@ -1,7 +1,7 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import * as path from 'path'
-import * as fs from 'fs'
-import { NewsCollection, NewsItem } from '../src/app/models/news-collection'
+import { BrowserWindow, ipcMain } from 'electron';
+import * as path from 'path';
+import * as fs from 'fs';
+import { NewsCollection, NewsItem } from '../src/app/models/news-collection';
 import Parser from 'rss-parser';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { ErrorLogService } from './ErrorLogService';

@@ -1,16 +1,16 @@
-import * as cp from 'child_process'
+import * as cp from 'child_process';
 import * as fs from 'fs';
 import * as https from 'https';
 import * as os from 'os';
 import * as path from 'path';
-import { BrowserWindow, ipcMain } from 'electron'
-import { EventLogService } from './EventLogService'
-import { SettingsService } from './SettingsService'
-import { Event, EventSource, EventType } from '../src/app/models/event'
-import { Game } from '../src/app/models/game'
-import { PlatformUtils } from './utils/PlatformUtils'
-import { QuickLaunchData } from '../src/app/models/quick-launch-data'
-import { HashService } from './HashService'
+import { BrowserWindow, ipcMain } from 'electron';
+import { EventLogService } from './EventLogService';
+import { SettingsService } from './SettingsService';
+import { Event, EventSource, EventType } from '../src/app/models/event';
+import { Game } from '../src/app/models/game';
+import { PlatformUtils } from './utils/PlatformUtils';
+import { QuickLaunchData } from '../src/app/models/quick-launch-data';
+import { HashService } from './HashService';
 import { FileTypeUtils } from './utils/FileTypeUtils';
 import { ErrorLogService } from './ErrorLogService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';

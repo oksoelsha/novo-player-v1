@@ -15,7 +15,7 @@ export class TopTenEventProcessor {
 
     private getTopTenLaunchedGames(pageSize: number, currentPage: number): void {
         const self = this;
-        const launchTimes: Map<string, number> = new Map<string, number>();
+        const launchTimes = new Map<string, number>();
 
         this.database.find({}).exec((err: any, entries: any) => {
             for (let entry of entries) {

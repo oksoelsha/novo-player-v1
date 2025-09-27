@@ -1,4 +1,4 @@
-import { Game } from "../../src/app/models/game";
+import { Game } from '../../src/app/models/game';
 
 export class GameUtils {
 

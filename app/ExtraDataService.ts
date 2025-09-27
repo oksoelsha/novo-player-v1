@@ -1,6 +1,6 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import * as fs from 'fs'
-import * as path from 'path'
+import { BrowserWindow, ipcMain } from 'electron';
+import * as fs from 'fs';
+import * as path from 'path';
 import { UpdateListerner } from './UpdateListerner';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';

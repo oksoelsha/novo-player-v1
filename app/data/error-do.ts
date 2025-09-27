@@ -1,4 +1,4 @@
-import { Error } from "../../src/app/models/error";
+import { Error } from '../../src/app/models/error';
 
 export class ErrorDO {
     readonly message: string;
