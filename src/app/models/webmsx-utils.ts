@@ -49,6 +49,8 @@ export class WebMSXUtils {
       this.addWebMSXPresets(webMSXParams, 'SCC');
     } else if (game.extensionRom === 'scc+') {
       this.addWebMSXPresets(webMSXParams, 'SCCI');
+    } else if (game.extensionRom === '2nd_PSG') {
+      this.addWebMSXPresets(webMSXParams, 'DOUBLEPSG');
     }
     if (game.tape != null) {
       webMSXParams.TAPE = game.tape;
