@@ -22,7 +22,8 @@ export class OpenMSXUtils {
         'MegaFlashROM_SCC+_SD',
         'moonsound',
         'scc',
-        'scc+'
+        'scc+',
+        '2nd_PSG'
       ];
 
       this.commandLineArguments.set('carta', []);
