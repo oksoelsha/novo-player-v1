@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FileTypeUtils } from '../../../../../app/utils/FileTypeUtils';
 import { FilesService } from '../../../services/files.service';
+import { LocalizationService } from '../../../services/localization.service';
 
 @Component({
   selector: 'app-file-system-chooser',
@@ -11,11 +12,11 @@ import { FilesService } from '../../../services/files.service';
 export class FileSystemChooserComponent {
 
   private static extensionsMap: Map<string, any> = new Map([
-    ['ROM', { name: 'ROM Images', extensions: FileTypeUtils.getRomExtensions().concat(FileTypeUtils.getZipExtensions())}],
-    ['Disk', { name: 'Disk Images', extensions: FileTypeUtils.getDiskExtensions().concat(FileTypeUtils.getZipExtensions())}],
-    ['Tape', { name: 'Tape Images', extensions: FileTypeUtils.getTapeExtensions().concat(FileTypeUtils.getZipExtensions())}],
-    ['Harddisk', { name: 'Harddisk Images', extensions: FileTypeUtils.getHarddiskExtensions().concat(FileTypeUtils.getZipExtensions())}],
-    ['Laserdisc', { name: 'Laserdisc Images', extensions: FileTypeUtils.getLaserdiscExtensions().concat(FileTypeUtils.getZipExtensions())}]
+    ['ROM', { nameKey: 'filebrowser.romimages', extensions: FileTypeUtils.getRomExtensions().concat(FileTypeUtils.getZipExtensions())}],
+    ['Disk', { nameKey: 'filebrowser.diskimages', extensions: FileTypeUtils.getDiskExtensions().concat(FileTypeUtils.getZipExtensions())}],
+    ['Tape', { nameKey: 'filebrowser.tapeimages', extensions: FileTypeUtils.getTapeExtensions().concat(FileTypeUtils.getZipExtensions())}],
+    ['Harddisk', { nameKey: 'filebrowser.harddiskimages', extensions: FileTypeUtils.getHarddiskExtensions().concat(FileTypeUtils.getZipExtensions())}],
+    ['Laserdisc', { nameKey: 'filebrowser.laserdiscimages', extensions: FileTypeUtils.getLaserdiscExtensions().concat(FileTypeUtils.getZipExtensions())}]
   ]);
 
   @Input() directoryMode: boolean;
@@ -23,9 +24,9 @@ export class FileSystemChooserComponent {
   @Input() filtersType: string;
   @Input() multiSelections: boolean;
   @Input() useIcon = false;
-  @Output() chosen: EventEmitter<any> = new EventEmitter<any>();
+  @Output() chosen = new EventEmitter<any>();
 
-  constructor(private fileService: FilesService) { }
+  constructor(private fileService: FilesService, private localizationService: LocalizationService) { }
 
   browse() {
     const self = this;
@@ -45,9 +46,9 @@ export class FileSystemChooserComponent {
 
     let filters: object[];
     if (this.filtersType) {
-      filters = [
-        FileSystemChooserComponent.extensionsMap.get(this.filtersType)
-      ];
+      const filterEntry = FileSystemChooserComponent.extensionsMap.get(this.filtersType);
+      const filter = { name: this.localizationService.translate(filterEntry.nameKey), extensions: filterEntry.extensions };
+      filters = [filter];
     } else {
       filters = [];
     }

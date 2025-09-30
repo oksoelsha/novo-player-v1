@@ -403,5 +403,12 @@
   "displaymode": {
     "list": "Список",
     "screenshots": "Скриншоты"
+  },
+  "filebrowser": {
+    "romimages": "Изображения Rom",
+    "diskimages": "Изображения диска",
+    "tapeimages": "Изображения ленты",
+    "harddiskimages": "Изображения жесткого диска",
+    "laserdiscimages": "Изображения Laserdisc"
   }
 }

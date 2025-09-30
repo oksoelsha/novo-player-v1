@@ -403,5 +403,12 @@
   "displaymode": {
     "list": "Lijst",
     "screenshots": "Schermafbeeldingen"
+  },
+  "filebrowser": {
+    "romimages": "Afbeeldingen op ROM",
+    "diskimages": "Afbeeldingen op schijf",
+    "tapeimages": "Afbeeldingen op cassette",
+    "harddiskimages": "Afbeeldingen op vaste schijf",
+    "laserdiscimages": "Afbeeldingen op Laserdisc"
   }
 }

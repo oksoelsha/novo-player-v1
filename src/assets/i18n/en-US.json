@@ -403,5 +403,12 @@
   "displaymode": {
     "list": "List",
     "screenshots": "Screenshots"
+  },
+  "filebrowser": {
+    "romimages": "ROM Images",
+    "diskimages": "Disk Images",
+    "tapeimages": "Tape Images",
+    "harddiskimages": "Harddisk Images",
+    "laserdiscimages": "Laserdisc Images"
   }
 }

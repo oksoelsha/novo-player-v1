@@ -403,5 +403,12 @@
   "displaymode": {
     "list": "Elenco",
     "screenshots": "Schermati"
+  },
+  "filebrowser": {
+    "romimages": "Immagini Rom",
+    "diskimages": "Immagini disco",
+    "tapeimages": "Immagini cassetta",
+    "harddiskimages": "Immagini disco rigido",
+    "laserdiscimages": "Immagini Laserdisc"
   }
 }
