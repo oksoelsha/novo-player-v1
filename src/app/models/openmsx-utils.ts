@@ -12,9 +12,13 @@ export class OpenMSXUtils {
         'KonamiSCC',
         'KonamiUltimateCollection',
         'Normal',
-        'page23'
+        'page2',
+        'page12',
+        'page23',
+        'yamanooto'
       ];
       const extensions = [
+        '2nd_PSG',
         'fmpac',
         'gfx9000',
         'ide',
@@ -22,8 +26,7 @@ export class OpenMSXUtils {
         'MegaFlashROM_SCC+_SD',
         'moonsound',
         'scc',
-        'scc+',
-        '2nd_PSG'
+        'scc+'
       ];
 
       this.commandLineArguments.set('carta', []);
