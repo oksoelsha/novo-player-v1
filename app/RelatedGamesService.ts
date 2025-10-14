@@ -104,7 +104,10 @@ export class RelatedGamesService {
             [778, 838, 2414, 3148, 5437, 7011],
 
             // Frogger, Hopper, etc.
-            [70, 2390, 2720, 3442]
+            [70, 2390, 2720, 3442],
+
+            // Bomberman style
+            [169, 325, 854, 2559, 2635, 3890, 3994]
         ];
 
         groups.forEach((group) => {
