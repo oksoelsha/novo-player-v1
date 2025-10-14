@@ -1,10 +1,12 @@
 export class GamePasswordsInfo {
-    readonly setup: string;
     readonly passwords: GamePassword[];
+    readonly setup: string;
+    readonly noTyping: boolean;
 
-    constructor(passwords: GamePassword[], setup: string) {
+    constructor(passwords: GamePassword[], setup: string, noTyping: boolean) {
         this.passwords = passwords;
         this.setup = setup;
+        this.noTyping = noTyping;
     }
 }
 
