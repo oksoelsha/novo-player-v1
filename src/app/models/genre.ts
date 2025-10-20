@@ -38,7 +38,7 @@ export const Genre = [
     'Shoot-\'em-up | Vertical',
     'Simulation',
     'Sound',
-    'Sport Games',
+    'Sports Games',
     'Sport Management',
     'Spreadsheet',
     'Strategy',
