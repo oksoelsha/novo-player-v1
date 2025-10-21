@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FileSystemChooserComponent } from './file-system-chooser.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('FileSystemChooserComponent', () => {
   let component: FileSystemChooserComponent;
@@ -8,6 +9,7 @@ describe('FileSystemChooserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ TranslateModule.forRoot() ],
       declarations: [ FileSystemChooserComponent ]
     })
     .compileComponents();

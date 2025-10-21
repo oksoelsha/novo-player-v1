@@ -23,7 +23,7 @@ describe('PasswordSelectorComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordSelectorComponent);
     component = fixture.componentInstance;
-    component.gamePasswordsInfo = new GamePasswordsInfo([], 'setup');
+    component.gamePasswordsInfo = new GamePasswordsInfo([], 'setup', true);
     fixture.detectChanges();
   });
 
