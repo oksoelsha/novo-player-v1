@@ -18,6 +18,7 @@
 	Sep 2023 Sam Elsharif		version 13
 	Oct 2024 Sam Elsharif		version 14
 	Aug 2025 Sam Elsharif		version 15
+	xxx xxxx Sam Elsharif		version 16
 -->
 <softwaredb>
 	<software>
@@ -87,9 +88,18 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">4e21ef0646a0fa1c8b1132afce3d77a28cf0270e</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Alien Sunday...?</title>
+		<system>MSX2</system>
+		<company>Soft Studio WING</company>
+		<year>1986</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">24121b82ba668cd8702f517e35ecb8e279bc4b2f</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">a3c6e0a818a50881d8536bfd8c1ce74527f474fe</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Alien's Slime</title>
 		<system>MSX2</system>
-		<company>Raketto &amp; Co &amp; Ax-Alex </company>
+		<company>Raketto &amp; Co &amp; Ax-Alex</company>
 		<year>1990</year>
 		<country>DE</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">a83e94a9ff091afec8211ff15a6bcd888512ef3a</hash></format></dsk></dump>
@@ -103,6 +113,15 @@
 		<year>1990</year>
 		<country>NL</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">be336d983edcf72ecee6c1dfde3a37e166cc0eef</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Amber Testament</title>
+		<system>MSX2</system>
+		<company>Riverhill Soft Inc.</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">db05159539daebe28b66921209161295999af6d3</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">f96e0998a5d01fabb85c89eb4b12898176397edf</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Andorogynus</title>
@@ -179,6 +198,14 @@
 		<year>1988</year>
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">f693d1b59a6e2bfcc7e42ca83abf3d39671fb4b3</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Baltak Rampage</title>
+		<system>MSX2</system>
+		<company>Traktor</company>
+		<year>2016</year>
+		<country>SE</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8fe7787a2d6090e5f649acb0b67a0fd91d51936f</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Barunba</title>
@@ -443,6 +470,25 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">42edde03d12d36e4a4d86449a264957575f6f0d8</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Cybernetic Hi-School Part 1</title>
+		<system>MSX2</system>
+		<company>BANDAI</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5b52f978b96f87c4a3a1c91e4c797a5c3b6443ad</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">2eecae40c71a86dca3cfd5a1011dbd94c933bc20</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">91e3740d68467ede59e400c0dd648e56356ade32</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Cybernetic Hi-School Part 3: Gunbuster</title>
+		<system>MSX2</system>
+		<company>BANDAI</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5f293852d9f31b528616c2646f1a6495f72d4f30</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">9796d439801a88076782e8ce27803a9e97bdbd39</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Cytron</title>
 		<system>MSX2</system>
 		<company>N. Gilissen</company>
@@ -522,6 +568,16 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">4c65f877ba13466fc052dc8d135940cb56fa6040</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Diable de Laplace</title>
+		<system>MSX2</system>
+		<company>Humming Bird Soft</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">90728df52767c6a5528d7eceebef148460dd3bdb</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">0316f657fc805a9fcbe3c67fe54a66cceb9c4a25</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">beae1887bf1acdf7bd942c9145c3df9eac82e1b8</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Die Frage II</title>
 		<system>MSX2</system>
 		<company>Studio Sequence</company>
@@ -529,6 +585,14 @@
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">3da39ec846c109fbd74476efa3f9a349a85081b0</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">4f0ddc72531c55857325ed3651219b7a6081de39</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Digan's Magic Stone</title>
+		<system>MSX2</system>
+		<company>Artec</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">503a3ac5985eea7bfcad1dfaa4e09aaa9271034b</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>DIX</title>
@@ -767,6 +831,32 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">d5c83fb938f0a8921a3dfdff6ecc61c081785823</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Gaia's Crest</title>
+		<system>MSX2</system>
+		<company>NCS</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">c1cb5f5f327698905e09a6f418e359b2483c7c83</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Gall Force - Eternal Story</title>
+		<system>MSX2</system>
+		<company>Scaptrust</company>
+		<year>1987</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">2cb582cead2e3236b2f57a816b6d5da7e7b0434e</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">17d879e61f69de55bde0ae4b2b306e9d79ec451f</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Galmoon</title>
+		<system>MSX2</system>
+		<company>Maron Team</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">30f423006d5411a1df5f4d809ecaa20e7087b3a8</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">a85232ca44d82aa43b5ab5af3044d8e6948933d0</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Gekitotsu 7 Narabe</title>
 		<system>MSX2</system>
 		<company>Satico</company>
@@ -806,6 +896,15 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">9417b3fd76b1395d5a742d3646069fe9869e077f</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Harajuku After Dark</title>
+		<system>MSX2</system>
+		<company>Kogado Studio</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7d2d9579bc02c0170295e04a92ae4ce8fb269939</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">86c49a6f3bb72d0d848c03d99efb99ceb14ee8f6</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Herzog</title>
 		<system>MSX2</system>
 		<company>Tecno Soft</company>
@@ -815,15 +914,6 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">a94e47f7cf9c2e00a60e94a63a3ee8cf27ca98e8</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">2cb956309fc4ce304c43972912ae6455b06d6005</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">da46a811e56104825991d1ddcd779e4a38be758c</hash></format></dsk></dump>
-	</software>
-	<software>
-		<title>Harajuku After Dark</title>
-		<system>MSX2</system>
-		<company>Kogado Studio</company>
-		<year>1989</year>
-		<country>JP</country>
-		<dump><dsk><format type="dsk"><hash algo="sha1">7d2d9579bc02c0170295e04a92ae4ce8fb269939</hash></format></dsk></dump>
-		<dump><dsk><format type="dsk"><hash algo="sha1">86c49a6f3bb72d0d848c03d99efb99ceb14ee8f6</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Hitomi Kobayashi - Puzzle in London</title>
@@ -861,7 +951,7 @@
 	</software>
 	<software>
 		<title>Illusion City</title>
-		<system>MSX-Turbo-R</system>
+		<system>TURBO-R</system>
 		<company>Microcabin</company>
 		<year>1991</year>
 		<country>JP</country>
@@ -869,6 +959,7 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">f1cebd02bb01238b1d346838b162858ad1356d5b</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">9e9946536f3cb6d90e2433ff19376cb9f9818290</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">94258658039f76d22bc79ec02b7b78e9b4a7ac13</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">374c90aaf321472293350b8f03627a22719fb6b6</hash></format><remark><text>MSX Translations</text></remark></dsk></dump>
 	</software>
 	<software>
 		<title>International Karate</title>
@@ -889,6 +980,15 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">a90b6bb34673d89dadecdf21da5188d8b0e492ae</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">c315baab5c254758b01b65e0f9a34ae28d7f1d5d</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">ca080742d4af491721ff25d4419c22f1582f1df5</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Kimagure Orange Road</title>
+		<system>MSX2</system>
+		<company>Microcabin</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5a0fa905cfb7a843481c722f5d692c063a0e544d</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">a2c07ed808381404866e680031cbb62a11785507</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Kimidakeni</title>
@@ -943,6 +1043,16 @@
 		<year>2000</year>
 		<country>ES</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">835b776c9e5f7362914bae4f56811576c019a05a</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Kudokikata Oshiemasu Part II: Kind Gal's</title>
+		<system>MSX2</system>
+		<company>HARD</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">1e89dee1d877ba5d0ca2836918bcd2b96531917f</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">c6b193e7d565238424102dd5a5e0857ff3cf3cf3</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">0f9aaf9eecf072244502070383e3499a414b09e0</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>L'Affaire</title>
@@ -1024,6 +1134,33 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">c4217c7f0371e9c6f830d8a76f731123548c9719</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Legend of the Melvel</title>
+		<system>MSX2</system>
+		<company>Soft Studio WING</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">9d56d038e28f8bfe925cb7855518dd51d31c972a</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">df447391cc7bd3d1d5eac7b974a2b3884ed403ed</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Legendly Nine Gems</title>
+		<system>MSX2</system>
+		<company>Tecno Soft</company>
+		<year>1987</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">b480e0aa91bf20208ad7d87c3b74a53d7a4801e4</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">fd5707094ea792c24ca395a233773d7572f38ce1</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">f470c8cefd347365a51fc961b551d17135dc9eac</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Lightning Bacchus: The Knight of Iron</title>
+		<system>MSX2</system>
+		<company>NCS</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">1cb3ea2ae9a8963ad8e7ce1bc1ae233af6f26487</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Livingstone Supongo</title>
 		<system>MSX2</system>
 		<company>Opera Soft</company>
@@ -1033,6 +1170,14 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">722e8137d5c1bd60307c1fa3731da6bd7c7c5f36</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Love to Casablanca</title>
+		<system>MSX2</system>
+		<company>Thinking Rabbit</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">073e5fa25bbf9bf89e6f3f59bde7d86b826b2d97</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Lübeck</title>
 		<system>MSX2</system>
 		<company>MSX Magazine</company>
@@ -1040,6 +1185,16 @@
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">b143989e8c0a7826a21373b4271713a0465bbcac</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">8b41aac1d940fe06b2ae806eba1e5d3cebaf5134</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Madō Monogatari 1-2-3</title>
+		<system>MSX2</system>
+		<company>Compile</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">aa3e77e2de09f7878576ca41c746fa66eb9806d8</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7c871d8131bae5d5a52bb7966e4032966158713e</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">9f61a98aae456e99736d09c291fbc86f658eb871</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Magnar</title>
@@ -1093,7 +1248,7 @@
 	</software>
 	<software>
 		<title>Moon Light Saga</title>
-		<system>MSX-Turbo-R</system>
+		<system>TURBO-R</system>
 		<company>Maple Yard</company>
 		<year>1996</year>
 		<country>JP</country>
@@ -1111,6 +1266,15 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">2873db5582447ef8fffe94f54de4110b59b136ec</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Myth of Darkness - Legend of Yamato Takeru</title>
+		<system>MSX2</system>
+		<company>ZAP</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7c052e38014d2c20fdd17a4ad3030cf093770042</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">3e4da8ae03773faafda35ed09e1cb10879bf636f</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>New Devil Golvellius</title>
 		<system>MSX2</system>
 		<company>Compile</company>
@@ -1120,6 +1284,15 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">35cac8a3f45d2b21faa6219e2d5949f2959ab405</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">e7f2dae1e5b927905027b8aea245994f9fb36b19</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">839fe87d070f4b13ea8466bd56c0f83003e351a5</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>New Legendly Nine Gems</title>
+		<system>MSX2</system>
+		<company>Tecno Soft</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7ee48b5c9111abc1a6b894cc314c0ae81456bf5d</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">3246b9256e8cf4293ca12fc3259d0c813e0dae1a</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>New Music</title>
@@ -1197,6 +1370,14 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">d269bbe2afa41a9da6d708b5353329025c8e7d54</hash></format><remark><text>NYYRIKKI Fixed</text></remark></dsk></dump>
 	</software>
 	<software>
+		<title>Onryō Senki</title>
+		<system>MSX2</system>
+		<company>Soft Studio WING</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5b37bd2b4c4c5f201594aab95d350b1920a27173</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Palamedes</title>
 		<system>MSX2</system>
 		<company>HOT-B</company>
@@ -1207,7 +1388,7 @@
 	</software>
 	<software>
 		<title>PaRaDream</title>
-		<system>MSX-Turbo-R</system>
+		<system>TURBO-R</system>
 		<company>RAC House</company>
 		<year>1992</year>
 		<country>JP</country>
@@ -1221,6 +1402,22 @@
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">d38b9de3a630e443d0deeaa7f89bf5c9833fde99</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">dca7442954462cd1cf47bca45e5259a57a6a94ba</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Photo Club Part: Out Side Story</title>
+		<system>MSX2</system>
+		<company>HARD</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">1441fdcdd5f9aa7207a8cbc049bed19a304e9961</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Photo Club Part III: Mansion of Fear</title>
+		<system>MSX2</system>
+		<company>HARD</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">b9235d2c5b049cf53988282e5f6ec0c7a14eac13</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Pixess</title>
@@ -1302,6 +1499,42 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">e4e53ad306bdac080783a9a433d5d055ccac18b2</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">7e2dc0e605f1fe09c8bc8161f60ba78bf98cb28e</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">d5772c0e9c7c091d04ac312457836d4ad0d6c8c6</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Rance - Quest for Hikari</title>
+		<system>MSX2</system>
+		<company>Alice Soft</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">5e459f7bb964e80fe7b6468185fbc13aa0bd3759</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">7d398bc0f495cf2998e3da10395779b79d4839a7</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Rance II - The Rebellious Maidens</title>
+		<system>MSX2</system>
+		<company>Alice Soft</company>
+		<year>1991</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">598b2f77e8808b138256c1172e809cb2a05e8ff2</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Ranma 1/2: Legend of the Flying Dragon</title>
+		<system>TURBO-R</system>
+		<company>Bothtec</company>
+		<year>1992</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">13ef524c86124a628e6169edcf81e2ede3140bc0</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">846d114dfdcf6d33997937e03aefb5cfb782e75b</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">50f5d422b5eb45f5e8b340e1030bf65cb91e1a8e</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">c627a49182ccf80e231525cb1a3a53e460fc024b</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Resurrection of the Demon Realm</title>
+		<system>MSX2</system>
+		<company>Soft Studio WING</company>
+		<year>1987</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8b7a2b7a54d027a653f4a67fc4968e8050d512b8</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Rick Dangerous</title>
@@ -1578,7 +1811,7 @@
 	</software>
 	<software>
 		<title>Superiority Fighters</title>
-		<system>MSX-Turbo-R</system>
+		<system>TURBO-R</system>
 		<company>Mushroom</company>
 		<year>1994</year>
 		<country>JP</country>
@@ -1610,6 +1843,38 @@
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">e23259d6d941db9e0ff62da503a3a8087e9ed36e</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">6641aa6bbdc456e5bd2004a47172b9a5ddfa7032</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>The 4th Unit</title>
+		<system>MSX2</system>
+		<company>Data West</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">367788be0e70ba13d958eba3524148abeecb4393</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>The 4th Unit Act.2</title>
+		<system>MSX2</system>
+		<company>Data West</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">af3ec4c20281a76684ff0c83b5fa530e28ff546f</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>The 4th Unit Act.3 - Dual Targets</title>
+		<system>MSX2</system>
+		<company>Data West</company>
+		<year>1989</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8708e52660f85fb6130bd9660f4e40a3bee1158d</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>The Secret Garden</title>
+		<system>MSX2</system>
+		<company>Technopolis Soft</company>
+		<year>1992</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">6ca6a05a42074b151f6f7054fb6e859c8a4426fa</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>The Tower of Cabin? - Cabin Panic</title>
@@ -1694,6 +1959,14 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">46e4c3641c87e96117bd1b5cb4451002041575b1</hash></format><remark><text>Woomb - R800 Fix</text></remark></dsk></dump>
 	</software>
 	<software>
+		<title>Unknown Reality</title>
+		<system>MSX2</system>
+		<company>Maarten Loor</company>
+		<year>1994</year>
+		<country>NL</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">b7d60c2c82796aab5ae5bac75fbce3c9a5ee09da</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Urusei Yatsura: Koi no Survival Birthday</title>
 		<system>MSX2</system>
 		<company>Arrow Soft</company>
@@ -1723,6 +1996,14 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">178ea1e96dfb1aa78281f1b03403e53eced37484</hash></format></dsk></dump>
 	</software>
 	<software>
+		<title>Way to Baseball II</title>
+		<system>MSX2</system>
+		<company>Nihon Create</company>
+		<year>1990</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">0baf7088ae9100690323643c7a201267fad28d80</hash></format></dsk></dump>
+	</software>
+	<software>
 		<title>Western</title>
 		<system>MSX2</system>
 		<company>Yermani Soft</company>
@@ -1738,6 +2019,15 @@
 		<year>1989</year>
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">d467b23a83e983dd01d303d7bed1d1dc25cd2ad5</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Wing Man Sepcial</title>
+		<system>MSX2</system>
+		<company>TamTam Co., Ltd.</company>
+		<year>1988</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">29f47fbbf85bc3e12d59f5db659c43e0c1dd40f6</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">8a61703feffad5b6ed21c8eb00a6c0fe187e303a</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>World Golf</title>
@@ -1894,7 +2184,7 @@
 	</software>
 	<software>
 		<title>Zone Terra</title>
-		<system>MSX-Turbo-R</system>
+		<system>TURBO-R</system>
 		<company>Quadrivium</company>
 		<year>1994</year>
 		<country>NL</country>
