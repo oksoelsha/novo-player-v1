@@ -107,7 +107,7 @@ export class RelatedGamesService {
             [70, 2390, 2720, 3442],
 
             // Bomberman style
-            [169, 325, 854, 2559, 2635, 3890, 3994]
+            [169, 325, 854, 2559, 2635, 3890, 3994, 4137]
         ];
 
         groups.forEach((group) => {
