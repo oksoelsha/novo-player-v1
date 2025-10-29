@@ -1,6 +1,6 @@
 # Detect used Sound Chips
 #
-# Detection logic was taken from the script _vgmrecorder.tcl
+# Detection logic was taken from the script _vgmrecorder.tcl in openMSX
 
 namespace eval sound_detector {
 
@@ -37,6 +37,7 @@ proc find_all_scc {} {
 					if {[string match -nocase *scc* $mapper_type] ||
 					    [string match -nocase manbow2 $mapper_type] ||
 					    [string match -nocase Manbow2_2 $mapper_type] ||
+					    [string match -nocase HamarajaNight $mapper_type] ||
 					    [string match -nocase KonamiUltimateCollection $mapper_type]} {
 						lappend result $ps $ss 0
 					}
