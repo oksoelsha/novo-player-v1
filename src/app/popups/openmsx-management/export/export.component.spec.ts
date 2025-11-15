@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExportComponent } from './export.component';
-import { TranslateModule } from '@ngx-translate/core/public_api';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('ExportComponent', () => {
   let component: ExportComponent;
