@@ -355,7 +355,10 @@
       "clear": "Limpar",
       "texttyped": "O texto foi digitado no openMSX",
       "specialkeys": "Pressionar teclas especiais",
-      "specialkeyspressed": "Teclas especiais foram pressionadas"
+      "specialkeyspressed": "Teclas especiais foram pressionadas",
+      "export": "Exportar",
+      "copybasiclisting": "Copiar listagem BASIC para a área de transferência",
+      "basiclistingcopied": "A listagem BASIC foi copiada para a área de transferência"
     }
   },
   "shared": {

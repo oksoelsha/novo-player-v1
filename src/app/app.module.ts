@@ -71,6 +71,7 @@ import { ScreenNumberComponent } from './popups/openmsx-management/screen-number
 import { EmulationSpeedComponent } from './popups/openmsx-management/emulation-speed/emulation-speed.component';
 import { StateSaveLoadComponent } from './popups/openmsx-management/state-save-load/state-save-load.component';
 import { TextTypingComponent } from './popups/openmsx-management/text-typing/text-typing.component';
+import { ExportComponent } from './popups/openmsx-management/export/export.component';
 import { PasswordsComponent } from './popups/openmsx-management/passwords/passwords.component';
 import { CheatsComponent } from './popups/openmsx-management/cheats/cheats.component';
 import { PasswordSelectorComponent } from './shared/components/password-selector/password-selector.component';
@@ -149,7 +150,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     EventDatePipe,
     LongEventDatePipe,
     GameCompanyAndYearPipe,
-    ScreenshotFilenamePipe
+    ScreenshotFilenamePipe,
+    ExportComponent
   ],
   imports: [
     BrowserModule,

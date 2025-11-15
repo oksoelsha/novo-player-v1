@@ -355,7 +355,10 @@
       "clear": "クリア",
       "texttyped": "テキストはopenMSXで入力",
       "specialkeys": "特殊キーを押す",
-      "specialkeyspressed": "特殊キーが押されました"
+      "specialkeyspressed": "特殊キーが押されました",
+      "export": "移出",
+      "copybasiclisting": "BASICリストをクリップボードにコピーする",
+      "basiclistingcopied": "BASICリストがクリップボードにコピーされました"
     }
   },
   "shared": {

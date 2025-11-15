@@ -1,0 +1,11 @@
+<div ngbDropdown>
+    <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
+        [title]="'popups.openmsxmanagement.export' | translate">
+        <span class="bi-box-arrow-up"></span>
+    </button>
+    <div ngbDropdownMenu>
+        <button ngbDropdownItem type="button" (click)="copyBASICListing()">
+            {{ 'popups.openmsxmanagement.copybasiclisting' | translate }}
+        </button>
+    </div>
+</div>

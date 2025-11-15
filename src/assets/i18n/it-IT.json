@@ -355,7 +355,10 @@
       "clear": "Cancella",
       "texttyped": "Il testo è stato digitato in openMSX",
       "specialkeys": "Premere tasti speciali",
-      "specialkeyspressed": "Tasti speciali sono stati premuti"
+      "specialkeyspressed": "Tasti speciali sono stati premuti",
+      "export": "Esporta",
+      "copybasiclisting": "Copia l'elenco BASIC negli appunti",
+      "basiclistingcopied": "L'elenco BASIC è stato copiato negli appunti"
     }
   },
   "shared": {

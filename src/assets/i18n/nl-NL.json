@@ -355,7 +355,10 @@
       "clear": "Wissen",
       "texttyped": "De tekst is getypt in openMSX",
       "specialkeys": "Speciale toetsen indrukken",
-      "specialkeyspressed": "Er werden speciale toetsen ingedrukt"
+      "specialkeyspressed": "Er werden speciale toetsen ingedrukt",
+      "export": "Exporteren",
+      "copybasiclisting": "Kopieer de BASIC-lijst naar het klembord",
+      "basiclistingcopied": "De BASIC-lijst is naar het klembord gekopieerd"
     }
   },
   "shared": {

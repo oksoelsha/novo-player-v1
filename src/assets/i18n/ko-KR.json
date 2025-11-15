@@ -355,7 +355,10 @@
       "clear": "삭제",
       "texttyped": "텍스트는 openMSX로 입력되었습니다",
       "specialkeys": "특수키 누르기",
-      "specialkeyspressed": "특수키가 눌렸습니다"
+      "specialkeyspressed": "특수키가 눌렸습니다",
+      "export": "수출품",
+      "copybasiclisting": "BASIC 목록을 클립보드에 복사합니다",
+      "basiclistingcopied": "BASIC 목록이 클립보드에 복사되었습니다"
     }
   },
   "shared": {

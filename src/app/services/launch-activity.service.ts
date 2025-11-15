@@ -270,6 +270,15 @@ export class LaunchActivityService {
     });
   }
 
+  copyBASICListing(pid: number) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('copyBASICListingFromOpenmsxResponse', (event: any, copied: boolean) => {
+        resolve(copied);
+      });
+      this.ipc.send('copyBASICListingFromOpenmsx', pid);
+    });
+  }
+
   private getScreenNumber(pid: number) {
     this.ipc.once('getScreenNumberResponse', (event, screen: number) => {
       if (typeof screen === 'number') {

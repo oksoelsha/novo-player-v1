@@ -76,6 +76,10 @@ export class OpenMSXControlService {
         ipcMain.on('pressCodeOnOpenmsx', (event, pid: number) => {
             this.pressCodeOnOpenmsx(pid);
         });
+        ipcMain.on('copyBASICListingFromOpenmsx', (event, pid: number) => {
+            this.copyBASICListingFromOpenmsx(pid);
+        });
+
         this.connectionManager.registerEventEmitter(this.updateEmitter);
         this.updateEmitter.on('openmsxUpdate', (pid: number, type: string, name: string, value: string) => {
             this.handleOpenmsxUpdateEvents(pid, type, name, value);
@@ -263,7 +267,14 @@ export class OpenMSXControlService {
             this.win.webContents.send('specialKeysPressedOnOpenmsxResponse', result.success);
         });
     }
-    
+
+    private async copyBASICListingFromOpenmsx(pid: number) {
+        this.executeCommandOnOpenmsx(pid,
+            'set_clipboard_text [ regsub -all -line {^[0-9a-f]x[0-9a-f]{4} > } [ listing ] "" ]').then(result => {
+            this.win.webContents.send('copyBASICListingFromOpenmsxResponse', result.success);
+        });
+    }
+
     private handleOpenmsxUpdateEvents(pid: number, type: string, name: string, value: string) {
         if (type === 'setting') {
             let eventName: string;

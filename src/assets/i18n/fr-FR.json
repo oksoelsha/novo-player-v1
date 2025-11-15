@@ -355,7 +355,10 @@
       "clear": "Effacer",
       "texttyped": "Le texte a été tapé sur openMSX",
       "specialkeys": "Appuyer sur touches spéciales",
-      "specialkeyspressed": "Des touches spéciales ont été appuyées"
+      "specialkeyspressed": "Des touches spéciales ont été appuyées",
+      "export": "Exporter",
+      "copybasiclisting": "Copier le listing BASIC dans le presse-papiers",
+      "basiclistingcopied": "La liste BASIC a été copiée dans le presse-papiers"
     }
   },
   "shared": {

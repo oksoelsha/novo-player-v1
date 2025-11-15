@@ -355,7 +355,10 @@
       "clear": "Esborra",
       "texttyped": "El text es va escriure a openMSX",
       "specialkeys": "Premeu tecles especials",
-      "specialkeyspressed": "Tecles especials s'han premut"
+      "specialkeyspressed": "Tecles especials s'han premut",
+      "export": "Exporta",
+      "copybasiclisting": "Copia la llista BASIC al porta-retalls",
+      "basiclistingcopied": "La llista BASIC s'ha copiat al porta-retalls"
     }
   },
   "shared": {

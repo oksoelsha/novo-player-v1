@@ -355,7 +355,10 @@
       "clear": "Очистите",
       "texttyped": "Текст был набран на openMSX",
       "specialkeys": "Нажимайте специальные клавиши",
-      "specialkeyspressed": "Были нажаты специальные клавиши"
+      "specialkeyspressed": "Были нажаты специальные клавиши",
+      "export": "Экспорт",
+      "copybasiclisting": "Копировать BASIC-листинг в буфер обмена",
+      "basiclistingcopied": "BASIC-листинг был скопирован в буфер обмена"
     }
   },
   "shared": {

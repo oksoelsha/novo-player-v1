@@ -355,7 +355,10 @@
       "clear": "Despejar",
       "texttyped": "El texto se escribió en openMSX",
       "specialkeys": "Pulsar teclas especiales",
-      "specialkeyspressed": "Se presionaron teclas especiales"
+      "specialkeyspressed": "Se presionaron teclas especiales",
+      "export": "Exportar",
+      "copybasiclisting": "Copiar el listado BASIC al portapapeles",
+      "basiclistingcopied": "El listado BASIC se copió al portapapeles"
     }
   },
   "shared": {
