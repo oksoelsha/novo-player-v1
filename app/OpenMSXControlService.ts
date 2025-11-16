@@ -269,9 +269,8 @@ export class OpenMSXControlService {
     }
 
     private async copyBASICListingFromOpenmsx(pid: number) {
-        this.executeCommandOnOpenmsx(pid,
-            'set_clipboard_text [ regsub -all -line {^[0-9a-f]x[0-9a-f]{4} > } [ listing ] "" ]').then(result => {
-            this.win.webContents.send('copyBASICListingFromOpenmsxResponse', result.success);
+        this.executeCommandOnOpenmsx(pid, 'basic_listing_copier::copy_listing').then(result => {
+            this.win.webContents.send('copyBASICListingFromOpenmsxResponse', result);
         });
     }
 

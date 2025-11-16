@@ -15,8 +15,8 @@ export class ExportComponent {
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }
 
   copyBASICListing() {
-    this.launchActivityService.copyBASICListing(this.pid).then(copied => {
-      if (copied) {
+    this.launchActivityService.copyBASICListing(this.pid).then(result => {
+      if (result.success && result.content) {
         this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.basiclistingcopied'));
       }
     });

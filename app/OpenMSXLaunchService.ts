@@ -93,6 +93,7 @@ export class OpenMSXLaunchService {
     private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
     private enableGFX9000Script = path.join(__dirname, 'scripts/enable_gfx9000.tcl');
     private soundDetectorScript = path.join(__dirname, 'scripts/detect_sound_chips.tcl');
+    private copyBasicListingScript = path.join(__dirname, 'scripts/copy_basic_listing.tcl');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
         private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager,
@@ -154,6 +155,7 @@ export class OpenMSXLaunchService {
         }
         this.setQuickLaunchOtherArguments(args, adjustedQuickLaunchData);
         this.addArgument(args, 'script', this.soundDetectorScript);
+        this.addArgument(args, 'script', this.copyBasicListingScript);
 
         const process = this.startOpenmsx(args, time);
 
@@ -257,6 +259,7 @@ export class OpenMSXLaunchService {
             }
         }
         this.addArgument(args, 'script', this.soundDetectorScript);
+        this.addArgument(args, 'script', this.copyBasicListingScript);
     }
 
     private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string, size: number) {

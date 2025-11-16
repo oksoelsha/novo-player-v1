@@ -271,9 +271,9 @@ export class LaunchActivityService {
   }
 
   copyBASICListing(pid: number) {
-    return new Promise<boolean>((resolve, reject) => {
-      this.ipc.once('copyBASICListingFromOpenmsxResponse', (event: any, copied: boolean) => {
-        resolve(copied);
+    return new Promise<any>((resolve, reject) => {
+      this.ipc.once('copyBASICListingFromOpenmsxResponse', (event: any, result: any) => {
+        resolve(result);
       });
       this.ipc.send('copyBASICListingFromOpenmsx', pid);
     });
