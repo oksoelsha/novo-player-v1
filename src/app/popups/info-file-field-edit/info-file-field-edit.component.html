@@ -1,6 +1,6 @@
 <form spellcheck="false">
     <div class="d-flex align-items-center">
-        <div class="me-3">{{ 'popups.setinfofile.infofile' | translate }}</div>
+        <div class="pe-2">{{ 'popups.setinfofile.infofile' | translate }}</div>
         <input type="text" class="form-control form-control-sm info-file" id="infoFile" [(ngModel)]="infoFile"
             [ngModelOptions]="{standalone: true}" dropfile (droppedFile)="infoFile = $event">
         <app-file-system-chooser [label]="'common.browse' | translate" (chosen)="infoFile = $event" [useIcon]="true">

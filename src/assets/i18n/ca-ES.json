@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "Desa",
+    "load": "Càrrega",
     "none": "Cap",
     "machine": "Màquina",
     "browse": "Navega",
@@ -312,7 +313,9 @@
       "folder": "Carpeta",
       "filter": "Filtre",
       "invalidfile": "Fitxer no vàlid",
-      "unknownerror": "Error desconegut"
+      "unknownerror": "Error desconegut",
+      "savesetup": "Desa configuració (màquina, arguments, GFX9000)",
+      "loadsetup": "Carrega configuració"
     },
     "managebackups": {
       "restore": "Restaurar",
@@ -348,7 +351,6 @@
       "passwordentered": "La contrasenya s'ha introduït",
       "state": "Estat",
       "statesaved": "L'estat s'ha guardat correctament",
-      "load": "Càrrega",
       "stateloaded": "L'estat s'ha carregat correctament",
       "typetext": "Escriviu text",
       "type": "Escriviu",

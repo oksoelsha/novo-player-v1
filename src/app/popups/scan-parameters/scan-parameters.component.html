@@ -19,7 +19,7 @@
   </div>
   <div class="table-view mt-3">
     <div class="table-row">
-      <div class="table-cell">{{ 'popups.addgames.listing' | translate }}</div>
+      <div class="table-cell pe-2">{{ 'popups.addgames.listing' | translate }}</div>
       <div class="table-cell">
         <app-drop-down-with-input [defaultLabel]="'popups.specifyalisting' | translate"
           [defaultNewLabel]="'popups.newlisting' | translate" [list]="listings" [defaultSelection]="currentListing"
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="table-row">
-      <div class="table-cell">{{ 'common.machine' | translate }}</div>
+      <div class="table-cell pe-2">{{ 'common.machine' | translate }}</div>
       <div class="table-cell">
         <app-drop-down [list]="machines" [selectedItem]="selectedMachine" (selection)="selectedMachine = $event">
         </app-drop-down>

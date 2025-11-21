@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "저장",
+    "load": "로드",
     "none": "없음",
     "machine": "컴퓨터",
     "browse": "찾아보기",
@@ -312,7 +313,9 @@
       "folder": "폴더",
       "filter": "필터",
       "invalidfile": "잘못된 파일",
-      "unknownerror": "알 수 없는 오류"
+      "unknownerror": "알 수 없는 오류",
+      "savesetup": "설정을 저장합니다 (컴퓨터, 인수, GFX9000)",
+      "loadsetup": "설정을 불러옵니다"
     },
     "managebackups": {
       "restore": "복원",
@@ -348,7 +351,6 @@
       "passwordentered": "비밀번호가 입력되었습니다",
       "state": "상태",
       "statesaved": "상태가 저장되었습니다",
-      "load": "로드",
       "stateloaded": "상태가 로드되었습니다",
       "typetext": "텍스트 입력",
       "type": "입력하",

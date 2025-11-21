@@ -25,6 +25,7 @@ import { GamePasswordsService } from './GamePasswordsService';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 import { EmuliciousLaunchService } from './EmuliciousLaunchService';
 import { FileHunterService } from './FileHunterService';
+import { OpenMSXSetupsService } from './OpenMSXSetupsService';
 
 let win: BrowserWindow = null;
 
@@ -94,6 +95,8 @@ function initializeServices() {
   new GamePasswordsService(win);
 
   new DownloadService(win, extraDataService, gamesService, errorLogService);
+
+  new OpenMSXSetupsService(win);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {

@@ -9,7 +9,7 @@
         <div ngbDropdown class="d-inline-block ps-1 pt-2 pe-2">
             <button class="btn btn-secondary btn-sm action-button" type="button" ngbDropdownToggle
                 [disabled]="savedStates.length === 0">
-                {{ 'popups.openmsxmanagement.load' | translate }}
+                {{ 'common.load' | translate }}
             </button>
             <div ngbDropdownMenu class="dropdown-scroll">
                 <button *ngFor="let savedState of savedStates" ngbDropdownItem type="button" (click)="loadState(savedState)">

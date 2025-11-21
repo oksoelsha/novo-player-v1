@@ -79,6 +79,7 @@ import { EmuliciousArgumentsEditComponent } from './popups/emulicious-arguments-
 import { DetectedSoundChipsComponent } from './popups/openmsx-management/detected-sound-chips/detected-sound-chips.component';
 import { SpecialKeysComponent } from './popups/openmsx-management/special-keys/special-keys.component';
 import { FileHunterComponent } from './popups/quick-launch/file-hunter/file-hunter.component';
+import { SetupSaveLoadComponent } from './popups/quick-launch/setup-save-load/setup-save-load.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -134,6 +135,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SpecialKeysComponent,
     QuickLaunchComponent,
     FileHunterComponent,
+    SetupSaveLoadComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,
     FiltersComponent,

@@ -12,13 +12,14 @@ export class FileHunterComponent implements OnInit {
 
   @Output() gameLink: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('pagination') paginationComponent: PaginationComponent;
+  @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown: NgbDropdown;
+
   fileNodes: any[] = [];
   currentFolder = '';
   currentFullPath = '';
   total = 0;
   filter = '';
   readonly pageSize = 15;
-  @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown: NgbDropdown;
 
   constructor(private fileHunterService: FileHunterService) { }
 

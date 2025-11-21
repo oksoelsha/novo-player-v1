@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "保存",
+    "load": "読み込む",
     "none": "なし",
     "machine": "マシン",
     "browse": "参照",
@@ -312,7 +313,9 @@
       "folder": "フォルダー",
       "filter": "フィルター",
       "invalidfile": "無効なファイル",
-      "unknownerror": "不明なエラー"
+      "unknownerror": "不明なエラー",
+      "savesetup": "設定を保存します (マシン, 引数, GFX9000)",
+      "loadsetup": "設定を読み込み"
     },
     "managebackups": {
       "restore": "復元",
@@ -348,7 +351,6 @@
       "passwordentered": "パスワードが入力されました",
       "state": "状態",
       "statesaved": "状態が保存されました",
-      "load": "読み込む",
       "stateloaded": "状態が読み込まれました",
       "typetext": "入力する",
       "type": "入力する",

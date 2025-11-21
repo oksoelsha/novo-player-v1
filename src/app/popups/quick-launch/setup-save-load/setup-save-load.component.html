@@ -1,0 +1,28 @@
+<div ngbDropdown class="d-inline-block" #saveSetupDropdown="ngbDropdown">
+    <button class="btn btn-primary btn-sm load-button mt-3" type="button"
+        [title]="'popups.quicklaunch.savesetup' | translate" ngbDropdownToggle>
+        <span class="bi-floppy"></span>
+    </button>
+    <div ngbDropdownMenu class="p-3">
+        <input class="form-control form-control-sm setup-name" (input)="decideIfCanSave()" (keydown.enter)="save()"
+            [(ngModel)]="name" spellcheck="false" [placeholder]="'home.name' | translate" />
+        <button class="btn btn-primary btn-sm mt-3" (click)="save()" [disabled]="disableSave">
+            {{ 'common.save' | translate }}
+        </button>
+    </div>
+</div>
+<div ngbDropdown class="d-inline-block" #deleteSetupDropdown="ngbDropdown">
+    <button class="btn btn-primary btn-sm load-button mt-3" type="button"
+        [title]="'popups.quicklaunch.loadsetup' | translate" [disabled]="savedSetups.length === 0" ngbDropdownToggle>
+        {{ 'common.load' | translate }}
+    </button>
+    <div ngbDropdownMenu class="dropdown-scroll">
+        <div *ngFor="let savedSetup of savedSetups" class="delete-setup-row">
+            <div class="d-inline-block delete-setup-name" (click)="load(savedSetup)">
+                {{ savedSetup.name }}
+            </div>
+            <div class="d-inline-block delete-setup-icon bi-x text-warning" (click)="delete(savedSetup)">
+            </div>
+        </div>
+    </div>
+</div>

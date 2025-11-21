@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "Salvar",
+    "load": "Carregar",
     "none": "Nenhum",
     "machine": "Máquina",
     "browse": "Navegar",
@@ -312,7 +313,9 @@
       "folder": "Pasta",
       "filter": "Filtro",
       "invalidfile": "Arquivo inválido",
-      "unknownerror": "Erro desconhecido"
+      "unknownerror": "Erro desconhecido",
+      "savesetup": "Salvar configuração (máquina, argumentos, GFX9000)",
+      "loadsetup": "Carregar configuração"
     },
     "managebackups": {
       "restore": "Restaurar",
@@ -348,7 +351,6 @@
       "passwordentered": "A senha foi inserida",
       "state": "Estado",
       "statesaved": "Estado foi salvado",
-      "load": "Carregar",
       "stateloaded": "Estado foi carregado",
       "typetext": "Digitar texto",
       "type": "Digitar",

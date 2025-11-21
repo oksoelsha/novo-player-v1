@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "Opslaan",
+    "load": "Laden",
     "none": "Geen",
     "machine": "Machine",
     "browse": "Bladeren",
@@ -312,7 +313,9 @@
       "folder": "Map",
       "filter": "Filter",
       "invalidfile": "Ongeldig bestand",
-      "unknownerror": "Onbekende fout"
+      "unknownerror": "Onbekende fout",
+      "savesetup": "Instellingen opslaan (machine, argumenten, GFX9000)",
+      "loadsetup": "Instellingen laden"
     },
     "managebackups": {
       "restore": "Herstellen",
@@ -348,7 +351,6 @@
       "passwordentered": "Wachtwoord is ingevoerd",
       "state": "Status",
       "statesaved": "Status is opgeslagen",
-      "load": "Laden",
       "stateloaded": "Status is geladen",
       "typetext": "Tekst typen",
       "type": "Typen",

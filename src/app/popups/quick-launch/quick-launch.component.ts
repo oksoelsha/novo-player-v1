@@ -5,6 +5,7 @@ import { PopupComponent } from '../popup.component';
 import { GamesService } from '../../services/games.service';
 import { LocalizationService } from '../../services/localization.service';
 import { AlertsService } from '../../shared/components/alerts/alerts.service';
+import { OpenmsxSetup } from '../../models/openmsx-setup';
 
 @Component({
   selector: 'app-quick-launch',
@@ -81,5 +82,11 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
       }
       super.alertFailure(translatedError);
     });
+  }
+
+  loadSetup(setup: OpenmsxSetup) {
+    this.selectedMachine = setup.selectedMachine;
+    this.parameters = setup.parameters;
+    this.connectGFX9000 = setup.connectGFX9000;
   }
 }

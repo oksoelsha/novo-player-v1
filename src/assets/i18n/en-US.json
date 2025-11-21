@@ -7,6 +7,7 @@
   },
   "common": {
     "save": "Save",
+    "load": "Load",
     "none": "None",
     "machine": "Machine",
     "browse": "Browse",
@@ -312,7 +313,9 @@
       "folder": "Folder",
       "filter": "Filter",
       "invalidfile": "Invalid file",
-      "unknownerror": "Unknown error"
+      "unknownerror": "Unknown error",
+      "savesetup": "Save setup (machine, arguments, GFX9000)",
+      "loadsetup": "Load setup"
     },
     "managebackups": {
       "restore": "Restore",
@@ -348,7 +351,6 @@
       "passwordentered": "Password was entered",
       "state": "State",
       "statesaved": "State saved successfully",
-      "load": "Load",
       "stateloaded": "State loaded successfully",
       "typetext": "Type text",
       "type": "Type",
