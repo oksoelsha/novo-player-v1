@@ -21,7 +21,8 @@
             <div class="d-inline-block delete-setup-name" (click)="load(savedSetup)">
                 {{ savedSetup.name }}
             </div>
-            <div class="d-inline-block delete-setup-icon bi-x text-warning" (click)="delete(savedSetup)">
+            <div class="d-inline-block delete-setup-icon bi-x text-warning" placement="top"
+                [ngbTooltip]="'common.delete' | translate" (click)="delete(savedSetup)">
             </div>
         </div>
     </div>

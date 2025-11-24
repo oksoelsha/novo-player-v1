@@ -7,7 +7,7 @@
             <img [src]="savedState.screenshot" class="screenshot">
             <div class="ms-2 d-inline-block">{{ getSavedStateTimeAndDate(savedState) }}</div>
         </div>
-        <img class="delete ms-2" src="assets/images/operations/remove.png" (click)="deleteState(savedState)" placement="top"
-            [ngbTooltip]="'common.delete' | translate" container="body">
+        <div class="d-inline-block bi-x text-warning delete" (click)="deleteState(savedState)" placement="top"
+            [ngbTooltip]="'common.delete' | translate" container="body"></div>
     </div>
 </div>

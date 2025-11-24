@@ -16,8 +16,8 @@
             <td class="actions">
                 <img src="assets/images/operations/rename.png" (click)="enableRenameMode(listing)" placement="top"
                     [ngbTooltip]="'common.rename' | translate" container="body">
-                <img src="assets/images/operations/remove.png" (click)="enableDeleteMode(listing)" placement="top"
-                    [ngbTooltip]="'common.delete' | translate" container="body">
+                <div class="d-inline-block bi-x text-warning" placement="top" [ngbTooltip]="'common.delete' | translate"
+                    container="body" (click)="enableDeleteMode(listing)"></div>
             </td>
         </tr>
     </table>
