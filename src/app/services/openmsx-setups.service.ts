@@ -24,7 +24,6 @@ export class OpenmsxSetupsService {
   async getSetups(): Promise<OpenmsxSetup[]> {
     return new Promise<OpenmsxSetup[]>((resolve, reject) => {
       this.ipc.once('getOpenmsxSetupsResponse', (event, setups) => {
-        setups.sort((a: OpenmsxSetup, b: OpenmsxSetup) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
         resolve(setups);
       });
       this.ipc.send('getOpenmsxSetups');

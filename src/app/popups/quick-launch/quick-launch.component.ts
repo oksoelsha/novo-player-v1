@@ -6,6 +6,7 @@ import { GamesService } from '../../services/games.service';
 import { LocalizationService } from '../../services/localization.service';
 import { AlertsService } from '../../shared/components/alerts/alerts.service';
 import { OpenmsxSetup } from '../../models/openmsx-setup';
+import { OpenmsxSetupsService } from '../../services/openmsx-setups.service';
 
 @Component({
   selector: 'app-quick-launch',
@@ -23,15 +24,21 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   selectedMachine: string;
   parameters: string;
   connectGFX9000 = false;
+  savedSetups: OpenmsxSetup[] = [];
 
   constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService,
-    private localizationService: LocalizationService, private alertService: AlertsService) {
+    private localizationService: LocalizationService, private alertService: AlertsService,
+    private openmsxSetupsService: OpenmsxSetupsService) {
     super(changeDetector);
   }
 
   ngOnInit() {
     super.commonInit();
     this.selectedMachine = 'Boosted_MSX2_EN';
+    this.openmsxSetupsService.getSetups().then(setups => {
+      this.savedSetups = setups;
+      this.sortSetups();
+    });
   }
 
   ngAfterViewInit(): void {
@@ -84,9 +91,32 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
     });
   }
 
-  loadSetup(setup: OpenmsxSetup) {
+  loadSetup(setup: any) {
     this.selectedMachine = setup.selectedMachine;
     this.parameters = setup.parameters;
     this.connectGFX9000 = setup.connectGFX9000;
+  }
+
+  saveSetup(setupName: string) {
+    const setup = new OpenmsxSetup(setupName, this.selectedMachine, this.parameters, this.connectGFX9000);
+    this.openmsxSetupsService.save(setup).then(saved => {
+      if (saved) {
+        this.savedSetups.push(setup);
+        this.sortSetups();
+      }
+    });
+  }
+
+  deleteSetup(setup: any) {
+    const selectedSetup = this.savedSetups.find(s => s.name === setup.name);
+    this.openmsxSetupsService.delete(selectedSetup).then(deleted => {
+      if (deleted) {
+        this.savedSetups.splice(this.savedSetups.findIndex((s) => s.name === setup.name), 1);
+      }
+    });
+  }
+
+  private sortSetups() {
+    this.savedSetups.sort((a: OpenmsxSetup, b: OpenmsxSetup) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 }

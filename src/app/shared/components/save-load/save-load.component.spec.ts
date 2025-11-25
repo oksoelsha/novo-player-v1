@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetupSaveLoadComponent } from './setup-save-load.component';
-import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { SaveLoadComponent } from './save-load.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 
-describe('SetupSaveLoadComponent', () => {
-  let component: SetupSaveLoadComponent;
-  let fixture: ComponentFixture<SetupSaveLoadComponent>;
+describe('SaveLoadComponent', () => {
+  let component: SaveLoadComponent;
+  let fixture: ComponentFixture<SaveLoadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ TranslateModule.forRoot() ],
       declarations: [
-        SetupSaveLoadComponent,
+        SaveLoadComponent,
         NgbDropdown
       ]
     })
@@ -20,7 +20,7 @@ describe('SetupSaveLoadComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetupSaveLoadComponent);
+    fixture = TestBed.createComponent(SaveLoadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

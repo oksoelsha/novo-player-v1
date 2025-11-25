@@ -42,8 +42,7 @@
         <button class="btn btn-primary btn-sm mt-3" (click)="launch()" (keyup.enter)="launch()">{{ 'home.launch' |
             translate
             }}</button>
-        <app-quick-launch-setup-save-load class="float-end" [selectedMachine]="selectedMachine"
-            [parameters]="parameters" [connectGFX9000]="connectGFX9000"
-            (loadedSetup)="loadSetup($event)"></app-quick-launch-setup-save-load>
+        <app-save-load class="float-end" [savedList]="savedSetups" (itemToLoad)="loadSetup($event)"
+            (nameToSave)="saveSetup($event)" (itemToDelete)="deleteSetup($event)"></app-save-load>
     </div>
 </form>
