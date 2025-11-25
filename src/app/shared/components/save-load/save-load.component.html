@@ -1,6 +1,5 @@
 <div ngbDropdown class="d-inline-block" #saveDropdown="ngbDropdown">
-    <button class="btn btn-primary btn-sm load-button mt-3" type="button"
-        [title]="'popups.quicklaunch.savesetup' | translate" ngbDropdownToggle>
+    <button class="btn btn-primary btn-sm load-button mt-3" type="button" [title]="saveTooltip" ngbDropdownToggle>
         <span class="bi-floppy"></span>
     </button>
     <div ngbDropdownMenu class="p-3">
@@ -12,8 +11,8 @@
     </div>
 </div>
 <div ngbDropdown class="d-inline-block" #deleteDropdown="ngbDropdown">
-    <button class="btn btn-primary btn-sm load-button mt-3" type="button"
-        [title]="'popups.quicklaunch.loadsetup' | translate" [disabled]="savedList.length === 0" ngbDropdownToggle>
+    <button class="btn btn-primary btn-sm load-button mt-3" type="button" [title]="loadTooltip"
+        [disabled]="savedList.length === 0" ngbDropdownToggle>
         {{ 'common.load' | translate }}
     </button>
     <div ngbDropdownMenu class="dropdown-scroll">

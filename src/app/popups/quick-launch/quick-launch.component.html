@@ -42,7 +42,9 @@
         <button class="btn btn-primary btn-sm mt-3" (click)="launch()" (keyup.enter)="launch()">{{ 'home.launch' |
             translate
             }}</button>
-        <app-save-load class="float-end" [savedList]="savedSetups" (itemToLoad)="loadSetup($event)"
+        <app-save-load class="float-end" [savedList]="savedSetups"
+            [saveTooltip]="'popups.quicklaunch.savesetup' | translate"
+            [loadTooltip]="'popups.quicklaunch.loadsetup' | translate" (itemToLoad)="loadSetup($event)"
             (nameToSave)="saveSetup($event)" (itemToDelete)="deleteSetup($event)"></app-save-load>
     </div>
 </form>

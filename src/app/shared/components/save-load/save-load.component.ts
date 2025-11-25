@@ -9,6 +9,8 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 export class SaveLoadComponent {
 
   @Input() savedList: any[] = [];
+  @Input() saveTooltip: string;
+  @Input() loadTooltip: string;
   @Output() itemToLoad: EventEmitter<any> = new EventEmitter<any>();
   @Output() nameToSave: EventEmitter<string> = new EventEmitter<string>();
   @Output() itemToDelete: EventEmitter<any> = new EventEmitter<any>();
