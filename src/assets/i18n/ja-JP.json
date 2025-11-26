@@ -385,7 +385,9 @@
     "recentactivities": "最近のアクティビティ",
     "activities": "アクティビティ",
     "recentlyadded": "最近追加されたもの",
-    "recentlyupdated": "最近更新されたアイテム"
+    "recentlyupdated": "最近更新されたアイテム",
+    "savefilters": "フィルターを保存します",
+    "loadfilters": "フィルターを読み込みます"
   },
   "comparison": {
     "equal": "等しい",

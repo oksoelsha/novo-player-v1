@@ -385,7 +385,9 @@
     "recentactivities": "Recente activiteiten",
     "activities": "Activiteiten",
     "recentlyadded": "Onlangs toegevoegd",
-    "recentlyupdated": "Onlangs bijgewerkt"
+    "recentlyupdated": "Onlangs bijgewerkt",
+    "savefilters": "Filters opslaan",
+    "loadfilters": "Filters laden"
   },
   "comparison": {
     "equal": "Gelijk",

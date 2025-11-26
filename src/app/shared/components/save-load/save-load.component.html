@@ -20,7 +20,7 @@
             <div class="d-inline-block delete-obj-name" (click)="load(savedItem)">
                 {{ savedItem.name }}
             </div>
-            <div class="d-inline-block delete-obj-icon bi-x text-warning" placement="top"
+            <div class="d-inline-block delete-obj-icon bi-x" placement="top" container="body"
                 [ngbTooltip]="'common.delete' | translate" (click)="delete(savedItem)">
             </div>
         </div>

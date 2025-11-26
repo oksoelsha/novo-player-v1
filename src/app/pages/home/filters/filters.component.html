@@ -130,7 +130,11 @@
             </app-drop-down>
         </div>
     </div>
-    <button class="btn btn-sm btn-link link-light mt-3 float-end" type="button" (click)="resetFilters()">
-        {{ 'common.reset' | translate }}
-    </button>
+    <button class="btn btn-primary btn-sm mt-3" (click)="resetFilters()">{{ 'common.reset' |
+        translate
+        }}</button>
+    <app-save-load class="float-end" [savedList]="savedFilters"
+        [saveTooltip]="'filters.savefilters' | translate"
+        [loadTooltip]="'filters.loadfilters' | translate" (itemToLoad)="loadFilters($event)"
+        (nameToSave)="saveFilters($event)" (itemToDelete)="deleteFilters($event)"></app-save-load>
 </div>

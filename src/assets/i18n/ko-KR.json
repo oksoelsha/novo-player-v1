@@ -385,7 +385,9 @@
     "recentactivities": "최근 활동",
     "activities": "활동",
     "recentlyadded": "최근에 설치한 항목",
-    "recentlyupdated": "최근에 업데이트됨"
+    "recentlyupdated": "최근에 업데이트됨",
+    "savefilters": "필터를 저장합니다",
+    "loadfilters": "필터 불러오기"
   },
   "comparison": {
     "equal": "같음",

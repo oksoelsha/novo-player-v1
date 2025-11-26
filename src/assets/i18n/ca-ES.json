@@ -385,7 +385,9 @@
     "recentactivities": "Activitats recents",
     "activities": "Activitats",
     "recentlyadded": "Afegides recentment",
-    "recentlyupdated": "Actualitzat recentment"
+    "recentlyupdated": "Actualitzat recentment",
+    "savefilters": "Desa filtres",
+    "loadfilters": "Carrega filtres"
   },
   "comparison": {
     "equal": "Igual",

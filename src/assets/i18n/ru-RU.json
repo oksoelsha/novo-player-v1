@@ -385,7 +385,9 @@
     "recentactivities": "Последние действия",
     "activities": "Действия",
     "recentlyadded": "Недавно добавленные",
-    "recentlyupdated": "Недавно обновленные"
+    "recentlyupdated": "Недавно обновленные",
+    "savefilters": "Сохранить фильтры",
+    "loadfilters": "Загрузить фильтры"
   },
   "comparison": {
     "equal": "Равный",

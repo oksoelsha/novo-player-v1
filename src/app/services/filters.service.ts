@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IpcRenderer } from 'electron';
 import { Filters } from '../models/filters';
 import { Game } from '../models/game';
 
@@ -7,9 +8,12 @@ import { Game } from '../models/game';
 })
 export class FiltersService {
 
+  private ipc: IpcRenderer;
   private filters = new Filters();
 
-  constructor() { }
+  constructor() {
+    this.ipc = window.require('electron').ipcRenderer;
+  }
 
   getFilters(): Filters {
     return this.filters;
@@ -45,5 +49,32 @@ export class FiltersService {
       }
     });
     return filteredGames;
+  }
+
+  async save(filters: any) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('saveFiltersResponse', (event, saved: boolean) => {
+        resolve(saved);
+      });
+      this.ipc.send('saveFilters', filters);
+    });
+  }
+
+  async getSavedFilters(): Promise<any[]> {
+    return new Promise<any[]>((resolve, reject) => {
+      this.ipc.once('getFiltersResponse', (event, filters) => {
+        resolve(filters);
+      });
+      this.ipc.send('getFilters');
+    });
+  }
+
+  async delete(filters: any) {
+    return new Promise<boolean>((resolve, reject) => {
+      this.ipc.once('deleteFiltersResponse', (event, deleted: boolean) => {
+        resolve(deleted);
+      });
+      this.ipc.send('deleteFilters', filters);
+    });
   }
 }

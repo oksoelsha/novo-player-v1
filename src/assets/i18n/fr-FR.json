@@ -385,7 +385,9 @@
     "recentactivities": "Activités récentes",
     "activities": "Activités",
     "recentlyadded": "Ajoutés récemment",
-    "recentlyupdated": "Mis à jour récemment"
+    "recentlyupdated": "Mis à jour récemment",
+    "savefilters": "Sauvegarder filtres",
+    "loadfilters": "Charger filtres"
   },
   "comparison": {
     "equal": "Égal",

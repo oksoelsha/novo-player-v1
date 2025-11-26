@@ -30,6 +30,7 @@ import { EmulatorService } from '../../../services/emulator.service';
 import { LocalizationService } from '../../../services/localization.service';
 import { OperationCacheService } from '../../../services/operation-cache.service';
 import { RangeItem } from './range-selector/range-selector.component';
+import { FiltersService } from '../../../services/filters.service';
 
 class FilterButton {
   readonly filter: Filter;
@@ -77,9 +78,10 @@ export class FiltersComponent implements OnInit {
   recentActivities: string[] = [];
   localizedRecentActivitiesReverse = new Map<string, string>();
   filterButtons: FilterButton[] = [];
+  savedFilters: any[] = [];
 
   constructor(private localizationService: LocalizationService, private emulatorService: EmulatorService,
-    private operationCacheService: OperationCacheService) { }
+    private operationCacheService: OperationCacheService, private filtersService: FiltersService) { }
 
   ngOnInit(): void {
     Object.values(Medium).forEach(medium => {
@@ -133,6 +135,11 @@ export class FiltersComponent implements OnInit {
         });
       });
     }
+
+    this.filtersService.getSavedFilters().then(filters => {
+      this.savedFilters = filters;
+      this.sortSetups();
+    });
   }
 
   applyMediumFilter(medium: string) {
@@ -209,6 +216,64 @@ export class FiltersComponent implements OnInit {
 
   closeWindow() {
     this.closeAction.emit();
+  }
+
+  loadFilters(savedFilters: any) {
+    this.resetFilters();
+    savedFilters.filters.forEach((f1: any[]) => {
+      f1.forEach(f2 => {
+        if ('medium' in f2) {
+          this.applyFilter(new MediumFilter(f2.medium));
+        } else if ('company' in f2) {
+          this.applyFilter(new CompanyFilter(f2.company));
+        } else if ('country' in f2) {
+          this.applyFilter(new CountryFilter(f2.country));
+        } else if ('generation' in f2) {
+          this.applyFilter(new GenerationFilter(f2.generation as Generation));
+        } else if ('sound' in f2) {
+          this.applyFilter(new SoundFilter(f2.sound));
+        } else if ('genre' in f2) {
+          this.applyFilter(new GenreFilter(f2.genre));
+        } else if ('years' in f2) {
+          this.applyFilter(new YearsFilter(new FilterRange(f2.years.start, f2.years.comparisonOperator, f2.years.end)));
+        } else if ('sizes' in f2) {
+          this.applyFilter(new SizesFilter(new FilterRange(f2.sizes.start, f2.sizes.comparisonOperator, f2.sizes.end)));
+        } else if ('machine' in f2) {
+          this.applyFilter(new MachineFilter(f2.machine));
+        } else if ('inputDevice' in f2) {
+          this.applyFilter(new InputDeviceFilter(f2.inputDevice));
+        } else if ('fddMode' in f2) {
+          this.applyFilter(new FDDModeFilter(f2.fddMode));
+        } else if ('videoSource' in f2) {
+          this.applyFilter(new VideoSourceFilter(f2.videoSource));
+        } else if ('recentActivity' in f2) {
+          this.applyFilter(new RecentActivityFilter(f2.recentActivity, this.operationCacheService));
+        }
+      });
+    });
+  }
+
+  saveFilters(filtersName: string) {
+    // Need to convert filter collection to plain JSON object
+    const stringedFilters = JSON.stringify(this.filters.filters);
+    const filtersObject = JSON.parse(stringedFilters);
+    const namedFilters = { name: filtersName, filters: filtersObject };
+
+    this.filtersService.save(namedFilters).then(saved => {
+      if (saved) {
+        this.savedFilters.push(namedFilters);
+        this.sortSetups();
+      }
+    });
+  }
+
+  deleteFilters(filters: any) {
+    const selectedFilters = this.savedFilters.find(s => s.name === filters.name);
+    this.filtersService.delete(selectedFilters).then(deleted => {
+      if (deleted) {
+        this.savedFilters.splice(this.savedFilters.findIndex((f) => f.name === filters.name), 1);
+      }
+    });
   }
 
   resetFilters() {
@@ -294,5 +359,9 @@ export class FiltersComponent implements OnInit {
         break;
     }
     return rangeDisplay;
+  }
+
+  private sortSetups() {
+    this.savedFilters.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 }
