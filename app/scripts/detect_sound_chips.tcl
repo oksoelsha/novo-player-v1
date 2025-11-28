@@ -38,6 +38,7 @@ proc find_all_scc {} {
 					    [string match -nocase manbow2 $mapper_type] ||
 					    [string match -nocase Manbow2_2 $mapper_type] ||
 					    [string match -nocase HamarajaNight $mapper_type] ||
+					    [string match -nocase yamanooto $mapper_type] ||
 					    [string match -nocase KonamiUltimateCollection $mapper_type]} {
 						lappend result $ps $ss 0
 					}
