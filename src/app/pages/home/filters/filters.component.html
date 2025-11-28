@@ -133,7 +133,7 @@
     <button class="btn btn-primary btn-sm mt-3" (click)="resetFilters()">{{ 'common.reset' |
         translate
         }}</button>
-    <app-save-load class="float-end" [savedList]="savedFilters"
+    <app-save-load class="float-end" [savedList]="savedFilters" (openStatus)="emitMenuOpenStatus($event)"
         [saveTooltip]="'filters.savefilters' | translate"
         [loadTooltip]="'filters.loadfilters' | translate" (itemToLoad)="loadFilters($event)"
         (nameToSave)="saveFilters($event)" (itemToDelete)="deleteFilters($event)"></app-save-load>

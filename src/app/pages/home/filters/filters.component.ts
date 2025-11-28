@@ -31,6 +31,7 @@ import { LocalizationService } from '../../../services/localization.service';
 import { OperationCacheService } from '../../../services/operation-cache.service';
 import { RangeItem } from './range-selector/range-selector.component';
 import { FiltersService } from '../../../services/filters.service';
+import { FilterUtils } from '../../../models/filter-utils';
 
 class FilterButton {
   readonly filter: Filter;
@@ -53,6 +54,8 @@ export class FiltersComponent implements OnInit {
 
   @Input() filters: Filters;
   @Input() machines: string[] = [];
+  @Input() savedFilters: any[] = [];
+
   @Output() appliedFilters: EventEmitter<Filters> = new EventEmitter<Filters>();
   @Output() openedMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() closeAction: EventEmitter<void> = new EventEmitter<void>();
@@ -78,7 +81,6 @@ export class FiltersComponent implements OnInit {
   recentActivities: string[] = [];
   localizedRecentActivitiesReverse = new Map<string, string>();
   filterButtons: FilterButton[] = [];
-  savedFilters: any[] = [];
 
   constructor(private localizationService: LocalizationService, private emulatorService: EmulatorService,
     private operationCacheService: OperationCacheService, private filtersService: FiltersService) { }
@@ -135,11 +137,6 @@ export class FiltersComponent implements OnInit {
         });
       });
     }
-
-    this.filtersService.getSavedFilters().then(filters => {
-      this.savedFilters = filters;
-      this.sortSetups();
-    });
   }
 
   applyMediumFilter(medium: string) {
@@ -220,37 +217,9 @@ export class FiltersComponent implements OnInit {
 
   loadFilters(savedFilters: any) {
     this.resetFilters();
-    savedFilters.filters.forEach((f1: any[]) => {
-      f1.forEach(f2 => {
-        if ('medium' in f2) {
-          this.applyFilter(new MediumFilter(f2.medium));
-        } else if ('company' in f2) {
-          this.applyFilter(new CompanyFilter(f2.company));
-        } else if ('country' in f2) {
-          this.applyFilter(new CountryFilter(f2.country));
-        } else if ('generation' in f2) {
-          this.applyFilter(new GenerationFilter(f2.generation as Generation));
-        } else if ('sound' in f2) {
-          this.applyFilter(new SoundFilter(f2.sound));
-        } else if ('genre' in f2) {
-          this.applyFilter(new GenreFilter(f2.genre));
-        } else if ('years' in f2) {
-          this.applyFilter(new YearsFilter(new FilterRange(f2.years.start, f2.years.comparisonOperator, f2.years.end)));
-        } else if ('sizes' in f2) {
-          this.applyFilter(new SizesFilter(new FilterRange(f2.sizes.start, f2.sizes.comparisonOperator, f2.sizes.end)));
-        } else if ('machine' in f2) {
-          this.applyFilter(new MachineFilter(f2.machine));
-        } else if ('inputDevice' in f2) {
-          this.applyFilter(new InputDeviceFilter(f2.inputDevice));
-        } else if ('fddMode' in f2) {
-          this.applyFilter(new FDDModeFilter(f2.fddMode));
-        } else if ('videoSource' in f2) {
-          this.applyFilter(new VideoSourceFilter(f2.videoSource));
-        } else if ('recentActivity' in f2) {
-          this.applyFilter(new RecentActivityFilter(f2.recentActivity, this.operationCacheService));
-        }
-      });
-    });
+    this.filters = FilterUtils.convertToFilters(savedFilters.filters, this.operationCacheService);
+    this.filters.filters.forEach(f1 => f1.forEach(f2 => this.addFilterButton(f2)));
+    this.appliedFilters.emit(this.filters);
   }
 
   saveFilters(filtersName: string) {
@@ -262,7 +231,7 @@ export class FiltersComponent implements OnInit {
     this.filtersService.save(namedFilters).then(saved => {
       if (saved) {
         this.savedFilters.push(namedFilters);
-        this.sortSetups();
+        this.savedFilters.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
       }
     });
   }
@@ -359,9 +328,5 @@ export class FiltersComponent implements OnInit {
         break;
     }
     return rangeDisplay;
-  }
-
-  private sortSetups() {
-    this.savedFilters.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   }
 }

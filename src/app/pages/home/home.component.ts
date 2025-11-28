@@ -34,7 +34,6 @@ import { MoreScreenshotsComponent } from '../../popups/more-screenshots/more-scr
 import { GameSavedState } from '../../models/saved-state';
 import { SavedStatesComponent } from '../../popups/saved-states/saved-states.component';
 import { QuickLaunchComponent } from '../../popups/quick-launch/quick-launch.component';
-import { QuickLaunchData } from '../../models/quick-launch-data';
 import { ManageBackupsComponent } from '../../popups/manage-backups/manage-backups.component';
 import { NewsItem } from '../../models/news-collection';
 import { MsxnewsService } from '../../services/msxnews.service';
@@ -44,6 +43,8 @@ import { WindowService } from '../../services/window.service';
 import { OpenmsxManagementComponent } from '../../popups/openmsx-management/openmsx-management.component';
 import { LaunchActivity, LaunchActivityService } from '../../services/launch-activity.service';
 import { EmuliciousArgumentsEditComponent } from '../../popups/emulicious-arguments-edit/emulicious-arguments-edit.component';
+import { FilterUtils } from '../../models/filter-utils';
+import { OperationCacheService } from '../../services/operation-cache.service';
 
 export enum SortDirection {
   ASC, DESC
@@ -139,6 +140,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   screenshotsPath: string;
   selectedPid = 0;
   showFileHunterGames = false;
+  savedFilters: any[] = [];
 
   private readonly noScreenshotImage1: GameSecondaryData = new GameSecondaryData('assets/images/noscrsht.png', '', null, null);
   private readonly noScreenshotImage2: GameSecondaryData = new GameSecondaryData('', 'assets/images/noscrsht.png', null, null);
@@ -162,7 +164,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private contextMenuService: ContextMenuService, private localizationService: LocalizationService,
     private undoService: UndoService, private platformService: PlatformService, private filtersService: FiltersService,
     private emulatorService: EmulatorService, private msxnewsService: MsxnewsService, private windowService: WindowService,
-    private launchActivityService: LaunchActivityService, private ngZone: NgZone) {
+    private launchActivityService: LaunchActivityService, private operationCacheService: OperationCacheService,
+    private ngZone: NgZone) {
 
     const self = this;
     this.historyToUndoSubscription = this.undoService.getIfTransactionsToUndo().subscribe(isDataToUndo => {
@@ -398,6 +401,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.filters = this.filtersService.getFilters();
     this.filtersTotal = this.filters.getTotalFilters();
+    this.filtersService.getSavedFilters().then(filters => {
+      this.savedFilters = filters;
+      this.savedFilters.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    });
   }
 
   ngOnDestroy() {
@@ -909,6 +916,16 @@ export class HomeComponent implements OnInit, OnDestroy {
       sessionStorage.removeItem('selectedGame');
     }
     this.reshowRunningGameIndicators();
+  }
+
+  loadFilters(filters: any) {
+    if (this.showFilters) {
+      // apply filters on the filters component to update its buttons
+      this.filtersComponent.loadFilters(filters);
+    } else {
+      const savedFilters = FilterUtils.convertToFilters(filters.filters, this.operationCacheService);
+      this.applyFilters(savedFilters);
+    }
   }
 
   resetAllFilters() {

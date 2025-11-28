@@ -71,6 +71,12 @@
                 </div>
               </div>
             </button>
+            <div *ngIf="savedFilters.length > 0" class="dropdown-scroll">
+              <hr class="mt-1 mb-1">
+              <button *ngFor="let savedFilter of savedFilters" ngbDropdownItem type="button" (click)="loadFilters(savedFilter)">
+                {{ savedFilter.name }}
+              </button>
+            </div>
           </div>
         </div>
         <div ngbDropdown class="d-inline-block ps-1" (openChange)="handleOpenNews($event)">
@@ -392,9 +398,9 @@
       </div>
     </div>
     <div *ngIf="showFilters" class="scrollable-filters">
-      <app-home-filters [filters]="filters" [machines]="machines" (appliedFilters)="applyFilters($event)"
-        (closeAction)="toggleFiltersForm()" (resetAction)="resetFiltersData()" (openedMenu)="handleOpenMenuEvents($event)"
-        #filtersComponent>
+      <app-home-filters [filters]="filters" [machines]="machines" [savedFilters]="savedFilters"
+        (appliedFilters)="applyFilters($event)" (closeAction)="toggleFiltersForm()" (resetAction)="resetFiltersData()"
+        (openedMenu)="handleOpenMenuEvents($event)" #filtersComponent>
       </app-home-filters>
     </div>
   </div>

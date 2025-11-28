@@ -4,7 +4,7 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-save-load',
   templateUrl: './save-load.component.html',
-  styleUrls: ['./save-load.component.sass']
+  styleUrls: ['../../../common-styles.sass', './save-load.component.sass']
 })
 export class SaveLoadComponent {
 
@@ -14,6 +14,7 @@ export class SaveLoadComponent {
   @Output() itemToLoad: EventEmitter<any> = new EventEmitter<any>();
   @Output() nameToSave: EventEmitter<string> = new EventEmitter<string>();
   @Output() itemToDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild('saveDropdown', { static: true }) private saveDropdown: NgbDropdown;
   @ViewChild('deleteDropdown', { static: true }) private deleteDropdown: NgbDropdown;
@@ -22,6 +23,10 @@ export class SaveLoadComponent {
   disableSave = true;
 
   constructor() { }
+
+  emitOpenStatus(open: boolean) {
+    this.openStatus.emit(open);
+  }
 
   decideIfCanSave() {
     if (this.name) {
@@ -34,7 +39,10 @@ export class SaveLoadComponent {
     }
   }
 
-  save() {
+  save(event: any) {
+    if (event instanceof KeyboardEvent) {
+      event.stopPropagation();
+    }
     this.nameToSave.emit(this.name);
     this.name = '';
     this.disableSave = true;
