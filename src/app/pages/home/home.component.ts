@@ -901,7 +901,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   toggleFiltersForm() {
-    this.showFilters = !this.showFilters;
+    // delay the flipping of the showFilters flag to avoid switching between the Show/Hide menu items while
+    // menu is still open for a split second
+    setTimeout(() => {
+      this.showFilters = !this.showFilters;
+    }, 100);
   }
 
   applyFilters(filters: Filters) {
