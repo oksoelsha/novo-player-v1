@@ -14,8 +14,7 @@ export class NewsService {
     private readonly sites: string[][] = [
         ['http://www.msxlaunchers.info/', 'http://www.msxlaunchers.info/feed', 'MSX Launchers'],
         ['https://www.msx.org/', 'https://www.msx.org/feed/news/', 'MSX Resource Center'],
-        ['https://www.msxblog.es/', 'https://www.msxblog.es/feed/', 'MSX Blog'],
-        ['https://pressplayontape.nl/', 'http://pressplayontape.nl/category/homecomputers/msx/feed/', 'Press Play on Tape']
+        ['https://www.msxblog.es/', 'https://www.msxblog.es/feed/', 'MSX Blog']
     ];
 
     constructor(private win: BrowserWindow, private errorLogService: ErrorLogService) {
