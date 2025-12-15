@@ -98,8 +98,6 @@
     "showfilters": "フィルターを表示",
     "hidefilters": "フィルターを非表示にする",
     "cannotdisplayduetofilters": "フィルターによりゲームを表示できません",
-    "infofromgiantbomb": "Giant Bombからの情報",
-    "getinfofromgiantbomb": "Giant Bombから情報を得る",
     "morescreenshots": "追加のスクリーンショット",
     "quicklaunch": "クイック起動",
     "notyetadded": "まだ追加されていません",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "その他のオプションのエミュレーター",
     "general": "全般",
     "externalintegrations": "外部統合",
-    "giantbombapikey": "Giant Bomb API キー",
-    "giantbombapikeytooltip": "Giant Bomb Web サイトに接続してゲームのプラットフォームやアートワークなどのデータを取得するために必要な API キー",
     "defaultdisplaymode": "デフォルトの表示モード"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "より大きい",
     "greaterOrEqual": "には 以上",
     "betweenInclusive": "間で (包含)"
-  },
-  "giantbomb": {
-    "matchedname": "一致した名前",
-    "platforms": "プラットフォーム",
-    "notfound": "見つかりません",
-    "viewongiantbomb": "Giant Bomb で表示",
-    "failedtoconnect": "接続できませんでした"
   },
   "morescreenshots": {
     "locateimagefile": "画像ファイルを見つける"

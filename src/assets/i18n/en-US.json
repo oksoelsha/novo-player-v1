@@ -98,8 +98,6 @@
     "showfilters": "Show filters",
     "hidefilters": "Hide filters",
     "cannotdisplayduetofilters": "Cannot display game due to filters",
-    "infofromgiantbomb": "Info from Giant Bomb",
-    "getinfofromgiantbomb": "Get info from Giant Bomb",
     "morescreenshots": "More Screenshots",
     "quicklaunch": "Quick Launch",
     "notyetadded": "Not yet added",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "Other Optional Emulators",
     "general": "General",
     "externalintegrations": "External Integrations",
-    "giantbombapikey": "Giant Bomb API Key",
-    "giantbombapikeytooltip": "API key needed to connect to Giant Bomb website to get data such as platforms and box art for the game",
     "defaultdisplaymode": "Default Display Mode"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "Greater",
     "greaterOrEqual": "Greater or equal",
     "betweenInclusive": "Between (inclusive)"
-  },
-  "giantbomb": {
-    "matchedname": "Matched name",
-    "platforms": "Platforms",
-    "notfound": "Not found",
-    "viewongiantbomb": "View game page on Giant Bomb",
-    "failedtoconnect": "Failed to connect"
   },
   "morescreenshots": {
     "locateimagefile": "Locate image file"

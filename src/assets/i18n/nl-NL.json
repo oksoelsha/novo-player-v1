@@ -98,8 +98,6 @@
     "showfilters": "Filters weergeven",
     "hidefilters": "Filters verbergen",
     "cannotdisplayduetofilters": "Kan niet weergeven omdat vanwege filters",
-    "infofromgiantbomb": "Info van Giant Bomb",
-    "getinfofromgiantbomb": "Info ophalen van Giant Bomb",
     "morescreenshots": "Extra schermafbeeldingen",
     "quicklaunch": "Snel starten",
     "notyetadded": "Nog niet toegevoegd",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "Andere optionele emulatoren",
     "general": "Algemeen",
     "externalintegrations": "Externe integraties",
-    "giantbombapikey": "Giant Bomb API-sleutel",
-    "giantbombapikeytooltip": "API-sleutel vereist om verbinding te maken met de Giant Bomb-website om gegevens zoals platforms en illustraties voor de game te verkrijgen",
     "defaultdisplaymode": "Standaard weergavemodus"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "Groter",
     "greaterOrEqual": "Groter of gelijk",
     "betweenInclusive": "Tussen (inclusief)"
-  },
-  "giantbomb": {
-    "matchedname": "Overeenkomende naam",
-    "platforms": "Platformen",
-    "notfound": "Niet gevonden",
-    "viewongiantbomb": "Weergeven op Giant Bomb",
-    "failedtoconnect": "Kan geen verbinding maken"
   },
   "morescreenshots": {
     "locateimagefile": "Zoek het afbeeldingsbestand"

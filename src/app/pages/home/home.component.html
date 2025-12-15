@@ -328,14 +328,6 @@
                 <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+H</div>
               </div>
             </button>
-            <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0 || !isGiantbombApikeyDefined"
-              ngbDropdownItem type="button" (click)="additionalExternalInfo.open()">
-              <div class="d-flex">
-                <div class="actions-menu-icon"></div>
-                <div class="me-4">{{ 'home.getinfofromgiantbomb' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+G</div>
-              </div>
-            </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
               ngbDropdownItem type="button" (click)="setFavoritesFlag(true)">
               <div class="d-flex">
@@ -506,15 +498,6 @@
   </ng-template>
 </app-popup>
 
-<app-popup popupId="additional-external-info-id"
-  [titleHeader]="('home.infofromgiantbomb' | translate) + ' - ' + selectedGame?.name" (openStatus)="popupOpen = $event">
-  <ng-template let-popupId="popupId">
-    <app-additional-external-info [popupId]="popupId" (openStatus)="popupOpen = $event" [game]="selectedGame"
-      #additionalExternalInfo>
-    </app-additional-external-info>
-  </ng-template>
-</app-popup>
-
 <app-popup popupId="saved-states-id" [titleHeader]="('home.launch' | translate) + ': ' + selectedGame?.name"
   (openStatus)="popupOpen = $event">
   <ng-template let-popupId="popupId">
@@ -622,12 +605,6 @@
     <div class="context-menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
     <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+H</div>
-  </ng-template>
-  <ng-template contextMenuItem [visible]="isGiantbombApikeyDefined && isMenuItemVisible"
-    (execute)="additionalExternalInfo.open()">
-    <div class="context-menu-icon"></div>
-    {{ 'home.getinfofromgiantbomb' | translate }}
-    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+G</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
     <div class="context-menu-icon">&starf;</div>

@@ -35,7 +35,6 @@ import { SortStatusPipe } from './pages/home/pipes/sort-status.pipe';
 import { SearchComponent } from './pages/home/search/search.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { WebMSXComponent } from './pages/web-msx/web-msx.component';
-import { AdditionalExternalInfoComponent } from './popups/additional-external-info/additional-external-info.component';
 import { BluemsxArgumentsEditComponent } from './popups/bluemsx-arguments-edit/bluemsx-arguments-edit.component';
 import { ChangeListingComponent } from './popups/change-listing/change-listing.component';
 import { HardwareEditComponent } from './popups/hardware-edit/hardware-edit.component';
@@ -138,7 +137,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     ManageBackupsComponent,
     RangeSelectorComponent,
     FiltersComponent,
-    AdditionalExternalInfoComponent,
     VersionMatchIndicatorComponent,
     FieldWithSuggestionsComponent,
     MoreDetailsComponent,

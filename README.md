@@ -23,7 +23,6 @@ This project is a continuation of the previous Novo Player that stopped at versi
  * Drag and drop files and folders on main screen to scan and add to listings.
  * Manage listings by renaming, deleting or merging them.
  * View related games to a selected game based on game name, genre and company.
- * Get list of platforms, screenshots and box art of games from Giant Bomb website.
  * Check for new version availability of Novo Player and other data files in the help page.
  * Get latest MSX news.
  * Download games from file-hunter.com and start them on openMSX.

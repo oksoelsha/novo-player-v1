@@ -95,11 +95,9 @@
     "findrelatedgames": "Найти похожие игры",
     "relatedgames": "Похожие игры",
     "filters": "фильтры",
-    "infofromgiantbomb": "Сведения от Giant Bomb",
     "showfilters": "Показать фильтры",
     "hidefilters": "Скрыть фильтры",
     "cannotdisplayduetofilters": "Невозможно показать игру в сочетании с фильтрами",
-    "getinfofromgiantbomb": "Получить сведения от Giant Bomb",
     "morescreenshots": "Дополнительный снимки экрана",
     "quicklaunch": "Быстрый запуск",
     "notyetadded": "Еще не добавлено",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "Другие дополнительные эмуляторы",
     "general": "Общие",
     "externalintegrations": "Внешние интеграции",
-    "giantbombapikey": "Ключ API Giant Bomb",
-    "giantbombapikeytooltip": "Ключ API, необходимый для подключения к веб-сайту Giant Bomb для получения таких данных, как платформы и изображения для игры",
     "defaultdisplaymode": "Режим отображения по умолчанию"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "Больше",
     "greaterOrEqual": "Больше или равно",
     "betweenInclusive": "В диапазоне (включительно)"
-  },
-  "giantbomb": {
-    "matchedname": "Сопоставленное имя",
-    "platforms": "Платформы",
-    "notfound": "Не найдено",
-    "viewongiantbomb": "Просмотреть страницу игры в Giant Bomb",
-    "failedtoconnect": "Ошибка подключения"
   },
   "morescreenshots": {
     "locateimagefile": "Найдите файл изображения"

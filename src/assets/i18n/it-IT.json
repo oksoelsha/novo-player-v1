@@ -98,8 +98,6 @@
     "showfilters": "Mostra filtri",
     "hidefilters": "Nascondi filtri",
     "cannotdisplayduetofilters": "Impossibile visualizzare il gioco in quanto a causa dei filtri",
-    "infofromgiantbomb": "Informazioni da Giant Bomb",
-    "getinfofromgiantbomb": "Ottieni informazioni da Giant Bomb",
     "morescreenshots": "Screenshot aggiuntivi",
     "quicklaunch": "Lancio rapido",
     "notyetadded": "Non ancora aggiunto",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "Altri emulatori facoltativi",
     "general": "Generale",
     "externalintegrations": "Integrazioni esterne",
-    "giantbombapikey": "Chiave API Giant Bomb",
-    "giantbombapikeytooltip": "Chiave API richiesta per connettersi al sito Web Giant Bomb per ottenere dati come piattaforme e grafica per il gioco",
     "defaultdisplaymode": "Modalità di visualizzazione predefinita"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "Maggiore",
     "greaterOrEqual": "Maggiore o uguale",
     "betweenInclusive": "Fra (inclusivo)"
-  },
-  "giantbomb": {
-    "matchedname": "Nome corrispondente",
-    "platforms": "Piattaforme",
-    "notfound": "Non trovato",
-    "viewongiantbomb": "Visualizza la pagina del gioco su Giant Bomb",
-    "failedtoconnect": "Impossibile effettuare la connessione"
   },
   "morescreenshots": {
     "locateimagefile": "Individua il file immagine"

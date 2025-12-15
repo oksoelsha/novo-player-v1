@@ -128,12 +128,6 @@
             [(ngModel)]="fileHunterGames">
           <label class="form-check-label" for="enableFileHunterGames">{{ 'popups.quicklaunch.filehuntergames' | translate }}</label>
         </div>
-
-        <div class="form-group mb-5">
-          <label class="form-label">{{ 'settings.giantbombapikey' | translate }}</label>
-          <input type="text" class="form-control form-control-sm" name="giantbomb-apikey" [(ngModel)]="giantbombApiKey"
-            placement="top" [ngbTooltip]="'settings.giantbombapikeytooltip' | translate" />
-        </div>
       </div>
       <div class="buttons">
         <button class="btn btn-primary btn-sm mt-2" [disabled]="submitDisabled">{{ 'common.save' | translate }}</button>

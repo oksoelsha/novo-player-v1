@@ -29,7 +29,6 @@ import { WebMSXUtils } from '../../models/webmsx-utils';
 import { Filters } from '../../models/filters';
 import { FiltersService } from '../../services/filters.service';
 import { EmulatorService } from '../../services/emulator.service';
-import { AdditionalExternalInfoComponent } from '../../popups/additional-external-info/additional-external-info.component';
 import { MoreScreenshotsComponent } from '../../popups/more-screenshots/more-screenshots.component';
 import { GameSavedState } from '../../models/saved-state';
 import { SavedStatesComponent } from '../../popups/saved-states/saved-states.component';
@@ -77,7 +76,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('emuliciousArgumentsEdit') emuliciousArgumentsEdit: EmuliciousArgumentsEditComponent;
   @ViewChild('relatedGames') relatedGames: RelatedGamesComponent;
   @ViewChild('moreScreenshots') moreScreenshots: MoreScreenshotsComponent;
-  @ViewChild('additionalExternalInfo') additionalExternalInfo: AdditionalExternalInfoComponent;
   @ViewChild('changeListing') changeListing: ChangeListingComponent;
   @ViewChild('savedStatesSelector') savedStatesSelector: SavedStatesComponent;
   @ViewChild('quickLaunch') quickLaunch: QuickLaunchComponent;
@@ -121,7 +119,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   isWebMSXPathDefined: boolean;
   isBlueMSXPathDefined: boolean;
   isEmuliciousPathDefined: boolean;
-  isGiantbombApikeyDefined: boolean;
   isMSXNewsEnabled: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
@@ -280,10 +277,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
           } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
             this.relatedGames.open();
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
-            if (this.isGiantbombApikeyDefined) {
-              this.additionalExternalInfo.open();
-            }
           }
         }
       }
@@ -385,7 +378,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
       this.isEmuliciousPathDefined = settings.emuliciousPath != null && settings.emuliciousPath.trim() !== '';
-      this.isGiantbombApikeyDefined = settings.giantbombApiKey != null && settings.giantbombApiKey.trim() !== '';
       this.isMSXNewsEnabled = settings.enableNews;
       this.localizationService.useLanguage(settings.language);
 

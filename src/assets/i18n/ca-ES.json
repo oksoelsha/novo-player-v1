@@ -98,8 +98,6 @@
     "showfilters": "Mostra els filtres",
     "hidefilters": "Amaga els filtres",
     "cannotdisplayduetofilters": "No es pot mostrar el joc per aquests filtres",
-    "infofromgiantbomb": "Informació de Giant Bomb",
-    "getinfofromgiantbomb": "Obtén informació de Giant Bomb",
     "morescreenshots": "Captures de pantalla addicionals",
     "quicklaunch": "Llançament ràpid",
     "notyetadded": "Encara no s'ha afegit",
@@ -159,8 +157,6 @@
     "otheroptionalemulators": "Altres emuladors opcionals",
     "general": "General",
     "externalintegrations": "Integracions externes",
-    "giantbombapikey": "Clau d'API del Giant Bomb",
-    "giantbombapikeytooltip": "La clau d'API necessària per connectar-se al lloc web de Giant Bomb per obtenir dades com ara plataformes i quadresmaterials gràfics per al joc",
     "defaultdisplaymode": "Mode de visualització per defecte"
   },
   "country": {
@@ -396,13 +392,6 @@
     "greater": "Més gran",
     "greaterOrEqual": "Més gran o igual",
     "betweenInclusive": "Entre (inclusiu)"
-  },
-  "giantbomb": {
-    "matchedname": "Nom coincident",
-    "platforms": "Plataformes",
-    "notfound": "No s'ha trobat",
-    "viewongiantbomb": "Mostra la pàgina del joc a Giant Bomb",
-    "failedtoconnect": "No s'ha pogut connectar"
   },
   "morescreenshots": {
     "locateimagefile": "Localitza el fitxer d'imatge"
