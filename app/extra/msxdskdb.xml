@@ -18,7 +18,7 @@
 	Sep 2023 Sam Elsharif		version 13
 	Oct 2024 Sam Elsharif		version 14
 	Aug 2025 Sam Elsharif		version 15
-	xxx xxxx Sam Elsharif		version 16
+	Dec 2025 Sam Elsharif		version 16
 -->
 <softwaredb>
 	<software>
@@ -894,6 +894,15 @@
 		<dump><dsk><format type="dsk"><hash algo="sha1">c7e78145713758956e5d5627016cdec764f53315</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">64682288e8b75f0213814668a1747d5c6f6da6f1</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">9417b3fd76b1395d5a742d3646069fe9869e077f</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Hamaraja Night</title>
+		<system>MSX2</system>
+		<company>Pastel Hope</company>
+		<year>1994</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">64f5db24b022109a1eecb50b3ed9a168304e3986</hash></format></dsk></dump>
+		<dump><dsk><format type="dsk"><hash algo="sha1">1fb93de0ac408044f4dcd18172f636de0e612d3a</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>Harajuku After Dark</title>
@@ -1867,6 +1876,14 @@
 		<year>1989</year>
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">8708e52660f85fb6130bd9660f4e40a3bee1158d</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>The Best of Hamaraja Night</title>
+		<system>TURBO-R</system>
+		<company>Pastel Hope</company>
+		<year>1999</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">c39716a58fe2997871c62fe5c5769bcc24f4d75d</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>The Secret Garden</title>

@@ -147,6 +147,7 @@ Games\Arabic\ThinkWithMe.zip
 Games\Arabic\Traffic.zip
 Games\Arabic\Treasure.zip
 Games\Arabic\TripToMekkah.zip
+Games\Arabic\UltraChess.zip
 Games\Arabic\Various1.zip
 Games\Arabic\Various3.zip
 Games\Arabic\Various4.zip
@@ -773,361 +774,6 @@ Games\ColecoVision\Zaxxon - Coleco (1982) [5569].zip
 Games\ColecoVision\Zaxxon - Coleco (1982) [b1] [3956].zip
 Games\ColecoVision\Zaxxon - Coleco (1982) [Published by team Pixelboy] [SGM] [original] [4068].zip
 Games\ColecoVision\Zenji - Activision (1984) [3473].zip
-Games\Concatenated Disk Sets\1789 - La Revolution.zip
-Games\Concatenated Disk Sets\4th Unit Act. 3.zip
-Games\Concatenated Disk Sets\4th Unit Act. 4.zip
-Games\Concatenated Disk Sets\Aleste 2.zip
-Games\Concatenated Disk Sets\Amazonas.zip
-Games\Concatenated Disk Sets\American Success.zip
-Games\Concatenated Disk Sets\Angelus.zip
-Games\Concatenated Disk Sets\Arcus 2.zip
-Games\Concatenated Disk Sets\Arcus.zip
-Games\Concatenated Disk Sets\Arubatoros 2.zip
-Games\Concatenated Disk Sets\Bad Max.zip
-Games\Concatenated Disk Sets\Birdy World.zip
-Games\Concatenated Disk Sets\Bishoujyo Daizukan.zip
-Games\Concatenated Disk Sets\Breaker.zip
-Games\Concatenated Disk Sets\Burai 2.zip
-Games\Concatenated Disk Sets\Burai.zip
-Games\Concatenated Disk Sets\CAL 1.zip
-Games\Concatenated Disk Sets\CAL 2.zip
-Games\Concatenated Disk Sets\Can Can Bunny Spirit.zip
-Games\Concatenated Disk Sets\Can Can Bunny.zip
-Games\Concatenated Disk Sets\Canvas of a Tear.zip
-Games\Concatenated Disk Sets\Casablanca.zip
-Games\Concatenated Disk Sets\Chaos Angels.zip
-Games\Concatenated Disk Sets\Cita con Rama.zip
-Games\Concatenated Disk Sets\Cosmos Club.zip
-Games\Concatenated Disk Sets\Crescent Moon.zip
-Games\Concatenated Disk Sets\Crimson II.zip
-Games\Concatenated Disk Sets\Crimson III.zip
-Games\Concatenated Disk Sets\Daikoukai Jidai.zip
-Games\Concatenated Disk Sets\Daisenryaku II.zip
-Games\Concatenated Disk Sets\Dancing Mai.zip
-Games\Concatenated Disk Sets\De Ja.zip
-Games\Concatenated Disk Sets\Dead of the Brain.zip
-Games\Concatenated Disk Sets\Dennou Gakuen 1.zip
-Games\Concatenated Disk Sets\Dennou Gakuen 2.zip
-Games\Concatenated Disk Sets\Dennou Gakuen 3.zip
-Games\Concatenated Disk Sets\Digan no Maseki.zip
-Games\Concatenated Disk Sets\Dios.zip
-Games\Concatenated Disk Sets\Disk Mistery 4.zip
-Games\Concatenated Disk Sets\Doki Doki Card League.zip
-Games\Concatenated Disk Sets\Dr. Stop.zip
-Games\Concatenated Disk Sets\Dragon City X.zip
-Games\Concatenated Disk Sets\Dragon Eyes.zip
-Games\Concatenated Disk Sets\Dragon Knight 2.zip
-Games\Concatenated Disk Sets\Dragon Knight.zip
-Games\Concatenated Disk Sets\Dragon Quiz.zip
-Games\Concatenated Disk Sets\Dragon Slayer 2.zip
-Games\Concatenated Disk Sets\Dragon Slayer 5.zip
-Games\Concatenated Disk Sets\Dragon Slayer 6.zip
-Games\Concatenated Disk Sets\Dragon World.zip
-Games\Concatenated Disk Sets\Dream Program System SG 1.zip
-Games\Concatenated Disk Sets\Dream Program System SG 2.zip
-Games\Concatenated Disk Sets\Dream Program System SG 3.zip
-Games\Concatenated Disk Sets\Dream Program System.zip
-Games\Concatenated Disk Sets\Emerald Dragon.zip
-Games\Concatenated Disk Sets\Estland Campaing.zip
-Games\Concatenated Disk Sets\Europa Sensen.zip
-Games\Concatenated Disk Sets\Exterlien.zip
-Games\Concatenated Disk Sets\Fahrenheit 451.zip
-Games\Concatenated Disk Sets\Famicle Parodic 2.zip
-Games\Concatenated Disk Sets\Final Fantasy.zip
-Games\Concatenated Disk Sets\Finally Wizard.zip
-Games\Concatenated Disk Sets\Fire Hawk - Thexder II.zip
-Games\Concatenated Disk Sets\For The Day II.zip
-Games\Concatenated Disk Sets\Fray - In Magical Adventure.zip
-Games\Concatenated Disk Sets\Gagdius.zip
-Games\Concatenated Disk Sets\Gandhara.zip
-Games\Concatenated Disk Sets\Gaudi - The Wind of Barcelona.zip
-Games\Concatenated Disk Sets\Genchouhishi.zip
-Games\Concatenated Disk Sets\Genghis Khan.zip
-Games\Concatenated Disk Sets\Ginga Eiyuudensetsu II DX Kit.zip
-Games\Concatenated Disk Sets\Ginga Eiyuudensetsu II. Space War Simulation.zip
-Games\Concatenated Disk Sets\Ginga Eiyuudensetsu.zip
-Games\Concatenated Disk Sets\Golvellius II.zip
-Games\Concatenated Disk Sets\Gram Cats.zip
-Games\Concatenated Disk Sets\Greatest Driver.zip
-Games\Concatenated Disk Sets\Haja no Fuin.zip
-Games\Concatenated Disk Sets\Hideger. Heidegger.zip
-Games\Concatenated Disk Sets\Hydefos.zip
-Games\Concatenated Disk Sets\Inindo Datou Nobunaga. Way of the Ninja.zip
-Games\Concatenated Disk Sets\Intruder.zip
-Games\Concatenated Disk Sets\Ishido - The Way of Stones.zip
-Games\Concatenated Disk Sets\Isla del Tesoro, La.zip
-Games\Concatenated Disk Sets\Isseki ni Kakeru Seishyuun.zip
-Games\Concatenated Disk Sets\J.B. Harold 3 - D.C. Connection.zip
-Games\Concatenated Disk Sets\Jack Nicklaus Golf.zip
-Games\Concatenated Disk Sets\Jesus.zip
-Games\Concatenated Disk Sets\Jikuu no Hanayome. Time Lady. Heroic Fantasy.zip
-Games\Concatenated Disk Sets\Joker II.zip
-Games\Concatenated Disk Sets\Joker.zip
-Games\Concatenated Disk Sets\Kagerou Meikyuu.zip
-Games\Concatenated Disk Sets\Kami no Machi.zip
-Games\Concatenated Disk Sets\Kind Gal's II.zip
-Games\Concatenated Disk Sets\Kohakuiro no Yuigon. Amber's Will.zip
-Games\Concatenated Disk Sets\Kubikiri Yakata - Sachan Ghyan.zip
-Games\Concatenated Disk Sets\L'Empereur.zip
-Games\Concatenated Disk Sets\L. Elle.zip
-Games\Concatenated Disk Sets\La'Valeur.zip
-Games\Concatenated Disk Sets\Last Armageddon.zip
-Games\Concatenated Disk Sets\Lenam - Sword of Legend.zip
-Games\Concatenated Disk Sets\Lilo - La Conquista de la Fama.zip
-Games\Concatenated Disk Sets\Lipstick Adventure 2.zip
-Games\Concatenated Disk Sets\Lipstick Adventure.zip
-Games\Concatenated Disk Sets\Little Vampire.zip
-Games\Concatenated Disk Sets\Love Chaser.zip
-Games\Concatenated Disk Sets\Madou Monogatari 1-2-3.zip
-Games\Concatenated Disk Sets\Magnar.zip
-Games\Concatenated Disk Sets\Mago de Oz, El.zip
-Games\Concatenated Disk Sets\Mahjong Kyo Special II.zip
-Games\Concatenated Disk Sets\Mahjong Shikaku.zip
-Games\Concatenated Disk Sets\Makai Revenge.zip
-Games\Concatenated Disk Sets\Master of Monsters.zip
-Games\Concatenated Disk Sets\Membership Golf.zip
-Games\Concatenated Disk Sets\Middogarutsu. Mid-Garts Dual Side.zip
-Games\Concatenated Disk Sets\Might and Magic II - Gates to Another World.zip
-Games\Concatenated Disk Sets\Mighty Battle Skin Panic.zip
-Games\Concatenated Disk Sets\MSX Hot Numbers.zip
-Games\Concatenated Disk Sets\MSX Train.zip
-Games\Concatenated Disk Sets\Navitune.zip
-Games\Concatenated Disk Sets\Nichiyoubi Uchuujin. Alien Sunday.zip
-Games\Concatenated Disk Sets\Nike.zip
-Games\Concatenated Disk Sets\Nobunaga no Yabou - Zenkoku Han.zip
-Games\Concatenated Disk Sets\Nobunaga no Yabou 3 - Bushou Fuuun Roku.zip
-Games\Concatenated Disk Sets\Nueve Principes en Amber.zip
-Games\Concatenated Disk Sets\Nukenin Densetsu. The Caller from Darkness.zip
-Games\Concatenated Disk Sets\Onryou Senki.zip
-Games\Concatenated Disk Sets\Palace Prohibited.zip
-Games\Concatenated Disk Sets\Perfect Soukoban.zip
-Games\Concatenated Disk Sets\Perry Mason.zip
-Games\Concatenated Disk Sets\Phantasie III - The Wrath of Nikademus.zip
-Games\Concatenated Disk Sets\Phantasie IV - The Birth of Hero.zip
-Games\Concatenated Disk Sets\Pinky Ponky I.zip
-Games\Concatenated Disk Sets\Pinky Ponky II.zip
-Games\Concatenated Disk Sets\Pinky Ponky III.zip
-Games\Concatenated Disk Sets\Pocky. Pokey.zip
-Games\Concatenated Disk Sets\Powerfull Mahjong 2.zip
-Games\Concatenated Disk Sets\Princess Maker v2.zip
-Games\Concatenated Disk Sets\Princess Maker.zip
-Games\Concatenated Disk Sets\Psy-O-Blade.zip
-Games\Concatenated Disk Sets\Rance II.zip
-Games\Concatenated Disk Sets\Rance.zip
-Games\Concatenated Disk Sets\Randar III - Adventure of Randar.zip
-Games\Concatenated Disk Sets\Ray Gun.zip
-Games\Concatenated Disk Sets\Record of Lodoss War.zip
-Games\Concatenated Disk Sets\Reviver.zip
-Games\Concatenated Disk Sets\Robo Crush.zip
-Games\Concatenated Disk Sets\Rona.zip
-Games\Concatenated Disk Sets\Royal Blood. Gemfire.zip
-Games\Concatenated Disk Sets\Rune Master III.zip
-Games\Concatenated Disk Sets\Rune Worth - The Young Noble of a Wire-Puller.zip
-Games\Concatenated Disk Sets\Sangokushi 2. Romance of Three Kingdoms 2.zip
-Games\Concatenated Disk Sets\Sangokushi. Romance of Three Kingdoms.zip
-Games\Concatenated Disk Sets\Saurus Lunch Vol. 0.zip
-Games\Concatenated Disk Sets\School Record of War.zip
-Games\Concatenated Disk Sets\Schwarzschild II.zip
-Games\Concatenated Disk Sets\Schwarzschild.zip
-Games\Concatenated Disk Sets\Seilane.zip
-Games\Concatenated Disk Sets\Seisen samurai Danbain. Aura Battler Dunbine.zip
-Games\Concatenated Disk Sets\SH#1.zip
-Games\Concatenated Disk Sets\Shadow Hunter.zip
-Games\Concatenated Disk Sets\Shenan Dragon.zip
-Games\Concatenated Disk Sets\Shikinjyo.zip
-Games\Concatenated Disk Sets\Shin Ku Gyoku Den. New Legendly Nine Gems.zip
-Games\Concatenated Disk Sets\Shiryou Sensen 2. War of the Dead 2.zip
-Games\Concatenated Disk Sets\Shita.zip
-Games\Concatenated Disk Sets\Snatcher.zip
-Games\Concatenated Disk Sets\Star Sand Story.zip
-Games\Concatenated Disk Sets\Starship Rendezvous.zip
-Games\Concatenated Disk Sets\Super Deform Snatcher - Melancholia.zip
-Games\Concatenated Disk Sets\Super Deform Snatcher.zip
-Games\Concatenated Disk Sets\Tantei-X. Return of Detectives X.zip
-Games\Concatenated Disk Sets\Tau Beat.zip
-Games\Concatenated Disk Sets\Tengu Story.zip
-Games\Concatenated Disk Sets\Testament.zip
-Games\Concatenated Disk Sets\The Dome.zip
-Games\Concatenated Disk Sets\Tir-nan-og.zip
-Games\Concatenated Disk Sets\Toushin Doshi. Toshin City.zip
-Games\Concatenated Disk Sets\Tower of Cabin, The.zip
-Games\Concatenated Disk Sets\Tritorn II - Road of Darkness.zip
-Games\Concatenated Disk Sets\Ultima IV - Quest of the Avatar.zip
-Games\Concatenated Disk Sets\Urotsuki Doji.zip
-Games\Concatenated Disk Sets\Valis - The Fantasm Soldier II.zip
-Games\Concatenated Disk Sets\Warau Salesman.zip
-Games\Concatenated Disk Sets\Watasiwo Golfni Tsuretette! Play the Golf with Me.zip
-Games\Concatenated Disk Sets\What's Michael.zip
-Games\Concatenated Disk Sets\Wing Man Special.zip
-Games\Concatenated Disk Sets\Winning Solution.zip
-Games\Concatenated Disk Sets\Wizardry - Proving Grounds of Mad Overload.zip
-Games\Concatenated Disk Sets\World Golf II.zip
-Games\Concatenated Disk Sets\X-Na.zip
-Games\Concatenated Disk Sets\Xak - The Art of Visual Stage.zip
-Games\Concatenated Disk Sets\Xak II - The Rising of the Red Moon.zip
-Games\Concatenated Disk Sets\Xak III - The Tower of Gazzel.zip
-Games\Concatenated Disk Sets\XZR II.zip
-Games\Concatenated Disk Sets\XZR.zip
-Games\Concatenated Disk Sets\Yakyuudo II.zip
-Games\Concatenated Disk Sets\Yakyuudo.zip
-Games\Concatenated Disk Sets\Ys II.zip
-Games\Concatenated Disk Sets\Ys III.zip
-Games\Darky Versions\CTR4DKYe_CTRLSTOP_ChorusReverb.zip
-Games\Darky Versions\CTR4DKYe_CTRLSTOP_Reverb1.zip
-Games\Darky Versions\F1SpDKY.zip
-Games\Darky Versions\F1SpDKY_NOSCC.zip
-Games\Darky Versions\goffer_Darky_SCC.zip
-Games\Darky Versions\goffer_Darky_WithOutSCC.zip
-Games\Darky Versions\Gradius2forDarky.zip
-Games\Darky Versions\Gradius2forDarky_NOSCC.zip
-Games\Darky Versions\GradiusEhanced_DARKY.zip
-Games\Darky Versions\KnightMare_DARKY_SCC.zip
-Games\Darky Versions\KnightMare_DARKY_WithoutSCC.zip
-Games\Darky Versions\MG2_DarKY_EN_WITHOUTSCC.zip
-Games\Darky Versions\MG2_DarKY_EN_WITHSCC.zip
-Games\Darky Versions\MG2_DKY.zip
-Games\Darky Versions\MG2_DKY_WithoutSCCSound_Jap.zip
-Games\Darky Versions\MG2_DKY_WithSCCSound_Jap.zip
-Games\Darky Versions\MG2_NSCC.zip
-Games\Darky Versions\PARODIUS_WithoutSCC.zip
-Games\Darky Versions\PARODIUS_WithSCC.zip
-Games\Darky Versions\pippols_DARKY.zip
-Games\Darky Versions\pippols_DARKY_WithoutSCCI.zip
-Games\Darky Versions\QTH_Dky_NoSCC.zip
-Games\Darky Versions\QTH_DKY_WithSCC.zip
-Games\Darky Versions\Salamander (1987) (Konami) (J)_Darky.zip
-Games\Darky Versions\Salamander_Darky_NOSCC.zip
-Games\Darky Versions\SD Snatcher - English (Melancholia)_DARKY.zip
-Games\Darky Versions\Space Manbow_DARKY.zip
-Games\Darky Versions\Space Manbow_DARKY_NOSCC.zip
-Games\Darky Versions\TwinbeeSCC_DARKY.zip
-Games\Darky Versions\TwinbeeSCC_DARKY_WithoutSCC.zip
-Games\Darky Versions\USASENHANCED_v11_BUGFIXED.zip
-Games\Darky Versions\vkiller_darky.zip
-Games\Darky Versions\vkiller_darky_NOSCC.zip
-Games\Darky Versions\YieArKungfu2_SCC_DARKY.zip
-Games\Darky Versions\YieArKungfu2_SCC_DARKY_WithoutSCC.zip
-Games\Darky Versions\YieArKungFu_Darky.zip
-Games\Darky Versions\YieArKungFu_Darky_WithoutSCC.zip
-Games\Darky Versions\zanacEX_ENHACNED_DARKY_103.zip
-Games\DMK-Files\2 Hits On Disk 4 (19xx)(The Bytebusters).zip
-Games\DMK-Files\30 MSX Hits (1988)(Premium Software)(Disk 1 of 3).zip
-Games\DMK-Files\30 MSX Hits (1988)(Premium Software)(Disk 2 of 3).zip
-Games\DMK-Files\30 MSX Hits (1988)(Premium Software)(Disk 3 of 3).zip
-Games\DMK-Files\Ancient Ys Vanished - Omen (1987)(Falcom).zip
-Games\DMK-Files\ANDON (19xx)(Summit Incorporated).zip
-Games\DMK-Files\Astro Marine Corps (1989)(Dinamic Software)(es).zip
-Games\DMK-Files\Barcode-Reader Softwate (1998)(PTC)(nl).zip
-Games\DMK-Files\Blokslag (1995)(MCWF).zip
-Games\DMK-Files\Blokslag (1995)(MCWF)[a].zip
-Games\DMK-Files\Brainstorm (1993)(Syntax Error)(DMK).zip
-Games\DMK-Files\Caterpillar (1997)(MCWF).zip
-Games\DMK-Files\Cosmic Psycho (1991)(Cocktail Soft)(ja)(Disk 1 of 5).zip
-Games\DMK-Files\Cosmic Psycho (1991)(Cocktail Soft)(ja)(Disk 2 of 5).zip
-Games\DMK-Files\Cosmic Psycho (1991)(Cocktail Soft)(ja)(Disk 3 of 5).zip
-Games\DMK-Files\Cosmic Psycho (1991)(Cocktail Soft)(ja)(Disk 4 of 5).zip
-Games\DMK-Files\Cosmic Psycho (1991)(Cocktail Soft)(ja)(Disk 5 of 5).zip
-Games\DMK-Files\Crazy Fruit (1992) (Fairytale) (ja) (DMK + 3 x DSK).zip
-Games\DMK-Files\Crusader (1985(Compile).zip
-Games\DMK-Files\Dammen MSX (1989) (MSX Gids & Samosoft).zip
-Games\DMK-Files\Dawn Patrol (1986)(Eaglesoft).zip
-Games\DMK-Files\Demo Kit Deluxe - NewVision (DMK).zip
-Games\DMK-Files\Doramus (2001)(D'Oli Clar Games).zip
-Games\DMK-Files\DPV Promo Disc 1 (1995)(DPV).zip
-Games\DMK-Files\Eindeloos (1986)(Radarsoft)(nl).zip
-Games\DMK-Files\Exterminator (1987)(Eaglesoft).zip
-Games\DMK-Files\FAC Soud Tracker 2.0 (DMK).zip
-Games\DMK-Files\FAC Sound Tracker Pro 1.03 (DMK).zip
-Games\DMK-Files\Four On A Row (1995) (Olympia Soft MCWF).zip
-Games\DMK-Files\Galaxy Hero Legend Powerup & Scenario (1989)(Bothtec)(ja)(Disk 1 of 2).zip
-Games\DMK-Files\Galaxy Hero Legend Powerup & Scenario (1989)(Bothtec)(ja)(Disk 2 of 2).zip
-Games\DMK-Files\GAME STAMP the program (Tokyo Data)[DMK].zip
-Games\DMK-Files\GRAD-INT.PDI
-Games\DMK-Files\Hanazono Of A Dragon (1992)(Family Soft)(ja)(Disk 1 of 4).zip
-Games\DMK-Files\Haphazard 1 & 2 (1990)(BAM)(jp)[unplayable].zip
-Games\DMK-Files\Hard Boiled (1987)(Methodic Solutions).zip
-Games\DMK-Files\Hare Nochi Oosawagi (Sunny Then Turbulent) (1990)(Cocktailsoft)(ja)(disk 1 of 3).zip
-Games\DMK-Files\Hare Nochi Oosawagi (Sunny Then Turbulent) (1990)(Cocktailsoft)(ja)(disk 2 of 3).zip
-Games\DMK-Files\Hare Nochi Oosawagi (Sunny Then Turbulent) (1990)(Cocktailsoft)(ja)(disk 3 of 3).zip
-Games\DMK-Files\Inca 1 (1987)(Eaglesoft).zip
-Games\DMK-Files\Kruiswoord Generator (1986)(Radarsoft)(nl).zip
-Games\DMK-Files\Kōnai Shasei Special Disk (1991)(Fairytale)(ja).zip
-Games\DMK-Files\L'Affaire (IT)(1986)(Infogrames).zip
-Games\DMK-Files\L'Affaire (JP)(1987)(Pack-In-Video).zip
-Games\DMK-Files\Letra (1995)(RiVoSoft).zip
-Games\DMK-Files\MAD Bordspellen (1991)(MAD).zip
-Games\DMK-Files\Mahjong Kyo Special (1988)(Micronet).zip
-Games\DMK-Files\Maou no Fukkatsu DX (1993)(Panic Studio)(jp)(Disk 1 of 3).zip
-Games\DMK-Files\Maou no Fukkatsu DX (1993)(Panic Studio)(jp)(Disk 2 of 3).zip
-Games\DMK-Files\Maou no Fukkatsu DX (1993)(Panic Studio)(jp)(Disk 3 of 3).zip
-Games\DMK-Files\Menu Creator (Peter Volleberg).zip
-Games\DMK-Files\Microbase_2.1_-Microtac-.zip
-Games\DMK-Files\Mission2MIR - (2010) (Ray2day).zip
-Games\DMK-Files\MSX Klup Magazine 10 Bonus Diskette (1994).zip
-Games\DMK-Files\MSX Viditel V2.12 (1987)(Miniware Technology & Philips).zip
-Games\DMK-Files\Music Module 256KByte Sound Sampler (199x)(Joben Microware).zip
-Games\DMK-Files\Ninja II (1987)(Eaglesoft).zip
-Games\DMK-Files\Ninja Jaja Maru Kun (1986)(Nippon Dexter).zip
-Games\DMK-Files\Othello Reversie (1989) (MSX Gids & Samosoft).zip
-Games\DMK-Files\Paragon Sex A Doll (1989)(Heart Soft)(ja)(Disk 1 of 4).zip
-Games\DMK-Files\Paragon Sex A Doll (1989)(Heart Soft)(ja)(Disk 2 of 4).zip
-Games\DMK-Files\Paragon Sex A Doll (1989)(Heart Soft)(ja)(Disk 3 of 4).zip
-Games\DMK-Files\Paragon Sex A Doll (1989)(Heart Soft)(ja)(Disk 4 of 4).zip
-Games\DMK-Files\Pentaro Odysee - The Revenge (1997)(Cabinet).zip
-Games\DMK-Files\Philips NMS 8280 Digitiser Disk (1995)(Erbosoft & MCWF).zip
-Games\DMK-Files\Pias - Torn Sexual Spring (1991)(Birdy software)(ja)(Disk 1 of 2)(DMK).zip
-Games\DMK-Files\Pias - Torn Sexual Spring (1991)(Birdy software)(ja)(Disk 2 of 2)(DSK).zip
-Games\DMK-Files\Picture_Kit_Deluxe_-NewVision-(DMK)zip.zip
-Games\DMK-Files\Pixess (1994)(Compjoetania)(Disk 1 of 2)(DSK).zip
-Games\DMK-Files\Pixess (1994)(Compjoetania)(Disk 2 of 2)(DMK).zip
-Games\DMK-Files\Pro Tracker 1.0 (1992)(Tyfoon Software)(DMK).zip
-Games\DMK-Files\Red Lights Of Amsterdam (En)(1988)(Aackosoft).zip
-Games\DMK-Files\Rouge - The Lipstick Of Midsummer (1990)(Birdy Software)(ja)[Disk 1 of 2][DMK].zip
-Games\DMK-Files\Rune Worth Shop Demo (1990)(T&E Soft)(ja).zip
-Games\DMK-Files\Studio FM V1.2 (1991)(MSX-Engine)(DMK).zip
-Games\DMK-Files\Super Deform Snatcher (1990)(Konami)(Disk 1 of 3).zip
-Games\DMK-Files\Super Deform Snatcher (1990)(Konami)(Disk 2 of 3).zip
-Games\DMK-Files\Super Deform Snatcher (1990)(Konami)(Disk 3 of 3).zip
-Games\DMK-Files\Super Sellers 2 (1986)(Eaglesoft).zip
-Games\DMK-Files\Supercop - Erbosoft (1992)(DMK-Creator).zip
-Games\DMK-Files\Supercop - Erbosoft (1992)(Read-DMK).zip
-Games\DMK-Files\T Maker IV (1985) (T Maker Company)[Disk 1 of 2].zip
-Games\DMK-Files\T Maker IV (1985) (T Maker Company)[Disk 2 of 2].zip
-Games\DMK-Files\Tempo Typen - Radarsoft (1987)(NL & FR Version).zip
-Games\DMK-Files\The Games Collection 2 Disk 1.zip
-Games\DMK-Files\The Games Collection 2 Disk 2.zip
-Games\DMK-Files\The Games Collection 2 Disk 3.zip
-Games\DMK-Files\The Games Collection 2 Disk 4.zip
-Games\DMK-Files\The Games Collection 2 Disk 5.zip
-Games\DMK-Files\The Games Collection 2 Disk 5[Bad Dump].zip
-Games\DMK-Files\The Games Collection 2 Disk 6.zip
-Games\DMK-Files\The Games Collection 2 Disk 7.zip
-Games\DMK-Files\The Games Collection Disk 1.zip
-Games\DMK-Files\The Games Collection Disk 2.zip
-Games\DMK-Files\The Games Collection Disk 3.zip
-Games\DMK-Files\The Games Collection Disk 4.zip
-Games\DMK-Files\TO-EPROM TOEPROM (1989)(MSX Club Gouda).zip
-Games\DMK-Files\Trivial Pursuit (1995)(Ixion)(nl)(Aanvulling Jaareditie 1995).zip
-Games\DMK-Files\Trivial Pursuit (1995)(Ixion)(nl)(Aanvulling Jaareditie 1995)[a].zip
-Games\DMK-Files\Trivial Pursuit (1995)(Ixion)(nl).zip
-Games\DMK-Files\Troubles in Town (1991)(MK Public Domain).zip
-Games\DMK-Files\TT Racer (1987)(Methodic Solutions).zip
-Games\DMK-Files\Utility Disk Memory Mapper Gouda (1994)(MSX-club Gouda).zip
-Games\DMK-Files\Veldslag (1994) (MCWF).zip
-Games\DMK-Files\Workmate Checkmark.zip
-Games\DMK-Files\Ys Wanderers from Ys (1989)(Falom)[Disk 1 of 5][Opening Scenario Disk].zip
-Games\DMK-Files\Ys Wanderers from Ys (1989)(Falom)[Disk 2 of 5][User Disk].zip
-Games\DMK-Files\Ys Wanderers from Ys (1989)(Falom)[Disk 3 of 5][Data Disk 1].zip
-Games\DMK-Files\Ys Wanderers from Ys (1989)(Falom)[Disk 4 of 5][Data Disk 2].zip
-Games\DMK-Files\Ys Wanderers from Ys (1989)(Falom)[Disk 5 of 5][Data Disk 3].zip
-Games\DMK-Files\Yumeji (1992)(Fairytale)(Disk 1 o f 3)[DMK].zip
-Games\DMK-Files\Yumeji (1992)(Fairytale)(Disk 2 o f 3)[DSK].zip
-Games\DMK-Files\Yumeji (1992)(Fairytale)(Disk 3 o f 3)[DSK].zip
-Games\DMK-Files\Zanac A.I. (1986)(Eaglesoft Pony Canyon).zip
-Games\DMK-Files\Zanac A.I. (1986)(Eaglesoft Pony Canyon)[b].zip
-Games\DMK-Files\Zeeslag (1994) (MCWF).zip
-Games\DMK-Files\Zoo (1987)(Radar Soft)(en)[a].zip
-Games\DMK-Files\Zoo (1989)RadarSoft)(en)(Freesoft).zip
 Games\Korean\128 Hap (KR) [HACK+ASCII8+EN].zip
 Games\Korean\128 Hap (KR) [HACK+ASCII8].zip
 Games\Korean\128 Hap (KR) [HACK+EN].zip
@@ -1135,6 +781,7 @@ Games\Korean\128 Hap (KR) [HACK+KEYBOARD].zip
 Games\Korean\128 Hap (KR) [HACK+TITLE].zip
 Games\Korean\128 Hap (KR) [SMS-ROM].zip
 Games\Korean\128 Hap Patches.zip
+Games\Korean\Alien Bounce (Soft Pro International)(1985).rom
 Games\Korean\Dr. Hello.txt
 Games\Korean\Gall Force Defense of Chaos (Jack).rom
 Games\Korean\Gomoku Narabe (J) (Rina Computer).rom
@@ -1226,6 +873,8 @@ Games\Korean\Open\Adventure Kid [a].rom
 Games\Korean\Open\Adventure Kid [a].txt
 Games\Korean\Open\Adventure Kid.rom
 Games\Korean\Open\Adventure Kid.txt
+Games\Korean\Open\Wonder Kid (Open) (Korea) [Proto] [GENERIC_16KB].rom
+Games\Korean\Open\Wonder Kid (Open) (Korea) [Proto] [HACK+ASCII16].rom
 Games\Korean\Prosoft\Actman (Prosoft).rom
 Games\Korean\Prosoft\Akumajou Dracula (Prosoft).rom
 Games\Korean\Prosoft\Antartic Adventure (Prosoft).rom
@@ -1590,6 +1239,14 @@ Games\MSX Turbo-R\DSK\Gun Shot vs Festa Again (2001)(Rabbit Soft Worker's)(ja).z
 Games\MSX Turbo-R\DSK\Hoippuru in the Magical Land (1995)(Pastel Hope).zip
 Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(Disk 01 of 13)(Game Disk 1).zip
 Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(Disk 02 of 13)(Game Disk 2).zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 01 of 13)(Game Disk 1)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 02 of 13)(Game Disk 2)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 03 of 13)(Game Disk 3)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 04 of 13)(Game Disk 4)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 05 of 13)(Game Disk 5)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 06 of 13)(Game Disk 6)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 07 of 13)(Game Disk 7)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(en)(Disk 08 of 13)(Game Disk 8)[MSX Translations].zip
 Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(ja)(Disk 01 of 13)(Game Disk 1).zip
 Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(ja)(Disk 01 of 13)(Game Disk 1)[a].zip
 Games\MSX Turbo-R\DSK\Illusion City (1991)(Micro Cabin)(ja)(Disk 01 of 13)(Game Disk 1)[b].zip
@@ -1611,6 +1268,7 @@ Games\MSX Turbo-R\DSK\Illusion City (Micro Cabin, 1991) (English translation) (D
 Games\MSX Turbo-R\DSK\Illusion City (Micro Cabin, 1991) (English translation) (Disk 4 of 6).zip
 Games\MSX Turbo-R\DSK\Illusion City (Micro Cabin, 1991) (English translation) (Disk 5 of 6).zip
 Games\MSX Turbo-R\DSK\Illusion City (Micro Cabin, 1991) (English translation) (Disk 6 of 6).zip
+Games\MSX Turbo-R\DSK\Kato Minigame (2025)(mdpc).zip
 Games\MSX Turbo-R\DSK\LostWord - Episode 0 (Rabbit Softworkers) (2019)(en).zip
 Games\MSX Turbo-R\DSK\LostWord - Episode 0 (Rabbit Softworkers) (2019)(ja).zip
 Games\MSX Turbo-R\DSK\Mechanical Brain (1996)(Sequence).zip
@@ -1673,6 +1331,9 @@ Games\MSX Turbo-R\DSK\Ranma Nibunnoichi 1-2 (1992)(Bothtec)(ja)(Disk 8 of 8)[a].
 Games\MSX Turbo-R\DSK\Return of Barl (2024)(mdpc___)[BASIC].zip
 Games\MSX Turbo-R\DSK\S.T.G. (1996)(Y. Tomohara).zip
 Games\MSX Turbo-R\DSK\S.T.G. Special - Do Don Taku (1998)(Y. Tomohara).zip
+Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(en)(Disk 1 of 3)(Game Disk 1)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(en)(Disk 2 of 3)(Game Disk 2)[MSX Translations].zip
+Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(en)(Disk 3 of 3)(Game Disk 3)[MSX Translations].zip
 Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(ja)(Disk 1 of 3)(Game Disk 1).zip
 Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(ja)(Disk 1 of 3)(Game Disk 1)[a2].zip
 Games\MSX Turbo-R\DSK\Seed of Dragon (1990)(Riverhill Soft)(ja)(Disk 1 of 3)(Game Disk 1)[a].zip
@@ -1685,6 +1346,8 @@ Games\MSX Turbo-R\DSK\Shoot That Flying Windows! (1997)(Nyyrikki)[a][mouse].zip
 Games\MSX Turbo-R\DSK\Shoot That Flying Windows! (1997)(Nyyrikki)[mouse].zip
 Games\MSX Turbo-R\DSK\Shuffle Puck - TurboR Version (1993)(M.A.D.)[mouse].zip
 Games\MSX Turbo-R\DSK\Shuffle Puck - TurboR Version (1993)(M.A.D.)[mouse][Takeru].zip
+Games\MSX Turbo-R\DSK\Silent Ripper (1994) (Sequence) (jp) (Disk 1 of 2) [SVFSSS Shooting Game Main System Disk] [TurboR].zip
+Games\MSX Turbo-R\DSK\Silent Ripper (1994) (Sequence) (jp) (Disk 2 of 2) [Scenario Disk] [TurboR].zip
 Games\MSX Turbo-R\DSK\South Town Hero 2 (1995)(FM-Guamuom)(ja).zip
 Games\MSX Turbo-R\DSK\South Town's Hero Turbo (1995)(FM-Guamuom)(ja).zip
 Games\MSX Turbo-R\DSK\Space Panic (1998)(Mikasen)(en)(JP).zip
@@ -1709,8 +1372,11 @@ Games\MSX Turbo-R\DSK\Zone Terra (demo) (1994)(Quadrivium)[b2].zip
 Games\MSX Turbo-R\DSK\Zone Terra (demo) (1994)(Quadrivium)[b].zip
 Games\MSX Turbo-R\Harddisk\Doramus (2001)(D'Oli Clar Games).zip
 Games\MSX Turbo-R\Harddisk\Tataku Mania (2020)(D'Oli Clar Games).zip
+Games\MSX Turbo-R\ROM\Another World - Edd Biddulph (2025)(V9990 & OPL4).zip
+Games\MSX Turbo-R\ROM\Illusion City (1991)(Micro Cabin)(en)[MSX Translations].zip
 Games\MSX Turbo-R\ROM\Kitten 2 The Return v6.0 - Zio Ory (2024).zip
 Games\MSX Turbo-R\ROM\Kitten 2 The Return v6.1 - Zio Ory (2024).zip
+Games\MSX Turbo-R\ROM\Kitten 2 The Return v7.0 - Zio Ory (2024).zip
 Games\MSX Turbo-R\ROM\MM_GAMEMUSIC (Music Quiz & BGM Player).zip
 Games\MSX Turbo-R\ROM\TRex Turbo v0.1 - Orazio Cacciola (2023).zip
 Games\MSX1\CAS\007 - A View to a Kill (1986)(Domark)[a][RUN'CAS-'].zip
@@ -1797,6 +1463,7 @@ Games\MSX1\CAS\Antarctic Adventure (Microbyte) (Argentina) [RUN'CAS-'] [_].zip
 Games\MSX1\CAS\Antarctic Adventure (Pinguin) (Italy) [BLOAD'CAS-',R] [A].zip
 Games\MSX1\CAS\Antarctic Adventure (Pinguin) (Italy) [BLOAD'CAS-',R] [_].zip
 Games\MSX1\CAS\Antarctic Adventure-eu[BLOAD'CAS-',r].zip
+Games\MSX1\CAS\Antarctica (1983) (Pony Canyon) [cload''NA''].zip
 Games\MSX1\CAS\AntiAir (2024)(inufuto).zip
 Games\MSX1\CAS\Any Treasure Day (2018) (Timmy) [BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Arithmetic, Mathematics and English for Elementary and Junior High School Students, 2 Volumes, Learning Software (198x)(Soft & Soft)[CLOAD'ENG-1'],R.zip
@@ -2126,7 +1793,7 @@ Games\MSX1\CAS\Discovery (1988)(Eurosoft)[a][RUN'CAS-'].zip
 Games\MSX1\CAS\Discovery (1988)(Eurosoft)[RUN'CAS-'].zip
 Games\MSX1\CAS\Disenador de Graficos (1985)(Advance)(es)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Dizzy Ball (1984)(Pony Canyon).zip
-Games\MSX1\CAS\Dizzy Balloon (1985)(Pony Canyon)[RUN'CAS-'].zip
+Games\MSX1\CAS\Dizzy Balloon (1985)(Pony Canyon & Philips Spain)[RUN'CAS-'].zip
 Games\MSX1\CAS\Dizzy Dice (1988)(Players Software)[RUN'CAS-'].zip
 Games\MSX1\CAS\Dog Fighter (1986)(Kuma Computers)[a][BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Dog Fighter (1986)(Kuma Computers)[BLOAD'CAS-',R].zip
@@ -2264,7 +1931,9 @@ Games\MSX1\CAS\Frogger [BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Front Line (1984)(Taito).zip
 Games\MSX1\CAS\Front Line (1984)(Taito)[a].zip
 Games\MSX1\CAS\Fruit Machine (1985)(DK'Tronics)[CLOAD + RUN].zip
-Games\MSX1\CAS\Fruit Panic (1984)(Pony Canyon)[RUN'CAS-'].zip
+Games\MSX1\CAS\Fruit Panic (1984)(Pony Canyon & Philips Spain)[RUN'CAS-'].zip
+Games\MSX1\CAS\Fun Math for Elementary School Year 4 Vol 2 (1984)(Stratford Computer Center Corporation).zip
+Games\MSX1\CAS\Fun Math for Elementary School Year 5 Vol 2 (1984)(Stratford Computer Center Corporation).zip
 Games\MSX1\CAS\Fupper (1985)(Login Soft)[CLOAD+BLOAD'CAS-'+RUN].zip
 Games\MSX1\CAS\Future Knight (1986)(Erbe Software)[RUN'CAS-'].zip
 Games\MSX1\CAS\Future Knight (1986)(Gremlin Graphics Software)[BLOAD'CAS-',R].zip
@@ -2406,6 +2075,7 @@ Games\MSX1\CAS\IdeaType - Instructor Mecanografico (1985)(Idealogic)(es)(Side B)
 Games\MSX1\CAS\Igloo (1985)(Garbi Soft)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Illusions (1985)(Nice Ideas)(fr)[CLOAD + RUN].zip
 Games\MSX1\CAS\Impetus (2021)(Inufuto).zip
+Games\MSX1\CAS\Impetus+ (2025)(Inufuto).zip
 Games\MSX1\CAS\Inca (1987)(Eaglesoft)[a][RUN'CAS-'].zip
 Games\MSX1\CAS\Inca (1987)(Eaglesoft)[RUN'CAS-'].zip
 Games\MSX1\CAS\Indiana Jones and the Last Crusade (1989)(Erbe Software)(es)(Side A)[a][RUN'CAS-'].zip
@@ -2558,6 +2228,7 @@ Games\MSX1\CAS\Lizard (1985)(Micro Cabin)(ja)[CLOAD + RUN].zip
 Games\MSX1\CAS\Lizard Willy (2016)(sfranck72) [BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Lizard Willy [BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Locke the Superman - Asteroid Kahn  (1984)(Pony Canyon)[CLOAD + RUN].zip
+Games\MSX1\CAS\Lonesome Tank (1984)(MIA)[Magazine listing][CLOAD+RUN].zip
 Games\MSX1\CAS\Lord Watson (Manhattan Transfer, 198x).zip
 Games\MSX1\CAS\Lords Of Time (1983)(Level 9 Computing)[RUN'CAS-',R].zip
 Games\MSX1\CAS\Lorna (1990)(Topo Soft)(es)[RUN'CAS-'].zip
@@ -2778,10 +2449,12 @@ Games\MSX1\CAS\Paises de America (1984)(Sony)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Paises de Asia (1984)(Sony)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Panel Panic (1986)(Eaglesoft)[a][RUN'CAS-'].zip
 Games\MSX1\CAS\Panel Panic (1986)(Eaglesoft)[RUN'CAS-'].zip
+Games\MSX1\CAS\Panic The Train (1984)(Centralsoft).zip
 Games\MSX1\CAS\Panique (1986)(Eaglesoft)[RUN'CAS-'].zip
 Games\MSX1\CAS\Paris-Dakar (1988)(Zigurat Software)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Passing Shot (1989)(Image Works)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Pastfinder (1984)(Activision)[BLOAD'CAS-',R].zip
+Games\MSX1\CAS\Patsy Duck's Card (1986)(Sony)(ja).zip
 Games\MSX1\CAS\Payaso Explorador, El (1986)(Anaya Multimedia)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Pentagram (1986)(Ultimate Play The Game)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Pepe Saltarin (1986)(Grupo de Trabajo Software)(es)[a][RUN'CAS-'].zip
@@ -2831,7 +2504,7 @@ Games\MSX1\CAS\Principe y el Dragon, El (1985)(Advance)(es)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Professional Baseball Super Simulation (1984)(JDS)(ja)[CLOAD + RUN].zip
 Games\MSX1\CAS\Professional Snooker Simulator (1987)(Codemasters)(M3)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Professional Tennis Simulator (1990)(Dinamic Software)[aka Simulador Profesional de Tenis][RUN'CAS-'].zip
-Games\MSX1\CAS\Project A (1984)(Pony Canyon)[CLOAD + RUN].zip
+Games\MSX1\CAS\Project A (1984)(Pony Canyon & Microbyte)[CLOAD + RUN].zip
 Games\MSX1\CAS\Protector, The (1987)(Eaglesoft)[a][RUN'CAS-'].zip
 Games\MSX1\CAS\Protector, The (1987)(Eaglesoft)[RUN'CAS-'].zip
 Games\MSX1\CAS\Psychedelia (1984)(Aackosoft)[RUN'CAS-'].zip
@@ -2977,6 +2650,7 @@ Games\MSX1\CAS\Skyhawk (1986)(Bug-Byte Software)[RUN'CAS-'].zip
 Games\MSX1\CAS\Slapshot (1985)(Anirog Software)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Slime Center (2014)(N.I.)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Slime Slayer (2012)(PSYZANS).zip
+Games\MSX1\CAS\Slot-Machine (1985)(Creating Soft).zip
 Games\MSX1\CAS\Smack Wacker (1986)(Eaglesoft)[RUN'CAS-'].zip
 Games\MSX1\CAS\Smash (1984)(Spectravideo)[CLOAD + RUN].zip
 Games\MSX1\CAS\Snake It (1986)(Eaglesoft)[RUN'CAS-'].zip
@@ -3154,6 +2828,7 @@ Games\MSX1\CAS\The Queens Footsteps (2020) (Davide Bucci)[RUN'CAS-',R].zip
 Games\MSX1\CAS\The Queens Footsteps Part 1 (2020)(Davide Bucci)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\The Queens Footsteps Part 2 (2020)(Davide Bucci)[BLOAD'CAS-',R].cas.zip
 Games\MSX1\CAS\The Queens Footsteps Part 3 (2020)(Davide Bucci)[BLOAD'CAS-',R].cas.zip
+Games\MSX1\CAS\The Scramble (1983) (Marufune FSL).zip
 Games\MSX1\CAS\The Secret Diary of Adrian Mole Aged 13¾ - Part I (1985)(Level 9 Computing)[a][RUN'CAS-'].zip
 Games\MSX1\CAS\The Secret Diary of Adrian Mole Aged 13¾ - Part I (1985)(Level 9 Computing)[RUN'CAS-'].zip
 Games\MSX1\CAS\The Secret Diary of Adrian Mole Aged 13¾ - Part II (1985)(Level 9 Computing)[a][RUN'CAS-'].zip
@@ -3275,6 +2950,7 @@ Games\MSX1\CAS\Vampire's Empire (1988)(Dro Soft)(es)[RUN'CAS-'].zip
 Games\MSX1\CAS\Vampire(1987)(Codemasters)[a][Run'CAS-'].zip
 Games\MSX1\CAS\Vampire(1987)(Codemasters)[RUN'CAS-'].zip
 Games\MSX1\CAS\Vampiro (1987)(Manhattan Transfer)(es)[RUN'CAS-'].zip
+Games\MSX1\CAS\Vegetable Crash (HoneyBee Soft) (Hudson Soft) (Japan) [BLOAD'CAS-',R] [_].zip
 Games\MSX1\CAS\Vestron (1986)(Players Software)[a][BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Vestron (1986)(Players Software)[BLOAD'CAS-',R].zip
 Games\MSX1\CAS\Viaje al Centro de la Tierra (1989)(Topo Soft)(es)[RUN'CAS-'].zip
@@ -3528,6 +3204,7 @@ Games\MSX1\DSK\Arquimedes XXI (1986)(Dinamic Software)(es)[a].zip
 Games\MSX1\DSK\Arubatoros. Albatross (1986)(Telenet Japan).zip
 Games\MSX1\DSK\Aspar GP Master (1988)(Dinamic Software)(es).zip
 Games\MSX1\DSK\Aspar GP Master (1988)(Dinamic Software)(es)[h MSX Games bOX].zip
+Games\MSX1\DSK\Astro Blaster (1988) (Eurosoft)[Cracked].zip
 Games\MSX1\DSK\Astro Blaster (1988)(Eurosoft).zip
 Games\MSX1\DSK\Astro Blaster (1988)(Eurosoft)[cr Crazy Boss].zip
 Games\MSX1\DSK\Astro Marine Corps (1989)(Dinamic Software)(es).zip
@@ -3587,6 +3264,7 @@ Games\MSX1\DSK\Banzai 2 (19xx)(-).zip
 Games\MSX1\DSK\Barbarian (1988)(Mastertronic)(pt).zip
 Games\MSX1\DSK\Barbarian (1988)(Mastertronic)[t].zip
 Games\MSX1\DSK\Barbarian II - The Dungeon of Drax (1988)(Erbe Software)[cr Damian Roman].zip
+Games\MSX1\DSK\Barebone Bullets (2012)(syn).zip
 Games\MSX1\DSK\Barn Stormer (1985)(Electric Software)[cr Magicracks].zip
 Games\MSX1\DSK\Barnabasket (1989)(Barnajocs)(es).zip
 Games\MSX1\DSK\Baruko (2012)(Gamecast).zip
@@ -3642,6 +3320,8 @@ Games\MSX1\DSK\Black Sea (2022)(Mananuk).zip
 Games\MSX1\DSK\Blackbeard (1988)(Topo Soft)(es).zip
 Games\MSX1\DSK\Blackbeard (1988)(Topo Soft)(es)[a].zip
 Games\MSX1\DSK\Blagger (1984)(Alligata Software).zip
+Games\MSX1\DSK\Blaster Bomb (2025)(Gamecast Entertainment][MSXdev25].zip
+Games\MSX1\DSK\Blaster Bomb v1.1 (2025)(Gamecast Entertainment][MSXdev25].zip
 Games\MSX1\DSK\Blasteroids (1987)(Image Works).zip
 Games\MSX1\DSK\Blinky's Scary School (2007)(Icon Games).zip
 Games\MSX1\DSK\Block Hole (1990)(Zemina).zip
@@ -3668,6 +3348,7 @@ Games\MSX1\DSK\Bologna & Milano (19xx)(-)(pt).zip
 Games\MSX1\DSK\Bomb Jack (2004)(MSX Files).zip
 Games\MSX1\DSK\Bomb Jack (2023)(fregarni).zip
 Games\MSX1\DSK\Bomb Jack v1.1 (2023)(fregarni).zip
+Games\MSX1\DSK\Bomb Jack v1.2 (2023)(fregarni).zip
 Games\MSX1\DSK\Bomber Man (1986)(Korea Soft Bank).zip
 Games\MSX1\DSK\Bomber Man 3D (1984)(Hudson Soft).zip
 Games\MSX1\DSK\Bomber Man 3D (1984)(Hudson Soft)[tr it].zip
@@ -3696,6 +3377,7 @@ Games\MSX1\DSK\Bousou Tokkyuu SOS. Stop the Express (1985)(Hudson Soft).zip
 Games\MSX1\DSK\Bousou Tokkyuu SOS. Stop the Express (1985)(Hudson Soft)[cr Eg].zip
 Games\MSX1\DSK\Bowling Angel (Tensei Kobo) (2018).zip
 Games\MSX1\DSK\Boxing (1985)(Konami).zip
+Games\MSX1\DSK\Brain Teaser - Y.R. Sova (2025) [MSXdev2025] [v1.0].zip
 Games\MSX1\DSK\Break Bomb (2021)(Gamecast).zip
 Games\MSX1\DSK\Break Free (19xx)(-).zip
 Games\MSX1\DSK\Break In (1987)(Eaglesoft).zip
@@ -3739,6 +3421,7 @@ Games\MSX1\DSK\Buzz Off! (1984)(Electric Software).zip
 Games\MSX1\DSK\Bytebusters (1984)(Aackosoft).zip
 Games\MSX1\DSK\C So! (1985)(Pony Canyon).zip
 Games\MSX1\DSK\Cabbage Patch Kids (1984)(Konami).zip
+Games\MSX1\DSK\Cabyrinth (xxxx)(Gabriel Walter).zip
 Games\MSX1\DSK\Cacorm (2022)(Inufuto).zip
 Games\MSX1\DSK\California Games (1987)(US Gold).zip
 Games\MSX1\DSK\California Games (1987)(US Gold)[a].zip
@@ -3883,6 +3566,7 @@ Games\MSX1\DSK\Computer Othello (1984)(Sony).zip
 Games\MSX1\DSK\Computer Pachinko (1984)(Sony).zip
 Games\MSX1\DSK\Computer Scrabble (1986)(Leisure Genius).zip
 Games\MSX1\DSK\Con-Dori (1983)(Cross Talk).zip
+Games\MSX1\DSK\Conalma 2- Freenit (2025) [MSXdev2025] [v1.7].zip
 Games\MSX1\DSK\Conde de Monte Cristo, O (1988)(Nemesis Informatica)(pt).zip
 Games\MSX1\DSK\Conde de Monte Cristo, O (1988)(Nemesis Informatica)(pt)[a2].zip
 Games\MSX1\DSK\Conde de Monte Cristo, O (1988)(Nemesis Informatica)(pt)[a].zip
@@ -3927,6 +3611,7 @@ Games\MSX1\DSK\Cresta Run (19xx)(-).zip
 Games\MSX1\DSK\Cribbage (1986)(Kuma Computers).zip
 Games\MSX1\DSK\Cribbage (19xx)(-)[b].zip
 Games\MSX1\DSK\Criptoaritmetica (1988)(Renato de Mello)(pt).zip
+Games\MSX1\DSK\Croneko No Tango (Black Cat Words)(2025)(Chirorin House)(ja).zip
 Games\MSX1\DSK\Cronos (1989)(Barnajocs).zip
 Games\MSX1\DSK\Crucigrama Matematico (19xx)(Data MSX)(es).zip
 Games\MSX1\DSK\Crusader (1985)(Pony Canyon).zip
@@ -4258,6 +3943,7 @@ Games\MSX1\DSK\Gauntlet (1986)(US Gold).zip
 Games\MSX1\DSK\Gekiso Battle (1991)(Komeya).zip
 Games\MSX1\DSK\Gekiso Battle (1991)(Komeya)[a].zip
 Games\MSX1\DSK\Gema Negra, La (1986)(Manhattan Transfer)(es).zip
+Games\MSX1\DSK\Gematria (2020)(Sergio Yukio).zip
 Games\MSX1\DSK\Gemini Wing (1989)(Virgin Mastertronic)[cr Damian Roman].zip
 Games\MSX1\DSK\Gemini Wing (1989)(Virgin Mastertronic)[cr Damian Roman][a].zip
 Games\MSX1\DSK\Generador de Sprites (1985)(Advance)(es).zip
@@ -4281,6 +3967,7 @@ Games\MSX1\DSK\Glider (1985)(Ascii).zip
 Games\MSX1\DSK\Globiblood (1986)(Proeco)(es).zip
 Games\MSX1\DSK\Globiblood (1986)(Proeco)(es)[h CEZ].zip
 Games\MSX1\DSK\Gnome Ranger - All Parts (1987)(Level 9 Computing).zip
+Games\MSX1\DSK\GoBrick v1.0 (2025)(Gamecast Entertainment)[MSXdev2025].zip
 Games\MSX1\DSK\Gofer no Yabou Episode II. Nemesis 3 - The Eve of Destruction (1988)(Konami)[b][needs 256k][SCC].zip
 Games\MSX1\DSK\Gofer no Yabou Episode II. Nemesis 3 - The Eve of Destruction (1988)(Konami)[h C.S.I.][t][needs 512k][SCC].zip
 Games\MSX1\DSK\Gofer no Yabou Episode II. Nemesis 3 - The Eve of Destruction (1988)(Konami)[needs 256k][SCC].zip
@@ -4314,6 +4001,7 @@ Games\MSX1\DSK\Graphos III (1987)(ATI Editora)(pt).zip
 Games\MSX1\DSK\Graphos III (1987)(ATI Editora)(pt)[a].zip
 Games\MSX1\DSK\Graphos III Pro (1989)(ProKit)(pt).zip
 Games\MSX1\DSK\Graphos III Pro (1989)(ProKit)(pt)[a].zip
+Games\MSX1\DSK\Gray Grofa (1996) (TPM.Co Soft Works).zip
 Games\MSX1\DSK\Green Beret (1986)(Konami).zip
 Games\MSX1\DSK\Gremlins 2 - La Nueva Generacion (1990)(Topo Soft)(es)[cr Damian Roman].zip
 Games\MSX1\DSK\Gremlins 2 - La Nueva Generacion (1990)(Topo Soft)(es)[cr Damian Roman][a].zip
@@ -4443,6 +4131,7 @@ Games\MSX1\DSK\Iligks Episode IV - The Maze of Illegus (1984)(Ascii).zip
 Games\MSX1\DSK\Illusions (1985)(Nice Ideas)(fr).zip
 Games\MSX1\DSK\Illusions - Translation by FONY (1985)(Nice Ideas)(en).zip
 Games\MSX1\DSK\Impetus (Unknown) (2021).zip
+Games\MSX1\DSK\Impetus+ (2025)(Inufuto).zip
 Games\MSX1\DSK\Inca (1987)(Eaglesoft).zip
 Games\MSX1\DSK\Indian no Bouken. Indian's Adventure (1984)(Hudson Soft).zip
 Games\MSX1\DSK\Indiana Jones and the Last Crusade (1989)(Erbe Software)(es)[cr Damian Roman].zip
@@ -5063,6 +4752,7 @@ Games\MSX1\DSK\Mutan Zone (1989)(Opera Soft)(es)(Disk 2 of 2)[cr Dominio].zip
 Games\MSX1\DSK\Mutan Zone (1989)(Opera Soft)(es).zip
 Games\MSX1\DSK\Mutan Zone (1989)(Opera Soft)(es)[a].zip
 Games\MSX1\DSK\Mutant Monty (1985)(Artic Computing).zip
+Games\MSX1\DSK\Mystery City - The Fortunate Fortuneteller R1 (2025)(Rogerio Biondi and Loopdigital).zip
 Games\MSX1\DSK\Mystery City v1.1.4 (2021)(Rogerio)(en).zip
 Games\MSX1\DSK\Mystery City v1.1.4 (2021)(Rogerio)(es).zip
 Games\MSX1\DSK\Mystery City v1.1.4 (2021)(Rogerio)(pt).zip
@@ -5324,8 +5014,9 @@ Games\MSX1\DSK\Road & Fantasy (Tensei Kobo) (2021).zip
 Games\MSX1\DSK\Road Fighter (1985)(Konami).zip
 Games\MSX1\DSK\Road Wars (1988)(Melbourne House).zip
 Games\MSX1\DSK\Robocop (1988)(Ocean Software)[needs 128k].zip
-Games\MSX1\DSK\Robofrog (1985)(Ascii).zip
+Games\MSX1\DSK\Robofrog (1985)(Mass Tael).zip
 Games\MSX1\DSK\Robot Wars (1986)(Eaglesoft).zip
+Games\MSX1\DSK\Robotik v1.0 (2025)(Gamecast Entertainment)[MSXdev2025].zip
 Games\MSX1\DSK\Roboy (1987)(Methodic Solutions).zip
 Games\MSX1\DSK\Rock 'n Bolt (1985)(Activision).zip
 Games\MSX1\DSK\Rock 'n Roller (1988)(Topo Soft)(es).zip
@@ -5448,7 +5139,9 @@ Games\MSX1\DSK\Skyhawk (1986)(Bug-Byte Software).zip
 Games\MSX1\DSK\Slalom (1998)(Stefano Fronteddu)(it).zip
 Games\MSX1\DSK\Slapshot (1985)(Anirog Software).zip
 Games\MSX1\DSK\Slapshot (1985)(Anirog Software)[a].zip
-Games\MSX1\DSK\Slot Machinex (19xx)(-).zip
+Games\MSX1\DSK\Slot Machine (1985)(Creating-Soft).zip
+Games\MSX1\DSK\Slot Machine (1985)(Creating-Soft)[a][MSX1 Only].zip
+Games\MSX1\DSK\Slot Machine (1985)(Creating-Soft)[MSX2 Fixed].zip
 Games\MSX1\DSK\Slot-tastic - BCO (2025).zip
 Games\MSX1\DSK\Smack Wacker (1986)(Eaglesoft).zip
 Games\MSX1\DSK\Smaily (1990)(Zigurat Software)(es).zip
@@ -5540,6 +5233,7 @@ Games\MSX1\DSK\Stardust (1987)(Topo Soft)(es).zip
 Games\MSX1\DSK\Stardust (1987)(Topo Soft)(es)[f WYZ][h CEZ].zip
 Games\MSX1\DSK\Starquake (1986)(Bubblebus Software).zip
 Games\MSX1\DSK\Starship Simulator (1984)(Ascii).zip
+Games\MSX1\DSK\Stellar Burrow - Meichnpp (2025).zip
 Games\MSX1\DSK\Step Up (1983)(Hal).zip
 Games\MSX1\DSK\Steve Davis Snooker (1985)(CDS Microsystems).zip
 Games\MSX1\DSK\Stop Ball (1987)(Dro Soft).zip
@@ -5557,7 +5251,7 @@ Games\MSX1\DSK\SubCommander 1.02 (2020)(Zoran Majcenić).zip
 Games\MSX1\DSK\Submarine Shooter (1983) (Hudson Soft).zip
 Games\MSX1\DSK\Submarine Shooter. Gunman (1983)(Hudson Soft).zip
 Games\MSX1\DSK\Suerte, Bruce! (1986)(Scorpio Software)(es).zip
-Games\MSX1\DSK\Suparobo (1984)(Ascii).zip
+Games\MSX1\DSK\Suparobo (1984)(Mass Tael).zip
 Games\MSX1\DSK\Super Adventure (1987)(WLCracks).zip
 Games\MSX1\DSK\Super Baby (19xx)(Hudson Soft).zip
 Games\MSX1\DSK\Super Billiards (1983)(Hal).zip
@@ -5670,6 +5364,7 @@ Games\MSX1\DSK\Thing Bounces Back (1987)(Gremlin Graphics Software).zip
 Games\MSX1\DSK\Thor (1988)(Proein Soft Line)(es).zip
 Games\MSX1\DSK\Thor (1988)(Proein Soft Line)(es)[a].zip
 Games\MSX1\DSK\Thor (1988)(Proein Soft Line)(es)[h CEZ].zip
+Games\MSX1\DSK\Three Weeks In Paradise v1.0 (2025)(Fregami) [MSXdev2025].zip
 Games\MSX1\DSK\Thunder Ball (1985)(Ascii).zip
 Games\MSX1\DSK\Thunder Blade (1988)(US Gold)[t].zip
 Games\MSX1\DSK\Thunder Blade (1988)(US Gold)[t][a].zip
@@ -5967,669 +5662,6 @@ Games\MSX1\DSK\ZX-81 Emulator (1992)(Project Thunderbolt)(pt).zip
 Games\MSX1\HDD\Level 9 Adventures v0.93 (Level 9 Computing)H(HDD Image).zip
 Games\MSX1\HDD\Level 9 Adventures v0.94 (Level 9 Computing)(HDD Image).zip
 Games\MSX1\HDD\Level 9 Adventures v0.95 (Level 9 Computing)(HDD Image).zip
-Games\MSX1\MSX-Binaries\10thfram.lzh
-Games\MSX1\MSX-Binaries\20231223_MRIOT04_COM.zip
-Games\MSX1\MSX-Binaries\50METRES.zip
-Games\MSX1\MSX-Binaries\aackos-0.arj
-Games\MSX1\MSX-Binaries\abadia.lzh
-Games\MSX1\MSX-Binaries\abracada.lzh
-Games\MSX1\MSX-Binaries\aceoaces.lzh
-Games\MSX1\MSX-Binaries\adel.lzh
-Games\MSX1\MSX-Binaries\adictbal.lzh
-Games\MSX1\MSX-Binaries\adonis.lzh
-Games\MSX1\MSX-Binaries\ae.lzh
-Games\MSX1\MSX-Binaries\Aerial.zip
-Games\MSX1\MSX-Binaries\after.pma
-Games\MSX1\MSX-Binaries\afterbur.lzh
-Games\MSX1\MSX-Binaries\aguia.lzh
-Games\MSX1\MSX-Binaries\akalabeth_msx.zip
-Games\MSX1\MSX-Binaries\alehop.lzh
-Games\MSX1\MSX-Binaries\alfamat.lzh
-Games\MSX1\MSX-Binaries\alibaba.lzh
-Games\MSX1\MSX-Binaries\alien8.lzh
-Games\MSX1\MSX-Binaries\aliens.lzh
-Games\MSX1\MSX-Binaries\aliensyn.lzh
-Games\MSX1\MSX-Binaries\alpharoi.lzh
-Games\MSX1\MSX-Binaries\alpinesk.lzh
-Games\MSX1\MSX-Binaries\amaurote.lzh
-Games\MSX1\MSX-Binaries\amazonia.lha
-Games\MSX1\MSX-Binaries\amc.lzh
-Games\MSX1\MSX-Binaries\amida.lzh
-Games\MSX1\MSX-Binaries\Amida.zip
-Games\MSX1\MSX-Binaries\amity.lzh
-Games\MSX1\MSX-Binaries\amotopuf.lzh
-Games\MSX1\MSX-Binaries\angelo.lzh
-Games\MSX1\MSX-Binaries\angnieto.lzh
-Games\MSX1\MSX-Binaries\angra1.lha
-Games\MSX1\MSX-Binaries\antartic.lzh
-Games\MSX1\MSX-Binaries\AntiAir.zip
-Games\MSX1\MSX-Binaries\anty.lzh
-Games\MSX1\MSX-Binaries\apeman.lzh
-Games\MSX1\MSX-Binaries\apeman.pma
-Games\MSX1\MSX-Binaries\apemansb.lzh
-Games\MSX1\MSX-Binaries\aramo.pma
-Games\MSX1\MSX-Binaries\arctic.lzh
-Games\MSX1\MSX-Binaries\armymov1.pma
-Games\MSX1\MSX-Binaries\armymov2.pma
-Games\MSX1\MSX-Binaries\armymovs.lzh
-Games\MSX1\MSX-Binaries\aspar.lzh
-Games\MSX1\MSX-Binaries\asquadro.lzh
-Games\MSX1\MSX-Binaries\astronau.lzh
-Games\MSX1\MSX-Binaries\astroplu.lzh
-Games\MSX1\MSX-Binaries\ateam2.pma
-Games\MSX1\MSX-Binaries\athletic.lzh
-Games\MSX1\MSX-Binaries\atman.lzh
-Games\MSX1\MSX-Binaries\atom.lzh
-Games\MSX1\MSX-Binaries\attili.com
-Games\MSX1\MSX-Binaries\aufmonty.lzh
-Games\MSX1\MSX-Binaries\AUTOMOUSE.zip
-Games\MSX1\MSX-Binaries\avenger.lzh
-Games\MSX1\MSX-Binaries\avenger.pma
-Games\MSX1\MSX-Binaries\avorigin.lzh
-Games\MSX1\MSX-Binaries\awmonty.pma
-Games\MSX1\MSX-Binaries\a_team.lzh
-Games\MSX1\MSX-Binaries\b-panic.pma
-Games\MSX1\MSX-Binaries\backfutu.lzh
-Games\MSX1\MSX-Binaries\backgamm.lzh
-Games\MSX1\MSX-Binaries\banana.lzh
-Games\MSX1\MSX-Binaries\BangBang.zip
-Games\MSX1\MSX-Binaries\bankpani.lzh
-Games\MSX1\MSX-Binaries\barbaria.lzh
-Games\MSX1\MSX-Binaries\barney.pma
-Games\MSX1\MSX-Binaries\barnstor.lzh
-Games\MSX1\MSX-Binaries\barunba.lzh
-Games\MSX1\MSX-Binaries\batman.lzh
-Games\MSX1\MSX-Binaries\batman.pma
-Games\MSX1\MSX-Binaries\Battlot.zip
-Games\MSX1\MSX-Binaries\beachead.lzh
-Games\MSX1\MSX-Binaries\beamride.lzh
-Games\MSX1\MSX-Binaries\Bear George.zip
-Games\MSX1\MSX-Binaries\billiard.lzh
-Games\MSX1\MSX-Binaries\binaryla.lzh
-Games\MSX1\MSX-Binaries\blackbea.lzh
-Games\MSX1\MSX-Binaries\blagger.lzh
-Games\MSX1\MSX-Binaries\blow-up.pma
-Games\MSX1\MSX-Binaries\blow.lzh
-Games\MSX1\MSX-Binaries\bluepink.lzh
-Games\MSX1\MSX-Binaries\bmxsimul.lzh
-Games\MSX1\MSX-Binaries\boatfly.lzh
-Games\MSX1\MSX-Binaries\boggy84.lzh
-Games\MSX1\MSX-Binaries\boingboi.lzh
-Games\MSX1\MSX-Binaries\bokosuka.lzh
-Games\MSX1\MSX-Binaries\bomber3d.pma
-Games\MSX1\MSX-Binaries\bomberma.pma
-Games\MSX1\MSX-Binaries\bombersp.pma
-Games\MSX1\MSX-Binaries\boogiwoo.lzh
-Games\MSX1\MSX-Binaries\boom.lzh
-Games\MSX1\MSX-Binaries\boomeran.lzh
-Games\MSX1\MSX-Binaries\Bootskell.zip
-Games\MSX1\MSX-Binaries\bop!.lzh
-Games\MSX1\MSX-Binaries\bosconia.lzh
-Games\MSX1\MSX-Binaries\bouken.lzh
-Games\MSX1\MSX-Binaries\boulder1.lzh
-Games\MSX1\MSX-Binaries\boulder2.lzh
-Games\MSX1\MSX-Binaries\bouncing.lzh
-Games\MSX1\MSX-Binaries\bound.pma
-Games\MSX1\MSX-Binaries\breakin.lzh
-Games\MSX1\MSX-Binaries\breakout.lzh
-Games\MSX1\MSX-Binaries\brosadv.lzh
-Games\MSX1\MSX-Binaries\bubbler.lzh
-Games\MSX1\MSX-Binaries\buckroge.lzh
-Games\MSX1\MSX-Binaries\bugchess.lzh
-Games\MSX1\MSX-Binaries\buggy.lzh
-Games\MSX1\MSX-Binaries\buitre.lzh
-Games\MSX1\MSX-Binaries\buitreii.lzh
-Games\MSX1\MSX-Binaries\busblock.lzh
-Games\MSX1\MSX-Binaries\cabbage.lzh
-Games\MSX1\MSX-Binaries\cacorm.zip
-Games\MSX1\MSX-Binaries\camelotw.lzh
-Games\MSX1\MSX-Binaries\canworms.lzh
-Games\MSX1\MSX-Binaries\carjambo.lzh
-Games\MSX1\MSX-Binaries\castle.lzh
-Games\MSX1\MSX-Binaries\castleex.lzh
-Games\MSX1\MSX-Binaries\CastleTomb.zip
-Games\MSX1\MSX-Binaries\castlexc.lzh
-Games\MSX1\MSX-Binaries\cavit.zip
-Games\MSX1\MSX-Binaries\cbakery.lzh
-Games\MSX1\MSX-Binaries\cbasebal.lzh
-Games\MSX1\MSX-Binaries\cetus.lzh
-Games\MSX1\MSX-Binaries\champion.lzh
-Games\MSX1\MSX-Binaries\chasehq.pma
-Games\MSX1\MSX-Binaries\chesmast.lzh
-Games\MSX1\MSX-Binaries\chess.lzh
-Games\MSX1\MSX-Binaries\chicago.lzh
-Games\MSX1\MSX-Binaries\chickcha.lzh
-Games\MSX1\MSX-Binaries\chikfigh.lzh
-Games\MSX1\MSX-Binaries\chiller.lzh
-Games\MSX1\MSX-Binaries\chimachi.lzh
-Games\MSX1\MSX-Binaries\choplift.lzh
-Games\MSX1\MSX-Binaries\chopper1.lzh
-Games\MSX1\MSX-Binaries\chubbygr.pma
-Games\MSX1\MSX-Binaries\chuckegg.lzh
-Games\MSX1\MSX-Binaries\chuckie.pma
-Games\MSX1\MSX-Binaries\circus.lzh
-Games\MSX1\MSX-Binaries\city.pma
-Games\MSX1\MSX-Binaries\cityconn.lzh
-Games\MSX1\MSX-Binaries\cityconn.pma
-Games\MSX1\MSX-Binaries\clapton2.lzh
-Games\MSX1\MSX-Binaries\classica.pma
-Games\MSX1\MSX-Binaries\cluedo.lzh
-Games\MSX1\MSX-Binaries\cninja.lzh
-Games\MSX1\MSX-Binaries\coastera.lzh
-Games\MSX1\MSX-Binaries\cocircus.lzh
-Games\MSX1\MSX-Binaries\cockpit.lzh
-Games\MSX1\MSX-Binaries\coliseum.lzh
-Games\MSX1\MSX-Binaries\colony.lzh
-Games\MSX1\MSX-Binaries\colossal.pma
-Games\MSX1\MSX-Binaries\colt36.lzh
-Games\MSX1\MSX-Binaries\comicshe.lzh
-Games\MSX1\MSX-Binaries\comqua.lzh
-Games\MSX1\MSX-Binaries\confused.lzh
-Games\MSX1\MSX-Binaries\congobon.lzh
-Games\MSX1\MSX-Binaries\cosanost.lzh
-Games\MSX1\MSX-Binaries\cosmicsa.lzh
-Games\MSX1\MSX-Binaries\cosmoexp.lzh
-Games\MSX1\MSX-Binaries\couperse.lzh
-Games\MSX1\MSX-Binaries\cracky.zip
-Games\MSX1\MSX-Binaries\craze.pma
-Games\MSX1\MSX-Binaries\crazebal.lzh
-Games\MSX1\MSX-Binaries\crazytra.lzh
-Games\MSX1\MSX-Binaries\crossbla.lzh
-Games\MSX1\MSX-Binaries\crown.lzh
-Games\MSX1\MSX-Binaries\csoccer.lzh
-Games\MSX1\MSX-Binaries\ctrueno.lzh
-Games\MSX1\MSX-Binaries\cubos.zip
-Games\MSX1\MSX-Binaries\cyberun.lzh
-Games\MSX1\MSX-Binaries\cyrusii.pma
-Games\MSX1\MSX-Binaries\d-book.lha
-Games\MSX1\MSX-Binaries\d-drago2.lha
-Games\MSX1\MSX-Binaries\dadrianm.lzh
-Games\MSX1\MSX-Binaries\dambuste.lzh
-Games\MSX1\MSX-Binaries\dangerm.lzh
-Games\MSX1\MSX-Binaries\dangerx.lzh
-Games\MSX1\MSX-Binaries\dawnpatr.lzh
-Games\MSX1\MSX-Binaries\daylight.pma
-Games\MSX1\MSX-Binaries\deathw.pma
-Games\MSX1\MSX-Binaries\deathw3.pma
-Games\MSX1\MSX-Binaries\deathwis.lzh
-Games\MSX1\MSX-Binaries\decathlo.lzh
-Games\MSX1\MSX-Binaries\delgado.lzh
-Games\MSX1\MSX-Binaries\demand.lzh
-Games\MSX1\MSX-Binaries\demonia.lzh
-Games\MSX1\MSX-Binaries\descubri.lzh
-Games\MSX1\MSX-Binaries\descubri.pma
-Games\MSX1\MSX-Binaries\desolat.pma
-Games\MSX1\MSX-Binaries\desolato.lzh
-Games\MSX1\MSX-Binaries\desperad.lzh
-Games\MSX1\MSX-Binaries\deusexm.pma
-Games\MSX1\MSX-Binaries\dinamite.lzh
-Games\MSX1\MSX-Binaries\dires.lzh
-Games\MSX1\MSX-Binaries\discover.lzh
-Games\MSX1\MSX-Binaries\diskwar.pma
-Games\MSX1\MSX-Binaries\dizballo.lzh
-Games\MSX1\MSX-Binaries\doctor.lzh
-Games\MSX1\MSX-Binaries\domino.lzh
-Games\MSX1\MSX-Binaries\donknint.lzh
-Games\MSX1\MSX-Binaries\dorondon.lzh
-Games\MSX1\MSX-Binaries\doubled1.pma
-Games\MSX1\MSX-Binaries\doubled2.pma
-Games\MSX1\MSX-Binaries\dragon.lzh
-Games\MSX1\MSX-Binaries\dragonq.lzh
-Games\MSX1\MSX-Binaries\draughts.lzh
-Games\MSX1\MSX-Binaries\driller.lzh
-Games\MSX1\MSX-Binaries\drome.lzh
-Games\MSX1\MSX-Binaries\dungeon.pma
-Games\MSX1\MSX-Binaries\dunkshot.lzh
-Games\MSX1\MSX-Binaries\dustin.lzh
-Games\MSX1\MSX-Binaries\eggerlan.lzh
-Games\MSX1\MSX-Binaries\eggy.pma
-Games\MSX1\MSX-Binaries\ei.lzh
-Games\MSX1\MSX-Binaries\elcid.lzh
-Games\MSX1\MSX-Binaries\elevator.lzh
-Games\MSX1\MSX-Binaries\elidon.arj
-Games\MSX1\MSX-Binaries\elite.lzh
-Games\MSX1\MSX-Binaries\elite3.lzh
-Games\MSX1\MSX-Binaries\ericfloa.lzh
-Games\MSX1\MSX-Binaries\espadasa.lzh
-Games\MSX1\MSX-Binaries\eurogam.lzh
-Games\MSX1\MSX-Binaries\eva.lha
-Games\MSX1\MSX-Binaries\ewoks.lzh
-Games\MSX1\MSX-Binaries\exerion.lzh
-Games\MSX1\MSX-Binaries\eye.pma
-Games\MSX1\MSX-Binaries\f-master.lzh
-Games\MSX1\MSX-Binaries\f16simul.lzh
-Games\MSX1\MSX-Binaries\f1spirit.lzh
-Games\MSX1\MSX-Binaries\fairy.lzh
-Games\MSX1\MSX-Binaries\fantasm.lzh
-Games\MSX1\MSX-Binaries\fantomas.lzh
-Games\MSX1\MSX-Binaries\fboxing.lzh
-Games\MSX1\MSX-Binaries\feud.lzh
-Games\MSX1\MSX-Binaries\files.fix
-Games\MSX1\MSX-Binaries\findersk.pma
-Games\MSX1\MSX-Binaries\fireresc.lzh
-Games\MSX1\MSX-Binaries\flappy.lzh
-Games\MSX1\MSX-Binaries\flashgor.lzh
-Games\MSX1\MSX-Binaries\flight.lzh
-Games\MSX1\MSX-Binaries\flintstn.arj
-Games\MSX1\MSX-Binaries\flintsto.lzh
-Games\MSX1\MSX-Binaries\fmartin.lzh
-Games\MSX1\MSX-Binaries\Fnick_li.bin.zip
-Games\MSX1\MSX-Binaries\football.pma
-Games\MSX1\MSX-Binaries\footbyea.lzh
-Games\MSX1\MSX-Binaries\footmana.lzh
-Games\MSX1\MSX-Binaries\footvoll.pma
-Games\MSX1\MSX-Binaries\formz.lzh
-Games\MSX1\MSX-Binaries\freddy2.lzh
-Games\MSX1\MSX-Binaries\fredhar2.lzh
-Games\MSX1\MSX-Binaries\fredhard.lzh
-Games\MSX1\MSX-Binaries\fruitpan.lzh
-Games\MSX1\MSX-Binaries\funkymou.lzh
-Games\MSX1\MSX-Binaries\futbool.lzh
-Games\MSX1\MSX-Binaries\futuknig.lzh
-Games\MSX1\MSX-Binaries\fuzzball.pma
-Games\MSX1\MSX-Binaries\g-basket.lzh
-Games\MSX1\MSX-Binaries\galaga.lzh
-Games\MSX1\MSX-Binaries\galaga2.pma
-Games\MSX1\MSX-Binaries\galaxia.lzh
-Games\MSX1\MSX-Binaries\galaxian.lzh
-Games\MSX1\MSX-Binaries\gamecol4.arj
-Games\MSX1\MSX-Binaries\gameover.lzh
-Games\MSX1\MSX-Binaries\gangman.lzh
-Games\MSX1\MSX-Binaries\gauntlet.lzh
-Games\MSX1\MSX-Binaries\gavea.lha
-Games\MSX1\MSX-Binaries\gberet.lzh
-Games\MSX1\MSX-Binaries\gerente.lzh
-Games\MSX1\MSX-Binaries\ghost.com
-Games\MSX1\MSX-Binaries\ghostb2.lha
-Games\MSX1\MSX-Binaries\ghostb2.lzh
-Games\MSX1\MSX-Binaries\ghostbu2.pma
-Games\MSX1\MSX-Binaries\ghostbus.pma
-Games\MSX1\MSX-Binaries\ghostfli.lzh
-Games\MSX1\MSX-Binaries\ghosttim.pma
-Games\MSX1\MSX-Binaries\ghstbst2.pma
-Games\MSX1\MSX-Binaries\glaurung.lzh
-Games\MSX1\MSX-Binaries\glider.lzh
-Games\MSX1\MSX-Binaries\gmaster2.lzh
-Games\MSX1\MSX-Binaries\golve256.lzh
-Games\MSX1\MSX-Binaries\golvelli.lzh
-Games\MSX1\MSX-Binaries\gonzalez.lzh
-Games\MSX1\MSX-Binaries\goody.lzh
-Games\MSX1\MSX-Binaries\goonies.lzh
-Games\MSX1\MSX-Binaries\gp-world.pma
-Games\MSX1\MSX-Binaries\gpworld.lzh
-Games\MSX1\MSX-Binaries\gremlin2.lzh
-Games\MSX1\MSX-Binaries\gremlin2.pma
-Games\MSX1\MSX-Binaries\grogs.lzh
-Games\MSX1\MSX-Binaries\gruta.lha
-Games\MSX1\MSX-Binaries\guardic.lzh
-Games\MSX1\MSX-Binaries\guerra.lha
-Games\MSX1\MSX-Binaries\gunfrigh.lzh
-Games\MSX1\MSX-Binaries\guntus.zip
-Games\MSX1\MSX-Binaries\gutt.lzh
-Games\MSX1\MSX-Binaries\guttblst.pma
-Games\MSX1\MSX-Binaries\gyroadve.lzh
-Games\MSX1\MSX-Binaries\gyrodine.lzh
-Games\MSX1\MSX-Binaries\Hades.zip
-Games\MSX1\MSX-Binaries\hajafuin.lzh
-Games\MSX1\MSX-Binaries\hangon.lzh
-Games\MSX1\MSX-Binaries\haunted.lzh
-Games\MSX1\MSX-Binaries\hercul.lzh
-Games\MSX1\MSX-Binaries\Hermaphroditus.zip
-Games\MSX1\MSX-Binaries\hero.lzh
-Games\MSX1\MSX-Binaries\highwenc.lzh
-Games\MSX1\MSX-Binaries\hoheels.lzh
-Games\MSX1\MSX-Binaries\hole1pro.lzh
-Games\MSX1\MSX-Binaries\holeione.lzh
-Games\MSX1\MSX-Binaries\hopman_fd.zip
-Games\MSX1\MSX-Binaries\hotshoe.lzh
-Games\MSX1\MSX-Binaries\howarduc.lzh
-Games\MSX1\MSX-Binaries\hrally.lzh
-Games\MSX1\MSX-Binaries\humphrey.lzh
-Games\MSX1\MSX-Binaries\hunchbac.lzh
-Games\MSX1\MSX-Binaries\hundra.lzh
-Games\MSX1\MSX-Binaries\hustler.lzh
-Games\MSX1\MSX-Binaries\hwstar.lzh
-Games\MSX1\MSX-Binaries\hyde.lzh
-Games\MSX1\MSX-Binaries\hydlide2.lzh
-Games\MSX1\MSX-Binaries\hydlide2.pma
-Games\MSX1\MSX-Binaries\hydlide3.pma
-Games\MSX1\MSX-Binaries\hype.lzh
-Games\MSX1\MSX-Binaries\hypersp1.lzh
-Games\MSX1\MSX-Binaries\hypersp3.lzh
-Games\MSX1\MSX-Binaries\ice.lzh
-Games\MSX1\MSX-Binaries\icehocke.lzh
-Games\MSX1\MSX-Binaries\iciclewo.lzh
-Games\MSX1\MSX-Binaries\iconia.lzh
-Games\MSX1\MSX-Binaries\illusion.lzh
-Games\MSX1\MSX-Binaries\Impetus (Unknown) (2021).zip
-Games\MSX1\MSX-Binaries\impetus.zip
-Games\MSX1\MSX-Binaries\indian.lzh
-Games\MSX1\MSX-Binaries\indiana.lzh
-Games\MSX1\MSX-Binaries\indy-lc.pma
-Games\MSX1\MSX-Binaries\indylc.lha
-Games\MSX1\MSX-Binaries\inspec-z.lzh
-Games\MSX1\MSX-Binaries\invaderr.lzh
-Games\MSX1\MSX-Binaries\invasion.lzh
-Games\MSX1\MSX-Binaries\italia90.lzh
-Games\MSX1\MSX-Binaries\jacknip1.lzh
-Games\MSX1\MSX-Binaries\jacknip2.lzh
-Games\MSX1\MSX-Binaries\JET SET WILLY II - Universal Version by KdL 2024.zip
-Games\MSX1\MSX-Binaries\jetbombe.lzh
-Games\MSX1\MSX-Binaries\jetsetw.pma
-Games\MSX1\MSX-Binaries\jetsetw1.lzh
-Games\MSX1\MSX-Binaries\jetsetw2.lzh
-Games\MSX1\MSX-Binaries\jetsetwi.lzh
-Games\MSX1\MSX-Binaries\joeblade.lzh
-Games\MSX1\MSX-Binaries\jumpjet.pma
-Games\MSX1\MSX-Binaries\junglew.lzh
-Games\MSX1\MSX-Binaries\junglewa.lzh
-Games\MSX1\MSX-Binaries\junofirs.lzh
-Games\MSX1\MSX-Binaries\kaleid.lzh
-Games\MSX1\MSX-Binaries\karate.lzh
-Games\MSX1\MSX-Binaries\kbasebal.lzh
-Games\MSX1\MSX-Binaries\kboxing.lzh
-Games\MSX1\MSX-Binaries\kendo.lzh
-Games\MSX1\MSX-Binaries\keykaper.lzh
-Games\MSX1\MSX-Binaries\kgolf.lzh
-Games\MSX1\MSX-Binaries\kick-it.pma
-Games\MSX1\MSX-Binaries\kickit.lzh
-Games\MSX1\MSX-Binaries\kidwiz.lzh
-Games\MSX1\MSX-Binaries\kingball.lzh
-Games\MSX1\MSX-Binaries\kingsva2.lzh
-Games\MSX1\MSX-Binaries\kingv1.lzh
-Games\MSX1\MSX-Binaries\kmaster.lzh
-Games\MSX1\MSX-Binaries\knight.pma
-Games\MSX1\MSX-Binaries\knightlo.lzh
-Games\MSX1\MSX-Binaries\konami.lzh
-Games\MSX1\MSX-Binaries\kpingpon.lzh
-Games\MSX1\MSX-Binaries\KPSS.zip
-Games\MSX1\MSX-Binaries\krakout.lzh
-Games\MSX1\MSX-Binaries\krakout.pma
-Games\MSX1\MSX-Binaries\ksoccer.lzh
-Games\MSX1\MSX-Binaries\ktennis.lzh
-Games\MSX1\MSX-Binaries\ktyme.lzh
-Games\MSX1\MSX-Binaries\KVPlus.zip
-Games\MSX1\MSX-Binaries\laherenc.pma
-Games\MSX1\MSX-Binaries\LASERMAZER.zip
-Games\MSX1\MSX-Binaries\lastcrus.pma
-Games\MSX1\MSX-Binaries\lastmiss.lzh
-Games\MSX1\MSX-Binaries\lazerbik.lzh
-Games\MSX1\MSX-Binaries\lazyjone.lzh
-Games\MSX1\MSX-Binaries\lemans1.pma
-Games\MSX1\MSX-Binaries\lemans2.lzh
-Games\MSX1\MSX-Binaries\lesflics.lzh
-Games\MSX1\MSX-Binaries\liberato.lzh
-Games\MSX1\MSX-Binaries\licence.pma
-Games\MSX1\MSX-Binaries\Lift.zip
-Games\MSX1\MSX-Binaries\livdayli.lzh
-Games\MSX1\MSX-Binaries\living2a.pma
-Games\MSX1\MSX-Binaries\living2b.pma
-Games\MSX1\MSX-Binaries\livingst.lzh
-Games\MSX1\MSX-Binaries\loderun2.lzh
-Games\MSX1\MSX-Binaries\Logic.zip
-Games\MSX1\MSX-Binaries\lords.pma
-Games\MSX1\MSX-Binaries\lorna.lzh
-Games\MSX1\MSX-Binaries\m-rider.pma
-Games\MSX1\MSX-Binaries\macadamb.lzh
-Games\MSX1\MSX-Binaries\madmix1.lzh
-Games\MSX1\MSX-Binaries\madmix2.lzh
-Games\MSX1\MSX-Binaries\magicalt.lha
-Games\MSX1\MSX-Binaries\manus.lzh
-Games\MSX1\MSX-Binaries\masters.pma
-Games\MSX1\MSX-Binaries\matcday2.lzh
-Games\MSX1\MSX-Binaries\matchday.pma
-Games\MSX1\MSX-Binaries\Mazy.zip
-Games\MSX1\MSX-Binaries\mazy2.zip
-Games\MSX1\MSX-Binaries\mcattack.pma
-Games\MSX1\MSX-Binaries\merlin.lzh
-Games\MSX1\MSX-Binaries\metrop.lzh
-Games\MSX1\MSX-Binaries\mgalious.lzh
-Games\MSX1\MSX-Binaries\michel.lzh
-Games\MSX1\MSX-Binaries\mickyluc.lzh
-Games\MSX1\MSX-Binaries\midnight.lzh
-Games\MSX1\MSX-Binaries\mina.lha
-Games\MSX1\MSX-Binaries\mind.lzh
-Games\MSX1\MSX-Binaries\miner.lzh
-Games\MSX1\MSX-Binaries\mint.zip
-Games\MSX1\MSX-Binaries\mirai.lzh
-Games\MSX1\MSX-Binaries\misc0000.arj
-Games\MSX1\MSX-Binaries\misc0001.arj
-Games\MSX1\MSX-Binaries\mitsume.lzh
-Games\MSX1\MSX-Binaries\MojiSpace.zip
-Games\MSX1\MSX-Binaries\monkeyac.lzh
-Games\MSX1\MSX-Binaries\monopoly.pma
-Games\MSX1\MSX-Binaries\moonswer.lzh
-Games\MSX1\MSX-Binaries\mopirang.lha
-Games\MSX1\MSX-Binaries\mouniver.lzh
-Games\MSX1\MSX-Binaries\mouser.lzh
-Games\MSX1\MSX-Binaries\mphoenix.lzh
-Games\MSX1\MSX-Binaries\mplanet.lzh
-Games\MSX1\MSX-Binaries\mrggoody.arj
-Games\MSX1\MSX-Binaries\msx1game.arj
-Games\MSX1\MSX-Binaries\msx1game.txt
-Games\MSX1\MSX-Binaries\msx1games_packw.dsk.gz
-Games\MSX1\MSX-Binaries\msx1mega.arj
-Games\MSX1\MSX-Binaries\msx1mega.txt
-Games\MSX1\MSX-Binaries\msxchess.lzh
-Games\MSX1\MSX-Binaries\mutant.lzh
-Games\MSX1\MSX-Binaries\navymove.lzh
-Games\MSX1\MSX-Binaries\NCWTCD07.zip
-Games\MSX1\MSX-Binaries\nem2plus.lzh
-Games\MSX1\MSX-Binaries\neme2256.lzh
-Games\MSX1\MSX-Binaries\nemesis.lzh
-Games\MSX1\MSX-Binaries\nemesis2.lzh
-Games\MSX1\MSX-Binaries\nemesis3.lzh
-Games\MSX1\MSX-Binaries\Neuras.zip
-Games\MSX1\MSX-Binaries\NickNeaker.zip
-Games\MSX1\MSX-Binaries\night.pma
-Games\MSX1\MSX-Binaries\nilo.lzh
-Games\MSX1\MSX-Binaries\ninjapri.lzh
-Games\MSX1\MSX-Binaries\nintendo.pma
-Games\MSX1\MSX-Binaries\ninya.pma
-Games\MSX1\MSX-Binaries\nipper1.pma
-Games\MSX1\MSX-Binaries\nipper2.pma
-Games\MSX1\MSX-Binaries\nofuss.lzh
-Games\MSX1\MSX-Binaries\nonamed.lzh
-Games\MSX1\MSX-Binaries\Obake-Chan.zip
-Games\MSX1\MSX-Binaries\oceancon.lzh
-Games\MSX1\MSX-Binaries\october.lzh
-Games\MSX1\MSX-Binaries\Octopuss - MSX Panic.zip
-Games\MSX1\MSX-Binaries\ohmumy.lzh
-Games\MSX1\MSX-Binaries\ohshit!.lzh
-Games\MSX1\MSX-Binaries\oilswell.pma
-Games\MSX1\MSX-Binaries\ole!.lzh
-Games\MSX1\MSX-Binaries\operwolf.lzh
-Games\MSX1\MSX-Binaries\pack#01.lzh
-Games\MSX1\MSX-Binaries\pack#02.lzh
-Games\MSX1\MSX-Binaries\pack#03.lzh
-Games\MSX1\MSX-Binaries\pack#04.lzh
-Games\MSX1\MSX-Binaries\pack#05.lzh
-Games\MSX1\MSX-Binaries\pack#06.lzh
-Games\MSX1\MSX-Binaries\pack#07.lzh
-Games\MSX1\MSX-Binaries\pack#08.lzh
-Games\MSX1\MSX-Binaries\pack#09.lzh
-Games\MSX1\MSX-Binaries\pack#10.lzh
-Games\MSX1\MSX-Binaries\pack#11.lzh
-Games\MSX1\MSX-Binaries\pacland.lzh
-Games\MSX1\MSX-Binaries\pacman.lzh
-Games\MSX1\MSX-Binaries\pacmania.pma
-Games\MSX1\MSX-Binaries\pairs.lzh
-Games\MSX1\MSX-Binaries\panique.pma
-Games\MSX1\MSX-Binaries\pants.lzh
-Games\MSX1\MSX-Binaries\pardakar.lzh
-Games\MSX1\MSX-Binaries\parod128.lzh
-Games\MSX1\MSX-Binaries\parod256.lzh
-Games\MSX1\MSX-Binaries\pasteman.lzh
-Games\MSX1\MSX-Binaries\pengland.lzh
-Games\MSX1\MSX-Binaries\pengu256.lzh
-Games\MSX1\MSX-Binaries\pentagra.lzh
-Games\MSX1\MSX-Binaries\petrovic.lzh
-Games\MSX1\MSX-Binaries\phantis.lzh
-Games\MSX1\MSX-Binaries\phantoma.lzh
-Games\MSX1\MSX-Binaries\picot.pma
-Games\MSX1\MSX-Binaries\pinball.lzh
-Games\MSX1\MSX-Binaries\pineappl.lzh
-Games\MSX1\MSX-Binaries\pinkpant.pma
-Games\MSX1\MSX-Binaries\pippols.lzh
-Games\MSX1\MSX-Binaries\pitfall2.lzh
-Games\MSX1\MSX-Binaries\poderosc.lzh
-Games\MSX1\MSX-Binaries\polarsta.lzh
-Games\MSX1\MSX-Binaries\police.pma
-Games\MSX1\MSX-Binaries\policea1.pma
-Games\MSX1\MSX-Binaries\policea2.pma
-Games\MSX1\MSX-Binaries\PONGRM01.zip
-Games\MSX1\MSX-Binaries\poogaboo.lzh
-Games\MSX1\MSX-Binaries\POPPIE.zip
-Games\MSX1\MSX-Binaries\priceofm.pma
-Games\MSX1\MSX-Binaries\profanat.lzh
-Games\MSX1\MSX-Binaries\protecto.lzh
-Games\MSX1\MSX-Binaries\psycho.pma
-Games\MSX1\MSX-Binaries\puddles.lzh
-Games\MSX1\MSX-Binaries\pvasca.lzh
-Games\MSX1\MSX-Binaries\pwars.lzh
-Games\MSX1\MSX-Binaries\qbert.lzh
-Games\MSX1\MSX-Binaries\qgolf.lzh
-Games\MSX1\MSX-Binaries\quijote1.lzh
-Games\MSX1\MSX-Binaries\quijote2.lzh
-Games\MSX1\MSX-Binaries\quinplch.lzh
-Games\MSX1\MSX-Binaries\r-type.pma
-Games\MSX1\MSX-Binaries\raidonbb.lzh
-Games\MSX1\MSX-Binaries\rambo.lzh
-Games\MSX1\MSX-Binaries\rambo3.lzh
-Games\MSX1\MSX-Binaries\rambosp.lzh
-Games\MSX1\MSX-Binaries\reflex.pma
-Games\MSX1\MSX-Binaries\renegade.lzh
-Games\MSX1\MSX-Binaries\rivraid.lzh
-Games\MSX1\MSX-Binaries\roadfigh.lzh
-Games\MSX1\MSX-Binaries\roadwars.lzh
-Games\MSX1\MSX-Binaries\robocop.lha
-Games\MSX1\MSX-Binaries\roller.lzh
-Games\MSX1\MSX-Binaries\romancia.lzh
-Games\MSX1\MSX-Binaries\Ruptus.zip
-Games\MSX1\MSX-Binaries\s-shadow.xsa
-Games\MSX1\MSX-Binaries\salam128.lzh
-Games\MSX1\MSX-Binaries\salam256.lzh
-Games\MSX1\MSX-Binaries\samantha.lzh
-Games\MSX1\MSX-Binaries\sandgam1.lzh
-Games\MSX1\MSX-Binaries\sandgam2.lzh
-Games\MSX1\MSX-Binaries\sc-fict.pma
-Games\MSX1\MSX-Binaries\schuiff1.lzh
-Games\MSX1\MSX-Binaries\scobra.lzh
-Games\MSX1\MSX-Binaries\scopeon.lzh
-Games\MSX1\MSX-Binaries\sevilla.lzh
-Games\MSX1\MSX-Binaries\sewersam.lzh
-Games\MSX1\MSX-Binaries\shalo256.lzh
-Games\MSX1\MSX-Binaries\shalo512.lzh
-Games\MSX1\MSX-Binaries\sharkhnt.arj
-Games\MSX1\MSX-Binaries\sim737.lha
-Games\MSX1\MSX-Binaries\sirfred.lzh
-Games\MSX1\MSX-Binaries\sjaguar.lzh
-Games\MSX1\MSX-Binaries\snake-it.lzh
-Games\MSX1\MSX-Binaries\sninja.lzh
-Games\MSX1\MSX-Binaries\snowman.lzh
-Games\MSX1\MSX-Binaries\snychess.pma
-Games\MSX1\MSX-Binaries\sokoban.pma
-Games\MSX1\MSX-Binaries\solnegr1.pma
-Games\MSX1\MSX-Binaries\solnegr2.pma
-Games\MSX1\MSX-Binaries\solnegro.lzh
-Games\MSX1\MSX-Binaries\sonyches.lha
-Games\MSX1\MSX-Binaries\soviet.lzh
-Games\MSX1\MSX-Binaries\sparkie.pma
-Games\MSX1\MSX-Binaries\spdking.lzh
-Games\MSX1\MSX-Binaries\spirits.lzh
-Games\MSX1\MSX-Binaries\squeek.lzh
-Games\MSX1\MSX-Binaries\starfigh.lzh
-Games\MSX1\MSX-Binaries\starquak.arj
-Games\MSX1\MSX-Binaries\starquak.lzh
-Games\MSX1\MSX-Binaries\starsold.lzh
-Games\MSX1\MSX-Binaries\starwars.lzh
-Games\MSX1\MSX-Binaries\STAR_F.zip
-Games\MSX1\MSX-Binaries\streaker.pma
-Games\MSX1\MSX-Binaries\strgloop.lzh
-Games\MSX1\MSX-Binaries\SUBCMDR.zip
-Games\MSX1\MSX-Binaries\sulaydok.lzh
-Games\MSX1\MSX-Binaries\Super Ilevan (POPCOM 1987-04).zip
-Games\MSX1\MSX-Binaries\superboy.lzh
-Games\MSX1\MSX-Binaries\supergam.zip
-Games\MSX1\MSX-Binaries\supertri.lzh
-Games\MSX1\MSX-Binaries\supsnak.lzh
-Games\MSX1\MSX-Binaries\survivor.lzh
-Games\MSX1\MSX-Binaries\sweetaco.lzh
-Games\MSX1\MSX-Binaries\Switch.zip
-Games\MSX1\MSX-Binaries\takeru.lzh
-Games\MSX1\MSX-Binaries\tank-b.lzh
-Games\MSX1\MSX-Binaries\tank-b.pma
-Games\MSX1\MSX-Binaries\tank.lzh
-Games\MSX1\MSX-Binaries\tbounces.lzh
-Games\MSX1\MSX-Binaries\tchess.lzh
-Games\MSX1\MSX-Binaries\tdii.lzh
-Games\MSX1\MSX-Binaries\tempdoom.pma
-Games\MSX1\MSX-Binaries\temptati.lzh
-Games\MSX1\MSX-Binaries\terminus.lzh
-Games\MSX1\MSX-Binaries\terramex.lzh
-Games\MSX1\MSX-Binaries\tetris.lzh
-Games\MSX1\MSX-Binaries\tetris.zip
-Games\MSX1\MSX-Binaries\theheist.pma
-Games\MSX1\MSX-Binaries\thexder.lzh
-Games\MSX1\MSX-Binaries\thunderb.lzh
-Games\MSX1\MSX-Binaries\tiger.lzh
-Games\MSX1\MSX-Binaries\timeband.lzh
-Games\MSX1\MSX-Binaries\tkwondo.lzh
-Games\MSX1\MSX-Binaries\toproll.lzh
-Games\MSX1\MSX-Binaries\tpilot.lzh
-Games\MSX1\MSX-Binaries\tracer.lzh
-Games\MSX1\MSX-Binaries\tracknf1.lzh
-Games\MSX1\MSX-Binaries\tracknf2.lzh
-Games\MSX1\MSX-Binaries\trail.pma
-Games\MSX1\MSX-Binaries\trailbla.lzh
-Games\MSX1\MSX-Binaries\trantor.lzh
-Games\MSX1\MSX-Binaries\trivial.lzh
-Games\MSX1\MSX-Binaries\tuareg.lzh
-Games\MSX1\MSX-Binaries\turbgirl.lzh
-Games\MSX1\MSX-Binaries\turmoil.lzh
-Games\MSX1\MSX-Binaries\turmoil.pma
-Games\MSX1\MSX-Binaries\turtles.pma
-Games\MSX1\MSX-Binaries\twinbee.lzh
-Games\MSX1\MSX-Binaries\ulises.lzh
-Games\MSX1\MSX-Binaries\untouch.lha
-Games\MSX1\MSX-Binaries\untouch.lzh
-Games\MSX1\MSX-Binaries\vacmania.lzh
-Games\MSX1\MSX-Binaries\valkyr.pma
-Games\MSX1\MSX-Binaries\Vampire.zip
-Games\MSX1\MSX-Binaries\vaxol.arj
-Games\MSX1\MSX-Binaries\vaxol.lzh
-Games\MSX1\MSX-Binaries\vectron.lzh
-Games\MSX1\MSX-Binaries\venom.lzh
-Games\MSX1\MSX-Binaries\Viboritas.zip
-Games\MSX1\MSX-Binaries\volley.lzh
-Games\MSX1\MSX-Binaries\vuilnis.lzh
-Games\MSX1\MSX-Binaries\wcfm.lzh
-Games\MSX1\MSX-Binaries\wdwii.lzh
-Games\MSX1\MSX-Binaries\wilds.lzh
-Games\MSX1\MSX-Binaries\Wired Shooting [Fixed].zip
-Games\MSX1\MSX-Binaries\WIREDSTG.zip
-Games\MSX1\MSX-Binaries\wizlair.pma
-Games\MSX1\MSX-Binaries\wonder.pma
-Games\MSX1\MSX-Binaries\wonderb.lzh
-Games\MSX1\MSX-Binaries\xanadu.arj
-Games\MSX1\MSX-Binaries\xenon.pma
-Games\MSX1\MSX-Binaries\xybots.lzh
-Games\MSX1\MSX-Binaries\xyxolog.lzh
-Games\MSX1\MSX-Binaries\yabyum.lzh
-Games\MSX1\MSX-Binaries\yayama.zip
-Games\MSX1\MSX-Binaries\yiear1.lzh
-Games\MSX1\MSX-Binaries\yiear2.lzh
-Games\MSX1\MSX-Binaries\zanac.lzh
-Games\MSX1\MSX-Binaries\zanac2.lzh
-Games\MSX1\MSX-Binaries\zanac3.pma
-Games\MSX1\MSX-Binaries\zaxxon.lzh
-Games\MSX1\MSX-Binaries\zexas.lzh
-Games\MSX1\MSX-Binaries\zona0.lzh
-Games\MSX1\MSX-Binaries\zoom909.lzh
-Games\MSX1\MSX-Binaries\zorax.lha
-Games\MSX1\MSX-Binaries\zork1.lzh
-Games\MSX1\MSX-Binaries\zork2.lzh
-Games\MSX1\MSX-Binaries\zork3.lzh
 Games\MSX1\ROM\1 2 3 - Al Alamiah (1986) [1].zip
 Games\MSX1\ROM\1 2 3 - Al Alamiah (1986) [3202].zip
 Games\MSX1\ROM\10 seconds warning - Chien Loco (2020) [original] [7342].zip
@@ -6773,6 +5805,7 @@ Games\MSX1\ROM\Alien Attack - Marcos Daniel (2020) [v1.3] [original] [6819].zip
 Games\MSX1\ROM\Alien Attack - Marcos Daniel (2020) [v1.5] [original] [6818].zip
 Games\MSX1\ROM\Alien Attack - Marcos Daniel (2020) [v3.0] [original] [6998].zip
 Games\MSX1\ROM\Alien Attack - Marcos Daniel (2020) [v3.5] [original] [6999].zip
+Games\MSX1\ROM\Alien Bounce (Soft Pro International)(1985).zip
 Games\MSX1\ROM\Alien Syndrome - Sega (1988) [Fixed].zip
 Games\MSX1\ROM\Alien Syndrome - Sega (1988) [MSX1 Only - 50hz - Toshiba hx-10] [5002].zip
 Games\MSX1\ROM\AlienMSX v1.1 - Rodrigo Siqueira (2024).zip
@@ -6788,6 +5821,7 @@ Games\MSX1\ROM\Aliens 2 - Square (1987) [a2] [71].zip
 Games\MSX1\ROM\Aliens 2 - Square (1987) [GoodMSX] [70].zip
 Games\MSX1\ROM\Aliens 2 - Square (1987) [Ulver crack] [73].zip
 Games\MSX1\ROM\Aliens Sound Demo - DVIK & Joyrex productions (2008) [Please run on msx2 for better graphics] [original] [74].zip
+Games\MSX1\ROM\Almost A Pong - Joesg (2025) [MSXdev2025] [v1.0].zip
 Games\MSX1\ROM\Alpha Blaster - Aackosoft (1984) [5668].zip
 Games\MSX1\ROM\Alpha Squadron - AG Corp. (1984) [5669].zip
 Games\MSX1\ROM\Alpha Squadron - AG Corp. (1984) [GoodMSX] [75].zip
@@ -6807,6 +5841,7 @@ Games\MSX1\ROM\Amadeus Classical Beats - Amaury Carvalho (2021) [original] [7185
 Games\MSX1\ROM\Amaurote - M.A.D. (1987) [4267].zip
 Games\MSX1\ROM\Amaurote - M.A.D. (1987) [a] [6503].zip
 Games\MSX1\ROM\Amazing Kid - Husnisoft (1990) [83].zip
+Games\MSX1\ROM\Amazonia - Renato Degiovani (1989)(pt)[ROM by Marcos Daniel Blanco].zip
 Games\MSX1\ROM\American Truck - Telenet Japan (1985) [91].zip
 Games\MSX1\ROM\American Truck - Telenet Japan (1985) [a1] [GoodMSX] [87].zip
 Games\MSX1\ROM\American Truck - Telenet Japan (1985) [a3] [5664].zip
@@ -6872,6 +5907,7 @@ Games\MSX1\ROM\Arabic Sakhr Basic - Al Alamiah (1987) [v2.02] [6682].zip
 Games\MSX1\ROM\Aramo - XAIN - Sein (1986) [French] [a] [Translated] [6483].zip
 Games\MSX1\ROM\Aramo - XAIN - Sein (1986) [French] [Translated] [3021].zip
 Games\MSX1\ROM\Aramo - XAIN - Sein (1986) [GoodMSX] [124].zip
+Games\MSX1\ROM\Arcade Fever - SMX Team (2025).zip
 Games\MSX1\ROM\Arcade Hits - Physical Dreams (19xx).zip
 Games\MSX1\ROM\Arcomage - Bitvision (2015) [5674].zip
 Games\MSX1\ROM\Arctic Fox - Electronic Arts (1989) [5676].zip
@@ -6937,6 +5973,8 @@ Games\MSX1\ROM\Auto Mania - Fregarni (2022) [MSXDev2022] [v2.0] [7555].zip
 Games\MSX1\ROM\Auto Mouse - N.I (2023) [8143].zip
 Games\MSX1\ROM\Avenger - Gremlin Graphics (1986) [5351].zip
 Games\MSX1\ROM\Avenger - Gremlin Graphics (1986) [5352].zip
+Games\MSX1\ROM\Avenida Paulista - Sysout (1986)[ROM by Marcos Daniel Blanco].zip
+Games\MSX1\ROM\Avenida Paulista - Sysout (1986)[ROM by Marcos Daniel Blanco][Pico Fixed].zip
 Games\MSX1\ROM\Aventuras de Rudolphine Rur - Dwalin (2020) [MSXDev2020] [original] [6851].zip
 Games\MSX1\ROM\Azzurro 8bit Jam - RELEVO Videogames (2011) [original] [2648].zip
 Games\MSX1\ROM\Azzurro 8bit Jam - RELEVO Videogames (2011) [v1.1] [original] [4269].zip
@@ -7106,6 +6144,7 @@ Games\MSX1\ROM\Blusy Shop - Jordi Sala Clara (2005) [MSX-DEV05] [original] [246]
 Games\MSX1\ROM\BMX Simulator - Codemasters (1986) [4959].zip
 Games\MSX1\ROM\Boardello - Bubble Bus (1985) [4311].zip
 Games\MSX1\ROM\Boardello - Bubble Bus (1985) [5709].zip
+Games\MSX1\ROM\Bobby Is Still Going Home - Amaury Carvalho (2025) [MSXdev2025] [v1.2].zip
 Games\MSX1\ROM\Boggle Boggle - Clover (1990) [bubble bobble clone] [4127].zip
 Games\MSX1\ROM\Boggy'84 - Nippon Columbia - Colpax - Universal (1984) [247].zip
 Games\MSX1\ROM\Boggy'84 - Nippon Columbia - Colpax - Universal (1984) [5710].zip
@@ -7118,6 +6157,7 @@ Games\MSX1\ROM\Bokosuka Wars - ASCII (1984) [a] [252].zip
 Games\MSX1\ROM\Bokosuka Wars - ASCII (1984) [GoodMSX] [253].zip
 Games\MSX1\ROM\Bomb Jack - Fregarni (2023) [Final Version - No Turbo-R] [v1.0] [original] [7631].zip
 Games\MSX1\ROM\Bomb Jack - Fregarni (2023) [v1.1] [original] [7834].zip
+Games\MSX1\ROM\Bomb Jack - Fregarni (2023) [v1.2] [original].zip
 Games\MSX1\ROM\Bomb Jack - Sega (1983) [256].zip
 Games\MSX1\ROM\Bomb Jack - Sega (1983) [Kralizec MSX2 Version] [original] [2618].zip
 Games\MSX1\ROM\Bomb Man - AG Software (2005) [MSX-DEV05] [original] [257].zip
@@ -7209,6 +6249,7 @@ Games\MSX1\ROM\Bounder - Gremlin Graphics (1985) [4295].zip
 Games\MSX1\ROM\Bousou Tokkyuu SOS - Stop The Express - Hudson Soft - Japanese Softbank (1985) [292].zip
 Games\MSX1\ROM\Bousou Tokkyuu SOS - Stop The Express - Hudson Soft - Japanese Softbank (1985) [5609].zip
 Games\MSX1\ROM\Bousou Tokkyuu SOS - Stop The Express - Hudson Soft - Japanese Softbank (1985) [a] [293].zip
+Games\MSX1\ROM\Brain Teaser - Y.R. Sova (2025) [MSXdev2025] [v1.0].zip
 Games\MSX1\ROM\Break Bomb - AG Software (2021) [MSXDev2021 v1.0] [original] [6983].zip
 Games\MSX1\ROM\Break In - The Bytebusters (1987) [3433].zip
 Games\MSX1\ROM\Break In - The Bytebusters (1987) [Alalamiah release-a] [5741].zip
@@ -7218,7 +6259,14 @@ Games\MSX1\ROM\Break It - Martin vd Graaf (1987) [7813].zip
 Games\MSX1\ROM\Break It - Martin vd Graaf (1987) [original] [3975].zip
 Games\MSX1\ROM\Break Out - ASCII (1983) [GoodMSX] [296].zip
 Games\MSX1\ROM\Break Turbo - AG Software (2014) [7742].zip
+Games\MSX1\ROM\Brick Blackout (Sergio Koshimizu)(2025).zip
+Games\MSX1\ROM\Brick Bomb (Sergio Koshimizu)(2025)[v16072025].zip
 Games\MSX1\ROM\Brick Breaker - Juliet Software (1987) [5898].zip
+Games\MSX1\ROM\Brick Centipede (Sergio Koshimizu)(2025).zip
+Games\MSX1\ROM\Brick Dice (Sergio Koshimizu)(2025).zip
+Games\MSX1\ROM\Brick Falldown (Sergio Koshimizu)(2025).zip
+Games\MSX1\ROM\Brick Game (Sergio Koshimizu)(2025).zip
+Games\MSX1\ROM\Brick SHIP II (Sergio Koshimizu)(2025).zip
 Games\MSX1\ROM\Bridge - Filosoft (1991) [297].zip
 Games\MSX1\ROM\Brik - German Gomez Herrera (2008) [6153].zip
 Games\MSX1\ROM\Brik - German Gomez Herrera (2008) [original] [298].zip
@@ -7316,6 +6364,7 @@ Games\MSX1\ROM\Car Fighter - Casio (1985) [GoodMSX] [339].zip
 Games\MSX1\ROM\Car Jamboree - Omori Electric Company (OEC) (1984) [2766].zip
 Games\MSX1\ROM\Car Jamboree - Omori Electric Company (OEC) (1984) [340].zip
 Games\MSX1\ROM\Car Jamboree - Omori Electric Company (OEC) (1984) [GoodMSX] [341].zip
+Games\MSX1\ROM\Car Pull 2177 - Toag (2025) [MSXdev25] [v1.0].zip
 Games\MSX1\ROM\Car Race - Ample Software (1983) [343].zip
 Games\MSX1\ROM\Car Race - Ample Software (1983) [a2] [345].zip
 Games\MSX1\ROM\Car Race - Ample Software (1983) [a] [5687].zip
@@ -7327,6 +6376,7 @@ Games\MSX1\ROM\Carlos Sainz - Campeonato del Mundo de Rallies - Zigurat (1990) [
 Games\MSX1\ROM\Carnival - Coleco (1982) [Taylor Conversion] [6749].zip
 Games\MSX1\ROM\Casio Complete Collection - Casio (20xx) [6997].zip
 Games\MSX1\ROM\Casio Complete Collection - Casio (20xx) [7156].zip
+Games\MSX1\ROM\Casio Game Collection - SMX Team (2025).zip
 Games\MSX1\ROM\Casio Gamecase - JAM (2002) [346].zip
 Games\MSX1\ROM\Casio GPM-Compilation Volume 1 - Matra (2010) [unlicensed compilation] [5880].zip
 Games\MSX1\ROM\Casio GPM-Compilation Volume 1 - Matra (2010) [Unlicensed Compilation] [original] [4124].zip
@@ -7851,6 +6901,7 @@ Games\MSX1\ROM\Dungeon Adventure - Aburi Games (2025)(v250611).zip
 Games\MSX1\ROM\Dungeon Adventure - Aburi Games (2025)(v250611)[f].zip
 Games\MSX1\ROM\Dungeon Adventure - Aburi Games (2025)(v250613).zip
 Games\MSX1\ROM\Dungeon Adventure - Aburi Games (2025)(v250615).zip
+Games\MSX1\ROM\Dungeon Adventure - Aburi Games (2025)(v250717).zip
 Games\MSX1\ROM\Dungeon Adventure - Level 9 Computing (1984) [5775].zip
 Games\MSX1\ROM\Dungeon Hunter - ASCII (1989) [GoodMSX] [600].zip
 Games\MSX1\ROM\Dungeon Master - ASCII (1986) [GoodMSX] [601].zip
@@ -7959,6 +7010,8 @@ Games\MSX1\ROM\Exerion 1 - Jaleco (1984) [tr Br Uriano] [Translated] [649].zip
 Games\MSX1\ROM\Exerion 2 - Zorni - Jaleco (1986) [653].zip
 Games\MSX1\ROM\Exerion 2 - Zorni - Jaleco (1986) [a] [7383].zip
 Games\MSX1\ROM\Exerion 2 - Zorni - Jaleco (1986) [GoodMSX] [654].zip
+Games\MSX1\ROM\Exo-Tical v1.0 - Roolandoo (2025)[MSXdev25].zip
+Games\MSX1\ROM\Exo-Tical v1.0 - Roolandoo (2025)[MSXdev25][es].zip
 Games\MSX1\ROM\EXODUS - Jos'b (2019) [5784].zip
 Games\MSX1\ROM\Exoide-Z - Casio (1986) [2803].zip
 Games\MSX1\ROM\Exoide-Z - Casio (1986) [2804].zip
@@ -8041,6 +7094,7 @@ Games\MSX1\ROM\Flappy Limited - dB-SOFT (1985) [720].zip
 Games\MSX1\ROM\Flappy Limited - dB-SOFT (1985) [GoodMSX] [719].zip
 Games\MSX1\ROM\Flappy Limited 85 - dB-SOFT (1985) [a] [5789].zip
 Games\MSX1\ROM\Flappy Limited 85 - dB-SOFT (1985) [GoodMSX] [721].zip
+Games\MSX1\ROM\Flappy Patastrato v1.0 - PlattySoft (2025)[MSXdev25].zip
 Games\MSX1\ROM\Flash Point - Stark Texel (1987) [723].zip
 Games\MSX1\ROM\Flash Point - Stark Texel (1987) [a] [722].zip
 Games\MSX1\ROM\Flash Splash - Toshiba-EMI (1984) [4975].zip
@@ -8485,6 +7539,9 @@ Games\MSX1\ROM\Grog's Revenge - Comptiq (1985) [Prosoft Hack] [916].zip
 Games\MSX1\ROM\Grog's Revenge - Comptiq (1985) [Ruote E Cavernicoli [tr It] [Translated] [912].zip
 Games\MSX1\ROM\Grog's Revenge - Comptiq (1985) [Topia] [915].zip
 Games\MSX1\ROM\Groningen per Helicopter - Albert Computing (1986) [7447].zip
+Games\MSX1\ROM\GS Soccer v1.0 - F Pracek (2025)[MSXdev 2025].zip
+Games\MSX1\ROM\GS Soccer v1.1 - F Pracek (2025)[MSXdev 2025].zip
+Games\MSX1\ROM\GS Soccer v1.2 - F Pracek (2025)[MSXdev 2025].zip
 Games\MSX1\ROM\Guardic - Compile (1986) [2828].zip
 Games\MSX1\ROM\Guardic - Compile (1986) [a2] [5916].zip
 Games\MSX1\ROM\Guardic - Compile (1986) [GoodMSX] [917].zip
@@ -8510,6 +7567,7 @@ Games\MSX1\ROM\Guru Logic - Karoshi Corporation (2003) [original] [933].zip
 Games\MSX1\ROM\Guttblaster - Eurosoft (1988) [3095].zip
 Games\MSX1\ROM\Guttblaster - Eurosoft (1988) [934].zip
 Games\MSX1\ROM\Guttblaster - Eurosoft (1988) [GoodMSX] [3094].zip
+Games\MSX1\ROM\Guzzler - Mastropiero (2025).zip
 Games\MSX1\ROM\Gyro Adventure - Colpax (1984) [2829].zip
 Games\MSX1\ROM\Gyro Adventure - Colpax (1984) [5919].zip
 Games\MSX1\ROM\Gyrodine - TAITO (1986) [937].zip
@@ -8744,6 +7802,7 @@ Games\MSX1\ROM\Illusions - Nice Ideas (1985) [GDX French] [Translated] [5812].zi
 Games\MSX1\ROM\Illusions - Nice Ideas (1985) [GDX French] [Translated] [5813].zip
 Games\MSX1\ROM\Impetus - Inufuto (2021) [original] [7356].zip
 Games\MSX1\ROM\Impetus - mxb03523 (2021) [original] [7106].zip
+Games\MSX1\ROM\Impetus+ - Inufuto (2025).zip
 Games\MSX1\ROM\Inca - The Bytebusters (1987) [cas2rom] [4078].zip
 Games\MSX1\ROM\Indian No Bouken - Hudson Soft (1983) [GoodMSX] [1096].zip
 Games\MSX1\ROM\Indoor Race - Mind Games Espana (1987) [4400].zip
@@ -8895,6 +7954,7 @@ Games\MSX1\ROM\King's Valley 1 - Konami (1985) [Protection Removed] [RC-727] [12
 Games\MSX1\ROM\King's Valley 1 - Konami (1985) [RC-727] [1209].zip
 Games\MSX1\ROM\King's Valley 1 - Konami (1985) [RC-727] [3199].zip
 Games\MSX1\ROM\King's Valley 1 - Konami (1985) [RC-727] [GoodMSX] [1208].zip
+Games\MSX1\ROM\King's Valley 1 - Konami (1985) [ubox version by Juhang Park 2023).zip
 Games\MSX1\ROM\King's Valley 1 - Konami (1985) [Ulver crack] [RC-727] [1210].zip
 Games\MSX1\ROM\King's Valley 2 - The Seal Of El Giza - MSX1 Version - Konami (1988) [FRS patch] [RC-760] [2641].zip
 Games\MSX1\ROM\King's Valley 2 - The Seal Of El Giza - MSX1 Version - Konami (1988) [JoySNES] [RC-760] [5374].zip
@@ -9041,8 +8101,10 @@ Games\MSX1\ROM\Konami's Tennis - Konami (1984) [Korean Version] [RC-720] [Transl
 Games\MSX1\ROM\Konami's Tennis - Konami (1984) [RC-720] [2874].zip
 Games\MSX1\ROM\Konami's Tennis - Konami (1984) [RC-720] [GoodMSX] [1306].zip
 Games\MSX1\ROM\Koneko no Daibouken - Catboy - Casio (1986) [a] [5900].zip
+Games\MSX1\ROM\Koneko no Daibouken - Catboy - Casio (1986) [FM Enhanced].zip
 Games\MSX1\ROM\Koneko no Daibouken - Catboy - Casio (1986) [GoodMSX] [1311].zip
 Games\MSX1\ROM\Koneko no Daibouken - Catboy - Casio (1986) [Korean hack as Super Penguin] [4159].zip
+Games\MSX1\ROM\Koneko no Daibouken - Catboy - Casio (1986) [SCC Enhanced].zip
 Games\MSX1\ROM\Kong's Revenge - Zigurat (1991) [Part 1] [5938].zip
 Games\MSX1\ROM\Kong's Revenge - Zigurat (1991) [Part 2] [5939].zip
 Games\MSX1\ROM\Koufi - Al Alamiah (1984) [1314].zip
@@ -9450,6 +8512,7 @@ Games\MSX1\ROM\Monkey Academy - Konami (1984) [RC-702] [2895].zip
 Games\MSX1\ROM\Monkey Academy - Konami (1984) [RC-702] [GoodMSX] [1545].zip
 Games\MSX1\ROM\Monkey Academy - Konami (1984) [Sharp Epcom] [RC-702] [8116].zip
 Games\MSX1\ROM\Monkey Up (v2.0) - Orazio Cacciola (2023).zip
+Games\MSX1\ROM\Monkey Up (v3.0) - Orazio Cacciola (2025).zip
 Games\MSX1\ROM\Monopoly - Leisure Genius (1986) [4381].zip
 Games\MSX1\ROM\Monster Bash - Karoshi Corporation (2005) [unfinished game] [original] [2628].zip
 Games\MSX1\ROM\Monster Hunter - Nerlaska Studio (2006) [MSX-DEV06 [Spanish Version] [Push 0 to use SCC] [original] [1553].zip
@@ -9719,6 +8782,10 @@ Games\MSX1\ROM\One on One - Electronic Arts (1984) [GDX Conversion] (By Taylor).
 Games\MSX1\ROM\Open Wide! - Hakogames (2021) [MSXDev2021] [original] [7100].zip
 Games\MSX1\ROM\Operation Brazil World Cup - Panochi Games (2014) [bitbitJAM1 entry] [original] [6476].zip
 Games\MSX1\ROM\Operation Crossbow - Karoshi Corporation (2011) [unfinished game] [original] [2629].zip
+Games\MSX1\ROM\Operation Hibernation - ArugulaZ (2025).zip
+Games\MSX1\ROM\Operation Hibernation - ArugulaZ (2025)[ACE].zip
+Games\MSX1\ROM\Operation Hibernation - JessCreations (2025) [MSXdev25] [v1.0].zip
+Games\MSX1\ROM\Operation Hibernation - JessCreations (2025) [MSXdev25] [v1.1].zip
 Games\MSX1\ROM\Operation Wolf - Toybox (2006) [MSX-DEV06 V1] [original] [1703].zip
 Games\MSX1\ROM\Operation Wolf - Toybox (2006) [MSX-DEV06 V3] [original] [1706].zip
 Games\MSX1\ROM\Optics - Al Alamiah (1985) [1707].zip
@@ -9958,7 +9025,9 @@ Games\MSX1\ROM\Pitfall! - Activision (1984) [GoodMSX] [1816].zip
 Games\MSX1\ROM\Pitfall! - Activision (1984) [HACK + NOMAPPER by bsitler].zip
 Games\MSX1\ROM\Pitfall! - Activision (1984) [Protection Removed] [1817].zip
 Games\MSX1\ROM\Pitman - Under4Mhz (2021) [MSXDev2021 v1.0] [original] [6992].zip
+Games\MSX1\ROM\Planet  X9 - RoboSoft (2025) [MSXdev2025][v1.0].zip
 Games\MSX1\ROM\Plastic - Z80 ASMer (2023).zip
+Games\MSX1\ROM\Platoon - Revolution (1987)(pt)[ROM by Marcos Daniel Blanco].zip
 Games\MSX1\ROM\Play 38 - WYZ (2007) [Music Only] [1820].zip
 Games\MSX1\ROM\Play Card System - YAMAHA (1985) [3112].zip
 Games\MSX1\ROM\Play Card System - YAMAHA (1985) [Includes I-O-accessed Device-Needs FMSound Synthesizer Unit] [UPA-01] [GoodMSX] [1821].zip
@@ -10344,6 +9413,7 @@ Games\MSX1\ROM\Senjyo - Tehkan (1984) [a] [2052].zip
 Games\MSX1\ROM\Senjyo - Tehkan (1984) [GoodMSX] [2051].zip
 Games\MSX1\ROM\Sensha - Tank Battalion Remake - Ochixn (2021) [original] [7170].zip
 Games\MSX1\ROM\Sensha Game - Ochixn (2020) [original] [6948].zip
+Games\MSX1\ROM\Serra Pelada - Renato Degiovani (1987)(pt)[ROM by Marcos Daniel Blanco].zip
 Games\MSX1\ROM\Sets - Al Alamiah (1985) [2054].zip
 Games\MSX1\ROM\Sets - Al Alamiah (1985) [2965].zip
 Games\MSX1\ROM\Sets - Al Alamiah (1985) [2966].zip
@@ -10353,6 +9423,7 @@ Games\MSX1\ROM\Shadow of the Pig - TheGeps (2022) [7518].zip
 Games\MSX1\ROM\Shadow of the Pig - TheGeps (2022) [Counter Fix] [v1.2] [7517].zip
 Games\MSX1\ROM\Shadow of the Pig - TheGeps (2022) [Sprite Fix] [v1.3] [original] [7516].zip
 Games\MSX1\ROM\Shadow Stitcher - RoboSoft Inc (2022) [MSXDev22] [original] [7227].zip
+Games\MSX1\ROM\Shamus - Nanochess (2025).zip
 Games\MSX1\ROM\Shater Hassan - Barq (1987) [2057].zip
 Games\MSX1\ROM\Shater Hassan - Barq (1987) [5665].zip
 Games\MSX1\ROM\Shater Hassan - Barq (1987) [6420].zip
@@ -10416,6 +9487,8 @@ Games\MSX1\ROM\Skate Air - Yermani Soft (2006) [MSX-DEV06] [original] [2085].zip
 Games\MSX1\ROM\Skate Air - Yermani Soft (2006) [MSX-DEV06] [original] [2086].zip
 Games\MSX1\ROM\Skate Dragon - Idea Logic (1986) [4301].zip
 Games\MSX1\ROM\Skate Dragon - Idea Logic (1986) [6015].zip
+Games\MSX1\ROM\Ski & Roll - Toag (2025) [MSXdev2025] [v1.0].zip
+Games\MSX1\ROM\Ski & Roll - Toag (2025) [MSXdev2025] [v1.1].zip
 Games\MSX1\ROM\Ski Command - Casio (1984) [2087].zip
 Games\MSX1\ROM\Ski Command - Casio (1984) [2090].zip
 Games\MSX1\ROM\Ski Command - Casio (1984) [2091].zip
@@ -10469,6 +9542,8 @@ Games\MSX1\ROM\Slender - The Camping - Pentacour (2013) [MSXDev13] [original] [2
 Games\MSX1\ROM\Slime Center - N.I (2017) [7749].zip
 Games\MSX1\ROM\Slime Center - N.I (2017) [MSXDev 2017] [original] [3381].zip
 Games\MSX1\ROM\Slither - Coleco (1983) [Taylor Conversion] [No Rollball Available] [6754].zip
+Games\MSX1\ROM\Slot Machine - Creating-Soft (1985).zip
+Games\MSX1\ROM\Slot Machine - Creating-Soft (1985)[a].zip
 Games\MSX1\ROM\Slurpy - Xonox (1984) [Taylor Conversion] [6747].zip
 Games\MSX1\ROM\Smurf Rescue In Gargamel’s Castle - Coleco (1982) [GDX Conversion [r2] [5882].zip
 Games\MSX1\ROM\Smurf Rescue In Gargamel’s Castle - Coleco (1982) [GDX Conversion] [3214].zip
@@ -10493,6 +9568,8 @@ Games\MSX1\ROM\Soko 64+ - Emanuele Feronato (2024).zip
 Games\MSX1\ROM\Sokoban - ASCII (1988) [2118].zip
 Games\MSX1\ROM\Sokoban - ASCII (1988) [4193].zip
 Games\MSX1\ROM\Sokoban - ASCII (1988) [7738].zip
+Games\MSX1\ROM\Solar Fox II - Space Evaders - JessCreations (2025) [Fixed Ending].zip
+Games\MSX1\ROM\Solar Fox II - Space Evaders - JessCreations (2025) [MSXdev25] [v1.0].zip
 Games\MSX1\ROM\Soldier of Light - Animagic (1989) [5968].zip
 Games\MSX1\ROM\Solitario - Nitrofurano (2002) [2119].zip
 Games\MSX1\ROM\Solitario - Nitrofurano (2002) [7744].zip
@@ -10708,6 +9785,7 @@ Games\MSX1\ROM\Super Laydock - Mission Striker - T&ESOFT (1987) [GoodMSX] [2233]
 Games\MSX1\ROM\Super Laydock - Mission Striker - T&ESOFT (1987) [Zemina hack] [4126].zip
 Games\MSX1\ROM\Super Laydock - Mission Striker - T&ESOFT (1987) [Zemina version [Ulver crack] [2236].zip
 Games\MSX1\ROM\Super Laydock Mission Striker - bv patch (T&E Soft) (1987).zip
+Games\MSX1\ROM\Super Mafia Boss 3 - Unknown (xxxx)[WIP].zip
 Games\MSX1\ROM\Super Monitor - Emiiru (1985) [Version 1.1] [GoodMSX] [2244].zip
 Games\MSX1\ROM\Super Monitor - Emiiru (1985) [Version 1.2] [GoodMSX] [2245].zip
 Games\MSX1\ROM\Super Ory 2 - Enigma - Orazio Cacciola (2023) [MSXDev2023 - English] [v1.2] [original] [8174].zip
@@ -10745,6 +9823,7 @@ Games\MSX1\ROM\Survivor - Topo Soft (1987) [Music Only - Main theme remixed by W
 Games\MSX1\ROM\Survivors - Atlantis (1986) [4330].zip
 Games\MSX1\ROM\Survivors - Atlantis (1986) [7395].zip
 Games\MSX1\ROM\Survivors - Atlantis (1986) [a] [6002].zip
+Games\MSX1\ROM\Svellas - Inufuto (2025) [9330].zip
 Games\MSX1\ROM\Sweet Acorn - TAITO (1984) [a] [2262].zip
 Games\MSX1\ROM\Sweet Acorn - TAITO (1984) [GoodMSX] [2263].zip
 Games\MSX1\ROM\Swing - Compile (1985) [6001].zip
@@ -10808,6 +9887,8 @@ Games\MSX1\ROM\Tekmo 400 - Silicon Sex (2016) [6881].zip
 Games\MSX1\ROM\Tel-Tron - DCS (1986) [6648].zip
 Games\MSX1\ROM\Telebunnie - Mass Tael (1983) [2292].zip
 Games\MSX1\ROM\Telebunnie - Mass Tael (1983) [GoodMSX] [2293].zip
+Games\MSX1\ROM\Telethugs Demo - Amaweks (2025)[50Hz].zip
+Games\MSX1\ROM\Telethugs Demo - Amaweks (2025)[60Hz].zip
 Games\MSX1\ROM\Temptations - Erbe Software (1988) [5287].zip
 Games\MSX1\ROM\Temptations - Erbe Software (1988) [Cas to ROM Conversion] [4245].zip
 Games\MSX1\ROM\Tenebra - Haplo (2023) [No Key Click] [original] [7902].zip
@@ -10819,7 +9900,9 @@ Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [6932].zip
 Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [cr Crack Fm] [2309].zip
 Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [cr Engesoft] [5985].zip
 Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [GoodMSX] [2308].zip
-Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [Title Patch].zip
+Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [Hack Tensai Rabbian 2 (WIP)].zip
+Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [Hack Tensai Rabbian 2].zip
+Games\MSX1\ROM\Tensai Rabbian Daifunsen - Soft Pro (1986) [Hack Yakekuso Rabbian].zip
 Games\MSX1\ROM\Tensidachino Gogo - Jast (1987) [GoodMSX] [2310].zip
 Games\MSX1\ROM\Tension - System 4 (1988) [2311].zip
 Games\MSX1\ROM\Tension - System 4 (1988) [a] [6000].zip
@@ -10962,6 +10045,7 @@ Games\MSX1\ROM\The Menace From Triton - Brain Games (2020) [MSXDev2020 v1.1] [or
 Games\MSX1\ROM\The Menace From Triton - Brain Games (2020) [MSXDev2020 v1.2] [original] [6975].zip
 Games\MSX1\ROM\The Munsters - Alternative Software (1988) [4966].zip
 Games\MSX1\ROM\The Munsters - Alternative Software (1988) [5603].zip
+Games\MSX1\ROM\The New Castle - Nicola Brogelli (2025)[MSXdev25].zip
 Games\MSX1\ROM\The Ninjas manuscripts Of Iga - The Battle Of Full Moon - Casio (1986) [3205].zip
 Games\MSX1\ROM\The Ninjas manuscripts Of Iga - The Battle Of Full Moon - Casio (1986) [6047].zip
 Games\MSX1\ROM\The Ninjas manuscripts Of Iga - The Battle Of Full Moon - Casio (1986) [GoodMSX] [1084].zip
@@ -10997,6 +10081,8 @@ Games\MSX1\ROM\The Untouchables - Ocean Software (1989)[MSX2 intro + Fixed].zip
 Games\MSX1\ROM\The Wall - Erbe Software (1986) [4336].zip
 Games\MSX1\ROM\The Wall - Erbe Software (1986) [5600].zip
 Games\MSX1\ROM\The Way Of The Tiger - Gremlin Graphics (1986) [MSX1 Only] (Conversion by Marcos Blanco).zip
+Games\MSX1\ROM\The Way Of The Tiger - Gremlin Graphics (1986)(ASCII8 - 2025 Conversion by Marcos Blanco).zip
+Games\MSX1\ROM\The Way Of The Tiger - Gremlin Graphics (1986)(KonamiSCC - 2025 Conversion by Marcos Blanco).zip
 Games\MSX1\ROM\The Wreck - Electric Software (1984) [2485].zip
 Games\MSX1\ROM\The Yolks On You - 20th Century Fox (1983) [Taylor Conversion] [6752].zip
 Games\MSX1\ROM\The Zoo - Al Alamiah (1989) [2341].zip
@@ -11010,6 +10096,7 @@ Games\MSX1\ROM\Thexder - Game Arts (1986) [Italian hack - Derex] [5403].zip
 Games\MSX1\ROM\Thexder - Game Arts (1986) [Protection Removed] [2344].zip
 Games\MSX1\ROM\Thing Bounces Back - Gremlin Graphics (1987) [5599].zip
 Games\MSX1\ROM\Think with me - Barq (1988) [5009].zip
+Games\MSX1\ROM\Three Weeks In Paradise v1.0 - Fregami (2025) [MSXdev2025].zip
 Games\MSX1\ROM\Thunder Ball - ASCII (1985) [2348].zip
 Games\MSX1\ROM\Thunder Ball - ASCII (1985) [GoodMSX] [2347].zip
 Games\MSX1\ROM\Thunder Bolt - Pixel (1986) [a1] [GoodMSX] [2350].zip
@@ -11123,6 +10210,7 @@ Games\MSX1\ROM\Tritorn - XAIN - Sein (1986) [a] [5314].zip
 Games\MSX1\ROM\Tritorn - XAIN - Sein (1986) [GoodMSX] [2386].zip
 Games\MSX1\ROM\Tritorn - XAIN - Sein (1986) [ROM Fix add on] [5313].zip
 Games\MSX1\ROM\Tronkotron - UnAz (2008) [original] [2388].zip
+Games\MSX1\ROM\Trucho Demoversion - Kamino (2024).zip
 Games\MSX1\ROM\True Survivor - 64K Sound Demo - WYZ (2019) [original] [7153].zip
 Games\MSX1\ROM\Trump Aid - Softvision (1986) [GoodMSX] [2389].zip
 Games\MSX1\ROM\Trun - The Pets Mode (2016) [Demo Version http--trun.vgsource.net-] [original] [3444].zip
@@ -11183,6 +10271,7 @@ Games\MSX1\ROM\Uchu Yohei v1.6.1 - FranChesstein (2023).zip
 Games\MSX1\ROM\Uchusen Gamma - Juan J. Martinez (2019) [original] [5114].zip
 Games\MSX1\ROM\Ulises - Opera Soft (1989) [No Turbo-R] [ROM version by Kabish] [4282].zip
 Games\MSX1\ROM\Ultimate Play The Game - Physical Dreams (19xx).zip
+Games\MSX1\ROM\Ultra Chess (K085) - Al Alamiah (1985).zip
 Games\MSX1\ROM\Ultra Chess - Aackosoft (1985) [4303].zip
 Games\MSX1\ROM\Ultraman - BANDAI (1984) [3001].zip
 Games\MSX1\ROM\Ultraman - BANDAI (1984) [Tsubaraya Pro] [GoodMSX] [2419].zip
@@ -11212,6 +10301,8 @@ Games\MSX1\ROM\Vaxol - Heavy Armed Storm Vehicle - Heart Soft (1987) [GoodMSX] [
 Games\MSX1\ROM\VeejingSX - aorante-303bcn (2010) [v0.1b] [original] [16].zip
 Games\MSX1\ROM\VeejingSX - aorante-303bcn (2010) [v0.7b] [RU Edition] [original] [2639].zip
 Games\MSX1\ROM\VeejingSX - aorante-303bcn (2010) [v0.99b] [original] [2680].zip
+Games\MSX1\ROM\Vegetable Crash - HoneyBee Soft Hudson Soft (1984).zip
+Games\MSX1\ROM\Vegetable Crash - HoneyBee Soft Hudson Soft (1984)[Slot Fix].zip
 Games\MSX1\ROM\Venganza - La Sierva de la Muerte - Physical Dreams (2019) [original] [6904].zip
 Games\MSX1\ROM\Venganza - La Sierva de la Muerte - Physical Dreams (2024) [Final].zip
 Games\MSX1\ROM\Venganza - La Sierva de la Muerte - Physical Dreams (2024) [Final][Padded].zip
@@ -11281,6 +10372,7 @@ Games\MSX1\ROM\WashMan v2.8 - GAMECAST Entertainment (2022).zip
 Games\MSX1\ROM\Water Driver - Apollo Technica (1984) [2462].zip
 Games\MSX1\ROM\Water Driver - Apollo Technica (1984) [3006].zip
 Games\MSX1\ROM\Water Driver - Apollo Technica (1984) [a] [5887].zip
+Games\MSX1\ROM\Wave Blitz - Sergio Yukio (2025).zip
 Games\MSX1\ROM\Waves - DVIK & Joyrex productions (2005) [Version 1.1 Demo] [original] [2465].zip
 Games\MSX1\ROM\Waves - DVIK & Joyrex productions (2005) [Version 1.2 Demo] [original] [2466].zip
 Games\MSX1\ROM\Waves - DVIK & Joyrex productions (2005) [Version 1.3 Demo] [original] [2463].zip
@@ -11417,7 +10509,9 @@ Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [2508].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [2509].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [2510].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [6416].zip
+Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [FM Enhanced].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [GoodMSX] [2502].zip
+Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [RC-725] [SCC Enhanced].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [SCC Enhanced] [RC-725] [5148].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [SCC Enhanced] [RC-725] [5509].zip
 Games\MSX1\ROM\Yie Ar Kung-Fu - Konami (1985) [SCC] [RC-725] [2504].zip
@@ -11445,6 +10539,8 @@ Games\MSX1\ROM\Yokai Tanken Chima Chima - Bothtec (1985) [GoodMSX] [2523].zip
 Games\MSX1\ROM\Youkai Yashiki - Ghost House - Casio (1986) [4169].zip
 Games\MSX1\ROM\Youkai Yashiki - Ghost House - Casio (1986) [a] [5267].zip
 Games\MSX1\ROM\Youkai Yashiki - Ghost House - Casio (1986) [GoodMSX] [2524].zip
+Games\MSX1\ROM\Youkai Yashiki - Ghost House - Casio (1986) [Graphics patch by Yazioh and Nestruo [English] [Translated] [7094].zip
+Games\MSX1\ROM\Youkai Yashiki - Ghost House - Casio (1986) [Graphics patch by Yazioh and Nestruo [Japanese] [7095].zip
 Games\MSX1\ROM\Young Artist - Al Alamiah (1988) [2528].zip
 Games\MSX1\ROM\Young Artist - Al Alamiah (1988) [v1.18] [5980].zip
 Games\MSX1\ROM\Young Researcher - Al Alamiah (1989) [2529].zip
@@ -11566,6 +10662,7 @@ Games\MSX1\ROM\Zoot - Bug-Byte Software (1986) [4290].zip
 Games\MSX1\ROM\ZorricoEX - Physical Dreams (2022) [English Verision] [original] [7046].zip
 Games\MSX1\ROM\ZorricoEX - Physical Dreams (2022) [Italian Version] [original] [7048].zip
 Games\MSX1\ROM\ZorricoEX - Physical Dreams (2022) [Spanish Version] [original] [7047].zip
+Games\MSX1\ROM\Zxetris - Fausto Pracek (2025) [MSXdev2025] [v1.0].zip
 Games\MSX1\WAV\10 Yard Fight (1986) (Irem) (J).zip
 Games\MSX1\WAV\2Warp.zip
 Games\MSX1\WAV\3D Golf Simulation - High-speed (1984) (T&E Soft) (J).zip
@@ -11880,6 +10977,7 @@ Games\MSX1\WAV\Iga Ninpouten 1 (1985) (Casio) (J).zip
 Games\MSX1\WAV\Iga Ninpouten 2 (1986) (Casio) (J).zip
 Games\MSX1\WAV\Illegus.zip
 Games\MSX1\WAV\Impetus (2021) (unknown).zip
+Games\MSX1\WAV\Impetus+ - Inufuto (2025).zip
 Games\MSX1\WAV\Indian no Bouken (1983) (Hudson) (J).zip
 Games\MSX1\WAV\Ingrid's Back Part 1 (1988)(Level 9 Computing).zip
 Games\MSX1\WAV\Ingrid's Back Part 2 (1988)(Level 9 Computing).zip
@@ -12281,6 +11379,8 @@ Games\MSX1\WAV\TwHamer.zip
 Games\MSX1\WAV\Twinbee (1986) (Konami) (J).zip
 Games\MSX1\WAV\TZR Grand Prix Rider (1986) (Ascii) (J).zip
 Games\MSX1\WAV\Ultraman (1984) (Bandai) (J).zip
+Games\MSX1\WAV\Vegetable Crash (HoneyBee Soft) (Hudson Soft) (Japan) [BLOAD'CAS-',R] [_] [HACK+BLOAD] [REGENERATED].zip
+Games\MSX1\WAV\Vegetable Crash (HoneyBee Soft) (Hudson Soft) (Japan) [BLOAD'CAS-',R] [_] [REGENERATED].zip
 Games\MSX1\WAV\Venus Fire (1987) (Victor) (J).zip
 Games\MSX1\WAV\Video Hustler (1984) (Konami) (J).zip
 Games\MSX1\WAV\Volguard (1985) (dB-Soft) (J).zip
@@ -12312,43 +11412,6 @@ Games\MSX1\WAV\Zaxxon (1985) (Pony Cannon) (J).zip
 Games\MSX1\WAV\Zenji (1984) (Pony Cannon) (J).zip
 Games\MSX1\WAV\Zexas Limited (1985) (dB-Soft) (J).zip
 Games\MSX1\WAV\Zoom 909 (1985) (Pony Cannon) (J).zip
-Games\MSX1\WAV (RAW)\Bang! Bang! (1985)(Ample, Mel Software)(JP)(en)[!][BLOAD'CAS-',R].zip
-Games\MSX1\WAV (RAW)\Binary Land (HoneyBee Soft) (Hudson Soft) (Japan) (Side A) [BLOAD'CAS-',R] [_] [CLEANED].zip
-Games\MSX1\WAV (RAW)\Binary Land (HoneyBee Soft) (Hudson Soft) (Japan) (Side B) [BLOAD'CAS-',R] [_] [CLEANED].zip
-Games\MSX1\WAV (RAW)\Booty.zip
-Games\MSX1\WAV (RAW)\Boulder Dash II - Rockford's Revenge (First Star) (Databyte) (Side A) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Boulder Dash II - Rockford's Revenge (First Star) (Databyte) (Side B) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Castle Blackstar (1986)(CDS Software)[BLOAD'CAS-',R].zip
-Games\MSX1\WAV (RAW)\Cosmo Traveler (1983)(Colpax)[BLOAD'CAS-',R].zip
-Games\MSX1\WAV (RAW)\Elite (1987)(Mr.Micro - Firebird)[BLOAD'CAS-',R].zip
-Games\MSX1\WAV (RAW)\Flight_Deck.zip
-Games\MSX1\WAV (RAW)\Game Pack 1 (Aackosoft - Eaglesoft) (Side 1B) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Game Pack 1 (Aackosoft - Eaglesoft) (Side 2A) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Gauntlet - The Deeper Dungeons (US Gold) [_].zip
-Games\MSX1\WAV (RAW)\Kong (Eurosoft) (VA Holding) (Side A) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Kong (Eurosoft) (VA Holding) (Side B) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Laberinto Binario - Binary Land (Sony Spain) (Indescomp) [BLOAD'CAS-',R] [_].zip
-Games\MSX1\WAV (RAW)\Memory (1984)(CD Systems)(NL)[!][BLOAD'CAS-',R][v0.8.4b].zip
-Games\MSX1\WAV (RAW)\Nightlife (KOEI)(1985).zip
-Games\MSX1\WAV (RAW)\North Sea Helicopter (Aackosoft, 1985).zip
-Games\MSX1\WAV (RAW)\Oh Shit! (ByteBusters) (Aackosoft - Eaglesoft)[RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Photographic Memory (1984)(CD Systems)[!][RUN'CAS-'][v0.8.4b].zip
-Games\MSX1\WAV (RAW)\Police Dog.zip
-Games\MSX1\WAV (RAW)\River Chase (1984)(Soft Pro International)(JP)(en)[!][CLOAD + RUN][v0.8.5b].zip
-Games\MSX1\WAV (RAW)\Robot Wars (ByteBusters) (Aackosoft - Eaglesoft) (Compulogical) [_] [RAW].wav.zip
-Games\MSX1\WAV (RAW)\Slot-tastic (BCO)(2025).zip
-Games\MSX1\WAV (RAW)\Soccer Boss (The Boss) (Alternative Software)(1987)[CLOAD+RUN].zip
-Games\MSX1\WAV (RAW)\Sorcery (Aackosoft) (Side A2) [RUN'CAS-'] [_] [CLEANED].zip
-Games\MSX1\WAV (RAW)\Sorcery (Aackosoft) (Side B1) [RUN'CAS-'] [_] [CLEANED].zip
-Games\MSX1\WAV (RAW)\Sorcery - Compilation Tape 3 (Eaglesoft) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Stop the Express (Hudson) (Aackosoft - Eaglesoft) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Tape Login MSX Game Book_a_all.zip
-Games\MSX1\WAV (RAW)\Tape Login MSX Game Book_b_all.zip
-Games\MSX1\WAV (RAW)\Tetris (MirrorSoft) (MCM) [RUN'CAS-'] [_].zip
-Games\MSX1\WAV (RAW)\Xyzolog (Electric Software) (Aackosoft) (Side 1) [BLOAD'CAS-',R] [_].zip
-Games\MSX1\WAV (RAW)\Xyzolog (Electric Software) (Aackosoft) (Side 2) [BLOAD'CAS-',R] [_].zip
-Games\MSX1\WAV (RAW)\Zakil Wood.zip
-Games\MSX1\WAV (RAW)\Zakilwood.zip
 Games\MSX2\CAS\Chess Game 2, The (1986)(Eaglesoft)[RUN'CAS-'].zip
 Games\MSX2\CAS\Games Collection, The - Tape 4 Side B - Bank Buster (1988)(Eurosoft)[a][RUN'CAS-'].zip
 Games\MSX2\CAS\Games Collection, The - Tape 4 Side B - Bank Buster (1988)(Eurosoft)[RUN'CAS-'].zip
@@ -12415,6 +11478,7 @@ Games\MSX2\DSK\Aguni no Ishi. The Stone of Aguni (1989)(Humming Bird Soft)(ja)[b
 Games\MSX2\DSK\Ahparmyadock (Aapaa MyaaDock AhPah MyahDog)(1991)(T&E Soft)(ja).zip
 Games\MSX2\DSK\Ahparmyadock (Aapaa MyaaDock AhPah MyahDog)(1991)(T&E Soft)(ja)[a1].zip
 Games\MSX2\DSK\Ahparmyadock (Aapaa MyaaDock AhPah MyahDog)(1991)(T&E Soft)(ja)[a].zip
+Games\MSX2\DSK\Aim for Tiffany! (1990)(URA. soft Jakomaru)(ja).zip
 Games\MSX2\DSK\Akanbe Dragon (1988)(Winky Soft)(en)[translation by MP83 & Lars the 18th].zip
 Games\MSX2\DSK\Akanbe Dragon (1988)(Winky Soft).zip
 Games\MSX2\DSK\Akanbe Dragon (1988)(Winky Soft)[a2].zip
@@ -12453,10 +11517,12 @@ Games\MSX2\DSK\Alice Soft Demo (1989)(Alice Soft)(ja)(Disk 1 of 2).zip
 Games\MSX2\DSK\Alice Soft Demo (1989)(Alice Soft)(ja)(Disk 1 of 2)[a].zip
 Games\MSX2\DSK\Alice Soft Demo (1989)(Alice Soft)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Alice Soft Demo (1989)(Alice Soft)(ja)(Disk 2 of 2)[a].zip
+Games\MSX2\DSK\Alien Fall (1989)(Game Kyojin).zip
 Games\MSX2\DSK\Alien Slime (1990)(Ax-Alex - Raketto).zip
 Games\MSX2\DSK\Alien Slime (1990)(Ax-Alex - Raketto)[a2].zip
 Games\MSX2\DSK\Alien Slime (1990)(Ax-Alex - Raketto)[a].zip
 Games\MSX2\DSK\All That's Tominaga High School Detective Club (1995)(Team Plankton)(jp).zip
+Games\MSX2\DSK\All You Want To Do Multi-Target Adventure (1988)(Lucifer Soft)(ja).zip
 Games\MSX2\DSK\Amazing Cash (1990)(MSX Club Magazine).zip
 Games\MSX2\DSK\Amazing Cash (1990)(MSX Club Magazine)[a].zip
 Games\MSX2\DSK\Amazonas (1987)(Idealogic)(es)(Disk 1 of 3).zip
@@ -12476,62 +11542,6 @@ Games\MSX2\DSK\American Success [T-En by Django].zip
 Games\MSX2\DSK\An Uncle in Brazil (1995)(Abyss).zip
 Games\MSX2\DSK\Anatomie de l'Homme (1987)(Forum Micros)(es).zip
 Games\MSX2\DSK\Anatomie de l'Homme (1987)(Forum Micros)(es)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom)(en).zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom)(ja).zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom)(ja)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom)(ja)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom).zip
-Games\MSX2\DSK\Ancient Ys Vanished - Omen (1987)(Falcom)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 1 of 2)(Game Disk)[tr es Manuel Pazos].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 2 of 2)(Data Disk)[tr es Manuel Pazos].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(en)(Disk 1 of 2)(Game Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(en)(Disk 2 of 2)(Data Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[b].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a3].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[b].zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 1 of 2)(Game Disk)(SCC).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 1 of 2)(Game Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 2 of 2)(Data Disk)(SCC).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 2 of 2)(Data Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(User Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - User Disks.zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[b].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[tr es Victor Martinez].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[tr es Victor Martinez].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a3].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[tr es Victor Martinez].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[tr es Victor Martinez].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 5 of 5)(User Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 5 of 5)(User Disk)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 1 of 5)(Game Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 1 of 5)(Game Disk)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 2 of 5)(Data Disk 1).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 2 of 5)(Data Disk 1)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 3 of 5)(Data Disk 2).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 3 of 5)(Data Disk 2)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 4 of 5)(Data Disk 3).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 4 of 5)(Data Disk 3)[a].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk).zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk)[a2].zip
-Games\MSX2\DSK\Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk)[a].zip
 Games\MSX2\DSK\Andorogynus (1988)(Telenet Japan)(ja).zip
 Games\MSX2\DSK\Andorogynus (1988)(Telenet Japan)(ja)[a2].zip
 Games\MSX2\DSK\Andorogynus (1988)(Telenet Japan)(ja)[a].zip
@@ -12583,6 +11593,7 @@ Games\MSX2\DSK\Arcusyu. Arcus Arch (1989)(Wolfteam)(ja).zip
 Games\MSX2\DSK\Arcusyu. Arcus Arch (1989)(Wolfteam)(ja)[a].zip
 Games\MSX2\DSK\Arguis no Tsubasa (1988)(Kogado)(ja).zip
 Games\MSX2\DSK\Arguis no Tsubasa (1988)(Kogado)(ja)[b].zip
+Games\MSX2\DSK\Ark-A-Noah (2000)(Matra).zip
 Games\MSX2\DSK\Ark-A-Noah (demo) (2000)(Matra).zip
 Games\MSX2\DSK\Arkanoid II - Revenge of Doh (1987)(Nidecom).zip
 Games\MSX2\DSK\Arkanoid II - Revenge of Doh (1987)(Nidecom)[a2].zip
@@ -12611,6 +11622,7 @@ Games\MSX2\DSK\AshGuine 2 (1987)(Panasoft)[a2].zip
 Games\MSX2\DSK\AshGuine 2 (1987)(Panasoft)[a].zip
 Games\MSX2\DSK\AshGuine 3 (1987)(Panasoft).zip
 Games\MSX2\DSK\AshGuine 3 (1987)(Panasoft)[a].zip
+Games\MSX2\DSK\Assembler Fighter (1994)(Game Castle)(ja).zip
 Games\MSX2\DSK\Astro Monsters (1995)(αH7).zip
 Games\MSX2\DSK\Atalanta (2020)(sfranck72)(en).zip
 Games\MSX2\DSK\Atalanta (2020)(sfranck72)(fr).zip
@@ -12633,10 +11645,12 @@ Games\MSX2\DSK\B199 - Game Disk (1992)(B. Brandt)(de)(Disk 2 of 2)(Fixed).zip
 Games\MSX2\DSK\B199 - Game Disk (1992)(B. Brandt)(de)(Disk 2 of 2).zip
 Games\MSX2\DSK\B199 - Intro Disk (1992)(B. Brandt)(de)[Disk 1 of 2).zip
 Games\MSX2\DSK\Babel - The New Megablocks (1994)(Cabinet).zip
-Games\MSX2\DSK\Back To The Future - Pony Inc. (1986)(jp).zip
-Games\MSX2\DSK\Back To The Future - Pony Inc. (1986)(jp)[Fixed].zip
 Games\MSX2\DSK\Back To The Future Adventure (1986)(Pony Canyon)(jp)(Disk 1 of 2).zip
 Games\MSX2\DSK\Back To The Future Adventure (1986)(Pony Canyon)(jp)(Disk 2 of 2).zip
+Games\MSX2\DSK\Back To The Future Adventure - Pony Inc. (1986)(jp).zip
+Games\MSX2\DSK\Back To The Future Adventure - Pony Inc. (1986)(jp)[Disk 1 of 2 - SS].zip
+Games\MSX2\DSK\Back To The Future Adventure - Pony Inc. (1986)(jp)[Disk 2 of 2 - SS].zip
+Games\MSX2\DSK\Back To The Future Adventure - Pony Inc. (1986)(jp)[Fixed].zip
 Games\MSX2\DSK\Bad Max (19xx)(Transoft)(fr)(Disk 1 of 3).zip
 Games\MSX2\DSK\Bad Max (19xx)(Transoft)(fr)(Disk 1 of 3)[a].zip
 Games\MSX2\DSK\Bad Max (19xx)(Transoft)(fr)(Disk 2 of 3).zip
@@ -12684,11 +11698,15 @@ Games\MSX2\DSK\Beast (1991)(Birdy Soft)(ja)(Disk D).zip
 Games\MSX2\DSK\Beast 2 (1992)(Birdy Soft)(ja)(Disk A).zip
 Games\MSX2\DSK\Beast 2 (1992)(Birdy Soft)(ja)(Disk B).zip
 Games\MSX2\DSK\Beast 2 (1992)(Birdy Soft)(ja)(Disk C).zip
+Games\MSX2\DSK\Beautiful Games V (1989)(Great)(ja).zip
+Games\MSX2\DSK\Beautiful Games VI (1989)(Great)(ja).zip
 Games\MSX2\DSK\Beautiful Prey 4 (1988)(Great)(ja).zip
 Games\MSX2\DSK\Bedroom Olympics (1987)(Mega Soft).zip
 Games\MSX2\DSK\Bedroom Olympics (1987)(Mega Soft)[a2].zip
 Games\MSX2\DSK\Bedroom Olympics (1987)(Mega Soft)[a].zip
 Games\MSX2\DSK\Beppin (1988)(Cain).zip
+Games\MSX2\DSK\Beseibutsu Best Selection Vol. 1 (1998)(Eden)(ja)(Disk 1 of 2).zip
+Games\MSX2\DSK\Beseibutsu Best Selection Vol. 1 (1998)(Eden)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Best Nine Pro Baseball (1987)(Ascii).zip
 Games\MSX2\DSK\Bet Your Life (1994)(Hegega)(Disk 1 of 2).zip
 Games\MSX2\DSK\Bet Your Life (1994)(Hegega)(Disk 2 of 2).zip
@@ -12766,6 +11784,7 @@ Games\MSX2\DSK\Bubbles (1989)(MGF).zip
 Games\MSX2\DSK\Bubbles (1989)(MGF)[a2].zip
 Games\MSX2\DSK\Bubbles (1989)(MGF)[a3].zip
 Games\MSX2\DSK\Bubbles (1989)(MGF)[a].zip
+Games\MSX2\DSK\Bunazogu (1995)(MNS Soft)(ja).zip
 Games\MSX2\DSK\Burai (1989)(Riverhill Soft)(ja)(Disk 1 of 6).zip
 Games\MSX2\DSK\Burai (1989)(Riverhill Soft)(ja)(Disk 2 of 6).zip
 Games\MSX2\DSK\Burai (1989)(Riverhill Soft)(ja)(Disk 2 of 6)[a].zip
@@ -12863,6 +11882,7 @@ Games\MSX2\DSK\Chuka Taisen (1988)(Hot-B)[a2].zip
 Games\MSX2\DSK\Chuka Taisen (1988)(Hot-B)[a].zip
 Games\MSX2\DSK\Chuka Taisen (1988)(Hot-B)[cr Copisoft].zip
 Games\MSX2\DSK\Chuka Taisen (Cloud Master) (1988)(Hot-b)[English by DJANGO].zip
+Games\MSX2\DSK\Cinderella Perudue (1987)(Studio ANGEL)(ja).zip
 Games\MSX2\DSK\Cipher - Unfinished (Dante2) (RamonMSX) (2004).zip
 Games\MSX2\DSK\Circulation du Sang, La (1987)(Forum Micros)(es).zip
 Games\MSX2\DSK\Circulation du Sang, La (1987)(Forum Micros)(es)[a].zip
@@ -12932,6 +11952,8 @@ Games\MSX2\DSK\Crafton & Xunk (1987)(ERE Informatique)[a].zip
 Games\MSX2\DSK\Crash! Pacocche (2004)(Syntax).zip
 Games\MSX2\DSK\Craze (1988)(Heart Soft).zip
 Games\MSX2\DSK\Craze (1988)(Heart Soft)[a].zip
+Games\MSX2\DSK\Crazy Adolescence  (1998)(Van! Van! Sumoukai)(ja)[Disk 1 of 2].zip
+Games\MSX2\DSK\Crazy Adolescence  (1998)(Van! Van! Sumoukai)(ja)[Disk 2 of 2].zip
 Games\MSX2\DSK\Crazy Fruit (1992) (Fairytale)(ja) (Disk 1 of 4).zip
 Games\MSX2\DSK\Crazy Fruit (1992) (Fairytale)(ja) (Disk 1 of 4)[DMK].zip
 Games\MSX2\DSK\Crazy Fruit (1992) (Fairytale)(ja) (Disk 2 of 4).zip
@@ -12961,6 +11983,8 @@ Games\MSX2\DSK\Cross Blaim (1986)(dB-Soft)[a].zip
 Games\MSX2\DSK\Crystal Out (1991)(Studio FG).zip
 Games\MSX2\DSK\Cubo Rubik (1987)(-)(nl).zip
 Games\MSX2\DSK\Cubo Rubik (1987)(-)(nl)[a].zip
+Games\MSX2\DSK\Cul and the Cow ('92 Winter edition) (1992)(Musashino-Tokiwa Guild)(ja).zip
+Games\MSX2\DSK\Cul and the cow (Railway King version) (1992)(Musashino-Tokiwa Guild)(ja).zip
 Games\MSX2\DSK\Cutdown (1987)(Gen Soft).zip
 Games\MSX2\DSK\Cutdown (1987)(Gen Soft)[a].zip
 Games\MSX2\DSK\Cybernoid - The Fighting Machine (2021)(Kod).zip
@@ -13033,6 +12057,7 @@ Games\MSX2\DSK\Darwin 4078 (1988)(Hudson Soft).zip
 Games\MSX2\DSK\Darwin 4078 (1988)(Hudson Soft)[a2].zip
 Games\MSX2\DSK\Darwin 4078 (1988)(Hudson Soft)[a].zip
 Games\MSX2\DSK\DASS (1992)(MSX Engine).zip
+Games\MSX2\DSK\De Erfenis - Paniek in Las Vegas (1987)(Infogrames)(NL).zip
 Games\MSX2\DSK\De Ja (1990)(Elf)(ja)(Disk 1 of 6).zip
 Games\MSX2\DSK\De Ja (1990)(Elf)(ja)(Disk 2 of 6).zip
 Games\MSX2\DSK\De Ja (1990)(Elf)(ja)(Disk 3 of 6).zip
@@ -13152,6 +12177,7 @@ Games\MSX2\DSK\Django Collection (1998).zip
 Games\MSX2\DSK\Doki Doki Card League (1990)(Great)(ja)(Disk 1 of 2).zip
 Games\MSX2\DSK\Doki Doki Card League (1990)(Great)(ja)(Disk 1 of 2)[a].zip
 Games\MSX2\DSK\Doki Doki Card League (1990)(Great)(ja)(Disk 2 of 2).zip
+Games\MSX2\DSK\Dokkin Minako Sensei! (1988)(Tect House)(ja).zip
 Games\MSX2\DSK\Dome (Alpha1) (19xx) (Paragon Productions).zip
 Games\MSX2\DSK\Dome (Alpha3) (19xx) (Paragon Productions).zip
 Games\MSX2\DSK\Dome (Beta) (19xx) (Paragon Productions).zip
@@ -13161,6 +12187,7 @@ Games\MSX2\DSK\Dome, The (1989)(System Sacom)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Dome, The (1989)(System Sacom)(ja)(Disk 2 of 2)[b].zip
 Games\MSX2\DSK\Dominon-X (2017) (Compile0).zip
 Games\MSX2\DSK\DOMINON-X (2017)(CompileO)[a].zip
+Games\MSX2\DSK\Don't Cock It Up (2001)(Matra).zip
 Games\MSX2\DSK\Don't Warro! Be Japo! (2003)(Paxanga Soft).zip
 Games\MSX2\DSK\Doom - Concept (2021)(Nyyrikki).zip
 Games\MSX2\DSK\Doopm Trip (2017)(N.I.).zip
@@ -13395,6 +12422,8 @@ Games\MSX2\DSK\Emmy II (1986)(ascii)(ja).zip
 Games\MSX2\DSK\Emperors Women (Omega system)(1998)(ja)(disk 1 of 2).zip
 Games\MSX2\DSK\Emperors Women (Omega system)(1998)(ja)(disk 2 of 2).zip
 Games\MSX2\DSK\Encuentro Usuarios MSX (1992)(Nexus-Barcelona)(es).zip
+Games\MSX2\DSK\End of the Century Legend of Seeding Game of Girl - Die for the Love! (1989)(Great)(ja)[Disk 1 of 2].zip
+Games\MSX2\DSK\End of the Century Legend of Seeding Game of Girl - Die for the Love! (1989)(Great)(ja)[Disk 2 of 2].zip
 Games\MSX2\DSK\Endlos (1986)(Radarsoft)(nl).zip
 Games\MSX2\DSK\Endlos (1986)(Radarsoft)(nl)[a].zip
 Games\MSX2\DSK\Energy Crash (19xx)(-).zip
@@ -13425,6 +12454,7 @@ Games\MSX2\DSK\Every Day is Ecchi (1991)(Heart Soft)(ja)(Disk 1 of 2).zip
 Games\MSX2\DSK\Every Day is Ecchi (1991)(Heart Soft)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Evil Death - The Adventure (1987)(ScorpionSoft)(nl).zip
 Games\MSX2\DSK\Evil Spirit (1992)(BOF Software).zip
+Games\MSX2\DSK\Evil Stone (1989)(Studio ANGEL)(ja).zip
 Games\MSX2\DSK\EXOR (1991)(Aurora).zip
 Games\MSX2\DSK\Exterlien (1990)(D.O.)(en)(Disk 1 of 3)[Tr by Django].zip
 Games\MSX2\DSK\Exterlien (1990)(D.O.)(en)(Disk 2 of 3)[Tr by Django].zip
@@ -13562,6 +12592,7 @@ Games\MSX2\DSK\For The Day II (1990)(Mirinae Soft)(Disk 2 of 3).zip
 Games\MSX2\DSK\For the Day II (1990)(Mirinae Soft)(Disk 2 of 3)[a].zip
 Games\MSX2\DSK\For The Day II (1990)(Mirinae Soft)(Disk 3 of 3).zip
 Games\MSX2\DSK\For the Day II (1990)(Mirinae Soft)(Disk 3 of 3)[a].zip
+Games\MSX2\DSK\Forbidden Paradise (1989)(Studio ANGEL)(ja).zip
 Games\MSX2\DSK\Four On A Row (1995) (Olympia Soft MCWF).zip
 Games\MSX2\DSK\Four On A Row (1995) (Olympia Soft MCWF)[Demo Version].zip
 Games\MSX2\DSK\Foxy (1990)(Elf Co.)(jp)(Disk 1 of 4).zip
@@ -13608,6 +12639,7 @@ Games\MSX2\DSK\Gagdius (1989)(Limia Soft)(Disk 2 of 2).zip
 Games\MSX2\DSK\Gaia's Crest (1988)(NCS)(ja).zip
 Games\MSX2\DSK\Gakkyuu Sengoku 2 (1995)(cathat)(JP).zip
 Games\MSX2\DSK\Gakuen Monogatari. High School Story (1988)(Great)(ja).zip
+Games\MSX2\DSK\Gal Hunt Big Operation!! (1988)(Family Soft)(ja).zip
 Games\MSX2\DSK\Galaxeed (1991)(TM).zip
 Games\MSX2\DSK\Galaxy Card & Puzzle Collection (Ginga)(1989)(System Soft)(en).zip
 Games\MSX2\DSK\Galaxy Card & Puzzle Collection (Ginga)(1989)(System Soft)(ja).zip
@@ -13920,6 +12952,9 @@ Games\MSX2\DSK\Hydlide II - Shine of Darkness (1986)(T&E Soft)[a].zip
 Games\MSX2\DSK\Hydlide III - The Space Memories (1987)(T&E Soft).zip
 Games\MSX2\DSK\Hydlide III - The Space Memories (1987)(T&E Soft)[a2].zip
 Games\MSX2\DSK\Hydlide III - The Space Memories (1987)(T&E Soft)[a].zip
+Games\MSX2\DSK\Idaten Ikase Otoko 2 - The Meaning of Life (1989)(Family Soft)(ja).zip
+Games\MSX2\DSK\Idaten Ikase Otoko 3 - After the War (1989)(Family Soft)(ja)(Disk 1 of 2).zip
+Games\MSX2\DSK\Idaten Ikase Otoko 3 - After the War (1989)(Family Soft)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Ifr-Fly (1988)(Philips).zip
 Games\MSX2\DSK\Ifr-Fly (1988)(Philips)[b2].zip
 Games\MSX2\DSK\Ifr-Fly (1988)(Philips)[b].zip
@@ -13927,6 +12962,9 @@ Games\MSX2\DSK\Igusta (1990)(MSX Magazine).zip
 Games\MSX2\DSK\Ikari Warriors (1987)(SNK).zip
 Games\MSX2\DSK\Ikari Warriors (1987)(SNK)[a2].zip
 Games\MSX2\DSK\Ikari Warriors (1987)(SNK)[a].zip
+Games\MSX2\DSK\Ikase Otoko Introduction - Thank You for the Love (1990(Family Soft)(ja)(Disk 1 of 3).zip
+Games\MSX2\DSK\Ikase Otoko Introduction - Thank You for the Love (1990(Family Soft)(ja)(Disk 2 of 3).zip
+Games\MSX2\DSK\Ikase Otoko Introduction - Thank You for the Love (1990(Family Soft)(ja)(Disk `3 of 3).zip
 Games\MSX2\DSK\Illumina (1991)(Cocktail Soft)(jp(Disk 1 of 3).zip
 Games\MSX2\DSK\Illumina (1991)(Cocktail Soft)(jp(Disk 1 of 3)[Fixed].zip
 Games\MSX2\DSK\Illumina (1991)(Cocktail Soft)(jp(Disk 2 of 3).zip
@@ -14293,6 +13331,7 @@ Games\MSX2\DSK\Lulba 2 (1988)(Compile)(ja)(Fixed DrWh0).zip
 Games\MSX2\DSK\Lulba 2 (1988)(Compile)(ja).zip
 Games\MSX2\DSK\Lulba 3 (1989)(Compile)(ja).zip
 Games\MSX2\DSK\Lulba 3 (1989)(Compile)(ja)[a].zip
+Games\MSX2\DSK\Lum Chan No Kawaisou Monogatari (Lum chan's Pathetic Story) (1989)(Masterpiece & FSC)(jp).zip
 Games\MSX2\DSK\M.U.L.E. (1988)(BPS)(ja).zip
 Games\MSX2\DSK\M.U.L.E. (1988)(BPS)(ja)[b].zip
 Games\MSX2\DSK\Mad House (2005) (Gamecast).zip
@@ -14327,6 +13366,7 @@ Games\MSX2\DSK\Magical Bocco 20541 (2024)(Meichnpp).zip
 Games\MSX2\DSK\Magical Coin (1995)(Initialize)(ja).zip
 Games\MSX2\DSK\Magical Labyrinth Remix (1997)(GigaMix)(jp).zip
 Games\MSX2\DSK\Magical Labyrinth Remix (demo) (1995)(Gigamix)(beta).zip
+Games\MSX2\DSK\Magical Pearl  (1997)(Sweet Pastel)(ja).zip
 Games\MSX2\DSK\Magnar (1992)(Parallax)(Disk 1 of 3).zip
 Games\MSX2\DSK\Magnar (1992)(Parallax)(Disk 1 of 3)[a].zip
 Games\MSX2\DSK\Magnar (1992)(Parallax)(Disk 2 of 3).zip
@@ -14500,6 +13540,7 @@ Games\MSX2\DSK\Monoris (1989)(Purom).zip
 Games\MSX2\DSK\Moon Landing (1988)(-).zip
 Games\MSX2\DSK\Moon Landing (1988)(-)[a].zip
 Games\MSX2\DSK\Morboy (Sea Battle)(1989)(Robotland)(ru).zip
+Games\MSX2\DSK\Moskow 2024 - The Olympic Megashock (2000)(Matra).zip
 Games\MSX2\DSK\Mouse Games (1988)(Compile)(ja)[a][mouse].zip
 Games\MSX2\DSK\Mouse Games (1988)(Compile)(ja)[mouse].zip
 Games\MSX2\DSK\Moving Squares (1989)(Eurosoft).zip
@@ -14594,6 +13635,7 @@ Games\MSX2\DSK\Nobunaga no Yabou 3 - Bushou Fuuun Roku (1991)(Koei)(ja)(Disk 2 o
 Games\MSX2\DSK\Nobunaga no Yabou 3 - Bushou Fuuun Roku (1991)(Koei)(ja)(Disk 2 of 2)[a2].zip
 Games\MSX2\DSK\Nobunaga no Yabou 3 - Bushou Fuuun Roku (1991)(Koei)(ja)(Disk 2 of 2)[a].zip
 Games\MSX2\DSK\Nobunaga no Yabou 3 - Bushou Fuuun Roku (1991)(Koei)(ja)(Disk 2 of 2)[b].zip
+Games\MSX2\DSK\Non Non Nonna (1994)(K_MMO)(ja).zip
 Games\MSX2\DSK\Non Sense (1987) (Microwave)(nl).zip
 Games\MSX2\DSK\Norton Utilities v3.20 (1989)(Peter Norton).zip
 Games\MSX2\DSK\Norton Utilities v3.20 (1989)(Peter Norton)[a].zip
@@ -14684,12 +13726,14 @@ Games\MSX2\DSK\Pacman (1993)(Hegega).zip
 Games\MSX2\DSK\Pacman (1993)(Hegega)[a].zip
 Games\MSX2\DSK\Pacmania (1989)(Namco).zip
 Games\MSX2\DSK\Pacmania (1989)(Namco)[a].zip
+Games\MSX2\DSK\Pacnac (1996)(Klaas Wassenaar)[GFX9000](nl).zip
 Games\MSX2\DSK\Palace Prohibited (1990)(Scaptrust)(ja)(Disk 1 of 2)(Game Disk).zip
 Games\MSX2\DSK\Palace Prohibited (1990)(Scaptrust)(ja)(Disk 2 of 2)(User Disk).zip
 Games\MSX2\DSK\Palamedes (1990)(Hot-B).zip
 Games\MSX2\DSK\Palamedes (1990)(Hot-B)[a2].zip
 Games\MSX2\DSK\Palamedes (1990)(Hot-B)[a].zip
 Games\MSX2\DSK\Pallmith (1991)(Elemental Soft).zip
+Games\MSX2\DSK\Pan and Neil (2001)(Sweet Pastel)(ja).zip
 Games\MSX2\DSK\Pana Amusement Collection 1 (1988)(Panasoft)(JP).zip
 Games\MSX2\DSK\Pana Amusement Collection 1 (1988)(Panasoft)(JP)[a2].zip
 Games\MSX2\DSK\Pana Amusement Collection 1 (1988)(Panasoft)(JP)[a].zip
@@ -14768,6 +13812,7 @@ Games\MSX2\DSK\Pinky Ponky III (1989)(Elf)(ja)(Disk 1 of 2).zip
 Games\MSX2\DSK\Pinky Ponky III (1989)(Elf)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Pixess (1994)(Compjoetania)(Disk 1 of 2)(DSK).zip
 Games\MSX2\DSK\Pixess (1994)(Compjoetania)(Disk 2 of 2)(DSK).zip
+Games\MSX2\DSK\Pixiedust (2012)(Darkstone).zip
 Games\MSX2\DSK\Play Ball III (1989)(Sony).zip
 Games\MSX2\DSK\Play Ball III (1989)(Sony)[a2].zip
 Games\MSX2\DSK\Play Ball III (1989)(Sony)[a].zip
@@ -14780,6 +13825,10 @@ Games\MSX2\DSK\Pleasure Hearts (1999)(M-Kai)(en).zip
 Games\MSX2\DSK\Pleasure Hearts (1999)(M-Kai)(ja).zip
 Games\MSX2\DSK\Pleasure Hearts V1.01 (1999)(M-Kai)(en).zip
 Games\MSX2\DSK\Pleasure Hearts V1.02 (1999)(M-Kai)(en).zip
+Games\MSX2\DSK\Pocky 2 (1991)(Pony Tail Soft)(ja)(Disk 1 of 4).zip
+Games\MSX2\DSK\Pocky 2 (1991)(Pony Tail Soft)(ja)(Disk 2 of 4).zip
+Games\MSX2\DSK\Pocky 2 (1991)(Pony Tail Soft)(ja)(Disk 3 of 4).zip
+Games\MSX2\DSK\Pocky 2 (1991)(Pony Tail Soft)(ja)(Disk 4 of 4).zip
 Games\MSX2\DSK\Pocky. Pokey (1989)(Pony Tail Soft)(ja)(Disk 1 of 3).zip
 Games\MSX2\DSK\Pocky. Pokey (1989)(Pony Tail Soft)(ja)(Disk 1 of 3)[a].zip
 Games\MSX2\DSK\Pocky. Pokey (1989)(Pony Tail Soft)(ja)(Disk 2 of 3).zip
@@ -14796,6 +13845,10 @@ Games\MSX2\DSK\Pooyan New (19xx)(Gerardin H.)(fr).zip
 Games\MSX2\DSK\Pooyan New (19xx)(Gerardin H.)(fr)[a2].zip
 Games\MSX2\DSK\Pooyan New (19xx)(Gerardin H.)(fr)[a3].zip
 Games\MSX2\DSK\Pooyan New (19xx)(Gerardin H.)(fr)[a].zip
+Games\MSX2\DSK\Pop Lemon (1989)(Champion Soft)(ja)(Disk 1 of 3).zip
+Games\MSX2\DSK\Pop Lemon (1989)(Champion Soft)(ja)(Disk 2 of 3).zip
+Games\MSX2\DSK\Pop Lemon (1989)(Champion Soft)(ja)(Disk 3 of 3).zip
+Games\MSX2\DSK\Post Modern Girl (2001)(Do-Goo Club)(ja).zip
 Games\MSX2\DSK\Powerfull Mahjong 2 (1988)(dB-Soft)(ja)(Disk 1 of 4).zip
 Games\MSX2\DSK\Powerfull Mahjong 2 (1988)(dB-Soft)(ja)(Disk 1 of 4)[a].zip
 Games\MSX2\DSK\Powerfull Mahjong 2 (1988)(dB-Soft)(ja)(Disk 2 of 4).zip
@@ -14860,6 +13913,7 @@ Games\MSX2\DSK\Psycho World (1988)(Hertz)(ja).zip
 Games\MSX2\DSK\Psycho World (1988)(Hertz)(ja)[a2].zip
 Games\MSX2\DSK\Psycho World (1988)(Hertz)(ja)[a].zip
 Games\MSX2\DSK\Psycho World (1988)(Hertz)(ja)[b].zip
+Games\MSX2\DSK\Psycho World (Japan) [T-En by Django & FRS v3.0].zip
 Games\MSX2\DSK\Psycho World [T-En by FRS v.1.0].zip
 Games\MSX2\DSK\Public Domain Games (19xx)(-).zip
 Games\MSX2\DSK\Pumpkin Adventure (1992)(Umax).zip
@@ -15024,6 +14078,7 @@ Games\MSX2\DSK\Red Lights of Amsterdam (1986)(Eaglesoft)[t][tr es Barcelona MSX 
 Games\MSX2\DSK\Red Lights of Amsterdam (1986)(Eaglesoft)[t][tr es Barcelona MSX Club][a].zip
 Games\MSX2\DSK\Red Lights Of Amsterdam (En)(1988)(Aackosoft)[Fony].zip
 Games\MSX2\DSK\Rekenwonder (1986)(Philips)(nl).zip
+Games\MSX2\DSK\Rekishi Emaki Adult Adventure Series #2 - Gorakuin (1989)(Studio ANGEL)(ja).zip
 Games\MSX2\DSK\Relics (1986)(Bothtec)[cr Fun Soft].zip
 Games\MSX2\DSK\Relics (1986)(Bothtec)[cr Fun Soft][a].zip
 Games\MSX2\DSK\Remote Town (1991)(Yoshix).zip
@@ -15059,6 +14114,7 @@ Games\MSX2\DSK\Rick Dangerous (1992)(Paragon Productions)[b].zip
 Games\MSX2\DSK\Rick Dangerous - Extra Levels (Combi-Disk) (1993)(Paragon Productions).zip
 Games\MSX2\DSK\Riot (1990)(Hatimitsu Demon).zip
 Games\MSX2\DSK\Riot (1990)(Hatimitsu Demon)[a].zip
+Games\MSX2\DSK\Ripple Coco (2025)(meichnpp).zip
 Games\MSX2\DSK\Risiko U.S.A. (1989)(IFI)(es).zip
 Games\MSX2\DSK\Risiko U.S.A. (1989)(IFI)(es)[a].zip
 Games\MSX2\DSK\Rite Of The Druid (2020)(Sunteam).zip
@@ -15137,6 +14193,8 @@ Games\MSX2\DSK\Sa-Zi-Ri. Saziri (1988)(Telenet Japan)(en)[Translation by Django]
 Games\MSX2\DSK\Sa-Zi-Ri. Saziri (1988)(Telenet Japan)(ja).zip
 Games\MSX2\DSK\Sa-Zi-Ri. Saziri (1988)(Telenet Japan)(ja)[a].zip
 Games\MSX2\DSK\SAAL (2025)(freenit).zip
+Games\MSX2\DSK\SAAL (2025)(freenit)[11-08-2025].zip
+Games\MSX2\DSK\Saal - Freenit (2025) [MSXdev2025] [v1.0].zip
 Games\MSX2\DSK\Sailor Fuku Senshi Feris (3xDMK+DSK).zip
 Games\MSX2\DSK\Salas Freehand v1.3 (19xx)(MSX Link International)[a][mouse].zip
 Games\MSX2\DSK\Salas Freehand v1.3 (19xx)(MSX Link International)[mouse].zip
@@ -15165,6 +14223,7 @@ Games\MSX2\DSK\Saurus Lunch Vol. 0 (1989)(Bit2)(ja)(Disk 1 of 2)[b][mouse].zip
 Games\MSX2\DSK\Saurus Lunch Vol. 0 (1989)(Bit2)(ja)(Disk 1 of 2)[mouse].zip
 Games\MSX2\DSK\Saurus Lunch Vol. 0 (1989)(Bit2)(ja)(Disk 2 of 2)[b][mouse].zip
 Games\MSX2\DSK\Saurus Lunch Vol. 0 (1989)(Bit2)(ja)(Disk 2 of 2)[mouse].zip
+Games\MSX2\DSK\Scarlet ver 1.98 (1991)(teamS&F)(ja)[b].zip
 Games\MSX2\DSK\SCC MUSIXX Music Loader v1.02b (1991)(Gamesoft)(pre-release)[a][SCC].zip
 Games\MSX2\DSK\SCC MUSIXX Music Loader v1.02b (1991)(Gamesoft)(pre-release)[SCC].zip
 Games\MSX2\DSK\SCC-Blaffer v1.0 (1999)(TeddyWarez)[SCC].zip
@@ -15239,6 +14298,7 @@ Games\MSX2\DSK\Shadow Hero 2 Special (1993)(Syntax).zip
 Games\MSX2\DSK\Shadow Hero 3 and R System v1.2 (1993)(Syntax).zip
 Games\MSX2\DSK\Shadow Hunter (1988)(Champion Soft)(ja)(Disk 1 of 2).zip
 Games\MSX2\DSK\Shadow Hunter (1988)(Champion Soft)(ja)(Disk 2 of 2).zip
+Games\MSX2\DSK\Sham City (1990)(Bugneko Soft)(jp).zip
 Games\MSX2\DSK\Shanghai (1987)(System Soft).zip
 Games\MSX2\DSK\Shanghai (1987)(System Soft)[a].zip
 Games\MSX2\DSK\Shanghai II (1989)(System Soft).zip
@@ -15313,6 +14373,8 @@ Games\MSX2\DSK\Snatcher (1988)(Konami)(ja)(Disk 2 of 3)[SCC+].zip
 Games\MSX2\DSK\Snatcher (1988)(Konami)(ja)(Disk 2 of 3)[SCC].zip
 Games\MSX2\DSK\Snatcher (1988)(Konami)(ja)(Disk 3 of 3)[SCC+][b].zip
 Games\MSX2\DSK\Snatcher (1988)(Konami)(ja)(Disk 3 of 3)[SCC].zip
+Games\MSX2\DSK\Soapland Story (1988)(HARD)(ja)(Disk 1 of 2).zip
+Games\MSX2\DSK\Soapland Story (1988)(HARD)(ja)(Disk 2 of 2).zip
 Games\MSX2\DSK\Sofia (1988)(Radio Wave).zip
 Games\MSX2\DSK\Sofia (1988)(Radio Wave)[a].zip
 Games\MSX2\DSK\Soko-Ban (1991)(MSX-Club Enschede).zip
@@ -15460,6 +14522,7 @@ Games\MSX2\DSK\Super Program Collection 2 (1992)(Tokuma Shoten Intermedia).zip
 Games\MSX2\DSK\Super Program Collection 3 (1992)(Tokuma Shoten Intermedia).zip
 Games\MSX2\DSK\Super Program Collection 4 (1993)(Tokuma Shoten Intermedia).zip
 Games\MSX2\DSK\Super Program Collection 5 (1993)(Tokuma Shoten Intermedia).zip
+Games\MSX2\DSK\Super Quiz  (1989)(DOTT Plan)(ja).zip
 Games\MSX2\DSK\Super Rambo Special (1985)(Pack In Video).zip
 Games\MSX2\DSK\Super Rambo Special (1985)(Pack In Video)[a2].zip
 Games\MSX2\DSK\Super Rambo Special (1985)(Pack In Video)[a3].zip
@@ -15476,6 +14539,7 @@ Games\MSX2\DSK\Superstars of Wrestling (1992)(Enigma-Soft).zip
 Games\MSX2\DSK\Survival Rooms v1.1 (2021)(Juan Morales).zip
 Games\MSX2\DSK\Survivor (1987)(Topo Soft)(es).zip
 Games\MSX2\DSK\Sweet (1994)(Kazuyuki Suzuki)(ja)[a][Takeru Version].zip
+Games\MSX2\DSK\Sweet Acorn 2 (2025)(NOP)[v6658].zip
 Games\MSX2\DSK\Sweetey 2 (1991)(Interpreter Software)(Graphic Disk)[Disk 2 of 2].zip
 Games\MSX2\DSK\Sweetey 2 (1991)(Interpreter Software)(Program Disk)[Disk 1 of 2].zip
 Games\MSX2\DSK\Synth Saurus v2.0 (1989)(Bit2).zip
@@ -15497,11 +14561,14 @@ Games\MSX2\DSK\Takoika (19xx)(-)[a].zip
 Games\MSX2\DSK\Tamanegi (1989)(Onion Software).zip
 Games\MSX2\DSK\Tamba (1987)(Yonezawa).zip
 Games\MSX2\DSK\Tanba (1988)(Micronet).zip
+Games\MSX2\DSK\Tank Battle II (2025)(Dolphin Soft).zip
 Games\MSX2\DSK\Tantei-X. Return of Detectives X (1990)(Heart Soft)(ja)(Disk 1 of 3).zip
 Games\MSX2\DSK\Tantei-X. Return of Detectives X (1990)(Heart Soft)(ja)(Disk 2 of 3).zip
 Games\MSX2\DSK\Tantei-X. Return of Detectives X (1990)(Heart Soft)(ja)(Disk 3 of 3).zip
 Games\MSX2\DSK\Tao (19xx)(Studio Esutoria)(ja).zip
 Games\MSX2\DSK\Tarot Fortune Telling System v1.7 (1993)(Taracot)(ja).zip
+Games\MSX2\DSK\Tarotica Voo Doo (2017)(TPM.Co Soft Works)(jp)(Disk 1 of 2).zip
+Games\MSX2\DSK\Tarotica Voo Doo (2017)(TPM.Co Soft Works)(jp)(Disk 2 of 2).zip
 Games\MSX2\DSK\Tashiro Masashi no Princess ga Ippai. What Many Princess (1989)(Sony)(en).zip
 Games\MSX2\DSK\Tashiro Masashi no Princess ga Ippai. What Many Princess (1989)(Sony)(ja).zip
 Games\MSX2\DSK\Tashiro Masashi no Princess ga Ippai. What Many Princess (1989)(Sony)(ja)[a2].zip
@@ -15588,11 +14655,13 @@ Games\MSX2\DSK\The Legend Of Shonan (1990)(Cross Media Soft)(en)(User Disk).zip
 Games\MSX2\DSK\The Legend Of Shonan (1990)(Cross Media Soft)(ja)(Game Disk).zip
 Games\MSX2\DSK\The Legend Of Shonan (1990)(Cross Media Soft)(ja)(User Disk).zip
 Games\MSX2\DSK\The Legend of Zelda v1.3 (2011)(MSXosaure).zip
+Games\MSX2\DSK\The Oath Under The Stars (2025)(Meichnpp).zip
 Games\MSX2\DSK\The Secret Garden (1992)(Technopolis Soft)(ja)(Disk 1 of 3).zip
 Games\MSX2\DSK\The Secret Garden (1992)(Technopolis Soft)(ja)(Disk 1 of 3)[a].zip
 Games\MSX2\DSK\The Secret Garden (1992)(Technopolis Soft)(ja)(Disk 2 of 3).zip
 Games\MSX2\DSK\The Secret Garden (1992)(Technopolis Soft)(ja)(Disk 3 of 3).zip
 Games\MSX2\DSK\The Secret Garden (Technopolis Soft, 1991).zip
+Games\MSX2\DSK\The Shouka (1996)(Kakao-Soft)(jp).zip
 Games\MSX2\DSK\The Witchs Revenge (1993)(Umax) (Disk 1 of 3).zip
 Games\MSX2\DSK\The Witchs Revenge (1993)(Umax) (Disk 2 of 3).zip
 Games\MSX2\DSK\The Witchs Revenge (1993)(Umax) (Disk 3 of 3).zip
@@ -15660,9 +14729,11 @@ Games\MSX2\DSK\Tower of Cabin, The (1992)(Micro Cabin)(ja)(Disk 2 of 3)[a2].zip
 Games\MSX2\DSK\Tower of Cabin, The (1992)(Micro Cabin)(ja)(Disk 2 of 3)[a].zip
 Games\MSX2\DSK\Tower of Cabin, The (1992)(Micro Cabin)(ja)(Disk 3 of 3).zip
 Games\MSX2\DSK\Tower of Cabin, The (1992)(Micro Cabin)(ja)(Disk 3 of 3)[a].zip
+Games\MSX2\DSK\Tranche Lard - The Saga of Nilvarna (Dante Excellent Works)(1992)(MSX Magazine)(ja).zip
 Games\MSX2\DSK\Treasure of Usas, The (1987)(Konami).zip
 Games\MSX2\DSK\Treasure of Usas, The (1987)(Konami)[a2].zip
 Games\MSX2\DSK\Treasure of Usas, The (1987)(Konami)[a].zip
+Games\MSX2\DSK\Treasure of Usas, The (1987)(Konami)[bugfixed].zip
 Games\MSX2\DSK\Tres Luces de Glaurung, Las (1986)(Erbe Software)(es).zip
 Games\MSX2\DSK\Triathlon James Bond 007 (1987)(Philips)(nl).zip
 Games\MSX2\DSK\Triathlon James Bond 007 (1987)(Philips)(nl)[a].zip
@@ -15687,6 +14758,7 @@ Games\MSX2\DSK\Troxx (1993)(Anma).zip
 Games\MSX2\DSK\Troxx (1993)(Anma)[a].zip
 Games\MSX2\DSK\Tucs, The (1989)(MSX Magazine)(ja).zip
 Games\MSX2\DSK\Tulip Ichigo - New World (1991)(Tempin Software)(jp).zip
+Games\MSX2\DSK\Tulip Ichigo - New World (1991)(Tempin Software)(jp)[More Nude Pictures].zip
 Games\MSX2\DSK\Tunez Demo - Garfield Edition (1999)(TeddyWarez).zip
 Games\MSX2\DSK\Tunez Demo 2 - Asterix Edition (2000)(TeddyWarez)[SCC].zip
 Games\MSX2\DSK\Turikichi Sampei Turisennin-Hen. Fishing Freak (1989)(Victor)(ja).zip
@@ -16022,7 +15094,67 @@ Games\MSX2\DSK\Youma Kourin (1989)(Nippon Dexter)(ja)[a2].zip
 Games\MSX2\DSK\Youma Kourin (1989)(Nippon Dexter)(ja)[a].zip
 Games\MSX2\DSK\Youma Kourin (1989)(Nippon Dexter)(ja)[cr SMA].zip
 Games\MSX2\DSK\Youma Kourin Demo (1989)(Nippon Dexter)(ja).zip
-Games\MSX2\DSK\Ys III - Wanderers from Ys (Disk 1) [T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom)(en).zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom)(ja).zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom)(ja)[a2].zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom)(ja)[a].zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom).zip
+Games\MSX2\DSK\YSI - Ancient Ys Vanished - Omen (1987)(Falcom)[a].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 1 of 2)(Game Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 1 of 2)(Game Disk)[tr es Manuel Pazos].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 2 of 2)(Data Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(Disk 2 of 2)(Data Disk)[tr es Manuel Pazos].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[a2].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[a].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 1 of 2)(Game Disk)[b].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a2].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a3].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[a].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(ja)(Disk 2 of 2)(Data Disk)[b].zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 1 of 2)(Game Disk)(SCC).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 1 of 2)(Game Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 2 of 2)(Data Disk)(SCC).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(nl)(Disk 2 of 2)(Data Disk).zip
+Games\MSX2\DSK\YSII - Ancient Ys Vanished II - The Final Chapter (1988)(Falcom)(User Disk).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - User Disks.zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[a2].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[b].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 1 of 5)(Game Disk)[tr es Victor Martinez].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[a2].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 2 of 5)(Data Disk 1)[tr es Victor Martinez].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a2].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a3].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 3 of 5)(Data Disk 2)[tr es Victor Martinez].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[a2].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 4 of 5)(Data Disk 3)[tr es Victor Martinez].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 5 of 5)(User Disk).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(Disk 5 of 5)(User Disk)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(en)(Disk 1 of 5)[T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(en)(Disk 2 of 5)[T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(en)(Disk 3 of 5)[T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(en)(Disk 4 of 5)[T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(en)(Disk 5 of 5)(User Disk)[T-En by Oasis 1.0 + Fixes by 232].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 1 of 5)(Game Disk).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 1 of 5)(Game Disk)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 2 of 5)(Data Disk 1).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 2 of 5)(Data Disk 1)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 3 of 5)(Data Disk 2).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 3 of 5)(Data Disk 2)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 4 of 5)(Data Disk 3).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 4 of 5)(Data Disk 3)[a].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk).zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk)[a2].zip
+Games\MSX2\DSK\YSIII - Ancient Ys Vanished III - Wanderers from Ys (1989)(Falcom)(ja)(Disk 5 of 5)(User Disk)[a].zip
 Games\MSX2\DSK\Yume Pro RPG Gratitude Edition (1994)(Syntax)(jp).zip
 Games\MSX2\DSK\Yume Pro RPG Gratitude Edition (1994)(Syntax)(jp)[a].zip
 Games\MSX2\DSK\Yume Pro RPG Gratitude Edition (1994)(Syntax)(jp)[b].zip
@@ -16047,6 +15179,8 @@ Games\MSX2\DSK\Zanac Metalica v2 (1988)(Pony Canyon)[a].zip
 Games\MSX2\DSK\Zanac-Ex (1986)(Compile)(MSX-Audio Version).zip
 Games\MSX2\DSK\Zanac-Ex (1986)(Pony Canyon).zip
 Games\MSX2\DSK\Zanac-Ex (1986)(Pony Canyon)[a].zip
+Games\MSX2\DSK\Zasae Battle 1 (1993) (Hayato Takahashi)(ja).zip
+Games\MSX2\DSK\Zasae Battle 2 (1993) (Hayato Takahashi)(ja).zip
 Games\MSX2\DSK\Zatsugaku Olympic Watanabe Wataru Edition (1988)(Hard)(ja).zip
 Games\MSX2\DSK\Zatsugaku Olympic Watanabe Wataru Edition (1988)(Hard)(ja)[Broken GFX].zip
 Games\MSX2\DSK\Zeeslag (1994) (MCWF).zip
@@ -16140,6 +15274,7 @@ Games\MSX2\ROM\Andorogynus - Telenet Japan (1988) [MSX Translations v1.0] [Trans
 Games\MSX2\ROM\Andorogynus - Telenet Japan (1988) [MSX Translations v1.0] [Translated] [6987].zip
 Games\MSX2\ROM\Andorogynus - Telenet Japan (1988) [MSX Translations v2.0] [Translated] [6988].zip
 Games\MSX2\ROM\Andorogynus - Telenet Japan (1988) [MSX Translations v2.0] [Translated] [6989].zip
+Games\MSX2\ROM\Angelic Warrior DEVA - Team Deva (2020).zip
 Games\MSX2\ROM\Ani3D Demo - Unknown () [6500].zip
 Games\MSX2\ROM\ARC - Parallax (1990) [Needs 2 ARC games disks - WebMSX Patched] [7039].zip
 Games\MSX2\ROM\ARC - Parallax (1990) [Needs 2 ARC games disks] [7083].zip
@@ -16201,6 +15336,7 @@ Games\MSX2\ROM\Beach Ball Men - Compile Disk Station 30 - Compile (2016) [Imanok
 Games\MSX2\ROM\Best of Hamaraja Night - Sunrise (2010) [8117].zip
 Games\MSX2\ROM\Blade Lords - Parallax (1994) [235].zip
 Games\MSX2\ROM\Blade Lords - Parallax (1994) [236].zip
+Games\MSX2\ROM\Blade Lords - Parallax (1994) [MSX2+ Fix].zip
 Games\MSX2\ROM\Bomb Jack - Kralizec (2010) [a] [5713].zip
 Games\MSX2\ROM\Bomb Jack - Kralizec (2010) [original] [3390].zip
 Games\MSX2\ROM\Bomb Jack - Sega (1983) [Kralizec MSX2 Version] [original] [2618].zip
@@ -16223,6 +15359,7 @@ Games\MSX2\ROM\Bubble Utilize - Pastel Hope (1992) [2601].zip
 Games\MSX2\ROM\Carwar v0.1.4 - Phenix (2017)[WIP].zip
 Games\MSX2\ROM\CaTArTSyS - The Pets Mode (2021) [Revision Online 2021 Oldskool Demo Compo] [original] [7637].zip
 Games\MSX2\ROM\Cheese 2 - Sanno Cg - Nipon Electronics (1985) [GoodMSX] [383].zip
+Games\MSX2\ROM\Chikubi Ninja v1.0 - Imanok (2025)[MSXdev25].zip
 Games\MSX2\ROM\Chriet - Hegega (2022) [MSXDev2022] [original] [7287].zip
 Games\MSX2\ROM\Crafton and Xunk - Ere Informatique (1988) [dsk2rom] [6372].zip
 Games\MSX2\ROM\Crimson - XtalSoft (1987) [GoodMSX] [474].zip
@@ -16473,6 +15610,7 @@ Games\MSX2\ROM\Japanese MSX-Write II - ASCII (1988) [Kanji ROM Needed] [GoodMSX]
 Games\MSX2\ROM\Just Another Snake Game - Nitrofurano (2013) [MSXDev2013 (the Channel)] [original] [3396].zip
 Games\MSX2\ROM\Jyansei - Sony (1986) [a1] [GoodMSX] [1162].zip
 Games\MSX2\ROM\Jyansei - Sony (1986) [GoodMSX] [1161].zip
+Games\MSX2\ROM\Kanirus Encounter Demo - Clube MSX (2025).zip
 Games\MSX2\ROM\Kenpelen Chess - Pony Canyon (1988) [French by Djano] [Translated] [7017].zip
 Games\MSX2\ROM\Kenpelen Chess - Pony Canyon (1988) [GoodMSX] [1172].zip
 Games\MSX2\ROM\Kikikaikai - Mystery - TAITO (1987) [Arcade Enhanced by Toughkid - Needs Yamaha SFG-01 or SFG-05] [7504].zip
@@ -16654,6 +15792,7 @@ Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Repro cart] [RC-767] 
 Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Retranslation by BifiMSX] [RC-767] [Translated] [1504].zip
 Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Russian] [RC-767] [Translated] [5312].zip
 Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Spanish] [RC-767] [3371].zip
+Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [translation PT-BR by Andre Possebon] [RC-767].zip
 Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Wii Virtual Console Version (EN)] [RC-767][b].zip
 Games\MSX2\ROM\Metal Gear 2 - Solid Snake - Konami (1990) [Wii Virtual Console Version (JP)] [RC-767] [2718].zip
 Games\MSX2\ROM\Michelangelo II - Rittor Music - MCS (1990) [7449].zip
@@ -16859,6 +15998,7 @@ Games\MSX2\ROM\Space Manbow - Konami (1989) [FRS Turbo Fix v1.0] [RC-768] [2591]
 Games\MSX2\ROM\Space Manbow - Konami (1989) [FRS Turbo Fix v1.1] [RC-768] [2636].zip
 Games\MSX2\ROM\Space Manbow - Konami (1989) [JoySNES] [RC-768] [5327].zip
 Games\MSX2\ROM\Space Manbow - Konami (1989) [RC-768] [2139].zip
+Games\MSX2\ROM\Space Manbow - Konami (1989) [RC-768] [FRS Fix & Enhanced`v2.0].zip
 Games\MSX2\ROM\Space Manbow - Konami (1989) [RC-768] [GoodMSX] [2138].zip
 Games\MSX2\ROM\Space Manbow - Konami (1989) [t] [RC-768] [2140].zip
 Games\MSX2\ROM\Spirit Power - Makottoto (1990) [original] [6935].zip
@@ -16920,9 +16060,11 @@ Games\MSX2\ROM\Super Runner - Pony Canyon (1987) [SCC addition] [4135].zip
 Games\MSX2\ROM\Super Sokoban v1.0 - 2NICE (2025).zip
 Games\MSX2\ROM\Super Sokoban v1.1 - 2NICE (2025).zip
 Games\MSX2\ROM\Super Sokoban v1.1b - 2NICE (2025).zip
+Games\MSX2\ROM\Super Sokoban XMAS - 2NICE (2025).zip
 Games\MSX2\ROM\Super Tritorn - XAIN - Sein (1986) [5315].zip
 Games\MSX2\ROM\Super Tritorn - XAIN - Sein (1986) [6885].zip
 Games\MSX2\ROM\Super Tritorn - XAIN - Sein (1986) [GoodMSX] [2260].zip
+Games\MSX2\ROM\Sweet Acorn 2 - NOP (2025) [v6658].zip
 Games\MSX2\ROM\Taiyou no Shinden - Asteka II - Tokyo Shoseki (1987) [2990].zip
 Games\MSX2\ROM\Taiyou no Shinden - Asteka II - Tokyo Shoseki (1987) [GoodMSX] [2269].zip
 Games\MSX2\ROM\Teitoku no Ketsudan - KOEI (1991) [GoodMSX] [2290].zip
@@ -16943,6 +16085,7 @@ Games\MSX2\ROM\Tengoku Yoitoko - Heaven - TAITO (1987) [MSX Translations] [Engli
 Games\MSX2\ROM\Tengoku Yoitoko - Heaven - TAITO (1987) [Ulver crack] [2298].zip
 Games\MSX2\ROM\TestRAM - A&L Soft (1998) [4333].zip
 Games\MSX2\ROM\Tetris - BPS (1988) [GoodMSX] [2321].zip
+Games\MSX2\ROM\Tetris - Marcello Goulart (2025)[v160725).zip
 Games\MSX2\ROM\The Awakening - Onric Factor (2019) [original] [6973].zip
 Games\MSX2\ROM\The Chess Player - Eurosoft (1988) [4882].zip
 Games\MSX2\ROM\The Cockpit - Nidecom (1987) [4981].zip
@@ -17004,6 +16147,7 @@ Games\MSX2\ROM\Traffic - Near-Miss Incidents Game - Chiyoda Kasai Kaijo Hoken Ka
 Games\MSX2\ROM\Tsururin-kun - Konami (1989) [SCC] [5218].zip
 Games\MSX2\ROM\Turikichi Sampei Burumarine-Hen - Victor (1988) [GoodMSX] [2394].zip
 Games\MSX2\ROM\Turikichi Sampei Turisennin-Hen - Cross Media Soft (1989) [GoodMSX] [2395].zip
+Games\MSX2\ROM\Twin Pics - Mapax (2025) [MSXdev25] [v1.0].zip
 Games\MSX2\ROM\Ultima III - Exodus - Origin Systems (1987) [GoodMSX] [2418].zip
 Games\MSX2\ROM\Undeadline - T&ESOFT (1989) [Disk to ROM conversion] [6371].zip
 Games\MSX2\ROM\Uridium 2 - Artrag () [WIP] [original] [5992].zip
@@ -17061,6 +16205,7 @@ Games\MSX2\ROM\Woody Poco - dB-SOFT (1987) [English Translation] [Translated] [2
 Games\MSX2\ROM\Woody Poco - dB-SOFT (1987) [GoodMSX] [2476].zip
 Games\MSX2\ROM\Woody Poco - dB-SOFT (1987) [Trained] [2479].zip
 Games\MSX2\ROM\Word Processor - Al Alamiah (1987) [4886].zip
+Games\MSX2\ROM\Wordle - Rutagames (2025)(pt).zip
 Games\MSX2\ROM\Xegrader Trial version - Skipmore (2025) [20250212-1125].zip
 Games\MSX2\ROM\Xegrader Trial version - Skipmore (2025) [20250311-1030].zip
 Games\MSX2\ROM\Xevious - Fardraut Saga - NAMCO (1989) [4238].zip
