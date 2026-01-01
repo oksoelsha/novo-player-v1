@@ -49,7 +49,8 @@ export class EmuliciousLaunchService {
                 cwd: this.settingsService.getSettings().emuliciousPath,
                 detached: true
             };
-            return cp.spawn('Emulicious.exe', this.getWindowsArguments(game), options);
+            const binaryFullpath = path.join(this.settingsService.getSettings().emuliciousPath, 'Emulicious.exe');
+            return cp.spawn(binaryFullpath, this.getWindowsArguments(game), options);
         } else {
             const options = {
                 detached: true

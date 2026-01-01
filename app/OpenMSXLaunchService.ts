@@ -170,7 +170,8 @@ export class OpenMSXLaunchService {
         };
         let errorMessage: string;
 
-        const process = cp.spawn(PlatformUtils.getOpenmsxBinary(), args, options);
+        const binaryFullpath = path.join(this.settingsService.getSettings().openmsxPath, PlatformUtils.getOpenmsxBinary());
+        const process = cp.spawn(binaryFullpath, args, options);
         process.on("error", (error) => {
             console.log(error.message);
             let errorMessage: string;

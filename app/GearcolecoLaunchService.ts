@@ -1,4 +1,5 @@
 import * as cp from 'child_process';
+import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron';
 import { EventLogService } from './EventLogService';
 import { SettingsService } from './SettingsService';
@@ -44,7 +45,8 @@ export class GearcolecoLaunchService {
             cwd: this.settingsService.getSettings().gearcolecoPath,
             detached: true
         };
-        return cp.spawn(PlatformUtils.getGearcolecoBinary(), this.getArguments(game), options);
+        const binaryFullpath = path.join(this.settingsService.getSettings().gearcolecoPath, PlatformUtils.getGearcolecoBinary());
+        return cp.spawn(binaryFullpath, this.getArguments(game), options);
     }
 
     private getArguments(game: Game): string[] {

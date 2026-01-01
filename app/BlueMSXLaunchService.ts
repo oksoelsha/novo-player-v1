@@ -1,4 +1,5 @@
 import * as cp from 'child_process';
+import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron';
 import { EventLogService } from './EventLogService';
 import { SettingsService } from './SettingsService';
@@ -43,7 +44,8 @@ export class BlueMSXLaunchService {
             detached: true,
         };
 
-        const process = cp.spawn('bluemsx.exe', this.getArguments(game), options);
+        const binaryFullpath = path.join(this.settingsService.getSettings().bluemsxPath, 'bluemsx.exe');
+        const process = cp.spawn(binaryFullpath, this.getArguments(game), options);
         process.on('error', (error) => {
             console.log(error.message);
             let errorMessage: string;
