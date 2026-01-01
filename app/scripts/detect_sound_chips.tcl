@@ -124,47 +124,56 @@ proc process_detection {mask} {
 	set currently_used [expr {$currently_used | $mask}]
 }
 
-# PSG
-debug set_watchpoint write_io 0xA0 {} {sound_detector::detected_psg_address}
-debug set_watchpoint write_io 0xA1 {} {sound_detector::detected_psg_data}
+set machine [machine_info type]
 
-# SCC
-foreach {ps ss plus} [find_all_scc] {
-	if {$plus} {
-		debug set_watchpoint write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
-	} else {
-		debug set_watchpoint write_mem {0x9800 0x988F} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_scc}
+if {[lsearch -exact {MSX MSX2 MSX2+ MSXturboR} $machine] != -1} {
+	# PSG
+	debug set_watchpoint write_io 0xA0 {} {sound_detector::detected_psg_address}
+	debug set_watchpoint write_io 0xA1 {} {sound_detector::detected_psg_data}
+
+	# SCC
+	foreach {ps ss plus} [find_all_scc] {
+		if {$plus} {
+			debug set_watchpoint write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
+		} else {
+			debug set_watchpoint write_mem {0x9800 0x988F} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_scc}
+		}
 	}
+
+	# PCM
+	#after time 5 "debug set_watchpoint write_io 0xA4 {} {sound_detector::detected_pcm}"
+	after time 5 "debug set_watchpoint write_io 0xA5 {} {sound_detector::detected_pcm}"
+
+	# MSX-MUSIC
+	#debug set_watchpoint write_io 0x7C {} {sound_detector::detected_msxmusic}
+	debug set_watchpoint write_io 0x7D {} {sound_detector::detected_msxmusic}
+
+	# MSX-AUDIO
+	#debug set_watchpoint write_io 0xC0 {} {sound_detector::detected_msxaudio}
+	debug set_watchpoint write_io 0xC1 {} {sound_detector::detected_msxaudio}
+
+	# Moonsound
+	debug set_watchpoint write_io 0x7E {} {sound_detector::detect_moonsound_address_wave}
+	debug set_watchpoint write_io 0x7F {} {sound_detector::detect_moonsound_data_wave}
+	debug set_watchpoint write_io 0xC4 {} {sound_detector::detect_moonsound_address_1_or_2}
+	debug set_watchpoint write_io 0xC5 {} {sound_detector::detect_moonsound_data}
+	debug set_watchpoint write_io 0xC6 {} {sound_detector::detect_moonsound_address_1_or_2}
+	debug set_watchpoint write_io 0xC7 {} {sound_detector::detect_moonsound_data}
+
+	# MIDI
+	debug set_watchpoint write_io 0xE8 {} {sound_detector::detected_midi}
+
+} elseif {$machine eq "Coleco"} {
+	# Coleco's SN76489
+	debug set_watchpoint write_io {0xE0 0xFF} {} {sound_detector::detected_SN76489}
+
+	# SGM's AY-3-8910
+	debug set_watchpoint write_io 0x51 {} {sound_detector::detected_SN76489}
+
+} elseif {$machine eq "SG-1000"} {
+	# Sega's SN76489
+	debug set_watchpoint write_io 0x7F {} {sound_detector::detected_SN76489}
 }
-
-# PCM
-#after time 5 "debug set_watchpoint write_io 0xA4 {} {sound_detector::detected_pcm}"
-after time 5 "debug set_watchpoint write_io 0xA5 {} {sound_detector::detected_pcm}"
-
-# MSX-MUSIC
-#debug set_watchpoint write_io 0x7C {} {sound_detector::detected_msxmusic}
-debug set_watchpoint write_io 0x7D {} {sound_detector::detected_msxmusic}
-
-# MSX-AUDIO
-#debug set_watchpoint write_io 0xC0 {} {sound_detector::detected_msxaudio}
-debug set_watchpoint write_io 0xC1 {} {sound_detector::detected_msxaudio}
-
-# Moonsound
-debug set_watchpoint write_io 0x7E {} {sound_detector::detect_moonsound_address_wave}
-debug set_watchpoint write_io 0x7F {} {sound_detector::detect_moonsound_data_wave}
-debug set_watchpoint write_io 0xC4 {} {sound_detector::detect_moonsound_address_1_or_2}
-debug set_watchpoint write_io 0xC5 {} {sound_detector::detect_moonsound_data}
-debug set_watchpoint write_io 0xC6 {} {sound_detector::detect_moonsound_address_1_or_2}
-debug set_watchpoint write_io 0xC7 {} {sound_detector::detect_moonsound_data}
-
-# MIDI
-debug set_watchpoint write_io 0xE8 {} {sound_detector::detected_midi}
-
-# Coleco's SN76489
-debug set_watchpoint write_io 0xFF {} {sound_detector::detected_SN76489}
-
-# Sega's SN76489
-debug set_watchpoint write_io 0x7F {} {sound_detector::detected_SN76489}
 
 } ;# namespace sound_detector
 
