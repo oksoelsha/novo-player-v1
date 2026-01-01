@@ -29,6 +29,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   bluemsxParams = '';
   emuliciousPath = '';
   emuliciousParams = '';
+  gearcolecoPath = '';
   news = false;
   submitDisabled = true;
   listings: string[] = [];
@@ -67,6 +68,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.bluemsxParams = settings.bluemsxParams;
       self.emuliciousPath = settings.emuliciousPath;
       self.emuliciousParams = settings.emuliciousParams;
+      self.gearcolecoPath = settings.gearcolecoPath;
       self.setSelectedLanguage(settings);
       self.news = settings.enableNews;
       self.setSelectedDisplayMode(settings);
@@ -120,7 +122,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
       this.languageReverseMap.get(this.language), form.value.news, this.displayModeReverseMap.get(this.displayMode),
-      form.value['emulicious-path'], this.emuliciousParams, form.value.fileHunterGames);
+      form.value['emulicious-path'], this.emuliciousParams, form.value.fileHunterGames, form.value['gearcoleco-path']);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);

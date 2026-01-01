@@ -263,6 +263,13 @@
                 <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+M</div>
               </div>
             </button>
+            <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
+              (click)="launchGearcoleco(selectedGame)" [disabled]="!isGearcolecoPathDefined">
+              <div class="d-flex">
+                <div class="me-4">{{ 'home.ongearcoleco' | translate }}</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+G</div>
+              </div>
+            </button>
           </div>
         </div>
         <div ngbDropdown class="d-inline-block" (openChange)="handleOpenMenuEvents($event)">
@@ -567,6 +574,11 @@
       <div class="context-menu-icon"></div>
       {{ 'home.onemulicious' | translate }}
       <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+M</div>
+    </ng-template>
+    <ng-template contextMenuItem [visible]="isGearcolecoPathDefined" (execute)="launchGearcoleco($event.item)">
+      <div class="context-menu-icon"></div>
+      {{ 'home.ongearcoleco' | translate }}
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+G</div>
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>

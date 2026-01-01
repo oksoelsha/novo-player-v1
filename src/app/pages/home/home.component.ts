@@ -119,6 +119,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isWebMSXPathDefined: boolean;
   isBlueMSXPathDefined: boolean;
   isEmuliciousPathDefined: boolean;
+  isGearcolecoPathDefined: boolean;
   isMSXNewsEnabled: boolean;
   musicFiles: string[] = [];
   selectedMusicFile: string;
@@ -275,6 +276,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             if (this.isEmuliciousPathDefined) {
               this.launchEmulicious(this.selectedGame);
             }
+          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
+            if (this.isGearcolecoPathDefined) {
+              this.launchGearcoleco(this.selectedGame);
+            }
           } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
             this.relatedGames.open();
           }
@@ -378,6 +383,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.isWebMSXPathDefined = settings.webmsxPath != null && settings.webmsxPath.trim() !== '';
       this.isBlueMSXPathDefined = settings.bluemsxPath != null && settings.bluemsxPath.trim() !== '';
       this.isEmuliciousPathDefined = settings.emuliciousPath != null && settings.emuliciousPath.trim() !== '';
+      this.isGearcolecoPathDefined = settings.gearcolecoPath != null && settings.gearcolecoPath.trim() !== '';
       this.isMSXNewsEnabled = settings.enableNews;
       this.localizationService.useLanguage(settings.language);
 
@@ -523,6 +529,17 @@ export class HomeComponent implements OnInit, OnDestroy {
           + ' [' + errorMessage + ']');
       } else {
         this.alertService.info(this.localizationService.translate('home.emuliciouswindowclosedfor') + ': ' + game.name);
+      }
+    });
+  }
+
+  launchGearcoleco(game: Game) {
+    this.gamesService.launchGameOnGearcoleco(game).then((errorMessage: string) => {
+      if (errorMessage) {
+        this.alertService.failure(this.localizationService.translate('home.failedtostartgearcolecofor') + ': ' + game.name
+          + ' [' + errorMessage + ']');
+      } else {
+        this.alertService.info(this.localizationService.translate('home.gearcolecowindowclosedfor') + ': ' + game.name);
       }
     });
   }
