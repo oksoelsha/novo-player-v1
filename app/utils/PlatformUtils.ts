@@ -81,6 +81,18 @@ export class PlatformUtils {
         return os.platform() === 'darwin';
     }
 
+    static getGearcolecoBinary(): string {
+        if (this.isWindows()) {
+            return 'Gearcoleco.exe';
+        } else if (this.isLinux()) {
+            return 'gearcoleco';
+        } else if (this.isMacOS()) {
+            return 'cearcoleco.app/Contents/MacOS/gearcoleco';
+        } else {
+            return this.unsupportedPlatform();
+        }
+    }
+
     private static unsupportedPlatform(): string {
         console.log('Platform not supported: ' + os.platform());
         return 'Not supported';

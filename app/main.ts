@@ -27,6 +27,7 @@ import { EmuliciousLaunchService } from './EmuliciousLaunchService';
 import { FileHunterService } from './FileHunterService';
 import { OpenMSXSetupsService } from './OpenMSXSetupsService';
 import { FiltersService } from './FiltersService';
+import { GearcolecoLaunchService } from './GearcolecoLaunchService';
 
 let win: BrowserWindow = null;
 
@@ -82,6 +83,8 @@ function initializeServices() {
   new BlueMSXLaunchService(win, settingsService, eventLogService);
 
   new EmuliciousLaunchService(win, settingsService, eventLogService);
+
+  new GearcolecoLaunchService(win, settingsService, eventLogService);
 
   new EmulatorHardwareService(win, settingsService);
 

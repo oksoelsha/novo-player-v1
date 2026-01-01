@@ -29,7 +29,8 @@ export class TotalsForLast30DaysProcessor {
             openMSX: Array(30).fill(0),
             WebMSX: Array(30).fill(0),
             blueMSX: Array(30).fill(0),
-            Emulicious: Array(30).fill(0)
+            Emulicious: Array(30).fill(0),
+            Gearcoleco: Array(30).fill(0)
         }
         this.database.find({ timestamp: { $gte: midnightThatDayLocal } }).exec((err: any, entries: any) => {
             for (const entry of entries) {
@@ -42,6 +43,8 @@ export class TotalsForLast30DaysProcessor {
                     results.blueMSX[index]++;
                 } else if (entry.source === EventSource.Emulicious) {
                     results.Emulicious[index]++;
+                } else if (entry.source === EventSource.Gearcoleco) {
+                    results.Gearcoleco[index]++;
                 }
             }
             self.win.webContents.send('getLaunchTotalsForLast30DaysResponse', results);

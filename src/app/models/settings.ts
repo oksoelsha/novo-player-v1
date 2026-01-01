@@ -12,10 +12,11 @@ export class Settings {
     emuliciousPath: string;
     emuliciousParams: string;
     enableFileHunterGames: boolean;
+    gearcolecoPath: string;
 
     constructor(openmsxPath: string, screenshotsPath: string, gameMusicPath: string, defaultListing: string, webmsxPath: string,
         bluemsxPath: string, bluemsxParams: string, language: string, enableNews: boolean, displayMode: string,
-        emuliciousPath: string, emuliciousParams: string, enableFileHunterGames: boolean) {
+        emuliciousPath: string, emuliciousParams: string, enableFileHunterGames: boolean, gearcolecoPath: string) {
         this.openmsxPath = openmsxPath;
         this.screenshotsPath = screenshotsPath;
         this.gameMusicPath = gameMusicPath;
@@ -29,6 +30,7 @@ export class Settings {
         this.emuliciousPath = emuliciousPath;
         this.emuliciousParams = emuliciousParams;
         this.enableFileHunterGames = enableFileHunterGames;
+        this.gearcolecoPath = gearcolecoPath;
     }
 }
 

@@ -109,6 +109,19 @@ export class GamesService {
     });
   }
 
+  async launchGameOnGearcoleco(game: Game): Promise<string> {
+    const time = Date.now();
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('launchGameOnGearcolecoResponse' + time, (event, errorMessage: string) => {
+        // this resolving means that either Gearcoleco failed to start or the window was closed
+        this.launchActivityService.recordGameFinish(time);
+        resolve(errorMessage);
+      });
+      this.launchActivityService.recordGameStart(game, time, 0, EventSource.Gearcoleco);
+      this.ipc.send('launchGameOnGearcoleco', game, time);
+    });
+  }
+
   async saveGame(game: Game) {
     return new Promise<boolean>((resolve, reject) => {
       this.ipc.once('saveGameResponse', (event, removed: boolean) => {

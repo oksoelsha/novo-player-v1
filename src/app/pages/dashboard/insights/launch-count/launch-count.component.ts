@@ -26,7 +26,7 @@ export class LaunchCountComponent implements OnInit {
     enabled: false
   };
 
-  readonly colors = ['#dddddd', '#ee4444', '#007bff', '#22aa22'];
+  readonly colors = ['#dddddd', '#ee4444', '#007bff', '#22aa22', '#c151c5ff'];
 
   readonly xaxis: ApexXAxis = {
     categories: [],
@@ -65,7 +65,7 @@ export class LaunchCountComponent implements OnInit {
 
   readonly legend: ApexLegend = {
     labels: {
-      colors: ['#cccccc', '#cccccc', '#cccccc', '#cccccc']
+      colors: ['#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc']
     }
   };
 
@@ -108,6 +108,10 @@ export class LaunchCountComponent implements OnInit {
         {
           name: 'Emulicious',
           data: []
+        },
+        {
+          name: 'Gearcoleco',
+          data: []
         }
       ];
 
@@ -115,6 +119,7 @@ export class LaunchCountComponent implements OnInit {
       this.series[1].data = data.WebMSX;
       this.series[2].data = data.blueMSX;
       this.series[3].data = data.Emulicious;
+      this.series[4].data = data.Gearcoleco;
     });
   }
 }
