@@ -19,14 +19,15 @@ export class LaunchCountComponent implements OnInit {
   };
 
   readonly stroke: ApexStroke = {
-    width: 2
+    width: 2,
+    curve: 'smooth'
   };
 
   readonly dataLabels: ApexDataLabels = {
     enabled: false
   };
 
-  readonly colors = ['#dddddd', '#ee4444', '#007bff', '#22aa22', '#c151c5ff'];
+  readonly colors = ['#dddddd', '#ee4444', '#007bff', '#22aa22', '#985b99ff'];
 
   readonly xaxis: ApexXAxis = {
     categories: [],
