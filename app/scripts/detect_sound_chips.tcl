@@ -111,7 +111,7 @@ proc detected_midi {} {
 	sound_detector::process_detection 128
 }
 
-proc detected_SN76489 {} {
+proc detected_other_PSG {} {
 	if {$::wp_last_value > 0} {
 		sound_detector::process_detection 1
 	}
@@ -165,14 +165,19 @@ if {[lsearch -exact {MSX MSX2 MSX2+ MSXturboR} $machine] != -1} {
 
 } elseif {$machine eq "Coleco"} {
 	# Coleco's SN76489
-	debug set_watchpoint write_io {0xE0 0xFF} {} {sound_detector::detected_SN76489}
+	debug set_watchpoint write_io {0xE0 0xFF} {} {sound_detector::detected_other_PSG}
 
 	# SGM's AY-3-8910
-	debug set_watchpoint write_io 0x51 {} {sound_detector::detected_SN76489}
+	debug set_watchpoint write_io 0x51 {} {sound_detector::detected_other_PSG}
 
 } elseif {$machine eq "SG-1000"} {
 	# Sega's SN76489
-	debug set_watchpoint write_io 0x7F {} {sound_detector::detected_SN76489}
+	debug set_watchpoint write_io 0x7F {} {sound_detector::detected_other_PSG}
+
+} elseif {$machine eq "SVI"} {
+	# Spectravideo's AY8910
+	debug set_watchpoint write_io 0x8C {} {sound_detector::detected_other_PSG}
+
 }
 
 } ;# namespace sound_detector
