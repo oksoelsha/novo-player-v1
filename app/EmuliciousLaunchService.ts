@@ -8,6 +8,7 @@ import { Game } from '../src/app/models/game';
 import { GameUtils } from './utils/GameUtils';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { EmulatorUtils } from './utils/EmulatorUtils';
+import { ErrorLogService } from './ErrorLogService';
 
 export class EmuliciousLaunchService {
 
@@ -17,6 +18,7 @@ export class EmuliciousLaunchService {
         private readonly win: BrowserWindow,
         private readonly settingsService: SettingsService,
         private readonly eventLogService: EventLogService,
+        private readonly errorLogService: ErrorLogService
     ) {
         this.init();
     }
@@ -30,14 +32,18 @@ export class EmuliciousLaunchService {
     private launch(game: Game, time: number): void {
         const self = this;
         const process = this.getEmuliciousProcess(game);
+        let errorMessage: string;
 
         process.on('error', (error) => {
             console.log(error.message);
-            self.win.webContents.send('launchGameOnEmuliciousResponse' + time, 'error launching Emulicious');
+            errorMessage = 'Error launching Emulicious - ' + error.message;
         });
 
         process.on('close', (error: number | null) => {
-            self.win.webContents.send('launchGameOnEmuliciousResponse' + time);
+            if (error) {
+                this.errorLogService.logError('Emulicious:', errorMessage);
+            }
+            self.win.webContents.send('launchGameOnEmuliciousResponse' + time, error !== 0 ? errorMessage : null);
         });
 
         this.eventLogService.logEvent(new Event(EventSource.Emulicious, EventType.LAUNCH, GameUtils.getMonikor(game)));

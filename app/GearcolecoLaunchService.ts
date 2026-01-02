@@ -7,6 +7,7 @@ import { Event, EventSource, EventType } from '../src/app/models/event';
 import { Game } from '../src/app/models/game';
 import { GameUtils } from './utils/GameUtils';
 import { PlatformUtils } from './utils/PlatformUtils';
+import { ErrorLogService } from './ErrorLogService';
 
 export class GearcolecoLaunchService {
 
@@ -14,6 +15,7 @@ export class GearcolecoLaunchService {
         private readonly win: BrowserWindow,
         private readonly settingsService: SettingsService,
         private readonly eventLogService: EventLogService,
+        private readonly errorLogService: ErrorLogService
     ) {
         this.init();
     }
@@ -27,14 +29,18 @@ export class GearcolecoLaunchService {
     private launch(game: Game, time: number): void {
         const self = this;
         const process = this.getGearcolecoProcess(game);
+        let errorMessage: string;
 
         process.on('error', (error) => {
             console.log(error.message);
-            self.win.webContents.send('launchGameOnGearcolecoResponse' + time, 'error launching Gearcoleco');
+            errorMessage = 'Error launching Gearcoleco - ' + error.message;
         });
 
         process.on('close', (error: number | null) => {
-            self.win.webContents.send('launchGameOnGearcolecoResponse' + time);
+            if (error) {
+                this.errorLogService.logError('Gearcoleco:', errorMessage);
+            }
+            self.win.webContents.send('launchGameOnGearcolecoResponse' + time, error !== 0 ? errorMessage : null);
         });
 
         this.eventLogService.logEvent(new Event(EventSource.Gearcoleco, EventType.LAUNCH, GameUtils.getMonikor(game)));

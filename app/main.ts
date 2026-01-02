@@ -79,12 +79,9 @@ function initializeServices() {
 
   const connectionManager = new OpenMSXConnectionManager();
   new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager, extraDataService);
-
-  new BlueMSXLaunchService(win, settingsService, eventLogService);
-
-  new EmuliciousLaunchService(win, settingsService, eventLogService);
-
-  new GearcolecoLaunchService(win, settingsService, eventLogService);
+  new BlueMSXLaunchService(win, settingsService, eventLogService, errorLogService);
+  new EmuliciousLaunchService(win, settingsService, eventLogService, errorLogService);
+  new GearcolecoLaunchService(win, settingsService, eventLogService, errorLogService);
 
   new EmulatorHardwareService(win, settingsService);
 

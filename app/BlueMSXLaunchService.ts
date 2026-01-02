@@ -7,6 +7,7 @@ import { Event, EventSource, EventType } from '../src/app/models/event';
 import { Game } from '../src/app/models/game';
 import { GameUtils } from './utils/GameUtils';
 import { EmulatorUtils } from './utils/EmulatorUtils';
+import { ErrorLogService } from './ErrorLogService';
 
 export class BlueMSXLaunchService {
 
@@ -19,14 +20,13 @@ export class BlueMSXLaunchService {
         ['harddisk', 'ide1primary'],
     ];
 
-    private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
-    private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
     private static readonly ARGS_SEPARATOR = '\/';
 
     constructor(
         private readonly win: BrowserWindow,
         private readonly settingsService: SettingsService,
         private readonly eventLogService: EventLogService,
+        private readonly errorLogService: ErrorLogService
     ) {
         this.init();
     }
@@ -43,36 +43,23 @@ export class BlueMSXLaunchService {
             cwd: this.settingsService.getSettings().bluemsxPath,
             detached: true,
         };
+        let errorMessage: string;
 
         const binaryFullpath = path.join(this.settingsService.getSettings().bluemsxPath, 'bluemsx.exe');
         const process = cp.spawn(binaryFullpath, this.getArguments(game), options);
         process.on('error', (error) => {
             console.log(error.message);
-            let errorMessage: string;
-            let splitText: string | null = self.getSplitText(error);
-            if (splitText) {
-                errorMessage = error.message.substring(error.message.indexOf(splitText) + splitText.length);
-            } else {
-                errorMessage = 'Error launching blueMSX';
-            }
-            self.win.webContents.send('launchGameOnBlueMSXResponse' + time, errorMessage);
+            errorMessage = 'Error launching blueMSX - ' + error.message;
         });
 
         process.on('close', (error: number | null) => {
-            self.win.webContents.send('launchGameOnBlueMSXResponse' + time);
+            if (error) {
+                this.errorLogService.logError('blueMSX:', errorMessage);
+            }
+            self.win.webContents.send('launchGameOnBlueMSXResponse' + time, error !== 0 ? errorMessage : null);
         });
 
         this.eventLogService.logEvent(new Event(EventSource.blueMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
-    }
-
-    private getSplitText(error: cp.ExecException): string | null {
-        if (error.message.indexOf(BlueMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT) > 0) {
-            return BlueMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT;
-        } else if (error.message.indexOf(BlueMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN) > 0) {
-            return BlueMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN;
-        } else {
-            return null;
-        }
     }
 
     private getArguments(game: Game): string[] {
