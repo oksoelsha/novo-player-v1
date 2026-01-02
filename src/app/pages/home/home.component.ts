@@ -514,7 +514,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   launchBlueMSX(game: Game) {
     this.gamesService.launchGameOnBlueMSX(game).then((errorMessage: string) => {
       if (errorMessage) {
-        this.alertService.failure(this.localizationService.translate('home.failedtostartbluemsxmsxfor') + ': ' + game.name
+        this.alertService.failure(this.localizationService.translate('home.failedtostartbluemsxfor') + ': ' + game.name
           + ' [' + errorMessage + ']');
       } else {
         this.alertService.info(this.localizationService.translate('home.bluemsxwindowclosedfor') + ': ' + game.name);
