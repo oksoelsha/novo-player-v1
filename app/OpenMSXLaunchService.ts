@@ -89,8 +89,6 @@ export class OpenMSXLaunchService {
         ])
     ];
 
-    private static readonly LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT = 'Uncaught exception: ';
-    private static readonly LAUNCH_ERROR_SPLIT_MSG_ERROR_IN = 'Error in ';
     private enableGFX9000Script = path.join(__dirname, 'scripts/enable_gfx9000.tcl');
     private soundDetectorScript = path.join(__dirname, 'scripts/detect_sound_chips.tcl');
     private copyBasicListingScript = path.join(__dirname, 'scripts/copy_basic_listing.tcl');
@@ -174,13 +172,7 @@ export class OpenMSXLaunchService {
         const process = cp.spawn(binaryFullpath, args, options);
         process.on("error", (error) => {
             console.log(error.message);
-            let errorMessage: string;
-            const splitText = self.getSplitText(error);
-            if (splitText) {
-                errorMessage = error.message.substring(error.message.indexOf(splitText) + splitText.length);
-            } else {
-                errorMessage = 'Error launching openMSX';
-            }
+            errorMessage = 'Error launching openMSX - ' + error.message;
         });
 
         process.stderr.setEncoding('utf8');
@@ -193,7 +185,7 @@ export class OpenMSXLaunchService {
                 this.errorLogService.logError('openMSX:', errorMessage);
             }
             this.connectionManager.disconnect(process.pid);
-            self.win.webContents.send('launchGameResponse' + time, error === 1 ? errorMessage : null);
+            self.win.webContents.send('launchGameResponse' + time, error !== 0 ? errorMessage : null);
         });
 
         // give process id socket file enough time to be written
@@ -233,16 +225,6 @@ export class OpenMSXLaunchService {
                 reject(error);
             });
         });
-    }
-
-    private getSplitText(error: cp.ExecException): string {
-        if (error.message.indexOf(OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT) > 0) {
-            return OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_UNCAUGHT;
-        } else if (error.message.indexOf(OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN) > 0) {
-            return OpenMSXLaunchService.LAUNCH_ERROR_SPLIT_MSG_ERROR_IN;
-        } else {
-            return null;
-        }
     }
 
     private setArguments(args: string[], game: Game, state: string) {
