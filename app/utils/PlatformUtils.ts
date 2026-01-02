@@ -87,7 +87,7 @@ export class PlatformUtils {
         } else if (this.isLinux()) {
             return 'gearcoleco';
         } else if (this.isMacOS()) {
-            return 'cearcoleco.app/Contents/MacOS/gearcoleco';
+            return 'Gearcoleco.app/Contents/MacOS/gearcoleco';
         } else {
             return this.unsupportedPlatform();
         }
