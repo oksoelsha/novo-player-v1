@@ -1,7 +1,7 @@
 <div id="settings">
   <form id="settingsForm" #settingsForm="ngForm" spellcheck="false" (ngSubmit)="submitSettings(settingsForm.form)">
     <div class="wrapper">
-      <div class="form-fields pe-2">
+      <div class="form-fields pe-2 pb-3">
         <div class="form-group mb-3">
           <label class="form-label">{{ 'settings.openmsxpath' | translate }}</label>
           <div class="d-flex justify-content-start">
@@ -81,8 +81,8 @@
 
         <div class="form-group mb-3">
           <label class="form-label">{{ 'settings.emuliciousparams' | translate }}</label>
-          <app-field-with-suggestions [value]="emuliciousParams" [suggestionsMap]="getEmuliciousArgumentsMap()" trigger="-"
-            (userInputOutput)="setEmuliciousParams($event)" placement="bottom"
+          <app-field-with-suggestions [value]="emuliciousParams" [suggestionsMap]="getEmuliciousArgumentsMap()"
+            trigger="-" (userInputOutput)="setEmuliciousParams($event)" placement="bottom"
             [ngbTooltip]="'settings.emuliciousparamstooltip' | translate"></app-field-with-suggestions>
         </div>
 
@@ -112,7 +112,8 @@
         <div class="form-group d-inline-block ms-2">
           <label class="form-label">{{ 'settings.defaultdisplaymode' | translate }}</label>
           <div>
-            <app-drop-down [list]="displayModes" [selectedItem]="displayMode" (selection)="updateField('displayMode', $event)">
+            <app-drop-down [list]="displayModes" [selectedItem]="displayMode"
+              (selection)="updateField('displayMode', $event)">
             </app-drop-down>
           </div>
         </div>
@@ -135,9 +136,10 @@
         </div>
 
         <div class="form-check form-switch mb-3">
-          <input class="form-check-input" type="checkbox" role="switch" id="enableFileHunterGames" name="fileHunterGames"
-            [(ngModel)]="fileHunterGames">
-          <label class="form-check-label" for="enableFileHunterGames">{{ 'popups.quicklaunch.filehuntergames' | translate }}</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="enableFileHunterGames"
+            name="fileHunterGames" [(ngModel)]="fileHunterGames">
+          <label class="form-check-label" for="enableFileHunterGames">{{ 'popups.quicklaunch.filehuntergames' |
+            translate }}</label>
         </div>
       </div>
       <div class="buttons">
