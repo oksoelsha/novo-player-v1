@@ -46,6 +46,7 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
     ['FR', 'fr_FR'],
     ['GB', 'UK'],
     ['HK', 'HK'],
+    ['IL', 'IL'],
     ['IT', 'it_IT'],
     ['JP', 'ja_JP'],
     ['KR', 'ko_KR'],
