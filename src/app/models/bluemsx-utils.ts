@@ -14,6 +14,7 @@ export class BlueMSXUtils {
         'MSX2+',
         'MSXturboR',
         'COL - ColecoVision',
+        'COL - ColecoVision w Super Game Module',
         'SEGA - SG-1000'
       ];
       const romTypes = [
