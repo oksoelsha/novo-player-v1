@@ -2,7 +2,6 @@ import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import { FileTypeUtils } from './utils/FileTypeUtils';
-import { PersistenceUtils } from './utils/PersistenceUtils';
 import { UpdateListerner } from './UpdateListerner';
 import { SettingsService } from './SettingsService';
 import { EnvironmentService } from './EnvironmentService';
@@ -21,7 +20,7 @@ class FileNode {
 
 export class FileHunterService implements UpdateListerner {
 
-    private allFilesPath = path.join(PersistenceUtils.getFileHunterFilesStoragePath(), 'allfiles.txt');
+    private allFilesPath = path.join(__dirname, 'extra/file-hunter-allfiles.txt');
     private readonly gamesRoot = 'Games\\';
     private readonly includedFolders = new Set<string>();
     private games = new Map<string, FileNode>();
@@ -49,7 +48,6 @@ export class FileHunterService implements UpdateListerner {
     }
 
     private init(): void {
-        this.moveFileHunterFileIfNecessary();
         this.initIncludedFolders();
         this.initGamesList();
 
@@ -100,13 +98,6 @@ export class FileHunterService implements UpdateListerner {
         this.includedFolders.add('\\MSX2+');
         this.includedFolders.add('\\MSX2+\\DSK');
         this.includedFolders.add('\\MSX2+\\ROM');
-    }
-
-    private moveFileHunterFileIfNecessary() {
-        if (!fs.existsSync(this.allFilesPath) || this.environmentService.isNeedToUpdateApplicationData()) {
-            fs.mkdirSync(PersistenceUtils.getFileHunterFilesStoragePath(), { recursive: true });
-            fs.copyFileSync(path.join(__dirname, 'extra/file-hunter-allfiles.txt'), this.allFilesPath);
-        }
     }
 
     private initGamesList() {
