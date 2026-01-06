@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Arguments addicionals per utilitzar en iniciar Emulicious (per exemple, -set System=MSX)",
     "gearcolecopath": "Camí de Gearcoleco",
     "gearcolecopathtooltip": "La carpeta on es troba Gearcoleco",
+    "colecoscreenshotspath": "Camí de captures de pantalla de Coleco",
+    "colecoscreenshotspathtooltip": "La carpeta on es troben les captures de pantalla opcionals de Coleco",
     "language": "Idioma",
     "systemdefault": "Valor per defecte del sistema",
     "confirmation": "Confirmació",

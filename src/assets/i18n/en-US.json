@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Additional arguments to use when launching Emulicious (e.g. -set System=MSX)",
     "gearcolecopath": "Gearcoleco Path",
     "gearcolecopathtooltip": "Folder where Gearcoleco is",
+    "colecoscreenshotspath": "Coleco Screenshots Path",
+    "colecoscreenshotspathtooltip": "Folder where optional Coleco screenshots are",
     "language": "Language",
     "systemdefault": "System Default",
     "confirmation": "Confirmation",

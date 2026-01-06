@@ -23,6 +23,7 @@ export class GameDO {
     genre1: number;
     genre2: number;
     screenshotSuffix: string;
+    colecoScreenshot: string;
 
     listing: string;
 

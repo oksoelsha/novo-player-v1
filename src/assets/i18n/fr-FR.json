@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Arguments supplémentaires à utiliser lors du lancement d'Emulicious (par exemple, -set System=MSX)",
     "gearcolecopath": "Chemin d'accès de Gearcoleco",
     "gearcolecopathtooltip": "Dossier où Gearcoleco se trouve",
+    "colecoscreenshotspath": "Chemin d'accès de captures d'écran de Coleco",
+    "colecoscreenshotspathtooltip": "Dossier où les captures d'écran facultatives sont trouvées de Coleco",
     "language": "Langue",
     "systemdefault": "Système par défaut",
     "confirmation": "Confirmation",

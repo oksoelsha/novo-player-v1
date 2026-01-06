@@ -28,8 +28,8 @@ export class FilesService {
             this.openFileSystemDialog(options);
         });
 
-        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix) => {
-            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code);
+        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot) => {
+            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot);
             this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
         });
 
@@ -97,36 +97,52 @@ export class FilesService {
         });
     }
 
-    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string): GameSecondaryData {
+    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string, colecoScreenshot: string): GameSecondaryData {
+
         let screenshotsPath1: string;
-        if (suffix == null) {
-            screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a.png');
-        } else {
-            screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a' + suffix + '.png');
-        }
-
         let data1: string;
-        try {
-            data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
-        } catch (err) {
-            data1 = '';
-        }
-
+        let screenshotsPath2: string;
         let data2: string;
-        if (data1) {
-            var screenshotsPath2: string;
+
+        if (colecoScreenshot) {
+            screenshotsPath1 = path.join(this.settingsService.getSettings().colecoScreenshotsPath, colecoScreenshot + '_a.png');
+            try {
+                data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
+            } catch (err) {
+                // ignore
+            }
+            if (data1) {
+                screenshotsPath2 = path.join(this.settingsService.getSettings().colecoScreenshotsPath, colecoScreenshot + '_b.png');                
+                try {
+                    data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
+                } catch (err) {
+                    // ignore
+                }
+            }
+        } else {
+            // Now assume this is an MSX game
             if (suffix == null) {
-                screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b.png');
+                screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a.png');
             } else {
-                screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b' + suffix + '.png');
+                screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a' + suffix + '.png');
             }
             try {
-                data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
+                data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
             } catch (err) {
-                data2 = '';
+                // ignore
             }
-        } else {
-            data2 = '';
+            if (data1) {
+                if (suffix == null) {
+                    screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b.png');
+                } else {
+                    screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b' + suffix + '.png');
+                }
+                try {
+                    data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
+                } catch (err) {
+                    // ignore
+                }
+            }
         }
 
         const musicFiles = this.getMusicFiles(genMsxId);
@@ -136,7 +152,6 @@ export class FilesService {
             // so we replace the backslashes and remove the drive name
             moreScreenshots = moreScreenshots.map(m => m.replace(/\\/g, '/').substring(2));
         }
-
         return new GameSecondaryData(data1, data2, musicFiles, moreScreenshots);
     }
 

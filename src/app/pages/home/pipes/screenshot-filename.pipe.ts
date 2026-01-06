@@ -6,12 +6,17 @@ import { Game } from '../../../models/game';
 })
 export class ScreenshotFilenamePipe implements PipeTransform {
 
-  transform(game: Game, screenshotsPath: string): string {
-    let screenshotName = screenshotsPath + game.generationMSXId + 'a';
-    if (game.screenshotSuffix) {
-      screenshotName = screenshotName + game.screenshotSuffix;
+  transform(game: Game, screenshotsPath: string, colecoScreenshotsPath: string): string {
+    let screenshotName: string;
+    if (game.colecoScreenshot) {
+      screenshotName = colecoScreenshotsPath + game.colecoScreenshot + '_a.png';
+    } else {
+      screenshotName = screenshotsPath + game.generationMSXId + 'a';
+      if (game.screenshotSuffix) {
+        screenshotName = screenshotName + game.screenshotSuffix;
+      }
+      screenshotName = screenshotName + '.png';
     }
-    screenshotName = screenshotName + '.png';
 
     return screenshotName;
   }

@@ -136,7 +136,7 @@
   "settings": {
     "openmsxpath": "Путь openMSX",
     "openmsxpathtooltip": "Папка, в которой находится openMSX",
-    "screenshotspath": "Путь к снимки экрана",
+    "screenshotspath": "Путь к скриншотам",
     "screenshotspathtooltip": "Папка, в которой находятся необязательные снимки экрана",
     "gamemusicpath": "Путь к игровой музыке",
     "gamemusicpathtooltip": "Папка, в которой находится дополнительная игровая музыка",
@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Дополнительные аргументы для использования при запуске Emulicious (например -set System=MSX)",
     "gearcolecopath": "Путь Gearcoleco",
     "gearcolecopathtooltip": "Папка, в которой находится Gearcoleco",
+    "colecoscreenshotspath": "Путь к скриншотам Coleco",
+    "colecoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Coleco",
     "language": "Язык",
     "systemdefault": "Системный по умолчанию",
     "confirmation": "Подтверждение",

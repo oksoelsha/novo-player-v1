@@ -24,6 +24,7 @@ export class PersistenceUtils {
         'genre1',
         'genre2',
         'screenshotSuffix',
+        'colecoScreenshot',
         'listing',
         'fddMode',
         'inputDevice',

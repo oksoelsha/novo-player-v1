@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Emuliciousを起動するときに使用する追加の引数(例:-set System=MSX)",
     "gearcolecopath": "Gearcoleco のパス",
     "gearcolecopathtooltip": "Gearcolecoがあるフォルダ",
+    "colecoscreenshotspath": "Coleco スクリーンショットパス",
+    "colecoscreenshotspathtooltip": "オプションのColecoスクリーンショットが保存されるフォルダ",
     "language": "言語",
     "systemdefault": "システムの既定値",
     "confirmation": "確認",

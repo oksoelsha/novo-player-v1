@@ -154,6 +154,8 @@
     "emuliciousparamstooltip": "Emulicious를 시작할 때 사용할 추가 인수(예: -set System=MSX)",
     "gearcolecopath": "Gearcoleco 경로",
     "gearcolecopathtooltip": "Gearcoleco가 있는 폴더",
+    "colecoscreenshotspath": "Coleco 스크린샷 경로",
+    "colecoscreenshotspathtooltip": "선택적으로 Coleco 스크린샷을 찍을 수 있는 폴더입니다.",
     "language": "언어",
     "systemdefault": "시스템 기본값",
     "confirmation": "확인",

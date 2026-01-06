@@ -11,6 +11,7 @@ import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
 import { GameUtils } from './utils/GameUtils';
+import { ColecoExtraDataService } from './ColecoExtraDataService';
 
 export class GamesService {
 
@@ -18,7 +19,8 @@ export class GamesService {
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'datafile');
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
-        private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService) {
+        private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService,
+        private colecoExtraDataService: ColecoExtraDataService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
         this.init();
     }
@@ -70,13 +72,10 @@ export class GamesService {
     async updateGamesForNewExtraData() {
         await new Promise<void>((resolve, reject) => {
             this.database.find({}, async (err: any, entries: any) => {
-                const extraDataInfo = this.extraDataService.getExtraDataInfo();
                 for (const entry of entries) {
-                    const extraData = extraDataInfo.get(entry._id);
-                    if (extraData) {
-                        const gameDO = new GameDO(entry);
-                        gameDO._id = entry._id;
-                        this.updateGameDOWithExtraData(gameDO, extraData);
+                    const gameDO = new GameDO(entry);
+                    gameDO._id = entry._id;
+                    if (this.updateGameDOWithExtraData(gameDO)) {
                         await this.updateGameWithNewExtraData(gameDO);
                     }
                 }
@@ -273,10 +272,7 @@ export class GamesService {
                 } else {
                     gameDO._id = data.hash;
                     gameDO.size = data.size;
-                    const extraDataInfo = this.extraDataService.getExtraDataInfo();
-                    const extraData = extraDataInfo.get(gameDO._id);
-                    this.updateGameDOWithExtraData(gameDO, extraData);
-
+                    this.updateGameDOWithExtraData(gameDO);
                     this.database.insert(gameDO, (err: any, savedGame: GameDO) => {
                         if (err) {
                             self.win.webContents.send('updateGameResponse', null);
@@ -420,7 +416,10 @@ export class GamesService {
         });
     }
 
-    private updateGameDOWithExtraData(gameDO: GameDO, extraData: ExtraData) {
+    private updateGameDOWithExtraData(gameDO: GameDO): boolean {
+        let updated = false;
+        const extraDataInfo = this.extraDataService.getExtraDataInfo();
+        const extraData = extraDataInfo.get(gameDO._id);
         if (extraData == null) {
             gameDO.generationMSXId = 0;
             gameDO.screenshotSuffix = null;
@@ -428,6 +427,12 @@ export class GamesService {
             gameDO.sounds = 0;
             gameDO.genre1 = 0;
             gameDO.genre2 = 0;
+            const colecoExtraDataInfo = this.colecoExtraDataService.getColecoExtraDataInfo();
+            const colecoScreenshot = colecoExtraDataInfo.get(gameDO._id)
+            if (colecoScreenshot !== null) {
+                gameDO.colecoScreenshot = colecoScreenshot;
+                updated = true;
+            }
         } else {
             gameDO.generationMSXId = extraData.generationMSXID;
             gameDO.screenshotSuffix = extraData.suffix;
@@ -440,9 +445,11 @@ export class GamesService {
             }
             if (extraData.genre2 > 0) {
                 gameDO.genre2 = extraData.genre2;
-            }    
+            }
+            updated = true;
         }
         this.cleanupGameDO(gameDO);
+        return updated;
     }
 
     private populateGameWithOpenMSXRepositoryData(game: Game, repositoryInfo: Map<string, RepositoryData>) {

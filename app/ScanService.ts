@@ -7,9 +7,11 @@ import { Game } from '../src/app/models/game';
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
 import { GamesService } from './GamesService';
 import { HashService } from './HashService';
+import { ColecoExtraDataService } from './ColecoExtraDataService';
 
 export class ScanService {
     private extraDataInfo: Map<string, ExtraData>;
+    private colecoExtraDataInfo: Map<string, string>;
     private repositoryInfo: Map<string, RepositoryData>;
     private totalFilesToScan = 0;
     private scannedFilesCounter = 0;
@@ -18,11 +20,13 @@ export class ScanService {
     constructor(
         private win: BrowserWindow,
         private extraDataService: ExtraDataService,
+        private colecoExtraDataService: ColecoExtraDataService,
         private emulatorRepositoryService: EmulatorRepositoryService,
         private gamesService: GamesService,
         private hashService: HashService) {
 
         this.extraDataInfo = extraDataService.getExtraDataInfo();
+        this.colecoExtraDataInfo = colecoExtraDataService.getColecoExtraDataInfo();
         this.repositoryInfo = emulatorRepositoryService.getRepositoryInfo();
     }
 
@@ -112,6 +116,13 @@ export class ScanService {
                     game.setSounds(extraData.soundChips);
                     game.setGenre1(extraData.genre1);
                     game.setGenre2(extraData.genre2);
+                } else {
+                    // attempt with Coleco data
+                    const colecoScreenshot = this.colecoExtraDataInfo.get(data.hash);
+                    if (colecoScreenshot != null) {
+                        game.setColecoScreenshot(colecoScreenshot);
+                    }
+                    // we can add else conditions here in the future for other systems' screenshots
                 }
 
                 this.gamesService.saveGameFromScan(game).then((success:boolean) => {

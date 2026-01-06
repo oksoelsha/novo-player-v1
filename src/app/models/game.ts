@@ -31,6 +31,7 @@ export class Game {
     genre1: number;
     genre2: number;
     screenshotSuffix: string;
+    colecoScreenshot: string;
 
     listing: string;
 
@@ -156,6 +157,10 @@ export class Game {
 
     setScreenshotSuffix(screenshotSuffix: string) {
         this.screenshotSuffix = screenshotSuffix;
+    }
+
+    setColecoScreenshot(colecoScreenshot: string) {
+        this.colecoScreenshot = colecoScreenshot;
     }
 
     setGenerations(generations: number) {
