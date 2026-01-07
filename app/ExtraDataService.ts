@@ -7,13 +7,11 @@ import { EnvironmentService } from './EnvironmentService';
 
 export class ExtraDataService implements UpdateListerner {
 
-    private extraDataPathInBundle = path.join(__dirname, 'extra/extra-data.dat');
-    private extraDataPathOnDisc = path.join(PersistenceUtils.getStoragePath(), 'extra-data.dat');
+    private extraDataPath = path.join(__dirname, 'extra/extra-data.dat');
     private extraDataInfo: Map<string, ExtraData>;
     private extraDataVersion = '';
 
     constructor(private win: BrowserWindow, private environmentService: EnvironmentService) {
-        this.moveExtraDataFileIfNecessary();
         this.init();
     }
 
@@ -31,12 +29,6 @@ export class ExtraDataService implements UpdateListerner {
 
     getExtraDataVersion(): string {
         return this.extraDataVersion;
-    }
-
-    private moveExtraDataFileIfNecessary() {
-        if (this.environmentService.isNeedToUpdateApplicationData()) {
-            fs.copyFileSync(this.extraDataPathInBundle, this.extraDataPathOnDisc);
-        }
     }
 
     private init(): void {
@@ -60,7 +52,7 @@ export class ExtraDataService implements UpdateListerner {
         let suffix: string | null;
         let extraData: ExtraData;
 
-        const data = fs.readFileSync(this.extraDataPathOnDisc, { encoding: 'ascii' });
+        const data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
         const lines = data.split(/\r?\n/);
     
         lines.forEach((line) => {
