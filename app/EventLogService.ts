@@ -2,7 +2,7 @@ import { BrowserWindow, ipcMain } from 'electron';
 import Datastore from 'nedb';
 import * as path from 'path';
 import { Event } from '../src/app/models/event';
-import { EventDO } from './data/event-do';
+import { EventDO } from './data-objects/event-do';
 import { EventProcessor } from './EventProcessor';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { Game } from '../src/app/models/game';

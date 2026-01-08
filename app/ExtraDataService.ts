@@ -7,7 +7,7 @@ import { EnvironmentService } from './EnvironmentService';
 
 export class ExtraDataService implements UpdateListerner {
 
-    private extraDataPath = path.join(__dirname, 'extra/extra-data.dat');
+    private extraDataPath = path.join(__dirname, 'data-files/extra-data.dat');
     private extraDataInfo: Map<string, ExtraData>;
     private extraDataVersion = '';
 

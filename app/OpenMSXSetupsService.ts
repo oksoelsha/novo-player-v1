@@ -3,7 +3,7 @@ import Datastore from 'nedb';
 import * as path from 'path';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { OpenmsxSetup } from '../src/app/models/openmsx-setup';
-import { OpenmsxSetupDO } from './data/openmsx-setup-do';
+import { OpenmsxSetupDO } from './data-objects/openmsx-setup-do';
 
 export class OpenMSXSetupsService {
 

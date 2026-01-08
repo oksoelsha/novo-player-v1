@@ -4,7 +4,7 @@ import Datastore from 'nedb';
 import * as path from 'path';
 import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
-import { GameDO } from './data/game-do';
+import { GameDO } from './data-objects/game-do';
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
 import { ExtraData, ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';

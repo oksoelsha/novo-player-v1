@@ -34,10 +34,10 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const softwaredbFilenames = [
             PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
             PlatformUtils.getOpenmsxUserSoftwareDb(),
-            path.join(__dirname, 'extra/msxdskdb.xml'),
-            path.join(__dirname, 'extra/msxcaswavdb.xml'),
-            path.join(__dirname, 'extra/segadb.xml'),
-            path.join(__dirname, 'extra/svidb.xml')
+            path.join(__dirname, 'data-files/msxdskdb.xml'),
+            path.join(__dirname, 'data-files/msxcaswavdb.xml'),
+            path.join(__dirname, 'data-files/segadb.xml'),
+            path.join(__dirname, 'data-files/svidb.xml')
         ];
         const parser = new XMLParser();
         for(const softwaredbFilename of softwaredbFilenames) {

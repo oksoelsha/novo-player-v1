@@ -20,7 +20,7 @@ class FileNode {
 
 export class FileHunterService implements UpdateListerner {
 
-    private allFilesPath = path.join(__dirname, 'extra/file-hunter-allfiles.txt');
+    private allFilesPath = path.join(__dirname, 'data-files/file-hunter-allfiles.txt');
     private readonly gamesRoot = 'Games\\';
     private readonly includedFolders = new Set<string>();
     private games = new Map<string, FileNode>();

@@ -6,7 +6,7 @@ import { EnvironmentService } from './EnvironmentService';
 
 export class ColecoExtraDataService implements UpdateListerner {
 
-    private colecoExtraDataPathInBundle = path.join(__dirname, 'extra/coleco-extra-data.dat');
+    private colecoExtraDataPathInBundle = path.join(__dirname, 'data-files/coleco-extra-data.dat');
     private colecoExtraDataInfo: Map<string, string>;
     private colecoExtraDataVersion = '';
 
