@@ -1,13 +1,13 @@
 import * as cp from 'child_process';
 import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron';
-import { EventLogService } from './EventLogService';
-import { SettingsService } from './SettingsService';
-import { Event, EventSource, EventType } from '../src/app/models/event';
-import { Game } from '../src/app/models/game';
-import { GameUtils } from './utils/GameUtils';
-import { EmulatorUtils } from './utils/EmulatorUtils';
-import { ErrorLogService } from './ErrorLogService';
+import { EventLogService } from '../EventLogService';
+import { SettingsService } from '../SettingsService';
+import { Event, EventSource, EventType } from '../../src/app/models/event';
+import { Game } from '../../src/app/models/game';
+import { GameUtils } from '../utils/GameUtils';
+import { EmulatorUtils } from '../utils/EmulatorUtils';
+import { ErrorLogService } from '../ErrorLogService';
 
 export class BlueMSXLaunchService {
 
