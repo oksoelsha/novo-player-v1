@@ -8,10 +8,12 @@ import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryS
 import { GamesService } from './GamesService';
 import { HashService } from './HashService';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
+import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
 
 export class ScanService {
     private extraDataInfo: Map<string, ExtraData>;
     private colecoExtraDataInfo: Map<string, string>;
+    private spectravideoExtraDataInfo: Map<string, string>;
     private repositoryInfo: Map<string, RepositoryData>;
     private totalFilesToScan = 0;
     private scannedFilesCounter = 0;
@@ -21,12 +23,14 @@ export class ScanService {
         private win: BrowserWindow,
         private extraDataService: ExtraDataService,
         private colecoExtraDataService: ColecoExtraDataService,
+        private spectravideoExtraDataService: SpectravideoExtraDataService,
         private emulatorRepositoryService: EmulatorRepositoryService,
         private gamesService: GamesService,
         private hashService: HashService) {
 
         this.extraDataInfo = extraDataService.getExtraDataInfo();
         this.colecoExtraDataInfo = colecoExtraDataService.getColecoExtraDataInfo();
+        this.spectravideoExtraDataInfo = spectravideoExtraDataService.getSpectravideoExtraDataInfo();
         this.repositoryInfo = emulatorRepositoryService.getRepositoryInfo();
     }
 
@@ -117,12 +121,17 @@ export class ScanService {
                     game.setGenre1(extraData.genre1);
                     game.setGenre2(extraData.genre2);
                 } else {
-                    // attempt with Coleco data
+                    // Attempt with other emulators data
+                    // Will need to do these checks differently if there are more emulators
                     const colecoScreenshot = this.colecoExtraDataInfo.get(data.hash);
                     if (colecoScreenshot != null) {
                         game.setColecoScreenshot(colecoScreenshot);
+                    } else {
+                        const spectravideoScreenshot = this.spectravideoExtraDataInfo.get(data.hash);
+                        if (spectravideoScreenshot != null) {
+                            game.setSpectravideoScreenshot(spectravideoScreenshot);
+                        }
                     }
-                    // we can add else conditions here in the future for other systems' screenshots
                 }
 
                 this.gamesService.saveGameFromScan(game).then((success:boolean) => {

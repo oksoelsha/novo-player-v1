@@ -156,6 +156,8 @@
     "gearcolecopathtooltip": "Папка, в которой находится Gearcoleco",
     "colecoscreenshotspath": "Путь к скриншотам Coleco",
     "colecoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Coleco",
+    "spectravideoscreenshotspath": "Путь к скриншотам Spectravideo",
+    "spectravideoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Spectravideo",
     "language": "Язык",
     "systemdefault": "Системный по умолчанию",
     "confirmation": "Подтверждение",

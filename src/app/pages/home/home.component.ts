@@ -137,6 +137,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   displayMode: string;
   screenshotsPath: string;
   colecoScreenshotsPath: string;
+  spectravideoScreenshotsPath: string;
   selectedPid = 0;
   showFileHunterGames = false;
   savedFilters: any[] = [];
@@ -357,6 +358,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.settingsService.getSettings().then((settings: Settings) => {
       this.screenshotsPath = this.adjustScreenshotsPath(settings.screenshotsPath);
       this.colecoScreenshotsPath = this.adjustScreenshotsPath(settings.colecoScreenshotsPath);
+      this.spectravideoScreenshotsPath = this.adjustScreenshotsPath(settings.spectravideoScreenshotsPath);
 
       if (sessionStorage.getItem('displayMode') != null) {
         this.displayMode = sessionStorage.getItem('displayMode');
@@ -1004,14 +1006,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private adjustScreenshotsPath(pathFromSettings: string): string {
     let adjustedPath: string;
-    if (pathFromSettings.indexOf('\\') > -1) {
-      // this is for Windows
-      adjustedPath = pathFromSettings.replace(/\\/g, '/').substring(2);
-    } else {
-      adjustedPath = pathFromSettings;
-    }
-    if (!adjustedPath.endsWith('/')) {
-      adjustedPath = adjustedPath + '/';
+    if (pathFromSettings) {
+      if (pathFromSettings.indexOf('\\') > -1) {
+        // this is for Windows
+        adjustedPath = pathFromSettings.replace(/\\/g, '/').substring(2);
+      } else {
+        adjustedPath = pathFromSettings;
+      }
+      if (!adjustedPath.endsWith('/')) {
+        adjustedPath = adjustedPath + '/';
+      }
     }
     return adjustedPath;
   }

@@ -156,6 +156,8 @@
     "gearcolecopathtooltip": "La carpeta en la que se encuentra Gearcoleco",
     "colecoscreenshotspath": "Ruta de capturas de pantalla de Coleco",
     "colecoscreenshotspathtooltip": "La carpeta en la que se encuentran las capturas de pantalla opcionales de Coleco",
+    "spectravideoscreenshotspath": "Ruta de capturas de pantalla de Spectravideo",
+    "spectravideoscreenshotspathtooltip": "La carpeta en la que se encuentran las capturas de pantalla opcionales de Spectravideo",
     "language": "Idioma",
     "systemdefault": "Predeterminada del sistema",
     "confirmation": "Confirmación",

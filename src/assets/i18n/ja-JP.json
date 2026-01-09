@@ -156,6 +156,8 @@
     "gearcolecopathtooltip": "Gearcolecoがあるフォルダ",
     "colecoscreenshotspath": "Coleco スクリーンショットパス",
     "colecoscreenshotspathtooltip": "オプションのColecoスクリーンショットが保存されるフォルダ",
+    "spectravideoscreenshotspath": "Spectravideo スクリーンショットパス",
+    "spectravideoscreenshotspathtooltip": "オプションのSpectravideoスクリーンショットが保存されるフォルダ",
     "language": "言語",
     "systemdefault": "システムの既定値",
     "confirmation": "確認",

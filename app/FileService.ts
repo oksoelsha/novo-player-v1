@@ -28,8 +28,8 @@ export class FilesService {
             this.openFileSystemDialog(options);
         });
 
-        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot) => {
-            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot);
+        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot, spectravideoScreenshot) => {
+            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot, spectravideoScreenshot);
             this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
         });
 
@@ -97,52 +97,20 @@ export class FilesService {
         });
     }
 
-    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string, colecoScreenshot: string): GameSecondaryData {
+    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string, colecoScreenshot: string,
+        spectravideoScreenshot: string): GameSecondaryData {
 
-        let screenshotsPath1: string;
-        let data1: string;
-        let screenshotsPath2: string;
-        let data2: string;
-
+        let screenshotsData: any;
         if (colecoScreenshot) {
-            screenshotsPath1 = path.join(this.settingsService.getSettings().colecoScreenshotsPath, colecoScreenshot + '_a.png');
-            try {
-                data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
-            } catch (err) {
-                // ignore
-            }
-            if (data1) {
-                screenshotsPath2 = path.join(this.settingsService.getSettings().colecoScreenshotsPath, colecoScreenshot + '_b.png');                
-                try {
-                    data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
-                } catch (err) {
-                    // ignore
-                }
-            }
+            screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().colecoScreenshotsPath,
+                colecoScreenshot);
+        } else if (spectravideoScreenshot) {
+            screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().spectravideoScreenshotsPath,
+                spectravideoScreenshot);
         } else {
             // Now assume this is an MSX game
-            if (suffix == null) {
-                screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a.png');
-            } else {
-                screenshotsPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a' + suffix + '.png');
-            }
-            try {
-                data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
-            } catch (err) {
-                // ignore
-            }
-            if (data1) {
-                if (suffix == null) {
-                    screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b.png');
-                } else {
-                    screenshotsPath2 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'b' + suffix + '.png');
-                }
-                try {
-                    data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
-                } catch (err) {
-                    // ignore
-                }
-            }
+            screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath, sha1Code,
+                genMsxId, suffix);
         }
 
         const musicFiles = this.getMusicFiles(genMsxId);
@@ -152,7 +120,58 @@ export class FilesService {
             // so we replace the backslashes and remove the drive name
             moreScreenshots = moreScreenshots.map(m => m.replace(/\\/g, '/').substring(2));
         }
-        return new GameSecondaryData(data1, data2, musicFiles, moreScreenshots);
+        return new GameSecondaryData(screenshotsData.data1, screenshotsData.data2, musicFiles, moreScreenshots);
+    }
+
+    private getMSXScreenshotsData(screenshotsPath: string, screenshotFile: string, genMsxId: number, suffix: string): any {
+        let screenshotPath1: string;
+        let data1: string;
+        let screenshotPath2: string;
+        let data2: string;
+
+        if (suffix == null) {
+            screenshotPath1 = path.join(screenshotsPath, genMsxId + 'a.png');
+        } else {
+            screenshotPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a' + suffix + '.png');
+        }
+        try {
+            data1 = this.imageDataPrefix + fs.readFileSync(screenshotPath1).toString('base64');
+        } catch (err) {
+            // ignore
+        }
+        if (data1) {
+            if (suffix == null) {
+                screenshotPath2 = path.join(screenshotsPath, genMsxId + 'b.png');
+            } else {
+                screenshotPath2 = path.join(screenshotsPath, genMsxId + 'b' + suffix + '.png');
+            }
+            try {
+                data2 = this.imageDataPrefix + fs.readFileSync(screenshotPath2).toString('base64');
+            } catch (err) {
+                // ignore
+            }
+        }
+        return { data1, data2 };
+    }
+
+    private getOtherEmulatorsScreenshotsData(screenshotPath: string, screenshotFile: string): any {
+        const screenshotsPath1 = path.join(screenshotPath, screenshotFile + '_a.png');
+        let data1: string;
+        let data2: string;
+        try {
+            data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
+        } catch (err) {
+            // ignore
+        }
+        if (data1) {
+            const screenshotsPath2 = path.join(screenshotPath, screenshotFile + '_b.png');                
+            try {
+                data2 = this.imageDataPrefix + fs.readFileSync(screenshotsPath2).toString('base64');
+            } catch (err) {
+                // ignore
+            }
+        }
+        return { data1, data2 };
     }
 
     private getMusicFiles(genMsxId: number): string[] {

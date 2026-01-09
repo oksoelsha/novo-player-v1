@@ -29,6 +29,7 @@ import { OpenMSXSetupsService } from './OpenMSXSetupsService';
 import { FiltersService } from './FiltersService';
 import { GearcolecoLaunchService } from './GearcolecoLaunchService';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
+import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
 
 let win: BrowserWindow = null;
 
@@ -62,7 +63,8 @@ function initializeServices() {
   const environmentService = new EnvironmentService();
 
   const extraDataService = new ExtraDataService(win, environmentService);
-  const colecoExtraDataService = new ColecoExtraDataService(win, environmentService);
+  const colecoExtraDataService = new ColecoExtraDataService();
+  const spectravideoExtraDataService = new SpectravideoExtraDataService();
 
   const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
 
@@ -72,7 +74,8 @@ function initializeServices() {
   // the one-time upgrade - the last service in this case is GamesService
   new FileHunterService(win, settingsService, environmentService);
 
-  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService, colecoExtraDataService);
+  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService,
+    colecoExtraDataService, spectravideoExtraDataService);
 
   new FilesService(win, settingsService);
 
@@ -105,8 +108,8 @@ function initializeServices() {
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
-    const scanService = new ScanService(win, extraDataService, colecoExtraDataService, emulatorRepositoryService,
-      gamesService, hashService);
+    const scanService = new ScanService(win, extraDataService, colecoExtraDataService, spectravideoExtraDataService, 
+      emulatorRepositoryService, gamesService, hashService);
     scanService.start(directories, listing, machine);
   });
 

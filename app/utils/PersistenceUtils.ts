@@ -25,6 +25,7 @@ export class PersistenceUtils {
         'genre2',
         'screenshotSuffix',
         'colecoScreenshot',
+        'spectravideoScreenshot',
         'listing',
         'fddMode',
         'inputDevice',

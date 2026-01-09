@@ -32,6 +32,7 @@ export class Game {
     genre2: number;
     screenshotSuffix: string;
     colecoScreenshot: string;
+    spectravideoScreenshot: string;
 
     listing: string;
 
@@ -161,6 +162,10 @@ export class Game {
 
     setColecoScreenshot(colecoScreenshot: string) {
         this.colecoScreenshot = colecoScreenshot;
+    }
+
+    setSpectravideoScreenshot(spectravideoScreenshot: string) {
+        this.spectravideoScreenshot = spectravideoScreenshot;
     }
 
     setGenerations(generations: number) {

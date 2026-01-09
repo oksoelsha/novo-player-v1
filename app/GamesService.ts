@@ -12,6 +12,7 @@ import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
 import { GameUtils } from './utils/GameUtils';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
+import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
 
 export class GamesService {
 
@@ -20,7 +21,7 @@ export class GamesService {
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
         private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService,
-        private colecoExtraDataService: ColecoExtraDataService) {
+        private colecoExtraDataService: ColecoExtraDataService, private spectravideoExtraDataService: SpectravideoExtraDataService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
         this.init();
     }
@@ -427,11 +428,19 @@ export class GamesService {
             gameDO.sounds = 0;
             gameDO.genre1 = 0;
             gameDO.genre2 = 0;
+
             const colecoExtraDataInfo = this.colecoExtraDataService.getColecoExtraDataInfo();
             const colecoScreenshot = colecoExtraDataInfo.get(gameDO._id)
             if (colecoScreenshot !== null) {
                 gameDO.colecoScreenshot = colecoScreenshot;
                 updated = true;
+            } else {
+                const spectravideoExtraDataInfo = this.spectravideoExtraDataService.getSpectravideoExtraDataInfo();
+                const spectravideoScreenshot = spectravideoExtraDataInfo.get(gameDO._id)
+                if (spectravideoScreenshot !== null) {
+                    gameDO.spectravideoScreenshot = spectravideoScreenshot;
+                    updated = true;
+                }
             }
         } else {
             gameDO.generationMSXId = extraData.generationMSXID;

@@ -156,6 +156,8 @@
     "gearcolecopathtooltip": "Folder where Gearcoleco is",
     "colecoscreenshotspath": "Coleco Screenshots Path",
     "colecoscreenshotspathtooltip": "Folder where optional Coleco screenshots are",
+    "spectravideoscreenshotspath": "Spectravideo Screenshots Path",
+    "spectravideoscreenshotspathtooltip": "Folder where optional Spectravideo screenshots are",
     "language": "Language",
     "systemdefault": "System Default",
     "confirmation": "Confirmation",

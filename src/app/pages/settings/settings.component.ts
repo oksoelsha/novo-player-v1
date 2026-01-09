@@ -31,6 +31,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   emuliciousParams = '';
   gearcolecoPath = '';
   colecoScreenshotsPath = '';
+  spectravideoScreenshotsPath = '';
   news = false;
   submitDisabled = true;
   listings: string[] = [];
@@ -70,7 +71,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       self.emuliciousPath = settings.emuliciousPath;
       self.emuliciousParams = settings.emuliciousParams;
       self.gearcolecoPath = settings.gearcolecoPath;
-      self.colecoScreenshotsPath = settings.colecoScreenshotsPath
+      self.colecoScreenshotsPath = settings.colecoScreenshotsPath;
+      self.spectravideoScreenshotsPath = settings.spectravideoScreenshotsPath;
       self.setSelectedLanguage(settings);
       self.news = settings.enableNews;
       self.setSelectedDisplayMode(settings);
@@ -125,7 +127,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
       this.languageReverseMap.get(this.language), form.value.news, this.displayModeReverseMap.get(this.displayMode),
       form.value['emulicious-path'], this.emuliciousParams, form.value.fileHunterGames, form.value['gearcoleco-path'],
-      form.value['coleco-screenshots-path']);
+      form.value['coleco-screenshots-path'], form.value['spectravideo-screenshots-path']);
     this.settingsService.saveSettings(settings);
     this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
       this.setSelectedLanguage(settings);

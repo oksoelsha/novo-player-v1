@@ -188,7 +188,7 @@
           <tr *ngFor="let game of games" (click)="processClickOnGame($event, game)" id="{{ game.sha1Code }}"
             (contextmenu)="onContextMenu($event, game)">
             <td class="images-view-screenshot">
-              <img [src]="game | screenshotFilename : screenshotsPath : colecoScreenshotsPath"
+              <img [src]="game | screenshotFilename : screenshotsPath : colecoScreenshotsPath : spectravideoScreenshotsPath"
                 onerror="this.onerror=null; this.src='assets/images/noscrsht.png'" draggable="false">
             </td>
             <td class="ps-2 images-view-data">
