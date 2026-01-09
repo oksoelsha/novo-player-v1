@@ -15,6 +15,8 @@ export class BlueMSXUtils {
         'MSXturboR',
         'COL - ColecoVision',
         'COL - ColecoVision w Super Game Module',
+        'SVI - Spectravideo SVI-318',
+        'SVI - Spectravideo SVI-328',
         'SEGA - SG-1000'
       ];
       const romTypes = [
