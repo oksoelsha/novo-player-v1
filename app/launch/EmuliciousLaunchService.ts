@@ -40,7 +40,9 @@ export class EmuliciousLaunchService {
         });
 
         process.on('close', (error: number | null) => {
-            if (error) {
+            if (error && errorMessage) {
+                // Emulicious process exits normally with code 259 for some reason, but there doesn't seem to be any error message.
+                // Check the error message reported from the error event to see if there's really an error.
                 this.errorLogService.logError('Emulicious:', errorMessage);
             }
             self.win.webContents.send('launchGameOnEmuliciousResponse' + time, error !== 0 ? errorMessage : null);
