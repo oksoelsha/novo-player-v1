@@ -254,7 +254,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (listingsDropdownArray.length === 1) {
           listingsDropdownArray[0].open();
         }
-      } else if (this.ctrlOrCommandKey(event) && (event.key === 'q' || event.key === 'Q')) {
+      } else if (event.ctrlKey && (event.key === 'q' || event.key === 'Q')) {
+        this.resetAllFilters();
+      } else if (event.metaKey && (event.key === 'y' || event.key === 'Y')) {
         this.resetAllFilters();
       } else if (this.ctrlOrCommandKey(event) && (event.key === 'z' || event.key === 'Z')) {
         this.undo();
