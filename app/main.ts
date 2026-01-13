@@ -4,7 +4,6 @@ import * as path from 'path';
 import * as url from 'url';
 import { BackupsService } from './BackupsService';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
-import { DownloadService } from './DownloadService';
 import { EmulatorHardwareService } from './EmulatorHardwareService';
 import { EmulatorRepositoryService } from './EmulatorRepositoryService';
 import { EnvironmentService } from './EnvironmentService';
@@ -99,8 +98,6 @@ function initializeServices() {
   new NewsService(win, errorLogService);
 
   new GamePasswordsService(win);
-
-  new DownloadService(win, extraDataService, gamesService, errorLogService);
 
   new OpenMSXSetupsService(win);
 

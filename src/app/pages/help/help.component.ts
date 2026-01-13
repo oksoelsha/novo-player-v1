@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { VersionsService } from '../../services/versions.service';
-import { DownloadService } from '../../services/download.service';
 import { VersionMatchIndicatorComponent } from './version-match-indicator/version-match-indicator.component';
 import { WindowService } from '../../services/window.service';
 
@@ -21,9 +20,7 @@ export class HelpComponent implements OnInit {
   colecoScreenshotsVersions: Promise<any>;
   spectravideoScreenshotsVersions: Promise<any>;
 
-  downloadNewExtraDataFailed = false;
-
-  constructor(private versionsService: VersionsService, private downloadService: DownloadService, private windowService: WindowService) { }
+  constructor(private versionsService: VersionsService, private windowService: WindowService) { }
 
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
@@ -59,14 +56,5 @@ export class HelpComponent implements OnInit {
       this.versionsService.getSpectravideoScreenshotsVersion(),
       versionsOnServer.catch(error => error)
     ]);
-  }
-
-  downloadNewExtraData() {
-    this.extraDataVersionIndicator.indicateDownloadStart();
-    this.downloadService.downloadNewExtraData().then(() => {
-      this.extraDataVersionIndicator.indicateDownloadDone();
-    }).catch(error => {
-      this.downloadNewExtraDataFailed = true;
-    });
   }
 }
