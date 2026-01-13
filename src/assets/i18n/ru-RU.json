@@ -158,6 +158,8 @@
     "colecoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Coleco",
     "spectravideoscreenshotspath": "Путь к скриншотам Spectravideo",
     "spectravideoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Spectravideo",
+    "segascreenshotspath": "Путь к скриншотам Sega",
+    "segascreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Sega",
     "language": "Язык",
     "systemdefault": "Системный по умолчанию",
     "confirmation": "Подтверждение",

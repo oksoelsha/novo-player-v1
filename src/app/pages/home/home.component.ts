@@ -138,6 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   screenshotsPath: string;
   colecoScreenshotsPath: string;
   spectravideoScreenshotsPath: string;
+  segaScreenshotsPath: string;
   selectedPid = 0;
   showFileHunterGames = false;
   savedFilters: any[] = [];
@@ -361,6 +362,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.screenshotsPath = this.adjustScreenshotsPath(settings.screenshotsPath);
       this.colecoScreenshotsPath = this.adjustScreenshotsPath(settings.colecoScreenshotsPath);
       this.spectravideoScreenshotsPath = this.adjustScreenshotsPath(settings.spectravideoScreenshotsPath);
+      this.segaScreenshotsPath = this.adjustScreenshotsPath(settings.segaScreenshotsPath);
 
       if (sessionStorage.getItem('displayMode') != null) {
         this.displayMode = sessionStorage.getItem('displayMode');

@@ -28,8 +28,10 @@ export class FilesService {
             this.openFileSystemDialog(options);
         });
 
-        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot, spectravideoScreenshot) => {
-            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot, spectravideoScreenshot);
+        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot, spectravideoScreenshot,
+            segaScreenshot) => {
+            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot, spectravideoScreenshot,
+                segaScreenshot);
             this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
         });
 
@@ -108,7 +110,7 @@ export class FilesService {
     }
 
     private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string, colecoScreenshot: string,
-        spectravideoScreenshot: string): GameSecondaryData {
+        spectravideoScreenshot: string, segaScreenshot: string): GameSecondaryData {
 
         let screenshotsData: any;
         if (colecoScreenshot) {
@@ -117,6 +119,9 @@ export class FilesService {
         } else if (spectravideoScreenshot) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().spectravideoScreenshotsPath,
                 spectravideoScreenshot);
+        } else if (segaScreenshot) {
+            screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().segaScreenshotsPath,
+                segaScreenshot);
         } else {
             // Now assume this is an MSX game
             screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath, sha1Code,

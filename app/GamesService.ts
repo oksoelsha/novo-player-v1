@@ -13,6 +13,7 @@ import { EnvironmentService } from './EnvironmentService';
 import { GameUtils } from './utils/GameUtils';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
 import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
+import { SegaExtraDataService } from './SegaExtraDataService';
 
 export class GamesService {
 
@@ -21,7 +22,8 @@ export class GamesService {
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
         private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService,
-        private colecoExtraDataService: ColecoExtraDataService, private spectravideoExtraDataService: SpectravideoExtraDataService) {
+        private colecoExtraDataService: ColecoExtraDataService, private spectravideoExtraDataService: SpectravideoExtraDataService,
+        private segaExtraDataService: SegaExtraDataService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
         this.init();
     }
@@ -440,6 +442,14 @@ export class GamesService {
                 if (spectravideoScreenshot !== null) {
                     gameDO.spectravideoScreenshot = spectravideoScreenshot;
                     updated = true;
+                } else {
+                    // UPDATE-----
+                    const segaExtraDataInfo = this.segaExtraDataService.getSegaExtraDataInfo();
+                    const segaScreenshot = segaExtraDataInfo.get(gameDO._id)
+                    if (segaScreenshot !== null) {
+                        gameDO.segaScreenshot = segaScreenshot;
+                        updated = true;
+                    }
                 }
             }
         } else {

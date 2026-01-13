@@ -254,7 +254,7 @@ export class GamesService {
         resolve(arg);
       });
       this.ipc.send('getSecondaryData', game.sha1Code, game.generationMSXId, game.screenshotSuffix, game.colecoScreenshot,
-        game.spectravideoScreenshot);
+        game.spectravideoScreenshot, game.segaScreenshot);
     });
   }
 

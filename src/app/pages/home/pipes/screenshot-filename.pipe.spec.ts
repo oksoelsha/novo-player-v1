@@ -14,22 +14,26 @@ describe('ScreenshotFilenamePipe', () => {
 
     const game1 = new Game('name1', '123', 10);
     game1.setGenerationMSXId(2);
-    expect(pipe.transform(game1, 'path/', null, null)).toEqual('path/2a.png');
+    expect(pipe.transform(game1, 'path/', null, null, null)).toEqual('path/2a.png');
 
     const game2 = new Game('name2', '234', 20);
     game2.setGenerationMSXId(3);
     game2.setScreenshotSuffix('s');
-    expect(pipe.transform(game2, 'path/', '', '')).toEqual('path/3as.png');
+    expect(pipe.transform(game2, 'path/', '', '', '')).toEqual('path/3as.png');
 
     const game3 = new Game('name3', '234', 30);
-    expect(pipe.transform(game3, 'path/', 'colecoPath/', 'spectravideoPath/')).toEqual('path/undefineda.png');
+    expect(pipe.transform(game3, 'path/', 'colecoPath/', 'spectravideoPath/', 'segaPath/')).toEqual('path/undefineda.png');
 
     const game4 = new Game('name4', '345', 50);
     game4.setColecoScreenshot('screenshot');
-    expect(pipe.transform(game4, 'path/', 'colecoPath/', 'spectravideoPath/')).toEqual('colecoPath/screenshot_a.png');
+    expect(pipe.transform(game4, 'path/', 'colecoPath/', 'spectravideoPath/', 'segaPath/')).toEqual('colecoPath/screenshot_a.png');
 
     const game5 = new Game('name5', '789', 60);
     game5.setSpectravideoScreenshot('screenshot');
-    expect(pipe.transform(game5, 'path/', 'colecoPath/', 'spectravideoPath/')).toEqual('spectravideoPath/screenshot_a.png');
+    expect(pipe.transform(game5, 'path/', 'colecoPath/', 'spectravideoPath/', 'segaPath/')).toEqual('spectravideoPath/screenshot_a.png');
+
+    const game6 = new Game('name6', '567', 70);
+    game6.setSegaScreenshot('screenshot');
+    expect(pipe.transform(game5, 'path/', 'colecoPath/', 'spectravideoPath/', 'segaPath/')).toEqual('spectravideoPath/screenshot_a.png');
   });
 });

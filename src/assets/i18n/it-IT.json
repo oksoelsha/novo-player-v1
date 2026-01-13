@@ -158,6 +158,8 @@
     "colecoscreenshotspathtooltip": "La cartella in cui si trovano gli screenshot opzionali di Coleco",
     "spectravideoscreenshotspath": "Percorso screenshot di Spectravideo",
     "spectravideoscreenshotspathtooltip": "La cartella in cui si trovano gli screenshot opzionali di Spectravideo",
+    "segascreenshotspath": "Percorso screenshot di Sega",
+    "segascreenshotspathtooltip": "La cartella in cui si trovano gli screenshot opzionali di Sega",
     "language": "Lingua",
     "systemdefault": "Predefinito del sistema",
     "confirmation": "Conferma",

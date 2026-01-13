@@ -158,6 +158,8 @@
     "colecoscreenshotspathtooltip": "Folder where optional Coleco screenshots are",
     "spectravideoscreenshotspath": "Spectravideo Screenshots Path",
     "spectravideoscreenshotspathtooltip": "Folder where optional Spectravideo screenshots are",
+    "segascreenshotspath": "Sega Screenshots Path",
+    "segascreenshotspathtooltip": "Folder where optional Sega screenshots are",
     "language": "Language",
     "systemdefault": "System Default",
     "confirmation": "Confirmation",

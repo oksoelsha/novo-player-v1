@@ -9,11 +9,13 @@ import { GamesService } from './GamesService';
 import { HashService } from './HashService';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
 import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
+import { SegaExtraDataService } from './SegaExtraDataService';
 
 export class ScanService {
     private extraDataInfo: Map<string, ExtraData>;
     private colecoExtraDataInfo: Map<string, string>;
     private spectravideoExtraDataInfo: Map<string, string>;
+    private segaExtraDataInfo: Map<string, string>;
     private repositoryInfo: Map<string, RepositoryData>;
     private totalFilesToScan = 0;
     private scannedFilesCounter = 0;
@@ -24,6 +26,7 @@ export class ScanService {
         private extraDataService: ExtraDataService,
         private colecoExtraDataService: ColecoExtraDataService,
         private spectravideoExtraDataService: SpectravideoExtraDataService,
+        private segaExtraDataService: SegaExtraDataService,
         private emulatorRepositoryService: EmulatorRepositoryService,
         private gamesService: GamesService,
         private hashService: HashService) {
@@ -31,6 +34,7 @@ export class ScanService {
         this.extraDataInfo = extraDataService.getExtraDataInfo();
         this.colecoExtraDataInfo = colecoExtraDataService.getColecoExtraDataInfo();
         this.spectravideoExtraDataInfo = spectravideoExtraDataService.getSpectravideoExtraDataInfo();
+        this.segaExtraDataInfo = segaExtraDataService.getSegaExtraDataInfo();
         this.repositoryInfo = emulatorRepositoryService.getRepositoryInfo();
     }
 
@@ -130,6 +134,11 @@ export class ScanService {
                         const spectravideoScreenshot = this.spectravideoExtraDataInfo.get(data.hash);
                         if (spectravideoScreenshot != null) {
                             game.setSpectravideoScreenshot(spectravideoScreenshot);
+                        } else {
+                            const segaScreenshot = this.segaExtraDataInfo.get(data.hash);
+                            if (segaScreenshot != null) {
+                                game.setSegaScreenshot(segaScreenshot);
+                            }
                         }
                     }
                 }

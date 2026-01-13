@@ -29,6 +29,7 @@ import { BlueMSXLaunchService } from './launch/BlueMSXLaunchService';
 import { EmuliciousLaunchService } from './launch/EmuliciousLaunchService';
 import { GearcolecoLaunchService } from './launch/GearcolecoLaunchService';
 import { OpenMSXLaunchService } from './launch/OpenMSXLaunchService';
+import { SegaExtraDataService } from './SegaExtraDataService';
 
 let win: BrowserWindow = null;
 
@@ -64,6 +65,7 @@ function initializeServices() {
   const extraDataService = new ExtraDataService(environmentService);
   const colecoExtraDataService = new ColecoExtraDataService();
   const spectravideoExtraDataService = new SpectravideoExtraDataService();
+  const segaExtraDataService = new SegaExtraDataService();
 
   const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
 
@@ -74,7 +76,7 @@ function initializeServices() {
   new FileHunterService(win, settingsService, environmentService);
 
   const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService,
-    colecoExtraDataService, spectravideoExtraDataService);
+    colecoExtraDataService, spectravideoExtraDataService, segaExtraDataService);
 
   new FilesService(win, settingsService);
 
@@ -106,7 +108,7 @@ function initializeServices() {
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
     const scanService = new ScanService(win, extraDataService, colecoExtraDataService, spectravideoExtraDataService, 
-      emulatorRepositoryService, gamesService, hashService);
+      segaExtraDataService, emulatorRepositoryService, gamesService, hashService);
     scanService.start(directories, listing, machine);
   });
 

@@ -158,6 +158,8 @@
     "colecoscreenshotspathtooltip": "선택적으로 Coleco 스크린샷을 찍을 수 있는 폴더입니다",
     "spectravideoscreenshotspath": "Spectravideo 스크린샷 경로",
     "spectravideoscreenshotspathtooltip": "선택적으로 Spectravideo 스크린샷을 찍을 수 있는 폴더입니다",
+    "segascreenshotspath": "Sega 스크린샷 경로",
+    "segascreenshotspathtooltip": "선택적으로 Sega 스크린샷을 찍을 수 있는 폴더입니다",
     "language": "언어",
     "systemdefault": "시스템 기본값",
     "confirmation": "확인",

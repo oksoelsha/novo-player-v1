@@ -158,6 +158,8 @@
     "colecoscreenshotspathtooltip": "Map waarin optionele Coleco-schermafbeeldingen worden opgeslagen",
     "spectravideoscreenshotspath": "Spectravideo schermafbeeldingen pad",
     "spectravideoscreenshotspathtooltip": "Map waarin optionele Spectravideo-schermafbeeldingen worden opgeslagen",
+    "segascreenshotspath": "Sega schermafbeeldingen pad",
+    "segascreenshotspathtooltip": "Map waarin optionele Sega-schermafbeeldingen worden opgeslagen",
     "language": "Taal",
     "systemdefault": "Systeemstandaard",
     "confirmation": "Bevestiging",

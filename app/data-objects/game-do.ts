@@ -25,6 +25,7 @@ export class GameDO {
     screenshotSuffix: string;
     colecoScreenshot: string;
     spectravideoScreenshot: string;
+    segaScreenshot: string;
 
     listing: string;
 

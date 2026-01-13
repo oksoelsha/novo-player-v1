@@ -26,6 +26,7 @@ export class PersistenceUtils {
         'screenshotSuffix',
         'colecoScreenshot',
         'spectravideoScreenshot',
+        'segaScreenshot',
         'listing',
         'fddMode',
         'inputDevice',

@@ -15,11 +15,12 @@ export class Settings {
     gearcolecoPath: string;
     colecoScreenshotsPath: string;
     spectravideoScreenshotsPath: string;
+    segaScreenshotsPath: string;
 
     constructor(openmsxPath: string, screenshotsPath: string, gameMusicPath: string, defaultListing: string, webmsxPath: string,
         bluemsxPath: string, bluemsxParams: string, language: string, enableNews: boolean, displayMode: string,
         emuliciousPath: string, emuliciousParams: string, enableFileHunterGames: boolean, gearcolecoPath: string,
-        colecoScreenshotsPath: string, spectravideoScreenshotsPath: string) {
+        colecoScreenshotsPath: string, spectravideoScreenshotsPath: string, segaScreenshotsPath: string) {
         this.openmsxPath = openmsxPath;
         this.screenshotsPath = screenshotsPath;
         this.gameMusicPath = gameMusicPath;
@@ -36,6 +37,7 @@ export class Settings {
         this.gearcolecoPath = gearcolecoPath;
         this.colecoScreenshotsPath = colecoScreenshotsPath;
         this.spectravideoScreenshotsPath = spectravideoScreenshotsPath;
+        this.segaScreenshotsPath = segaScreenshotsPath;
     }
 }
 
