@@ -89,9 +89,9 @@ export class OpenMSXLaunchService {
         ])
     ];
 
-    private enableGFX9000Script = path.join(__dirname, 'scripts/enable_gfx9000.tcl');
-    private soundDetectorScript = path.join(__dirname, 'scripts/detect_sound_chips.tcl');
-    private copyBasicListingScript = path.join(__dirname, 'scripts/copy_basic_listing.tcl');
+    private enableGFX9000Script = path.join(__dirname, '../scripts/enable_gfx9000.tcl');
+    private soundDetectorScript = path.join(__dirname, '../scripts/detect_sound_chips.tcl');
+    private copyBasicListingScript = path.join(__dirname, '../scripts/copy_basic_listing.tcl');
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private eventLogService: EventLogService,
         private hashService: HashService, private errorLogService: ErrorLogService, private connectionManager: OpenMSXConnectionManager,
