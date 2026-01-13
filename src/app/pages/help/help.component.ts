@@ -16,9 +16,10 @@ export class HelpComponent implements OnInit {
   readonly applicationVersion = '1.14';
 
   applicationVersions: Promise<any>;
-  extraDataVersions: Promise<any>;
   screenshotsVersions: Promise<any>;
   gameMusicVersions: Promise<any>;
+  colecoScreenshotsVersions: Promise<any>;
+  spectravideoScreenshotsVersions: Promise<any>;
 
   downloadNewExtraDataFailed = false;
 
@@ -39,11 +40,6 @@ export class HelpComponent implements OnInit {
       versionsOnServer.catch(error => error)
     ]);
 
-    this.extraDataVersions = Promise.all([
-      Promise.resolve(this.versionsService.getExtraDataVersion()),
-      versionsOnServer.catch(error => error)
-    ]);
-
     this.screenshotsVersions = Promise.all([
       this.versionsService.getScreenshotsVersion(),
       versionsOnServer.catch(error => error)
@@ -51,6 +47,16 @@ export class HelpComponent implements OnInit {
 
     this.gameMusicVersions = Promise.all([
       this.versionsService.getGameMusicVersion(),
+      versionsOnServer.catch(error => error)
+    ]);
+
+    this.colecoScreenshotsVersions = Promise.all([
+      this.versionsService.getColecoScreenshotsVersion(),
+      versionsOnServer.catch(error => error)
+    ]);
+
+    this.spectravideoScreenshotsVersions = Promise.all([
+      this.versionsService.getSpectravideoScreenshotsVersion(),
       versionsOnServer.catch(error => error)
     ]);
   }

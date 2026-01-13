@@ -64,6 +64,16 @@ export class FilesService {
             this.win.webContents.send('getGameMusicVersionResponse', gameMusicVersion);
         });
 
+        ipcMain.on('getColecoScreenshotsVersion', (event) => {
+            const colecoScreenshotVersion = this.getColecoScreenshotVersion();
+            this.win.webContents.send('getColecoScreenshotsVersionResponse', colecoScreenshotVersion);
+        });
+
+        ipcMain.on('getSpectravideoScreenshotsVersion', (event) => {
+            const spectravideoScreenshotVersion = this.getSpectravideoScreenshotVersion();
+            this.win.webContents.send('getSpectravideoScreenshotsVersionResponse', spectravideoScreenshotVersion);
+        });
+
         ipcMain.on('getFileGroup', (event, pid: number, medium: Medium, filename: string) => {
             if (fs.existsSync(filename)) {
                 const fileGroup = this.getFileGroup(medium, filename);
@@ -260,6 +270,14 @@ export class FilesService {
 
     private getGameMusicVersion(): string {
         return this.getVersionValue(this.settingsService.getSettings().gameMusicPath, 'version.txt');
+    }
+
+    private getColecoScreenshotVersion(): string {
+        return this.getVersionValue(this.settingsService.getSettings().colecoScreenshotsPath, '_version.txt');
+    }
+
+    private getSpectravideoScreenshotVersion(): string {
+        return this.getVersionValue(this.settingsService.getSettings().spectravideoScreenshotsPath, '_version.txt');
     }
 
     private getVersionValue(filepath: string, filename: string): string {

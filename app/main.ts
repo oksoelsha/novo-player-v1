@@ -62,7 +62,7 @@ function initializeServices() {
 
   const environmentService = new EnvironmentService();
 
-  const extraDataService = new ExtraDataService(win, environmentService);
+  const extraDataService = new ExtraDataService(environmentService);
   const colecoExtraDataService = new ColecoExtraDataService();
   const spectravideoExtraDataService = new SpectravideoExtraDataService();
 

@@ -11,15 +11,6 @@ export class VersionsService {
     this.ipc = window.require('electron').ipcRenderer;
   }
 
-  getExtraDataVersion(): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      this.ipc.once('getExtraDataVersionResponse', (event, arg) => {
-        resolve(arg);
-      });
-      this.ipc.send('getExtraDataVersion');
-    });
-  }
-
   getScreenshotsVersion(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('getScreenshotsVersionResponse', (event, arg) => {
@@ -35,6 +26,24 @@ export class VersionsService {
         resolve(arg);
       });
       this.ipc.send('getGameMusicVersion');
+    });
+  }
+
+  getColecoScreenshotsVersion(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('getColecoScreenshotsVersionResponse', (event, arg) => {
+        resolve(arg);
+      });
+      this.ipc.send('getColecoScreenshotsVersion');
+    });
+  }
+
+  getSpectravideoScreenshotsVersion(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('getSpectravideoScreenshotsVersionResponse', (event, arg) => {
+        resolve(arg);
+      });
+      this.ipc.send('getSpectravideoScreenshotsVersion');
     });
   }
 

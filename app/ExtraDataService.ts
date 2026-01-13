@@ -1,8 +1,6 @@
-import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import { UpdateListerner } from './UpdateListerner';
-import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
 
 export class ExtraDataService implements UpdateListerner {
@@ -11,7 +9,7 @@ export class ExtraDataService implements UpdateListerner {
     private extraDataInfo: Map<string, ExtraData>;
     private extraDataVersion = '';
 
-    constructor(private win: BrowserWindow, private environmentService: EnvironmentService) {
+    constructor(private environmentService: EnvironmentService) {
         this.init();
     }
 
@@ -23,18 +21,11 @@ export class ExtraDataService implements UpdateListerner {
         this.readExtraData();
     }
 
-    sendExtraDataVersion(): void {
-        this.win.webContents.send('getExtraDataVersionResponse', this.extraDataVersion);
-    }
-
     getExtraDataVersion(): string {
         return this.extraDataVersion;
     }
 
     private init(): void {
-        ipcMain.on('getExtraDataVersion', (event, arg) => {
-            this.sendExtraDataVersion();
-        });
         this.readExtraData();
     }
 
