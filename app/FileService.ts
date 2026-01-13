@@ -1,13 +1,14 @@
-import { BrowserWindow, ipcMain, dialog, shell } from 'electron';
-import * as path from 'path';
-import * as fs from 'fs';
-import { SettingsService } from './SettingsService';
-import { GameSecondaryData } from '../src/app/models/secondary-data';
 import * as cp from 'child_process';
-import { PlatformUtils } from './utils/PlatformUtils';
 import * as chokidar from 'chokidar';
-import { GameSavedState } from '../src/app/models/saved-state';
+import { BrowserWindow, dialog, ipcMain, shell } from 'electron';
+import * as fs from 'fs';
+import * as path from 'path';
+import { Game } from '../src/app/models/game';
 import { Medium } from '../src/app/models/medium';
+import { GameSavedState } from '../src/app/models/saved-state';
+import { GameSecondaryData } from '../src/app/models/secondary-data';
+import { SettingsService } from './SettingsService';
+import { PlatformUtils } from './utils/PlatformUtils';
 
 export class FilesService {
 
@@ -28,11 +29,9 @@ export class FilesService {
             this.openFileSystemDialog(options);
         });
 
-        ipcMain.on('getSecondaryData', (event, sha1Code, genMsxId, suffix, colecoScreenshot, spectravideoScreenshot,
-            segaScreenshot) => {
-            const secondaryData = this.getSecondaryData(genMsxId, suffix, sha1Code, colecoScreenshot, spectravideoScreenshot,
-                segaScreenshot);
-            this.win.webContents.send('getSecondaryDataResponse' + sha1Code, secondaryData);
+        ipcMain.on('getSecondaryData', (event, game: Game) => {
+            const secondaryData = this.getSecondaryData(game);
+            this.win.webContents.send('getSecondaryDataResponse' + game.sha1Code, secondaryData);
         });
 
         ipcMain.on('openFileExplorer', (event, file: string) => {
@@ -109,27 +108,25 @@ export class FilesService {
         });
     }
 
-    private getSecondaryData(genMsxId: number, suffix: string, sha1Code: string, colecoScreenshot: string,
-        spectravideoScreenshot: string, segaScreenshot: string): GameSecondaryData {
-
+    private getSecondaryData(game: Game): GameSecondaryData {
         let screenshotsData: any;
-        if (colecoScreenshot) {
+        if (game.colecoScreenshot) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().colecoScreenshotsPath,
-                colecoScreenshot);
-        } else if (spectravideoScreenshot) {
+                game.colecoScreenshot);
+        } else if (game.spectravideoScreenshot) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().spectravideoScreenshotsPath,
-                spectravideoScreenshot);
-        } else if (segaScreenshot) {
+                game.spectravideoScreenshot);
+        } else if (game.segaScreenshot) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().segaScreenshotsPath,
-                segaScreenshot);
+                game.segaScreenshot);
         } else {
             // Now assume this is an MSX game
-            screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath, sha1Code,
-                genMsxId, suffix);
+            screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath, game.sha1Code,
+                game.generationMSXId, game.screenshotSuffix);
         }
 
-        const musicFiles = this.getMusicFiles(genMsxId);
-        let moreScreenshots = this.getMoreScreenshots(genMsxId, sha1Code);
+        const musicFiles = this.getMusicFiles(game.generationMSXId);
+        let moreScreenshots = this.getMoreScreenshots(game.generationMSXId, game.sha1Code);
         if (PlatformUtils.isWindows()) {
             // Front end appends 'unsafe' to the image file path if it encounters Windows drive name
             // so we replace the backslashes and remove the drive name

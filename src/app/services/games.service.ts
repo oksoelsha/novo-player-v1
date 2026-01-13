@@ -253,8 +253,7 @@ export class GamesService {
       this.ipc.once('getSecondaryDataResponse' + game.sha1Code, (event, arg) => {
         resolve(arg);
       });
-      this.ipc.send('getSecondaryData', game.sha1Code, game.generationMSXId, game.screenshotSuffix, game.colecoScreenshot,
-        game.spectravideoScreenshot, game.segaScreenshot);
+      this.ipc.send('getSecondaryData', game);
     });
   }
 
