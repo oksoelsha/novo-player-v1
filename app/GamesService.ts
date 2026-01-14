@@ -6,7 +6,7 @@ import { Game } from '../src/app/models/game';
 import { Totals } from '../src/app/models/totals';
 import { GameDO } from './data-objects/game-do';
 import { EmulatorRepositoryService, RepositoryData } from './EmulatorRepositoryService';
-import { ExtraData, ExtraDataService } from './ExtraDataService';
+import { ExtraDataService } from './ExtraDataService';
 import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
@@ -14,6 +14,7 @@ import { GameUtils } from './utils/GameUtils';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
 import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
 import { SegaExtraDataService } from './SegaExtraDataService';
+import { ScreenshotsUtils } from './utils/ScreenshotsUtils';
 
 export class GamesService {
 
@@ -431,26 +432,8 @@ export class GamesService {
             gameDO.genre1 = 0;
             gameDO.genre2 = 0;
 
-            const colecoExtraDataInfo = this.colecoExtraDataService.getColecoExtraDataInfo();
-            const colecoScreenshot = colecoExtraDataInfo.get(gameDO._id)
-            if (colecoScreenshot !== null) {
-                gameDO.colecoScreenshot = colecoScreenshot;
+            if (this.findOtherScreenshot(gameDO)) {
                 updated = true;
-            } else {
-                const spectravideoExtraDataInfo = this.spectravideoExtraDataService.getSpectravideoExtraDataInfo();
-                const spectravideoScreenshot = spectravideoExtraDataInfo.get(gameDO._id)
-                if (spectravideoScreenshot !== null) {
-                    gameDO.spectravideoScreenshot = spectravideoScreenshot;
-                    updated = true;
-                } else {
-                    // UPDATE-----
-                    const segaExtraDataInfo = this.segaExtraDataService.getSegaExtraDataInfo();
-                    const segaScreenshot = segaExtraDataInfo.get(gameDO._id)
-                    if (segaScreenshot !== null) {
-                        gameDO.segaScreenshot = segaScreenshot;
-                        updated = true;
-                    }
-                }
             }
         } else {
             gameDO.generationMSXId = extraData.generationMSXID;
@@ -499,6 +482,16 @@ export class GamesService {
         this.populateGameWithOpenMSXRepositoryData(constructedGame, repositoryInfo);
 
         return constructedGame;
+    }
+
+    private findOtherScreenshot(gameDO: GameDO): boolean {
+        for (const lookup of ScreenshotsUtils.getScreenshotsData()) {
+            const screenshot = lookup.extraDataInfo.get(gameDO._id);
+            if (screenshot != null) {
+                gameDO[lookup.screenshotsField] = screenshot;
+                return true;
+            }
+        }
     }
 
     private cleanupGameDO(gameDO: GameDO) {

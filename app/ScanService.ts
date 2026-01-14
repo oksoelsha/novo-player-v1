@@ -10,6 +10,7 @@ import { HashService } from './HashService';
 import { ColecoExtraDataService } from './ColecoExtraDataService';
 import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
 import { SegaExtraDataService } from './SegaExtraDataService';
+import { ScreenshotsUtils } from './utils/ScreenshotsUtils';
 
 export class ScanService {
     private extraDataInfo: Map<string, ExtraData>;
@@ -125,22 +126,7 @@ export class ScanService {
                     game.setGenre1(extraData.genre1);
                     game.setGenre2(extraData.genre2);
                 } else {
-                    // Attempt with other emulators data
-                    // Will need to do these checks differently if there are more emulators
-                    const colecoScreenshot = this.colecoExtraDataInfo.get(data.hash);
-                    if (colecoScreenshot != null) {
-                        game.setColecoScreenshot(colecoScreenshot);
-                    } else {
-                        const spectravideoScreenshot = this.spectravideoExtraDataInfo.get(data.hash);
-                        if (spectravideoScreenshot != null) {
-                            game.setSpectravideoScreenshot(spectravideoScreenshot);
-                        } else {
-                            const segaScreenshot = this.segaExtraDataInfo.get(data.hash);
-                            if (segaScreenshot != null) {
-                                game.setSegaScreenshot(segaScreenshot);
-                            }
-                        }
-                    }
+                    this.findOtherScreenshot(game);
                 }
 
                 this.gamesService.saveGameFromScan(game).then((success:boolean) => {
@@ -186,6 +172,16 @@ export class ScanService {
             }
         } else {
             return FileTypeUtils.getFilenameWithoutExt(path.basename(file));
+        }
+    }
+
+    private findOtherScreenshot(game: Game): boolean {
+        for (const lookup of ScreenshotsUtils.getScreenshotsData()) {
+            const screenshot = lookup.extraDataInfo.get(game.sha1Code);
+            if (screenshot != null) {
+                game[lookup.screenshotsField] = screenshot;
+                return true;
+            }
         }
     }
 }
