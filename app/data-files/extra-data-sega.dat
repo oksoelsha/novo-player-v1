@@ -1,10 +1,11 @@
 -- Screenshots for Sega Games.
 --
--- List was generated initially from blueMSX's segadb file.
+-- List was generated initially from blueMSX's segadb file, and then updated with a few more entries.
 --
 -- Each game name must exactly match two screenshot filenames, one with _a suffix and the other with _b suffix.
 --
--- Screenshots were initially taken from https://thumbnails.libretro.com/, modified to fit Novo Player's screenshots size.
+-- Screenshots were initially taken from https://thumbnails.libretro.com/, modified to fit Novo Player's screenshots size,
+-- then a few more were added afterwards.
 --
 --	Jan 2026 Sam Elsharif - Version 1
 --
@@ -29,6 +30,8 @@ d45a230b3cbf2d2dcfe7b94691fc7f1a5d747625
 7101c42289815d7e0d04b523f8f0e833f2f089b3
 #Cabbage Patch Kids
 5c011f37f4fcbaa72167293a9917bb6af0e30b55
+#Castle, The
+2681786bffccf58b59410c331865d30a4d027087
 #Chack'n Pop
 08b5c1135f9678465ece6a886c948ce091637372
 75855a3148a57b102c15a436e7e4ffd1ab4808c3
@@ -77,6 +80,7 @@ daf36c050b0e507d2f2470050299a648716c9158
 ef746a242ffd4d624ea378b6d9f20a6bc206f859
 #Circus Charlie
 67ec5859d293d9236d21b71e63580b6a53b90244
+34899ad454a56826d53028bef8fed7f5d2c6a78a
 #Congo Bongo
 96dd55a63bae0abc666fe317d50612116100d7b1
 47aba6a295e5695db4c3aaa1dea8ad8ac961b5f9
@@ -106,32 +110,6 @@ f72b3e44309e7c2e447c46928ce795453102f717
 39a91b5ad6b139ca5d8ac60b78520210e84944bd
 51947fc0ae2bc3442b0fee2cccf2344b7a94a167
 a04ce8c70eddfac0adbf9489c0abbaaae613037c
-#FudeBrowser - BrMSX
-96c6fd49694e08beaf43c2fac7876c56491f9876
-#FudeBrowser - BrSMS
-b160f3a273bf9f675ba13f6a5a61c92c2b16bd36
-#FudeBrowser - Chrissy M Picture by Newo
-cfe16bd68f409de8c21631dc8fa63322ae959f5c
-#FudeBrowser - ExpoSALT Logo
-185575d35e32cd9280015a4b63a4b24c3179f220
-#FudeBrowser - Goatse Picture by Newo
-e77f199938a5a63a1a167a449a2891e694715f79
-#FudeBrowser - How Do They Do That With HTML
-8bd5fb07dff9548afa12a48a263e569036eddb7b
-#FudeBrowser - Jiraiya
-4aa7d2466c314be8881c88be5ed4abb0accac1b2
-#FudeBrowser - Never
-cf546c0a5e75c70c12ce0fb272766dd07562c956
-#FudeBrowser - Newo
-5ce20d2b6db811deafc83f8b42144fc1bc519efd
-#FudeBrowser - Sandy Style Picture by Newo
-3463d5fc43e15a045abd048c04acf4bdd9eab683
-#FudeBrowser - Shurato
-4a7aafb9059a701ec3ea4742169476371f75d9e5
-#FudeBrowser - Skybaby's SMS List
-09590758b33f704cc520d80ac28942a1558c0f05
-#FudeBrowser - Winnie Cooper
-d59897788ead1515667c9005f85736e121765acb
 #Girl's Garden
 0e08786587fb76909b3f9806ba1f5d57ea17728c
 94089be091af476c5628225e0262396faa5394f1
@@ -166,6 +144,10 @@ bf4218aebc07aa7179cc52853a55436db985b81e
 43d67e8c386012d0694f09a2fe31a46d32d39f17
 #Hyper Sports 2
 33072bafc25b83577886e91a75d0b6439a80374c
+#King & Balloon
+592d60e50a63eb8fba055e85c6ec04298be76ab9
+#King's Valley
+922d23895c12707b2fc382ea5cb769c5cb9b5755
 #Konami's Ping-Pong
 cba791acd9e0f46bfa6132645bf44027e100c68a
 #Lode Runner
@@ -198,15 +180,18 @@ bcb03afd3bbd5dadf00474eac44bb66a5df419cf
 543046650e07b10dbd2dca6f20bcafb9dd6dda77
 #Orguss
 c50b133dac95718e3a92a7ed45b6c7e83927abb0
+#Othello
+242c29989149b94ff27d59a94f067d0f1c84b4a7
+d0cd594ddb321f707ddba8a044fa3e9b906e720a
 #Pacar
 91fd213308b83bb1bda1dfc7e971e576caace291
 0833be2743608983012cab6e3bdd6fd56453114e
 5e89857a374cbf3efa32efb62d26973d46a856ae
-#Pachinko
-aeaa15155e7d4275880c35c866c45626daa4dab9
 #Pachinko II
 1dbc4babbbb377a1ff59a11e550a9b1b5e742b02
 ca0c66b4d48d6ade38e7f9093eea74ad090ecdb7
+#Pachinko
+aeaa15155e7d4275880c35c866c45626daa4dab9
 #Pitfall II - Lost Caverns
 356db6edcd337a06063957bd8cb27edeb7160f6c
 a14453650b6b2ef85e03b9637f08f691878acff4
@@ -240,8 +225,6 @@ b7eb254a014772a83829e1991dcd32396e8dd9cc
 9b093878f92ce8b918beaa44dcc8a41282f9f267
 #Serizawa Hachidan no Tsumeshogi
 c2d3882874a5a9b79a5dc9fdeb7af750bc52ca21
-#SG-1000 M2 Check Program
-35141a11fff42ff33b9154e030501656925d271c
 #Shinnyushain Tooru Kun
 83784e8248e2367546115382dac157ca8e6fe3ab
 e47e56be455d46c6cc5334895e54069a85da6c3b
@@ -251,6 +234,8 @@ a3b3f96685815d6ab0751e6442c7349d5b91d60c
 9a4e44ccd3cabd092aae59fcabda8f047609a675
 #Snake
 4984dbeab2f7f04bd05b1e357583e005677709d4
+fa80ee9927d21729188e20b46e0cccfd363d8b84
+a2b2c513fd162308d24658ed958b51683bce9404
 #Soukoban
 94e79b4a8b4a5fb77c837ea0a1e28bc5993d36af
 4216770efbaf49f832ff7a78fbc9cd2c8300f52c
@@ -263,10 +248,10 @@ bbffe62f8f851e3c4a62981437facb518054a8ab
 #Space Invaders
 a4e4b0c2967e39c4931fba8bc87428f296e461c5
 5a7904697ea8a360066ea8403793227021735969
-#Space Slalom
-798b5f3742cb3f95fd5977d9a2cb48ba2dc804e6
 #Space Mountain
 08d9360d6e92b081d99b7629f91d4fe482383a18
+#Space Slalom
+798b5f3742cb3f95fd5977d9a2cb48ba2dc804e6
 #Star Force
 d38875cb08de0ea892e5ef80f93987bbc445ef8f
 f3ddf97ddf0e40289e38d9105300f15ec7eab78c
