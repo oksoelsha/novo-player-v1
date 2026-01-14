@@ -75,6 +75,11 @@ export class FilesService {
             this.win.webContents.send('getSpectravideoScreenshotsVersionResponse', spectravideoScreenshotVersion);
         });
 
+        ipcMain.on('getSegaScreenshotsVersion', (event) => {
+            const segaScreenshotVersion = this.getSegaScreenshotVersion();
+            this.win.webContents.send('getSegaScreenshotsVersionResponse', segaScreenshotVersion);
+        });
+
         ipcMain.on('getFileGroup', (event, pid: number, medium: Medium, filename: string) => {
             if (fs.existsSync(filename)) {
                 const fileGroup = this.getFileGroup(medium, filename);
@@ -280,6 +285,10 @@ export class FilesService {
 
     private getSpectravideoScreenshotVersion(): string {
         return this.getVersionValue(this.settingsService.getSettings().spectravideoScreenshotsPath, '_version.txt');
+    }
+
+    private getSegaScreenshotVersion(): string {
+        return this.getVersionValue(this.settingsService.getSettings().segaScreenshotsPath, '_version.txt');
     }
 
     private getVersionValue(filepath: string, filename: string): string {

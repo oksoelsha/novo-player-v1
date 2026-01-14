@@ -47,6 +47,15 @@ export class VersionsService {
     });
   }
 
+  getSegaScreenshotsVersion(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.ipc.once('getSegaScreenshotsVersionResponse', (event, arg) => {
+        resolve(arg);
+      });
+      this.ipc.send('getSegaScreenshotsVersion');
+    });
+  }
+
   async getVersionsOnServer(): Promise<Map<string, string>> {
     const versions = await this.getScreenshotsVersionOnServer();
     const moreVersions = await this.getNovoVersionsOnServer();

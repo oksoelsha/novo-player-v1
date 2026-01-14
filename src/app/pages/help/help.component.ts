@@ -19,6 +19,7 @@ export class HelpComponent implements OnInit {
   gameMusicVersions: Promise<any>;
   colecoScreenshotsVersions: Promise<any>;
   spectravideoScreenshotsVersions: Promise<any>;
+  segaScreenshotsVersions: Promise<any>;
 
   constructor(private versionsService: VersionsService, private windowService: WindowService) { }
 
@@ -54,6 +55,11 @@ export class HelpComponent implements OnInit {
 
     this.spectravideoScreenshotsVersions = Promise.all([
       this.versionsService.getSpectravideoScreenshotsVersion(),
+      versionsOnServer.catch(error => error)
+    ]);
+
+    this.segaScreenshotsVersions = Promise.all([
+      this.versionsService.getSegaScreenshotsVersion(),
       versionsOnServer.catch(error => error)
     ]);
   }
