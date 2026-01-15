@@ -154,6 +154,7 @@
     "emuliciousparamstooltip": "Argumentos adicionais a serem usados ao lançar Emulicious (por exemplo, -set System=MSX)",
     "gearcolecopath": "Caminho de Gearcoleco",
     "gearcolecopathtooltip": "A pasta onde o Gearcoleco está localizado",
+    "othersystemsgamescreenshots": "Capturas de tela para outros sistemas",
     "colecoscreenshotspath": "Caminho de capturas de tela de Coleco",
     "colecoscreenshotspathtooltip": "A pasta na qual as capturas de tela opcionais de Coleco estão localizadas",
     "spectravideoscreenshotspath": "Caminho de capturas de tela de Spectravideo",

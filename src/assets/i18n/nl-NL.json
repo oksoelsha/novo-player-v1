@@ -154,6 +154,7 @@
     "emuliciousparamstooltip": "Extra argumenten om te gebruiken bij het starten van Emulicious (bijv. -set System=MSX)",
     "gearcolecopath": "Gearcoleco-pad",
     "gearcolecopathtooltip": "Map met Gearcoleco",
+    "othersystemsgamescreenshots": "Schermafbeeldingen voor andere systemen",
     "colecoscreenshotspath": "Coleco schermafbeeldingen pad",
     "colecoscreenshotspathtooltip": "Map waarin optionele Coleco-schermafbeeldingen worden opgeslagen",
     "spectravideoscreenshotspath": "Spectravideo schermafbeeldingen pad",

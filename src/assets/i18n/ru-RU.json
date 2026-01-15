@@ -154,6 +154,7 @@
     "emuliciousparamstooltip": "Дополнительные аргументы для использования при запуске Emulicious (например -set System=MSX)",
     "gearcolecopath": "Путь Gearcoleco",
     "gearcolecopathtooltip": "Папка, в которой находится Gearcoleco",
+    "othersystemsgamescreenshots": "Скриншоты для других систем",
     "colecoscreenshotspath": "Путь к скриншотам Coleco",
     "colecoscreenshotspathtooltip": "Папка, где находятся необязательные скриншоты Coleco",
     "spectravideoscreenshotspath": "Путь к скриншотам Spectravideo",

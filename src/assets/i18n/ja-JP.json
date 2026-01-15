@@ -154,6 +154,7 @@
     "emuliciousparamstooltip": "Emuliciousを起動するときに使用する追加の引数(例:-set System=MSX)",
     "gearcolecopath": "Gearcoleco のパス",
     "gearcolecopathtooltip": "Gearcolecoがあるフォルダ",
+    "othersystemsgamescreenshots": "他のシステムのスクリーンショット",
     "colecoscreenshotspath": "Coleco スクリーンショットパス",
     "colecoscreenshotspathtooltip": "オプションのColecoスクリーンショットが保存されるフォルダ",
     "spectravideoscreenshotspath": "Spectravideo スクリーンショットパス",
