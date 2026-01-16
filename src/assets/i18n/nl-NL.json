@@ -111,7 +111,7 @@
     "more": "Meer",
     "moredetails": "Meer details",
     "switchtolist": "Schakel over naar de lijstmodus",
-    "switchtoscreenshots": "Schakel over naar de schermafbeeldingsmodus",
+    "switchtoscreenshots": "Schakel over naar de miniaturen",
     "cannotstartopenmsxsessionmanagement": "Kan OpenMSX-sessiebeheer niet starten voor meerdere actieve exemplaren van een spel. Ga naar het dashboard"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "Lijst",
-    "screenshots": "Schermafbeeldingen"
+    "screenshots": "Miniaturen"
   },
   "filebrowser": {
     "romimages": "Afbeeldingen op ROM",

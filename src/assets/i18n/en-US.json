@@ -111,7 +111,7 @@
     "more": "More",
     "moredetails": "More details",
     "switchtolist": "Switch to list",
-    "switchtoscreenshots": "Switch to screenshots",
+    "switchtoscreenshots": "Switch to thumbnails",
     "cannotstartopenmsxsessionmanagement": "Cannot start OpenMSX session management for multiple running instances of a game. Go to the dashboard"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "List",
-    "screenshots": "Screenshots"
+    "screenshots": "Thumbnails"
   },
   "filebrowser": {
     "romimages": "ROM Images",

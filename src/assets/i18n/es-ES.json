@@ -111,7 +111,7 @@
     "more": "Más",
     "moredetails": "Más detalles",
     "switchtolist": "Cambiar a lista",
-    "switchtoscreenshots": "Cambiar a capturas de pantalla",
+    "switchtoscreenshots": "Cambiar a miniaturas",
     "cannotstartopenmsxsessionmanagement": "No se puede iniciar la gestión de sesiones de openMSX para varias instancias de un juego. Vaya al panel de información"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "Lista",
-    "screenshots": "Capturas de pantalla"
+    "screenshots": "Miniaturas"
   },
   "filebrowser": {
     "romimages": "Imágenes de ROM",

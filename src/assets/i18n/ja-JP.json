@@ -111,7 +111,7 @@
     "more": "もっと",
     "moredetails": "さらなるデータ",
     "switchtolist": "リストモードに切り替えます",
-    "switchtoscreenshots": "スクリーンショットモードに切り替えます",
+    "switchtoscreenshots": "サムネイルモードに切り替えます",
     "cannotstartopenmsxsessionmanagement": "ゲームの複数の実行インスタンスに対して OpenMSX セッション管理を開始できません。ダッシュボードに移動します"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "リスト",
-    "screenshots": "スクリーンショット"
+    "screenshots": "サムネイル"
   },
   "filebrowser": {
     "romimages": "ロムイメージ",

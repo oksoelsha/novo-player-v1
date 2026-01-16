@@ -111,7 +111,7 @@
     "more": "Più",
     "moredetails": "Più dettagli",
     "switchtolist": "Passa alla modalità elenco",
-    "switchtoscreenshots": "Passa alla modalità screenshot",
+    "switchtoscreenshots": "Passa alla modalità miniature",
     "cannotstartopenmsxsessionmanagement": "Impossibile avviare la gestione delle sessioni OpenMSX per più istanze in esecuzione di un gioco. Vai alla dashboard"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "Elenco",
-    "screenshots": "Schermati"
+    "screenshots": "Miniature"
   },
   "filebrowser": {
     "romimages": "Immagini Rom",

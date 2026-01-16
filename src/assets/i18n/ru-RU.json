@@ -111,7 +111,7 @@
     "more": "Более",
     "moredetails": "Более подробная информация",
     "switchtolist": "Переключитесь в режим списка",
-    "switchtoscreenshots": "Переключитесь в режим скриншотов",
+    "switchtoscreenshots": "Переключитесь в миниатюры",
     "cannotstartopenmsxsessionmanagement": "Невозможно запустить управление сеансом OpenMSX для нескольких запущенных экземпляров игры. Перейти на панель управления"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "Список",
-    "screenshots": "Скриншоты"
+    "screenshots": "Миниатюры"
   },
   "filebrowser": {
     "romimages": "Изображения Rom",

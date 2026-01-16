@@ -111,7 +111,7 @@
     "more": "더",
     "moredetails": "추가 정보",
     "switchtolist": "목록 모드로 전환합니다",
-    "switchtoscreenshots": "스크린샷 모드로 전환합니다",
+    "switchtoscreenshots": "썸네일 모드로 전환합니다",
     "cannotstartopenmsxsessionmanagement": "실행 중인 게임의 여러 인스턴스에 대해 OpenMSX 세션 관리를 시작할 수 없습니다. 대시보드로 이동"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "목록",
-    "screenshots": "스크린샷"
+    "screenshots": "썸네일"
   },
   "filebrowser": {
     "romimages": "롬 이미지",

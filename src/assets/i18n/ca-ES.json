@@ -111,7 +111,7 @@
     "more": "Més",
     "moredetails": "Més detalls",
     "switchtolist": "Canvia a la llista",
-    "switchtoscreenshots": "Canvia a captures de pantalla",
+    "switchtoscreenshots": "Canvia a miniatures",
     "cannotstartopenmsxsessionmanagement": "No es pot llançar la gestió de sessions d'openMSX per més d'una instància d'un joc. Vés al tauler de control"
   },
   "language": {
@@ -411,7 +411,7 @@
   },
   "displaymode": {
     "list": "Llista",
-    "screenshots": "Captures de pantalla"
+    "screenshots": "Miniatures"
   },
   "filebrowser": {
     "romimages": "Imatges de ROM",
