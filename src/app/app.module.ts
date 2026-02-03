@@ -79,6 +79,7 @@ import { DetectedSoundChipsComponent } from './popups/openmsx-management/detecte
 import { SpecialKeysComponent } from './popups/openmsx-management/special-keys/special-keys.component';
 import { FileHunterComponent } from './popups/quick-launch/file-hunter/file-hunter.component';
 import { SaveLoadComponent } from './shared/components/save-load/save-load.component';
+import { NoFocusDirective } from './shared/directives/nofocus/nofocus.directive';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -143,6 +144,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     PasswordSelectorComponent,
     SaveLoadComponent,
     DropfileDirective,
+    NoFocusDirective,
     EditRowModePipe,
     GameMediumIconPipe,
     SortStatusPipe,
