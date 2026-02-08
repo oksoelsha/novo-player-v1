@@ -110,7 +110,7 @@ export class ScanService {
         const sha1 = this.hashService.getSha1Code(filename);
 
         sha1.then((data: any) => {
-            if (data != null) {
+            if (data?.hash !== '-') {
                 const extraData = this.extraDataInfo.get(data.hash);
                 const game = new Game(this.getGameName(data.hash, data.filename), data.hash, data.size);
 
