@@ -94,8 +94,8 @@ export class RelatedGamesService {
             // Green Beret and S.A.K.
             [3091, 8100],
 
-            // Galaga and Galaxian
-            [141, 142],
+            // Galaga, Galaxian, and similar
+            [141, 142, 2383],
 
             // Q-Berts
             [739, 2440, 2990, 8717],
@@ -107,7 +107,19 @@ export class RelatedGamesService {
             [70, 2390, 2720, 3442],
 
             // Bomberman style
-            [169, 325, 854, 2559, 2635, 3890, 3994, 4137]
+            [169, 325, 854, 2559, 2635, 3890, 3994, 4137],
+
+            // Pippols and Dream On
+            [612, 8069],
+
+            // Bowling
+            [967, 2843, 3211],
+
+            // Bosconian and similar
+            [321, 9177],
+
+            // City Connection and ChoroQ
+            [556, 760]
         ];
 
         groups.forEach((group) => {
@@ -123,8 +135,10 @@ export class RelatedGamesService {
             ['soccer', 'football', 'fútbol', 'futbol'],
             ['dunk', 'basketball'],
             ['tennis', 'tenis'],
-            ['viper', 'gusano'],
-            ['mystery', 'misterio']
+            ['viper', 'gusano', 'scentipede'],
+            ['mystery', 'misterio'],
+            ['pac-man', 'pac'],
+            ['billiards', 'snooker', 'hustler']
         ];
 
         groups.forEach((group) => {
