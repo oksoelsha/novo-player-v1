@@ -19,7 +19,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
   elapsedTime: string;
 
   readonly progressBarWidth = 100;
-  readonly progressBarHeight = 6;
+  readonly progressBarHeight = 8;
 
   private firstTimeLoadingComponent = true;
 
@@ -66,11 +66,16 @@ export class MusicComponent implements AfterViewInit, OnChanges {
   }
 
   updateProgress() {
-    const progress = this.audioPlayer.nativeElement.currentTime / this.audioPlayer.nativeElement.duration * this.progressBarWidth;
-    this.context.fillStyle = '#676767';
-    this.context.fillRect(0, 0, progress, 6);
+    if (this.audioPlayer.nativeElement.currentTime > 0) {
+      const progress = this.audioPlayer.nativeElement.currentTime / this.audioPlayer.nativeElement.duration * this.progressBarWidth;
+      const gradient = this.context.createLinearGradient(0, 0, progress, this.progressBarHeight);
+      gradient.addColorStop(0, '#575757');
+      gradient.addColorStop(1, '#898989');
+      this.context.fillStyle = gradient;
+      this.context.fillRect(0, 0, progress, this.progressBarHeight);
 
-    this.elapsedTime = this.convertElapsedTime(this.audioPlayer.nativeElement.currentTime);
+      this.elapsedTime = this.convertElapsedTime(this.audioPlayer.nativeElement.currentTime);
+    }
   }
 
   private resetButtons() {
@@ -86,7 +91,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
 
     this.context = this.progressBar.nativeElement.getContext('2d');
     this.context.fillStyle = '#464646';
-    this.context.fillRect(0, 0, this.progressBarWidth, 6);
+    this.context.fillRect(0, 0, this.progressBarWidth, this.progressBarHeight);
   }
 
   private convertElapsedTime(time: number): string {
