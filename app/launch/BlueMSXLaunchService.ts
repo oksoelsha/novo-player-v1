@@ -80,8 +80,8 @@ export class BlueMSXLaunchService {
             EmulatorUtils.appendParams(args, this.settingsService.getSettings().bluemsxParams, BlueMSXLaunchService.ARGS_SEPARATOR);
         }
         EmulatorUtils.appendParams(args, game.bluemsxArguments, BlueMSXLaunchService.ARGS_SEPARATOR);
-        // if SCC extension is set, force it on blueMSX
-        if (game.extensionRom === 'scc') {
+        // if SCC extension is set, force it on blueMSX if settings are not overridden
+        if (game.extensionRom === 'scc' && !game.bluemsxOverrideSettings) {
             EmulatorUtils.appendParams(args, '/romtype1 scc', BlueMSXLaunchService.ARGS_SEPARATOR);
         }
     }
