@@ -63,6 +63,11 @@ export class WebMSXUtils {
     } else if (game.extensionRom === '2nd_PSG') {
       this.addWebMSXPresets(webMSXParams, 'DOUBLEPSG');
     }
+    if (game.extensionRom2 === 'scc') {
+      this.addWebMSXPresets(webMSXParams, 'SCC2');
+    } else if (game.extensionRom2 === 'scc+') {
+      this.addWebMSXPresets(webMSXParams, 'SCCI2');
+    }
     if (game.tape != null) {
       webMSXParams.TAPE = game.tape;
     }
