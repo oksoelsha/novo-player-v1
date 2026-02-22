@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Game } from '../../models/game';
-import { WebMSXMachinesData, WebMSXUtils } from '../../models/webmsx-utils';
+import { WebMSXUtils } from '../../models/webmsx-utils';
 import { LocalizationService } from '../../services/localization.service';
 import { PopupComponent } from '../popup.component';
 
@@ -38,10 +38,6 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
     super.reattach();
     this.setSelectionFromValue(this.game.webmsxMachine);
     super.open();
-  }
-
-  getMachineLabel(index: number): string {
-    return WebMSXMachinesData[index].label;
   }
 
   setSelectionFromLabel(label: string) {

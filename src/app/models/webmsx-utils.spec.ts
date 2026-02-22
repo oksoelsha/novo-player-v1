@@ -1,21 +1,22 @@
 import { FDDMode } from './fdd-mode';
 import { Game } from './game';
-import { Generation } from './generation';
 import { InputDevice } from './input-device';
 import { WebMSXUtils } from './webmsx-utils';
 
 describe('WebMSXUtils', () => {
   it('getLabelFromMachineValue function should return machine label for a given machine value', () => {
-    expect(WebMSXUtils.getLabelFromMachineValue(1)).toEqual(Generation.MSX);
-    expect(WebMSXUtils.getLabelFromMachineValue(3)).toEqual(Generation.MSX2P);
+    expect(WebMSXUtils.getLabelFromMachineValue(1)).toEqual('MSX1');
+    expect(WebMSXUtils.getLabelFromMachineValue(3)).toEqual('MSX2+');
     expect(WebMSXUtils.getLabelFromMachineValue(5)).toEqual('MSX2 - Arabic');
+    expect(WebMSXUtils.getLabelFromMachineValue(17)).toEqual('Turbo-R Japanese (NTSC 60Hz)');
   });
 });
 
 describe('WebMSXUtils', () => {
   it('getMachineValueFromLabel function should return machine value for a given machine label', () => {
-    expect(WebMSXUtils.getMachineValueFromLabel(Generation.MSX2)).toEqual(2);
-    expect(WebMSXUtils.getMachineValueFromLabel(Generation.MSXTR)).toEqual(4);
+    expect(WebMSXUtils.getMachineValueFromLabel('MSX2')).toEqual(2);
+    expect(WebMSXUtils.getMachineValueFromLabel('Turbo-R')).toEqual(4);
+    expect(WebMSXUtils.getMachineValueFromLabel('MSX2+ Japanese (NTSC 60Hz)')).toEqual(14);
   });
 });
 
@@ -25,6 +26,7 @@ describe('WebMSXUtils', () => {
     expect(WebMSXUtils.getMachineValueFromName('MSX2P')).toEqual(3);
     expect(WebMSXUtils.getMachineValueFromName('MSXTR')).toEqual(4);
     expect(WebMSXUtils.getMachineValueFromName('ALALAMIAHAX370')).toEqual(5);
+    expect(WebMSXUtils.getMachineValueFromName('MSX2A')).toEqual(9);
   });
 });
 
@@ -33,6 +35,7 @@ describe('WebMSXUtils', () => {
     expect(WebMSXUtils.getMachineNameFromValue(1)).toEqual('MSX1');
     expect(WebMSXUtils.getMachineNameFromValue(2)).toEqual('MSX2');
     expect(WebMSXUtils.getMachineNameFromValue(5)).toEqual('ALALAMIAHAX370');
+    expect(WebMSXUtils.getMachineNameFromValue(12)).toEqual('MSX2PA');
   });
 });
 
@@ -43,6 +46,7 @@ describe('WebMSXUtils', () => {
     expect(WebMSXUtils.isMachineCustom(3)).toBeFalsy();
     expect(WebMSXUtils.isMachineCustom(4)).toBeFalsy();
     expect(WebMSXUtils.isMachineCustom(5)).toBeTrue();
+    expect(WebMSXUtils.isMachineCustom(6)).toBeFalsy();
   });
 });
 
@@ -68,10 +72,20 @@ describe('WebMSXUtils', () => {
     game.setExtensionRom('scc');
     expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', PRESETS: 'SCC,OPL4,MSXMUSIC'});
 
+    game = new Game('nameDiskAndSCCSlot2', '1', 1);
+    game.setDiskA('diskA');
+    game.setExtensionRom2('scc');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', PRESETS: 'SCC2,OPL4,MSXMUSIC'});
+
     game = new Game('nameRomAndSCC+', '1', 1);
     game.setRomA('romA');
     game.setExtensionRom('scc+');
     expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', PRESETS: 'SCCI,OPL4,MSXMUSIC'});
+
+    game = new Game('nameRomAndSCC+Slot2', '1', 1);
+    game.setRomA('romA');
+    game.setExtensionRom2('scc+');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', PRESETS: 'SCCI2,OPL4,MSXMUSIC'});
 
     game = new Game('nameTape', '1', 1);
     game.setTape('tape');
@@ -93,7 +107,7 @@ describe('WebMSXUtils', () => {
 
     game = new Game('nameRomAndStandardWebMSXMachine', '1', 1);
     game.setRomA('romA');
-    game.setWebmsxMachine(WebMSXUtils.getMachineValueFromLabel(Generation.MSX));
+    game.setWebmsxMachine(WebMSXUtils.getMachineValueFromLabel('MSX1'));
     expect(WebMSXUtils.getWebMSXParams(game)).toEqual(
       {
         ROM: 'romA',

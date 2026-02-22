@@ -1,19 +1,30 @@
 import { FDDMode } from './fdd-mode';
 import { Game } from './game';
-import { Generation } from './generation';
 import { InputDevice } from './input-device';
 
 export const WebMSXMachinesData = [
-  {value: 1, name: 'MSX1', label: Generation.MSX},
-  {value: 2, name: 'MSX2', label: Generation.MSX2},
-  {value: 3, name: 'MSX2P', label: Generation.MSX2P},
-  {value: 4, name: 'MSXTR', label: Generation.MSXTR},
-  {value: 5, name: 'ALALAMIAHAX370', label: 'MSX2 - Arabic', custom: true}
+  {value: 1, name: 'MSX1', label: 'MSX1'},
+  {value: 2, name: 'MSX2', label: 'MSX2'},
+  {value: 3, name: 'MSX2P', label: 'MSX2+'},
+  {value: 4, name: 'MSXTR', label: 'Turbo-R'},
+  {value: 5, name: 'ALALAMIAHAX370', label: 'MSX2 - Arabic', custom: true},
+  {value: 6, name: 'MSX1A', label: 'MSX1 American (NTSC 60Hz)'},
+  {value: 7, name: 'MSX1E', label: 'MSX1 European (PAL 50Hz)'},
+  {value: 8, name: 'MSX1J', label: 'MSX1 Japanese (NTSC 60Hz)'},
+  {value: 9, name: 'MSX2A', label: 'MSX2 American (NTSC 60Hz)'},
+  {value: 10, name: 'MSX2E', label: 'MSX2 European (PAL 50Hz)'},
+  {value: 11, name: 'MSX2J', label: 'MSX2 Japanese (NTSC 60Hz)'},
+  {value: 12, name: 'MSX2PA', label: 'MSX2+ American (NTSC 60Hz)'},
+  {value: 13, name: 'MSX2PE', label: 'MSX2+ European (PAL 50Hz)'},
+  {value: 14, name: 'MSX2PJ', label: 'MSX2+ Japanese (NTSC 60Hz)'},
+  {value: 15, name: 'MSXTRA', label: 'Turbo-R American (NTSC 60Hz)'},
+  {value: 16, name: 'MSXTRE', label: 'Turbo-R European (PAL 50Hz)'},
+  {value: 17, name: 'MSXTRJ', label: 'Turbo-R Japanese (NTSC 60Hz)'}
 ];
 
 export class WebMSXUtils {
   static getMachineLabels(): string[] {
-    return WebMSXMachinesData.map(d => d.label);
+    return WebMSXMachinesData.map(d => d.label).sort();
   }
 
   static getLabelFromMachineValue(value: number): string {

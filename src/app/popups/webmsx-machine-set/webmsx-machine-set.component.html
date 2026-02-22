@@ -3,12 +3,14 @@
         <span class="pe-2">{{ 'common.machine' | translate }}</span>
         <div ngbDropdown class="d-inline-block me-1">
             <button class="btn btn-secondary btn-sm" type="button" ngbDropdownToggle>
-                {{ selectedMachineLabel }}
+                <div class="machine-label">
+                    {{ selectedMachineLabel }}
+                </div>
             </button>
             <div ngbDropdownMenu>
                 <button *ngFor="let machine of machines; let i = index" ngbDropdownItem type="button"
                     (click)="setSelectionFromLabel(machine)">
-                    {{ getMachineLabel(i) }}
+                    {{ machine }}
                 </button>
                 <div class="dropdown-divider"></div>
                 <button ngbDropdownItem type="button" (click)="setSelectionFromLabel(null)">
