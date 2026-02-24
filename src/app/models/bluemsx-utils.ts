@@ -6,12 +6,15 @@ export class BlueMSXUtils {
     if (this.commandLineArguments.size === 0) {
       const machines = [
         'MSX',
+        'MSX - C-BIOS',
         'MSX - Japanese',
         'MSX - Arabic',
         'MSX2',
+        'MSX2 - C-BIOS',
         'MSX2 - Japanese',
         'MSX2 - Arabic',
         'MSX2+',
+        'MSX2+ - C-BIOS',
         'MSXturboR',
         'COL - ColecoVision',
         'COL - ColecoVision w Super Game Module',
