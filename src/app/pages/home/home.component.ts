@@ -961,7 +961,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   resetFiltersData() {
     this.filtersTotal = 0;
     this.filters.reset();
-    this.games = this.filtersService.filter(this.originalGames, this.filters);
+    this.games = this.filtersService.filter(this.originalGames, this.filters).sort();
+    this.sortGames(this.games);
   }
 
   reloadAfterRestore() {
