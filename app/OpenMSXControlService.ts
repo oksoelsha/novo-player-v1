@@ -111,8 +111,11 @@ export class OpenMSXControlService {
             if (game.screenshotSuffix) {
                 screenshotName += game.screenshotSuffix;
             }
-        } else {
+        } else if (game.sha1Code) {
             screenshotName = game.sha1Code;
+        } else {
+            // this is the case of running an unknown game through Quick Launch
+            screenshotName = game.name.replace(/</g, '').replace(/>/g, '');
         }
         this.executeCommandOnOpenmsx(pid, 'screenshot -prefix ' + screenshotName + '-').then(result => {
             this.win.webContents.send('takeScreenshotOnOpenmsxResponse', result.success);
