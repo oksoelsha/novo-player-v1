@@ -172,6 +172,9 @@ export class FilesService {
     }
 
     private getOtherEmulatorsScreenshotsData(screenshotPath: string, screenshotFile: string): any {
+        if (!screenshotPath) {
+            return { data1: null, data2: null };
+        }
         const screenshotsPath1 = path.join(screenshotPath, screenshotFile + '_a.png');
         let data1: string;
         let data2: string;
