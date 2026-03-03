@@ -19,6 +19,7 @@
 	Oct 2024 Sam Elsharif		version 14
 	Aug 2025 Sam Elsharif		version 15
 	Dec 2025 Sam Elsharif		version 16
+	Mar 2026 Sam Elsharif		version 17
 -->
 <softwaredb>
 	<software>
@@ -642,6 +643,14 @@
 		<year>1985</year>
 		<country>ES</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">1ab5dc3dea856e5e6f0f96a74ac5092e2c0b79a7</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>Dream On</title>
+		<system>MSX2</system>
+		<company>Kralizec</company>
+		<year>2003</year>
+		<country>ES</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">0d820ef57958dfb786326314dd89e2b728dbf78c</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>DuckTales</title>
@@ -2045,6 +2054,14 @@
 		<country>JP</country>
 		<dump><dsk><format type="dsk"><hash algo="sha1">29f47fbbf85bc3e12d59f5db659c43e0c1dd40f6</hash></format></dsk></dump>
 		<dump><dsk><format type="dsk"><hash algo="sha1">8a61703feffad5b6ed21c8eb00a6c0fe187e303a</hash></format></dsk></dump>
+	</software>
+	<software>
+		<title>WizKids</title>
+		<system>MSX2</system>
+		<company>Emutsu no Tomo</company>
+		<year>1991</year>
+		<country>JP</country>
+		<dump><dsk><format type="dsk"><hash algo="sha1">f95cd3308ddbf1a1f9cbd441296b8d75638f4c36</hash></format></dsk></dump>
 	</software>
 	<software>
 		<title>World Golf</title>

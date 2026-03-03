@@ -26,3 +26,4 @@ This project is a continuation of the previous Novo Player that stopped at versi
  * Check for new version availability of Novo Player and other data files in the help page.
  * Get latest MSX news.
  * Download games from file-hunter.com and start them on openMSX.
+ * Launch ColecoVision ROM games on Gearcoleco.
