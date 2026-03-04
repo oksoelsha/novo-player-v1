@@ -29,7 +29,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit(): void {
     if (this.firstTimeLoadingComponent) {
-      this.resetIndicators();
+      this.reset();
       this.firstTimeLoadingComponent = false;
     }
   }
@@ -37,8 +37,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
       // if this is the first time loading this component, then defer the initialization until ngAfterViewInit() is called
       if (!this.firstTimeLoadingComponent) {
-        this.resetButtons();
-        this.resetIndicators();
+        this.reset();
       }
   }
 
