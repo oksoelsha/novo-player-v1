@@ -101,7 +101,7 @@ export class FileHunterService implements UpdateListerner {
     }
 
     private initGamesList() {
-        const data = fs.readFileSync(this.allFilesPath, { encoding: 'ascii' });
+        const data = fs.readFileSync(this.allFilesPath, { encoding: 'utf8' });
         const lines = data.split(/\r?\n/);
 
         lines.forEach((line) => {
