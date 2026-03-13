@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexLegend, ApexStroke, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
 import { LocalizationService } from '../../../../services/localization.service';
 import { EventsService } from '../../../../services/events.service';
+import { PlatformService } from '../../../../services/platform.service';
 
 @Component({
   selector: 'app-dashboard-launch-count',
@@ -9,6 +10,9 @@ import { EventsService } from '../../../../services/events.service';
   styleUrls: ['./launch-count.component.sass']
 })
 export class LaunchCountComponent implements OnInit {
+
+  private readonly isWindows = this.platformService.isOnWindows();
+  private readonly blueMSXIndex = 2;
 
   readonly chart: ApexChart = {
     height: 185,
@@ -27,7 +31,7 @@ export class LaunchCountComponent implements OnInit {
     enabled: false
   };
 
-  readonly colors = ['#dddddd', '#ee4444', '#007bff', '#22aa22', '#985b99ff'];
+  readonly colors = ['#dddddd', '#ee4444', '#22aa22', '#985b99ff'];
 
   readonly xaxis: ApexXAxis = {
     categories: [],
@@ -66,7 +70,7 @@ export class LaunchCountComponent implements OnInit {
 
   readonly legend: ApexLegend = {
     labels: {
-      colors: ['#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc']
+      colors: ['#cccccc', '#cccccc', '#cccccc', '#cccccc']
     }
   };
 
@@ -74,7 +78,8 @@ export class LaunchCountComponent implements OnInit {
 
   private readonly months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-  constructor(private eventsService: EventsService, private localizationService: LocalizationService) { }
+  constructor(private eventsService: EventsService, private localizationService: LocalizationService,
+    private platformService: PlatformService) { }
 
   ngOnInit(): void {
     // initialize the x-axis with the last 30 days in the format 'Mon day'
@@ -96,31 +101,30 @@ export class LaunchCountComponent implements OnInit {
       this.series = [
         {
           name: 'openMSX',
-          data: []
+          data: data.openMSX
         },
         {
           name: 'WebMSX',
-          data: []
-        },
-        {
-          name: 'blueMSX',
-          data: []
+          data: data.WebMSX
         },
         {
           name: 'Emulicious',
-          data: []
+          data: data.Emulicious
         },
         {
           name: 'Gearcoleco',
-          data: []
+          data: data.Gearcoleco
         }
       ];
 
-      this.series[0].data = data.openMSX;
-      this.series[1].data = data.WebMSX;
-      this.series[2].data = data.blueMSX;
-      this.series[3].data = data.Emulicious;
-      this.series[4].data = data.Gearcoleco;
+      if (this.isWindows) {
+        this.colors.splice(this.blueMSXIndex, 0, '#007bff');
+        (this.legend.labels.colors as string[]).splice(this.blueMSXIndex, 0, '#cccccc');
+        this.series.splice(this.blueMSXIndex, 0, {
+          name: 'blueMSX',
+          data: data.blueMSX
+        });
+      }
     });
   }
 }
