@@ -309,6 +309,9 @@ export class OpenMSXControlService {
     }
 
     private async executeCommandOnOpenmsx(pid: number, command: string) {
-        return this.commandsBatchSize(() => this.connectionManager.executeCommand(pid, command));
+        return this.commandsBatchSize(() => this.connectionManager.executeCommand(pid, command).catch(() => {
+            console.log('Error executing command', command, ': reply may have timed out or openMSX instance terminated');
+            return { success: false, content: null };
+        }));
     }
 }

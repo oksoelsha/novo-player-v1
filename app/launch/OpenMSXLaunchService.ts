@@ -190,7 +190,9 @@ export class OpenMSXLaunchService {
 
         // give process id socket file enough time to be written
         setTimeout(() => {
-            this.connectionManager.executeCommand(process.pid, 'openmsx_update enable setting');
+            this.connectionManager.executeCommand(process.pid, 'openmsx_update enable setting').catch(() => {
+                console.log('Updating openMSX settings after launch failed - reply may have timed out');
+            });
         }, 4000);
 
         return process;
