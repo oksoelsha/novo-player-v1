@@ -439,15 +439,10 @@ export class GamesService {
             gameDO.generationMSXId = extraData.generationMSXID;
             gameDO.screenshotSuffix = extraData.suffix;
             gameDO.generations = extraData.generations;
-            if (extraData.soundChips > 0) {
-                gameDO.sounds = extraData.soundChips;
-            }
-            if (extraData.genre1 > 0) {
-                gameDO.genre1 = extraData.genre1;
-            }
-            if (extraData.genre2 > 0) {
-                gameDO.genre2 = extraData.genre2;
-            }
+            gameDO.sounds = extraData.soundChips;
+            gameDO.genre1 = extraData.genre1;
+            gameDO.genre2 = extraData.genre2;
+
             updated = true;
         }
         this.cleanupGameDO(gameDO);
