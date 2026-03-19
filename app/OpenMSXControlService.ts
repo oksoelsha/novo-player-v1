@@ -130,9 +130,9 @@ export class OpenMSXControlService {
     }
 
     private async loadStateOnOpenmsx(pid: number, state: string) {
-        this.executeCommandOnOpenmsx(pid, 'loadstate ' + state).then(result => {
-            this.win.webContents.send('loadStateOnOpenmsxResponse', result.success);
-        });
+        const result = await this.executeCommandOnOpenmsx(pid, 'loadstate ' + state);
+        this.executeCommandOnOpenmsx(pid, 'sound_detector::initialize');
+        this.win.webContents.send('loadStateOnOpenmsxResponse', result.success);
     }
 
     private async typeTextOnOpenmsx(pid: number, text: string) {
