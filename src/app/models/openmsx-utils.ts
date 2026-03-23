@@ -19,12 +19,14 @@ export class OpenMSXUtils {
       ];
       const extensions = [
         '2nd_PSG',
+        'audio',
         'fmpac',
         'gfx9000',
         'ide',
         'mbstereo',
         'MegaFlashROM_SCC+_SD',
         'moonsound',
+        'ram4mb',
         'scc',
         'scc+'
       ];
