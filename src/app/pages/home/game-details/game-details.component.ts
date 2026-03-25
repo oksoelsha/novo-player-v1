@@ -31,8 +31,19 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   @ViewChild('gameDetailGenerationMSXLink', { static: true }) private gameDetailGenerationMSXLink: TemplateRef<object>;
   @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile: TemplateRef<object>;
 
+  filteredGameDetails: any[];
+  selectedGameFiles: string[];
   selectedGameMedium: string;
   selectedMediumGroupTotal: string;
+  selectedGameSounds: string;
+  selectedGameGenres: string;
+  selectedGameSize: string;
+  isDisplayGenerationMSX: boolean;
+  selectedGameGenerationMSXAddress: string;
+  selectedGameIsMSX: boolean;
+  selectedGameIsMSX2: boolean;
+  selectedGameIsMSX2Plus: boolean;
+  selectedGameIsTurboR: boolean;
   lastPlayed: string;
 
   readonly countryFlags: Map<string, string> = new Map([
@@ -103,98 +114,21 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedGame.isFirstChange() ||
       changes.selectedGame.currentValue.sha1Code !== changes.selectedGame.previousValue.sha1Code) {
+      this.setFilteredGameDetails();
+      this.setSelectedGameFiles();
       this.setSelectedGameMedium();
+      this.setSelectedGameSize();
+      this.setSelectedGameGenerations();
+      this.setSelectedGameSounds();
+      this.setSelectedGameGenres();
+      this.setIsDisplayGenerationMSX();
+      this.setSelectedGameGenerationMSXAddress();
       this.setLastPlayed();
     }
   }
 
-  getFilteredGameDetails() {
-    return this.gameDetails.filter(d => !d.value ||
-      (this.selectedGame[d.value] && this.selectedGame[d.value] !== '' && this.selectedGame[d.value] !== 0));
-  }
-
-  getSelectedGameFiles(): string[] {
-    const files: string[] = [];
-    for (const fileField of this.fileFields) {
-      if (this.selectedGame[fileField] != null) {
-        files.push(this.selectedGame[fileField]);
-      }
-    }
-    return files;
-  }
-
   exploreFile(file: string) {
     this.gamesService.exploreFile(file);
-  }
-
-  getSizeDisplayString(): string {
-    return Math.floor(this.selectedGame.size / 1024) + ' KB';
-  }
-
-  isGenerationMSX(): boolean {
-    return GameUtils.isMSX(this.selectedGame);
-  }
-
-  isGenerationMSX2(): boolean {
-    return GameUtils.isMSX2(this.selectedGame);
-  }
-
-  isGenerationMSX2Plus(): boolean {
-    return GameUtils.isMSX2Plus(this.selectedGame);
-  }
-
-  isGenerationTurboR(): boolean {
-    return GameUtils.isTurboR(this.selectedGame);
-  }
-
-  getSoundsDisplayString(): string {
-    const displayString: string[] = [];
-
-    if (GameUtils.isPSG(this.selectedGame)) {
-      displayString.push('PSG');
-    }
-    if (GameUtils.isSCC(this.selectedGame)) {
-      displayString.push('SCC');
-    }
-    if (GameUtils.isSCCI(this.selectedGame)) {
-      displayString.push('SCC-I');
-    }
-    if (GameUtils.isPCM(this.selectedGame)) {
-      displayString.push('PCM');
-    }
-    if (GameUtils.isMSXMusic(this.selectedGame)) {
-      displayString.push('MSX-MUSIC');
-    }
-    if (GameUtils.isMSXAudio(this.selectedGame)) {
-      displayString.push('MSX-AUDIO');
-    }
-    if (GameUtils.isMoonsound(this.selectedGame)) {
-      displayString.push('Moonsound');
-    }
-    if (GameUtils.isMidi(this.selectedGame)) {
-      displayString.push('MIDI');
-    }
-
-    return displayString.join(', ');
-  }
-
-  getGenresDisplayString(): string {
-    let displayString: string = GameUtils.getGenre(this.selectedGame.genre1);
-    if (displayString != null) {
-      const genre2 = GameUtils.getGenre(this.selectedGame.genre2);
-      if (genre2 != null) {
-        displayString += ', ' + genre2;
-      }
-    }
-    return displayString;
-  }
-
-  isDisplayGenerationMSX() {
-    return this.selectedGame.generationMSXId < 10000;
-  }
-
-  getGenerationMSXAddress() {
-    return GameUtils.getGenerationMSXURLForGame(this.selectedGame.generationMSXId);
   }
 
   copy(text: string) {
@@ -203,6 +137,22 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
 
   openInfoFile() {
     this.gamesService.openExternally(this.selectedGame.infoFile);
+  }
+
+  private setFilteredGameDetails() {
+    this.filteredGameDetails = this.gameDetails.filter(d => !d.value ||
+      (this.selectedGame[d.value] && this.selectedGame[d.value] !== '' && this.selectedGame[d.value] !== 0));
+  }
+
+  private setSelectedGameFiles() {
+    const files: string[] = [];
+    for (const fileField of this.fileFields) {
+      if (this.selectedGame[fileField] != null) {
+        files.push(this.selectedGame[fileField]);
+      }
+    }
+    this.selectedGameFiles = files;
+    this.changeDetector.markForCheck();
   }
 
   private setSelectedGameMedium() {
@@ -231,6 +181,63 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
     this.changeDetector.markForCheck();
   }
 
+  private setSelectedGameSize() {
+    this.selectedGameSize = Math.floor(this.selectedGame.size / 1024) + ' KB';
+    this.changeDetector.markForCheck();
+  }
+
+  private setSelectedGameGenerations() {
+    this.selectedGameIsMSX = GameUtils.isMSX(this.selectedGame);
+    this.selectedGameIsMSX2 = GameUtils.isMSX2(this.selectedGame);
+    this.selectedGameIsMSX2Plus = GameUtils.isMSX2Plus(this.selectedGame);
+    this.selectedGameIsTurboR = GameUtils.isTurboR(this.selectedGame);
+    this.changeDetector.detectChanges();
+  }
+
+  private setSelectedGameSounds() {
+    const displayString: string[] = [];
+    if (GameUtils.isPSG(this.selectedGame)) {
+      displayString.push('PSG');
+    }
+    if (GameUtils.isSCC(this.selectedGame)) {
+      displayString.push('SCC');
+    }
+    if (GameUtils.isSCCI(this.selectedGame)) {
+      displayString.push('SCC-I');
+    }
+    if (GameUtils.isPCM(this.selectedGame)) {
+      displayString.push('PCM');
+    }
+    if (GameUtils.isMSXMusic(this.selectedGame)) {
+      displayString.push('MSX-MUSIC');
+    }
+    if (GameUtils.isMSXAudio(this.selectedGame)) {
+      displayString.push('MSX-AUDIO');
+    }
+    if (GameUtils.isMoonsound(this.selectedGame)) {
+      displayString.push('Moonsound');
+    }
+    if (GameUtils.isMidi(this.selectedGame)) {
+      displayString.push('MIDI');
+    }
+
+    this.selectedGameSounds = displayString.join(', ');
+    this.changeDetector.markForCheck();
+  }
+
+  private setSelectedGameGenres() {
+    let displayString: string = GameUtils.getGenre(this.selectedGame.genre1);
+    if (displayString != null) {
+      const genre2 = GameUtils.getGenre(this.selectedGame.genre2);
+      if (genre2 != null) {
+        displayString += ', ' + genre2;
+      }
+    }
+
+    this.selectedGameGenres = displayString;
+    this.changeDetector.markForCheck();
+  }
+
   private setSelectedMediumGroupTotal(medium: Medium, file: string) {
     this.filesService.getFileGroup(Number(this.selectedGame.sha1Code), medium, file).then((group: string[]) => {
       if (group.length > 1) {
@@ -238,6 +245,14 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
         this.changeDetector.detectChanges();
       }
     });
+  }
+
+  private setIsDisplayGenerationMSX() {
+    this.isDisplayGenerationMSX = this.selectedGame.generationMSXId < 10000;
+  }
+
+  private setSelectedGameGenerationMSXAddress() {
+    this.selectedGameGenerationMSXAddress = GameUtils.getGenerationMSXURLForGame(this.selectedGame.generationMSXId);
   }
 
   private setLastPlayed() {

@@ -1,5 +1,5 @@
 <table>
-    <tr *ngFor="let detail of getFilteredGameDetails()">
+    <tr *ngFor="let detail of filteredGameDetails">
         <td class="game-detail-name">{{ detail.name }}</td>
         <td class="game-detail-value">
             <ng-container [ngTemplateOutlet]="this[detail.blockName]" [ngTemplateOutletContext]="{ $implicit: detail }">
@@ -23,7 +23,7 @@
 </ng-template>
 
 <ng-template #gameDetailFiles>
-    <div class="long-names" *ngFor="let file of getSelectedGameFiles()">
+    <div class="long-names" *ngFor="let file of selectedGameFiles">
         <a href="#" (click)="exploreFile(file)" draggable="false">{{ file }}</a>
     </div>
 </ng-template>
@@ -34,7 +34,7 @@
 </ng-template>
 
 <ng-template #gameDetailSize>
-    {{ getSizeDisplayString() }}
+    {{ selectedGameSize }}
 </ng-template>
 
 <ng-template #gameDetailCountry>
@@ -47,23 +47,23 @@
 
 <ng-template #gameDetailGenerations>
     <div id="game-detail-generations">
-        <img *ngIf="isGenerationMSX()" src="assets/images/generations/msx.png" draggable="false"/>
-        <img *ngIf="isGenerationMSX2()" src="assets/images/generations/msx2.png" draggable="false"/>
-        <img *ngIf="isGenerationMSX2Plus()" src="assets/images/generations/msx2p.png" draggable="false"/>
-        <img *ngIf="isGenerationTurboR()" src="assets/images/generations/msxturbor.png" draggable="false"/>
+        <img *ngIf="selectedGameIsMSX" src="assets/images/generations/msx.png" draggable="false"/>
+        <img *ngIf="selectedGameIsMSX2" src="assets/images/generations/msx2.png" draggable="false"/>
+        <img *ngIf="selectedGameIsMSX2Plus" src="assets/images/generations/msx2p.png" draggable="false"/>
+        <img *ngIf="selectedGameIsTurboR" src="assets/images/generations/msxturbor.png" draggable="false"/>
     </div>
 </ng-template>
 
 <ng-template #gameDetailSounds>
-    {{ getSoundsDisplayString() }}
+    {{ selectedGameSounds }}
 </ng-template>
 
 <ng-template #gameDetailGenres>
-    {{ getGenresDisplayString() }}
+    {{ selectedGameGenres }}
 </ng-template>
 
 <ng-template #gameDetailGenerationMSXLink>
-    <app-web-link *ngIf="isDisplayGenerationMSX(); else generationMSXNotAvailable" [address]="getGenerationMSXAddress()"
+    <app-web-link *ngIf="isDisplayGenerationMSX; else generationMSXNotAvailable" [address]="selectedGameGenerationMSXAddress"
         [label]="$any(selectedGame.generationMSXId)"></app-web-link>
     <ng-template #generationMSXNotAvailable>{{ 'home.notyetadded' | translate }}</ng-template>
 </ng-template>
