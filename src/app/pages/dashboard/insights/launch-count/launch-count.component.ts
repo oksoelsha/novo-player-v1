@@ -11,9 +11,6 @@ import { PlatformService } from '../../../../services/platform.service';
 })
 export class LaunchCountComponent implements OnInit {
 
-  private readonly isWindows = this.platformService.isOnWindows();
-  private readonly blueMSXIndex = 2;
-
   readonly chart: ApexChart = {
     height: 185,
     type: 'line',
@@ -76,6 +73,8 @@ export class LaunchCountComponent implements OnInit {
 
   series: ApexAxisChartSeries = [];
 
+  private readonly isWindows = this.platformService.isOnWindows();
+  private readonly blueMSXIndex = 2;
   private readonly months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
   constructor(private eventsService: EventsService, private localizationService: LocalizationService,
