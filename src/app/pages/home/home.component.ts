@@ -59,6 +59,16 @@ export class SortData {
   }
 }
 
+class GameMusic {
+  readonly filename: string;
+  readonly title: string;
+
+  constructor(filename: string, title: string) {
+    this.filename = filename;
+    this.title = title;
+  }
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -121,8 +131,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   isEmuliciousPathDefined: boolean;
   isGearcolecoPathDefined: boolean;
   isMSXNewsEnabled: boolean;
-  musicFiles: string[] = [];
-  selectedMusicFile: string;
+  gameMusics: GameMusic[] = [];
+  selectedGameMusic: GameMusic;
   moreScreenshotFiles: string[] = [];
   favorites: Game[] = [];
   sortData: SortData;
@@ -831,7 +841,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         // Decrement the open menu counter because there's a case where it doesn't get decremented with the closing of the menu.
         // That case is for the game music tracks menu where the closing menu event does not fire if the if-statement around the
         // html segment evaluates to false after clicking on a different game without music.
-        if (this.musicFiles.length === 0 && this.musicMenuOpen) {
+        if (this.gameMusics.length === 0 && this.musicMenuOpen) {
           this.openMenuEventCounter--;
           this.musicMenuOpen = false;
         }
@@ -888,23 +898,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.scanner.scan(parameters);
   }
 
-  setSelectedMusicFile(musicFile: string) {
-    this.selectedMusicFile = musicFile;
-  }
-
-  getMusicName(musicFile: string) {
-    const firstIndex = musicFile.lastIndexOf('/') + 1;
-    const lastIndex = musicFile.lastIndexOf('.');
-    if (lastIndex < firstIndex) {
-      return this.localizationService.translate('home.unknown');
-    }
-    const filename = musicFile.substring(firstIndex, lastIndex);
-    const separaterIndex = filename.indexOf('_');
-    if (separaterIndex < 0) {
-      return filename;
-    } else {
-      return filename.substring(separaterIndex + 1);
-    }
+  setSelectedGameMusic(gameMusic: GameMusic) {
+    this.selectedGameMusic = gameMusic;
   }
 
   setWebmsxMachine(machine: number) {
@@ -1030,7 +1025,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.screenshotA1 = this.screenshotA2 = this.noScreenshotImage1;
     this.screenshotB1 = this.screenshotB2 = this.noScreenshotImage2;
     this.otherSelectedGames.clear();
-    this.musicFiles = [];
+    this.gameMusics = [];
     this.moreScreenshotFiles = [];
   }
 
@@ -1070,7 +1065,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private setAsAnotherSelectedGame(game: Game) {
     this.otherSelectedGames.add(game);
     document.getElementById(game.sha1Code).classList.add('selected-secondary-game');
-    this.musicFiles = [];
+    this.gameMusics = [];
     this.moreScreenshotFiles = [];
   }
 
@@ -1101,11 +1096,31 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setMusicFiles(secondaryData: GameSecondaryData) {
-    this.musicFiles = secondaryData.musicFiles;
-    if (this.musicFiles.length > 0) {
-      this.selectedMusicFile = this.musicFiles[0];
+    this.gameMusics = [];
+    secondaryData.musicFiles.forEach((musicFile: string) => {
+      const gameMusic = new GameMusic(musicFile, this.getMusicTitle(musicFile));
+      this.gameMusics.push(gameMusic);
+    });
+
+    if (this.gameMusics.length > 0) {
+      this.selectedGameMusic = this.gameMusics[0];
     } else {
-      this.selectedMusicFile = null;
+      this.selectedGameMusic = null;
+    }
+  }
+
+  private getMusicTitle(musicFile: string) {
+    const firstIndex = musicFile.lastIndexOf('/') + 1;
+    const lastIndex = musicFile.lastIndexOf('.');
+    if (lastIndex < firstIndex) {
+      return this.localizationService.translate('home.unknown');
+    }
+    const filename = musicFile.substring(firstIndex, lastIndex);
+    const separaterIndex = filename.indexOf('_');
+    if (separaterIndex < 0) {
+      return filename;
+    } else {
+      return filename.substring(separaterIndex + 1);
     }
   }
 

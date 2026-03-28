@@ -372,20 +372,20 @@
             <span class="bi-image"></span>
           </button>
         </div>
-        <div *ngIf="musicFiles.length && !otherSelectedGames.size" class="music-player">
+        <div *ngIf="gameMusics.length && !otherSelectedGames.size" class="music-player">
           <div class="d-inline-block" ngbDropdown (openChange)="handleOpenMenuEvents($event); musicMenuOpen = $event;">
             <button class="btn btn-secondary btn-sm" ngbDropdownToggle type="button">
               &#9836;
             </button>
             <div ngbDropdownMenu class="dropdown-scroll">
-              <button *ngFor="let musicFile of musicFiles" ngbDropdownItem type="button"
-                (click)="setSelectedMusicFile(musicFile)">
-                {{ getMusicName(musicFile) }}
+              <button *ngFor="let gameMusic of gameMusics" ngbDropdownItem type="button"
+                (click)="setSelectedGameMusic(gameMusic)">
+                {{ gameMusic.title }}
               </button>
             </div>
           </div>
           <div class="d-inline-block">
-            <app-home-game-music [musicUrl]="selectedMusicFile" [title]="getMusicName(selectedMusicFile)">
+            <app-home-game-music [musicUrl]="selectedGameMusic.filename" [title]="selectedGameMusic.title">
             </app-home-game-music>
           </div>
         </div>
