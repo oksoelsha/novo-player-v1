@@ -20,6 +20,7 @@ export class FiltersService {
   }
 
   filter(games: Game[], filters: Filters): Game[] {
+    this.filters = filters;
     const filteredGames: Game[] = [];
     if (!filters || filters.filters.length === 0) {
       games.forEach(game => {
