@@ -119,7 +119,10 @@ export class RelatedGamesService {
             [321, 9177],
 
             // City Connection and ChoroQ
-            [556, 760]
+            [556, 760],
+
+            // Mine Sweepers
+            [7290, 7594, 8674]
         ];
 
         groups.forEach((group) => {
