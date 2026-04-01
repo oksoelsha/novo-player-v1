@@ -7,6 +7,7 @@ import { Game } from '../models/game';
 export class WebmsxService {
 
   private msxKeyCodeByCharacter = new Map<string, number>();
+  private readonly SHIFT_KEY_CODE = 301;
 
   constructor() {
     this.initializeKeysMap();
@@ -38,11 +39,13 @@ export class WebmsxService {
   }
 
   async enterPassword(password: string, pressReturn: boolean) {
+    const containsLowerCase = /[a-z]/.test(password);
     for (let i = 0; i < password.length; i++) {
       if (password[i] === ' ') {
         await this.pressKey(this.msxKeyCodeByCharacter.get('Space'));
       } else {
-        await this.pressKey(this.msxKeyCodeByCharacter.get(password[i]));
+        await this.pressKey(this.msxKeyCodeByCharacter.get(password[i].toUpperCase()),
+          containsLowerCase && (password[i].toUpperCase() === password[i]));
       }
     }
     if (pressReturn) {
@@ -92,11 +95,19 @@ export class WebmsxService {
     this.msxKeyCodeByCharacter.set('-', 222);
   }
 
-  private async pressKey(keyCode: number) {
+  private async pressKey(keyCode: number, handleUpperCase: boolean = false) {
+    if (handleUpperCase) {
+      window['WMSX'].room.keyboard.processKey(this.SHIFT_KEY_CODE, 1);
+      await this.delay();
+    }
     window['WMSX'].room.keyboard.processKey(keyCode, 1);
     await this.delay();
     window['WMSX'].room.keyboard.processKey(keyCode, 0);
     await this.delay();
+    if (handleUpperCase) {
+      window['WMSX'].room.keyboard.processKey(this.SHIFT_KEY_CODE, 0);
+      await this.delay();
+    }
   }
 
   private async delay() {
