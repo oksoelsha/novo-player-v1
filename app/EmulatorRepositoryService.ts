@@ -28,17 +28,84 @@ export class EmulatorRepositoryService implements UpdateListerner {
     }
 
     private init(): void {
-        const self = this;
         this.repositoryInfo = new Map<string, RepositoryData>();
         this.knownDumps = new Map<RepositorySoftwareData, number>();
         const softwaredbFilenames = [
-            PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath),
-            PlatformUtils.getOpenmsxUserSoftwareDb(),
             path.join(__dirname, 'data-files/msxdskdb.xml'),
             path.join(__dirname, 'data-files/msxcaswavdb.xml'),
             path.join(__dirname, 'data-files/segadb.xml'),
             path.join(__dirname, 'data-files/svidb.xml')
         ];
+        let isNewFormat = false;
+
+        const mainOpenMSXSoftwaredb = PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath);
+        isNewFormat = this.parseNewSoftwaredb(mainOpenMSXSoftwaredb);
+        if (!isNewFormat) {
+            softwaredbFilenames.unshift(mainOpenMSXSoftwaredb);
+        }
+
+        const userOpenMSXSoftwaredb = PlatformUtils.getOpenmsxUserSoftwareDb();
+        isNewFormat = this.parseNewSoftwaredb(userOpenMSXSoftwaredb);
+        if (!isNewFormat) {
+            softwaredbFilenames.unshift(userOpenMSXSoftwaredb);
+        }
+
+        this.parseStandardSoftwaredb(softwaredbFilenames);
+    }
+
+    private parseNewSoftwaredb(softwaredb: string): boolean {
+        const self = this;
+        const options = {
+            ignoreAttributes: false,
+            attributeNamePrefix: '@_'
+        };
+        let isNewFormat = false;
+        const parser = new XMLParser(options);
+        if (fs.existsSync(softwaredb)) {
+            fs.readFile(softwaredb, (err, data) => {
+                const result = parser.parse(data.toString());
+                if (result.softwaredb) {
+                    let softwares: any;
+                    if (Array.isArray(result.softwaredb.software)) {
+                        softwares = result.softwaredb.software;
+                    } else {
+                        softwares = [ result.softwaredb.software ];
+                    }
+                    isNewFormat = softwares[0]?.hasOwnProperty('rom');
+                    if (isNewFormat) {
+                        for (const s in result.softwaredb.software) {
+                            const software = result.softwaredb.software[s];
+                            const softwareData = new RepositorySoftwareData(software['@_title'], software['@_system'],
+                                software['@_company'], software['@_year'], software['@_country']);
+                            let roms: any;
+                            if (Array.isArray(software.rom)) {
+                                roms = software.rom;
+                            } else {
+                                roms = [software.rom];
+                            }
+                            for (const y in roms) {
+                                self.processRom(softwareData, roms[y]);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        return isNewFormat;
+    }
+
+    processRom(softwareData: RepositorySoftwareData, rom: any): void {
+        const repositoryData = new RepositoryData(softwareData);
+        repositoryData.setMapper(rom['@_type']);
+        repositoryData.setDump(rom['@_status']);
+        repositoryData.setRemark(rom['@_remark']);
+
+        this.repositoryInfo.set(rom['@_sha1'], repositoryData);
+        this.updateMaps(rom['@_sha1'], repositoryData);
+    }
+
+    private parseStandardSoftwaredb(softwaredbFilenames: string[]) {
+        const self = this;
         const parser = new XMLParser();
         for(const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
@@ -81,7 +148,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
                 if (dump.rom.hasOwnProperty('type')) {
                     repositoryData.setMapper(dump.rom.type);
                 } else {
-                    repositoryData.setMapper('Mirrored ROM');
+                    repositoryData.setMapper('Mirrored');
                 }
 
                 if (dump.rom.hasOwnProperty('start')) {
