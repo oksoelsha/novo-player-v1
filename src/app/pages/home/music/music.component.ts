@@ -15,6 +15,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
 
   playButton = 'active';
   pauseButton = 'hidden';
+  activeBar = '';
   totalTime: string;
   elapsedTime: string;
 
@@ -49,6 +50,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
   play() {
     this.playButton = 'hidden';
     this.pauseButton = 'active';
+    this.activeBar = 'activeBar';
 
     this.audioPlayer.nativeElement.play();
   }
@@ -58,6 +60,20 @@ export class MusicComponent implements AfterViewInit, OnChanges {
     this.pauseButton = 'hidden';
 
     this.audioPlayer.nativeElement.pause();
+  }
+
+  seek(e: MouseEvent) {
+    if (this.audioPlayer.nativeElement.currentTime > 0) {
+      const rect = this.progressBar.nativeElement.getBoundingClientRect();
+      const clickX = e.clientX;
+      const offsetX = clickX - rect.left;
+      const width = rect.width;
+
+      const percent = offsetX / width;
+      this.context.fillStyle = '#464646';
+      this.context.fillRect(offsetX, 0, this.progressBarWidth, this.progressBarHeight);
+      this.audioPlayer.nativeElement.currentTime = percent * this.audioPlayer.nativeElement.duration;
+    }
   }
 
   setTotalTime() {
@@ -80,6 +96,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
   private resetButtons() {
     this.playButton = 'active';
     this.pauseButton = 'hidden';
+    this.activeBar = '';
 
     this.elapsedTime = this.convertElapsedTime(0);
   }
