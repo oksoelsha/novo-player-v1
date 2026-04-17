@@ -41,11 +41,11 @@ export class WebmsxService {
   async enterPassword(password: string, pressReturn: boolean) {
     const containsLowerCase = /[a-z]/.test(password);
     for (let i = 0; i < password.length; i++) {
-      if (password[i] === ' ') {
+      if (password.charAt(i) === ' ') {
         await this.pressKey(this.msxKeyCodeByCharacter.get('Space'));
       } else {
-        await this.pressKey(this.msxKeyCodeByCharacter.get(password[i].toUpperCase()),
-          containsLowerCase && (password[i].toUpperCase() === password[i]));
+        await this.pressKey(this.msxKeyCodeByCharacter.get(password.charAt(i).toUpperCase()),
+          containsLowerCase && !/[0-9]/.test(password.charAt(i)) && (password.charAt(i).toUpperCase() === password.charAt(i)));
       }
     }
     if (pressReturn) {
