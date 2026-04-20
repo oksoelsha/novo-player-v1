@@ -46,24 +46,28 @@
     </div>
   </div>
   <div id="data-part" class="mt-2">
-    <h5>Basic Help</h5>
+    <h5>Starting up</h5>
     After starting the player for the first time, you need to set a few fields in the settings page. The bare minimum is the
     path to openMSX, which will be set initially to a default that you can change if needed.
     <p></p>
     After that you can start adding games to the player. You can create new listings and populate them with games by clicking
     on the + button, or you can drag and drop files and folders on top of the currently selected listing.
     <p></p>
+    Uniqueness in the player is determined by the SHA1 code of the game file. This means that a specific game file can only be
+    added once to the player no matter what the listing is. In the previous blueMSX and openMSX launchers, uniqueness was based
+    on the game name within the same database.
+    <p></p>
+    <h5>Portability</h5>
     User data and settings are saved in default folders based on the platform ("%userprofile%\Documents\Novo Player" on Windows,
     "~/.Novo Player" on Linux and "~/Library/Application Support/Novo Player" on macOS). To make Novo Player use a local folder
     for storage (on Windows and Linux only), create a text file named "portable.txt" in the same folder as application binary.
     Novo Player will then create a folder named "portable" in the same folder and use that for storage.
     <p></p>
-    Uniqueness in the player is determined by the SHA1 code of the game file. This means that a specific game file can only be
-    added once to the player no matter what the listing is. In the previous blueMSX and openMSX launchers, uniqueness was based
-    on the game name within the same database.
-    <p></p>
+    <h5>Usage</h5>
     Right clicking on a game displays a context menu with functions. Holding down the Ctrl (Cmd on macOS) key or Shift key while
     clicking allows to select multiple games. You can then perform operations such as updates, deletes and moves on them.
+    <p></p>
+    Typing the first few letters of a game name quickly while on the listing page will take you to the first matched game.
     <p></p>
     The following are the keyboard shortcuts:
     <p></p>
@@ -153,19 +157,20 @@
         </tr>
       </tbody>
     </table>
-    Typing the first few letters of a game name quickly while on the listing page will take you to the first matched game.
-    <p></p>
+    <h5>Managing openMSX</h5>
     After launching games on openMSX, you can connect to the openMSX process by clicking on the blinking indicator on the main
     listing or from the dashboard to perform operations such as reset, mute/unmute, pause, fullscreen, control emulation speed,
     take screenshots (that can then be viewed on the listing page), save and load states, type text, enter passwords (using a
     built-in database of known game passwords), enable cheats (using openMSX's trainer feature), switch disks/tapes and copy
     BASIC listings to the clipbpard.
     <p></p>
+    <h5>MSX News</h5>
     When enabling MSX News in the settings, the player will get news from the following sites:
     <app-web-link address="http://msxlaunchers.info" label="MSX Launchers"></app-web-link>,
     <app-web-link address="https://www.msx.org/" label="MSX Resource Center"></app-web-link> and
     <app-web-link address="https://www.msxblog.es/" label="MSX Blog"></app-web-link>
     <p></p>
+    <h5>File-hunter</h5>
     When enabling games from file-hunter.com in the settings, the Quick Launch window will show a button that displays games from
     file-hunter.com (certain subfolders under Games/). When a game is selected, its URL will be copied to the file text field. openMSX
     will be launched with the game after downloading it to a temporary folder. The text field can take local files and folders, and
