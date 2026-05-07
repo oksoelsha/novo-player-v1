@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class PasswordSelectorComponent {
 
-  @Input() gamePasswordsInfo: GamePasswordsInfo;
-  @Input() clearEvent: Observable<void>;
-  @Output() passwordToEnter = new EventEmitter<GamePassword>();
-  @ViewChild('passwordsDropdown', { static: true }) dropdown: NgbDropdown;
-  selectedPassword: GamePassword = null;
+  @Input() gamePasswordsInfo!: GamePasswordsInfo;
+  @Input() clearEvent!: Observable<void>;
+  @Output() passwordToEnter = new EventEmitter<GamePassword | null>();
+  @ViewChild('passwordsDropdown', { static: true }) dropdown!: NgbDropdown;
+  selectedPassword: GamePassword | null = null;
 
   constructor() { }
   handleOpen(flag: boolean) {

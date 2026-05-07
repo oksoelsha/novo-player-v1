@@ -8,10 +8,10 @@ import { interval, Observable } from 'rxjs';
 })
 export class ElapsedTimeComponent implements OnInit {
 
-  @Input() startTime: number;
-  shortTime: boolean;
+  @Input() startTime!: number;
+  shortTime: boolean | undefined;
   elapsedTime: any;
-  private now: number;
+  private now = 0;
   private timer: Observable<number> = interval(2000); // every 2 seconds rather than 1 second is ok
 
   constructor() { }

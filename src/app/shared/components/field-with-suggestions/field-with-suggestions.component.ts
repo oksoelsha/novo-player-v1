@@ -9,15 +9,15 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 export class FieldWithSuggestionsComponent {
 
   @Input() parentMenuOpen = false;
-  @Input() value: string;
-  @Input() suggestionsMap: Map<string, string[]>;
+  @Input() value!: string;
+  @Input() suggestionsMap!: Map<string, string[]>;
   @Input() trigger = '';
   @Output() userInputOutput = new EventEmitter<string>();
-  @ViewChild('inputField') private inputField: ElementRef;
-  @ViewChild('suggestionsDropdown', { static: true }) private suggestionsDropdown: NgbDropdown;
-  @ViewChildren('suggestionsList') private suggestionsList: QueryList<ElementRef>;
+  @ViewChild('inputField') private inputField!: ElementRef;
+  @ViewChild('suggestionsDropdown', { static: true }) private suggestionsDropdown!: NgbDropdown;
+  @ViewChildren('suggestionsList') private suggestionsList!: QueryList<ElementRef>;
 
-  suggestions: string[] = [];
+  suggestions: string[] | undefined = [];
 
   constructor() { }
 
@@ -58,7 +58,7 @@ export class FieldWithSuggestionsComponent {
       if (lastIndexTrigger === inputText.length - 1) {
         if (lastIndexTrigger === 0 || inputText.charAt(lastIndexTrigger - 1) === ' ') {
           const allPossibleSuggestions = Array.from(this.suggestionsMap.keys());
-          this.setSuggestionsList(null, allPossibleSuggestions);
+          this.setSuggestionsList(undefined, allPossibleSuggestions);
         } else {
           this.suggestionsDropdown.close();
         }
@@ -69,13 +69,13 @@ export class FieldWithSuggestionsComponent {
         const values = this.suggestionsMap.get(argument);
         if (values != null) {
           const allPossibleSuggestions = values;
-          this.setSuggestionsList(null, allPossibleSuggestions);
+          this.setSuggestionsList(undefined, allPossibleSuggestions);
         } else {
           this.suggestionsDropdown.close();
         }
       } else {
         let textToMatch: string;
-        let allPossibleSuggestions: string[];
+        let allPossibleSuggestions: string[] | undefined;
         if (inputText.length - 1 > lastIndexSpace && lastIndexSpace > lastIndexTrigger) {
           // we're inside the argument value
           const argument = inputText.substring(lastIndexTrigger + 1, lastIndexSpace);
@@ -108,7 +108,7 @@ export class FieldWithSuggestionsComponent {
     return lastIndexTrigger;
   }
 
-  private setSuggestionsList(textToMatch: string, allPossibleSuggestions: string[]) {
+  private setSuggestionsList(textToMatch: string | undefined, allPossibleSuggestions: string[] | undefined) {
     if (textToMatch) {
       if (allPossibleSuggestions) {
         this.suggestions = allPossibleSuggestions.filter(s => s.toLowerCase().startsWith(textToMatch.toLowerCase()));

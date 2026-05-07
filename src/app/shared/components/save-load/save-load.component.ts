@@ -9,15 +9,15 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 export class SaveLoadComponent {
 
   @Input() savedList: any[] = [];
-  @Input() saveTooltip: string;
-  @Input() loadTooltip: string;
+  @Input() saveTooltip!: string;
+  @Input() loadTooltip!: string;
   @Output() itemToLoad: EventEmitter<any> = new EventEmitter<any>();
   @Output() nameToSave: EventEmitter<string> = new EventEmitter<string>();
   @Output() itemToDelete: EventEmitter<any> = new EventEmitter<any>();
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @ViewChild('saveDropdown', { static: true }) private saveDropdown: NgbDropdown;
-  @ViewChild('deleteDropdown', { static: true }) private deleteDropdown: NgbDropdown;
+  @ViewChild('saveDropdown', { static: true }) private saveDropdown!: NgbDropdown;
+  @ViewChild('deleteDropdown', { static: true }) private deleteDropdown!: NgbDropdown;
 
   name = '';
   disableSave = true;

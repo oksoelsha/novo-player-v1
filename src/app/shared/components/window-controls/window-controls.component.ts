@@ -10,7 +10,7 @@ import { PlatformService } from '../../../services/platform.service';
 })
 export class WindowControlsComponent {
 
-  @Input() titleImg: string;
+  @Input() titleImg!: string;
   readonly isWindows = this.platformService.isOnWindows();
   maximizedClass = '';
   private ipc: IpcRenderer;
@@ -51,13 +51,13 @@ export class WindowControlsComponent {
 
     // we have to access the document directly because changing the maximizedClass
     // value above didn't trigger the two-way binding in Angular
-    document.getElementById('titlebar').classList.add('maximized');
+    document.getElementById('titlebar')?.classList.add('maximized');
   }
 
   private handleUnmaximizedEvent() {
       this.maximizedClass = '';
 
       // the same reason as above
-      document.getElementById('titlebar').classList.remove('maximized');
+      document.getElementById('titlebar')?.classList.remove('maximized');
   }
 }

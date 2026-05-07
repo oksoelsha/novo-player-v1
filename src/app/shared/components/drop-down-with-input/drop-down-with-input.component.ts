@@ -11,12 +11,11 @@ import { LocalizationService } from '../../../services/localization.service';
 export class DropDownWithInputComponent implements OnChanges {
 
   @Input() list: string[] = [];
-  @Input() defaultLabel: string;
-  @Input() defaultNewLabel: string;
-  @Input() defaultSelection: string;
+  @Input() defaultLabel!: string;
+  @Input() defaultNewLabel!: string;
+  @Input() defaultSelection!: string;
   @Output() selection: EventEmitter<string> = new EventEmitter<string>();
-
-  @ViewChild('dropdownWithInput', { static: true }) private listingsDropdown: NgbDropdown;
+  @ViewChild('dropdownWithInput', { static: true }) private listingsDropdown!: NgbDropdown;
 
   selectedOrEnteredItemDisplay = '';
   selectedOrEnteredItem = '';

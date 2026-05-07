@@ -9,9 +9,9 @@ import { GamesService } from '../../../services/games.service';
 })
 export class WebLinkComponent {
 
-  @Input() address: string;
-  @Input() buttonLook: boolean;
-  @Input() label: string;
+  @Input() address!: string;
+  @Input() buttonLook!: boolean;
+  @Input() label!: string;
 
   constructor(private gamesService: GamesService) { }
 

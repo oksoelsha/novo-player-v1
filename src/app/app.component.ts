@@ -10,7 +10,7 @@ import { LocalizationService } from './services/localization.service';
 })
 export class AppComponent {
   title = 'Novo Player';
-  links: Link[];
+  links!: Link[];
   selectedIndex = 0;
   oldSelectedIndex = 0;
   private languageSetSubscription: Subscription;

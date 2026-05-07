@@ -7,12 +7,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
 
-  @Input() pageSize: number;
-  @Input() hideFirstAndLastNav: boolean;
+  @Input() pageSize!: number;
+  @Input() hideFirstAndLastNav!: boolean;
   @Output() page: EventEmitter<number> = new EventEmitter<number>();
   currentPage = 0;
   totalPages = 0;
-  private totalInputValue: number;
+  private totalInputValue!: number;
 
   constructor() { }
 

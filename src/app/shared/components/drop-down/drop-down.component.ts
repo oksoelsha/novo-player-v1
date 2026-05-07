@@ -8,18 +8,18 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Ou
 })
 export class DropDownComponent {
 
-  @Input() list: string[];
-  @Input() listIcons: string[];
-  @Input() selectedItem: string;
-  @Input() defaultLabel: string;
-  @Input() resetButton: boolean;
-  @Input() doNotDisplaySelectedItem: boolean;
+  @Input() list!: string[];
+  @Input() listIcons!: string[];
+  @Input() selectedItem!: string;
+  @Input() defaultLabel!: string;
+  @Input() resetButton!: boolean;
+  @Input() doNotDisplaySelectedItem!: boolean;
   @Output() selection: EventEmitter<string> = new EventEmitter<string>();
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ViewChildren('dropDownItem') dropDownItems: QueryList<ElementRef>;
+  @ViewChildren('dropDownItem') dropDownItems!: QueryList<ElementRef>;
 
   private accumulatedPressedKeys = '';
-  private quickTypeTimer: NodeJS.Timer = null;
+  private quickTypeTimer: NodeJS.Timer | null = null;
 
   constructor() { }
 

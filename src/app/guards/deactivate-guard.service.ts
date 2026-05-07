@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject, from, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ConfirmLeaveComponent } from '../shared/components/confirm-leave/confirm-leave.component';
 
 export interface DeactivateComponent {
@@ -13,8 +13,8 @@ export interface DeactivateComponent {
   providedIn: 'root'
 })
 export class DeactivateGuardService implements CanDeactivate<DeactivateComponent> {
-  component: DeactivateComponent;
-  route: ActivatedRouteSnapshot;
+  component!: DeactivateComponent;
+  route!: ActivatedRouteSnapshot;
 
   constructor(private modalService: NgbModal) { }
 
@@ -26,9 +26,10 @@ export class DeactivateGuardService implements CanDeactivate<DeactivateComponent
       const modal = this.modalService.open(ConfirmLeaveComponent, { backdrop: 'static' });
 
       return from(modal.result).pipe(
+        map(result => !!result),
         catchError(error => {
           console.warn(error);
-          return of(undefined);
+          return of(false);
         })
       );
     }

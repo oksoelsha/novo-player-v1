@@ -12,7 +12,7 @@ export class AlertsComponent implements OnDestroy {
   alertMessage = '';
   alertClass = '';
   private subscription: Subscription;
-  private timer: NodeJS.Timer = null;
+  private timer: NodeJS.Timer | null = null;
 
   constructor(private alertService: AlertsService) {
     this.subscription = this.alertService.getAlert().subscribe(alert => {

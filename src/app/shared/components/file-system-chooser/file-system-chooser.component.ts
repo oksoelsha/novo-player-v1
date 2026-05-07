@@ -19,10 +19,10 @@ export class FileSystemChooserComponent {
     ['Laserdisc', { nameKey: 'filebrowser.laserdiscimages', extensions: FileTypeUtils.getLaserdiscExtensions().concat(FileTypeUtils.getZipExtensions())}]
   ]);
 
-  @Input() directoryMode: boolean;
-  @Input() label: string;
-  @Input() filtersType: string;
-  @Input() multiSelections: boolean;
+  @Input() directoryMode!: boolean;
+  @Input() label!: string;
+  @Input() filtersType!: string;
+  @Input() multiSelections!: boolean;
   @Input() useIcon = false;
   @Output() chosen = new EventEmitter<any>();
 
