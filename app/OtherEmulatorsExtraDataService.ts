@@ -4,7 +4,7 @@ import { UpdateListerner } from './UpdateListerner';
 export class OtherEmulatorExtraDataService implements UpdateListerner {
 
     private readonly extraDataPath: string;
-    protected extraDataInfo: Map<string, string>;
+    protected extraDataInfo!: Map<string, string>;
 
     constructor(extraDataPath: string) {
         this.extraDataPath = extraDataPath;

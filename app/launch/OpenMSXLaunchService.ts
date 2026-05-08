@@ -108,7 +108,7 @@ export class OpenMSXLaunchService {
         });
     }
 
-    private launch(game: Game, time: number, state: string = null) {
+    private launch(game: Game, time: number, state: string | null = null) {
         const args: string[] = [];
         this.setArguments(args, game, state);
         const process = this.startOpenmsx(args, time);
@@ -119,7 +119,7 @@ export class OpenMSXLaunchService {
 
     private async quickLaunch(quickLaunchData: QuickLaunchData, time: number) {
         const args: string[] = [];
-        let filename: string;
+        let filename!: string;
         let adjustedQuickLaunchData: QuickLaunchData;
 
         if (quickLaunchData.file?.startsWith('https://')) {
@@ -133,7 +133,7 @@ export class OpenMSXLaunchService {
             adjustedQuickLaunchData = quickLaunchData;
         }
 
-        let genMSXId = 0;
+        let genMSXId: number | undefined = 0;
         if (fs.existsSync(adjustedQuickLaunchData.file)) {
             if (fs.statSync(adjustedQuickLaunchData.file).isFile()) {
                 const sha1 = await this.hashService.getSha1Code(adjustedQuickLaunchData.file);
@@ -229,13 +229,13 @@ export class OpenMSXLaunchService {
         });
     }
 
-    private setArguments(args: string[], game: Game, state: string) {
+    private setArguments(args: string[], game: Game, state: string | null) {
         if (state) {
             this.addArgument(args, 'savestate', state);
         } else {
             OpenMSXLaunchService.fieldsToArgs.forEach (field => {
-                if (game[field[0]]) {
-                    this.addArgument(args, field[1], game[field[0]]);
+                if ((game as any)[field[0]]) {
+                    this.addArgument(args, field[1], (game as any)[field[0]]);
                 }
             });
             this.addTclCommandArguments(args, game);
@@ -284,9 +284,9 @@ export class OpenMSXLaunchService {
     private addTclCommandArguments(args: string[], game: Game) {
         let commandLineArgs: string[] = [];
         for (const item of OpenMSXLaunchService.tclCommandArgs) {
-            if (game[item.field]) {
+            if ((game as any)[item.field]) {
                 for (const command of item.argCommands) {
-                    if (game[item.field].toString() == command[0]) {
+                    if ((game as any)[item.field].toString() == command[0]) {
                         commandLineArgs.push(command[1]);
                     }
                 }

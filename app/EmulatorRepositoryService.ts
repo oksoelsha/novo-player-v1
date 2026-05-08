@@ -7,8 +7,8 @@ import { XMLParser } from 'fast-xml-parser';
 
 export class EmulatorRepositoryService implements UpdateListerner {
 
-    private repositoryInfo: Map<string, RepositoryData>;
-    private knownDumps: Map<RepositorySoftwareData, number>;
+    private repositoryInfo!: Map<string, RepositoryData>;
+    private knownDumps!: Map<RepositorySoftwareData, number>;
 
     constructor(private settingsService: SettingsService) {
         settingsService.addListerner(this);
@@ -19,7 +19,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
         return this.repositoryInfo;
     }
 
-    getKnownDumps(repositoryData: RepositoryData): number {
+    getKnownDumps(repositoryData: RepositoryData): number | undefined {
         return this.knownDumps.get(repositoryData.softwareData);
     }
 
@@ -57,7 +57,8 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const self = this;
         const options = {
             ignoreAttributes: false,
-            attributeNamePrefix: '@_'
+            attributeNamePrefix: '@_',
+            processEntities: false
         };
         let isNewFormat = false;
         const parser = new XMLParser(options);
@@ -106,17 +107,20 @@ export class EmulatorRepositoryService implements UpdateListerner {
 
     private parseStandardSoftwaredb(softwaredbFilenames: string[]) {
         const self = this;
-        const parser = new XMLParser();
-        for(const softwaredbFilename of softwaredbFilenames) {
+        const options = {
+            processEntities: false
+        };
+        const parser = new XMLParser(options);
+        for (const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
-                fs.readFile(softwaredbFilename, (err, data) =>  {
+                fs.readFile(softwaredbFilename, (err, data) => {
                     const result = parser.parse(data.toString());
                     if (result.softwaredb && result.softwaredb.software) {
                         let softwares: any;
                         if (Array.isArray(result.softwaredb.software)) {
                             softwares = result.softwaredb.software;
                         } else {
-                            softwares = [ result.softwaredb.software ];
+                            softwares = [result.softwaredb.software];
                         }
                         for (const s in softwares) {
                             const software = softwares;
@@ -129,7 +133,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
                             } else {
                                 self.processDump(softwareData, software[s].dump);
                             }
-                        }    
+                        }
                     }
                 });
             }
@@ -234,10 +238,10 @@ class RepositorySoftwareData {
 export class RepositoryData {
     readonly softwareData: RepositorySoftwareData;
 
-    dump: string;
-    mapper: string;
-    start: string;
-    remark: string;
+    dump: string | undefined;
+    mapper: string | undefined;
+    start: string | undefined;
+    remark: string | undefined;
 
     constructor(softwareData: RepositorySoftwareData) {
         this.softwareData = softwareData;

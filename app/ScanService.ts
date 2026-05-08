@@ -179,9 +179,10 @@ export class ScanService {
         for (const lookup of ScreenshotsUtils.getScreenshotsData()) {
             const screenshot = lookup.extraDataInfo.get(game.sha1Code);
             if (screenshot != null) {
-                game[lookup.screenshotsField] = screenshot;
+                (game as any)[lookup.screenshotsField] = screenshot;
                 return true;
             }
         }
+        return false;
     }
 }

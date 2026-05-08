@@ -2,50 +2,53 @@ import { Game } from '../../src/app/models/game';
 import { PersistenceUtils } from '../utils/PersistenceUtils';
 
 export class GameDO {
-    name: string;
+    name!: string;
     _id: string;        // this will be used for the sha1Code field
-    size: number;
-    machine: string;
+    size!: number;
+    machine!: string;
 
-    romA: string;
-    romB: string;
-    extensionRom: string;
-    extensionRom2: string;
-    diskA: string;
-    diskB: string;
-    tape: string;
-    harddisk: string;
-    laserdisc: string;
+    romA: string | undefined;
+    romB: string | undefined;
+    extensionRom: string | undefined;
+    extensionRom2: string | undefined;
+    diskA: string | undefined;
+    diskB: string | undefined;
+    tape: string | undefined;
+    harddisk: string | undefined;
+    laserdisc: string | undefined;
 
-    generationMSXId: number;
-    generations: number;
-    sounds: number;
-    genre1: number;
-    genre2: number;
-    screenshotSuffix: string;
-    colecoScreenshot: string;
-    spectravideoScreenshot: string;
-    segaScreenshot: string;
+    generationMSXId: number | undefined;
+    generations: number | undefined;
+    sounds: number | undefined;
+    genre1: number | undefined;
+    genre2: number | undefined;
+    screenshotSuffix: string | undefined;
+    colecoScreenshot: string | undefined;
+    spectravideoScreenshot: string | undefined;
+    segaScreenshot: string | undefined;
 
-    listing: string;
+    listing!: string;
 
-    fddMode: number;
-    inputDevice: number;
-    connectGFX9000: boolean;
+    fddMode: number | undefined;
+    inputDevice: number | undefined;
+    connectGFX9000: boolean | undefined;
 
-    favorite: boolean;
+    favorite: boolean | undefined;
 
-    infoFile: string;
+    infoFile: string | undefined;
 
-    bluemsxArguments: string;
-    bluemsxOverrideSettings: boolean;
+    bluemsxArguments: string | undefined;
+    bluemsxOverrideSettings: boolean | undefined;
 
-    webmsxMachine: number;
+    webmsxMachine: number | undefined;
+
+    emuliciousArguments: string | undefined;
+    emuliciousOverrideSettings: boolean | undefined;
 
     constructor(game: Game) {
         for (var field of PersistenceUtils.fieldsToPersist) {
-            if (game[field]) {
-                this[field] = game[field];
+            if (game[field as keyof Game] !== undefined) {
+                (this as any)[field] = game[field];
             }
          }
          this._id = game.sha1Code;

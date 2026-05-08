@@ -2,56 +2,56 @@ export class Game {
     name: string;
     sha1Code: string;
     size: number;
-    machine: string;
+    machine!: string;
 
-    romA: string;
-    romB: string;
-    extensionRom: string;
-    extensionRom2: string;
-    diskA: string;
-    diskB: string;
-    tape: string;
-    harddisk: string;
-    laserdisc: string;
+    romA: string | undefined;
+    romB: string | undefined;
+    extensionRom: string | undefined;
+    extensionRom2: string | undefined;
+    diskA: string | undefined;
+    diskB: string | undefined;
+    tape: string | undefined;
+    harddisk: string | undefined;
+    laserdisc: string | undefined;
 
-    title: string;
-    system: string;
-    company: string;
-    year: string;
-    country: string;
-    dump: string;
-    mapper: string;
-    start: string;
-    remark: string;
-    knownDumps: number;
+    title: string | undefined;
+    system: string | undefined;
+    company: string | undefined;
+    year: string | undefined;
+    country: string | undefined;
+    dump: string | undefined;
+    mapper: string | undefined;
+    start: string | undefined;
+    remark: string | undefined;
+    knownDumps!: number | undefined;
 
-    generationMSXId: number;
-    generations: number;
-    sounds: number;
-    genre1: number;
-    genre2: number;
-    screenshotSuffix: string;
-    colecoScreenshot: string;
-    spectravideoScreenshot: string;
-    segaScreenshot: string;
+    generationMSXId: number | undefined;
+    generations: number | undefined;
+    sounds: number | undefined;
+    genre1: number | undefined;
+    genre2: number | undefined;
+    screenshotSuffix: string | undefined;
+    colecoScreenshot: string | undefined;
+    spectravideoScreenshot: string | undefined;
+    segaScreenshot: string | undefined;
 
-    listing: string;
+    listing: string | undefined;
 
-    fddMode: number;
-    inputDevice: number;
-    connectGFX9000: boolean;
+    fddMode: number | undefined;
+    inputDevice: number | undefined;
+    connectGFX9000: boolean | undefined;
 
-    favorite: boolean;
+    favorite: boolean | undefined;
 
-    infoFile: string;
+    infoFile: string | undefined;
 
-    bluemsxArguments: string;
-    bluemsxOverrideSettings: boolean;
+    bluemsxArguments: string | undefined;
+    bluemsxOverrideSettings: boolean | undefined;
 
-    webmsxMachine: number;
+    webmsxMachine: number | undefined;
 
-    emuliciousArguments: string;
-    emuliciousOverrideSettings: boolean;
+    emuliciousArguments: string | undefined;
+    emuliciousOverrideSettings: boolean | undefined;
 
     public readonly MASK_GENERATION_MSX = 1;
     public readonly MASK_GENERATION_MSX2 = 2;
@@ -113,79 +113,79 @@ export class Game {
         this.laserdisc = laserdisc;
     }
 
-    setGenerationMSXId(generationMSXId: number) {
+    setGenerationMSXId(generationMSXId: number | undefined) {
         this.generationMSXId = generationMSXId;
     }
 
-    setTitle(title: string) {
+    setTitle(title: string | undefined) {
         this.title = title;
     }
 
-    setSystem(system: string) {
+    setSystem(system: string | undefined) {
         this.system = system;
     }
 
-    setCompany(company: string) {
+    setCompany(company: string | undefined) {
         this.company = company;
     }
 
-    setYear(year: string) {
+    setYear(year: string | undefined) {
         this.year = year;
     }
 
-    setCountry(country: string) {
+    setCountry(country: string | undefined) {
         this.country = country;
     }
 
-    setDump(dump: string) {
+    setDump(dump: string | undefined) {
         this.dump = dump;
     }
 
-    setMapper(mapper: string) {
+    setMapper(mapper: string | undefined) {
         this.mapper = mapper;
     }
 
-    setStart(start: string) {
+    setStart(start: string | undefined) {
         this.start = start;
     }
 
-    setRemark(remark: string) {
+    setRemark(remark: string | undefined) {
         this.remark = remark;
     }
 
-    setKnownDumps(knownDumps: number) {
+    setKnownDumps(knownDumps: number | undefined) {
         this.knownDumps = knownDumps;
     }
 
-    setScreenshotSuffix(screenshotSuffix: string) {
+    setScreenshotSuffix(screenshotSuffix: string | undefined) {
         this.screenshotSuffix = screenshotSuffix;
     }
 
-    setColecoScreenshot(colecoScreenshot: string) {
+    setColecoScreenshot(colecoScreenshot: string | undefined) {
         this.colecoScreenshot = colecoScreenshot;
     }
 
-    setSpectravideoScreenshot(spectravideoScreenshot: string) {
+    setSpectravideoScreenshot(spectravideoScreenshot: string | undefined) {
         this.spectravideoScreenshot = spectravideoScreenshot;
     }
 
-    setSegaScreenshot(segaScreenshot: string) {
+    setSegaScreenshot(segaScreenshot: string | undefined) {
         this.segaScreenshot = segaScreenshot;
     }
 
-    setGenerations(generations: number) {
+    setGenerations(generations: number | undefined) {
         this.generations = generations;
     }
 
-    setSounds(sounds: number) {
+    setSounds(sounds: number | undefined) {
         this.sounds = sounds;
     }
 
-    setGenre1(genre1: number) {
+    setGenre1(genre1: number | undefined) {
         this.genre1 = genre1;
     }
 
-    setGenre2(genre2: number) {
+    setGenre2(genre2: number | undefined) {
         this.genre2 = genre2;
     }
 
@@ -193,43 +193,43 @@ export class Game {
         this.listing = listing;
     }
 
-    setFddMode(fddMode: number) {
+    setFddMode(fddMode: number | undefined) {
         this.fddMode = fddMode;
     }
 
-    setInputDevice(inputDevice: number) {
+    setInputDevice(inputDevice: number | undefined) {
         this.inputDevice = inputDevice;
     }
 
-    setConnectGFX9000(connectGFX9000: boolean) {
+    setConnectGFX9000(connectGFX9000: boolean | undefined) {
         this.connectGFX9000 = connectGFX9000;
     }
 
-    setFavorite(flag: boolean) {
+    setFavorite(flag: boolean | undefined) {
         this.favorite = flag;
     }
 
-    setInfoFile(infoFile: string) {
+    setInfoFile(infoFile: string | undefined) {
         this.infoFile = infoFile;
     }
 
-    setBluemsxArguments(bluemsxArguments: string) {
+    setBluemsxArguments(bluemsxArguments: string | undefined) {
         this.bluemsxArguments = bluemsxArguments;
     }
 
-    setBluemsxOverrideSettings(flag: boolean) {
+    setBluemsxOverrideSettings(flag: boolean | undefined) {
         this.bluemsxOverrideSettings = flag;
     }
 
-    setWebmsxMachine(machine: number) {
+    setWebmsxMachine(machine: number | undefined) {
         this.webmsxMachine = machine;
     }
 
-    setEmuliciousArguments(emuliciousArguments: string) {
+    setEmuliciousArguments(emuliciousArguments: string | undefined) {
         this.emuliciousArguments = emuliciousArguments;
     }
 
-    setEmuliciousOverrideSettings(flag: boolean) {
+    setEmuliciousOverrideSettings(flag: boolean | undefined) {
         this.emuliciousOverrideSettings = flag;
     }
 }

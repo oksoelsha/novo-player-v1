@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as net from 'net';
-import { htonl, ntohl } from 'network-byte-order';
 import * as NES from 'node-expose-sspi';
 import { SecBufferDesc } from 'node-expose-sspi';
 import * as os from 'os';
@@ -8,10 +7,12 @@ import * as path from 'path';
 import { PlatformUtils } from './utils/PlatformUtils';
 import { OpenMSXConnectionManager } from './OpenMSXConnectionManager';
 
+const { htonl, ntohl } = require('network-byte-order');
+
 // This class was based on the following implementation:
 // https://github.com/S0urceror/DeZog/blob/v1.3.5/src/remotes/openmsx/openmsxremote.ts
 export class OpenMSXConnector {
-	openmsx: net.Socket;
+	openmsx!: net.Socket;
 	pid: number;
 	connected: boolean;
 

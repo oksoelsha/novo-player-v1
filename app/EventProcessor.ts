@@ -1,5 +1,5 @@
 import { BrowserWindow } from 'electron';
-import * as Datastore from 'nedb';
+import Datastore from 'nedb';
 import { TopTenEventProcessor } from './eventprocessors/TopTenEventProcessor'
 import { TotalsForLast30DaysProcessor } from './eventprocessors/TotalsForLast30DaysProcessor';
 

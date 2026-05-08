@@ -31,7 +31,7 @@ import { GearcolecoLaunchService } from './launch/GearcolecoLaunchService';
 import { OpenMSXLaunchService } from './launch/OpenMSXLaunchService';
 import { SegaExtraDataService } from './SegaExtraDataService';
 
-let win: BrowserWindow = null;
+let win: BrowserWindow | null = null;
 
 function createWindow(): BrowserWindow {
 
@@ -56,9 +56,9 @@ function createWindow(): BrowserWindow {
 }
 
 function initializeServices() {
-  new WindowService(win);
+  new WindowService(win!);
 
-  const settingsService = new SettingsService(win);
+  const settingsService = new SettingsService(win!);
 
   const environmentService = new EnvironmentService();
 
@@ -69,45 +69,44 @@ function initializeServices() {
 
   const emulatorRepositoryService = new EmulatorRepositoryService(settingsService);
 
-  const hashService = new HashService(win);
+  const hashService = new HashService(win!);
 
   // Make sure that the last service to use the environment service is the one that upgrades the internal version after
   // the one-time upgrade - the last service in this case is GamesService
-  new FileHunterService(win, settingsService, environmentService);
+  new FileHunterService(win!, settingsService, environmentService);
 
-  const gamesService = new GamesService(win, emulatorRepositoryService, hashService, extraDataService, environmentService,
-    colecoExtraDataService, spectravideoExtraDataService, segaExtraDataService);
+  const gamesService = new GamesService(win!, emulatorRepositoryService, hashService, extraDataService, environmentService);
 
-  new FilesService(win, settingsService);
+  new FilesService(win!, settingsService);
 
-  const eventLogService = new EventLogService(win);
-  const errorLogService = new ErrorLogService(win);
+  const eventLogService = new EventLogService(win!);
+  const errorLogService = new ErrorLogService(win!);
 
   const connectionManager = new OpenMSXConnectionManager();
-  new OpenMSXLaunchService(win, settingsService, eventLogService, hashService, errorLogService, connectionManager, extraDataService);
-  new BlueMSXLaunchService(win, settingsService, eventLogService, errorLogService);
-  new EmuliciousLaunchService(win, settingsService, eventLogService, errorLogService);
-  new GearcolecoLaunchService(win, settingsService, eventLogService, errorLogService);
+  new OpenMSXLaunchService(win!, settingsService, eventLogService, hashService, errorLogService, connectionManager, extraDataService);
+  new BlueMSXLaunchService(win!, settingsService, eventLogService, errorLogService);
+  new EmuliciousLaunchService(win!, settingsService, eventLogService, errorLogService);
+  new GearcolecoLaunchService(win!, settingsService, eventLogService, errorLogService);
 
-  new EmulatorHardwareService(win, settingsService);
+  new EmulatorHardwareService(win!, settingsService);
 
-  new OpenMSXControlService(win, connectionManager);
+  new OpenMSXControlService(win!, connectionManager);
 
-  new RelatedGamesService(win, extraDataService, emulatorRepositoryService, gamesService);
+  new RelatedGamesService(win!, extraDataService, emulatorRepositoryService, gamesService);
 
-  new BackupsService(win, gamesService);
+  new BackupsService(win!, gamesService);
 
-  new NewsService(win, errorLogService);
+  new NewsService(win!, errorLogService);
 
-  new GamePasswordsService(win);
+  new GamePasswordsService(win!);
 
-  new OpenMSXSetupsService(win);
+  new OpenMSXSetupsService(win!);
 
-  new FiltersService(win);
+  new FiltersService(win!);
 
   // services that are rare to execute and have internal state -> create new instance per request
   ipcMain.on('scan', (event, directories: string[], listing: string, machine: string) => {
-    const scanService = new ScanService(win, extraDataService, colecoExtraDataService, spectravideoExtraDataService, 
+    const scanService = new ScanService(win!, extraDataService, colecoExtraDataService, spectravideoExtraDataService, 
       segaExtraDataService, emulatorRepositoryService, gamesService, hashService);
     scanService.start(directories, listing, machine);
   });
@@ -126,9 +125,9 @@ function initializeWindow() {
     pathIndex = '../dist/index.html';
   }
 
-  win.loadURL(url.pathToFileURL(path.join(__dirname, pathIndex)).toString());
+  win!.loadURL(url.pathToFileURL(path.join(__dirname, pathIndex)).toString());
 
-  win.on('closed', () => {
+  win!.on('closed', () => {
     // Dereference the window object, usually you would store window
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.

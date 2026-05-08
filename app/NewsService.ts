@@ -10,7 +10,7 @@ export class NewsService {
 
     private readonly latestNewsPath = PersistenceUtils.getStoragePath();
     private readonly latestNewsFile = path.join(this.latestNewsPath, 'latest-news');
-    private latestNewsDates: Map<string,number>;
+    private latestNewsDates!: Map<string,number>;
     private readonly sites: string[][] = [
         ['http://www.msxlaunchers.info/', 'http://www.msxlaunchers.info/feed', 'MSX Launchers'],
         ['https://www.msx.org/', 'https://www.msx.org/feed/news/', 'MSX Resource Center'],
@@ -35,7 +35,8 @@ export class NewsService {
             results.forEach(result => {
                 if (result.status === 'fulfilled') {
                     news.push(...result.value.news);
-                    if (this.latestNewsDates.get(result.value.site) < result.value.latestTime) {
+                    const latestDate = this.latestNewsDates.get(result.value.site);
+                    if (latestDate !== undefined && latestDate < result.value.latestTime) {
                         updatedNews = true;
                         this.latestNewsDates.set(result.value.site, result.value.latestTime);
                     }
@@ -58,14 +59,14 @@ export class NewsService {
             try {
                 feed = await parser.parseURL(feedInfo[1]);
                 feed.items.forEach(item => {
-                    const publishTime = new Date(item.pubDate).getTime();
+                    const publishTime = new Date(item.pubDate as string).getTime();
                     news.push(new NewsItem(item.title, item.link, publishTime, feedInfo[2], feedInfo[0]));
                     if (publishTime > latestTime) {
                         latestTime = publishTime;
                     }
                 });
                 resolve(new SiteNews(feedInfo[2], news, latestTime));
-            } catch (err) {
+            } catch (err: any) {
                 this.errorLogService.logError('Error connecting to news site', feedInfo[0], ": ", err.message);
                 reject();
             }

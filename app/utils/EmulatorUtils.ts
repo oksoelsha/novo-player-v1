@@ -1,6 +1,6 @@
 export class EmulatorUtils {
 
-    static appendParams(args: string[], argsString: string, separator: string) {
+    static appendParams(args: string[], argsString: string | undefined, separator: string) {
         if (argsString) {
             const params = this.splitArgs(argsString, separator);
             params.forEach((param) => {

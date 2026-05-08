@@ -2,10 +2,12 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { PlatformUtils } from './PlatformUtils';
+import { GameDO } from '../data-objects/game-do';
+import { Game } from '../../src/app/models/game';
 
 export class PersistenceUtils {
 
-    static readonly fieldsToPersist: string[] = [
+    static readonly fieldsToPersist: (keyof GameDO & keyof Game)[] = [
         'name',
         'size',
         'machine',
@@ -48,7 +50,7 @@ export class PersistenceUtils {
         } else {
             const oldStoragePath = path.join(os.homedir(), 'Novo Player');
             let defaultStoragePath: string;
-            let binaryPath: string;
+            let binaryPath: string | undefined;
             if (PlatformUtils.isWindows()) {
                 defaultStoragePath = path.join(os.homedir(), 'Documents\\Novo Player');
                 binaryPath = process.env.PORTABLE_EXECUTABLE_DIR;
@@ -61,6 +63,7 @@ export class PersistenceUtils {
                 defaultStoragePath = path.join(os.homedir(), 'Library/Application Support/Novo Player');
             } else {
                 // nothing else is supported
+                defaultStoragePath = '';
             }
             storagePath = this.getPlatformStoragePath(oldStoragePath, defaultStoragePath, binaryPath);
             this.storagePath = storagePath;
@@ -76,7 +79,7 @@ export class PersistenceUtils {
         return path.join(this.getStoragePath(), 'file-hunter');
     }
 
-    private static getPlatformStoragePath(oldStoragePath: string, defaultStoragePath: string, binaryPath: string): string {
+    private static getPlatformStoragePath(oldStoragePath: string, defaultStoragePath: string, binaryPath: string | undefined): string {
         let storagePath: string;
 
         // first move contents of old storage path if it exists to the new default one

@@ -8,7 +8,7 @@ import { PersistenceUtils } from './utils/PersistenceUtils';
 
 export class SettingsService {
 
-    private settings: Settings;
+    private settings!: Settings;
     private settingsPath = PersistenceUtils.getStoragePath();
     private readonly settingsFile = path.join(this.settingsPath, 'settings.nps');
     private listeners: UpdateListerner[] = [];

@@ -65,9 +65,9 @@ export class BlueMSXLaunchService {
     private getArguments(game: Game): string[] {
         const args: string[] = [];
         BlueMSXLaunchService.fieldsToArgs.forEach((field) => {
-            if (game[field[0]]) {
+            if ((game as any)[field[0]]) {
                 args.push('/' + field[1]);
-                args.push(game[field[0]]);
+                args.push((game as any)[field[0]]);
             }
         });
         this.addOtherParams(game, args);

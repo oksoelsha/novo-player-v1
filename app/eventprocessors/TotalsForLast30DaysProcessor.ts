@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron';
-import * as Datastore from 'nedb';
+import Datastore from 'nedb';
 import { EventSource } from '../../src/app/models/event'
 
 export class TotalsForLast30DaysProcessor {

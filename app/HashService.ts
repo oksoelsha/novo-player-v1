@@ -123,7 +123,7 @@ export class HashService {
         Promise.allSettled(allHashes).then((hashes) => {
             hashes.forEach((hash) => {
                 if (hash.status === 'fulfilled') {
-                    result[hash.value.algorithm] = hash.value.hash;
+                    (result as any)[hash.value.algorithm] = hash.value.hash;
                 }
             });
             this.win.webContents.send('getMoreGameHashesResponse', result);

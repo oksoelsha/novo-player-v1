@@ -165,7 +165,10 @@ export class RelatedGamesService {
             companyOfSelectedGame = repositoryGame.softwareData.company;
             gameNameParts = this.getNormalizedStringsWithSynonyms(repositoryGame.softwareData.title);
         }
-        const clusterForGivenGame = this.idToCluster.get(game.generationMSXId);
+        let clusterForGivenGame: Set<number> | undefined;
+        if (game.generationMSXId !== undefined) {
+            clusterForGivenGame = this.idToCluster.get(game.generationMSXId);
+        }
 
         for (const entry of Array.from(this.repositoryInfo.entries())) {
             const sha1 = entry[0];
@@ -212,7 +215,9 @@ export class RelatedGamesService {
                                 relatedGame.setListing(listing);
 
                                 const similarGame = new SimilarGame(relatedGame, score);
-                                similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                                if (similarGame.relatedGame.generationMSXId !== undefined) {
+                                    similarGames.set(similarGame.relatedGame.generationMSXId, similarGame);
+                                }
                             }
                         }
                     }
@@ -293,8 +298,8 @@ export class RelatedGamesService {
         }
     }
 
-    private getClusterScore(clusterForGivenGame: Set<number>, extraDataGenMSXId: number): number {
-        if (clusterForGivenGame != null && clusterForGivenGame.has(extraDataGenMSXId)) {
+    private getClusterScore(clusterForGivenGame: Set<number> | undefined, extraDataGenMSXId: number): number {
+        if (clusterForGivenGame !== undefined && clusterForGivenGame.has(extraDataGenMSXId)) {
             return this.SAME_CLUSTER_MATCH_SCORE;
         } else {
             return 0;

@@ -22,9 +22,7 @@ export class GamesService {
     private readonly databaseFile = path.join(PersistenceUtils.getStoragePath(), 'datafile');
 
     constructor(private win: BrowserWindow, private emulatorRepositoryService: EmulatorRepositoryService,
-        private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService,
-        private colecoExtraDataService: ColecoExtraDataService, private spectravideoExtraDataService: SpectravideoExtraDataService,
-        private segaExtraDataService: SegaExtraDataService) {
+        private hashService: HashService, private extraDataService: ExtraDataService, private environmentService: EnvironmentService) {
         this.database = new Datastore({ filename: this.databaseFile, autoload: true });
         this.init();
     }
@@ -207,7 +205,7 @@ export class GamesService {
         games.forEach(game => {
             const gameDO = new GameDO(game);
             for (let index = 0; index < fields.length; index++) {
-                gameDO[fields[index]] = values[index];
+                (gameDO as any)[fields[index]] = values[index];
             }
             this.database.update({ _id: game.sha1Code }, gameDO, {}, (err: any, numUpdated: number) => {
                 totalUpdated = totalUpdated + numUpdated;
@@ -245,7 +243,7 @@ export class GamesService {
 
                 for (const field of PersistenceUtils.fieldsToPersist) {
                     if (gameDO[field] != game[field]) {
-                        game[field] = gameDO[field];
+                        (game as any)[field] = gameDO[field];
                     }
                 }
                 this.populateGameWithOpenMSXRepositoryData(game, repositoryInfo);
@@ -424,9 +422,9 @@ export class GamesService {
         let updated = false;
         const extraDataInfo = this.extraDataService.getExtraDataInfo();
         const extraData = extraDataInfo.get(gameDO._id);
-        if (extraData == null) {
+        if (extraData === undefined) {
             gameDO.generationMSXId = 0;
-            gameDO.screenshotSuffix = null;
+            gameDO.screenshotSuffix = undefined;
             gameDO.generations = 0;
             gameDO.sounds = 0;
             gameDO.genre1 = 0;
@@ -470,7 +468,7 @@ export class GamesService {
         const constructedGame = new Game(gameDO.name, gameDO._id, gameDO.size);
         for (const field of PersistenceUtils.fieldsToPersist) {
             if (gameDO[field] != constructedGame[field]) {
-                constructedGame[field] = gameDO[field];
+                (constructedGame as any)[field] = gameDO[field];
             }
         }
         const repositoryInfo = this.emulatorRepositoryService.getRepositoryInfo();
@@ -483,13 +481,14 @@ export class GamesService {
         for (const lookup of ScreenshotsUtils.getScreenshotsData()) {
             const screenshot = lookup.extraDataInfo.get(gameDO._id);
             if (screenshot != null) {
-                gameDO[lookup.screenshotsField] = screenshot;
+                (gameDO as any)[lookup.screenshotsField] = screenshot;
                 return true;
             }
         }
+        return false;
     }
 
     private cleanupGameDO(gameDO: GameDO) {
-        Object.keys(gameDO).forEach((k) => gameDO[k] == null && delete gameDO[k]);
+        Object.keys(gameDO).forEach((k) => (gameDO as any)[k] == null && delete (gameDO as any)[k]);
     }
 }

@@ -6,13 +6,16 @@ export class OpenMSXConnectionManager {
 
     private connections: Map<number, OpenMSXConnector> = new Map();
     private handlers: Map<number, any> = new Map();
-    private updateEmitter: EventEmitter;
+    private updateEmitter!: EventEmitter;
 
     constructor() {}
 
-    async executeCommand(pid: number, command: string): Promise<any> {
+    async executeCommand(pid: number | undefined, command: string): Promise<any | null> {
+        if (pid === undefined) {
+            return null;
+        }
         let connection = this.connections.get(pid);
-        if (!connection) {
+        if (connection === undefined) {
             try {
                 connection = await this.initializeConnection(pid);
             } catch (error) {
@@ -21,13 +24,13 @@ export class OpenMSXConnectionManager {
         }
         const self = this;
         return new Promise<any>((resolve, reject) => {
-            connection.sendCommand(command);
+            connection?.sendCommand(command);
             const timeoutId = setTimeout(() => {
                 reject({ success: false, content: null });
             }, 2000);
-            const handler = this.processReply.bind(null, connection, resolve, self, timeoutId);
+            const handler = this.processReply.bind(null, connection!, resolve, self, timeoutId);
             self.handlers.set(pid, handler);
-            connection.openmsx.on('data', handler);
+            connection?.openmsx.on('data', handler);
         });
     }
 
@@ -50,11 +53,13 @@ export class OpenMSXConnectionManager {
         }
     }
 
-    disconnect(pid: number) {
-        const connection = this.connections.get(pid);
-        if (connection) {
-            connection.disconnect();
-            this.connections.delete(pid);
+    disconnect(pid: number | undefined) {
+        if (pid !== undefined) {
+            const connection = this.connections.get(pid);
+            if (connection) {
+                connection.disconnect();
+                this.connections.delete(pid);
+            }
         }
     }
 

@@ -106,7 +106,7 @@ export class OpenMSXControlService {
 
     private async takeScreenshotOnOpenmsx(pid: number, game: Game) {
         let screenshotName: string;
-        if (game.generationMSXId > 0) {
+        if (game.generationMSXId !== undefined && game.generationMSXId > 0) {
             screenshotName = game.generationMSXId.toString();
             if (game.screenshotSuffix) {
                 screenshotName += game.screenshotSuffix;
@@ -178,7 +178,7 @@ export class OpenMSXControlService {
         });
     }
 
-    private async getTrainerFromOpenmsx(pid: number, gameName: string, gameNameBeforeModification: string = null) {
+    private async getTrainerFromOpenmsx(pid: number, gameName: string, gameNameBeforeModification: string | null = null) {
         this.executeCommandOnOpenmsx(pid, 'trainer "' + gameName + '"').then(result => {
             if (!gameNameBeforeModification && !result.success && gameName.startsWith('The ')) {
                 // Need to account for name differences between openMSX softwaredb and the _trainerdefs.tcl script for

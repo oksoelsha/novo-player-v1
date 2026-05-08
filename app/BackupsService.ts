@@ -31,7 +31,7 @@ export class BackupsService {
                     const separator = backup.indexOf(this.separatorChar);
                     const lastDot = backup.lastIndexOf('.');
                     let timestamp: number;
-                    let name: string;
+                    let name: string | null;
                     if (separator > -1) {
                         timestamp = +backup.substring(0, separator);
                         name = backup.substring(separator + 1, lastDot);
