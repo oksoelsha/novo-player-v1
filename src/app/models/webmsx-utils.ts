@@ -28,23 +28,24 @@ export class WebMSXUtils {
   }
 
   static getLabelFromMachineValue(value: number): string {
-    return WebMSXMachinesData.find(d => d.value === value).label;
+    return WebMSXMachinesData.find(d => d.value === value)!.label;
   }
 
   static getMachineValueFromLabel(label: string): number {
-    return WebMSXMachinesData.find(d => d.label === label).value;
+    return WebMSXMachinesData.find(d => d.label === label)!.value;
   }
 
   static getMachineValueFromName(name: string): number {
-    return WebMSXMachinesData.find(d => d.name === name).value;
+    return WebMSXMachinesData.find(d => d.name === name)!.value;
   }
 
   static getMachineNameFromValue(value: number): string {
-    return WebMSXMachinesData.find(d => d.value === value).name;
+    return WebMSXMachinesData.find(d => d.value === value)!.name;
   }
 
   static isMachineCustom(value: number): boolean {
-    return WebMSXMachinesData.find(d => d.value === value).custom;
+    const machine = WebMSXMachinesData.find(d => d.value === value);
+    return machine !== undefined && machine.custom !== undefined && machine.custom;
   }
 
   static getWebMSXParams(game: Game): any {

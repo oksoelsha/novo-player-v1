@@ -116,6 +116,20 @@ describe('YearsFilter', () => {
 });
 
 describe('YearsFilter', () => {
+  it('YearsFilter should filter games without a set year no matter the filter', () => {
+    const years1 = new FilterRange(1986, ComparisonOperator.less, 0);
+    const filter1 = new YearsFilter(years1);
+    const game1 = new Game('name', '123', 1);
+    expect(filter1.isFiltered(game1)).toBeTrue();
+
+    const years2 = new FilterRange(1986, ComparisonOperator.greaterOrEqual, 0);
+    const filter2 = new YearsFilter(years2);
+    const game2 = new Game('name', '123', 2);
+    expect(filter2.isFiltered(game2)).toBeTrue();
+  });
+});
+
+describe('YearsFilter', () => {
   it('YearsFilter should return correct identifier', () => {
     const years = new FilterRange(30, ComparisonOperator.greaterOrEqual, 75);
     const filter = new YearsFilter(years);

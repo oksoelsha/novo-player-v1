@@ -18,6 +18,9 @@ export class RecentActivityFilter implements Filter {
             return this.operationCacheService.isRecentlyAdded(game);
         } else if (this.recentActivity === RecentActivity.recentlyUpdated) {
             return this.operationCacheService.isRecentlyUpdated(game);
+        } else {
+            // shouldn't happen
+            return false;
         }
     }
 

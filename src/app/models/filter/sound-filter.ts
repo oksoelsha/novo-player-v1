@@ -10,7 +10,7 @@ export class SoundFilter implements Filter {
     }
 
     isFiltered(game: Game): boolean {
-        return (game.sounds & this.sound) > 0;
+        return game.sounds !== undefined && (game.sounds & this.sound) > 0;
     }
 
     getIdentifier(): string {

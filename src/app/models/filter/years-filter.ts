@@ -12,6 +12,9 @@ export class YearsFilter implements Filter {
     }
 
     isFiltered(game: Game): boolean {
+        if (game.year === undefined) {
+            return true;
+        }
         switch (this.years.comparisonOperator) {
             case ComparisonOperator.equal: {
                 return +game.year === this.years.start;

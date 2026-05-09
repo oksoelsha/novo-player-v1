@@ -111,7 +111,7 @@ describe('WebMSXUtils', () => {
     expect(WebMSXUtils.getWebMSXParams(game)).toEqual(
       {
         ROM: 'romA',
-        MACHINE: WebMSXUtils.getMachineNameFromValue(game.webmsxMachine),
+        MACHINE: WebMSXUtils.getMachineNameFromValue(game.webmsxMachine!),
         PRESETS: 'OPL4,MSXMUSIC'
       }
     );
@@ -122,7 +122,7 @@ describe('WebMSXUtils', () => {
     expect(WebMSXUtils.getWebMSXParams(game)).toEqual(
       {
         DISK: 'diskA',
-        MACHINE: WebMSXUtils.getMachineNameFromValue(game.webmsxMachine),
+        MACHINE: WebMSXUtils.getMachineNameFromValue(game.webmsxMachine!),
         CONFIG_URL: 'assets/webmsx-config/machines.json',
         PRESETS: 'OPL4,MSXMUSIC'
       }
