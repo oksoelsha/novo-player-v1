@@ -14,7 +14,7 @@ describe('ScreenshotFilenamePipe', () => {
 
     const game1 = new Game('name1', '123', 10);
     game1.setGenerationMSXId(2);
-    expect(pipe.transform(game1, 'path/', null, null, null)).toEqual('path/2a.png');
+    expect(pipe.transform(game1, 'path/', '', '', '')).toEqual('path/2a.png');
 
     const game2 = new Game('name2', '234', 20);
     game2.setGenerationMSXId(3);

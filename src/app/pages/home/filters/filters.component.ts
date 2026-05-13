@@ -52,7 +52,7 @@ class FilterButton {
 })
 export class FiltersComponent implements OnInit {
 
-  @Input() filters: Filters;
+  @Input() filters!: Filters;
   @Input() machines: string[] = [];
   @Input() savedFilters: any[] = [];
 
@@ -140,7 +140,7 @@ export class FiltersComponent implements OnInit {
   }
 
   applyMediumFilter(medium: string) {
-    this.applyFilter(new MediumFilter(this.localizedMediaReverse.get(medium)));
+    this.applyFilter(new MediumFilter(this.localizedMediaReverse.get(medium)!));
   }
 
   applyCompanyFilter(company: string) {
@@ -148,7 +148,7 @@ export class FiltersComponent implements OnInit {
   }
 
   applyCountryFilter(country: string) {
-    this.applyFilter(new CountryFilter(this.localizedCountriesReverse.get(country)));
+    this.applyFilter(new CountryFilter(this.localizedCountriesReverse.get(country)!));
   }
 
   applyGenerationFilter(generation: string) {
@@ -156,7 +156,7 @@ export class FiltersComponent implements OnInit {
   }
 
   applySoundFilter(sound: string) {
-    this.applyFilter(new SoundFilter(this.soundsReverse.get(sound)));
+    this.applyFilter(new SoundFilter(this.soundsReverse.get(sound)!));
   }
 
   applyGenreFilter(genre: string) {
@@ -188,7 +188,7 @@ export class FiltersComponent implements OnInit {
   }
 
   applyRecentActivityFilter(recentActivity: string) {
-    this.applyFilter(new RecentActivityFilter(this.localizedRecentActivitiesReverse.get(recentActivity), this.operationCacheService));
+    this.applyFilter(new RecentActivityFilter(this.localizedRecentActivitiesReverse.get(recentActivity)!, this.operationCacheService));
   }
 
   removeFilter(filterButton: FilterButton) {
@@ -273,7 +273,7 @@ export class FiltersComponent implements OnInit {
         Sound.filter(s => s.value === filter.sound).map(s => s.label)[0]));
     } else if (filter instanceof GenreFilter) {
       this.filterButtons.push(new FilterButton(filter, this.localizationService.translate('home.genres'),
-        GameUtils.getGenre(filter.genre)));
+        GameUtils.getGenre(filter.genre)!));
     } else if (filter instanceof YearsFilter) {
       const rangeDisplay = this.getRangeDisplay(filter.years.start.toString(), filter.years.comparisonOperator,
         filter.years.end.toString());

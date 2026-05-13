@@ -9,7 +9,7 @@ enum DisplayModes {launchHistory, errors}
 })
 export class EventsComponent implements OnInit {
 
-  private currentDisplayMode: DisplayModes;
+  private currentDisplayMode!: DisplayModes;
 
   constructor() { }
 

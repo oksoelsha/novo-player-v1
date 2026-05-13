@@ -13,7 +13,7 @@ export class ErrorsComponent implements OnInit, OnDestroy {
   readonly pageSize = 5;
   errors: Error[] = [];
   total = 0;
-  private currentPage: number;
+  private currentPage!: number;
   private newErrorSubscription: Subscription;
 
   constructor(private eventsService: EventsService, private ngZone: NgZone) {

@@ -11,7 +11,7 @@ import { LocalizationService } from '../../../services/localization.service';
 })
 export class TotalsCardComponent implements OnInit {
 
-  @Input() totalsEvent: Observable<Totals>;
+  @Input() totalsEvent!: Observable<Totals>;
   totals: any = [];
 
   readonly chart: ApexChart = {

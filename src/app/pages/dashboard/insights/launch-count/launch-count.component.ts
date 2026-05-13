@@ -118,7 +118,7 @@ export class LaunchCountComponent implements OnInit {
 
       if (this.isWindows) {
         this.colors.splice(this.blueMSXIndex, 0, '#007bff');
-        (this.legend.labels.colors as string[]).splice(this.blueMSXIndex, 0, '#cccccc');
+        (this.legend.labels!.colors as string[]).splice(this.blueMSXIndex, 0, '#cccccc');
         this.series.splice(this.blueMSXIndex, 0, {
           name: 'blueMSX',
           data: data.blueMSX

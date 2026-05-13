@@ -41,7 +41,7 @@ export class GamesService {
     });
   }
 
-  async launchGameOnOpenMSX(game: Game, state: string = null): Promise<string> {
+  async launchGameOnOpenMSX(game: Game, state: string | null = null): Promise<string> {
     const time = Date.now();
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('launchGameResponse' + time, (event, errorMessage: string) => {

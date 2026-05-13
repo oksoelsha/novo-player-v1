@@ -9,7 +9,7 @@ enum DisplayModes {topTen, launchTimes}
 })
 export class InsightsComponent implements OnInit {
 
-  private currentDisplayMode: DisplayModes;
+  private currentDisplayMode!: DisplayModes;
 
   constructor() { }
 

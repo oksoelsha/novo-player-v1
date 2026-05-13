@@ -18,33 +18,33 @@ import { Medium } from '../../../models/medium';
 })
 export class GameDetailsComponent implements OnDestroy, OnChanges {
 
-  @Input() selectedGame: Game;
-  @ViewChild('gameDetailSimpleText', { static: true }) private gameDetailSimpleText: TemplateRef<object>;
-  @ViewChild('gameDetailSimpleTextWithCopy', { static: true }) private gameDetailSimpleTextWithCopy: TemplateRef<object>;
-  @ViewChild('gameDetailFiles', { static: true }) private gameDetailFiles: TemplateRef<object>;
-  @ViewChild('gameDetailMedium', { static: true }) private gameDetailMedium: TemplateRef<object>;
-  @ViewChild('gameDetailSize', { static: true }) private gameDetailSize: TemplateRef<object>;
-  @ViewChild('gameDetailCountry', { static: true }) private gameDetailCountry: TemplateRef<object>;
-  @ViewChild('gameDetailGenerations', { static: true }) private gameDetailGenerations: TemplateRef<object>;
-  @ViewChild('gameDetailSounds', { static: true }) private gameDetailSounds: TemplateRef<object>;
-  @ViewChild('gameDetailGenres', { static: true }) private gameDetailGenres: TemplateRef<object>;
-  @ViewChild('gameDetailGenerationMSXLink', { static: true }) private gameDetailGenerationMSXLink: TemplateRef<object>;
-  @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile: TemplateRef<object>;
+  @Input() selectedGame!: Game;
+  @ViewChild('gameDetailSimpleText', { static: true }) private gameDetailSimpleText!: TemplateRef<object>;
+  @ViewChild('gameDetailSimpleTextWithCopy', { static: true }) private gameDetailSimpleTextWithCopy!: TemplateRef<object>;
+  @ViewChild('gameDetailFiles', { static: true }) private gameDetailFiles!: TemplateRef<object>;
+  @ViewChild('gameDetailMedium', { static: true }) private gameDetailMedium!: TemplateRef<object>;
+  @ViewChild('gameDetailSize', { static: true }) private gameDetailSize!: TemplateRef<object>;
+  @ViewChild('gameDetailCountry', { static: true }) private gameDetailCountry!: TemplateRef<object>;
+  @ViewChild('gameDetailGenerations', { static: true }) private gameDetailGenerations!: TemplateRef<object>;
+  @ViewChild('gameDetailSounds', { static: true }) private gameDetailSounds!: TemplateRef<object>;
+  @ViewChild('gameDetailGenres', { static: true }) private gameDetailGenres!: TemplateRef<object>;
+  @ViewChild('gameDetailGenerationMSXLink', { static: true }) private gameDetailGenerationMSXLink!: TemplateRef<object>;
+  @ViewChild('gameDetailInfoFile', { static: true }) private gameDetailInfoFile!: TemplateRef<object>;
 
-  filteredGameDetails: any[];
-  selectedGameFiles: string[];
-  selectedGameMedium: string;
-  selectedMediumGroupTotal: string;
-  selectedGameSounds: string;
-  selectedGameGenres: string;
-  selectedGameSize: string;
-  isDisplayGenerationMSX: boolean;
-  selectedGameGenerationMSXAddress: string;
-  selectedGameIsMSX: boolean;
-  selectedGameIsMSX2: boolean;
-  selectedGameIsMSX2Plus: boolean;
-  selectedGameIsTurboR: boolean;
-  lastPlayed: string;
+  filteredGameDetails!: any[];
+  selectedGameFiles!: string[];
+  selectedGameMedium!: string;
+  selectedMediumGroupTotal!: string;
+  selectedGameSounds!: string;
+  selectedGameGenres!: string | null;
+  selectedGameSize!: string;
+  isDisplayGenerationMSX!: boolean;
+  selectedGameGenerationMSXAddress!: string;
+  selectedGameIsMSX!: boolean;
+  selectedGameIsMSX2!: boolean;
+  selectedGameIsMSX2Plus!: boolean;
+  selectedGameIsTurboR!: boolean;
+  lastPlayed!: string;
 
   readonly countryFlags: Map<string, string> = new Map([
     ['AU', 'AU'],
@@ -136,19 +136,20 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   }
 
   openInfoFile() {
-    this.gamesService.openExternally(this.selectedGame.infoFile);
+    this.gamesService.openExternally(this.selectedGame.infoFile!);
   }
 
   private setFilteredGameDetails() {
+    const game = this.selectedGame;
     this.filteredGameDetails = this.gameDetails.filter(d => !d.value ||
-      (this.selectedGame[d.value] && this.selectedGame[d.value] !== '' && this.selectedGame[d.value] !== 0));
+      ((game as any)[d.value] !== undefined && (game as any)[d.value] !== '' && (game as any)[d.value] !== 0));
   }
 
   private setSelectedGameFiles() {
     const files: string[] = [];
     for (const fileField of this.fileFields) {
-      if (this.selectedGame[fileField] != null) {
-        files.push(this.selectedGame[fileField]);
+      if ((this.selectedGame as any)[fileField] != null) {
+        files.push((this.selectedGame as any)[fileField]);
       }
     }
     this.selectedGameFiles = files;
@@ -226,7 +227,7 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   }
 
   private setSelectedGameGenres() {
-    let displayString: string = GameUtils.getGenre(this.selectedGame.genre1);
+    let displayString = GameUtils.getGenre(this.selectedGame.genre1);
     if (displayString != null) {
       const genre2 = GameUtils.getGenre(this.selectedGame.genre2);
       if (genre2 != null) {
@@ -248,11 +249,11 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   }
 
   private setIsDisplayGenerationMSX() {
-    this.isDisplayGenerationMSX = this.selectedGame.generationMSXId < 10000;
+    this.isDisplayGenerationMSX = this.selectedGame.generationMSXId !== undefined && this.selectedGame.generationMSXId < 10000;
   }
 
   private setSelectedGameGenerationMSXAddress() {
-    this.selectedGameGenerationMSXAddress = GameUtils.getGenerationMSXURLForGame(this.selectedGame.generationMSXId);
+    this.selectedGameGenerationMSXAddress = GameUtils.getGenerationMSXURLForGame(this.selectedGame.generationMSXId!);
   }
 
   private setLastPlayed() {

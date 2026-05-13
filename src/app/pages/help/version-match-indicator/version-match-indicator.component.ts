@@ -8,18 +8,18 @@ import { VersionUtils } from '../../../models/version-utils';
 })
 export class VersionMatchIndicatorComponent implements OnInit {
 
-  @Input() versions: Promise<any>;
+  @Input() versions!: Promise<any>;
   @Input() downloadButton = false;
-  @Input() versionMapKey: string;
+  @Input() versionMapKey!: string;
   @Input() downloadError = false;
   @Output() downloadAction: EventEmitter<void> = new EventEmitter<void>();
 
 
-  showData: boolean;
-  errorConnecting: boolean;
-  currentVersion: string;
-  newVersionAvailable: boolean;
-  versionOnServer: string;
+  showData!: boolean;
+  errorConnecting!: boolean;
+  currentVersion!: string;
+  newVersionAvailable!: boolean;
+  versionOnServer!: string;
   downloadInProgress = false;
 
   constructor() { }

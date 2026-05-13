@@ -11,9 +11,6 @@ import { HashService } from './HashService';
 import { PersistenceUtils } from './utils/PersistenceUtils';
 import { EnvironmentService } from './EnvironmentService';
 import { GameUtils } from './utils/GameUtils';
-import { ColecoExtraDataService } from './ColecoExtraDataService';
-import { SpectravideoExtraDataService } from './SpectravideoExtraDataService';
-import { SegaExtraDataService } from './SegaExtraDataService';
 import { ScreenshotsUtils } from './utils/ScreenshotsUtils';
 
 export class GamesService {

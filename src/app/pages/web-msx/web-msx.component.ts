@@ -20,15 +20,15 @@ import { Medium } from '../../models/medium';
 export class WebMSXComponent implements OnInit, OnDestroy {
 
   selectedGame: Game;
-  error: boolean;
+  error!: boolean;
   fileGroup: string[] = [];
-  gamePasswordsInfo: GamePasswordsInfo;
+  gamePasswordsInfo: GamePasswordsInfo | undefined;
   private wmsxScript: any;
 
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private settingsService: SettingsService,
     private emulatorService: EmulatorService, private router: Router, private windowService: WindowService,
     private gamesService: GamesService, private webmsxService: WebmsxService, private filesService: FilesService) {
-    this.selectedGame = JSON.parse(route.snapshot.paramMap.get('gameParams'));
+    this.selectedGame = JSON.parse(route.snapshot.paramMap.get('gameParams')!);
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -58,7 +58,7 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (!this.error) {
-      window['WMSX'].shutdown();
+      (window as any)['WMSX'].shutdown();
       this.renderer.removeChild(document.body, this.wmsxScript);
     }
   }
@@ -84,12 +84,12 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   }
 
   switchMedium(medium: string) {
-    document.getElementById('wmsx-screen-canvas').focus();
+    document.getElementById('wmsx-screen-canvas')!.focus();
     this.webmsxService.switchMedium(this.selectedGame, medium);
   }
 
   enterPassword(selectedPassword: GamePassword) {
-    document.getElementById('wmsx-screen-canvas').focus();
+    document.getElementById('wmsx-screen-canvas')!.focus();
     this.webmsxService.enterPassword(selectedPassword.password, selectedPassword.pressReturn);
   }
 
@@ -101,18 +101,16 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   private setFileGroup() {
     let medium: Medium;
-    let file: string;
+    let file: string | undefined;
     if (this.isDisk()) {
       medium = Medium.disk;
       file = this.selectedGame.diskA;
     } else if (this.isTape()) {
       medium = Medium.tape;
       file = this.selectedGame.tape;
-    } else {
-      file = null;
     }
-    if (file) {
-      this.filesService.getFileGroup(1, medium, file).then((fileGroup: string[]) => {
+    if (file !== undefined) {
+      this.filesService.getFileGroup(1, medium!, file).then((fileGroup: string[]) => {
         this.fileGroup = fileGroup;
       });
     }

@@ -17,7 +17,7 @@ import { EmuliciousUtils } from '../../models/emulicious-utils';
   styleUrls: ['../../common-styles.sass', './settings.component.sass']
 })
 export class SettingsComponent implements OnInit, AfterViewInit, DeactivateComponent {
-  @ViewChild('settingsForm', { static: true }) settingsForm: NgForm;
+  @ViewChild('settingsForm', { static: true }) settingsForm!: NgForm;
 
   readonly isWindows = this.platformService.isOnWindows();
   openmsxPath = '';
@@ -38,11 +38,11 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   listings: string[] = [];
   language = '';
   languages: string[] = [];
-  languageReverseMap: Map<string, string>;
+  languageReverseMap!: Map<string, string>;
   languageIcons: string[] = [];
-  displayMode: string;
+  displayMode!: string;
   displayModes: string[] = [];
-  displayModeReverseMap: Map<string, string>;
+  displayModeReverseMap!: Map<string, string>;
   fileHunterGames = false;
 
   constructor(private settingsService: SettingsService, private alertService: AlertsService, private gamesService: GamesService,
@@ -83,7 +83,7 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   }
 
   ngAfterViewInit() {
-    this.settingsForm.statusChanges.subscribe(() => {
+    this.settingsForm.statusChanges!.subscribe(() => {
       this.submitDisabled = !this.settingsForm.dirty;
     });
   }
@@ -100,8 +100,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   }
 
   updateField(field: string, value: any) {
-    if (value !== this[field]) {
-      this[field] = value;
+    if (value !== (this as any)[field]) {
+      (this as any)[field] = value;
       this.submitDisabled = false;
     }
   }
@@ -127,11 +127,11 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
   submitSettings(form: any) {
     const settings = new Settings(form.value['openmsx-path'], form.value['screenshots-path'], form.value['game-music-path'],
       this.defaultListing, form.value['webmsx-path'], form.value['bluemsx-path'], this.bluemsxParams,
-      this.languageReverseMap.get(this.language), form.value.news, this.displayModeReverseMap.get(this.displayMode),
+      this.languageReverseMap.get(this.language)!, form.value.news, this.displayModeReverseMap.get(this.displayMode)!,
       form.value['emulicious-path'], this.emuliciousParams, form.value.fileHunterGames, form.value['gearcoleco-path'],
       form.value['coleco-screenshots-path'], form.value['spectravideo-screenshots-path'], form.value['sega-screenshots-path']);
     this.settingsService.saveSettings(settings);
-    this.localizationService.useLanguage(this.languageReverseMap.get(this.language)).then(() => {
+    this.localizationService.useLanguage(this.languageReverseMap.get(this.language)!).then(() => {
       this.setSelectedLanguage(settings);
       this.setLanguages();
       this.setSelectedDisplayMode(settings);

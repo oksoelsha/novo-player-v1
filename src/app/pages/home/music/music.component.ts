@@ -8,23 +8,23 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, O
 })
 export class MusicComponent implements AfterViewInit, OnChanges {
 
-  @Input() musicUrl: string;
-  @Input() title: string;
-  @ViewChild('audioPlayer', { static: false }) private audioPlayer: ElementRef<HTMLAudioElement>;
-  @ViewChild('progressBar', { static: false }) private progressBar: ElementRef<HTMLCanvasElement>;
+  @Input() musicUrl!: string;
+  @Input() title!: string;
+  @ViewChild('audioPlayer', { static: false }) private audioPlayer!: ElementRef<HTMLAudioElement>;
+  @ViewChild('progressBar', { static: false }) private progressBar!: ElementRef<HTMLCanvasElement>;
 
   playButton = 'active';
   pauseButton = 'hidden';
   activeBar = '';
-  totalTime: string;
-  elapsedTime: string;
+  totalTime!: string;
+  elapsedTime!: string;
 
   readonly progressBarWidth = 100;
   readonly progressBarHeight = 8;
 
   private firstTimeLoadingComponent = true;
 
-  private context: CanvasRenderingContext2D;
+  private context!: CanvasRenderingContext2D;
 
   constructor() { }
 
@@ -105,7 +105,7 @@ export class MusicComponent implements AfterViewInit, OnChanges {
     this.audioPlayer.nativeElement.src = this.musicUrl;
     this.audioPlayer.nativeElement.load();
 
-    this.context = this.progressBar.nativeElement.getContext('2d');
+    this.context = this.progressBar.nativeElement.getContext('2d')!;
     this.context.fillStyle = '#464646';
     this.context.fillRect(0, 0, this.progressBarWidth, this.progressBarHeight);
   }

@@ -78,7 +78,8 @@ describe('GameUtils', () => {
 });
 
 describe('GameUtils', () => {
-  it('Genre function should return null if an out-of-range index is given', () => {
+  it('Genre function should return null if an undefined or out-of-range index is given', () => {
+    expect(GameUtils.getGenre(undefined)).toBeNull();
     expect(GameUtils.getGenre(0)).toBeNull();
     expect(GameUtils.getGenre(52)).toBeNull();
   });

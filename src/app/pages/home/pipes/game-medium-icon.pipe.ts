@@ -17,6 +17,9 @@ export class GameMediumIconPipe implements PipeTransform {
       return 'assets/images/media/harddisk.png';
     } else if (game.laserdisc != null) {
       return 'assets/images/media/laserdisc.png';
+    } else {
+      // shouldn't happen
+      return '';
     }
   }
 }

@@ -13,11 +13,11 @@ import { OpenmsxManagementComponent as OpenmsxManagementComponent } from '../../
 })
 export class LaunchActivityComponent implements OnDestroy {
 
-  @ViewChild('openmsxManagementInterface') openmsxManagementInterface: OpenmsxManagementComponent;
+  @ViewChild('openmsxManagementInterface') openmsxManagementInterface!: OpenmsxManagementComponent;
   readonly isWindows = this.platformService.isOnWindows();
   launchActivities: LaunchActivity[] = [];
-  selectedGame: Game;
-  selectedPid: number;
+  selectedGame!: Game;
+  selectedPid!: number;
   private launchActivitySubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService,  private platformService: PlatformService) {

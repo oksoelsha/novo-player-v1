@@ -14,9 +14,9 @@ export class SearchComponent implements OnChanges {
 
   @Input() parentMenuOpen = false;
   @Output() selectedGame: EventEmitter<Game> = new EventEmitter<Game>();
-  @ViewChild('inputField') private inputField: ElementRef;
-  @ViewChild('searchDropdown', { static: true }) private foundGamesDropdown: NgbDropdown;
-  @ViewChildren('foundSearchItem') private foundSearchItems: QueryList<ElementRef>;
+  @ViewChild('inputField') private inputField!: ElementRef;
+  @ViewChild('searchDropdown', { static: true }) private foundGamesDropdown!: NgbDropdown;
+  @ViewChildren('foundSearchItem') private foundSearchItems!: QueryList<ElementRef>;
 
   searchText = '';
   foundGames: GameData[] = [];
@@ -45,8 +45,8 @@ export class SearchComponent implements OnChanges {
           const containsArabic = (/[\u0600-\u06FF]/).test(trimmedText);
           for (const game of games) {
             let part1: string;
-            let part2: string;
-            let part3: string;
+            let part2: string | undefined;
+            let part3: string | undefined;
             if (containsArabic) {
               part1 = game.name;
             } else {
@@ -99,10 +99,10 @@ class GameData {
 
 class GameNameParts {
   readonly part1: string;
-  readonly part2: string;
-  readonly part3: string;
+  readonly part2: string | undefined;
+  readonly part3: string | undefined;
 
-  constructor(part1: string, part2: string, part3: string) {
+  constructor(part1: string, part2: string | undefined, part3: string | undefined) {
     this.part1 = part1;
     this.part2 = part2;
     this.part3 = part3;

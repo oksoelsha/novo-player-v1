@@ -10,16 +10,16 @@ import { WindowService } from '../../services/window.service';
 })
 export class HelpComponent implements OnInit {
 
-  @ViewChild('extraDataVersionIndicator') extraDataVersionIndicator: VersionMatchIndicatorComponent;
+  @ViewChild('extraDataVersionIndicator') extraDataVersionIndicator!: VersionMatchIndicatorComponent;
 
   readonly applicationVersion = '1.15';
 
-  applicationVersions: Promise<any>;
-  screenshotsVersions: Promise<any>;
-  gameMusicVersions: Promise<any>;
-  colecoScreenshotsVersions: Promise<any>;
-  spectravideoScreenshotsVersions: Promise<any>;
-  segaScreenshotsVersions: Promise<any>;
+  applicationVersions!: Promise<any>;
+  screenshotsVersions!: Promise<any>;
+  gameMusicVersions!: Promise<any>;
+  colecoScreenshotsVersions!: Promise<any>;
+  spectravideoScreenshotsVersions!: Promise<any>;
+  segaScreenshotsVersions!: Promise<any>;
 
   constructor(private versionsService: VersionsService, private windowService: WindowService) { }
 

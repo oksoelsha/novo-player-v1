@@ -50,8 +50,8 @@ export class GameUtils {
         return game.sounds !== undefined && (game.sounds & game.MASK_SOUND_MIDI) > 0;
     }
 
-    static getGenre(genre: number): string | null {
-        if (genre < 1 || genre >= Genre.length) {
+    static getGenre(genre: number | undefined): string | null {
+        if (genre === undefined || genre < 1 || genre >= Genre.length) {
             return null;
         } else {
             return Genre[genre];
@@ -71,7 +71,7 @@ export class GameUtils {
         return {name: game.name, listing: game.listing, sha1: game.sha1Code};
     }
 
-    static getGenerationMSXURLForGame(generationMSXId: number) {
+    static getGenerationMSXURLForGame(generationMSXId: number): string {
         return 'http://www.generation-msx.nl/msxdb/softwareinfo/' + generationMSXId;
     }
 }
