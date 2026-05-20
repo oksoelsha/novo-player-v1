@@ -12,12 +12,12 @@ import { PopupComponent } from '../popup.component';
 })
 export class BluemsxArgumentsEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Output() bluemsxData: EventEmitter<any> = new EventEmitter<any>();
 
-  bluemsxArguments: string;
-  bluemsxOverrideSettings: boolean;
+  bluemsxArguments: string | undefined;
+  bluemsxOverrideSettings: boolean | undefined;
 
   constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
     super(changeDetector);

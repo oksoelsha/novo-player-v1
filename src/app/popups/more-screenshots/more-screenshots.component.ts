@@ -10,12 +10,12 @@ import { PopupComponent } from '../popup.component';
 })
 export class MoreScreenshotsComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
-  @Input() imageFiles: string[];
-  @ViewChildren('imageBlock') private imageBlocks: QueryList<ElementRef>;
+  @Input() popupId!: string;
+  @Input() game!: Game;
+  @Input() imageFiles!: string[];
+  @ViewChildren('imageBlock') private imageBlocks!: QueryList<ElementRef>;
 
-  imageIndex: number;
+  imageIndex!: number;
 
   constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
     super(changeDetector);

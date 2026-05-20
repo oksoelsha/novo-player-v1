@@ -9,17 +9,17 @@ import { Utils } from '../models/utils';
 })
 export class PopupComponent implements OnDestroy {
 
-  @Input () popupId: string;
+  @Input () popupId!: string;
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ContentChild(TemplateRef) templateVariable: TemplateRef<any>;
+  @ContentChild(TemplateRef) templateVariable!: TemplateRef<any>;
   @Input()
   get titleHeader(): string { return this.titleHeaderValue; }
   set titleHeader(value: string) {
     this.titleHeaderValue = Utils.compressStringIfTooLong(value);
   }
-  private popupElement: HTMLElement;
-  private titleHeaderValue: string;
-  private timer: NodeJS.Timer = null;
+  private popupElement!: HTMLElement;
+  private titleHeaderValue!: string;
+  private timer: NodeJS.Timer | null = null;
   private isOpen = false;
 
   constructor(protected changeDetector: ChangeDetectorRef) {
@@ -27,12 +27,6 @@ export class PopupComponent implements OnDestroy {
   }
 
   commonInit() {
-    const self = this;
-    window.addEventListener('mousedown', (e: any) => {
-      if (e.target === document.getElementById(self.popupId)) {
-        self.close();
-      }
-    });
     this.changeDetector.detach();
   }
 
@@ -48,7 +42,7 @@ export class PopupComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    window.removeAllListeners();
+    // May need to remove listerners
   }
 
   reattach(): void {
@@ -58,25 +52,19 @@ export class PopupComponent implements OnDestroy {
 
   open(): void {
     this.isOpen = true;
-    window.addEventListener('keydown', this.handleKeyEvent);
+    document.addEventListener('mousedown', this.handleMouseEvent);
+    document.addEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(true);
-    this.popupElement = document.getElementById(this.popupId);
+    this.popupElement = document.getElementById(this.popupId)!;
     this.popupElement.classList.add('popup-fade');
   }
 
-  close(cleanup: () => void = null): void {
+  close(cleanup: (() => void) | null = null): void {
     this.isOpen = false;
-    window.removeEventListener('keydown', this.handleKeyEvent);
+    document.removeEventListener('mousedown', this.handleMouseEvent);
+    document.removeEventListener('keydown', this.handleKeyEvent);
     this.openStatus.emit(false);
-    this.popupElement.addEventListener('transitionend', (() => {
-      const customCleanup = cleanup;
-      return () => {
-        if (customCleanup !== null) {
-          customCleanup();
-        }
-        this.popupElement.removeAllListeners();
-      };
-    })());
+    this.popupElement.addEventListener('transitionend', this.handleTransitionEvent(cleanup), { once: true });
     this.popupElement.classList.remove('popup-fade');
     this.changeDetector.detach();
   }
@@ -104,17 +92,32 @@ export class PopupComponent implements OnDestroy {
     }
   }
 
+  private handleMouseEvent = (e: MouseEvent) => {
+    if (e.target === document.getElementById(this.popupId)) {
+      this.close();
+    }
+  };
+
+  private handleTransitionEvent = (cleanup: (() => void) | null = null) => {
+      const customCleanup = cleanup;
+      return () => {
+        if (customCleanup !== null) {
+          customCleanup();
+        }
+      };
+  };
+
   private alert(message: string, classname: string) {
     const alertElement = document.getElementById(this.popupId + '-popup-alert-area');
-    alertElement.innerText = message;
-    alertElement.classList.add(classname);
+    alertElement!.innerText = message;
+    alertElement!.classList.add(classname);
 
     if (this.timer != null) {
       clearTimeout(this.timer);
     }
     this.timer = setTimeout(() => {
-      alertElement.innerText = '';
-      alertElement.classList.remove(classname);
+      alertElement!.innerText = '';
+      alertElement!.classList.remove(classname);
     }, 10000);
   }
 }

@@ -11,20 +11,20 @@ import { LocalizationService } from '../../../services/localization.service';
 })
 export class CheatsComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() game: Game;
-  @Input() events: Observable<boolean>;
-  @Input() trainersList: any[];
+  @Input() pid!: number;
+  @Input() game!: Game;
+  @Input() events!: Observable<boolean>;
+  @Input() trainersList!: any[];
   @Output() alertMessage: EventEmitter<string> = new EventEmitter<string>();
 
-  private eventsSubscription: Subscription;
+  private eventsSubscription!: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((flag) => {
       if (!flag) {
-        this.trainersList = null;
+        this.trainersList = [];
       }
     });
   }
@@ -35,7 +35,7 @@ export class CheatsComponent implements OnInit, OnDestroy {
 
   setCheat(cheat: any) {
     cheat.on = !cheat.on;
-    this.launchActivityService.setCheat(this.pid, this.game.title, cheat.label).then((success: boolean) => {
+    this.launchActivityService.setCheat(this.pid, this.game.title!, cheat.label).then((success: boolean) => {
       if (success) {
         if (cheat.on) {
           this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatenabled'));
@@ -51,7 +51,7 @@ export class CheatsComponent implements OnInit, OnDestroy {
       cheat.on = flag;
       return cheat;
     });
-    this.launchActivityService.setAllCheats(this.pid, this.game.title, flag).then((success: boolean) => {
+    this.launchActivityService.setAllCheats(this.pid, this.game.title!, flag).then((success: boolean) => {
       if (success) {
         if (flag) {
           this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.cheatsallenabled'));

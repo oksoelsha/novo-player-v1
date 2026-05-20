@@ -11,11 +11,11 @@ import { PopupComponent } from '../popup.component';
 })
 export class InfoFileFieldEditComponent  extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Output() updatedGame: EventEmitter<Game> = new EventEmitter<Game>();
 
-  infoFile: string;
+  infoFile: string | undefined;
 
   constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
     super(changeDetector);

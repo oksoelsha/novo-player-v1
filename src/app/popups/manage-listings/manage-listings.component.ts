@@ -18,17 +18,17 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
 
   @Input() listings: string[] = [];
   @Output() updatedListing: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('listingRenameInput', { static: false }) private listingRenameInput: ElementRef;
-  @ViewChild('listingsTable', { static: true }) private listingsTable: ElementRef;
+  @ViewChild('listingRenameInput', { static: false }) private listingRenameInput!: ElementRef;
+  @ViewChild('listingsTable', { static: true }) private listingsTable!: ElementRef;
 
-  renamedListing: string;
+  renamedListing: string | null = null;
   renameMode = false;
   deleteMode = false;
   mergeMode = false;
-  selectedListing: string;
+  selectedListing: string | null = null;
   listingsSelectionMap: Map<string, boolean> = new Map();
-  listingToMergeFrom: string;
-  listingToMergeTo: string;
+  listingToMergeFrom: string | null = null;
+  listingToMergeTo: string | null = null;
 
   constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService) {
     super(changeDetector);
@@ -74,7 +74,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
       if (this.listings.indexOf(this.renamedListing.trim(), 0) >= 0) {
         this.enableMergeMode();
       } else {
-        this.doRenameListing(this.selectedListing, this.renamedListing.trim(), false);
+        this.doRenameListing(this.selectedListing!, this.renamedListing.trim(), false);
       }
       event.stopPropagation();
     }
@@ -82,9 +82,9 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
 
   deleteListing() {
     const listingToDelete = this.selectedListing;
-    this.gamesService.deleteListing(listingToDelete).then((removed: boolean) => {
+    this.gamesService.deleteListing(listingToDelete!).then((removed: boolean) => {
       if (removed) {
-        this.removeFromListings(listingToDelete);
+        this.removeFromListings(listingToDelete!);
         this.updatedListing.emit({ mode: ManageListingsComponent.mode.delete, oldListingName: listingToDelete });
       }
       this.resetState();
@@ -92,7 +92,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
   }
 
   mergeListings() {
-    this.doRenameListing(this.listingToMergeFrom, this.listingToMergeTo, true);
+    this.doRenameListing(this.listingToMergeFrom!, this.listingToMergeTo!, true);
     this.resetMergeMode();
   }
 
@@ -100,7 +100,7 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
     this.renameMode = false;
     this.deleteMode = false;
     this.listingsSelectionMap.clear();
-    this.renamedListing = '';
+    this.renamedListing = null;
     this.selectedListing = '';
   };
 
@@ -136,10 +136,10 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
 
   // This method can be moved to a utility class because a similar one is used in the home component
   private adjustScrollForRenamedListing(listing: string) {
-    const listingsTableTop: number = this.listingsTable.nativeElement.getBoundingClientRect().top;
-    const listingsTableBottom: number = this.listingsTable.nativeElement.getBoundingClientRect().bottom;
-    const tableCellTop: number = document.getElementById(listing).getBoundingClientRect().top;
-    const tableCellBottom: number = document.getElementById(listing).getBoundingClientRect().bottom;
+    const listingsTableTop = this.listingsTable.nativeElement.getBoundingClientRect().top;
+    const listingsTableBottom = this.listingsTable.nativeElement.getBoundingClientRect().bottom;
+    const tableCellTop = document.getElementById(listing)!.getBoundingClientRect().top;
+    const tableCellBottom = document.getElementById(listing)!.getBoundingClientRect().bottom;
 
     if (tableCellTop < listingsTableTop) {
       this.listingsTable.nativeElement.scrollTop = (tableCellTop + this.listingsTable.nativeElement.scrollTop) - listingsTableTop;
@@ -174,6 +174,6 @@ export class ManageListingsComponent extends PopupComponent implements OnInit, A
   private enableMergeMode() {
     this.mergeMode = true;
     this.listingToMergeFrom = this.selectedListing;
-    this.listingToMergeTo = this.renamedListing.trim();
+    this.listingToMergeTo = this.renamedListing!.trim();
   }
 }

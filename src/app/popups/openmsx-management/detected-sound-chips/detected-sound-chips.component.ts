@@ -9,12 +9,12 @@ import { LaunchActivityService } from '../../../services/launch-activity.service
 })
 export class DetectedSoundChipsComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() events: Observable<boolean>;
+  @Input() pid!: number;
+  @Input() events!: Observable<boolean>;
   detected: string[] = [];
   inUse: boolean[] = [];
   private readonly soundChips = ['PSG', 'SCC', 'SCC-I', 'PCM', 'MSX-MUSIC', 'MSX-AUDIO', 'Moonsound', 'MIDI'];
-  private eventsSubscription: Subscription;
+  private eventsSubscription!: Subscription;
   private soundChipsSubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService) {

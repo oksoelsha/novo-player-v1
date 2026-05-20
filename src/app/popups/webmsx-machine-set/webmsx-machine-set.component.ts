@@ -12,13 +12,13 @@ import { PopupComponent } from '../popup.component';
 })
 export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Output() webmsxMachine: EventEmitter<number> = new EventEmitter<number>();
 
   readonly machines: string[];
-  selectedMachineValue: number;
-  selectedMachineLabel: string;
+  selectedMachineValue!: number;
+  selectedMachineLabel!: string;
 
   constructor(protected changeDetector: ChangeDetectorRef, private localizationService: LocalizationService) {
     super(changeDetector);
@@ -50,8 +50,8 @@ export class WebmsxMachineSetComponent  extends PopupComponent implements OnInit
     }
   }
 
-  setSelectionFromValue(value: number) {
-    if (value > 0) {
+  setSelectionFromValue(value: number | undefined) {
+    if (value !== undefined && value > 0) {
       this.selectedMachineValue = value;
       this.selectedMachineLabel = WebMSXUtils.getLabelFromMachineValue(value);
     } else {

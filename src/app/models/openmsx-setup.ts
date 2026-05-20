@@ -1,10 +1,10 @@
 export class OpenmsxSetup {
   readonly name: string;
   readonly selectedMachine: string;
-  readonly parameters: string;
+  readonly parameters: string | undefined;
   readonly connectGFX9000: boolean;
 
-  constructor(name: string, selectedMachine: string, parameters: string, connectGFX9000: boolean) {
+  constructor(name: string, selectedMachine: string, parameters: string | undefined, connectGFX9000: boolean) {
     this.name = name;
     this.selectedMachine = selectedMachine;
     this.parameters = parameters;

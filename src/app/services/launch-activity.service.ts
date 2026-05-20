@@ -170,8 +170,8 @@ export class LaunchActivityService {
     });
   }
 
-  getTrainer(pid: number, gameName: string): Promise<any[]> {
-    if (gameName) {
+  getTrainer(pid: number, gameName: string | undefined): Promise<any[]> {
+    if (gameName !== undefined) {
       return new Promise<string[]>((resolve, reject) => {
         this.ipc.once('getTrainerFromOpenmsxResponse' + pid, (event: any, success: boolean, trainersList: any[]) => {
           resolve(trainersList);
@@ -201,7 +201,7 @@ export class LaunchActivityService {
     });
   }
 
-  getOpenmsxCurrentStatus(pid: number): Map<string, string> {
+  getOpenmsxCurrentStatus(pid: number): Map<string, string> | undefined {
     return this.openmsxCurrentStatus.get(pid);
   }
 

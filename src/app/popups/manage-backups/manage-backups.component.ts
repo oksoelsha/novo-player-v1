@@ -12,16 +12,16 @@ import { PopupComponent } from '../popup.component';
 export class ManageBackupsComponent extends PopupComponent implements OnInit, AfterViewInit {
 
   @Output() dataRestored: EventEmitter<void> = new EventEmitter<void>();
-  @ViewChild('backupRenameInput', { static: false }) private backupRenameInput: ElementRef;
-  @ViewChild('backupsTable', { static: true }) private backupsTable: ElementRef;
+  @ViewChild('backupRenameInput', { static: false }) private backupRenameInput!: ElementRef;
+  @ViewChild('backupsTable', { static: true }) private backupsTable!: ElementRef;
 
-  renamedBackup: string;
+  renamedBackup: string | null = null;
   restoreMode = false;
   renameMode = false;
   deleteMode = false;
   errorMode = false;
   backups: Backup[] = [];
-  selectedBackup: Backup;
+  selectedBackup: Backup | null = null;
   backupsSelectionMap: Map<number, boolean> = new Map();
   backupTaken = false;
 
@@ -87,8 +87,8 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
   }
 
   deleteBackup() {
-    this.backupsService.deleteBackup(this.selectedBackup).then(() => {
-      this.removeFromBackups(this.selectedBackup);
+    this.backupsService.deleteBackup(this.selectedBackup!).then(() => {
+      this.removeFromBackups(this.selectedBackup!);
       this.resetState();
     }).catch(() => {
       this.deleteMode = false;
@@ -97,7 +97,7 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
   }
 
   restoreBackup() {
-    this.backupsService.restoreBackup(this.selectedBackup).then(() => {
+    this.backupsService.restoreBackup(this.selectedBackup!).then(() => {
       this.resetState();
       this.dataRestored.emit();
     }).catch(() => {
@@ -107,8 +107,8 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
   }
 
   renameBackup(event: any) {
-    this.backupsService.renameBackup(this.selectedBackup, this.renamedBackup).then(backupWithNewName => {
-      this.removeFromBackups(this.selectedBackup);
+    this.backupsService.renameBackup(this.selectedBackup!, this.renamedBackup!).then(backupWithNewName => {
+      this.removeFromBackups(this.selectedBackup!);
       this.addToBackups(backupWithNewName);
     }).catch(() => {
       this.renameMode = false;
@@ -133,7 +133,7 @@ export class ManageBackupsComponent extends PopupComponent implements OnInit, Af
     this.renameMode = false;
     this.deleteMode = false;
     this.backupsSelectionMap.clear();
-    this.renamedBackup = '';
+    this.renamedBackup = null;
     this.selectedBackup = null;
     this.backupTaken = false;
     this.errorMode = false;

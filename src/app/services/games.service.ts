@@ -350,10 +350,10 @@ export class GamesService {
     });
   }
 
-  async getGamePasswords(game: Game): Promise<GamePasswordsInfo> {
+  async getGamePasswords(game: Game): Promise<GamePasswordsInfo | undefined> {
     return new Promise<GamePasswordsInfo>((resolve, reject) => {
-      this.ipc.once('getGamePasswordsResponse' + game.generationMSXId, (event, savedStates) => {
-        resolve(savedStates);
+      this.ipc.once('getGamePasswordsResponse' + game.generationMSXId, (event, gamePasswords) => {
+        resolve(gamePasswords);
       });
       this.ipc.send('getGamePasswords', game.generationMSXId);
     });

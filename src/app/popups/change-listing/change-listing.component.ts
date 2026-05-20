@@ -9,9 +9,9 @@ import { PopupComponent } from '../popup.component';
 })
 export class ChangeListingComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
-  @Input() listings: string[];
+  @Input() popupId!: string;
+  @Input() game!: Game;
+  @Input() listings!: string[];
   @Output() newListing: EventEmitter<string> = new EventEmitter<string>();
 
   destinationListings: string[] = [];
@@ -34,7 +34,7 @@ export class ChangeListingComponent extends PopupComponent implements OnInit, Af
     super.open();
 
     this.destinationListings  = Object.assign([], this.listings);
-    this.destinationListings.splice(this.destinationListings.indexOf(this.game.listing), 1);
+    this.destinationListings.splice(this.destinationListings.indexOf(this.game.listing!), 1);
   }
 
   close(): void {

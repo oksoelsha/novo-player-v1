@@ -13,8 +13,8 @@ import { PopupComponent } from '../popup.component';
 })
 export class HardwareEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Input() machines: string[] = [];
   @Output() hardwareData: EventEmitter<any> = new EventEmitter<any>();
 

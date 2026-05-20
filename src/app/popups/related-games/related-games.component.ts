@@ -12,10 +12,10 @@ import { PopupComponent } from '../popup.component';
 })
 export class RelatedGamesComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Output() foundGame: EventEmitter<Game> = new EventEmitter<Game>();
-  @ViewChild('relatedGamesDiv', { static: true }) private relatedGamesDiv: ElementRef;
+  @ViewChild('relatedGamesDiv', { static: true }) private relatedGamesDiv!: ElementRef;
   relatedGames: Game[] = [];
   imageData1: string[] = [];
   imageData2: string[] = [];
@@ -42,7 +42,7 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
         this.imageData2[index] = this.getScreenshot(secondaryData.screenshot2);
       }
       super.open();
-      const popup = document.getElementById(this.popupId);
+      const popup = document.getElementById(this.popupId)!;
       popup.ontransitionend = () => {
         this.relatedGamesDiv.nativeElement.focus();
       };
@@ -59,11 +59,11 @@ export class RelatedGamesComponent extends PopupComponent implements OnInit, Aft
   }
 
   isShowGenerationMSXLink(relatedGame: Game) {
-    return relatedGame.generationMSXId > 0 && relatedGame.generationMSXId < 10000;
+    return relatedGame.generationMSXId !== undefined && relatedGame.generationMSXId > 0 && relatedGame.generationMSXId < 10000;
   }
 
   getGenerationMSXAddress(relatedGame: Game) {
-    return GameUtils.getGenerationMSXURLForGame(relatedGame.generationMSXId);
+    return GameUtils.getGenerationMSXURLForGame(relatedGame.generationMSXId!);
   }
 
   locateInPlayer(index: number) {

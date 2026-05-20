@@ -9,7 +9,7 @@ import { LocalizationService } from '../../../services/localization.service';
 })
 export class ExportComponent {
 
-  @Input() pid: number;
+  @Input() pid!: number;
   @Output() alertMessage: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }

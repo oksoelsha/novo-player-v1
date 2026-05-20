@@ -12,10 +12,10 @@ import { PopupComponent } from '../popup.component';
 })
 export class SavedStatesComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
-  @Input() savedStates: GameSavedState[];
-  @Input() hideNormalStart: boolean;
+  @Input() popupId!: string;
+  @Input() game!: Game;
+  @Input() savedStates!: GameSavedState[];
+  @Input() hideNormalStart!: boolean;
   @Output() startNormallyChoice: EventEmitter<Game> = new EventEmitter<Game>();
   @Output() stateChoice: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateStateList: EventEmitter<void> = new EventEmitter<void>();

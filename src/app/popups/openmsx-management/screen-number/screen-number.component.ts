@@ -9,10 +9,10 @@ import { LaunchActivityService } from '../../../services/launch-activity.service
 })
 export class ScreenNumberComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() events: Observable<boolean>;
-  screen: number;
-  private eventsSubscription: Subscription;
+  @Input() pid!: number;
+  @Input() events!: Observable<boolean>;
+  screen: number | undefined;
+  private eventsSubscription!: Subscription;
   private screenNumberSubscription: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService) {
@@ -27,7 +27,7 @@ export class ScreenNumberComponent implements OnInit, OnDestroy {
         this.launchActivityService.startGettingScreenNumber(this.pid);
       } else {
         this.launchActivityService.stopGettingScreenNumber(this.pid);
-        this.screen = null;
+        this.screen = undefined;
       }
     });
   }

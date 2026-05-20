@@ -17,30 +17,30 @@ import { Medium } from '../../models/medium';
 })
 export class OpenmsxManagementComponent extends PopupComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() popupId: string;
-  @Input() pid: number;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() pid!: number;
+  @Input() game!: Game;
   @Output() updateMoreScreenshots: EventEmitter<void> = new EventEmitter<void>();
 
-  capsLed: boolean;
-  langLed: boolean;
-  turboLed: boolean;
-  fddLed: boolean;
-  pauseIndicator: boolean;
-  muteIndicator: boolean;
-  fullscreenIndicator: boolean;
+  capsLed!: boolean;
+  langLed!: boolean;
+  turboLed!: boolean;
+  fddLed!: boolean;
+  pauseIndicator!: boolean;
+  muteIndicator!: boolean;
+  fullscreenIndicator!: boolean;
   fileGroup: string[] = [];
   openEventSubject = new Subject<boolean>();
-  currentStatus: Map<string, string>;
-  gamePasswordsInfo: GamePasswordsInfo;
+  currentStatus: Map<string, string> | undefined;
+  gamePasswordsInfo: GamePasswordsInfo | undefined;
   trainersList: any[] = [];
 
-  pauseLabel: string;
-  unpauseLabel: string;
-  muteLabel: string;
-  unmuteLabel: string;
-  fullscreenLabel: string;
-  windowLabel: string;
+  pauseLabel!: string;
+  unpauseLabel!: string;
+  muteLabel!: string;
+  unmuteLabel!: string;
+  fullscreenLabel!: string;
+  windowLabel!: string;
 
   private openmsxEventSubscription: Subscription;
 
@@ -191,9 +191,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   private setTrainer() {
-    this.launchActivityService.getTrainer(this.pid, this.game.title).then((trainersList: any[]) => {
-      this.trainersList = trainersList;
-    });
+    if (this.game.title !== undefined) {
+      this.launchActivityService.getTrainer(this.pid, this.game.title).then((trainersList: any[]) => {
+        this.trainersList = trainersList;
+      });
+    }
   }
 
   private processEvents(openmsxEvent: OpenmsxEvent) {
@@ -217,19 +219,17 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   private setFileGroup() {
-    let medium: Medium;
-    let file: string;
+    let medium: Medium | undefined;
+    let file: string | undefined;
     if (this.isDisk(this.game)) {
       medium = Medium.disk;
       file = this.game.diskA;
     } else if (this.isTape(this.game)) {
       medium = Medium.tape;
       file = this.game.tape;
-    } else {
-      file = null;
     }
-    if (file) {
-      this.filesService.getFileGroup(this.pid, medium, file).then((fileGroup: string[]) => {
+    if (file !== undefined) {
+      this.filesService.getFileGroup(this.pid, medium!, file).then((fileGroup: string[]) => {
         this.fileGroup = fileGroup;
       });
     }

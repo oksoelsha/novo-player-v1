@@ -15,14 +15,14 @@ import { OpenmsxSetupsService } from '../../services/openmsx-setups.service';
 })
 export class QuickLaunchComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
+  @Input() popupId!: string;
   @Input() machines: string[] = [];
-  @Input() showFileHunterGames: boolean;
-  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
+  @Input() showFileHunterGames!: boolean;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-  file: string;
-  selectedMachine: string;
-  parameters: string;
+  file: string | undefined;
+  selectedMachine!: string;
+  parameters: string | undefined;
   connectGFX9000 = false;
   savedSetups: OpenmsxSetup[] = [];
 
@@ -63,7 +63,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
   }
 
   launch() {
-    let sanitizedFile: string;
+    let sanitizedFile: string | undefined;
     if (this.file?.startsWith('https://')) {
       sanitizedFile = decodeURIComponent(this.file);
     } else {
@@ -109,7 +109,7 @@ export class QuickLaunchComponent extends PopupComponent implements OnInit, Afte
 
   deleteSetup(setup: any) {
     const selectedSetup = this.savedSetups.find(s => s.name === setup.name);
-    this.openmsxSetupsService.delete(selectedSetup).then(deleted => {
+    this.openmsxSetupsService.delete(selectedSetup!).then(deleted => {
       if (deleted) {
         this.savedSetups.splice(this.savedSetups.findIndex((s) => s.name === setup.name), 1);
       }

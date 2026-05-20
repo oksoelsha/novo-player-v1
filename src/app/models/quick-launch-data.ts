@@ -1,10 +1,10 @@
 export class QuickLaunchData {
-    readonly file: string;
+    readonly file: string | undefined;
     readonly machine: string;
-    readonly parameters: string;
+    readonly parameters: string | undefined;
     readonly connectGFX9000: boolean;
 
-    constructor(file: string, machine: string, parameters: string, connectGFX9000: boolean) {
+    constructor(file: string | undefined, machine: string, parameters: string | undefined, connectGFX9000: boolean) {
         this.file = file;
         this.machine = machine;
         this.parameters = parameters;

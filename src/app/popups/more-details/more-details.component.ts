@@ -12,12 +12,12 @@ import { LocalizationService } from '../../services/localization.service';
 })
 export class MoreDetailsComponent  extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
 
-  crc32: string;
-  md5: string;
-  sha256: string;
+  crc32: string | null = null;
+  md5: string | null = null;
+  sha256: string | null = null;
 
   constructor(protected changeDetector: ChangeDetectorRef, private gamesService: GamesService, private clipboard: Clipboard) {
     super(changeDetector);

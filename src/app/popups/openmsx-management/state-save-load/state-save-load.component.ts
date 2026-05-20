@@ -13,13 +13,13 @@ import { LocalizationService } from '../../../services/localization.service';
 })
 export class StateSaveLoadComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() game: Game;
-  @Input() events: Observable<boolean>;
+  @Input() pid!: number;
+  @Input() game!: Game;
+  @Input() events!: Observable<boolean>;
   @Output() alertMessage: EventEmitter<string> = new EventEmitter<string>();
 
   savedStates: GameSavedState[] = [];
-  private eventsSubscription: Subscription;
+  private eventsSubscription!: Subscription;
 
   constructor(private gamesService: GamesService, private launchActivityService: LaunchActivityService,
     private localizationService: LocalizationService) { }

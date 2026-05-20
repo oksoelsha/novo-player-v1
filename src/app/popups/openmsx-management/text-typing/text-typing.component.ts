@@ -10,12 +10,12 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class TextTypingComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() events: Observable<boolean>;
+  @Input() pid!: number;
+  @Input() events!: Observable<boolean>;
   @Output() alertMessage: EventEmitter<string> = new EventEmitter<string>();
-  textToType: string;
+  textToType: string | null = null;
 
-  private eventsSubscription: Subscription;
+  private eventsSubscription!: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }
 
@@ -32,11 +32,13 @@ export class TextTypingComponent implements OnInit, OnDestroy {
   }
 
   type() {
-    this.launchActivityService.typeText(this.pid, this.textToType).then(typed => {
-      if (typed) {
-        this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.texttyped'));
-      }
-    });
+    if (this.textToType != null) {
+      this.launchActivityService.typeText(this.pid, this.textToType).then(typed => {
+        if (typed) {
+          this.alertMessage.emit(this.localizationService.translate('popups.openmsxmanagement.texttyped'));
+        }
+      });
+    }
   }
 
   clear() {

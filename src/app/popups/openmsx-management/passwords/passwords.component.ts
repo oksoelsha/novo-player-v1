@@ -10,8 +10,8 @@ import { LocalizationService } from '../../../services/localization.service';
 })
 export class PasswordsComponent {
 
-  @Input() pid: number;
-  @Input() gamePasswordsInfo: GamePasswordsInfo;
+  @Input() pid!: number;
+  @Input() gamePasswordsInfo!: GamePasswordsInfo;
   @Output() alertMessage = new EventEmitter<string>();
 
   constructor(private launchActivityService: LaunchActivityService, private localizationService: LocalizationService) { }

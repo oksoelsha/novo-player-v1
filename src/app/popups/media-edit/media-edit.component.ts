@@ -10,19 +10,19 @@ import { PopupComponent } from '../popup.component';
 })
 export class MediaEditComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
-  @Input() game: Game;
+  @Input() popupId!: string;
+  @Input() game!: Game;
   @Output() updatedGame: EventEmitter<Game> = new EventEmitter<Game>();
 
-  romA: string;
-  romB: string;
-  extensionRom: string;
-  extensionRom2: string;
-  diskA: string;
-  diskB: string;
-  tape: string;
-  harddisk: string;
-  laserdisc: string;
+  romA: string | undefined;
+  romB: string | undefined;
+  extensionRom: string | undefined;
+  extensionRom2: string | undefined;
+  diskA: string | undefined;
+  diskB: string | undefined;
+  tape: string | undefined;
+  harddisk: string | undefined;
+  laserdisc: string | undefined;
 
   extensions: string[] = [];
 

@@ -11,12 +11,12 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 export class FileHunterComponent implements OnInit {
 
   @Output() gameLink: EventEmitter<string> = new EventEmitter<string>();
-  @ViewChild('pagination') paginationComponent: PaginationComponent;
-  @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown: NgbDropdown;
+  @ViewChild('pagination') paginationComponent!: PaginationComponent;
+  @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown!: NgbDropdown;
 
   fileNodes: any[] = [];
-  currentFolder = '';
-  currentFullPath = '';
+  currentFolder: string | null = '';
+  currentFullPath: string | null = '';
   total = 0;
   filter = '';
   readonly pageSize = 15;
@@ -48,7 +48,7 @@ export class FileHunterComponent implements OnInit {
 
   onSelectGoUp() {
     this.paginationComponent.reset();
-    this.currentFolder = this.currentFolder.substring(0, this.currentFolder.lastIndexOf('\\'));
+    this.currentFolder = this.currentFolder!.substring(0, this.currentFolder!.lastIndexOf('\\'));
     sessionStorage.setItem('fileHunterCurrentFolder', this.currentFolder);
     this.getList(this.currentFolder, 0);
     this.filter = '';
@@ -59,7 +59,7 @@ export class FileHunterComponent implements OnInit {
       this.fileNodes = data.contents;
       this.total = data.total;
       this.currentFullPath = data.path;
-      sessionStorage.setItem('fileHunterCurrentFullPath', this.currentFullPath);
+      sessionStorage.setItem('fileHunterCurrentFullPath', this.currentFullPath!);
     });
   }
 

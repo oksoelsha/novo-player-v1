@@ -9,17 +9,17 @@ import { LaunchActivityService, OpenmsxEvent } from '../../../services/launch-ac
 })
 export class EmulationSpeedComponent implements OnInit, OnDestroy {
 
-  @Input() pid: number;
-  @Input() currentStatus: Map<string, string>;
-  @Input() events: Observable<boolean>;
+  @Input() pid!: number;
+  @Input() currentStatus!: Map<string, string>;
+  @Input() events!: Observable<boolean>;
 
-  speed: number;
-  speedDisable: boolean;
+  speed!: number;
+  speedDisable = false;
 
   private readonly acceptedSpeeds = new Set([50, 100, 150, 200, 250, 300]);
   private readonly defaultSpeed = 100;
   private openmsxEventSubscription: Subscription;
-  private eventsSubscription: Subscription;
+  private eventsSubscription!: Subscription;
 
   constructor(private launchActivityService: LaunchActivityService) {
     this.openmsxEventSubscription = this.launchActivityService.getOpenmsxEvent().subscribe(openmsxEvent => {

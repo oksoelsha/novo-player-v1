@@ -9,7 +9,7 @@ import { PopupComponent } from '../popup.component';
 })
 export class ScanParametersComponent extends PopupComponent implements OnInit, AfterViewInit {
 
-  @Input() popupId: string;
+  @Input() popupId!: string;
   @Input() listings: string[] = [];
   @Input() filesAndFolders: string[] = [];
   @Input() currentListing = '';
@@ -17,7 +17,7 @@ export class ScanParametersComponent extends PopupComponent implements OnInit, A
   @Output() parameters: EventEmitter<ScanParameters> = new EventEmitter<ScanParameters>();
 
   selectedListing = '';
-  selectedMachine: string;
+  selectedMachine!: string;
 
   constructor(protected changeDetector: ChangeDetectorRef, private emulatorService: EmulatorService) {
     super(changeDetector);
