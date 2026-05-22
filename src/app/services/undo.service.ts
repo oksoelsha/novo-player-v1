@@ -5,14 +5,14 @@ import { Game } from '../models/game';
 export enum ChangeHistoryType {DELETE, UPDATE}
 
 export class ChangeHistory {
-  oldGame: Game;
-  newGame: Game;
-  type: ChangeHistoryType;
+  readonly oldGame: Game;
+  readonly newGame: Game | null;
+  readonly type: ChangeHistoryType;
 
-  constructor(oldGame: Game, newGame: Game) {
+  constructor(oldGame: Game, newGame: Game | null) {
     this.oldGame = oldGame;
     this.newGame = newGame;
-    this.type = newGame ? ChangeHistoryType.UPDATE : ChangeHistoryType.DELETE;
+    this.type = newGame != null ? ChangeHistoryType.UPDATE : ChangeHistoryType.DELETE;
   }
 }
 
@@ -26,17 +26,17 @@ export class UndoService {
 
   constructor() { }
 
-  addToHistory(oldGame: Game, newGame: Game = null) {
+  addToHistory(oldGame: Game, newGame: Game | null = null) {
     this.changeHistory.push(new ChangeHistory(oldGame, newGame));
     this.subject.next(true);
   }
 
-  getGameToRestore(): ChangeHistory {
+  getGameToRestore(): ChangeHistory | undefined {
     if (this.changeHistory.length > 0) {
       this.subject.next(this.changeHistory.length > 1);
       return this.changeHistory.pop();
     } else {
-      return null;
+      return undefined;
     }
   }
 

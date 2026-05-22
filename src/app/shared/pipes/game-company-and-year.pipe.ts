@@ -10,8 +10,8 @@ export class GameCompanyAndYearPipe implements PipeTransform {
     return this.getValue(game.company) + ' - ' + this.getValue(game.year);
   }
 
-  private getValue(value: string): string {
-    if (value != null && String(value).trim() !== '') {
+  private getValue(value: string | undefined): string {
+    if (value !== undefined && String(value).trim() !== '') {
       return value;
     } else {
       return '';

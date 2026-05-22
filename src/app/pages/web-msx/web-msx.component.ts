@@ -58,7 +58,7 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (!this.error) {
-      (window as any)['WMSX'].shutdown();
+      (window as any).WMSX.shutdown();
       this.renderer.removeChild(document.body, this.wmsxScript);
     }
   }

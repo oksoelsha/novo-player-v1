@@ -15,9 +15,9 @@ export class WebmsxService {
 
   startWebmsx() {
     const doneLoadingWMSXCheckInterval = setInterval(() => {
-      if (typeof window['WMSX'] !== 'undefined' && typeof window['WMSX'].start !== 'undefined') {
+      if (typeof (window as any).WMSX !== undefined && typeof (window as any).WMSX.start !== undefined) {
         clearInterval(doneLoadingWMSXCheckInterval);
-        window['WMSX'].start();
+        (window as any).WMSX.start();
       }
     }, 20);
   }
@@ -32,9 +32,9 @@ export class WebmsxService {
 
   switchMedium(game: Game, medium: string) {
     if (this.isDisk(game)) {
-      window['WMSX'].fileLoader.readFromURL(medium, window['wmsx'].FileLoader.OPEN_TYPE.DISK);
+      (window as any).WMSX.fileLoader.readFromURL(medium, (window as any).wmsx.FileLoader.OPEN_TYPE.DISK);
     } else if(this.isTape(game)) {
-      window['WMSX'].fileLoader.readFromURL(medium, window['wmsx'].FileLoader.OPEN_TYPE.TAPE);
+      (window as any).WMSX.fileLoader.readFromURL(medium, (window as any).wmsx.FileLoader.OPEN_TYPE.TAPE);
     }
   }
 
@@ -42,14 +42,14 @@ export class WebmsxService {
     const containsLowerCase = /[a-z]/.test(password);
     for (let i = 0; i < password.length; i++) {
       if (password.charAt(i) === ' ') {
-        await this.pressKey(this.msxKeyCodeByCharacter.get('Space'));
+        await this.pressKey(this.msxKeyCodeByCharacter.get('Space')!);
       } else {
-        await this.pressKey(this.msxKeyCodeByCharacter.get(password.charAt(i).toUpperCase()),
+        await this.pressKey(this.msxKeyCodeByCharacter.get(password.charAt(i).toUpperCase())!,
           containsLowerCase && !/[0-9]/.test(password.charAt(i)) && (password.charAt(i).toUpperCase() === password.charAt(i)));
       }
     }
     if (pressReturn) {
-      await this.pressKey(this.msxKeyCodeByCharacter.get('Enter'));
+      await this.pressKey(this.msxKeyCodeByCharacter.get('Enter')!);
     }
   }
 
@@ -97,15 +97,15 @@ export class WebmsxService {
 
   private async pressKey(keyCode: number, handleUpperCase: boolean = false) {
     if (handleUpperCase) {
-      window['WMSX'].room.keyboard.processKey(this.SHIFT_KEY_CODE, 1);
+      (window as any).WMSX.room.keyboard.processKey(this.SHIFT_KEY_CODE, 1);
       await this.delay();
     }
-    window['WMSX'].room.keyboard.processKey(keyCode, 1);
+    (window as any).WMSX.room.keyboard.processKey(keyCode, 1);
     await this.delay();
-    window['WMSX'].room.keyboard.processKey(keyCode, 0);
+    (window as any).WMSX.room.keyboard.processKey(keyCode, 0);
     await this.delay();
     if (handleUpperCase) {
-      window['WMSX'].room.keyboard.processKey(this.SHIFT_KEY_CODE, 0);
+      (window as any).WMSX.room.keyboard.processKey(this.SHIFT_KEY_CODE, 0);
       await this.delay();
     }
   }
