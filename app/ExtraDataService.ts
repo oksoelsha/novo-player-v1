@@ -6,7 +6,7 @@ import { EnvironmentService } from './EnvironmentService';
 export class ExtraDataService implements UpdateListerner {
 
     private extraDataPath = path.join(__dirname, 'data-files/extra-data.dat');
-    private extraDataInfo: Map<string, ExtraData>;
+    private extraDataInfo!: Map<string, ExtraData>;
     private extraDataVersion = '';
 
     constructor(private environmentService: EnvironmentService) {
@@ -40,7 +40,7 @@ export class ExtraDataService implements UpdateListerner {
         let soundChips: number;
         let genre1: number;
         let genre2: number;
-        let suffix: string | null;
+        let suffix: string | undefined;
         let extraData: ExtraData;
 
         const data = fs.readFileSync(this.extraDataPath, { encoding: 'ascii' });
@@ -70,7 +70,7 @@ export class ExtraDataService implements UpdateListerner {
                     if (tokens.length > 3) {
                         suffix = tokens[3];
                     } else {
-                        suffix = null;
+                        suffix = undefined;
                     }
     
                     extraData = new ExtraData(generationMSXID, generations, soundChips,
@@ -104,10 +104,10 @@ export class ExtraData {
     readonly soundChips: number;
     readonly genre1: number;
     readonly genre2: number;
-    readonly suffix: string;
+    readonly suffix: string | undefined;
 
     constructor(generationMSXID: number, generations: number, soundChips: number,
-        genre1: number, genre2: number, suffix: string) {
+        genre1: number, genre2: number, suffix: string | undefined) {
         this.generationMSXID = generationMSXID;
         this.generations = generations;
         this.genre1 = genre1;

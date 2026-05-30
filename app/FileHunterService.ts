@@ -8,7 +8,7 @@ import { EnvironmentService } from './EnvironmentService';
 
 class FileNode {
     isFolder: boolean;
-    children: Map<string, FileNode>;
+    children: Map<string, FileNode> | undefined;
 
     constructor(isFolder: boolean) {
         this.isFolder = isFolder;
@@ -24,7 +24,7 @@ export class FileHunterService implements UpdateListerner {
     private readonly gamesRoot = 'Games\\';
     private readonly includedFolders = new Set<string>();
     private games = new Map<string, FileNode>();
-    private cachedFolder: string;
+    private cachedFolder: string | null = null;
     private cachedContents: any;
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private environmentService: EnvironmentService) {
@@ -107,7 +107,7 @@ export class FileHunterService implements UpdateListerner {
         lines.forEach((line) => {
             if (line?.startsWith(this.gamesRoot)) {
                 const parts = line.split('\\');
-                let current = this.games;
+                let current: Map<string, FileNode> | undefined = this.games;
                 let folderName = '';
                 for (let index = 1; index < parts.length; index++) {
                     const part = parts[index];
@@ -115,10 +115,10 @@ export class FileHunterService implements UpdateListerner {
                     folderName += '\\' + part;
                     if (this.includedFolders.has(folderName) || isFile) {
                         if (!isFile || FileTypeUtils.isMSXFile(part)) {
-                            if (!current.get(part)) {
+                            if (current !== undefined && current.get(part) === undefined) {
                                 current.set(part, new FileNode(!isFile));
                             }
-                            current = current.get(part).children;
+                            current = current?.get(part)?.children;
                         }
                     } else {
                         break;
@@ -146,7 +146,7 @@ export class FileHunterService implements UpdateListerner {
 
             for (let index = 0; index < parts.length; index++) {
                 if (parts[index] !== '') {
-                    map = map.get(parts[index]).children;
+                    map = map.get(parts[index])!.children!;
                 }
             }
 

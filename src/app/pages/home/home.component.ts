@@ -646,15 +646,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         const gameToRestore = changeHistory.oldGame;
         const newGame = changeHistory.newGame;
-        this.gamesService.updateGame(newGame, gameToRestore, true).then((updatedGame: Game) => {
+        this.gamesService.updateGame(newGame!, gameToRestore, true).then((updatedGame: Game) => {
           if (updatedGame == null) {
             this.alertService.failure(this.localizationService.translate('home.gamewasnotrestored') + ': ' + gameToRestore.name +
               ' [' + gameToRestore.listing + ']');
           } else {
             this.alertService.success(this.localizationService.translate('home.gamewasrestored') + ': ' + updatedGame.name +
               ' [' + updatedGame.listing + ']');
-            if (newGame.listing === this.selectedListing) {
-              this.removeGameFromList(newGame, false);
+            if (newGame!.listing === this.selectedListing) {
+              this.removeGameFromList(newGame!, false);
             }
             if (updatedGame.listing === this.selectedListing) {
               this.addGameToSortedList(updatedGame, true);

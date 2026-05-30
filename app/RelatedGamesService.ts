@@ -177,7 +177,7 @@ export class RelatedGamesService {
             // limit the results to MSX system only (i.e. exclude others such as ColecoVision)
             if (repositoryInfo.softwareData.system?.startsWith('MSX') || repositoryInfo.softwareData.system === 'TURBO-R') {
                 const extraDataInfo = this.extraDataInfo.get(sha1);
-                if (extraDataInfo != null) {
+                if (extraDataInfo !== undefined) {
                     const similarGame = similarGames.get(extraDataInfo.generationMSXID);
 
                     if (similarGame) {

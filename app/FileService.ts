@@ -15,7 +15,7 @@ export class FilesService {
     private readonly imageDataPrefix = 'data:image/png;base64,';
 
     private readonly cachedMusicFiles = new Map<number, string[]>();
-    private cachedGameMusicPath: string;
+    private cachedGameMusicPath: string | undefined;
     private readonly openmsxDataScrrenshotsFolder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'screenshots');
     private cachedMoreScreenshots: string[] = [];
     private readonly openmsxSavedStatesFolder = path.join(PlatformUtils.getOpenmsxDataFolder(), 'savestates');
@@ -115,18 +115,18 @@ export class FilesService {
 
     private getSecondaryData(game: Game): GameSecondaryData {
         let screenshotsData: any;
-        if (game.colecoScreenshot) {
+        if (game.colecoScreenshot !== undefined) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().colecoScreenshotsPath,
                 game.colecoScreenshot);
-        } else if (game.spectravideoScreenshot) {
+        } else if (game.spectravideoScreenshot !== undefined) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().spectravideoScreenshotsPath,
                 game.spectravideoScreenshot);
-        } else if (game.segaScreenshot) {
+        } else if (game.segaScreenshot !== undefined) {
             screenshotsData = this.getOtherEmulatorsScreenshotsData(this.settingsService.getSettings().segaScreenshotsPath,
                 game.segaScreenshot);
         } else {
             // Now assume this is an MSX game
-            screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath, game.sha1Code,
+            screenshotsData = this.getMSXScreenshotsData(this.settingsService.getSettings().screenshotsPath,
                 game.generationMSXId, game.screenshotSuffix);
         }
 
@@ -140,13 +140,13 @@ export class FilesService {
         return new GameSecondaryData(screenshotsData.data1, screenshotsData.data2, musicFiles, moreScreenshots);
     }
 
-    private getMSXScreenshotsData(screenshotsPath: string, screenshotFile: string, genMsxId: number, suffix: string): any {
+    private getMSXScreenshotsData(screenshotsPath: string, genMsxId: number | undefined, suffix: string | undefined): any {
         let screenshotPath1: string;
-        let data1: string;
+        let data1: string | null = null;
         let screenshotPath2: string;
-        let data2: string;
+        let data2: string | null = null;
 
-        if (suffix == null) {
+        if (suffix === undefined) {
             screenshotPath1 = path.join(screenshotsPath, genMsxId + 'a.png');
         } else {
             screenshotPath1 = path.join(this.settingsService.getSettings().screenshotsPath, genMsxId + 'a' + suffix + '.png');
@@ -157,7 +157,7 @@ export class FilesService {
             // ignore
         }
         if (data1) {
-            if (suffix == null) {
+            if (suffix === undefined) {
                 screenshotPath2 = path.join(screenshotsPath, genMsxId + 'b.png');
             } else {
                 screenshotPath2 = path.join(screenshotsPath, genMsxId + 'b' + suffix + '.png');
@@ -176,8 +176,8 @@ export class FilesService {
             return { data1: null, data2: null };
         }
         const screenshotsPath1 = path.join(screenshotPath, screenshotFile + '_a.png');
-        let data1: string;
-        let data2: string;
+        let data1: string | null = null;
+        let data2: string | null = null;
         try {
             data1 = this.imageDataPrefix + fs.readFileSync(screenshotsPath1).toString('base64');
         } catch (err) {
@@ -194,18 +194,21 @@ export class FilesService {
         return { data1, data2 };
     }
 
-    private getMusicFiles(genMsxId: number): string[] {
+    private getMusicFiles(genMsxId: number | undefined): string[] {
         const gameMusicPath = this.settingsService.getSettings().gameMusicPath;
-        if (gameMusicPath && !this.cachedGameMusicPath) {
+        if (gameMusicPath && this.cachedGameMusicPath === undefined) {
             this.cachedGameMusicPath = gameMusicPath;
-        } else if (gameMusicPath && this.cachedGameMusicPath && gameMusicPath !== this.cachedGameMusicPath) {
+        } else if (gameMusicPath && this.cachedGameMusicPath !== undefined && gameMusicPath !== this.cachedGameMusicPath) {
             this.cachedMusicFiles.clear();
             this.cachedGameMusicPath = gameMusicPath;
         }
-        const cachedMusicFiles = this.cachedMusicFiles.get(genMsxId);
+        let cachedMusicFiles: string[] | undefined;
+        if (genMsxId !== undefined) {
+            cachedMusicFiles = this.cachedMusicFiles.get(genMsxId);
+        }
         if (cachedMusicFiles != null) {
             return cachedMusicFiles;
-        } else if (genMsxId && gameMusicPath) {
+        } else if (genMsxId !== undefined && gameMusicPath) {
             const folder = path.join(gameMusicPath, genMsxId.toString());
             if (fs.existsSync(folder)) {
                 const list: string[] = [];
@@ -224,9 +227,9 @@ export class FilesService {
         }
     }
 
-    private getMoreScreenshots(genMsxId: number, sha1Code: string): string[] {
+    private getMoreScreenshots(genMsxId: number | undefined, sha1Code: string): string[] {
         let identifier: string;
-        if (genMsxId) {
+        if (genMsxId !== undefined && genMsxId !== 0) {
             identifier = genMsxId.toString();
         } else {
             identifier = sha1Code;
@@ -251,8 +254,8 @@ export class FilesService {
 
     private openFileExplorer(file: string) {
         const fileManagerCommand = PlatformUtils.getFileManagerCommand(file);
-        const ls = cp.exec(fileManagerCommand, (error: cp.ExecException, stdout, stderr) => {
-            if (error) {
+        cp.exec(fileManagerCommand, (error: cp.ExecException | null, stdout, stderr) => {
+            if (error != null) {
             }
         });
     }
@@ -274,27 +277,27 @@ export class FilesService {
         shell.openPath(path);
     }
 
-    private getScreenshotVersion(): string {
+    private getScreenshotVersion(): string | null {
         return this.getVersionValue(this.settingsService.getSettings().screenshotsPath, 'version.txt');
     }
 
-    private getGameMusicVersion(): string {
+    private getGameMusicVersion(): string | null {
         return this.getVersionValue(this.settingsService.getSettings().gameMusicPath, 'version.txt');
     }
 
-    private getColecoScreenshotVersion(): string {
+    private getColecoScreenshotVersion(): string | null {
         return this.getVersionValue(this.settingsService.getSettings().colecoScreenshotsPath, '_version.txt');
     }
 
-    private getSpectravideoScreenshotVersion(): string {
+    private getSpectravideoScreenshotVersion(): string | null {
         return this.getVersionValue(this.settingsService.getSettings().spectravideoScreenshotsPath, '_version.txt');
     }
 
-    private getSegaScreenshotVersion(): string {
+    private getSegaScreenshotVersion(): string | null {
         return this.getVersionValue(this.settingsService.getSettings().segaScreenshotsPath, '_version.txt');
     }
 
-    private getVersionValue(filepath: string, filename: string): string {
+    private getVersionValue(filepath: string, filename: string): string | null {
         if (filepath) {
             let versionFile = path.join(filepath, filename);
             if (fs.existsSync(versionFile)) {
@@ -344,7 +347,7 @@ export class FilesService {
         return [];
     }
 
-    private getMatchedFiles(folder: string, file: string, toMatch: string[]): string[] {
+    private getMatchedFiles(folder: string, file: string, toMatch: string[]): string[] | null {
         const startMatch = toMatch[0];
         const middleMatch = toMatch[1];
         const closingChar = toMatch[2];
