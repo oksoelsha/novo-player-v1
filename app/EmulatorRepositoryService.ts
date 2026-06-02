@@ -57,8 +57,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const self = this;
         const options = {
             ignoreAttributes: false,
-            attributeNamePrefix: '@_',
-            processEntities: false
+            attributeNamePrefix: '@_'
         };
         let isNewFormat = false;
         const parser = new XMLParser(options);
@@ -107,10 +106,7 @@ export class EmulatorRepositoryService implements UpdateListerner {
 
     private parseStandardSoftwaredb(softwaredbFilenames: string[]) {
         const self = this;
-        const options = {
-            processEntities: false
-        };
-        const parser = new XMLParser(options);
+        const parser = new XMLParser();
         for (const softwaredbFilename of softwaredbFilenames) {
             if (fs.existsSync(softwaredbFilename)) {
                 fs.readFile(softwaredbFilename, (err, data) => {
