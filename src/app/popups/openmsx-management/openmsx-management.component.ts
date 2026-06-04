@@ -106,6 +106,9 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   close(): void {
     if (super.isWindowOpen()) {
       super.close(() => {
+        this.fileGroup = [];
+        this.trainersList = [];
+        this.gamePasswordsInfo = undefined;
         this.openEventSubject.next(false);
       });
     }

@@ -15,9 +15,9 @@ export class LaunchActivityService {
   private openmsxEventSubject = new Subject<OpenmsxEvent>();
   private ipc: IpcRenderer;
   private openmsxCurrentStatus: Map<number, Map<string, string>> = new Map();
-  private screenNumberCheckFrequency: any;
+  private screenNumberCheckFrequency = new Map<number, NodeJS.Timer[]>();
   private screenNumberSubject = new Subject<number>();
-  private detectedSoundChipsCheckFrequency: any;
+  private detectedSoundChipsCheckFrequency = new Map<number, NodeJS.Timer[]>();
   private soundChipsSubject = new Subject<any>();
   private finishOfOpenMSXProcessSubject = new Subject<Game>();
 
@@ -207,27 +207,42 @@ export class LaunchActivityService {
 
   startGettingScreenNumber(pid: number) {
     this.getScreenNumber(pid);
-    this.screenNumberCheckFrequency = setInterval(() => {
+    let pidTimers = this.screenNumberCheckFrequency.get(pid);
+    if (pidTimers === undefined) {
+      pidTimers = [];
+      this.screenNumberCheckFrequency.set(pid, pidTimers);
+    }
+    pidTimers.push(setInterval(() => {
       this.getScreenNumber(pid);
-    }, 1000);
+    }, 1000));
+
   }
 
   startGettingDetectedSoundChips(pid: number) {
     this.getSoundChips(pid);
-    this.detectedSoundChipsCheckFrequency = setInterval(() => {
+    let pidTimers = this.detectedSoundChipsCheckFrequency.get(pid);
+    if (pidTimers === undefined) {
+      pidTimers = [];
+      this.detectedSoundChipsCheckFrequency.set(pid, pidTimers);
+    }
+    pidTimers.push(setInterval(() => {
       this.getSoundChips(pid);
-    }, 1000);
+    }, 1000));
   }
 
   stopGettingScreenNumber(pid: number) {
-    if (this.screenNumberCheckFrequency) {
-      clearInterval(this.screenNumberCheckFrequency);
+    const timers = this.screenNumberCheckFrequency.get(pid)!;
+    clearInterval(timers.shift()!);
+    if (timers.length === 0) {
+      this.screenNumberCheckFrequency.delete(pid);
     }
   }
 
   stopGettingDetectedSoundChips(pid: number) {
-    if (this.detectedSoundChipsCheckFrequency) {
-      clearInterval(this.detectedSoundChipsCheckFrequency);
+    const timers = this.detectedSoundChipsCheckFrequency.get(pid)!;
+    clearInterval(timers.shift()!);
+    if (timers.length === 0) {
+      this.detectedSoundChipsCheckFrequency.delete(pid);
     }
   }
 

@@ -14,6 +14,7 @@ export class ScreenNumberComponent implements OnInit, OnDestroy {
   screen: number | undefined;
   private eventsSubscription!: Subscription;
   private screenNumberSubscription: Subscription;
+  private eventsQueue: number[] = [];
 
   constructor(private launchActivityService: LaunchActivityService) {
     this.screenNumberSubscription = this.launchActivityService.getScreenNumberNotification().subscribe((screen: number) => {
@@ -23,10 +24,16 @@ export class ScreenNumberComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((flag) => {
+      // Here's where we need to keep track of the order of events. It'll always be true first, then false for the same window.
+      // These events may come in any order, e.g. when a new Window is opened and it's open event is sent before the previous
+      // close is received. That's why we need to keep track of the order of events.
       if (flag) {
         this.launchActivityService.startGettingScreenNumber(this.pid);
+        this.eventsQueue.push(this.pid);
       } else {
-        this.launchActivityService.stopGettingScreenNumber(this.pid);
+        // Always get the first event from the queue. It's the one corresponding to this close event
+        const pidToStop = this.eventsQueue.shift();
+        this.launchActivityService.stopGettingScreenNumber(pidToStop!);
         this.screen = undefined;
       }
     });
