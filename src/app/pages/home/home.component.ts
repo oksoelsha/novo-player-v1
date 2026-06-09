@@ -1169,6 +1169,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         allAnimations.forEach((blinker) => {
           if ((blinker as CSSAnimation).animationName === 'blinker') {
             blinker.cancel();
+            blinker.startTime = 0;
             blinker.play();
           }
         });
