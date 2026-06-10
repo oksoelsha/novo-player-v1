@@ -66,7 +66,7 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
     this.openmsxEventSubscription.unsubscribe();
   }
 
-  async open(): Promise<void> {
+  open() {
     super.reattach();
     setTimeout(() => {
       this.currentStatus = this.launchActivityService.getOpenmsxCurrentStatus(this.pid);
@@ -105,12 +105,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
 
   close(): void {
     if (super.isWindowOpen()) {
-      super.close(() => {
-        this.fileGroup = [];
-        this.trainersList = [];
-        this.gamePasswordsInfo = undefined;
-        this.openEventSubject.next(false);
-      });
+      super.close();
+      this.fileGroup = [];
+      this.trainersList = [];
+      this.gamePasswordsInfo = undefined;
+      this.openEventSubject.next(false);
     }
   }
 

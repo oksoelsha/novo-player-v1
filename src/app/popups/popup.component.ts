@@ -77,7 +77,7 @@ export class PopupComponent implements OnDestroy {
     this.alert(message, 'failure-alert');
   }
 
-  protected isWindowOpen(): boolean {
+  isWindowOpen(): boolean {
     return this.isOpen;
   }
 

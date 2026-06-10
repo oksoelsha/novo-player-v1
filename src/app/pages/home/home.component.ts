@@ -987,7 +987,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       && activity.source === EventSource.openMSX);
     if (launchActivities.length > 1) {
       this.alertService.info(this.localizationService.translate('home.cannotstartopenmsxsessionmanagement'));
-    } else {
+    } else if (!this.openmsxManagementInterface.isWindowOpen()) {
+      // Checking if the window is already open is needed for the case of clicking on the same blinker quickly multiple times
       this.selectedPid = launchActivities[0].pid;
       this.openmsxManagementInterface.open();
     }
