@@ -124,6 +124,10 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
       this.setIsDisplayGenerationMSX();
       this.setSelectedGameGenerationMSXAddress();
       this.setLastPlayed();
+    } else if (changes.selectedGame.currentValue.infoFile !== changes.selectedGame.previousValue.infoFile) {
+      // Special case handling - info file can change in the game details and therefore check for it.
+      // If there's a change => update filtered game details to show or hide the additional info field
+      this.setFilteredGameDetails();
     }
   }
 
