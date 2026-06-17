@@ -59,7 +59,7 @@
     "actions": "Действия",
     "editmedia": "Изменить носители",
     "edithardware": "Изменить аппаратный",
-    "setinfofile": "Установить Файл сведений",
+    "setinfofile": "Установить информацию",
     "editbluemsxarguments": "Изменить аргументы blueMSX",
     "editemuliciousarguments": "Изменить аргументы Emulicious",
     "addtofavorites": "Добавить в избранное",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "Имя уже существует. Объединить?"
     },
     "setinfofile": {
-      "infofile": "Файл сведений"
+      "infofile": "Файл или ссылка"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "Аргументы blueMSX",

@@ -59,7 +59,7 @@
     "actions": "操作",
     "editmedia": "メディア編集",
     "edithardware": "ハードウェア編集",
-    "setinfofile": "追加情報を設定する",
+    "setinfofile": "設定情報",
     "editbluemsxarguments": "blueMSX引数を編集する",
     "editemuliciousarguments": "Emulicious引数を編集する",
     "addtofavorites": "お気に入りに追加",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "名前はすでに存在します。マージ？"
     },
     "setinfofile": {
-      "infofile": "ファイル"
+      "infofile": "ファイルまたはリンク"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "blueMSX引数",

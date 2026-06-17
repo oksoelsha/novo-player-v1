@@ -59,7 +59,7 @@
     "actions": "Acties",
     "editmedia": "Media bewerken",
     "edithardware": "Hardware bewerken",
-    "setinfofile": "Extra informatie instellen",
+    "setinfofile": "Informatie instellen",
     "editbluemsxarguments": "blueMSX-argumenten bewerken",
     "editemuliciousarguments": "Emulicious-argumenten bewerken",
     "addtofavorites": "Toevoegen aan favorieten",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "Naam bestaat al. Samenvoegen?"
     },
     "setinfofile": {
-      "infofile": "Bestand"
+      "infofile": "Bestand of link"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "blueMSX-argumenten",

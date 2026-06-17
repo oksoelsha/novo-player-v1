@@ -59,7 +59,7 @@
     "actions": "Accions",
     "editmedia": "Edita mitjans",
     "edithardware": "Edita maquinari",
-    "setinfofile": "Defineix informació adicional",
+    "setinfofile": "Defineix informació",
     "editbluemsxarguments": "Edita arguments de blueMSX",
     "editemuliciousarguments": "Edita arguments d'Emulicious",
     "addtofavorites": "Afegeix-ho a preferits",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "Nom ja existeix. Combina?"
     },
     "setinfofile": {
-      "infofile": "Fitxer"
+      "infofile": "Fitxer o enllaç"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "Arguments de blueMSX",

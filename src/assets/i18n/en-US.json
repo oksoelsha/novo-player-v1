@@ -59,7 +59,7 @@
     "actions": "Actions",
     "editmedia": "Edit media",
     "edithardware": "Edit hardware",
-    "setinfofile": "Set info file",
+    "setinfofile": "Set info",
     "editbluemsxarguments": "Edit blueMSX arguments",
     "editemuliciousarguments": "Edit Emulicious arguments",
     "addtofavorites": "Add to favorites",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "Name exists already. Merge?"
     },
     "setinfofile": {
-      "infofile": "Info file"
+      "infofile": "File or link"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "blueMSX Arguments",

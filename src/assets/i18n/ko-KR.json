@@ -59,7 +59,7 @@
     "actions": "동작",
     "editmedia": "미디어 편집",
     "edithardware": "하드웨어 편집",
-    "setinfofile": "추가 정보 설정",
+    "setinfofile": "정보 설정",
     "editbluemsxarguments": "blueMSX 인수 편집",
     "editemuliciousarguments": "Emulicious 인수 편집",
     "addtofavorites": "즐겨찾기에 추가",
@@ -297,7 +297,7 @@
       "mergelistingsconfirmation": "이름이 이미 존재합니다. 병합할까요?"
     },
     "setinfofile": {
-      "infofile": "추가 정보"
+      "infofile": "파일 또는 링크"
     },
     "editemulatorarguments": {
       "bluemsxarguments": "blueMSX 인수",
