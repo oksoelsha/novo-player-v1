@@ -128,6 +128,13 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
       // Special case handling - info file can change in the game details and therefore check for it.
       // If there's a change => update filtered game details to show or hide the additional info field
       this.setFilteredGameDetails();
+    } else {
+      // Another special case handling - files can change in the game details and therefore check for it
+      const newFiles = this.getSelectedGameFiles();
+      const oldFiles = this.selectedGameFiles;
+      if (JSON.stringify(newFiles) !== JSON.stringify(oldFiles)) {
+        this.setSelectedGameFiles();
+      }
     }
   }
 
@@ -150,14 +157,19 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   }
 
   private setSelectedGameFiles() {
+    const files = this.getSelectedGameFiles();
+    this.selectedGameFiles = files;
+    this.changeDetector.markForCheck();
+  }
+
+  private getSelectedGameFiles(): string[] {
     const files: string[] = [];
     for (const fileField of this.fileFields) {
       if ((this.selectedGame as any)[fileField] != null) {
         files.push((this.selectedGame as any)[fileField]);
       }
     }
-    this.selectedGameFiles = files;
-    this.changeDetector.markForCheck();
+    return files;
   }
 
   private setSelectedGameMedium() {
