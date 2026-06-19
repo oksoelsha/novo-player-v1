@@ -14,7 +14,7 @@ describe('YearsFilter', () => {
 });
 
 describe('YearsFilter', () => {
-  it('YearsFilter should filter game with a size equal to a the filter equal', () => {
+  it('YearsFilter should filter game with a year equal to a the filter equal', () => {
     const years = new FilterRange(1985, ComparisonOperator.equal, 0);
     const filter = new YearsFilter(years);
     const game1 = new Game('name', '123', 1);
@@ -30,7 +30,7 @@ describe('YearsFilter', () => {
 });
 
 describe('YearsFilter', () => {
-  it('YearsFilter should filter game with a size less than a the filter less-than', () => {
+  it('YearsFilter should filter game with a year less than a the filter less-than', () => {
     const years = new FilterRange(1986, ComparisonOperator.less, 0);
     const filter = new YearsFilter(years);
     const game1 = new Game('name', '123', 1);
@@ -46,7 +46,7 @@ describe('YearsFilter', () => {
 });
 
 describe('YearsFilter', () => {
-  it('YearsFilter should filter game with a size equal to or less than a the filter less-than-equal', () => {
+  it('YearsFilter should filter game with a year equal to or less than a the filter less-than-equal', () => {
     const years = new FilterRange(1986, ComparisonOperator.lessOrEqual, 0);
     const filter = new YearsFilter(years);
     const game1 = new Game('name', '123', 1);
@@ -116,16 +116,16 @@ describe('YearsFilter', () => {
 });
 
 describe('YearsFilter', () => {
-  it('YearsFilter should filter games without a set year no matter the filter', () => {
+  it('YearsFilter should not filter games without a set year no matter the filter', () => {
     const years1 = new FilterRange(1986, ComparisonOperator.less, 0);
     const filter1 = new YearsFilter(years1);
     const game1 = new Game('name', '123', 1);
-    expect(filter1.isFiltered(game1)).toBeTrue();
+    expect(filter1.isFiltered(game1)).toBeFalse();
 
     const years2 = new FilterRange(1986, ComparisonOperator.greaterOrEqual, 0);
     const filter2 = new YearsFilter(years2);
     const game2 = new Game('name', '123', 2);
-    expect(filter2.isFiltered(game2)).toBeTrue();
+    expect(filter2.isFiltered(game2)).toBeFalse();
   });
 });
 

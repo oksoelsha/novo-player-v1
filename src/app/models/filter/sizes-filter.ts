@@ -32,7 +32,8 @@ export class SizesFilter implements Filter {
                 return game.size >= this.sizes.start && game.size <= this.sizes.end;
             }
             default: {
-                return true;
+                // shouldn't happen
+                return false;
             }
         }
     }

@@ -11,7 +11,9 @@ export class GenerationFilter implements Filter {
     }
 
     isFiltered(game: Game): boolean {
-        if (this.generation === Generation.MSX) {
+        if (game.generations === undefined) {
+            return false;
+        } else if (this.generation === Generation.MSX) {
             return (game.generations & 1) > 0;
         } else if (this.generation === Generation.MSX2) {
             return (game.generations & 2) > 0;
