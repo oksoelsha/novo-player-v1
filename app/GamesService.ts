@@ -251,7 +251,7 @@ export class GamesService {
     }
 
     private getYear(year: string): string {
-        if (year.length > 4) {
+        if (year?.length > 4) {
             return year.slice(year.length - 4);
         } else {
             return year;
