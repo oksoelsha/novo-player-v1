@@ -33,7 +33,6 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const softwaredbFilenames = [
             path.join(__dirname, 'data-files/msxdskdb.xml'),
             path.join(__dirname, 'data-files/msxcaswavdb.xml'),
-            path.join(__dirname, 'data-files/segadb.xml'),
             path.join(__dirname, 'data-files/svidb.xml')
         ];
         let isNewFormat = false;
@@ -41,7 +40,10 @@ export class EmulatorRepositoryService implements UpdateListerner {
         const mainOpenMSXSoftwaredb = PlatformUtils.getOpenmsxSoftwareDb(this.settingsService.getSettings().openmsxPath);
         isNewFormat = this.parseNewSoftwaredb(mainOpenMSXSoftwaredb);
         if (!isNewFormat) {
+            // If the main softwaredb is not new format, add it to the list of files-to-parse using the old format.
+            // New format contains Sega-1000 roms. Old format does not, and therefore include here the old-format Sega-1000 one.
             softwaredbFilenames.unshift(mainOpenMSXSoftwaredb);
+            softwaredbFilenames.push(path.join(__dirname, 'data-files/segadb.xml'));
         }
 
         const userOpenMSXSoftwaredb = PlatformUtils.getOpenmsxUserSoftwareDb();
