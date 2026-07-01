@@ -134,7 +134,7 @@ export class OpenMSXLaunchService {
         }
 
         let genMSXId: number | undefined = 0;
-        if (fs.existsSync(adjustedQuickLaunchData.file)) {
+        if (adjustedQuickLaunchData.file !== undefined && fs.existsSync(adjustedQuickLaunchData.file)) {
             if (fs.statSync(adjustedQuickLaunchData.file).isFile()) {
                 const sha1 = await this.hashService.getSha1Code(adjustedQuickLaunchData.file);
                 if (sha1) {
@@ -142,7 +142,7 @@ export class OpenMSXLaunchService {
                     filename = path.basename(adjustedQuickLaunchData.file);
                     genMSXId = this.extraDataService.getExtraDataInfo().get(sha1.hash)?.generationMSXID;
                 } else {
-                    this.errorLogService.logError('Invalid file: ', quickLaunchData.file);
+                    this.errorLogService.logError('Invalid file: ', adjustedQuickLaunchData.file);
                     this.win.webContents.send('quickLaunchProcessIdResponse' + time, 0, null, 0, 'ERR_INVALID_FILE');
                     return;
                 }
@@ -201,7 +201,7 @@ export class OpenMSXLaunchService {
     private async downloadGame(quickLaunchData: QuickLaunchData) {
         const tempDirPath = os.tmpdir()
         const resolvedTempDirPath = fs.realpathSync(tempDirPath);
-        const remoteFilename = quickLaunchData.file.substring(quickLaunchData.file.lastIndexOf('/') + 1);
+        const remoteFilename = quickLaunchData.file!.substring(quickLaunchData.file!.lastIndexOf('/') + 1);
         const tempGameFilePath = path.join(resolvedTempDirPath, remoteFilename);
 
         return new Promise<QuickLaunchData>((resolve, reject) => {
@@ -210,7 +210,7 @@ export class OpenMSXLaunchService {
                     'User-Agent': 'NovoPlayer/' + Application.VERSION
                 }
             };
-            https.get(quickLaunchData.file, options, (res) => {
+            https.get(quickLaunchData.file!, options, (res) => {
                 const filePath = fs.createWriteStream(tempGameFilePath);
                 res.pipe(filePath);
                 filePath.on('finish', () => {
@@ -219,11 +219,11 @@ export class OpenMSXLaunchService {
                         quickLaunchData.connectGFX9000));
                 });
                 filePath.on('error', (error) => {
-                    this.errorLogService.logError('Failed to write downloaded file ', quickLaunchData.file);
+                    this.errorLogService.logError('Failed to write downloaded file ', quickLaunchData.file!);
                     reject(error);
                 });
             }).on('error', error => {
-                this.errorLogService.logError('Failed to download ', quickLaunchData.file);
+                this.errorLogService.logError('Failed to download ', quickLaunchData.file!);
                 reject(error);
             });
         });
@@ -248,27 +248,27 @@ export class OpenMSXLaunchService {
     }
 
     private setQuickLaunchFileArguments(args: string[], quickLaunchData: QuickLaunchData, filename: string, size: number) {
-        if (FileTypeUtils.isMSXFile(quickLaunchData.file)) {
+        if (FileTypeUtils.isMSXFile(quickLaunchData.file!)) {
             if (FileTypeUtils.isROM(filename)) {
-                this.addArgument(args, 'carta', quickLaunchData.file);
+                this.addArgument(args, 'carta', quickLaunchData.file!);
             } else if (FileTypeUtils.isDisk(filename)) {
                 if (size <= FileTypeUtils.MAX_DISK_FILE_SIZE) {
-                    this.addArgument(args, 'diska', quickLaunchData.file);
+                    this.addArgument(args, 'diska', quickLaunchData.file!);
                 } else {
-                    this.addArgument(args, 'hda', quickLaunchData.file);
+                    this.addArgument(args, 'hda', quickLaunchData.file!);
                 }
             } else if (FileTypeUtils.isTape(filename)) {
-                this.addArgument(args, 'cassetteplayer', quickLaunchData.file);
+                this.addArgument(args, 'cassetteplayer', quickLaunchData.file!);
             } else if (FileTypeUtils.isLaserdisc(filename)) {
-                this.addArgument(args, 'laserdisc', quickLaunchData.file);
+                this.addArgument(args, 'laserdisc', quickLaunchData.file!);
             } else if (FileTypeUtils.isZip(filename)) {
-                args.push(quickLaunchData.file);
+                args.push(quickLaunchData.file!);
             }
         }
     }
 
     private setQuickLaunchDirectoryAsDisk(args: string[], quickLaunchData: QuickLaunchData) {
-        this.addArgument(args, 'diska', quickLaunchData.file);
+        this.addArgument(args, 'diska', quickLaunchData.file!);
     }
 
     private setQuickLaunchOtherArguments(args: string[], quickLaunchData: QuickLaunchData) {
