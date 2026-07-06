@@ -1,13 +1,14 @@
 import * as cp from 'child_process';
-import * as path from 'path';
 import { BrowserWindow, ipcMain } from 'electron';
-import { EventLogService } from '../EventLogService';
-import { SettingsService } from '../SettingsService';
+import * as fs from 'fs';
+import * as path from 'path';
 import { Event, EventSource, EventType } from '../../src/app/models/event';
 import { Game } from '../../src/app/models/game';
-import { GameUtils } from '../utils/GameUtils';
-import { EmulatorUtils } from '../utils/EmulatorUtils';
 import { ErrorLogService } from '../ErrorLogService';
+import { EventLogService } from '../EventLogService';
+import { SettingsService } from '../SettingsService';
+import { EmulatorUtils } from '../utils/EmulatorUtils';
+import { GameUtils } from '../utils/GameUtils';
 
 export class BlueMSXLaunchService {
 
@@ -45,7 +46,7 @@ export class BlueMSXLaunchService {
         };
         let errorMessage: string;
 
-        const binaryFullpath = path.join(this.settingsService.getSettings().bluemsxPath, 'bluemsx.exe');
+        const binaryFullpath = this.getBlueMSXExecFullPath();
         const process = cp.spawn(binaryFullpath, this.getArguments(game), options);
         process.on('error', (error) => {
             console.log(error.message);
@@ -60,6 +61,15 @@ export class BlueMSXLaunchService {
         });
 
         this.eventLogService.logEvent(new Event(EventSource.blueMSX, EventType.LAUNCH, GameUtils.getMonikor(game)));
+    }
+
+    private getBlueMSXExecFullPath(): string {
+        const newExec = path.join(this.settingsService.getSettings().bluemsxPath, 'bluemsx+.exe');
+        if (fs.existsSync(newExec)) {
+            return newExec;
+        } else {
+            return path.join(this.settingsService.getSettings().bluemsxPath, 'bluemsx.exe');
+        }
     }
 
     private getArguments(game: Game): string[] {
