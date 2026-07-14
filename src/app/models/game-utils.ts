@@ -74,4 +74,12 @@ export class GameUtils {
     static getGenerationMSXURLForGame(generationMSXId: number): string {
         return 'http://www.generation-msx.nl/msxdb/softwareinfo/' + generationMSXId;
     }
+
+    static isDisk(game: Game): boolean {
+        return game.romA == null && game.romB == null && game.diskA != null;
+    }
+
+    static isTape(game: Game): boolean {
+        return game.romA == null && game.romB == null && game.diskA == null && game.tape != null;
+    }
 }

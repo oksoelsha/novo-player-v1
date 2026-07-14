@@ -9,7 +9,7 @@ describe('GameMediumIconPipe', () => {
 });
 
 describe('GameMediumIconPipe', () => {
-  it('transform function should return ROM icon if the main file is ROM', () => {
+  it('transform function should return ROM icon if the main file is ROM (romA)', () => {
     const pipe = new GameMediumIconPipe();
     const game = new Game('name', '12345', 4);
     game.setRomA('rom');
@@ -18,7 +18,16 @@ describe('GameMediumIconPipe', () => {
 });
 
 describe('GameMediumIconPipe', () => {
-  it('transform function should return disk icon if the main file is disk', () => {
+  it('transform function should return ROM icon if the main file is ROM (romB)', () => {
+    const pipe = new GameMediumIconPipe();
+    const game = new Game('name', '12345', 4);
+    game.setRomB('rom');
+    expect(pipe.transform(game)).toEqual('assets/images/media/rom.png');
+  });
+});
+
+describe('GameMediumIconPipe', () => {
+  it('transform function should return disk icon if the main file is disk (diskA)', () => {
     const pipe = new GameMediumIconPipe();
     const game = new Game('name', '12345', 4);
     game.setDiskA('disk');

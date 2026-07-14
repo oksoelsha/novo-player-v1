@@ -5,6 +5,8 @@ export class GameUtils {
     static getGameMainFile(game: Game): string {
         if (game.romA) {
             return game.romA;
+        } else if (game.romB) {
+            return game.romB;
         } else if (game.diskA) {
             return game.diskA;
         } else if (game.tape) {

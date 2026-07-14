@@ -7,7 +7,7 @@ import { Game } from '../../../models/game';
 export class GameMediumIconPipe implements PipeTransform {
 
   transform(game: Game): string {
-    if (game.romA != null) {
+    if (game.romA != null || game.romB != null) {
       return 'assets/images/media/rom.png';
     } else if (game.diskA != null) {
       return 'assets/images/media/disk.png';

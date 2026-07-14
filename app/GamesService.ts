@@ -293,22 +293,6 @@ export class GamesService {
         }
     }
 
-    private getGameMainFile(game: Game): string {
-        if (game.romA != null) {
-            return game.romA;
-        } else if (game.diskA != null) {
-            return game.diskA;
-        } else if (game.tape != null) {
-            return game.tape;
-        } else if (game.harddisk != null) {
-            return game.harddisk;
-        } else if (game.laserdisc != null) {
-            return game.laserdisc;
-        } else {
-            return '';
-        }
-    }
-
     private getTotals() {
         const self = this;
         let totals: Totals;

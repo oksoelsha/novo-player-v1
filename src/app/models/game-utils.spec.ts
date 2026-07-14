@@ -118,3 +118,30 @@ describe('GameUtils', () => {
     expect(GameUtils.getGenerationMSXURLForGame(123)).toEqual('http://www.generation-msx.nl/msxdb/softwareinfo/123');
   });
 });
+
+describe('GameUtils', () => {
+  it('isDisk function should return true if game has diskA set', () => {
+    const game = new Game('name', '123abc', 32);
+    game.diskA = 'diskA.dsk';
+    expect(GameUtils.isDisk(game)).toBeTrue();
+  });
+
+  it('isDisk function should return false if game does not have disk files as primary media', () => {
+    const game = new Game('name', '123abc', 32);
+    game.romA = 'romA.rom';
+    game.tape = 'tape.cas';
+    expect(GameUtils.isDisk(game)).toBeFalse();
+  });
+
+  it('isTape function should return true if game has tape set', () => {
+    const game = new Game('name', '123abc', 32);
+    game.tape = 'tape.cas';
+    expect(GameUtils.isTape(game)).toBeTrue();
+  });
+
+  it('isTape function should return false if game does not have tape files as primary media', () => {
+    const game = new Game('name', '123abc', 32);
+    game.diskA = 'disk.dsk';
+    expect(GameUtils.isTape(game)).toBeFalse();
+  });
+});

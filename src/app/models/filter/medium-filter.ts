@@ -11,7 +11,7 @@ export class MediumFilter implements Filter {
     }
 
     isFiltered(game: Game): boolean {
-        if (game.romA != null) {
+        if (game.romA != null || game.romB != null) {
           return this.medium === Medium.rom;
         } else if (game.diskA != null) {
           return this.medium === Medium.disk;

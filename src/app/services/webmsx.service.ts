@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Game } from '../models/game';
+import { GameUtils } from '../models/game-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,11 @@ export class WebmsxService {
   }
 
   isDisk(game: Game) {
-    return game.romA == null && game.diskA != null;
+    return GameUtils.isDisk(game);
   }
 
   isTape(game: Game) {
-    return game.romA == null && game.diskA == null && game.tape != null;
+    return GameUtils.isTape(game);
   }
 
   switchMedium(game: Game, medium: string) {

@@ -9,6 +9,7 @@ import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
 import { GamePasswordsInfo } from '../../models/game-passwords-info';
 import { Medium } from '../../models/medium';
+import { GameUtils } from '../../models/game-utils';
 
 @Component({
   selector: 'app-openmsx-management',
@@ -175,11 +176,11 @@ export class OpenmsxManagementComponent extends PopupComponent implements OnInit
   }
 
   isDisk(game: Game) {
-    return game.romA == null && game.diskA != null;
+    return GameUtils.isDisk(game);
   }
 
   isTape(game: Game) {
-    return game.romA == null && game.diskA == null && game.tape != null;
+    return GameUtils.isTape(game);
   }
 
   alertMessage(message: string) {

@@ -56,16 +56,33 @@ describe('WebMSXUtils', () => {
 
     game = new Game('nameRom', '1', 1);
     game.setRomA('romA');
-    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', PRESETS: 'OPL4,MSXMUSIC'});
+    game.setRomB('romB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', CART2: 'romB', PRESETS: 'OPL4,MSXMUSIC'});
+
+    game = new Game('nameRom', '1', 1);
+    game.setRomB('romB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({CART2: 'romB', PRESETS: 'OPL4,MSXMUSIC'});
 
     game = new Game('nameDisk', '1', 1);
     game.setDiskA('diskA');
-    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', PRESETS: 'OPL4,MSXMUSIC'});
+    game.setDiskB('diskB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISK: 'diskA', DISKB: 'diskB', PRESETS: 'OPL4,MSXMUSIC'});
+
+    game = new Game('nameDisk', '1', 1);
+    game.setDiskB('diskB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({DISKB: 'diskB', PRESETS: 'OPL4,MSXMUSIC'});
 
     game = new Game('nameRomAndDisk', '1', 1);
     game.setRomA('romA');
+    game.setRomB('romB');
     game.setDiskA('diskA');
-    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', DISK: 'diskA', PRESETS: 'OPL4,MSXMUSIC'});
+    game.setDiskB('diskB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({ROM: 'romA', CART2: 'romB', DISK: 'diskA', DISKB: 'diskB', PRESETS: 'OPL4,MSXMUSIC'});
+
+    game = new Game('nameRomAndDisk', '1', 1);
+    game.setRomB('romB');
+    game.setDiskB('diskB');
+    expect(WebMSXUtils.getWebMSXParams(game)).toEqual({CART2: 'romB', DISKB: 'diskB', PRESETS: 'OPL4,MSXMUSIC'});
 
     game = new Game('nameDiskAndSCC', '1', 1);
     game.setDiskA('diskA');

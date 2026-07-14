@@ -173,7 +173,7 @@ export class GameDetailsComponent implements OnDestroy, OnChanges {
   }
 
   private setSelectedGameMedium() {
-    if (this.selectedGame.romA != null) {
+    if (this.selectedGame.romA != null || this.selectedGame.romB != null) {
       this.selectedGameMedium = this.localizationService.translate('medium.rom');
       this.selectedMediumGroupTotal = '';
     } else if (this.selectedGame.diskA != null) {

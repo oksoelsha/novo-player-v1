@@ -54,8 +54,14 @@ export class WebMSXUtils {
     if (game.romA != null) {
       webMSXParams.ROM = game.romA;
     }
+    if (game.romB != null) {
+      webMSXParams.CART2 = game.romB;
+    }
     if (game.diskA != null) {
       webMSXParams.DISK = game.diskA;
+    }
+    if (game.diskB != null) {
+      webMSXParams.DISKB = game.diskB;
     }
     if (game.extensionRom === 'scc') {
       this.addWebMSXPresets(webMSXParams, 'SCC');
