@@ -11,7 +11,19 @@ export class WindowService {
     this.ipc = window.require('electron').ipcRenderer;
   }
 
-  zoomIn() {
-    this.ipc.send('zoomIn');
+  zoom(event: any) {
+    switch (event.key) {
+      case '=':
+        this.ipc.send('zoomIn');
+        break;
+      case '-':
+        this.ipc.send('zoomOut');
+        break;
+      case '0':
+        this.ipc.send('zoomReset');
+        break;
+    }
+    event.stopPropagation();
+    event.preventDefault();
   }
 }

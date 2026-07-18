@@ -4,6 +4,7 @@ import { Totals } from '../../models/totals';
 import { GamesService } from '../../services/games.service';
 import { ScannerService } from '../../services/scanner.service';
 import { WindowService } from '../../services/window.service';
+import { KeyboardUtils } from '../keyboard-utils';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,8 +24,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
-    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
-        this.windowService.zoomIn();
+    if (KeyboardUtils.isZoomKeyPressed(event)) {
+        this.windowService.zoom(event);
     }
   }
 

@@ -10,6 +10,7 @@ import { PlatformService } from '../../services/platform.service';
 import { BlueMSXUtils } from '../../models/bluemsx-utils';
 import { WindowService } from '../../services/window.service';
 import { EmuliciousUtils } from '../../models/emulicious-utils';
+import { KeyboardUtils } from '../keyboard-utils';
 
 @Component({
   selector: 'app-settings',
@@ -50,8 +51,8 @@ export class SettingsComponent implements OnInit, AfterViewInit, DeactivateCompo
 
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
-    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
-        this.windowService.zoomIn();
+    if (KeyboardUtils.isZoomKeyPressed(event)) {
+        this.windowService.zoom(event);
     }
   }
 

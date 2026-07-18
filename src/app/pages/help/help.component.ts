@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { VersionsService } from '../../services/versions.service';
 import { VersionMatchIndicatorComponent } from './version-match-indicator/version-match-indicator.component';
 import { WindowService } from '../../services/window.service';
+import { KeyboardUtils } from '../keyboard-utils';
 
 @Component({
   selector: 'app-help',
@@ -25,8 +26,8 @@ export class HelpComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
-    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
-        this.windowService.zoomIn();
+    if (KeyboardUtils.isZoomKeyPressed(event)) {
+        this.windowService.zoom(event);
     }
   }
 

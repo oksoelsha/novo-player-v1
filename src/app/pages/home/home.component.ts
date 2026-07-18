@@ -44,6 +44,7 @@ import { LaunchActivity, LaunchActivityService } from '../../services/launch-act
 import { EmuliciousArgumentsEditComponent } from '../../popups/emulicious-arguments-edit/emulicious-arguments-edit.component';
 import { FilterUtils } from '../../models/filter-utils';
 import { OperationCacheService } from '../../services/operation-cache.service';
+import { KeyboardUtils } from '../keyboard-utils';
 
 export enum SortDirection {
   ASC, DESC
@@ -245,7 +246,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
         event.stopPropagation();
         event.preventDefault();
-      } else if (event.key.length === 1 && !this.ctrlOrCommandKey(event) && (
+      } else if (event.key.length === 1 && !KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (
         (event.key >= 'a' && event.key <= 'z') || (event.key >= '0' && event.key <= '9') ||
         (event.key >= 'A' && event.key <= 'Z') || event.key === ' ' || event.key === '-')) {
         if (this.quickTypeTimer != null) {
@@ -256,11 +257,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.jumpToNearestGame(this.gameQuickSearch);
           this.gameQuickSearch = '';
         }, 600);
-      } else if (this.ctrlOrCommandKey(event) && event.key === '=') {
-        this.windowService.zoomIn();
-      } else if (this.ctrlOrCommandKey(event) && (event.key === 'f' || event.key === 'F')) {
+      } else if (KeyboardUtils.isZoomKeyPressed(event)) {
+        this.windowService.zoom(event);
+      } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 'f' || event.key === 'F')) {
         this.searchDropdown.open();
-      } else if (this.ctrlOrCommandKey(event) && (event.key === 't' || event.key === 'T')) {
+      } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 't' || event.key === 'T')) {
         const listingsDropdownArray = this.listingsDropdown.toArray();
         if (listingsDropdownArray.length === 1) {
           listingsDropdownArray[0].open();
@@ -269,33 +270,33 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.resetAllFilters();
       } else if (event.metaKey && (event.key === 'y' || event.key === 'Y')) {
         this.resetAllFilters();
-      } else if (this.ctrlOrCommandKey(event) && (event.key === 'z' || event.key === 'Z')) {
+      } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 'z' || event.key === 'Z')) {
         this.undo();
       } else if (this.selectedGame != null) {
         if (event.key === 'Delete') {
           this.remove(event, this.selectedGame);
-        } else if (this.ctrlOrCommandKey(event) && (event.key === 'e' || event.key === 'E')) {
+        } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 'e' || event.key === 'E')) {
           this.edit(this.selectedGame);
         } else if (this.otherSelectedGames.size === 0) {
           if (event.key === 'Enter') {
             this.launch(this.selectedGame);
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'b' || event.key === 'B')) {
+          } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && event.shiftKey && (event.key === 'b' || event.key === 'B')) {
             if (this.isBlueMSXPathDefined) {
               this.launchBlueMSX(this.selectedGame);
             }
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'w' || event.key === 'W')) {
+          } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && event.shiftKey && (event.key === 'w' || event.key === 'W')) {
             if (this.isWebMSXPathDefined) {
               this.launchWebmsx(this.selectedGame);
             }
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'm' || event.key === 'M')) {
+          } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && event.shiftKey && (event.key === 'm' || event.key === 'M')) {
             if (this.isEmuliciousPathDefined) {
               this.launchEmulicious(this.selectedGame);
             }
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
+          } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && event.shiftKey && (event.key === 'g' || event.key === 'G')) {
             if (this.isGearcolecoPathDefined) {
               this.launchGearcoleco(this.selectedGame);
             }
-          } else if (this.ctrlOrCommandKey(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
+          } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && event.shiftKey && (event.key === 'h' || event.key === 'H')) {
             this.relatedGames.open();
           }
         }
@@ -789,7 +790,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.removeAllOtherSelectedGames();
       this.showInfo(game);
     } else {
-      if (this.ctrlOrCommandKey(event)) {
+      if (KeyboardUtils.isCtrlOrCommandKeyPressed(event)) {
         if (!this.selectedGame) {
           this.showInfo(game);
         } else {
@@ -1034,10 +1035,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private canHandleEvents(): boolean {
     return !this.isEditMode() && !(this.openMenuEventCounter > 0) && !this.popupOpen && !this.contextMenuOpened;
-  }
-
-  private ctrlOrCommandKey(event: KeyboardEvent): boolean {
-    return event.ctrlKey || event.metaKey;
   }
 
   private setAsSelectedGame(game: Game): boolean {

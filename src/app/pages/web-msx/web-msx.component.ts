@@ -11,6 +11,7 @@ import { WebmsxService } from '../../services/webmsx.service';
 import { FilesService } from '../../services/files.service';
 import { Utils } from '../../models/utils';
 import { Medium } from '../../models/medium';
+import { KeyboardUtils } from '../keyboard-utils';
 
 @Component({
   selector: 'app-web-msx',
@@ -33,8 +34,8 @@ export class WebMSXComponent implements OnInit, OnDestroy {
 
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
-    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.key === '=') {
-        this.windowService.zoomIn();
+    if (KeyboardUtils.isZoomKeyPressed(event)) {
+        this.windowService.zoom(event);
     }
   }
 

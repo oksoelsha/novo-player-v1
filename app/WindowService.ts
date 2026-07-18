@@ -27,6 +27,14 @@ export class WindowService {
             this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() + 0.1;
         });
 
+        ipcMain.on('zoomOut', (event: any) => {
+            this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() - 0.1;
+        });
+
+        ipcMain.on('zoomReset', (event: any) => {
+            this.win.webContents.zoomFactor = 1.0;
+        });
+
         this.win.on('maximize', () => {
             this.win.webContents.send('windowMaximizedEvent');
         });
