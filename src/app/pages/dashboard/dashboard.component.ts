@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
     if (KeyboardUtils.isZoomKeyPressed(event)) {
-        this.windowService.zoom(event);
+        this.windowService.zoom(event.key, event);
     }
   }
 

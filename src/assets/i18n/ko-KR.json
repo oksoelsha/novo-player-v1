@@ -112,7 +112,11 @@
     "moredetails": "추가 정보",
     "switchtolist": "목록 모드로 전환합니다",
     "switchtoscreenshots": "썸네일 모드로 전환합니다",
-    "cannotstartopenmsxsessionmanagement": "실행 중인 게임의 여러 인스턴스에 대해 OpenMSX 세션 관리를 시작할 수 없습니다. 대시보드로 이동"
+    "cannotstartopenmsxsessionmanagement": "실행 중인 게임의 여러 인스턴스에 대해 OpenMSX 세션 관리를 시작할 수 없습니다. 대시보드로 이동",
+    "zoomin": "확대",
+    "zoomout": "축소",
+    "zoomreset": "확대/축소 재설정",
+    "and": "와"
   },
   "language": {
     "en-US": "영어",

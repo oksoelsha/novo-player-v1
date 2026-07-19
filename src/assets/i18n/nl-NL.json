@@ -112,7 +112,11 @@
     "moredetails": "Meer details",
     "switchtolist": "Schakel over naar de lijstmodus",
     "switchtoscreenshots": "Schakel over naar de miniaturen",
-    "cannotstartopenmsxsessionmanagement": "Kan OpenMSX-sessiebeheer niet starten voor meerdere actieve exemplaren van een spel. Ga naar het dashboard"
+    "cannotstartopenmsxsessionmanagement": "Kan OpenMSX-sessiebeheer niet starten voor meerdere actieve exemplaren van een spel. Ga naar het dashboard",
+    "zoomin": "Inzoomen",
+    "zoomout": "Uitzoomen",
+    "zoomreset": "Zoom herstellen",
+    "and": "en"
   },
   "language": {
     "en-US": "Engels",

@@ -112,7 +112,11 @@
     "moredetails": "Più dettagli",
     "switchtolist": "Passa alla modalità elenco",
     "switchtoscreenshots": "Passa alla modalità miniature",
-    "cannotstartopenmsxsessionmanagement": "Impossibile avviare la gestione delle sessioni OpenMSX per più istanze in esecuzione di un gioco. Vai alla dashboard"
+    "cannotstartopenmsxsessionmanagement": "Impossibile avviare la gestione delle sessioni OpenMSX per più istanze in esecuzione di un gioco. Vai alla dashboard",
+    "zoomin": "Ingrandisci",
+    "zoomout": "Riduci",
+    "zoomreset": "Reimposta lo zoom",
+    "and": "e"
   },
   "language": {
     "en-US": "Inglese",

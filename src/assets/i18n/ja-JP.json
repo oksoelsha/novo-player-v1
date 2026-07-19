@@ -112,7 +112,11 @@
     "moredetails": "さらなるデータ",
     "switchtolist": "リストモードに切り替えます",
     "switchtoscreenshots": "サムネイルモードに切り替えます",
-    "cannotstartopenmsxsessionmanagement": "ゲームの複数の実行インスタンスに対して OpenMSX セッション管理を開始できません。ダッシュボードに移動します"
+    "cannotstartopenmsxsessionmanagement": "ゲームの複数の実行インスタンスに対して OpenMSX セッション管理を開始できません。ダッシュボードに移動します",
+    "zoomin": "拡大",
+    "zoomout": "縮小",
+    "zoomreset": "ズームをリセット",
+    "and": "そして"
   },
   "language": {
     "en-US": "英語",

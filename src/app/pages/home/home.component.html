@@ -7,7 +7,7 @@
           <button ngbDropdownItem type="button" (click)="undo()" [disabled]="!showUndo">
             <div class="d-flex">
               <div class="me-4">{{ 'home.undo' | translate }}</div>
-              <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}Z
+              <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}+Z
               </div>
             </div>
           </button>
@@ -15,6 +15,28 @@
             <div class="d-flex">
               <div *ngIf="displayMode === 'list'" class="switch-mode">{{ 'home.switchtoscreenshots' | translate }}</div>
               <div *ngIf="displayMode === 'screenshots'" class="switch-mode">{{ 'home.switchtolist' | translate }}</div>
+            </div>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button ngbDropdownItem type="button" (click)="handleZoom('=')">
+            <div class="d-flex">
+              <div class="me-4">{{ 'home.zoomin' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }} {{ 'home.and' | translate }} +
+              </div>
+            </div>
+          </button>
+          <button ngbDropdownItem type="button" (click)="handleZoom('-')">
+            <div class="d-flex">
+              <div class="me-4">{{ 'home.zoomout' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }} {{ 'home.and' | translate }} -
+              </div>
+            </div>
+          </button>
+          <button ngbDropdownItem type="button" (click)="handleZoom('0')">
+            <div class="d-flex">
+              <div class="me-4">{{ 'home.zoomreset' | translate }}</div>
+              <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}+0
+              </div>
             </div>
           </button>
           <div class="dropdown-divider"></div>
@@ -67,7 +89,7 @@
             <button ngbDropdownItem type="button" (click)="resetAllFilters()">
               <div class="d-flex">
                 <div class="me-4">{{ 'common.reset' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}Q
+                <div class="text-white-50 ms-auto d-flex align-items-end shortcut">{{ ctrlCmdKey }}+Q
                 </div>
               </div>
             </button>
@@ -247,28 +269,28 @@
               (click)="launchWebmsx(selectedGame)" [disabled]="!isWebMSXPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.onwebmsx' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+W</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+Shift+W</div>
               </div>
             </button>
             <button *ngIf="isWindows" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchBlueMSX(selectedGame)" [disabled]="!isBlueMSXPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.onbluemsx' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+B</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+Shift+B</div>
               </div>
             </button>
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchEmulicious(selectedGame)" [disabled]="!isEmuliciousPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.onemulicious' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+M</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+Shift+M</div>
               </div>
             </button>
             <button [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
               (click)="launchGearcoleco(selectedGame)" [disabled]="!isGearcolecoPathDefined">
               <div class="d-flex">
                 <div class="me-4">{{ 'home.ongearcoleco' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+G</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+Shift+G</div>
               </div>
             </button>
           </div>
@@ -283,7 +305,7 @@
               <div class="d-flex">
                 <div class="actions-menu-icon"></div>
                 {{ 'common.rename' | translate }}
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}E</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+E</div>
               </div>
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" ngbDropdownItem type="button"
@@ -333,7 +355,7 @@
               <div class="d-flex">
                 <div class="actions-menu-icon"></div>
                 <div class="me-4">{{ 'home.findrelatedgames' | translate }}</div>
-                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}Shift+H</div>
+                <div class="text-white-50 ms-auto d-flex align-items-center shortcut">{{ ctrlCmdKey }}+Shift+H</div>
               </div>
             </button>
             <button class="actions-menu-button" [disabled]="otherSelectedGames.size > 0" *ngIf="!selectedGame.favorite"
@@ -564,29 +586,29 @@
     <ng-template contextMenuItem [visible]="isWebMSXPathDefined" (execute)="launchWebmsx($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onwebmsx' | translate }}
-      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+W</div>
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+Shift+W</div>
     </ng-template>
     <ng-template contextMenuItem [visible]="isWindows && isBlueMSXPathDefined" (execute)="launchBlueMSX($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onbluemsx' | translate }}
-      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+B</div>
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+Shift+B</div>
     </ng-template>
     <ng-template contextMenuItem [visible]="isEmuliciousPathDefined" (execute)="launchEmulicious($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.onemulicious' | translate }}
-      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+M</div>
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+Shift+M</div>
     </ng-template>
     <ng-template contextMenuItem [visible]="isGearcolecoPathDefined" (execute)="launchGearcoleco($event.item)">
       <div class="context-menu-icon"></div>
       {{ 'home.ongearcoleco' | translate }}
-      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+G</div>
+      <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+Shift+G</div>
     </ng-template>
   </context-menu>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" [divider]="true"></ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="edit($event.item)">
     <div class="context-menu-icon"></div>
     {{ 'common.rename' | translate }}
-    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}E</div>
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+E</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="mediaEdit.open()">
     <div class="context-menu-icon"></div>
@@ -617,7 +639,7 @@
   <ng-template contextMenuItem [visible]="isMenuItemVisible" (execute)="relatedGames.open()">
     <div class="context-menu-icon"></div>
     {{ 'home.findrelatedgames' | translate }}
-    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}Shift+H</div>
+    <div class="text-white-50 ms-5 me-3 d-inline-block float-end shortcut">{{ ctrlCmdKey }}+Shift+H</div>
   </ng-template>
   <ng-template contextMenuItem [visible]="isMenuItemAddFavorite" (execute)="setFavoritesFlag(true)">
     <div class="context-menu-icon">&starf;</div>

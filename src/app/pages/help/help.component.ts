@@ -27,7 +27,7 @@ export class HelpComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   keydownEvent(event: any) {
     if (KeyboardUtils.isZoomKeyPressed(event)) {
-        this.windowService.zoom(event);
+        this.windowService.zoom(event.key, event);
     }
   }
 

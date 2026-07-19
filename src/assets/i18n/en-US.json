@@ -112,7 +112,11 @@
     "moredetails": "More details",
     "switchtolist": "Switch to list",
     "switchtoscreenshots": "Switch to thumbnails",
-    "cannotstartopenmsxsessionmanagement": "Cannot start OpenMSX session management for multiple running instances of a game. Go to the dashboard"
+    "cannotstartopenmsxsessionmanagement": "Cannot start OpenMSX session management for multiple running instances of a game. Go to the dashboard",
+    "zoomin": "Zoom In",
+    "zoomout": "Zoom Out",
+    "zoomreset": "Reset Zoom",
+    "and": "and"
   },
   "language": {
     "en-US": "English",

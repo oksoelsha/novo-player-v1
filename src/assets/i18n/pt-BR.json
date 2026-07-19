@@ -112,7 +112,11 @@
     "moredetails": "Mais detalhes",
     "switchtolist": "Mudar para lista",
     "switchtoscreenshots": "Mudar para miniaturas",
-    "cannotstartopenmsxsessionmanagement": "Não é possível iniciar o gerenciamento de sessão OpenMSX para múltiplas instâncias de um jogo em execução. Vá para o painel"
+    "cannotstartopenmsxsessionmanagement": "Não é possível iniciar o gerenciamento de sessão OpenMSX para múltiplas instâncias de um jogo em execução. Vá para o painel",
+    "zoomin": "Ampliar",
+    "zoomout": "Reduzir",
+    "zoomreset": "Restaurar zoom",
+    "and": "e"
   },
   "language": {
     "en-US": "Inglês",

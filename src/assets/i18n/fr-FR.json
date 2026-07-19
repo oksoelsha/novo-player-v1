@@ -112,7 +112,11 @@
     "moredetails": "Plus de détails",
     "switchtolist": "Passer en mode liste",
     "switchtoscreenshots": "Passer en mode miniatures",
-    "cannotstartopenmsxsessionmanagement": "Impossible de démarrer la gestion de session OpenMSX pour plusieurs instances en cours d'exécution d'un jeu. Veuillez aller au tableau de bord"
+    "cannotstartopenmsxsessionmanagement": "Impossible de démarrer la gestion de session OpenMSX pour plusieurs instances en cours d'exécution d'un jeu. Veuillez aller au tableau de bord",
+    "zoomin": "Agrandir",
+    "zoomout": "Rétrécir",
+    "zoomreset": "Réinitialiser le zoom",
+    "and": "et"
   },
   "language": {
     "en-US": "Anglais",

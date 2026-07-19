@@ -112,7 +112,11 @@
     "moredetails": "Més detalls",
     "switchtolist": "Canvia a la llista",
     "switchtoscreenshots": "Canvia a miniatures",
-    "cannotstartopenmsxsessionmanagement": "No es pot llançar la gestió de sessions d'openMSX per més d'una instància d'un joc. Vés al tauler de control"
+    "cannotstartopenmsxsessionmanagement": "No es pot llançar la gestió de sessions d'openMSX per més d'una instància d'un joc. Vés al tauler de control",
+    "zoomin": "Amplia",
+    "zoomout": "Redueix",
+    "zoomreset": "Restableix el zoom",
+    "and": "i"
   },
   "language": {
     "en-US": "Anglès",

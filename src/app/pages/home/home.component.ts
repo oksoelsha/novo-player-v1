@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('openmsxManagementInterface') openmsxManagementInterface!: OpenmsxManagementComponent;
 
   readonly isWindows = this.platformService.isOnWindows();
-  readonly ctrlCmdKey = this.platformService.isOnMac() ? 'Cmd+' : 'Ctrl+';
+  readonly ctrlCmdKey = this.platformService.isOnMac() ? 'Cmd' : 'Ctrl';
   draggedFilesAndFolders: string[] = [];
   selectedListing = '';
   games: Game[] = [];
@@ -258,7 +258,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.gameQuickSearch = '';
         }, 600);
       } else if (KeyboardUtils.isZoomKeyPressed(event)) {
-        this.windowService.zoom(event);
+        this.windowService.zoom(event.key, event);
       } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 'f' || event.key === 'F')) {
         this.searchDropdown.open();
       } else if (KeyboardUtils.isCtrlOrCommandKeyPressed(event) && (event.key === 't' || event.key === 'T')) {
@@ -1004,6 +1004,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.setMoreScreenshots(secondaryData);
       });
     }
+  }
+
+  handleZoom(key: string) {
+    this.windowService.zoom(key);
   }
 
   private adjustScreenshotsPath(pathFromSettings: string): string {

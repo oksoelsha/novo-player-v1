@@ -11,8 +11,8 @@ export class WindowService {
     this.ipc = window.require('electron').ipcRenderer;
   }
 
-  zoom(event: any) {
-    switch (event.key) {
+  zoom(key: any, event: any = null) {
+    switch (key) {
       case '=':
         this.ipc.send('zoomIn');
         break;
@@ -23,7 +23,9 @@ export class WindowService {
         this.ipc.send('zoomReset');
         break;
     }
-    event.stopPropagation();
-    event.preventDefault();
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
   }
 }
