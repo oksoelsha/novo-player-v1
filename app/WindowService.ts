@@ -24,11 +24,15 @@ export class WindowService {
         });
 
         ipcMain.on('zoomIn', (event: any) => {
-            this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() + 0.1;
+            if (this.win.webContents.getZoomFactor() < 1.5) {
+                this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() + 0.1;
+            }
         });
 
         ipcMain.on('zoomOut', (event: any) => {
-            this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() - 0.1;
+            if (this.win.webContents.getZoomFactor() > 0.7) {
+                this.win.webContents.zoomFactor = this.win.webContents.getZoomFactor() - 0.1;
+            }
         });
 
         ipcMain.on('zoomReset', (event: any) => {
