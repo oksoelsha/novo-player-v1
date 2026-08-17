@@ -38,12 +38,27 @@ export class BlueMSXUtils {
         'Coleco',
         'SG1000'
       ];
+      const extraRams = [
+        '16',
+        '32',
+        '48',
+        '64',
+        '512',
+        '1024',
+        '2048',
+        '4096'
+      ];
 
       this.commandLineArguments.set('ide1primary', []);
       this.commandLineArguments.set('ide1secondary', []);
       this.commandLineArguments.set('machine', machines);
       this.commandLineArguments.set('romtype1', romTypes);
       this.commandLineArguments.set('romtype2', romTypes);
+      this.commandLineArguments.set('scc', []);
+      this.commandLineArguments.set('sccplus', []);
+      this.commandLineArguments.set('fmpac', []);
+      this.commandLineArguments.set('pac', []);
+      this.commandLineArguments.set('extram', extraRams);
     }
     return this.commandLineArguments;
   }
