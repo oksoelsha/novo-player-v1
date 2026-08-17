@@ -47,7 +47,16 @@ export class BlueMSXLaunchService {
         let errorMessage: string;
 
         const binaryFullpath = this.getBlueMSXExecFullPath();
-        const process = cp.spawn(binaryFullpath, this.getArguments(game), options);
+        let process: cp.ChildProcessWithoutNullStreams;
+        try {
+            process = cp.spawn(binaryFullpath, this.getArguments(game), options);
+        } catch (error: any) {
+            console.log(error.message);
+            errorMessage = 'Error launching blueMSX - ' + error.message;
+            self.win.webContents.send('launchGameOnBlueMSXResponse' + time, errorMessage);
+            return;
+        }
+
         process.on('error', (error) => {
             console.log(error.message);
             errorMessage = 'Error launching blueMSX - ' + error.message;
