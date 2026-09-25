@@ -1,4 +1,4 @@
 export class Application {
 
-    public static readonly VERSION = '1.15';
+    public static readonly VERSION = '1.15.1';
 }
