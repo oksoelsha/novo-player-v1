@@ -7,7 +7,7 @@
   "devDependencies": {
     "@types/nedb": "^1.8.16",
     "@types/node": "^17.0.30",
-    "electron": "22.3.25"
+    "electron": "41.10.6"
   },
   "dependencies": {
     "adm-zip": "^0.6.1",
