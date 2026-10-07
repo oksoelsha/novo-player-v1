@@ -7,8 +7,12 @@ import { GameUtils } from '../models/game-utils';
 })
 export class WebmsxService {
 
-  private msxKeyCodeByCharacter = new Map<string, number>();
+  private readonly msxKeyCodeByCharacter = new Map<string, number>();
+  private readonly F5_KEY_CODE = 25;
+  private readonly STOP_KEY_CODE = 284;
   private readonly SHIFT_KEY_CODE = 301;
+  private readonly CTRL_KEY_CODE = 302;
+  private readonly CODE_KEY_CODE = 307;
 
   constructor() {
     this.initializeKeysMap();
@@ -54,6 +58,22 @@ export class WebmsxService {
     }
   }
 
+  async pressF5() {
+    this.pressKey(this.F5_KEY_CODE);
+  }
+
+  async pressStop() {
+    this.pressKey(this.STOP_KEY_CODE);
+  }
+
+  async pressCtrlStop() {
+    this.pressKeyWithModifier(this.STOP_KEY_CODE, this.CTRL_KEY_CODE);
+  }
+
+  async pressCode() {
+    this.pressKey(this.CODE_KEY_CODE);
+  }
+
   private initializeKeysMap() {
     this.msxKeyCodeByCharacter.set('1', 1);
     this.msxKeyCodeByCharacter.set('2', 2);
@@ -94,21 +114,36 @@ export class WebmsxService {
     this.msxKeyCodeByCharacter.set('Enter', 204);
     this.msxKeyCodeByCharacter.set('Space', 205);
     this.msxKeyCodeByCharacter.set('-', 222);
+    this.msxKeyCodeByCharacter.set('=', 223);
+    this.msxKeyCodeByCharacter.set('[', 225);
+    this.msxKeyCodeByCharacter.set(']', 226);
+    this.msxKeyCodeByCharacter.set('\\', 229);
+    this.msxKeyCodeByCharacter.set(',', 231);
+    this.msxKeyCodeByCharacter.set('.', 232);
+    this.msxKeyCodeByCharacter.set('/', 233);
   }
 
   private async pressKey(keyCode: number, handleUpperCase: boolean = false) {
     if (handleUpperCase) {
-      (window as any).WMSX.room.keyboard.processKey(this.SHIFT_KEY_CODE, 1);
-      await this.delay();
+      await this.pressKeyWithModifier(keyCode, this.SHIFT_KEY_CODE);
+    } else {
+      await this.pressOneKey(keyCode);
     }
+  }
+
+  private async pressKeyWithModifier(keyCode: number, modifierKeyCode: number) {
+    (window as any).WMSX.room.keyboard.processKey(modifierKeyCode, 1);
+    await this.delay();
+    await this.pressOneKey(keyCode);
+    (window as any).WMSX.room.keyboard.processKey(modifierKeyCode, 0);
+    await this.delay();
+  }
+
+  private async pressOneKey(keyCode: number) {
     (window as any).WMSX.room.keyboard.processKey(keyCode, 1);
     await this.delay();
     (window as any).WMSX.room.keyboard.processKey(keyCode, 0);
     await this.delay();
-    if (handleUpperCase) {
-      (window as any).WMSX.room.keyboard.processKey(this.SHIFT_KEY_CODE, 0);
-      await this.delay();
-    }
   }
 
   private async delay() {

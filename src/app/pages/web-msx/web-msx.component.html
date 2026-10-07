@@ -13,13 +13,14 @@
     <div *ngIf="!error">
         <div id="wmsx-screen"></div>
         <div class="pt-2">
-            <div ngbDropdown class="d-inline-block pe-2" *ngIf="isMediumCanHaveGroup() && fileGroup.length > 1">
+            <div ngbDropdown class="d-inline-block pe-2" *ngIf="isMediumCanHaveGroup() && fileGroup.length > 1"
+                (openChange)="handleCloseMenuEvents($event)">
                 <button *ngIf="isDisk()" class="btn btn-secondary btn-sm action-button" type="button"
-                    [title]="'dashboard.switchdisks' | translate" ngbDropdownToggle>
+                    [title]="'popups.openmsxmanagement.switchdisks' | translate" ngbDropdownToggle>
                     {{ 'dashboard.disks' | translate }}
                 </button>
                 <button *ngIf="isTape()" class="btn btn-secondary btn-sm action-button" type="button"
-                    [title]="'dashboard.switchtapes' | translate" ngbDropdownToggle>
+                    [title]="'popups.openmsxmanagement.switchtapes' | translate" ngbDropdownToggle>
                     {{ 'dashboard.tapes' | translate }}
                 </button>
                 <div ngbDropdownMenu>
@@ -29,9 +30,29 @@
                     </button>
                 </div>
             </div>
-            <div *ngIf="gamePasswordsInfo" class="d-inline-block">
+            <div *ngIf="gamePasswordsInfo" class="d-inline-block pe-2">
                 <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo"
                     (passwordToEnter)="enterPassword($event)"></app-password-selector>
+            </div>
+            <div ngbDropdown class="d-inline-block" (openChange)="handleCloseMenuEvents($event)">
+                <button class="btn btn-secondary btn-sm action-button hide-arrow" type="button" ngbDropdownToggle
+                    [title]="'popups.openmsxmanagement.specialkeys' | translate">
+                    <span class="bi-keyboard"></span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem type="button" (click)="pressF5()">
+                        F5
+                    </button>
+                    <button ngbDropdownItem type="button" (click)="pressControlStop()">
+                        CTRL+STOP
+                    </button>
+                    <button ngbDropdownItem type="button" (click)="pressStop()">
+                        STOP
+                    </button>
+                    <button ngbDropdownItem type="button" (click)="pressCode()">
+                        CODE
+                    </button>
+                </div>
             </div>
         </div>
     </div>

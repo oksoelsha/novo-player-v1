@@ -72,6 +72,12 @@ export class WebMSXComponent implements OnInit, OnDestroy {
     return this.webmsxService.isTape(this.selectedGame);
   }
 
+  handleCloseMenuEvents(opened: boolean) {
+    if (!opened) {
+      document.getElementById('wmsx-screen-canvas')!.focus();
+    }
+  }
+
   isMediumCanHaveGroup(): boolean {
     return this.isDisk() || this.isTape();
   }
@@ -85,13 +91,28 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   }
 
   switchMedium(medium: string) {
-    document.getElementById('wmsx-screen-canvas')!.focus();
     this.webmsxService.switchMedium(this.selectedGame, medium);
   }
 
   enterPassword(selectedPassword: GamePassword) {
     document.getElementById('wmsx-screen-canvas')!.focus();
     this.webmsxService.enterPassword(selectedPassword.password, selectedPassword.pressReturn);
+  }
+
+  pressF5() {
+    this.webmsxService.pressF5();
+  }
+
+  pressControlStop() {
+    this.webmsxService.pressCtrlStop();
+  }
+
+  pressStop() {
+    this.webmsxService.pressStop();
+  }
+
+  pressCode() {
+    this.webmsxService.pressCode();
   }
 
   private loadWebMSX(fullpath: string) {
