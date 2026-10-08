@@ -24,6 +24,11 @@
     "sound": "사운드",
     "errordownloading": "다운로드 실패"
   },
+  "menus": {
+    "switchdisks": "디스크 전환",
+    "switchtapes": "테이프 전환",
+    "specialkeys": "특수키 누르기"
+  },
   "home": {
     "name": "이름",
     "company": "개발사",
@@ -348,8 +353,6 @@
       "unmute": "음소거 해제",
       "fullscreen": "전체 화면",
       "exitfullscreen": "전체 화면 종료",
-      "switchdisks": "디스크 전환",
-      "switchtapes": "테이프 전환",
       "diskswitched": "디스크가 전환되었습니다",
       "tapeswitched": "테이프가 전환되었습니다",
       "cheats": "치트키",
@@ -369,7 +372,6 @@
       "type": "입력하",
       "clear": "삭제",
       "texttyped": "텍스트는 openMSX로 입력되었습니다",
-      "specialkeys": "특수키 누르기",
       "specialkeyspressed": "특수키가 눌렸습니다",
       "export": "수출품",
       "copybasiclisting": "BASIC 목록을 클립보드에 복사합니다",

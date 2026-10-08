@@ -24,6 +24,11 @@
     "sound": "So",
     "errordownloading": "No s'ha pogut descarregar"
   },
+  "menus": {
+    "switchdisks": "Canvia disc",
+    "switchtapes": "Canvia casset",
+    "specialkeys": "Premeu tecles especials"
+  },
   "home": {
     "name": "Nom",
     "company": "Empresa",
@@ -348,8 +353,6 @@
       "unmute": "Activa so",
       "fullscreen": "Pantalla completa",
       "exitfullscreen": "Surt de la pantalla completa",
-      "switchdisks": "Canvia disc",
-      "switchtapes": "Canvia casset",
       "diskswitched": "El disc s'ha canviat",
       "tapeswitched": "El casset s'ha canviat",
       "cheats": "Cheat",
@@ -369,7 +372,6 @@
       "type": "Escriviu",
       "clear": "Esborra",
       "texttyped": "El text es va escriure a openMSX",
-      "specialkeys": "Premeu tecles especials",
       "specialkeyspressed": "Tecles especials s'han premut",
       "export": "Exporta",
       "copybasiclisting": "Copia la llista BASIC al porta-retalls",

@@ -24,6 +24,11 @@
     "sound": "Geluid",
     "errordownloading": "Download mislukt"
   },
+  "menus": {
+    "switchdisks": "Schakelen tussen schijven",
+    "switchtapes": "Schakelen tussen cassettes",
+    "specialkeys": "Speciale toetsen indrukken"
+  },
   "home": {
     "name": "Naam",
     "company": "Ontwikkelaar",
@@ -348,8 +353,6 @@
       "unmute": "Dempen opheffen",
       "fullscreen": "Volledig scherm",
       "exitfullscreen": "Volledig scherm verlaten",
-      "switchdisks": "Schakelen tussen schijven",
-      "switchtapes": "Schakelen tussen cassettes",
       "diskswitched": "De schijf is verwisseld",
       "tapeswitched": "De cassette is verwisseld",
       "cheats": "Cheating",
@@ -369,7 +372,6 @@
       "type": "Typen",
       "clear": "Wissen",
       "texttyped": "De tekst is getypt in openMSX",
-      "specialkeys": "Speciale toetsen indrukken",
       "specialkeyspressed": "Er werden speciale toetsen ingedrukt",
       "export": "Exporteren",
       "copybasiclisting": "Kopieer de BASIC-lijst naar het klembord",

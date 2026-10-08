@@ -16,11 +16,11 @@
             <div ngbDropdown class="d-inline-block pe-2" *ngIf="isMediumCanHaveGroup() && fileGroup.length > 1"
                 (openChange)="handleCloseMenuEvents($event)">
                 <button *ngIf="isDisk()" class="btn btn-secondary btn-sm action-button" type="button"
-                    [title]="'popups.openmsxmanagement.switchdisks' | translate" ngbDropdownToggle>
+                    [title]="'menus.switchdisks' | translate" ngbDropdownToggle>
                     {{ 'dashboard.disks' | translate }}
                 </button>
                 <button *ngIf="isTape()" class="btn btn-secondary btn-sm action-button" type="button"
-                    [title]="'popups.openmsxmanagement.switchtapes' | translate" ngbDropdownToggle>
+                    [title]="'menus.switchtapes' | translate" ngbDropdownToggle>
                     {{ 'dashboard.tapes' | translate }}
                 </button>
                 <div ngbDropdownMenu>
@@ -36,7 +36,7 @@
             </div>
             <div ngbDropdown class="d-inline-block" (openChange)="handleCloseMenuEvents($event)">
                 <button class="btn btn-secondary btn-sm action-button hide-arrow" type="button" ngbDropdownToggle
-                    [title]="'popups.openmsxmanagement.specialkeys' | translate">
+                    [title]="'menus.specialkeys' | translate">
                     <span class="bi-keyboard"></span>
                 </button>
                 <div ngbDropdownMenu>

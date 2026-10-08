@@ -56,11 +56,11 @@
 <div class="d-flex ps-3 pt-2">
     <div ngbDropdown class="pe-2" *ngIf="isMediumCanHaveGroup(game) && fileGroup.length > 1">
         <button *ngIf="isDisk(game)" class="btn btn-secondary btn-sm action-button" type="button"
-            [title]="'popups.openmsxmanagement.switchdisks' | translate" ngbDropdownToggle>
+            [title]="'menus.switchdisks' | translate" ngbDropdownToggle>
             {{ 'dashboard.disks' | translate }}
         </button>
         <button *ngIf="isTape(game)" class="btn btn-secondary btn-sm action-button" type="button"
-            [title]="'popups.openmsxmanagement.switchtapes' | translate" ngbDropdownToggle>
+            [title]="'menus.switchtapes' | translate" ngbDropdownToggle>
             {{ 'dashboard.tapes' | translate }}
         </button>
         <div ngbDropdownMenu class="pt-0 pb-0">

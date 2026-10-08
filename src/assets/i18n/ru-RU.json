@@ -24,6 +24,11 @@
     "sound": "Звук",
     "errordownloading": "Не удалось загрузить"
   },
+  "menus": {
+    "switchdisks": "Переключатель диски",
+    "switchtapes": "Переключатель ленти",
+    "specialkeys": "Нажимайте специальные клавиши"
+  },
   "home": {
     "name": "Имя",
     "company": "Разработчик",
@@ -348,8 +353,6 @@
       "unmute": "Включить звук",
       "fullscreen": "Весь экран",
       "exitfullscreen": "Выйти весь экран",
-      "switchdisks": "Переключатель диски",
-      "switchtapes": "Переключатель ленти",
       "diskswitched": "Диск был переключен",
       "tapeswitched": "Лента была переключена",
       "cheats": "Чит-код",
@@ -369,7 +372,6 @@
       "type": "Наберите",
       "clear": "Очистите",
       "texttyped": "Текст был набран на openMSX",
-      "specialkeys": "Нажимайте специальные клавиши",
       "specialkeyspressed": "Были нажаты специальные клавиши",
       "export": "Экспорт",
       "copybasiclisting": "Копировать BASIC-листинг в буфер обмена",

@@ -24,6 +24,11 @@
     "sound": "Sound",
     "errordownloading": "Failed to download"
   },
+  "menus": {
+    "switchdisks": "Switch disks",
+    "switchtapes": "Switch tapes",
+    "specialkeys": "Press special keys"
+  },
   "home": {
     "name": "Name",
     "company": "Company",
@@ -348,8 +353,6 @@
       "unmute": "Unmute",
       "fullscreen": "Full screen",
       "exitfullscreen": "Exit full screen",
-      "switchdisks": "Switch disks",
-      "switchtapes": "Switch tapes",
       "diskswitched": "Disk Switched",
       "tapeswitched": "Tape Switched",
       "cheats": "Cheats",
@@ -369,7 +372,6 @@
       "type": "Type",
       "clear": "Clear",
       "texttyped": "Text was typed in openMSX",
-      "specialkeys": "Press special keys",
       "specialkeyspressed": "Special keys were pressed",
       "export": "Export",
       "copybasiclisting": "Copy BASIC listing to the clipboard",

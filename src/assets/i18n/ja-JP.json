@@ -24,6 +24,11 @@
     "sound": "サウンド",
     "errordownloading": "ダウンロードに失敗しました"
   },
+  "menus": {
+    "switchdisks": "スイッチ ディスク",
+    "switchtapes": "スイッチ テープ",
+    "specialkeys": "特殊キーを押す"
+  },
   "home": {
     "name": "名前",
     "company": "会社",
@@ -348,8 +353,6 @@
       "unmute": "ミュート解除",
       "fullscreen": "全画面表示",
       "exitfullscreen": "全画面表示を終了する",
-      "switchdisks": "スイッチ ディスク",
-      "switchtapes": "スイッチ テープ",
       "diskswitched": "ディスクが入れ替わった",
       "tapeswitched": "カセットが入れ替わった",
       "cheats": "チート",
@@ -369,7 +372,6 @@
       "type": "入力する",
       "clear": "クリア",
       "texttyped": "テキストはopenMSXで入力",
-      "specialkeys": "特殊キーを押す",
       "specialkeyspressed": "特殊キーが押されました",
       "export": "移出",
       "copybasiclisting": "BASICリストをクリップボードにコピーする",

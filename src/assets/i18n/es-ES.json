@@ -24,6 +24,11 @@
     "sound": "Sonido",
     "errordownloading": "Error al descargar"
   },
+  "menus": {
+    "switchdisks": "Cambiar disco",
+    "switchtapes": "Cambiar cassette",
+    "specialkeys": "Pulsar teclas especiales"
+  },
   "home": {
     "name": "Nombre",
     "company": "Compañía",
@@ -348,8 +353,6 @@
       "unmute": "Activar audio",
       "fullscreen": "Pantalla completa",
       "exitfullscreen": "Salir de pantalla completa",
-      "switchdisks": "Cambiar disco",
-      "switchtapes": "Cambiar cassette",
       "diskswitched": "Disco fue cambiado",
       "tapeswitched": "Cassette fue cambiado",
       "cheats": "Trampas",
@@ -369,7 +372,6 @@
       "type": "Escribir",
       "clear": "Despejar",
       "texttyped": "El texto se escribió en openMSX",
-      "specialkeys": "Pulsar teclas especiales",
       "specialkeyspressed": "Se presionaron teclas especiales",
       "export": "Exportar",
       "copybasiclisting": "Copiar el listado BASIC al portapapeles",
