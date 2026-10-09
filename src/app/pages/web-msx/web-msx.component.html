@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div *ngIf="gamePasswordsInfo" class="d-inline-block pe-2">
-                <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo"
-                    (passwordToEnter)="enterPassword($event)"></app-password-selector>
+                <app-password-selector [gamePasswordsInfo]="gamePasswordsInfo" (passwordToEnter)="enterPassword($event)"
+                    (openChange)="handleCloseMenuEvents($event)"></app-password-selector>
             </div>
             <div ngbDropdown class="d-inline-block" (openChange)="handleCloseMenuEvents($event)">
                 <button class="btn btn-secondary btn-sm action-button hide-arrow" type="button" ngbDropdownToggle

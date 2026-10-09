@@ -95,7 +95,6 @@ export class WebMSXComponent implements OnInit, OnDestroy {
   }
 
   enterPassword(selectedPassword: GamePassword) {
-    document.getElementById('wmsx-screen-canvas')!.focus();
     this.webmsxService.enterPassword(selectedPassword.password, selectedPassword.pressReturn);
   }
 

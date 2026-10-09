@@ -13,6 +13,7 @@ export class PasswordSelectorComponent {
   @Input() gamePasswordsInfo!: GamePasswordsInfo;
   @Input() clearEvent!: Observable<void>;
   @Output() passwordToEnter = new EventEmitter<GamePassword | null>();
+  @Output() openChange = new EventEmitter<boolean>();
   @ViewChild('passwordsDropdown', { static: true }) dropdown!: NgbDropdown;
   selectedPassword: GamePassword | null = null;
 
@@ -21,6 +22,7 @@ export class PasswordSelectorComponent {
     if (!flag) {
       this.selectedPassword = null;
     }
+    this.openChange.emit(flag);
   }
 
   enter() {
