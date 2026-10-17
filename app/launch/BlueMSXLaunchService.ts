@@ -99,5 +99,8 @@ export class BlueMSXLaunchService {
             EmulatorUtils.appendParams(args, this.settingsService.getSettings().bluemsxParams, BlueMSXLaunchService.ARGS_SEPARATOR);
         }
         EmulatorUtils.appendParams(args, game.bluemsxArguments, BlueMSXLaunchService.ARGS_SEPARATOR);
+        if (game.connectGFX9000) {
+            args.push('/special2', 'GFX9000');
+        }
     }
 }
