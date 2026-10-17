@@ -48,6 +48,10 @@ export class BlueMSXUtils {
         '2048',
         '4096'
       ];
+      const specialCarts = [
+        'GFX9000',
+        'VIDEO9000'
+      ];
 
       this.commandLineArguments.set('ide1primary', []);
       this.commandLineArguments.set('ide1secondary', []);
@@ -56,6 +60,8 @@ export class BlueMSXUtils {
       this.commandLineArguments.set('romtype2', romTypes);
       this.commandLineArguments.set('scc', []);
       this.commandLineArguments.set('sccplus', []);
+      this.commandLineArguments.set('special1', specialCarts);
+      this.commandLineArguments.set('special2', specialCarts);
       this.commandLineArguments.set('fmpac', []);
       this.commandLineArguments.set('pac', []);
       this.commandLineArguments.set('extram', extraRams);
