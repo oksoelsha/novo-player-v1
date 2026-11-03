@@ -198,42 +198,104 @@ export class OpenMSXLaunchService {
         return process;
     }
 
-    private async downloadGame(quickLaunchData: QuickLaunchData) {
-        const tempDirPath = os.tmpdir()
-        const resolvedTempDirPath = fs.realpathSync(tempDirPath);
-        const remoteFilename = quickLaunchData.file!.substring(quickLaunchData.file!.lastIndexOf('/') + 1);
-        const tempGameFilePath = path.join(resolvedTempDirPath, remoteFilename);
+    private async downloadGame(quickLaunchData: QuickLaunchData): Promise<QuickLaunchData> {
+        const tempDirPath = fs.realpathSync(os.tmpdir());
+        const remoteFilename = new URL(quickLaunchData.file!).pathname.split('/').pop();
 
-        return new Promise<QuickLaunchData>((resolve, reject) => {
-            const options = {
-                headers: {
-                    'User-Agent': 'NovoPlayer/' + Application.VERSION
-                }
-            };
-            https.get(quickLaunchData.file!, options, (res) => {
-                const filePath = fs.createWriteStream(tempGameFilePath);
-                res.pipe(filePath);
-                filePath.on('finish', () => {
-                    filePath.close();
-                    resolve(new QuickLaunchData(tempGameFilePath, quickLaunchData.machine, quickLaunchData.parameters,
-                        quickLaunchData.connectGFX9000));
+        if (!remoteFilename) {
+            throw new Error('Could not determine the download filename');
+        }
+
+        const tempGameFilePath = path.join(tempDirPath, remoteFilename);
+
+        const download = (url: string, redirectsRemaining = 5): Promise<QuickLaunchData> => {
+            return new Promise((resolve, reject) => {
+                const options = {
+                    headers: {
+                        'User-Agent': 'NovoPlayer/' + Application.VERSION
+                    }
+                };
+
+                const request = https.get(url, options, (res) => {
+                    const status = res.statusCode ?? 0;
+
+                    // Follow redirects
+                    if ([301, 302, 303, 307, 308].includes(status)) {
+                        const location = res.headers.location;
+                        res.resume();
+
+                        if (!location) {
+                            reject(new Error('Redirect response has no Location header'));
+                            return;
+                        }
+
+                        if (redirectsRemaining <= 0) {
+                            reject(new Error('Too many redirects'));
+                            return;
+                        }
+
+                        const nextUrl = new URL(location, url);
+
+                        if (nextUrl.protocol !== 'https:') {
+                            reject(new Error('Unexpected redirect protocol'));
+                            return;
+                        }
+
+                        download(nextUrl.href, redirectsRemaining - 1).then(resolve, reject);
+                        return;
+                    }
+
+                    if (status < 200 || status >= 300) {
+                        res.resume();
+                        reject(new Error(`Download failed with HTTP ${status}`));
+                        return;
+                    }
+
+                    const fileStream = fs.createWriteStream(tempGameFilePath);
+                    let settled = false;
+
+                    const fail = (error: Error) => {
+                        if (settled) {
+                            return;
+                        }
+                        settled = true;
+                        fileStream.destroy();
+                        res.destroy();
+                        fs.unlink(tempGameFilePath, () => { });
+                        reject(error);
+                    };
+
+                    res.on('error', fail);
+                    fileStream.on('error', fail);
+
+                    fileStream.on('finish', () => {
+                        if (settled) {
+                            return;
+                        }
+                        settled = true;
+
+                        resolve(new QuickLaunchData(tempGameFilePath, quickLaunchData.machine, quickLaunchData.parameters,
+                            quickLaunchData.connectGFX9000));
+                    });
+
+                    res.pipe(fileStream);
                 });
-                filePath.on('error', (error) => {
-                    this.errorLogService.logError('Failed to write downloaded file ', quickLaunchData.file!);
+
+                request.on('error', (error) => {
+                    this.errorLogService.logError( 'Failed to download ', quickLaunchData.file!);
                     reject(error);
                 });
-            }).on('error', error => {
-                this.errorLogService.logError('Failed to download ', quickLaunchData.file!);
-                reject(error);
             });
-        });
+        };
+
+        return download(quickLaunchData.file!);
     }
 
     private setArguments(args: string[], game: Game, state: string | null) {
         if (state) {
             this.addArgument(args, 'savestate', state);
         } else {
-            OpenMSXLaunchService.fieldsToArgs.forEach (field => {
+            OpenMSXLaunchService.fieldsToArgs.forEach(field => {
                 if ((game as any)[field[0]]) {
                     this.addArgument(args, field[1], (game as any)[field[0]]);
                 }
