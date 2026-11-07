@@ -1,10 +1,11 @@
+import axios from 'axios';
 import { BrowserWindow, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
-import { FileTypeUtils } from './utils/FileTypeUtils';
-import { UpdateListerner } from './UpdateListerner';
-import { SettingsService } from './SettingsService';
 import { EnvironmentService } from './EnvironmentService';
+import { SettingsService } from './SettingsService';
+import { UpdateListerner } from './UpdateListerner';
+import { FileTypeUtils } from './utils/FileTypeUtils';
 
 class FileNode {
     isFolder: boolean;
@@ -22,10 +23,12 @@ export class FileHunterService implements UpdateListerner {
 
     private allFilesPath = path.join(__dirname, 'data-files/file-hunter-allfiles.txt');
     private readonly gamesRoot = 'Games\\';
+    private readonly gamesURL = 'https://download.file-hunter.com/Games';
     private readonly includedFolders = new Set<string>();
     private games = new Map<string, FileNode>();
     private cachedFolder: string | null = null;
     private cachedContents: any;
+    private cachedNewAdditions: any;
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private environmentService: EnvironmentService) {
         settingsService.addListerner(this);
@@ -44,6 +47,7 @@ export class FileHunterService implements UpdateListerner {
             this.games.clear();
             this.cachedFolder = null;
             this.cachedContents = null;
+            this.cachedNewAdditions = null;
         }
     }
 
@@ -53,6 +57,9 @@ export class FileHunterService implements UpdateListerner {
 
         ipcMain.on('getFileHunterList', (event, folder: string, pageSize: number, page: number, filter: string) => {
             this.getList(folder, pageSize, page, filter);
+        });
+        ipcMain.on('getFileHunterNewAdditions', (event, pageSize: number, page: number) => {
+            this.getNewAdditions(pageSize, page);
         });
         ipcMain.on('getFileHunterGameLink', (event, filename: string) => this.getGameLink(filename));
     }
@@ -173,8 +180,52 @@ export class FileHunterService implements UpdateListerner {
         this.win.webContents.send('getFileHunterListResponse', { contents: pagedContents, total: contents.length, path: currentFullPath });
     }
 
+    private async getNewAdditions(pageSize: number, page: number) {
+        let contents: any;
+        if (this.cachedNewAdditions) {
+            contents = this.cachedNewAdditions;
+        } else {
+            let rawContents: string;
+            try {
+                rawContents = await this.retrieveNewAdditions();
+            } catch(err: any) {
+                this.win.webContents.send('getFileHunterNewAdditionsResponse', { error: true, errorMessage: err.message });
+                return;
+            }
+            const lines = rawContents.split(/\r\n|\r|\n/);
+            if (lines.length > 0 && lines[lines.length - 1].trim() === '') {
+                lines.pop();
+            }
+ 
+            const domainLength = this.gamesURL.length + 1;
+            const convertedIncludedFolders = Array.from(this.includedFolders).map(f => f.replace(/\\/g, '/')).map(f => f.slice(1));
+            contents = lines.map((item: string) => {
+                const parts = item.trim().split(/\s+/);
+                return { name: parts[2].substring(domainLength), date: parts[0] };
+            }).filter((item: any) => convertedIncludedFolders.some(prefix => (item.name).startsWith(prefix)));
+            this.cachedNewAdditions = contents;
+        }
+        const start = page * pageSize;
+        const pagedContents = contents.slice(start, start + pageSize);
+
+        this.win.webContents.send('getFileHunterNewAdditionsResponse', { contents: pagedContents, total: contents.length });
+    }
+
     private getGameLink(filename: string) {
         const adjustedFilename = filename.replace(/\\/g, '/');
-        this.win.webContents.send('getFileHunterGameLinkResponse', 'https://download.file-hunter.com/Games' + adjustedFilename);
+        this.win.webContents.send('getFileHunterGameLinkResponse', this.gamesURL + adjustedFilename);
+    }
+
+    private async retrieveNewAdditions() {
+        try {
+            const url = 'https://download.file-hunter.com/update.php?days=30';
+            const response = await axios.get(url);
+            if (response.status !== 200) {
+                throw new Error('Error reading File Hunter URL - ' + response.status);
+            }
+            return response.data;
+        } catch (error: any) {
+            throw new Error('Unable to connect to File Hunter');
+        }
     }
 }

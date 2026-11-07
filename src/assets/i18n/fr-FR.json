@@ -333,7 +333,10 @@
       "invalidfile": "Fichier invalide",
       "unknownerror": "Erreur inconnue",
       "savesetup": "Sauvegarder configuration (machine, arguments, GFX9000)",
-      "loadsetup": "Charger configuration"
+      "loadsetup": "Charger configuration",
+      "newlyadded30days": "Nouveaux jeux ajoutés ces 30 derniers jours",
+      "gamelist": "Liste des jeux",
+      "newadditions": "Nouveaux annonces"
     },
     "managebackups": {
       "restore": "Restaurer",

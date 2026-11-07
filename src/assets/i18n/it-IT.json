@@ -333,7 +333,10 @@
       "invalidfile": "File non valido",
       "unknownerror": "Errore sconosciuto",
       "savesetup": "Salva configurazione (macchina, argomenti, GFX9000)",
-      "loadsetup": "Carica configurazione"
+      "loadsetup": "Carica configurazione",
+      "newlyadded30days": "Nuovi annunci (30 giorni)",
+      "gamelist": "Elenco giochi",
+      "newadditions": "Nuovi annunci"
     },
     "managebackups": {
       "restore": "Ripristina",

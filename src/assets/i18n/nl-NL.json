@@ -333,7 +333,10 @@
       "invalidfile": "Ongeldig bestand",
       "unknownerror": "Onbekende fout",
       "savesetup": "Instellingen opslaan (machine, argumenten, GFX9000)",
-      "loadsetup": "Instellingen laden"
+      "loadsetup": "Instellingen laden",
+      "newlyadded30days": "Nieuw toegevoegd (30 dagen)",
+      "gamelist": "Spel lijst",
+      "newadditions": "Nieuwe toevoegingen"
     },
     "managebackups": {
       "restore": "Herstellen",

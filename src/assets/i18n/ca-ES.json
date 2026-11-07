@@ -333,7 +333,10 @@
       "invalidfile": "Fitxer no vàlid",
       "unknownerror": "Error desconegut",
       "savesetup": "Desa configuració (màquina, arguments, GFX9000)",
-      "loadsetup": "Carrega configuració"
+      "loadsetup": "Carrega configuració",
+      "newlyadded30days": "Noves incorporacions (30 dies)",
+      "gamelist": "Llista de jocs",
+      "newadditions": "Noves incorporacions"
     },
     "managebackups": {
       "restore": "Restaurar",

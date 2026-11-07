@@ -333,7 +333,10 @@
       "invalidfile": "Archivo no válido",
       "unknownerror": "Error desconocido",
       "savesetup": "Guardar configuración (máquina, argumentos, GFX9000)",
-      "loadsetup": "Cargar configuración"
+      "loadsetup": "Cargar configuración",
+      "newlyadded30days": "Nuevos anuncios (30 días)",
+      "gamelist": "Lista de juegos",
+      "newadditions": "Nuevos anuncios"
     },
     "managebackups": {
       "restore": "Restaurar",

@@ -80,6 +80,8 @@ import { SpecialKeysComponent } from './popups/openmsx-management/special-keys/s
 import { FileHunterComponent } from './popups/quick-launch/file-hunter/file-hunter.component';
 import { SaveLoadComponent } from './shared/components/save-load/save-load.component';
 import { NoFocusDirective } from './shared/directives/nofocus/nofocus.directive';
+import { GamesListComponent } from './popups/quick-launch/file-hunter/games-list/games-list.component';
+import { NewAdditionsComponent } from './popups/quick-launch/file-hunter/new-additions/new-additions.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -135,6 +137,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SpecialKeysComponent,
     QuickLaunchComponent,
     FileHunterComponent,
+    GamesListComponent,
+    NewAdditionsComponent,
     ManageBackupsComponent,
     RangeSelectorComponent,
     FiltersComponent,

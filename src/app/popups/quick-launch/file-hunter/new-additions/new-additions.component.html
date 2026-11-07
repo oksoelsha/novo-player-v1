@@ -1,0 +1,12 @@
+<div class="message-line">
+    {{ 'popups.quicklaunch.newlyadded30days' | translate }}
+</div>
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}!
+</div>
+<div *ngFor="let newAddition of newAdditions" class="node-row pe-2 ps-2" (click)="onSelectGame(newAddition)">
+    <span class="pe-2 text-info">{{ newAddition.date }}</span>
+    <span>{{ newAddition.name }}</span>
+</div>
+<app-pagination class="pagination-part" [total]="total" [pageSize]="pageSize" (page)="getNewAdditions($event)"
+    #pagination></app-pagination>

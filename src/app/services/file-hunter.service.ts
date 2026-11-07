@@ -21,6 +21,15 @@ export class FileHunterService {
     });
   }
 
+  async getNewAdditions(pageSize: number, page: number) {
+    return new Promise<any>((resolve, reject) => {
+      this.ipc.once('getFileHunterNewAdditionsResponse', (event, value: any) => {
+        resolve(value);
+      });
+      this.ipc.send('getFileHunterNewAdditions', pageSize, page);
+    });
+  }
+
   async getGameLink(filename: string) {
     return new Promise<string>((resolve, reject) => {
       this.ipc.once('getFileHunterGameLinkResponse', (event, value: string) => {

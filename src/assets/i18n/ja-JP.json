@@ -333,7 +333,10 @@
       "invalidfile": "無効なファイル",
       "unknownerror": "不明なエラー",
       "savesetup": "設定を保存します (マシン, 引数, GFX9000)",
-      "loadsetup": "設定を読み込み"
+      "loadsetup": "設定を読み込み",
+      "newlyadded30days": "最近追加されたアイテム (30日)",
+      "gamelist": "ゲームリスト",
+      "newadditions": "新着アイテム"
     },
     "managebackups": {
       "restore": "復元",

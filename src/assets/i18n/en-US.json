@@ -333,7 +333,10 @@
       "invalidfile": "Invalid file",
       "unknownerror": "Unknown error",
       "savesetup": "Save setup (machine, arguments, GFX9000)",
-      "loadsetup": "Load setup"
+      "loadsetup": "Load setup",
+      "newlyadded30days": "Newly added in the last 30 days",
+      "gamelist": "Game List",
+      "newadditions": "New Additions"
     },
     "managebackups": {
       "restore": "Restore",

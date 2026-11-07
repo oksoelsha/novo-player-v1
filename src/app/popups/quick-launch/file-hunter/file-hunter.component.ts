@@ -1,76 +1,45 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FileHunterService } from '../../../services/file-hunter.service';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
-import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+
+enum DisplayModes {list, newAdditions}
 
 @Component({
   selector: 'app-file-hunter',
   templateUrl: './file-hunter.component.html',
-  styleUrls: ['./file-hunter.component.sass']
+  styleUrls: ['../../../common-styles.sass', './file-hunter.component.sass']
 })
 export class FileHunterComponent implements OnInit {
 
   @Output() gameLink: EventEmitter<string> = new EventEmitter<string>();
-  @ViewChild('pagination') paginationComponent!: PaginationComponent;
   @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown!: NgbDropdown;
 
-  fileNodes: any[] = [];
-  currentFolder: string | null = '';
-  currentFullPath: string | null = '';
-  total = 0;
-  filter = '';
-  readonly pageSize = 15;
+  private currentDisplayMode!: DisplayModes;
 
   constructor(private fileHunterService: FileHunterService) { }
 
   ngOnInit(): void {
-    this.currentFolder = sessionStorage.getItem('fileHunterCurrentFolder');
-    if (!this.currentFolder) {
-      this.currentFolder = '';
-    }
-    this.currentFullPath = sessionStorage.getItem('fileHunterCurrentFullPath');
-    this.getList(this.currentFolder, 0);
+    this.currentDisplayMode = DisplayModes.list;
   }
 
-  onSelectFileNode(fileNode: any) {
-    const fullpath = fileNode.parent + '\\' + fileNode.name;
-    if (fileNode.isFolder) {
-      this.currentFolder = fullpath;
-      sessionStorage.setItem('fileHunterCurrentFolder', this.currentFolder);
-      this.filter = '';
-      this.paginationComponent.reset();
-      this.getList(this.currentFolder, 0);
-    } else {
-      this.getGameLink(fullpath);
-      this.fileHunterDropdown.close();
-    }
+  isListMode(): boolean {
+    return this.currentDisplayMode === DisplayModes.list;
   }
 
-  onSelectGoUp() {
-    this.paginationComponent.reset();
-    this.currentFolder = this.currentFolder!.substring(0, this.currentFolder!.lastIndexOf('\\'));
-    sessionStorage.setItem('fileHunterCurrentFolder', this.currentFolder);
-    this.getList(this.currentFolder, 0);
-    this.filter = '';
+  isNewAdditionsMode(): boolean {
+    return this.currentDisplayMode === DisplayModes.newAdditions;
   }
 
-  getList(folder: string, page: number) {
-    this.fileHunterService.getList(folder, this.pageSize, page, this.filter).then((data: any) => {
-      this.fileNodes = data.contents;
-      this.total = data.total;
-      this.currentFullPath = data.path;
-      sessionStorage.setItem('fileHunterCurrentFullPath', this.currentFullPath!);
-    });
+  setListMode() {
+    this.currentDisplayMode = DisplayModes.list;
   }
 
-  actOnFilter(folder: string, page: number) {
-    this.paginationComponent.reset();
-    this.getList(folder, page);
+  setNewAdditionsMode() {
+    this.currentDisplayMode = DisplayModes.newAdditions;
   }
 
-  private getGameLink(filename: string) {
-    this.fileHunterService.getGameLink(filename).then((link: string) => {
-      this.gameLink.emit(link);
-    });
+  selectLink(link: string) {
+    this.gameLink.emit(link);
+    this.fileHunterDropdown.close();
   }
 }
