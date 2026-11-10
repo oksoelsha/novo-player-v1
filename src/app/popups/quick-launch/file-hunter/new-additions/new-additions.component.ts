@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FileHunterService } from '../../../../services/file-hunter.service';
+import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 
 @Component({
   selector: 'app-file-hunter-new-additions',
@@ -9,6 +10,7 @@ import { FileHunterService } from '../../../../services/file-hunter.service';
 export class NewAdditionsComponent implements OnInit {
 
   @Output() gameLink = new EventEmitter<string>();
+  @ViewChild('pagination') paginationComponent!: PaginationComponent;
 
   readonly pageSize = 16;
   newAdditions: any[] = [];
@@ -26,6 +28,9 @@ export class NewAdditionsComponent implements OnInit {
       if (data.error) {
         this.errorMessage = data.errorMessage;
       } else {
+        if (data.updated) {
+          this.paginationComponent.reset();
+        }
         this.newAdditions = data.contents.map((obj: any) => ({ name: decodeURIComponent(obj.name), date: obj.date }));
         this.total = data.total;
       }

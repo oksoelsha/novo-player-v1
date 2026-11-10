@@ -28,7 +28,8 @@ export class FileHunterService implements UpdateListerner {
     private games = new Map<string, FileNode>();
     private cachedFolder: string | null = null;
     private cachedContents: any;
-    private cachedNewAdditions: any;
+    private cachedNewAdditions = new ExpiringVariable(3 * 60 * 60 * 1000);  // 3 hours
+    private lastNewAddition: String | null = null;
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private environmentService: EnvironmentService) {
         settingsService.addListerner(this);
@@ -47,7 +48,7 @@ export class FileHunterService implements UpdateListerner {
             this.games.clear();
             this.cachedFolder = null;
             this.cachedContents = null;
-            this.cachedNewAdditions = null;
+            this.cachedNewAdditions.clear();
         }
     }
 
@@ -182,8 +183,11 @@ export class FileHunterService implements UpdateListerner {
 
     private async getNewAdditions(pageSize: number, page: number) {
         let contents: any;
-        if (this.cachedNewAdditions) {
-            contents = this.cachedNewAdditions;
+        let updated = false;
+        let start: number;
+        if (this.cachedNewAdditions.get()) {
+            contents = this.cachedNewAdditions.get();
+            start = page * pageSize;
         } else {
             let rawContents: string;
             try {
@@ -196,6 +200,10 @@ export class FileHunterService implements UpdateListerner {
             if (lines.length > 0 && lines[lines.length - 1].trim() === '') {
                 lines.pop();
             }
+            if (lines.length > 0) {
+                updated = this.lastNewAddition !== null && lines[0].trim() !== this.lastNewAddition;
+                this.lastNewAddition = lines[0].trim();
+            }
  
             const domainLength = this.gamesURL.length + 1;
             const convertedIncludedFolders = Array.from(this.includedFolders).map(f => f.replace(/\\/g, '/')).map(f => f.slice(1));
@@ -203,12 +211,17 @@ export class FileHunterService implements UpdateListerner {
                 const parts = item.trim().split(/\s+/);
                 return { name: parts[2].substring(domainLength), date: parts[0] };
             }).filter((item: any) => convertedIncludedFolders.some(prefix => (item.name).startsWith(prefix)));
-            this.cachedNewAdditions = contents;
+            this.cachedNewAdditions.set(contents);
+            if (updated) {
+                start = 0;
+            } else {
+                start = page * pageSize;                
+            }
         }
-        const start = page * pageSize;
         const pagedContents = contents.slice(start, start + pageSize);
 
-        this.win.webContents.send('getFileHunterNewAdditionsResponse', { contents: pagedContents, total: contents.length });
+        this.win.webContents.send('getFileHunterNewAdditionsResponse',
+            { contents: pagedContents, total: contents.length, updated: updated });
     }
 
     private getGameLink(filename: string) {
@@ -228,4 +241,39 @@ export class FileHunterService implements UpdateListerner {
             throw new Error('Unable to connect to File Hunter');
         }
     }
+}
+
+class ExpiringVariable {
+  private value: any | null = null;
+  private timeoutId: NodeJS.Timeout | null = null;
+  private ttlInMs: number;
+
+  constructor(ttlInMs: number) {
+    this.ttlInMs = ttlInMs;
+  }
+
+  public set(newValue: any): void {
+    this.value = newValue;
+
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    this.timeoutId = setTimeout(() => {
+      this.value = null;
+      this.timeoutId = null;
+    }, this.ttlInMs);
+  }
+
+  public get(): any | null {
+    return this.value;
+  }
+
+  public clear(): void {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+      this.timeoutId = null;
+    }
+    this.value = null;
+  }
 }

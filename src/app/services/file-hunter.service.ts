@@ -14,8 +14,8 @@ export class FileHunterService {
 
   async getList(folder: string, pageSize: number, page: number, filter: string) {
     return new Promise<any>((resolve, reject) => {
-      this.ipc.once('getFileHunterListResponse', (event, value: any) => {
-        resolve(value);
+      this.ipc.once('getFileHunterListResponse', (event, data: any) => {
+        resolve(data);
       });
       this.ipc.send('getFileHunterList', folder, pageSize, page, filter);
     });
@@ -23,8 +23,8 @@ export class FileHunterService {
 
   async getNewAdditions(pageSize: number, page: number) {
     return new Promise<any>((resolve, reject) => {
-      this.ipc.once('getFileHunterNewAdditionsResponse', (event, value: any) => {
-        resolve(value);
+      this.ipc.once('getFileHunterNewAdditionsResponse', (event, data: any) => {
+        resolve(data);
       });
       this.ipc.send('getFileHunterNewAdditions', pageSize, page);
     });
