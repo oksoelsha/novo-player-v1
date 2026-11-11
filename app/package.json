@@ -1,6 +1,6 @@
 {
   "name": "novo-player-v1",
-  "version": "1.16",
+  "version": "1.16.0",
   "description": "Multi-platform front-end for openMSX, WebMSX (offline mode), blueMSX and Emulicious",
   "main": "main.js",
   "private": true,
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.6.1",
+    "axios": "^1.21.1",
     "chokidar": "^3.5.3",
     "crc": "^4.3.2",
     "fast-xml-parser": "^4.5.4",
