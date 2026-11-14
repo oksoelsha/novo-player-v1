@@ -139,6 +139,15 @@ proc initialize {} {
 				debug set_watchpoint write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
 			} else {
 				debug set_watchpoint write_mem {0x9800 0x988F} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_scc}
+
+				# Yamanooto can dynamically switch to SCC+
+				set device_list [machine_info slot $ps $ss 2]
+				set device [lindex $device_list 0]
+				set device_info_dict [machine_info device $device]
+
+				if {[dict exists $device_info_dict mappertype] && [string equal -nocase [dict get $device_info_dict mappertype] yamanooto]} {
+					debug set_watchpoint write_mem {0xB800 0xB8AF} "\[watch_in_slot $ps $ss\]" {sound_detector::detected_sccp}
+				}
 			}
 		}
 
