@@ -14,5 +14,7 @@ export const InputDevice = [
     'msxjoystick2',
     'joymega1',
     'joymega2',
-    'circuit-designer-rd-dongle'
+    'circuit-designer-rd-dongle',
+    'joyhandle1',
+    'joyhandle2'
 ];

@@ -60,6 +60,8 @@ export class OpenMSXLaunchService {
     private static readonly Input_Device_JOYMEGA1 = 'plug joyporta joymega1';
     private static readonly Input_Device_JOYMEGA2 = 'plug joyportb joymega2';
     private static readonly Input_Device_CIRCUIT_DESIGNER_RD_DONGLE = 'plug joyportb circuit-designer-rd-dongle';
+    private static readonly Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_1 = 'plug joyporta joyhandle1';
+    private static readonly Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_2 = 'plug joyportb joyhandle2';
 
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
@@ -80,7 +82,9 @@ export class OpenMSXLaunchService {
             ['12', OpenMSXLaunchService.Input_Device_MSX_JOYSTICK2],
             ['13', OpenMSXLaunchService.Input_Device_JOYMEGA1],
             ['14', OpenMSXLaunchService.Input_Device_JOYMEGA2],
-            ['15', OpenMSXLaunchService.Input_Device_CIRCUIT_DESIGNER_RD_DONGLE]
+            ['15', OpenMSXLaunchService.Input_Device_CIRCUIT_DESIGNER_RD_DONGLE],
+            ['16', OpenMSXLaunchService.Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_1],
+            ['17', OpenMSXLaunchService.Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_2]
         ])
         ,
         new TCLCommands('fddMode', [

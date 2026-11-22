@@ -298,7 +298,9 @@
       "msxjoystick2": "ジョイスティック (MSX) 2",
       "joymega1": "Joymega 1",
       "joymega2": "Joymega 2",
-      "circuit-designer-rd-dongle": "Circuit Designer RD dongle"
+      "circuit-designer-rd-dongle": "Circuit Designer RD dongle",
+      "joyhandle1": "Panasonic FS-JH1 Joy Handle 1",
+      "joyhandle2": "Panasonic FS-JH1 Joy Handle 2"
     },
     "managelistings": {
       "total": "合計",
