@@ -283,7 +283,7 @@
       "disablesecond": "Inhabilita la segona unitat de disquet",
       "disableboth": "Inhabilita ambdues unitats de disquet",
       "inputdevice": "Dispositiu d'entrada",
-      "none": "Cap",
+      "none": " [Desconnecta]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "Palanca de control (teclat)",
       "mouse": "Ratolí",

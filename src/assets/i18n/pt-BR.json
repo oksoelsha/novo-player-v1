@@ -283,7 +283,7 @@
       "disablesecond": "Desabilitar a segunda unidade de disco",
       "disableboth": "Desabilitar ambas as unidades de disco",
       "inputdevice": "Dispositivo de entrada",
-      "none": "Nenhum",
+      "none": " [Desconecte-se]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "Joystick (teclado)",
       "mouse": "Mouse",

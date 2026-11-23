@@ -283,7 +283,7 @@
       "disablesecond": "第二のフロッピーディスクドライブ無効にする",
       "disableboth": "フロッピーディスクドライブの両方無効にする",
       "inputdevice": "入力デバイス",
-      "none": "無し",
+      "none": " [プラグを抜く]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "ジョイスティック (キーボード)",
       "mouse": "マウス",

@@ -283,7 +283,7 @@
       "disablesecond": "Disable Second",
       "disableboth": "Disable Both",
       "inputdevice": "Input Device",
-      "none": "None",
+      "none": " [Unplug]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "Joystick (Keyboard)",
       "mouse": "Mouse",

@@ -22,6 +22,7 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
   fddModes: string[] = [];
   selectedFDDMode = '';
   inputDevices: string[] = [];
+  inputDevicesReverse = new Map<string, number>();
   selectedInputDevice = '';
   connectGFX9000 = false;
 
@@ -54,7 +55,12 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
       this.selectedFDDMode = this.localizationService.translate('popups.edithardware.' + FDDMode[0]);
     }
 
-    this.inputDevices = InputDevice.map(f => this.localizationService.translate('popups.edithardware.' + f));
+    this.inputDevices = InputDevice.map((f, index) => {
+      const translatedDevice = this.localizationService.translate('popups.edithardware.' + f);
+      this.inputDevicesReverse.set(translatedDevice, index++);
+      return translatedDevice;
+    }).sort();
+
     if (this.game.inputDevice) {
       this.selectedInputDevice = this.localizationService.translate('popups.edithardware.' + InputDevice[this.game.inputDevice]);
     } else {
@@ -72,7 +78,7 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
     this.hardwareData.emit({
       machine: this.selectedMachine,
       fddMode: this.fddModes.indexOf(this.selectedFDDMode),
-      inputDevice: this.inputDevices.indexOf(this.selectedInputDevice),
+      inputDevice: this.inputDevicesReverse.get(this.selectedInputDevice),
       connectGFX9000: this.connectGFX9000
     });
 

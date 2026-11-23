@@ -283,7 +283,7 @@
       "disablesecond": "두 번째 플로피 디스크 드라이브 사용 안 함",
       "disableboth": "플로피 디스크 드라이브를 모두 사용 안 함",
       "inputdevice": "입력 장치",
-      "none": "없음",
+      "none": " [플러그를 뽑으세요]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "조이스틱 (키보드)",
       "mouse": "마우스",

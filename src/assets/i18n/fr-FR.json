@@ -283,7 +283,7 @@
       "disablesecond": "Désactiver le deuxième lecteur de disquette",
       "disableboth": "Désactiver les deux lecteurs de disquette",
       "inputdevice": "Périphérique d'entrée",
-      "none": "Aucun",
+      "none": " [Débrancher]",
       "joytap": "Joy Tap",
       "joystickkeyboard": "Manette de jeu (clavier)",
       "mouse": "Souris",
