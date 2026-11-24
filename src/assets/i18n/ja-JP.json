@@ -259,7 +259,7 @@
     "specifyalisting": "リストを指定する",
     "on": "オン",
     "off": "オフ",
-    "infomsg": "openMSX 0.16 以降で動作します",
+    "infomsg": "openMSX 16 以降で動作します",
     "addgames": {
       "addfolder": "+フォルダー",
       "addfile": "+ファイル",

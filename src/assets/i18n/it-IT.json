@@ -259,7 +259,7 @@
     "specifyalisting": "Specifica un elenco",
     "on": "Attivato",
     "off": "Disattivato",
-    "infomsg": "Funziona con openMSX 0.16 o versione successiva",
+    "infomsg": "Funziona con openMSX 16 o versione successiva",
     "addgames": {
       "addfolder": "+Cartella",
       "addfile": "+File",

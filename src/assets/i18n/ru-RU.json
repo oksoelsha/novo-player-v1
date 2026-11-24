@@ -259,7 +259,7 @@
     "specifyalisting": "Укажите список",
     "on": "Вкл",
     "off": "Выкл",
-    "infomsg": "Работает с openMSX 0.16 или более поздней версии",
+    "infomsg": "Работает с openMSX 16 или более поздней версии",
     "addgames": {
       "addfolder": "+Папка",
       "addfile": "+Файл",

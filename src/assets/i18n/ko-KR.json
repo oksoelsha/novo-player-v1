@@ -259,7 +259,7 @@
     "specifyalisting": "목록을 지정하다",
     "on": "온",
     "off": "오프",
-    "infomsg": "openMSX 0.16 이상에서 작동",
+    "infomsg": "openMSX 16 이상에서 작동",
     "addgames": {
       "addfolder": "+폴더",
       "addfile": "+파일",

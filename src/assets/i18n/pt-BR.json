@@ -259,7 +259,7 @@
     "specifyalisting": "Especificar uma listagem",
     "on": "Ativado",
     "off": "Desativado",
-    "infomsg": "Funciona com openMSX 0.16 ou posterior",
+    "infomsg": "Funciona com openMSX 16 ou posterior",
     "addgames": {
       "addfolder": "+Pasta",
       "addfile": "+Arquivo",

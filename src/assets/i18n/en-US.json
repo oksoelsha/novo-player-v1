@@ -259,7 +259,7 @@
     "specifyalisting": "Specify a listing",
     "on": "On",
     "off": "Off",
-    "infomsg": "Works with openMSX 0.16 or later",
+    "infomsg": "Works with openMSX 16 or later",
     "addgames": {
       "addfolder": "+Folder",
       "addfile": "+File",

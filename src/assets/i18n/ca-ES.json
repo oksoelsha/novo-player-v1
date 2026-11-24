@@ -259,7 +259,7 @@
     "specifyalisting": "Especifica una llista",
     "on": "Activat",
     "off": "Desactivat",
-    "infomsg": "Funciona amb openMSX 0.16 o posterior",
+    "infomsg": "Funciona amb openMSX 16 o posterior",
     "addgames": {
       "addfolder": "+Carpeta",
       "addfile": "+Fitxer",
