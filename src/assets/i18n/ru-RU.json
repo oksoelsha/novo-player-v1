@@ -296,11 +296,15 @@
       "paddle": "MSX Paddle",
       "msxjoystick1": "Джойстик (MSX) 1",
       "msxjoystick2": "Джойстик (MSX) 2",
-      "joymega1": "Joymega 1",
-      "joymega2": "Joymega 2",
+      "joymega1": "Контроллер JoyMega 1",
+      "joymega2": "Контроллер JoyMega 2",
       "circuit-designer-rd-dongle": "Circuit Designer RD dongle",
       "joyhandle1": "Panasonic FS-JH1 Joy Handle 1",
-      "joyhandle2": "Panasonic FS-JH1 Joy Handle 2"
+      "joyhandle2": "Panasonic FS-JH1 Joy Handle 2",
+      "terminatorlaser": "ASCII Plus-X Terminator Laser",
+      "gunstick": "MHT GUN-STICK",
+      "colecojoystick1": "Джойстик (ColecoVision) 1",
+      "colecojoystick2": "Джойстик (ColecoVision) 2"
     },
     "managelistings": {
       "total": "Итог",

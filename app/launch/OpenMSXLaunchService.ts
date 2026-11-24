@@ -62,6 +62,10 @@ export class OpenMSXLaunchService {
     private static readonly Input_Device_CIRCUIT_DESIGNER_RD_DONGLE = 'plug joyportb circuit-designer-rd-dongle';
     private static readonly Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_1 = 'plug joyporta joyhandle1';
     private static readonly Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_2 = 'plug joyportb joyhandle2';
+    private static readonly Input_Device_TERMINATOR_LASER = 'plug joyporta terminatorlaser';
+    private static readonly Input_Device_GUN_STICK = 'plug joyporta gunstick';
+    private static readonly Input_Device_COLECO_JOYSTICK1 = 'plug joyporta colecojoystick1';
+    private static readonly Input_Device_COLECO_JOYSTICK2 = 'plug joyportb colecojoystick2';
 
     private static readonly FDD_MODE_DISABLE_SECOND = 'after boot { keymatrixdown 6 2; after time 14 \"keymatrixup 6 2\" }';
     private static readonly FDD_MODE_DISABLE_BOTH = 'after boot { keymatrixdown 6 1; after time 14 \"keymatrixup 6 1\" }';
@@ -84,7 +88,11 @@ export class OpenMSXLaunchService {
             ['14', OpenMSXLaunchService.Input_Device_JOYMEGA2],
             ['15', OpenMSXLaunchService.Input_Device_CIRCUIT_DESIGNER_RD_DONGLE],
             ['16', OpenMSXLaunchService.Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_1],
-            ['17', OpenMSXLaunchService.Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_2]
+            ['17', OpenMSXLaunchService.Input_Device_PANASONIC_FS_JH1_JOY_HANDLE_2],
+            ['18', OpenMSXLaunchService.Input_Device_TERMINATOR_LASER],
+            ['19', OpenMSXLaunchService.Input_Device_GUN_STICK],
+            ['20', OpenMSXLaunchService.Input_Device_COLECO_JOYSTICK1],
+            ['21', OpenMSXLaunchService.Input_Device_COLECO_JOYSTICK2]
         ])
         ,
         new TCLCommands('fddMode', [

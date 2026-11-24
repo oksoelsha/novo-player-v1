@@ -16,5 +16,9 @@ export const InputDevice = [
     'joymega2:>=:20',
     'circuit-designer-rd-dongle:>=:20',
     'joyhandle1:>=:22',
-    'joyhandle2:>=:22'
+    'joyhandle2:>=:22',
+    'terminatorlaser:>=:22',
+    'gunstick:>=:22',
+    'colecojoystick1',
+    'colecojoystick2'
 ];
