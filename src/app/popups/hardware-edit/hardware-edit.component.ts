@@ -22,6 +22,7 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
   fddModes: string[] = [];
   selectedFDDMode = '';
   inputDevices: string[] = [];
+  inputDeviceVersions = new Map<string, string | null>();
   inputDevicesReverse = new Map<string, number>();
   selectedInputDevice = '';
   connectGFX9000 = false;
@@ -56,15 +57,22 @@ export class HardwareEditComponent extends PopupComponent implements OnInit, Aft
     }
 
     this.inputDevices = InputDevice.map((f, index) => {
-      const translatedDevice = this.localizationService.translate('popups.edithardware.' + f);
+      const parts = f.split(':');
+      const device = parts[0];
+      let version: string | null = null;
+      if (parts.length > 1) {
+        version = 'openMSX ' + parts[1] + ' ' + parts[2];
+      }
+      const translatedDevice = this.localizationService.translate('popups.edithardware.' + device);
+      this.inputDeviceVersions.set(translatedDevice, version);
       this.inputDevicesReverse.set(translatedDevice, index++);
       return translatedDevice;
     }).sort();
 
     if (this.game.inputDevice) {
-      this.selectedInputDevice = this.localizationService.translate('popups.edithardware.' + InputDevice[this.game.inputDevice]);
+      this.selectedInputDevice = [...this.inputDevicesReverse.entries()].find(([k, v]) => v === this.game.inputDevice)?.[0]!;
     } else {
-      this.selectedInputDevice = this.localizationService.translate('popups.edithardware.' + InputDevice[0]);
+      this.selectedInputDevice = this.inputDevices[0];
     }
 
     if (this.game.connectGFX9000) {

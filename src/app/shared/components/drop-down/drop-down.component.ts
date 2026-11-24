@@ -14,6 +14,7 @@ export class DropDownComponent {
   @Input() defaultLabel!: string;
   @Input() resetButton!: boolean;
   @Input() doNotDisplaySelectedItem!: boolean;
+  @Input() listSideNotes = new Map<string, string | null>();
   @Output() selection: EventEmitter<string> = new EventEmitter<string>();
   @Output() openStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChildren('dropDownItem') dropDownItems!: QueryList<ElementRef>;

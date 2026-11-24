@@ -1,7 +1,7 @@
 export const InputDevice = [
     'none',
     'joytap',
-    'joystickkeyboard',
+    'joystickkeyboard:<:20',
     'mouse',
     'arkanoidpad',
     'trackball',
@@ -10,11 +10,11 @@ export const InputDevice = [
     'ninjatap',
     'tetris2protection',
     'paddle',
-    'msxjoystick1',
-    'msxjoystick2',
-    'joymega1',
-    'joymega2',
-    'circuit-designer-rd-dongle',
-    'joyhandle1',
-    'joyhandle2'
+    'msxjoystick1:>=:20',
+    'msxjoystick2:>=:20',
+    'joymega1:>=:20',
+    'joymega2:>=:20',
+    'circuit-designer-rd-dongle:>=:20',
+    'joyhandle1:>=:22',
+    'joyhandle2:>=:22'
 ];

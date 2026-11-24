@@ -22,7 +22,7 @@
             <td class="medium">{{ 'popups.edithardware.inputdevice' | translate }}</td>
             <td class="medium-input">
                 <app-drop-down [list]="inputDevices" [selectedItem]="selectedInputDevice"
-                    (selection)="selectedInputDevice = $event">
+                    [listSideNotes]="inputDeviceVersions" (selection)="selectedInputDevice = $event">
                 </app-drop-down>
             </td>
             <td><img src="assets/images/general/info.png" placement="top"
