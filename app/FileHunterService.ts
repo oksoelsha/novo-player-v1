@@ -28,7 +28,7 @@ export class FileHunterService implements UpdateListerner {
     private games = new Map<string, FileNode>();
     private cachedFolder: string | null = null;
     private cachedContents: any;
-    private cachedNewAdditions = new ExpiringVariable(3 * 60 * 60 * 1000);  // 3 hours
+    private cachedNewAdditions = new ExpiringVariable(2 * 60 * 60 * 1000);  // 2 hours
     private lastNewAddition: String | null = null;
 
     constructor(private win: BrowserWindow, private settingsService: SettingsService, private environmentService: EnvironmentService) {
@@ -209,13 +209,13 @@ export class FileHunterService implements UpdateListerner {
             const convertedIncludedFolders = Array.from(this.includedFolders).map(f => f.replace(/\\/g, '/')).map(f => f.slice(1));
             contents = lines.map((item: string) => {
                 const parts = item.trim().split(/\s+/);
-                return { name: parts[2].substring(domainLength), date: parts[0] };
+                return { name: decodeURI(parts[2]).substring(domainLength), date: parts[0] };
             }).filter((item: any) => convertedIncludedFolders.some(prefix => (item.name).startsWith(prefix)));
             this.cachedNewAdditions.set(contents);
             if (updated) {
                 start = 0;
             } else {
-                start = page * pageSize;                
+                start = page * pageSize;
             }
         }
         const pagedContents = contents.slice(start, start + pageSize);
