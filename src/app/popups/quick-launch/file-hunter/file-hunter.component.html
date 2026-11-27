@@ -14,7 +14,8 @@
             <a class="badge bg-dark bg-size bg-link ms-1" (click)="setListMode()">{{ 'popups.quicklaunch.gamelist' |
                 translate }}</a>
             <span class="badge bg-primary bg-size">{{ 'popups.quicklaunch.newadditions' | translate }}</span>
-            <app-file-hunter-new-additions (gameLink)="selectLink($event)"></app-file-hunter-new-additions>
+            <app-file-hunter-new-additions [opened]="openedSubject.asObservable()"
+                (gameLink)="selectLink($event)"></app-file-hunter-new-additions>
         </div>
     </div>
 </div>

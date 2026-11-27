@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FileHunterService } from '../../../../services/file-hunter.service';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-file-hunter-new-additions',
@@ -9,11 +10,13 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 })
 export class NewAdditionsComponent implements OnInit {
 
+  @Input() opened!: Observable<void>;
   @Output() gameLink = new EventEmitter<string>();
   @ViewChild('pagination') paginationComponent!: PaginationComponent;
 
   readonly pageSize = 16;
   newAdditions: any[] = [];
+  currentPage = 0;
   total = 0;
   errorMessage: string | undefined;
 
@@ -21,14 +24,19 @@ export class NewAdditionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNewAdditions(0);
+    this.opened.subscribe(() => {
+      this.getNewAdditions(this.currentPage);
+    });
   }
 
   getNewAdditions(page: number) {
+    this.currentPage = page;
     this.fileHunterService.getNewAdditions(this.pageSize, page).then((data: any) => {
       if (data.error) {
         this.errorMessage = data.errorMessage;
       } else {
         if (data.updated) {
+          this.currentPage = 0;
           this.paginationComponent.reset();
         }
         this.newAdditions = data.contents.map((obj: any) => ({ name: decodeURIComponent(obj.name), date: obj.date }));

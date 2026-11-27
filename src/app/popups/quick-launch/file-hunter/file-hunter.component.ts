@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FileHunterService } from '../../../services/file-hunter.service';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
 
 enum DisplayModes {list, newAdditions}
 
@@ -14,9 +14,10 @@ export class FileHunterComponent implements OnInit {
   @Output() gameLink: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('fileHunterDropdown', { static: true }) private fileHunterDropdown!: NgbDropdown;
 
+  openedSubject = new Subject<void>();
   private currentDisplayMode!: DisplayModes;
 
-  constructor(private fileHunterService: FileHunterService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.currentDisplayMode = DisplayModes.list;
@@ -35,6 +36,7 @@ export class FileHunterComponent implements OnInit {
   }
 
   setNewAdditionsMode() {
+    this.openedSubject.next();
     this.currentDisplayMode = DisplayModes.newAdditions;
   }
 
